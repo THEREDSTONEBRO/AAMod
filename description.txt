@@ -15,7 +15,6 @@ Thanks to these amazing people for all their help with the mod.
 -JaceDaDorito (Spriter)
 -Ender (Spriter)
 -Kyuu (Spriter)
--Noctus (Spriter/Coding Help)
 -Schmizz (Spriter)
 -Karamitasu (Composer)
 -PrehistoricBanana (Documenter)
@@ -25,3 +24,4 @@ Thanks to these amazing people for all their help with the mod.
 -Kingskrall (Co-Director)
 -TheRedstoneBro (Coder/Spriter)
 -GabeHasWon (HUGE worldgen code help)
+-Chinzilla (Coder)

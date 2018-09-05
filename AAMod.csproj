@@ -576,6 +576,7 @@
     <Content Include="Gore\SearcherGore1.png" />
     <Content Include="Gore\SearcherGore2.png" />
     <Content Include="Icon.png" />
+    <Content Include="IMPORTANTREADME.txt" />
     <Content Include="Items\Accessories\BotchedBand.png" />
     <Content Include="Items\Accessories\DemonGauntlet.png" />
     <Content Include="Items\Accessories\DemonGauntlet_HandsOff.png" />
@@ -1414,7 +1415,6 @@
     <Content Include="Water\VoidWaterStyle_Block.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include=".gitignore" />
     <None Include="obj\Debug\AAMod.csproj.CopyComplete" />
     <None Include="obj\Debug\AAMod.csproj.CoreCompileInputs.cache" />
     <None Include="obj\Debug\AAMod.csprojAssemblyReference.cache" />
