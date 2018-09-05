@@ -161,7 +161,7 @@ namespace AAMod
         {
             var downed = tag.GetList<string>("downed");
             downedGripRed = downed.Contains("GripRed");
-            downedGripRed = downed.Contains("GripBlue");
+            downedGripBlue = downed.Contains("GripBlue");
             NPC.downedMoonlord = downed.Contains("MoonLord");
             NPC.downedMechBossAny = downed.Contains("MechBoss");
             NPC.downedPlantBoss = downed.Contains("Evil");
