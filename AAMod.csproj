@@ -216,7 +216,6 @@
     <Compile Include="Items\Boss\Grips\BulwarkOfChaos.cs" />
     <Compile Include="Items\Boss\Grips\ClawOfChaos.cs" />
     <Compile Include="Items\Boss\Grips\GripBag.cs" />
-    <Compile Include="Items\Boss\Hydra\HydraTrishot.cs" />
     <Compile Include="Items\Boss\Retriever\RetrieverBag.cs" />
     <Compile Include="Items\Boss\Retriever\StormClaw.cs" />
     <Compile Include="Items\Boss\Retriever\StormRiot.cs" />
@@ -224,9 +223,6 @@
     <Compile Include="Items\Boss\Zero\RiftShredder.cs" />
     <Compile Include="Items\Boss\Zero\UnstableSingularity.cs" />
     <Compile Include="Items\Boss\Zero\ZeroBag.cs" />
-    <Compile Include="Items\ExpertBags\ZeroBag.cs" />
-    <Compile Include="Items\ExpertBags\GripBag.cs" />
-    <Compile Include="Items\ExpertBags\RetrieverBag.cs" />
     <Compile Include="Items\Magic\DragonStaff.cs" />
     <Compile Include="Items\Magic\DuckstepGun.cs" />
     <Compile Include="Items\Magic\GelWand.cs" />
@@ -395,13 +391,6 @@
     <Compile Include="NPCs\Bosses\Grips\GripOfChaosRed.cs" />
     <Compile Include="NPCs\AAModGlobalNPC.cs" />
     <Compile Include="NPCs\Bosses\Retriever\Retriever.cs" />
-    <Compile Include="NPCs\Bosses\Zero\RealityTearer.cs" />
-    <Compile Include="NPCs\Bosses\Zero\RiftShredder.cs" />
-    <Compile Include="NPCs\Bosses\Zero\Zero.cs" />
-    <Compile Include="NPCs\Bosses\Zero\Zero1.cs" />
-    <Compile Include="NPCs\Bosses\Zero\ZeroArm.cs" />
-    <Compile Include="NPCs\Bosses\Zero\ZeroD.cs" />
-    <Compile Include="NPCs\Bosses\Zero\ZeroHandler.cs" />
     <Compile Include="NPCs\Enemies\AncientLung\AncientLung.cs" />
     <Compile Include="NPCs\Enemies\Other\DragonClaw.cs" />
     <Compile Include="NPCs\Enemies\Other\HydraClaw.cs" />
@@ -576,7 +565,6 @@
     <Content Include="Gore\SearcherGore1.png" />
     <Content Include="Gore\SearcherGore2.png" />
     <Content Include="Icon.png" />
-    <Content Include="IMPORTANTREADME.txt" />
     <Content Include="Items\Accessories\BotchedBand.png" />
     <Content Include="Items\Accessories\DemonGauntlet.png" />
     <Content Include="Items\Accessories\DemonGauntlet_HandsOff.png" />
@@ -873,11 +861,6 @@
     <Content Include="Items\Boss\Zero\RiftShredder.png" />
     <Content Include="Items\Boss\Zero\UnstableSingularity.png" />
     <Content Include="Items\Boss\Zero\ZeroBag.png" />
-    <Content Include="Items\ExpertBags\BroodmotherBag.png" />
-    <Content Include="Items\ExpertBags\GripBag.png" />
-    <Content Include="Items\ExpertBags\HydraBag.png" />
-    <Content Include="Items\ExpertBags\RetrieverBag.png" />
-    <Content Include="Items\ExpertBags\ZeroBag.png" />
     <Content Include="Items\Hooks\DragonsGrip.png" />
     <Content Include="Items\Magic\AncientArcanum.png" />
     <Content Include="Items\Magic\BogBomb.png" />
@@ -1181,22 +1164,6 @@
     <Content Include="NPCs\Bosses\Retriever\Retriever.png" />
     <Content Include="NPCs\Bosses\Retriever\Retriever_Head_Boss.png" />
     <Content Include="NPCs\Bosses\SoC\Soul of Cthulhu.png" />
-    <Content Include="NPCs\Bosses\Zero\RealityTearer.png" />
-    <Content Include="NPCs\Bosses\Zero\RealityTearer_Glow.png" />
-    <Content Include="NPCs\Bosses\Zero\RiftShredder.png" />
-    <Content Include="NPCs\Bosses\Zero\RiftShredder_Glow.png" />
-    <Content Include="NPCs\Bosses\Zero\VoidStar.png" />
-    <Content Include="NPCs\Bosses\Zero\VoidStarP.png" />
-    <Content Include="NPCs\Bosses\Zero\VoidStar_Glow.png" />
-    <Content Include="NPCs\Bosses\Zero\Zero.png" />
-    <Content Include="NPCs\Bosses\Zero\Zero1.png" />
-    <Content Include="NPCs\Bosses\Zero\Zero2.png" />
-    <Content Include="NPCs\Bosses\Zero\ZeroArm.png" />
-    <Content Include="NPCs\Bosses\Zero\ZeroD.png" />
-    <Content Include="NPCs\Bosses\Zero\ZeroD_Glow.png" />
-    <Content Include="NPCs\Bosses\Zero\ZeroWire.png" />
-    <Content Include="NPCs\Bosses\Zero\Zero_Glow.png" />
-    <Content Include="NPCs\Bosses\Zero\Zero_Head_Boss.png" />
     <Content Include="NPCs\Enemies\AncientLung\AncientLungBody1.png" />
     <Content Include="NPCs\Enemies\AncientLung\AncientLungBody2.png" />
     <Content Include="NPCs\Enemies\AncientLung\AncientLungBody3.png" />
@@ -1422,14 +1389,15 @@
     <None Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
     <None Include="obj\Debug\ResolveAssemblyReference.cache" />
     <None Include="obj\Release\AAMod.csproj.CoreCompileInputs.cache" />
-    <None Include="README.md" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="bin\Release\" />
     <Folder Include="Items\Mounts\" />
     <Folder Include="Items\Pets\" />
-    <Folder Include="NPCs\Bosses\Zero\Zero2\" />
     <Folder Include="obj\Debug\TempPE\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>"D:\SteamLibrary\steamapps\common\Terraria\tModLoaderServer.exe" -build "$(ProjectDir)\" -eac "$(TargetPath)"</PostBuildEvent>
+  </PropertyGroup>
 </Project>

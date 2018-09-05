@@ -157,6 +157,42 @@ namespace AAMod
             };
         }
 
+        public override void NetSend(BinaryWriter writer)
+        {
+            BitsByte flags = new BitsByte();
+            flags[0] = downedGripRed;
+            flags[1] = downedGripBlue;
+            flags[2] = NPC.downedMoonlord;
+            flags[3] = NPC.downedMechBossAny;
+            flags[4] = NPC.downedPlantBoss;
+            flags[5] = NPC.downedBoss3;
+            flags[6] = downedGrips;
+            flags[7] = downedRetriever;
+            writer.Write(flags);
+
+            BitsByte flags2 = new BitsByte();
+            flags2[0] = zeroUS;
+            flags2[1] = downedZero;
+            writer.Write(flags2);
+        }
+
+        public override void NetReceive(BinaryReader reader)
+        {
+            BitsByte flags = reader.ReadByte();
+            downedGripRed = flags[0];
+            downedGripBlue = flags[1];
+            NPC.downedMoonlord = flags[2];
+            NPC.downedMechBossAny = flags[3];
+            NPC.downedPlantBoss = flags[4];
+            NPC.downedBoss3 = flags[5];
+            downedGrips = flags[6];
+            downedRetriever = flags[7];
+
+            BitsByte flags2 = reader.ReadByte();
+            zeroUS = flags2[0];
+            downedZero = flags2[1];
+        }
+
         public override void Load(TagCompound tag)
         {
             var downed = tag.GetList<string>("downed");
