@@ -565,6 +565,7 @@
     <Content Include="Gore\SearcherGore1.png" />
     <Content Include="Gore\SearcherGore2.png" />
     <Content Include="Icon.png" />
+    <Content Include="IMPORTANTREADME.txt" />
     <Content Include="Items\Accessories\BotchedBand.png" />
     <Content Include="Items\Accessories\DemonGauntlet.png" />
     <Content Include="Items\Accessories\DemonGauntlet_HandsOff.png" />
@@ -1389,6 +1390,7 @@
     <None Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
     <None Include="obj\Debug\ResolveAssemblyReference.cache" />
     <None Include="obj\Release\AAMod.csproj.CoreCompileInputs.cache" />
+    <None Include="README.md" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="bin\Release\" />
