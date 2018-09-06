@@ -76,8 +76,6 @@ namespace AAMod
                 AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/HydraTheme"), ItemType("HydraBox"), TileType("HydraBox"));
                 AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/BroodTheme"), ItemType("BroodBox"), TileType("BroodBox"));
                 AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/RajahTheme"), ItemType("RRBox"), TileType("RRBox"));
-                AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/HydraKazoo"), ItemType("HydraBoxK"), TileType("HydraBoxK"));
-                AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/BroodKazoo"), ItemType("BroodBoxK"), TileType("BroodBoxK"));
                 AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/InfernoSurface"), ItemType("InfernoBox"), TileType("InfernoBox"));
                 AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/MireSurface"), ItemType("MireBox"), TileType("MireBox"));
                 AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Void"), ItemType("VoidBox"), TileType("VoidBox"));

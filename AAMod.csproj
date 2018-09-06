@@ -391,9 +391,10 @@
     <Compile Include="NPCs\Bosses\Grips\GripOfChaosRed.cs" />
     <Compile Include="NPCs\AAModGlobalNPC.cs" />
     <Compile Include="NPCs\Bosses\Retriever\Retriever.cs" />
-    <Compile Include="NPCs\Enemies\AncientLung\AncientLung.cs" />
+    <Compile Include="NPCs\Enemies\Other\ElderDragon.cs" />
     <Compile Include="NPCs\Enemies\Other\DragonClaw.cs" />
     <Compile Include="NPCs\Enemies\Other\HydraClaw.cs" />
+    <Compile Include="NPCs\Enemies\Void\Searcher.cs" />
     <Compile Include="NPCs\TownNPCs\Samurai.cs" />
     <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
     <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
@@ -1165,12 +1166,6 @@
     <Content Include="NPCs\Bosses\Retriever\Retriever.png" />
     <Content Include="NPCs\Bosses\Retriever\Retriever_Head_Boss.png" />
     <Content Include="NPCs\Bosses\SoC\Soul of Cthulhu.png" />
-    <Content Include="NPCs\Enemies\AncientLung\AncientLungBody1.png" />
-    <Content Include="NPCs\Enemies\AncientLung\AncientLungBody2.png" />
-    <Content Include="NPCs\Enemies\AncientLung\AncientLungBody3.png" />
-    <Content Include="NPCs\Enemies\AncientLung\AncientLungBody4.png" />
-    <Content Include="NPCs\Enemies\AncientLung\AncientLungHead.png" />
-    <Content Include="NPCs\Enemies\AncientLung\AncientLungTail.png" />
     <Content Include="NPCs\Enemies\Inferno\InfernoSalamander.png" />
     <Content Include="NPCs\Enemies\Inferno\WyrmBody1.png" />
     <Content Include="NPCs\Enemies\Inferno\WyrmBody2.png" />
@@ -1184,6 +1179,7 @@
     <Content Include="NPCs\Enemies\Mire\MireMimic.png" />
     <Content Include="NPCs\Enemies\Mire\MireMimic_1.png" />
     <Content Include="NPCs\Enemies\Other\DragonClaw.png" />
+    <Content Include="NPCs\Enemies\Other\ElderDragon.png" />
     <Content Include="NPCs\Enemies\Other\HydraClaw.png" />
     <Content Include="NPCs\Enemies\Void\MiniProbe.gif" />
     <Content Include="NPCs\Enemies\Void\Null.gif" />
