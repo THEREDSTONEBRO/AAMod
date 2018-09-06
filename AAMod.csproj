@@ -59,10 +59,10 @@
     <Compile Include="AAPlayer.cs" />
     <Compile Include="AAUtils.cs" />
     <Compile Include="AAWorld.cs" />
-    <Compile Include="Backgrounds\Inferno\InfernoSurfaceBgStyle.cs" />
-    <Compile Include="Backgrounds\Inferno\InfernoUgBgStyle.cs" />
-    <Compile Include="Backgrounds\Mire\MireSurfaceBgStyle.cs" />
-    <Compile Include="Backgrounds\Mire\MireUgBgStyle.cs" />
+    <Compile Include="Backgrounds\InfernoSurfaceBgStyle.cs" />
+    <Compile Include="Backgrounds\InfernoUgBgStyle.cs" />
+    <Compile Include="Backgrounds\MireSurfaceBgStyle.cs" />
+    <Compile Include="Backgrounds\MireUgBgStyle.cs" />
     <Compile Include="Backgrounds\Void\VoidSky.cs" />
     <Compile Include="Buffs\EnderMinionBuff.cs" />
     <Compile Include="Buffs\InfinityOverload.cs" />
@@ -497,19 +497,19 @@
     <Compile Include="Water\VoidWaterStyle.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Backgrounds\Inferno\InfernoBG1.png" />
-    <Content Include="Backgrounds\Inferno\InfernoCavern.png" />
-    <Content Include="Backgrounds\Inferno\InfernoFG1.png" />
-    <Content Include="Backgrounds\Inferno\InfernoFG2.png" />
-    <Content Include="Backgrounds\Inferno\InfernoSky.png" />
-    <Content Include="Backgrounds\Inferno\InfernoUnderground.png" />
-    <Content Include="Backgrounds\Mire\Mire1.png" />
-    <Content Include="Backgrounds\Mire\MireBG.png" />
-    <Content Include="Backgrounds\Mire\MireCavern.png" />
-    <Content Include="Backgrounds\Mire\MireFG1.png" />
-    <Content Include="Backgrounds\Mire\MireFG2.png" />
-    <Content Include="Backgrounds\Mire\MireSky.png" />
-    <Content Include="Backgrounds\Mire\MireUnderground.png" />
+    <Content Include="Backgrounds\InfernoBG1.png" />
+    <Content Include="Backgrounds\InfernoCavern.png" />
+    <Content Include="Backgrounds\InfernoFG1.png" />
+    <Content Include="Backgrounds\InfernoFG2.png" />
+    <Content Include="Backgrounds\InfernoSky.png" />
+    <Content Include="Backgrounds\InfernoUnderground.png" />
+    <Content Include="Backgrounds\Mire1.png" />
+    <Content Include="Backgrounds\MireBG.png" />
+    <Content Include="Backgrounds\MireCavern.png" />
+    <Content Include="Backgrounds\MireFG1.png" />
+    <Content Include="Backgrounds\MireFG2.png" />
+    <Content Include="Backgrounds\MireSky.png" />
+    <Content Include="Backgrounds\MireUnderground.png" />
     <Content Include="Backgrounds\Void\VoidBH.png" />
     <Content Include="Backgrounds\Void\VoidBolt.png" />
     <Content Include="Backgrounds\Void\VoidFlash.png" />

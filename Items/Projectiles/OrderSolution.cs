@@ -113,11 +113,16 @@ namespace AAMod.Items.Projectiles
 
                         if (type == (ushort)mod.TileType("DepthstoneTile") && Main.tile[k, l].active())
                         {
-                            Main.tile[k, l].type = 2;
+                            Main.tile[k, l].type = 1;
                             WorldGen.SquareTileFrame(k, l, true);
                             NetMessage.SendTileSquare(-1, k, l, 1);
                         }
-
+                        else if (type == (ushort)mod.TileType("Darkmud"))
+                        {
+                            Main.tile[k, l].type = 59;
+                            WorldGen.SquareTileFrame(k, l, true);
+                            NetMessage.SendTileSquare(-1, k, l, 1);
+                        }
                         else if (type == (ushort)mod.TileType("MireGrass"))
                         {
                             Main.tile[k, l].type = 60;

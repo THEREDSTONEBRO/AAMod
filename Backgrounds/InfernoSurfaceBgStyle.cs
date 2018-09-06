@@ -1,13 +1,14 @@
 ﻿using Terraria;
 using Terraria.ModLoader;
+using Terraria.ID;
 
-namespace AAMod.Backgrounds.Mire
+namespace AAMod.Backgrounds
 {
-    class MireSurfaceBgStyle : ModSurfaceBgStyle
+    class InfernoSurfaceBgStyle : ModSurfaceBgStyle
     {
         public override bool ChooseBgStyle()
         {
-            return !Main.gameMenu && Main.LocalPlayer.GetModPlayer<AAPlayer>(mod).ZoneMire;
+            return !Main.gameMenu && Main.LocalPlayer.GetModPlayer<AAPlayer>(mod).ZoneInferno;
         }
 
         public override void ModifyFarFades(float[] fades, float transitionSpeed)
@@ -33,18 +34,19 @@ namespace AAMod.Backgrounds.Mire
             }
         }
 
-        public override int ChooseFarTexture()
+        public override int ChooseCloseTexture(ref float scale, ref double parallax, ref float a, ref float b)
         {
-            return mod.GetBackgroundSlot("Backgrounds/Mire/MireBG");
+            return mod.GetBackgroundSlot("Backgrounds/InfernoFG1");
         }
 
         public override int ChooseMiddleTexture()
         {
-            return mod.GetBackgroundSlot("Backgrounds/Mire/MireFG2");
+            return mod.GetBackgroundSlot("Backgrounds/InfernoFG2");
         }
-        public override int ChooseCloseTexture(ref float scale, ref double parallax, ref float a, ref float b)
+
+        public override int ChooseFarTexture()
         {
-            return mod.GetBackgroundSlot("Backgrounds/Mire/MireFG1");
+            return mod.GetBackgroundSlot("Backgrounds/InfernoBG1");
         }
     }
 }

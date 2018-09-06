@@ -1,7 +1,7 @@
 ﻿using Terraria;
 using Terraria.ModLoader;
 
-namespace AAMod.Backgrounds.Mire
+namespace AAMod.Backgrounds
 {
     class MireUgBgStyle : ModUgBgStyle
     {
@@ -12,7 +12,7 @@ namespace AAMod.Backgrounds.Mire
 
         public override void FillTextureArray(int[] textureSlots)
         {
-            textureSlots[0] = mod.GetBackgroundSlot("Backgrounds/Mire/MireUnderground");
+            textureSlots[0] = mod.GetBackgroundSlot("Backgrounds/MireUnderground");
         }
     }
 }

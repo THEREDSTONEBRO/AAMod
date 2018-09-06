@@ -109,10 +109,7 @@ namespace AAMod
         {
             ZoneMire = (AAWorld.mireTiles > 100);
             ZoneInferno = (AAWorld.infernoTiles > 100);
-            if (player.position.Y <= 3600)
-            { 
             ZoneVoid = (AAWorld.voidTiles > 50);
-            }
         }
 
         public override void UpdateBiomeVisuals()

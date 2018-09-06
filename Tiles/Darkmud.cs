@@ -16,7 +16,7 @@ namespace AAMod.Tiles
             //true for block to emit light
             Main.tileLighted[Type] = true;
             drop = mod.ItemType("Darkmud");
-            AddMapEntry(new Color(0, 0, 33));
+            AddMapEntry(new Color(13, 0, 66));
         }
     }
 }

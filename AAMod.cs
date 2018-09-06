@@ -8,8 +8,7 @@ using Terraria.Localization;
 using Terraria.UI;
 using AAMod;
 using AAMod.Backgrounds.Void;
-using AAMod.Backgrounds.Inferno;
-using AAMod.Backgrounds.Mire;
+using AAMod.Backgrounds;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 

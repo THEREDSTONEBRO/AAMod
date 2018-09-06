@@ -1,7 +1,7 @@
 ﻿using Terraria;
 using Terraria.ModLoader;
 
-namespace AAMod.Backgrounds.Inferno
+namespace AAMod.Backgrounds
 {
     class InfernoUgBgStyle : ModUgBgStyle
     {
@@ -12,7 +12,7 @@ namespace AAMod.Backgrounds.Inferno
 
         public override void FillTextureArray(int[] textureSlots)
         {
-            textureSlots[0] = mod.GetBackgroundSlot("Backgrounds/Inferno/InfernoUnderground");
+            textureSlots[0] = mod.GetBackgroundSlot("Backgrounds/InfernoUnderground");
         }
     }
 }
