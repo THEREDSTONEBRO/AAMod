@@ -59,8 +59,10 @@
     <Compile Include="AAPlayer.cs" />
     <Compile Include="AAUtils.cs" />
     <Compile Include="AAWorld.cs" />
+    <Compile Include="Backgrounds\InfernoSky.cs" />
     <Compile Include="Backgrounds\InfernoSurfaceBgStyle.cs" />
     <Compile Include="Backgrounds\InfernoUgBgStyle.cs" />
+    <Compile Include="Backgrounds\MireSky.cs" />
     <Compile Include="Backgrounds\MireSurfaceBgStyle.cs" />
     <Compile Include="Backgrounds\MireUgBgStyle.cs" />
     <Compile Include="Backgrounds\Void\VoidSky.cs" />
@@ -502,12 +504,14 @@
     <Content Include="Backgrounds\InfernoFG1.png" />
     <Content Include="Backgrounds\InfernoFG2.png" />
     <Content Include="Backgrounds\InfernoSky.png" />
+    <Content Include="Backgrounds\InfernoSun.png" />
     <Content Include="Backgrounds\InfernoUnderground.png" />
     <Content Include="Backgrounds\Mire1.png" />
     <Content Include="Backgrounds\MireBG.png" />
     <Content Include="Backgrounds\MireCavern.png" />
     <Content Include="Backgrounds\MireFG1.png" />
     <Content Include="Backgrounds\MireFG2.png" />
+    <Content Include="Backgrounds\MireMoon.png" />
     <Content Include="Backgrounds\MireSky.png" />
     <Content Include="Backgrounds\MireUnderground.png" />
     <Content Include="Backgrounds\Void\VoidBH.png" />

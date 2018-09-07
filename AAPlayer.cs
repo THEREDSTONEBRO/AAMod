@@ -22,6 +22,8 @@ namespace AAMod
         public bool ZoneRisingSunPagoda = false;
         public bool ZoneRisingMoonLake = false;
         public bool VoidMonolith = false;
+        public bool SunMonolith = false;
+        public bool MoonMonolith = false;
         // Armor bools.
         public bool steelSet;
         public bool leatherSet;
@@ -114,8 +116,10 @@ namespace AAMod
 
         public override void UpdateBiomeVisuals()
         {
-            player.ManageSpecialBiomeVisuals("AAMod:InfernoSky", ZoneInferno, player.Center);
-            player.ManageSpecialBiomeVisuals("AAMod:MireSky", ZoneMire, player.Center);
+            bool useInferno = ZoneInferno || SunMonolith;
+            player.ManageSpecialBiomeVisuals("AAMod:InfernoSky", useInferno);
+            bool useMire = ZoneMire || MoonMonolith;
+            player.ManageSpecialBiomeVisuals("AAMod:MireSky", useMire);
             bool useVoid = ZoneVoid || VoidMonolith;
             player.ManageSpecialBiomeVisuals("AAMod:VoidSky", useVoid);
         }

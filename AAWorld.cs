@@ -264,11 +264,11 @@ namespace AAMod
                     center.X + (WorldGen.genRand.Next(35, 55) * (WorldGen.genRand.NextBool() ? -1 : 1)),
                     center.Y + (WorldGen.genRand.Next(35, 55) * (WorldGen.genRand.NextBool() ? -1 : 1)));
 
-                while (posIslands.Any(x => Vector2.Distance(x.ToVector2(), position.ToVector2()) < 20))
+                while (posIslands.Any(x => Vector2.Distance(x.ToVector2(), position.ToVector2()) < 35))
                 {
                     for (int k = 0; k < posIslands.Count; ++k)
                     {
-                        while ((int)Vector2.Distance(posIslands[k].ToVector2(), position.ToVector2()) < 20)
+                        while ((int)Vector2.Distance(posIslands[k].ToVector2(), position.ToVector2()) < 35)
                         {
                             position = new Point(center.X + (WorldGen.genRand.Next(45, 55) * (WorldGen.genRand.NextBool() ? -1 : 1)),
                               center.Y + (WorldGen.genRand.Next(45, 55) * (WorldGen.genRand.NextBool() ? -1 : 1)));

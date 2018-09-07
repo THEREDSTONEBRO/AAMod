@@ -69,6 +69,8 @@ namespace AAMod
                 }
                 
                 PremultiplyTexture(GetTexture("Backgrounds/Void/VoidBH"));
+                PremultiplyTexture(GetTexture("Backgrounds/MireMoon"));
+                PremultiplyTexture(GetTexture("Backgrounds/InfernoSun"));
 
                 AddEquipTexture(null, EquipType.Legs, "N1_Legs", "AAMod/Items/Vanity/N1/N1_Legs");
 
@@ -81,10 +83,14 @@ namespace AAMod
                 AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Zero"), ItemType("ZeroBox"), TileType("ZeroBox"));
 
                 Filters.Scene["AAMod:MireSky"] = new Filter(new ScreenShaderData("FilterMiniTower").UseColor(0f, 0.20f, 1f).UseOpacity(0.9f), EffectPriority.High);
+                SkyManager.Instance["AAMod: MireSky"] = new MireSky();
+                VoidSky.PlanetTexture = GetTexture("Backgrounds/MireMoon");
                 Filters.Scene["AAMod:VoidSky"] = new Filter(new ScreenShaderData("FilterMiniTower").UseColor(0.1f, 0.1f, 0.1f).UseOpacity(0.5f), EffectPriority.High);
                 SkyManager.Instance["AAMod:VoidSky"] = new VoidSky();
                 VoidSky.PlanetTexture = GetTexture("Backgrounds/Void/VoidBH");
                 Filters.Scene["AAMod:InfernoSky"] = new Filter(new ScreenShaderData("FilterMiniTower").UseColor(1f, 0.40f, 0f).UseOpacity(0.9f), EffectPriority.High);
+                SkyManager.Instance["AAMod:InfernoSky"] = new InfernoSky();
+                VoidSky.PlanetTexture = GetTexture("Backgrounds/InfernoSun");
             }
         }
         
