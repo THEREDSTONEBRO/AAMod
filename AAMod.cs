@@ -84,13 +84,13 @@ namespace AAMod
 
                 Filters.Scene["AAMod:MireSky"] = new Filter(new ScreenShaderData("FilterMiniTower").UseColor(0f, 0.20f, 1f).UseOpacity(0.9f), EffectPriority.High);
                 SkyManager.Instance["AAMod: MireSky"] = new MireSky();
-                VoidSky.PlanetTexture = GetTexture("Backgrounds/MireMoon");
+                MireSky.PlanetTexture = GetTexture("Backgrounds/MireMoon");
                 Filters.Scene["AAMod:VoidSky"] = new Filter(new ScreenShaderData("FilterMiniTower").UseColor(0.1f, 0.1f, 0.1f).UseOpacity(0.5f), EffectPriority.High);
                 SkyManager.Instance["AAMod:VoidSky"] = new VoidSky();
                 VoidSky.PlanetTexture = GetTexture("Backgrounds/Void/VoidBH");
                 Filters.Scene["AAMod:InfernoSky"] = new Filter(new ScreenShaderData("FilterMiniTower").UseColor(1f, 0.40f, 0f).UseOpacity(0.9f), EffectPriority.High);
                 SkyManager.Instance["AAMod:InfernoSky"] = new InfernoSky();
-                VoidSky.PlanetTexture = GetTexture("Backgrounds/InfernoSun");
+                InfernoSky.PlanetTexture = GetTexture("Backgrounds/InfernoSun");
             }
         }
         
@@ -169,6 +169,7 @@ namespace AAMod
                 priority = MusicPriority.BiomeHigh;
                 if (player.ZoneRockLayerHeight)
                 {
+                    Main.UseHeatDistortion = true;
                     music = GetSoundSlot(SoundType.Music, "Sounds/Music/InfernoSurface");
                 }
                 else
@@ -195,7 +196,6 @@ namespace AAMod
                 {
                     music = GetSoundSlot(SoundType.Music, "Sounds/Music/Void");
                 }
-                player.gravity *= 2;
             }
         }
         public override void AddRecipes()

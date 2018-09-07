@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.GameInput;
+using Terraria.Graphics.Effects;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -21,7 +22,7 @@ namespace AAMod
         public bool ZoneVoid = false;
         public bool ZoneRisingSunPagoda = false;
         public bool ZoneRisingMoonLake = false;
-        public bool VoidMonolith = false;
+        public bool VoidUnit = false;
         public bool SunMonolith = false;
         public bool MoonMonolith = false;
         // Armor bools.
@@ -118,9 +119,10 @@ namespace AAMod
         {
             bool useInferno = ZoneInferno || SunMonolith;
             player.ManageSpecialBiomeVisuals("AAMod:InfernoSky", useInferno);
+            //Filters.Scene["HeatDistortion"].GetShader().UseIntensity(0.1f);
             bool useMire = ZoneMire || MoonMonolith;
             player.ManageSpecialBiomeVisuals("AAMod:MireSky", useMire);
-            bool useVoid = ZoneVoid || VoidMonolith;
+            bool useVoid = ZoneVoid || VoidUnit;
             player.ManageSpecialBiomeVisuals("AAMod:VoidSky", useVoid);
         }
 
