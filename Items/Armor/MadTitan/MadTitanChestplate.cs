@@ -35,7 +35,21 @@ namespace AAMod.Items.Armor.MadTitan
             player.ammoCost75 = true;
 		}
 
-		public override void AddRecipes()
+        public override bool IsArmorSet(Item head, Item body, Item legs)
+        {
+            return head.type == mod.ItemType("MadTitanHelm") && legs.type == mod.ItemType("MadTitanBoots");
+        }
+
+        public override void UpdateArmorSet(Player player)
+        {
+
+            player.setBonus = @"The infinity gauntlet is now at it's most powerful
+'The power of a mad titan is now at your fingertips'";
+            player.GetModPlayer<AAPlayer>(mod).TrueInfinityGauntlet = true;
+            player.GetModPlayer<AAPlayer>(mod).InfinityGauntlet = false;
+        }
+
+        public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);
 			recipe.AddIngredient(null, "DarkmatterBreastplate", 1);
