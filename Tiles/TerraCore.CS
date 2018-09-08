@@ -8,7 +8,7 @@ using Terraria.ObjectData;
 
 namespace AAMod.Tiles
 {
-    public class BinaryReassembler : ModTile
+    public class TerraCore : ModTile
     {
         public override void SetDefaults()
         {
@@ -16,7 +16,6 @@ namespace AAMod.Tiles
             Main.tileFrameImportant[Type] = true;
             Main.tileNoAttach[Type] = true;
             Main.tileTable[Type] = true;
-            dustType = mod.DustType("DoomDust");
             Main.tileLavaDeath[Type] = false;
             TileObjectData.newTile.CopyFrom(TileObjectData.Style3x3);
             TileObjectData.newTile.CoordinateHeights = new int[] { 16, 16, 18 };
@@ -24,8 +23,8 @@ namespace AAMod.Tiles
             TileObjectData.newTile.CoordinatePadding = 2;
             TileObjectData.addTile(Type);
             ModTranslation name = CreateMapEntryName();
-            name.SetDefault("Binary Reassembler");
-            AddMapEntry(new Color(40, 0, 0), name);
+            name.SetDefault("Core of Terraria");
+            AddMapEntry(new Color(40, 200, 0), name);
             disableSmartCursor = true;
             adjTiles = new int[]
             {
@@ -94,13 +93,13 @@ namespace AAMod.Tiles
                 animate = Main.tileFrame[Type] * animationFrameHeight;
             }
             Main.spriteBatch.Draw(texture, new Vector2(i * 16 - (int)Main.screenPosition.X, j * 16 - (int)Main.screenPosition.Y) + zero, new Rectangle(tile.frameX, tile.frameY + animate, 16, height), Lighting.GetColor(i, j), 0f, default(Vector2), 1f, SpriteEffects.None, 0f);
-            Main.spriteBatch.Draw(mod.GetTexture("Tiles/BinaryReassembler_Glow"), new Vector2(i * 16 - (int)Main.screenPosition.X, j * 16 - (int)Main.screenPosition.Y) + zero, new Rectangle(tile.frameX, tile.frameY + animate, 16, height), Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
+            Main.spriteBatch.Draw(mod.GetTexture("Tiles/TerraCore_Glow"), new Vector2(i * 16 - (int)Main.screenPosition.X, j * 16 - (int)Main.screenPosition.Y) + zero, new Rectangle(tile.frameX, tile.frameY + animate, 16, height), Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
             return false;
         }
 
         public override void KillMultiTile(int i, int j, int frameX, int frameY)
         {
-            Item.NewItem(i * 16, j * 16, 32, 16, mod.ItemType("BinaryReassembler"));
+            Item.NewItem(i * 16, j * 16, 32, 16, mod.ItemType("TerraCore"));
         }
     }
 }
