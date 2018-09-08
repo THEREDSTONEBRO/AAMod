@@ -40,8 +40,8 @@ namespace AAMod
         public static bool downedGripBlue;
         public static bool downedGrips;
         public static bool downedRetriever;
-        public static bool zeroUS;
-        public static bool downedZero;
+        //public static bool zeroUS;
+        //public static bool downedZero;
 
         public string nums = "1234567890";
 
@@ -50,8 +50,8 @@ namespace AAMod
             downedGrips = false;
             downedGripRed = false;
             downedGripBlue = false;
-            zeroUS = false;
-            downedZero = false;
+            //zeroUS = false;
+            //downedZero = false;
             downedRetriever = false;
             if (NPC.downedMechBoss3 == true || NPC.downedMechBoss2 == true || NPC.downedMechBoss1 == true)
             {
@@ -153,8 +153,8 @@ namespace AAMod
             if (NPC.downedBoss3) downed.Add("Dynaskull");
             if (downedGrips) downed.Add("Grips");
             if (downedRetriever) downed.Add("Storm1");
-            if (zeroUS) downed.Add("0U");
-            if (downedZero) downed.Add("0");
+            //if (zeroUS) downed.Add("0U");
+            //if (downedZero) downed.Add("0");
 
             return new TagCompound {
                 {"downed", downed}
@@ -175,8 +175,8 @@ namespace AAMod
             writer.Write(flags);
 
             BitsByte flags2 = new BitsByte();
-            flags2[0] = zeroUS;
-            flags2[1] = downedZero;
+            //flags2[0] = zeroUS;
+            //[1] = downedZero;
             writer.Write(flags2);
         }
 
@@ -193,8 +193,8 @@ namespace AAMod
             downedRetriever = flags[7];
 
             BitsByte flags2 = reader.ReadByte();
-            zeroUS = flags2[0];
-            downedZero = flags2[1];
+            //zeroUS = flags2[0];
+            //downedZero = flags2[1];
         }
 
         public override void Load(TagCompound tag)
@@ -208,8 +208,8 @@ namespace AAMod
             NPC.downedBoss3 = downed.Contains("Dynaskull");
             downedGrips = downed.Contains("Grips");
             downedRetriever = downed.Contains("Storm1");
-            zeroUS = downed.Contains("0U");
-            downedZero = downed.Contains("0");
+            //zeroUS = downed.Contains("0U");
+            //downedZero = downed.Contains("0");
         }
 
         private string NumberRand(int size)
@@ -1226,6 +1226,8 @@ namespace AAMod
         {
             AAPlayer modPlayer = Main.player[Main.myPlayer].GetModPlayer<AAPlayer>(mod);
             modPlayer.VoidUnit = false;
+            modPlayer.SunAltar = false;
+            modPlayer.MoonAltar = false;
         }
     }
 }

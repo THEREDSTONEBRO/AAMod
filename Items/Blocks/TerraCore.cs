@@ -5,18 +5,19 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Blocks
 {
-    public class BinaryReassembler : ModItem
+    public class TerraCore : ModItem
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Binary Fragmentation Reassembler");
-            Tooltip.SetDefault("Reality has never been so easy to manipulate");
+            DisplayName.SetDefault("Core of Terraria");
+            Tooltip.SetDefault(@"Combines most crafting stations into one
+Used to create ancient crafting stations");
         }
 
         public override void SetDefaults()
         {
             item.width = 32;
-            item.height = 32;
+            item.height = 36;
             item.maxStack = 99;
             item.useTurn = true;
             item.autoReuse = true;
@@ -26,7 +27,7 @@ namespace AAMod.Items.Blocks
             item.useStyle = 1;
             item.consumable = true;
             item.value = 1000000;
-            item.createTile = mod.TileType("BinaryReassembler");
+            item.createTile = mod.TileType("TerraCore");
         }
         public override void ModifyTooltips(List<TooltipLine> list)
     {
@@ -34,21 +35,18 @@ namespace AAMod.Items.Blocks
         {
             if (line2.mod == "Terraria" && line2.Name == "ItemName")
             {
-                line2.overrideColor = new Color(70, 0, 10);
+                line2.overrideColor = new Color(70, 200, 30);
             }
         }
-    }
+        }   
 
-    public override void AddRecipes()
-            {
-                ModRecipe recipe = new ModRecipe(mod);
-                recipe.AddIngredient(null, "RadiumBar", 20);
-                recipe.AddIngredient(null, "DarkMatter", 20);
-                recipe.AddIngredient(null, "Apocalyptite", 10);
-                recipe.AddTile(null, "TerraCore");
-                recipe.SetResult(this);
-                recipe.AddRecipe();
-            ///recipe.AddRecipeGroup("AAMod:DarkmatterHelmets");
+        public override void AddRecipes()
+        {
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddRecipeGroup("AAMod:AstralStations", 1);
+            recipe.AddIngredient(null, "TruePaladinsSmeltery", 1);
+            recipe.SetResult(this);
+            recipe.AddRecipe();
         }
     }
 }

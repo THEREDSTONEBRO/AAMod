@@ -166,6 +166,9 @@
     <Compile Include="Items\Armor\Valkyrie\ValkyrieChestplate.cs" />
     <Compile Include="Items\Armor\Valkyrie\ValkyrieHelm.cs" />
     <Compile Include="Items\Blocks\Apocalyptite.cs" />
+    <Compile Include="Items\Blocks\TerraCore.cs" />
+    <Compile Include="Items\Blocks\ChaosCrucible.cs" />
+    <Compile Include="Items\Blocks\MoonAltar.cs" />
     <Compile Include="Items\Blocks\OroborosChest.cs" />
     <Compile Include="Items\Blocks\BogwoodChest.cs" />
     <Compile Include="Items\Blocks\MireBox.cs" />
@@ -207,6 +210,7 @@
     <Compile Include="Items\Blocks\MireGrassBlock.cs" />
     <Compile Include="Items\Blocks\PaladinsSmeltery.cs" />
     <Compile Include="Items\Blocks\Razewood.cs" />
+    <Compile Include="Items\Blocks\SunAltar.cs" />
     <Compile Include="Items\Blocks\Torchstone.cs" />
     <Compile Include="Items\Blocks\QuantumFusionAccelerator.cs" />
     <Compile Include="Items\Blocks\TruePaladinsSmeltery.cs" />
@@ -402,8 +406,11 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sounds\Sounds\Doot.cs" />
     <Compile Include="Tiles\Apocalyptite.cs" />
+    <Compile Include="Tiles\TerraCore.cs" />
+    <Compile Include="Tiles\ChaosCrucible.cs" />
     <Compile Include="Tiles\BogwoodChair.cs" />
     <Compile Include="Tiles\BogwoodDoorOpen.cs" />
+    <Compile Include="Tiles\MoonAltar.cs" />
     <Compile Include="Tiles\OroborosBathtub.cs" />
     <Compile Include="Tiles\OroborosBed.cs" />
     <Compile Include="Tiles\OroborosCandle.cs" />
@@ -413,6 +420,7 @@
     <Compile Include="Tiles\OroborosClock.cs" />
     <Compile Include="Tiles\OroborosDoorOpen.cs" />
     <Compile Include="Tiles\OroborosLamp.cs" />
+    <Compile Include="Tiles\SunAltar.cs" />
     <Compile Include="Tiles\VoidUnit.cs" />
     <Compile Include="Tiles\ZeroBox.cs" />
     <Compile Include="Tiles\VoidBox.cs" />
@@ -777,9 +785,9 @@
     <Content Include="Items\Blocks\Bogwood.png" />
     <Content Include="Items\Blocks\BogwoodChest.png" />
     <Content Include="Items\Blocks\BroodBox.png" />
-    <Content Include="Items\Blocks\BroodBoxK.png" />
     <Content Include="Items\Blocks\BroodmotherTrophy.png" />
     <Content Include="Items\Blocks\BunnyBongo.png" />
+    <Content Include="Items\Blocks\ChaosCrucible.png" />
     <Content Include="Items\Blocks\DarkmatterOre.png" />
     <Content Include="Items\Blocks\Darkmud.png" />
     <Content Include="Items\Blocks\Depthstone.png" />
@@ -796,7 +804,6 @@
     <Content Include="Items\Blocks\HaphestusForge.png" />
     <Content Include="Items\Blocks\HellstoneAnvil.png" />
     <Content Include="Items\Blocks\HydraBox.png" />
-    <Content Include="Items\Blocks\HydraBoxK.png" />
     <Content Include="Items\Blocks\Incinerite.png" />
     <Content Include="Items\Blocks\InfernoAltar.png" />
     <Content Include="Items\Blocks\InfernoBox.png" />
@@ -805,6 +812,7 @@
     <Content Include="Items\Blocks\MireAltar.png" />
     <Content Include="Items\Blocks\MireBox.png" />
     <Content Include="Items\Blocks\MireGrassBlock.png" />
+    <Content Include="Items\Blocks\MoonAltar.png" />
     <Content Include="Items\Blocks\OroborosChest.png" />
     <Content Include="Items\Blocks\OroborosWood.png" />
     <Content Include="Items\Blocks\PaladinsSmeltery.png" />
@@ -818,6 +826,8 @@
     <Content Include="Items\Blocks\RRBox.png" />
     <Content Include="Items\Blocks\ScorchedDynastyWood.png" />
     <Content Include="Items\Blocks\ScorchedShingles.png" />
+    <Content Include="Items\Blocks\SunAltar.png" />
+    <Content Include="Items\Blocks\TerraCore.png" />
     <Content Include="Items\Blocks\Torchstone.png" />
     <Content Include="Items\Blocks\TruePaladinsSmeltery.png" />
     <Content Include="Items\Blocks\VoidBox.png" />
@@ -1239,8 +1249,9 @@
     <Content Include="Tiles\BogwoodTree.png" />
     <Content Include="Tiles\BogwoodTreeTop.png" />
     <Content Include="Tiles\BroodBox.png" />
-    <Content Include="Tiles\BroodBoxK.png" />
     <Content Include="Tiles\ChaosAltar.png" />
+    <Content Include="Tiles\ChaosCrucible.png" />
+    <Content Include="Tiles\ChaosCrucible_Glow.png" />
     <Content Include="Tiles\CitrinePlaced.png" />
     <Content Include="Tiles\CitrineTile.png" />
     <Content Include="Tiles\CometMonolith_Glow.png" />
@@ -1258,6 +1269,7 @@
     <Content Include="Tiles\FulguriteOre.png" />
     <Content Include="Tiles\FulguriteOre_glow.png" />
     <Content Include="Tiles\InfernoBox.png" />
+    <Content Include="Tiles\InfinityGauntlet_Wings.png" />
     <Content Include="Tiles\LivingBogwood.png" />
     <Content Include="Tiles\LivingBogleaves.png" />
     <Content Include="Tiles\LivingRazeleaves.png" />
@@ -1265,12 +1277,15 @@
     <Content Include="Tiles\MireBox.png" />
     <Content Include="Tiles\MireChest_Highlight.png" />
     <Content Include="Tiles\MireVines.png" />
+    <Content Include="Tiles\MoonAltar.png" />
+    <Content Include="Tiles\MoonAltar_Glow.png" />
     <Content Include="Tiles\OroborosBathtub.png" />
     <Content Include="Tiles\OroborosBathtub_Glow.png" />
     <Content Include="Tiles\OroborosBathtub_Highlight.png" />
     <Content Include="Tiles\OroborosBed.png" />
     <Content Include="Tiles\OroborosBed_Glow.png" />
     <Content Include="Tiles\OroborosBed_Highlight.png" />
+    <Content Include="Tiles\OroborosBookcase.png" />
     <Content Include="Tiles\OroborosBranches.png" />
     <Content Include="Tiles\OroborosCandle.png" />
     <Content Include="Tiles\OroborosCandle_Glow.png" />
@@ -1290,6 +1305,7 @@
     <Content Include="Tiles\OroborosDoorShut_Highlight.png" />
     <Content Include="Tiles\OroborosLamp.png" />
     <Content Include="Tiles\OroborosLamp_Glow.png" />
+    <Content Include="Tiles\OroborosLantern.png" />
     <Content Include="Tiles\OroborosSapling.png" />
     <Content Include="Tiles\OroborosTree.png" />
     <Content Include="Tiles\OroborosTreeTop.png" />
@@ -1312,7 +1328,6 @@
     <Content Include="Tiles\HaphestusForge.png" />
     <Content Include="Tiles\HellstoneAnvilTile.png" />
     <Content Include="Tiles\HydraBox.png" />
-    <Content Include="Tiles\HydraBoxK.png" />
     <Content Include="Tiles\HydraOrchidPlanterBox.png" />
     <Content Include="Tiles\HydraPod.png" />
     <Content Include="Tiles\IncineriteBarTile.png" />
@@ -1345,6 +1360,10 @@
     <Content Include="Tiles\RRBox.png" />
     <Content Include="Tiles\ScorchedDynastyWood.png" />
     <Content Include="Tiles\ScorchedShingles.png" />
+    <Content Include="Tiles\SunAltar.png" />
+    <Content Include="Tiles\SunAltar_Glow.png" />
+    <Content Include="Tiles\TerraCore.png" />
+    <Content Include="Tiles\TerraCore_Glow.png" />
     <Content Include="Tiles\TorchstoneTile.png" />
     <Content Include="Tiles\TruePaladinsSmeltery.png" />
     <Content Include="Tiles\VoidBox.png" />

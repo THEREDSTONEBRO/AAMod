@@ -126,6 +126,12 @@ namespace AAMod
             });
             // Registers the new recipe group with the specified name
             RecipeGroup.RegisterGroup("AAMod:Gold", group2);
+            RecipeGroup group3 = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + "AstralStations", new int[]
+            {
+                ItemType("RadiantArcanum"),
+                ItemType("QuantumFusionAccelerator"),
+            });
+            RecipeGroup.RegisterGroup("AAMod:AstralStations", group2);
 
             if (RecipeGroup.recipeGroupIDs.ContainsKey("Wood"))
             {
