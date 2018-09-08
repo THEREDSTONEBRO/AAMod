@@ -185,11 +185,9 @@
     <Compile Include="Items\Blocks\Bogwood.cs" />
     <Compile Include="Items\Blocks\BroodmotherTrophy.cs" />
     <Compile Include="Items\Blocks\InfernoBox.cs" />
-    <Compile Include="Items\Blocks\BroodBoxK.cs" />
     <Compile Include="Items\Blocks\BroodBox.cs" />
     <Compile Include="Items\Blocks\HallowedOre.cs" />
     <Compile Include="Items\Blocks\Depthstone.cs" />
-    <Compile Include="Items\Blocks\HydraBoxK.cs" />
     <Compile Include="Items\Blocks\InfernoChest.cs" />
     <Compile Include="Items\Blocks\HydraBox.cs" />
     <Compile Include="Items\Blocks\RetrieverTrophy.cs" />
@@ -447,7 +445,6 @@
     <Compile Include="Tiles\RadiantIncinerite.cs" />
     <Compile Include="Tiles\DeepAbyssium.cs" />
     <Compile Include="Tiles\BinaryReassembler.cs" />
-    <Compile Include="Tiles\BroodBoxK.cs" />
     <Compile Include="Tiles\BroodBox.cs" />
     <Compile Include="Tiles\Darkmatter.cs" />
     <Compile Include="Tiles\AbyssiumBarTile.cs" />
@@ -462,7 +459,6 @@
     <Compile Include="Tiles\HallowedOreTile.cs" />
     <Compile Include="Tiles\HaphestusForge.cs" />
     <Compile Include="Tiles\HellstoneAnvilTile.cs" />
-    <Compile Include="Tiles\HydraBoxK.cs" />
     <Compile Include="Tiles\HydraBox.cs" />
     <Compile Include="Tiles\IncineriteBarTile.cs" />
     <Compile Include="Tiles\IncineriteOreTile.cs" />
