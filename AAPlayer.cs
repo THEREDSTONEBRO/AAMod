@@ -125,7 +125,7 @@ namespace AAMod
             bool useSun = SunAltar;
             player.ManageSpecialBiomeVisuals("AAMod:InfernoSky", useSun);
             //Filters.Scene["HeatDistortion"].GetShader().UseIntensity(0.1f);
-            if (Main.dayTime)
+            if (!Main.dayTime)
             {
                 bool useMire = ZoneMire;
                 player.ManageSpecialBiomeVisuals("AAMod:MireSky", useMire);
