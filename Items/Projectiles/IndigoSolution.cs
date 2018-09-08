@@ -83,8 +83,8 @@ namespace AAMod.Items.Projectiles
                 {
                     if (WorldGen.InWorld(k, l, 1) && Math.Abs(k - i) + Math.Abs(l - j) < Math.Sqrt(size * size + size * size))
                     {
-                        int type = (int)Main.tile[k, l].type;
-                        int wall = (int)Main.tile[k, l].wall;
+                        int type = Main.tile[k, l].type;
+                        int wall = Main.tile[k, l].wall;
                         if (wall != 0)
                             if (wall == 15)
                             {
@@ -106,13 +106,13 @@ namespace AAMod.Items.Projectiles
                             NetMessage.SendTileSquare(-1, k, l, 1);
                         }
 
-                        if (type == 1 && Main.tile[k, l].active())
+                        if (type == 1)
                         {
                             Main.tile[k, l].type = (ushort)mod.TileType("DepthstoneTile");
                             WorldGen.SquareTileFrame(k, l, true);
                             NetMessage.SendTileSquare(-1, k, l, 1);
                         }
-                        if (type == 59 && Main.tile[k, l].active())
+                        if (type == 59)
                         {
                             Main.tile[k, l].type = (ushort)mod.TileType("Darkmud");
                             WorldGen.SquareTileFrame(k, l, true);

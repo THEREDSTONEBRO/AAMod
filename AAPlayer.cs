@@ -117,19 +117,14 @@ namespace AAMod
 
         public override void UpdateBiomeVisuals()
         {
-            if (Main.dayTime)
-            {
                 bool useInferno = ZoneInferno;
                 player.ManageSpecialBiomeVisuals("AAMod:InfernoSky", useInferno);
-            }
             bool useSun = SunAltar;
             player.ManageSpecialBiomeVisuals("AAMod:InfernoSky", useSun);
             //Filters.Scene["HeatDistortion"].GetShader().UseIntensity(0.1f);
-            if (!Main.dayTime)
-            {
+            
                 bool useMire = ZoneMire;
                 player.ManageSpecialBiomeVisuals("AAMod:MireSky", useMire);
-            }
             bool useMoon = MoonAltar;
             player.ManageSpecialBiomeVisuals("AAMod:MireSky", useMoon);
             bool useVoid = ZoneVoid || VoidUnit;

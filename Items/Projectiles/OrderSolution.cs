@@ -111,7 +111,7 @@ namespace AAMod.Items.Projectiles
                             NetMessage.SendTileSquare(-1, k, l, 1);
                         }
 
-                        if (type == (ushort)mod.TileType("DepthstoneTile") && Main.tile[k, l].active())
+                        if (type == (ushort)mod.TileType("DepthstoneTile"))
                         {
                             Main.tile[k, l].type = 1;
                             WorldGen.SquareTileFrame(k, l, true);
