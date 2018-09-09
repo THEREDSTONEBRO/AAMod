@@ -1374,6 +1374,7 @@
     <Content Include="Tiles\VoidUnit.png" />
     <Content Include="Tiles\VoidUnit_Glow.png" />
     <Content Include="Tiles\ZerO.png" />
+    <Content Include="Tiles\Zero2Box.png" />
     <Content Include="Tiles\ZeroBox.png" />
     <Content Include="Walls\AbyssiumChunkWall.png" />
     <Content Include="Walls\DarkmudWall.png" />
