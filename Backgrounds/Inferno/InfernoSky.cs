@@ -6,7 +6,7 @@ using Terraria.Graphics;
 using Terraria.Graphics.Effects;
 using Terraria.Utilities;
 
-namespace AAMod.Backgrounds
+namespace AAMod.Backgrounds.Inferno
 {
     public class InfernoSky : CustomSky
     {
@@ -23,8 +23,8 @@ namespace AAMod.Backgrounds
 
         public override void OnLoad()
         {
-            PlanetTexture = TextureManager.Load("Backgrounds/InfernoSun");
-            BGTexture = TextureManager.Load("Backgrounds/InfernoSky");
+            PlanetTexture = TextureManager.Load("Backgrounds/Inferno/InfernoSun");
+            BGTexture = TextureManager.Load("Backgrounds/Inferno/InfernoSky");
         }
 
         public override void Update(GameTime gameTime)

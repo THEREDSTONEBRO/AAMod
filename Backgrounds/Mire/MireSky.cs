@@ -6,7 +6,7 @@ using Terraria.Graphics;
 using Terraria.Graphics.Effects;
 using Terraria.Utilities;
 
-namespace AAMod.Backgrounds
+namespace AAMod.Backgrounds.Mire
 {
     public class MireSky : CustomSky
     {
@@ -23,8 +23,8 @@ namespace AAMod.Backgrounds
 
         public override void OnLoad()
         {
-            PlanetTexture = TextureManager.Load("Backgrounds/MireMoon");
-            BGTexture = TextureManager.Load("Backgrounds/MireSky");
+            PlanetTexture = TextureManager.Load("Backgrounds/Mire/MireMoon");
+            BGTexture = TextureManager.Load("Backgrounds/Mire/MireSky");
         }
 
         public override void Update(GameTime gameTime)
