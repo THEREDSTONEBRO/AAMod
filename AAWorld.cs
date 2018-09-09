@@ -41,7 +41,7 @@ namespace AAMod
         public static bool downedGrips;
         public static bool downedRetriever;
         //public static bool zeroUS;
-        //public static bool downedZero;
+        public static bool downedZero;
 
         public string nums = "1234567890";
 
@@ -154,7 +154,7 @@ namespace AAMod
             if (downedGrips) downed.Add("Grips");
             if (downedRetriever) downed.Add("Storm1");
             //if (zeroUS) downed.Add("0U");
-            //if (downedZero) downed.Add("0");
+            if (downedZero) downed.Add("0");
 
             return new TagCompound {
                 {"downed", downed}
@@ -172,11 +172,12 @@ namespace AAMod
             flags[5] = NPC.downedBoss3;
             flags[6] = downedGrips;
             flags[7] = downedRetriever;
+            flags[8] = downedZero;
             writer.Write(flags);
 
             BitsByte flags2 = new BitsByte();
             //flags2[0] = zeroUS;
-            //[1] = downedZero;
+            //
             writer.Write(flags2);
         }
 
@@ -191,10 +192,10 @@ namespace AAMod
             NPC.downedBoss3 = flags[5];
             downedGrips = flags[6];
             downedRetriever = flags[7];
+            downedZero = flags[8];
 
             BitsByte flags2 = reader.ReadByte();
             //zeroUS = flags2[0];
-            //downedZero = flags2[1];
         }
 
         public override void Load(TagCompound tag)
@@ -209,7 +210,7 @@ namespace AAMod
             downedGrips = downed.Contains("Grips");
             downedRetriever = downed.Contains("Storm1");
             //zeroUS = downed.Contains("0U");
-            //downedZero = downed.Contains("0");
+            downedZero = downed.Contains("0");
         }
 
         private string NumberRand(int size)
