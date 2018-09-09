@@ -2,7 +2,7 @@
 using Terraria.ModLoader;
 using Terraria.ID;
 
-namespace AAMod.Backgrounds
+namespace AAMod.Backgrounds.Inferno
 {
     class InfernoSurfaceBgStyle : ModSurfaceBgStyle
     {
@@ -36,17 +36,17 @@ namespace AAMod.Backgrounds
 
         public override int ChooseCloseTexture(ref float scale, ref double parallax, ref float a, ref float b)
         {
-            return mod.GetBackgroundSlot("Backgrounds/InfernoFG1");
+            return mod.GetBackgroundSlot("Backgrounds/Inferno/InfernoFG1");
         }
 
         public override int ChooseMiddleTexture()
         {
-            return mod.GetBackgroundSlot("Backgrounds/InfernoFG2");
+            return mod.GetBackgroundSlot("Backgrounds/Inferno/InfernoFG2");
         }
 
         public override int ChooseFarTexture()
         {
-            return mod.GetBackgroundSlot("Backgrounds/InfernoBG1");
+            return mod.GetBackgroundSlot("Backgrounds/Inferno/InfernoBG1");
         }
     }
 }

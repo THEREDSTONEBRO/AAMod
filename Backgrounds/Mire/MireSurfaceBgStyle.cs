@@ -1,7 +1,7 @@
 ﻿using Terraria;
 using Terraria.ModLoader;
 
-namespace AAMod.Backgrounds
+namespace AAMod.Backgrounds.Mire
 {
     class MireSurfaceBgStyle : ModSurfaceBgStyle
     {
@@ -35,15 +35,15 @@ namespace AAMod.Backgrounds
 
         public override int ChooseFarTexture()
         {
-            return mod.GetBackgroundSlot("Backgrounds/MireBG");
+            return mod.GetBackgroundSlot("Backgrounds/Mire/MireBG");
         }
         public override int ChooseMiddleTexture()
         {
-            return mod.GetBackgroundSlot("Backgrounds/MireFG2");
+            return mod.GetBackgroundSlot("Backgrounds/Mire/MireFG2");
         }
         public override int ChooseCloseTexture(ref float scale, ref double parallax, ref float a, ref float b)
         {
-            return mod.GetBackgroundSlot("Backgrounds/MireFG1");
+            return mod.GetBackgroundSlot("Backgrounds/Mire/MireFG1");
         }
     }
 }

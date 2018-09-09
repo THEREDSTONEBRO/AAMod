@@ -31,20 +31,6 @@ namespace AAMod.Items.Armor.MadTitan
             player.statManaMax2 += 160;
         }
 
-		public override bool IsArmorSet(Item head, Item body, Item legs)
-		{
-			return body.type == mod.ItemType("MadTitanChestplate") && legs.type == mod.ItemType("MadTitanBoots");
-		}
-
-		public override void UpdateArmorSet(Player player)
-		{
-			
-			player.setBonus = @"The infinity gauntlet is now at it's most powerful
-'The power of a mad titan is now at your fingertips'";
-            player.GetModPlayer<AAPlayer>(mod).TrueInfinityGauntlet = true;
-            player.GetModPlayer<AAPlayer>(mod).InfinityGauntlet = false;
-        }
-
 		public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);

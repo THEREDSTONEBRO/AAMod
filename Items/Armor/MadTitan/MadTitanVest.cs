@@ -6,20 +6,20 @@ using Terraria.ModLoader;
 namespace AAMod.Items.Armor.MadTitan
 {
     [AutoloadEquip(EquipType.Body)]
-	public class MadTitanChestplate : ModItem
+	public class MadTitanVest : ModItem
 	{
 		public override void SetStaticDefaults()
 		{
 			base.SetStaticDefaults();
-			DisplayName.SetDefault("Mad Titan's Chestplate");
+			DisplayName.SetDefault("Mad Titan's Vest");
 			Tooltip.SetDefault(@"40% increased damage
 25% decreased ammo consumption");
 		}
 
 		public override void SetDefaults()
 		{
-			item.width = 30;
-			item.height = 20;
+			item.width = 18;
+			item.height = 18;
 			item.value = 3000000;
 			item.rare = 11;
 			item.defense = 38;
