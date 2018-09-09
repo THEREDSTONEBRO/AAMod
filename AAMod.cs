@@ -11,6 +11,8 @@ using AAMod.Backgrounds.Void;
 using AAMod.Backgrounds;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
+using AAMod.Backgrounds.Inferno;
+using AAMod.Backgrounds.Mire;
 
 namespace AAMod
 {
@@ -64,10 +66,10 @@ namespace AAMod
                 }
                 
                 PremultiplyTexture(GetTexture("Backgrounds/Void/VoidBH"));
-                PremultiplyTexture(GetTexture("Backgrounds/MireMoon"));
-                PremultiplyTexture(GetTexture("Backgrounds/InfernoSun"));
-                PremultiplyTexture(GetTexture("Backgrounds/InfernoSky"));
-                PremultiplyTexture(GetTexture("Backgrounds/MireSky"));
+                PremultiplyTexture(GetTexture("Backgrounds/Mire/MireMoon"));
+                PremultiplyTexture(GetTexture("Backgrounds/Inferno/InfernoSun"));
+                PremultiplyTexture(GetTexture("Backgrounds/Inferno/InfernoSky"));
+                PremultiplyTexture(GetTexture("Backgrounds/Mire/MireSky"));
                 PremultiplyTexture(GetTexture("Backgrounds/Void/VoidSky"));
 
                 AddEquipTexture(null, EquipType.Legs, "N1_Legs", "AAMod/Items/Vanity/N1/N1_Legs");
@@ -82,13 +84,13 @@ namespace AAMod
 
                 Filters.Scene["AAMod:MireSky"] = new Filter(new ScreenShaderData("FilterMiniTower").UseColor(0f, 0.20f, 1f).UseOpacity(0.2f), EffectPriority.High);
                 SkyManager.Instance["AAMod: MireSky"] = new MireSky();
-                MireSky.PlanetTexture = GetTexture("Backgrounds/MireMoon");
+                MireSky.PlanetTexture = GetTexture("Backgrounds/Mire/MireMoon");
                 Filters.Scene["AAMod:VoidSky"] = new Filter(new ScreenShaderData("FilterMiniTower").UseColor(0.15f, 0.1f, 0.1f).UseOpacity(0.2f), EffectPriority.High);
                 SkyManager.Instance["AAMod:VoidSky"] = new VoidSky();
                 VoidSky.PlanetTexture = GetTexture("Backgrounds/Void/VoidBH");
                 Filters.Scene["AAMod:InfernoSky"] = new Filter(new ScreenShaderData("FilterMiniTower").UseColor(1f, 0.20f, 0f).UseOpacity(0.2f), EffectPriority.High);
                 SkyManager.Instance["AAMod:InfernoSky"] = new InfernoSky();
-                InfernoSky.PlanetTexture = GetTexture("Backgrounds/InfernoSun");
+                InfernoSky.PlanetTexture = GetTexture("Backgrounds/Inferno/InfernoSun");
             }
         }
         
