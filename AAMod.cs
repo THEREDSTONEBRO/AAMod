@@ -183,11 +183,11 @@ namespace AAMod
                 priority = MusicPriority.BiomeHigh;
                 if (player.ZoneRockLayerHeight)
                 {
-                    music = GetSoundSlot(SoundType.Music, "Sounds/Music/MireSurface");
+                    music = GetSoundSlot(SoundType.Music, "Sounds/Music/MireUnderground");
                 }
                 else
                 {
-                    music = GetSoundSlot(SoundType.Music, "Sounds/Music/MireUnderground");
+                    music = GetSoundSlot(SoundType.Music, "Sounds/Music/MireSurface");
                 }
             }
             if (Ancients.ZoneVoid)

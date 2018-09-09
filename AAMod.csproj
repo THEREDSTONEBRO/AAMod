@@ -1218,10 +1218,11 @@
     <Content Include="Sounds\Music\HydraKazoo.mp3" />
     <Content Include="Sounds\Music\HydraTheme.mp3" />
     <Content Include="Sounds\Music\InfernoSurface.mp3" />
-    <Content Include="Sounds\Music\Mire Underground - Depths of Despair.mp3" />
     <Content Include="Sounds\Music\MireSurface.mp3" />
+    <Content Include="Sounds\Music\MireUnderground.mp3" />
     <Content Include="Sounds\Music\RajahTheme.mp3" />
     <Content Include="Sounds\Music\ValkyrieTheme.mp3" />
+    <Content Include="Sounds\Music\Void.mp3" />
     <Content Include="Sounds\Music\WeAreNumberOne.mp3" />
     <Content Include="Sounds\Sounds\Doot.wav" />
     <Content Include="Tiles\AACrate.png" />
