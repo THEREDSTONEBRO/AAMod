@@ -226,12 +226,12 @@ namespace AAMod
 
         public override void ModifyWorldGenTasks(List<GenPass> tasks, ref float totalWeight)
         {
-            int shiniesIndex = tasks.FindIndex(genpass => genpass.Name.Equals("Stalac"));
+            int shiniesIndex = tasks.FindIndex(genpass => genpass.Name.Equals("Guide"));
             if (shiniesIndex == -1)
             {
                 return;
             }
-            tasks.Insert(shiniesIndex + 8, new PassLegacy("000000000", VoidIslands));
+            tasks.Insert(shiniesIndex + 1, new PassLegacy("000000000", VoidIslands));
         }
 
         public void VoidIslands(GenerationProgress progress) //method line
@@ -526,8 +526,48 @@ namespace AAMod
         private void AAWorldGen(GenerationProgress progress)
         {
             infernoSide = ((Main.dungeonX > Main.maxTilesX / 2) ? (-1) : (1));
-            infernoPos.X = (infernoSide == 1 ? WorldGen.genRand.Next(1200, 1500) : (Main.maxTilesX - WorldGen.genRand.Next(1200, 1500)));
-            mirePos.X = (infernoSide != 1 ? WorldGen.genRand.Next(1200, 1500) : (Main.maxTilesX - WorldGen.genRand.Next(1200, 1500)));
+            infernoPos.X = (infernoSide == 1 ? WorldGen.genRand.Next(1500, 1700) : (Main.maxTilesX - WorldGen.genRand.Next(1500, 1700)));
+            mirePos.X = (infernoSide != 1 ? WorldGen.genRand.Next(1500, 1700) : (Main.maxTilesX - WorldGen.genRand.Next(1500, 1700)));
+            int j = 40;
+            while (Main.tile[(int)(infernoPos.X), j] != null && !Main.tile[(int)(infernoPos.X), j].active())
+            {
+                j++;
+            }
+            for (int l = (int)(infernoPos.X) - 25; l < (int)(infernoPos.X) + 25; l++)
+            {
+                for (int m = j - 6; m < j + 90; m++)
+                {
+                    if (Main.tile[l, m] != null && Main.tile[l, m].active())
+                    {
+                        int type = Main.tile[l, m].type;
+                        if (type == TileID.Cloud || type == TileID.RainCloud)
+                        {
+                            j++;
+                        }
+                    }
+                }
+            }
+            infernoPos.Y = j;
+            int q = 40;
+            while (Main.tile[(int)(mirePos.X), q] != null && !Main.tile[(int)(mirePos.X), q].active())
+            {
+                q++;
+            }
+            for (int l = (int)(mirePos.X) - 25; l < (int)(mirePos.X) + 25; l++)
+            {
+                for (int m = q - 6; m < q + 90; m++)
+                {
+                    if (Main.tile[l, m] != null && Main.tile[l, m].active())
+                    {
+                        int type = Main.tile[l, m].type;
+                        if (type == TileID.Cloud || type == TileID.RainCloud)
+                        {
+                            q++;
+                        }
+                    }
+                }
+            }
+            mirePos.Y = q;
 
             progress.Message = "Spreading Chaos";
             Start();
@@ -539,56 +579,82 @@ namespace AAMod
 
         private void Start()
         {
-            for (int h = (int)(mirePos.X - 40); h < (int)(mirePos.X + 136); h++)
+            int H = (int)(mirePos.X) + 25;
+            int E = (int)(mirePos.Y);
+            int radiusSwamp = 150;
+            for (int h = H - radiusSwamp; h <= H + radiusSwamp; h++)
             {
-                for (int e = (int)(Main.worldSurface - 250); e < (int)(Main.worldSurface + 40); e++)
+                for (int e = E - radiusSwamp; e <= E + radiusSwamp; e++)
                 {
-                    if (Main.tile[h, e] != null && Main.tile[h, e].active())
+                    if (Vector2.Distance(new Vector2(H, E), new Vector2(h, e)) <= radiusSwamp)
                     {
-                        if (WorldGen.genRand.Next(14) != 0)
+                        if (Main.tile[h, e] != null && Main.tile[h, e].active())
                         {
                             if (Main.tile[h, e] != null && (Main.tile[h, e].type == TileID.Stone || Main.tile[h, e].type == TileID.HardenedSand || Main.tile[h, e].type == TileID.CrimsonSandstone || Main.tile[h, e].type == TileID.CrimsonHardenedSand || Main.tile[h, e].type == TileID.Sandstone || Main.tile[h, e].type == TileID.CorruptSandstone || Main.tile[h, e].type == TileID.CorruptHardenedSand || Main.tile[h, e].type == TileID.Crimstone || Main.tile[h, e].type == TileID.Ebonstone))
                             {
                                 Framing.GetTileSafely(h, e).type = (ushort)(mod.TileType("DepthstoneTile"));
                                 Framing.GetTileSafely(h, e).active(true);
                             }
-                            if (Main.tile[h, e] != null && (Main.tile[h, e].type == TileID.Sand || Main.tile[h, e].type == TileID.Dirt || Main.tile[h, e].type == TileID.Grass || Main.tile[h, e].type == TileID.Mud || Main.tile[h, e].type == TileID.JungleGrass || Main.tile[h, e].type == TileID.Crimsand || Main.tile[h, e].type == TileID.Ebonsand))
+                            if (Main.tile[h, e] != null && (Main.tile[h, e].type == TileID.Sand || Main.tile[h, e].type == TileID.Dirt || Main.tile[h, e].type == TileID.Grass || Main.tile[h, e].type == TileID.FleshGrass || Main.tile[h, e].type == TileID.CorruptGrass || Main.tile[h, e].type == TileID.Mud || Main.tile[h, e].type == TileID.JungleGrass || Main.tile[h, e].type == TileID.Crimsand || Main.tile[h, e].type == TileID.Ebonsand))
                             {
-                                Framing.GetTileSafely(h, e).type = (ushort)(mod.TileType("MireGrassTile"));
+                                Framing.GetTileSafely(h, e).type = TileID.Mud;
                                 Framing.GetTileSafely(h, e).active(true);
-                                if (Main.tile[h, e - 1].active() && Main.tile[h, e + 1].active() && Main.tile[h - 1, e].active() && Main.tile[h + 1, e].active())
+                                if (!Main.tile[h, e - 1].active() || !Main.tile[h, e + 1].active() || !Main.tile[h - 1, e].active() || !Main.tile[h + 1, e].active())
                                 {
-                                    Framing.GetTileSafely(h, e).type = TileID.Mud;
+                                    Framing.GetTileSafely(h, e).type = (ushort)(mod.TileType("MireGrassTile"));
                                     Framing.GetTileSafely(h, e).active(true);
                                 }
                             }
                         }
+                        if (Main.tile[h, e] != null && (Main.tile[h, e].wall == WallID.Stone || Main.tile[h, e].wall == WallID.EbonstoneUnsafe || Main.tile[h, e].wall == WallID.CorruptionUnsafe1 || Main.tile[h, e].wall == WallID.CorruptionUnsafe2 || Main.tile[h, e].wall == WallID.CorruptionUnsafe3 || Main.tile[h, e].wall == WallID.CorruptionUnsafe4 || Main.tile[h, e].wall == WallID.CorruptSandstone || Main.tile[h, e].wall == WallID.CrimstoneUnsafe || Main.tile[h, e].wall == WallID.CrimsonUnsafe1 || Main.tile[h, e].wall == WallID.CrimsonUnsafe2 || Main.tile[h, e].wall == WallID.CrimsonUnsafe3 || Main.tile[h, e].wall == WallID.CrimsonUnsafe4 || Main.tile[h, e].wall == WallID.CrimsonSandstone || Main.tile[h, e].wall == WallID.Sandstone))
+                        {
+                            Framing.GetTileSafely(h, e).wall = (ushort)(mod.WallType("DepthstoneWall"));
+                        }
+                        if (Main.tile[h, e] != null && (Main.tile[h, e].wall == WallID.Dirt || Main.tile[h, e].wall == WallID.DirtUnsafe || Main.tile[h, e].wall == WallID.DirtUnsafe1 || Main.tile[h, e].wall == WallID.DirtUnsafe2 || Main.tile[h, e].wall == WallID.DirtUnsafe3 || Main.tile[h, e].wall == WallID.DirtUnsafe4 || Main.tile[h, e].wall == WallID.Grass || Main.tile[h, e].wall == WallID.GrassUnsafe || Main.tile[h, e].wall == WallID.CorruptGrassUnsafe || Main.tile[h, e].wall == WallID.CrimsonGrassUnsafe || Main.tile[h, e].wall == WallID.HardenedSand || Main.tile[h, e].wall == WallID.CrimsonHardenedSand || Main.tile[h, e].wall == WallID.CorruptHardenedSand))
+                        {
+                            Framing.GetTileSafely(h, e).wall = (ushort)(mod.WallType("MireGrassWall"));
+                        }
+                        if (Main.tile[h, e] != null && (Main.tile[h, e].wall == WallID.Jungle || Main.tile[h, e].wall == WallID.JungleUnsafe || Main.tile[h, e].wall == WallID.JungleUnsafe1 || Main.tile[h, e].wall == WallID.JungleUnsafe2 || Main.tile[h, e].wall == WallID.JungleUnsafe3 || Main.tile[h, e].wall == WallID.JungleUnsafe4))
+                        {
+                            Framing.GetTileSafely(h, e).wall = (ushort)(mod.WallType("MireJungleWall"));
+                        }
                     }
                 }
             }
-            for (int h = (int)(infernoPos.X - 40); h < (int)(infernoPos.X + 136); h++)
+            int X = (int)(infernoPos.X) + 25;
+            int Y = (int)(infernoPos.Y);
+            int radiusVolcano = 150;
+            for (int x = X - radiusVolcano; x <= X + radiusVolcano; x++)
             {
-                for (int e = (int)(Main.worldSurface - 250); e < (int)(Main.worldSurface + 40); e++)
+                for (int y = Y - radiusVolcano; y <= Y + radiusVolcano; y++)
                 {
-                    if (Main.tile[h, e] != null && Main.tile[h, e].active())
+                    if (Vector2.Distance(new Vector2(X, Y), new Vector2(x, y)) <= radiusVolcano)
                     {
-                        if (WorldGen.genRand.Next(14) != 0)
+                        if (Main.tile[x, y] != null && Main.tile[x, y].active())
                         {
-                            if (Main.tile[h, e] != null && (Main.tile[h, e].type == TileID.Stone || Main.tile[h, e].type == TileID.HardenedSand || Main.tile[h, e].type == TileID.CrimsonSandstone || Main.tile[h, e].type == TileID.CrimsonHardenedSand || Main.tile[h, e].type == TileID.Sandstone || Main.tile[h, e].type == TileID.CorruptSandstone || Main.tile[h, e].type == TileID.CorruptHardenedSand || Main.tile[h, e].type == TileID.Crimstone || Main.tile[h, e].type == TileID.Ebonstone))
+                            if (Main.tile[x, y] != null && (Main.tile[x, y].type == TileID.Stone || Main.tile[x, y].type == TileID.HardenedSand || Main.tile[x, y].type == TileID.CrimsonSandstone || Main.tile[x, y].type == TileID.CrimsonHardenedSand || Main.tile[x, y].type == TileID.Sandstone || Main.tile[x, y].type == TileID.CorruptSandstone || Main.tile[x, y].type == TileID.CorruptHardenedSand || Main.tile[x, y].type == TileID.Crimstone || Main.tile[x, y].type == TileID.Ebonstone))
                             {
-                                Framing.GetTileSafely(h, e).type = (ushort)(mod.TileType("TorchstoneTile"));
-                                Framing.GetTileSafely(h, e).active(true);
+                                Framing.GetTileSafely(x, y).type = (ushort)(mod.TileType("TorchstoneTile"));
+                                Framing.GetTileSafely(x, y).active(true);
                             }
-                            if (Main.tile[h, e] != null && (Main.tile[h, e].type == TileID.Sand || Main.tile[h, e].type == TileID.Dirt || Main.tile[h, e].type == TileID.Grass || Main.tile[h, e].type == TileID.Mud || Main.tile[h, e].type == TileID.JungleGrass || Main.tile[h, e].type == TileID.Crimsand || Main.tile[h, e].type == TileID.Ebonsand))
+                            if (Main.tile[x, y] != null && (Main.tile[x, y].type == TileID.Sand || Main.tile[x, y].type == TileID.Dirt || Main.tile[x, y].type == TileID.Grass || Main.tile[x, y].type == TileID.FleshGrass || Main.tile[x, y].type == TileID.CorruptGrass || Main.tile[x, y].type == TileID.Mud || Main.tile[x, y].type == TileID.JungleGrass || Main.tile[x, y].type == TileID.Crimsand || Main.tile[x, y].type == TileID.Ebonsand))
                             {
-                                Framing.GetTileSafely(h, e).type = (ushort)(mod.TileType("InfernoGrassTile"));
-                                Framing.GetTileSafely(h, e).active(true);
-                                if (Main.tile[h, e - 1].active() && Main.tile[h, e + 1].active() && Main.tile[h - 1, e].active() && Main.tile[h + 1, e].active())
+                                Framing.GetTileSafely(x, y).type = TileID.Dirt;
+                                Framing.GetTileSafely(x, y).active(true);
+                                if (!Main.tile[x, y - 1].active() || !Main.tile[x, y + 1].active() || !Main.tile[x - 1, y].active() || !Main.tile[x + 1, y].active())
                                 {
-                                    Framing.GetTileSafely(h, e).type = TileID.Dirt;
-                                    Framing.GetTileSafely(h, e).active(true);
+                                    Framing.GetTileSafely(x, y).type = (ushort)(mod.TileType("InfernoGrassTile"));
+                                    Framing.GetTileSafely(x, y).active(true);
                                 }
                             }
+                        }
+                        if (Main.tile[x, y] != null && (Main.tile[x, y].wall == WallID.Stone || Main.tile[x, y].wall == WallID.EbonstoneUnsafe || Main.tile[x, y].wall == WallID.CorruptionUnsafe1 || Main.tile[x, y].wall == WallID.CorruptionUnsafe2 || Main.tile[x, y].wall == WallID.CorruptionUnsafe3 || Main.tile[x, y].wall == WallID.CorruptionUnsafe4 || Main.tile[x, y].wall == WallID.CorruptSandstone || Main.tile[x, y].wall == WallID.CrimstoneUnsafe || Main.tile[x, y].wall == WallID.CrimsonUnsafe1 || Main.tile[x, y].wall == WallID.CrimsonUnsafe2 || Main.tile[x, y].wall == WallID.CrimsonUnsafe3 || Main.tile[x, y].wall == WallID.CrimsonUnsafe4 || Main.tile[x, y].wall == WallID.CrimsonSandstone || Main.tile[x, y].wall == WallID.Sandstone))
+                        {
+                            Framing.GetTileSafely(x, y).wall = (ushort)(mod.WallType("TorchstoneWall"));
+                        }
+                        if (Main.tile[x, y] != null && (Main.tile[x, y].wall == WallID.Dirt || Main.tile[x, y].wall == WallID.DirtUnsafe || Main.tile[x, y].wall == WallID.DirtUnsafe1 || Main.tile[x, y].wall == WallID.DirtUnsafe2 || Main.tile[x, y].wall == WallID.DirtUnsafe3 || Main.tile[x, y].wall == WallID.DirtUnsafe4 || Main.tile[x, y].wall == WallID.Grass || Main.tile[x, y].wall == WallID.GrassUnsafe || Main.tile[x, y].wall == WallID.CorruptGrassUnsafe || Main.tile[x, y].wall == WallID.CrimsonGrassUnsafe || Main.tile[x, y].wall == WallID.HardenedSand || Main.tile[x, y].wall == WallID.CrimsonHardenedSand || Main.tile[x, y].wall == WallID.CorruptHardenedSand))
+                        {
+                            Framing.GetTileSafely(x, y).wall = (ushort)(mod.WallType("InfernoGrassWall"));
                         }
                     }
                 }
@@ -614,12 +680,7 @@ namespace AAMod
                         continue;
                     }
                     int i = (int)(mirePos.X);
-                    int j = 40;
-                    while (Main.tile[i, j] != null && !Main.tile[i, j].active())
-                    {
-                        j++;
-                    }
-                    bool placementOK = true;
+                    int j = (int)(mirePos.Y);
                     for (int l = i - 25; l < i + 25; l++)
                     {
                         for (int m = j - 6; m < j + 90; m++)
@@ -627,19 +688,16 @@ namespace AAMod
                             if (Main.tile[l, m] != null && Main.tile[l, m].active())
                             {
                                 int type = Main.tile[l, m].type;
-                                if (type == TileID.BlueDungeonBrick || type == TileID.GreenDungeonBrick || type == TileID.PinkDungeonBrick || type == TileID.Cloud || type == TileID.RainCloud)
+                                if (type == TileID.PinkDungeonBrick || type == TileID.BlueDungeonBrick || type == TileID.GreenDungeonBrick)
                                 {
-                                    placementOK = false;
+                                    i = (infernoSide != 1 ? WorldGen.genRand.Next(1500, 1700) : (Main.maxTilesX - WorldGen.genRand.Next(1500, 1700)));
                                 }
                             }
                         }
                     }
-                    if (placementOK)
-                    {
-                        success = MirePlacement(i, j - 6);
-                        success2 = MireLiquid(i, j - 6);
-                        success3 = MireWalls(i, j - 6);
-                    }
+                    success = MirePlacement(i, j - 6);
+                    success2 = MireLiquid(i, j - 6);
+                    success3 = MireWalls(i, j - 6);
                 }
             }
         }
@@ -760,12 +818,7 @@ namespace AAMod
                         continue;
                     }
                     int i = (int)(infernoPos.X);
-                    int j = 40;
-                    while (Main.tile[i, j] != null && !Main.tile[i, j].active())
-                    {
-                        j++;
-                    }
-                    bool placementOK = true;
+                    int j = (int)(infernoPos.Y);
                     for (int l = i - 25; l < i + 25; l++)
                     {
                         for (int m = j - 16; m < j + 80; m++)
@@ -773,19 +826,16 @@ namespace AAMod
                             if (Main.tile[l, m] != null && Main.tile[l, m].active())
                             {
                                 int type = Main.tile[l, m].type;
-                                if (type == TileID.BlueDungeonBrick || type == TileID.GreenDungeonBrick || type == TileID.PinkDungeonBrick || type == TileID.Cloud || type == TileID.RainCloud)
+                                if (type == TileID.PinkDungeonBrick || type == TileID.BlueDungeonBrick || type == TileID.GreenDungeonBrick)
                                 {
-                                    placementOK = false;
+                                    i = (infernoSide == 1 ? WorldGen.genRand.Next(1500, 1700) : (Main.maxTilesX - WorldGen.genRand.Next(1500, 1700)));
                                 }
                             }
                         }
                     }
-                    if (placementOK)
-                    {
-                        success = InfernoPlacement(i, j - 16);
-                        success2 = InfernoLiquid(i, j - 16);
-                        success3 = InfernoWalls(i, j - 16);
-                    }
+                    success = InfernoPlacement(i, j - 16);
+                    success2 = InfernoLiquid(i, j - 16);
+                    success3 = InfernoWalls(i, j - 16);
                 }
             }
         }

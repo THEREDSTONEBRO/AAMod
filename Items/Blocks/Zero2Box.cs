@@ -12,7 +12,7 @@ namespace AAMod.Items.Blocks
 		{
 			DisplayName.SetDefault("Zero Awakened Music Box");
 		}
-
+        //
 		public override void SetDefaults()
 		{
 			item.useStyle = 1;
