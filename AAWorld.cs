@@ -173,12 +173,11 @@ namespace AAMod
             flags[5] = NPC.downedBoss3;
             flags[6] = downedGrips;
             flags[7] = downedRetriever;
-            flags[8] = downedZero;
             writer.Write(flags);
 
             BitsByte flags2 = new BitsByte();
-            //flags2[0] = zeroUS;
-            //
+            flags2[0] = downedZero;
+            //flags2[1] = zeroUS;
             writer.Write(flags2);
         }
 
@@ -193,10 +192,10 @@ namespace AAMod
             NPC.downedBoss3 = flags[5];
             downedGrips = flags[6];
             downedRetriever = flags[7];
-            downedZero = flags[8];
 
             BitsByte flags2 = reader.ReadByte();
-            //zeroUS = flags2[0];
+            downedZero = flags2[0];
+            //zeroUS = flags2[1];
         }
 
         public override void Load(TagCompound tag)
