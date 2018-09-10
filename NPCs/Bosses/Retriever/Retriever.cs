@@ -23,7 +23,7 @@ namespace AAMod.NPCs.Bosses.Retriever
         {
             npc.aiStyle = 5;  //5 is the flying AI
             npc.lifeMax = 70000;   //boss life
-            npc.damage = 150;  //boss damage
+            npc.damage = 50;  //boss damage
             npc.defense = 42;    //boss defense
             npc.knockBackResist = 0f;
             npc.width = 92;

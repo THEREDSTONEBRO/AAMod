@@ -396,6 +396,7 @@
     <Compile Include="NPCs\Bosses\Grips\GripOfChaosRed.cs" />
     <Compile Include="NPCs\AAModGlobalNPC.cs" />
     <Compile Include="NPCs\Bosses\Retriever\Retriever.cs" />
+    <Compile Include="NPCs\Bosses\Zero\ZeroAwakened.cs" />
     <Compile Include="NPCs\Enemies\Other\ElderDragon.cs" />
     <Compile Include="NPCs\Enemies\Other\DragonClaw.cs" />
     <Compile Include="NPCs\Enemies\Other\HydraClaw.cs" />
@@ -519,6 +520,7 @@
     <Content Include="Backgrounds\Mire\MireMoon.png" />
     <Content Include="Backgrounds\Mire\MireSky.png" />
     <Content Include="Backgrounds\Mire\MireUnderground.png" />
+    <Content Include="Backgrounds\Snow\Auroroa.png" />
     <Content Include="Backgrounds\Void\VoidBH.png" />
     <Content Include="Backgrounds\Void\VoidBolt.png" />
     <Content Include="Backgrounds\Void\VoidFlash.png" />
@@ -1169,6 +1171,15 @@
     <Content Include="Map\InfernoMap.png" />
     <Content Include="Map\MireMap.png" />
     <Content Include="Map\VoidMap.png" />
+    <Content Include="NPCs\Bosses\Akuma\AkumaBody.png" />
+    <Content Include="NPCs\Bosses\Akuma\AkumaBody2.png" />
+    <Content Include="NPCs\Bosses\Akuma\AkumaHead.png" />
+    <Content Include="NPCs\Bosses\Akuma\AkumaTail.png" />
+    <Content Include="NPCs\Bosses\Daybringer\Body.png" />
+    <Content Include="NPCs\Bosses\Daybringer\Body_Glowmask.png" />
+    <Content Include="NPCs\Bosses\Daybringer\Head.png" />
+    <Content Include="NPCs\Bosses\Daybringer\Head_Glowmask.png" />
+    <Content Include="NPCs\Bosses\Daybringer\Tail.png" />
     <Content Include="NPCs\Bosses\Decay\Decay.png" />
     <Content Include="NPCs\Bosses\Grips\GripOfChaosBlue.png" />
     <Content Include="NPCs\Bosses\Grips\GripOfChaosBluePunch.png" />
@@ -1180,6 +1191,9 @@
     <Content Include="NPCs\Bosses\Retriever\Retriever.png" />
     <Content Include="NPCs\Bosses\Retriever\Retriever_Head_Boss.png" />
     <Content Include="NPCs\Bosses\SoC\Soul of Cthulhu.png" />
+    <Content Include="NPCs\Bosses\Zero\ZeroAwakened.png" />
+    <Content Include="NPCs\Bosses\Zero\ZeroAwakened1.png" />
+    <Content Include="NPCs\Bosses\Zero\ZeroAwakened_Head_Boss.png" />
     <Content Include="NPCs\Enemies\Inferno\InfernoSalamander.png" />
     <Content Include="NPCs\Enemies\Inferno\WyrmBody1.png" />
     <Content Include="NPCs\Enemies\Inferno\WyrmBody2.png" />
@@ -1375,6 +1389,7 @@
     <Content Include="Tiles\VoidUnit.png" />
     <Content Include="Tiles\VoidUnit_Glow.png" />
     <Content Include="Tiles\ZerO.png" />
+    <Content Include="Tiles\Zero2Box.png" />
     <Content Include="Tiles\ZeroBox.png" />
     <Content Include="Walls\AbyssiumChunkWall.png" />
     <Content Include="Walls\DarkmudWall.png" />
