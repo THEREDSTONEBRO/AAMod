@@ -633,7 +633,6 @@ namespace AAMod
             if (ZoneInferno)
             {
                 return mod.GetTexture("Map/InfernoMap");
-
             }
             if (ZoneVoid)
             {
