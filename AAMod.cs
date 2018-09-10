@@ -83,13 +83,13 @@ namespace AAMod
                 //AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Zero"), ItemType("ZeroBox"), TileType("ZeroBox"));
                 //AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Zero2"), ItemType("Zero2Box"), TileType("Zero2Box"));
 
-                Filters.Scene["AAMod:MireSky"] = new Filter(new ScreenShaderData("FilterMiniTower").UseColor(0f, 0.20f, 1f).UseOpacity(0.2f), EffectPriority.High);
+                Filters.Scene["AAMod:MireSky"] = new Filter(new ScreenShaderData("FilterMiniTower").UseColor(0f, 0.20f, 1f).UseOpacity(0.4f), EffectPriority.High);
                 SkyManager.Instance["AAMod: MireSky"] = new MireSky();
                 MireSky.PlanetTexture = GetTexture("Backgrounds/Mire/MireMoon");
                 Filters.Scene["AAMod:VoidSky"] = new Filter(new ScreenShaderData("FilterMiniTower").UseColor(0.15f, 0.1f, 0.1f).UseOpacity(0.2f), EffectPriority.High);
                 SkyManager.Instance["AAMod:VoidSky"] = new VoidSky();
                 VoidSky.PlanetTexture = GetTexture("Backgrounds/Void/VoidBH");
-                Filters.Scene["AAMod:InfernoSky"] = new Filter(new ScreenShaderData("FilterMiniTower").UseColor(1f, 0.20f, 0f).UseOpacity(0.2f), EffectPriority.High);
+                Filters.Scene["AAMod:InfernoSky"] = new Filter(new ScreenShaderData("FilterMiniTower").UseColor(1f, 0.20f, 0f).UseOpacity(0.4f), EffectPriority.High);
                 SkyManager.Instance["AAMod:InfernoSky"] = new InfernoSky();
                 InfernoSky.PlanetTexture = GetTexture("Backgrounds/Inferno/InfernoSun");
             }

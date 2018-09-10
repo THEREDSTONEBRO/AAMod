@@ -36,8 +36,8 @@ namespace AAMod.Backgrounds.Void
         {
             PlanetTexture = TextureManager.Load("Backgrounds/Void/VoidBH");
             BGTexture = TextureManager.Load("Backgrounds/Void/VoidSky");
-            _boltTexture = TextureManager.Load("Backgrounds/Void/Bolt");
-            _flashTexture = TextureManager.Load("Backgrounds/Void/Flash");
+            _boltTexture = TextureManager.Load("Backgrounds/Void/VoidBolt");
+            _flashTexture = TextureManager.Load("Backgrounds/Void/VoidFlash");
         }
 
         public override void Update(GameTime gameTime)

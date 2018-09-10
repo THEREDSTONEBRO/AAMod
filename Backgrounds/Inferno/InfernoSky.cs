@@ -17,6 +17,7 @@ namespace AAMod.Backgrounds.Inferno
         public static Texture2D PlanetTexture;
         public static Texture2D BGTexture;
         public bool _isActive;
+        public int _ticksUntilNextBolt;
         public float _fadeOpacity;
         bool Active;
         float Intensity;
@@ -37,8 +38,10 @@ namespace AAMod.Backgrounds.Inferno
             {
                 _fadeOpacity = Math.Max(0f, _fadeOpacity - 0.01f);
             }
-
+            
         }
+
+
 
         public override Color OnTileColor(Color inColor)
         {
@@ -51,6 +54,7 @@ namespace AAMod.Backgrounds.Inferno
 
             if (maxDepth >= 3.40282347E+38f && minDepth < 3.40282347E+38f)
             {
+
                 spriteBatch.Draw(Main.blackTileTexture, new Rectangle(0, 0, Main.screenWidth, Main.screenHeight), Color.Black * this._fadeOpacity);
                 spriteBatch.Draw(BGTexture, new Rectangle(0, Math.Max(0, (int)((Main.worldSurface * 16.0 - (double)Main.screenPosition.Y - 2400.0) * 0.10000000149011612)), Main.screenWidth, Main.screenHeight), Color.White * Math.Min(1f, (Main.screenPosition.Y - 800f) / 1000f * this._fadeOpacity));
                 Vector2 value = new Vector2((float)(Main.screenWidth >> 1), (float)(Main.screenHeight >> 1));
@@ -61,7 +65,7 @@ namespace AAMod.Backgrounds.Inferno
             float scale = Math.Min(1f, (Main.screenPosition.Y - 1000f) / 1000f);
             Vector2 value3 = Main.screenPosition + new Vector2(Main.screenWidth >> 1, Main.screenHeight >> 1);
             Rectangle rectangle = new Rectangle(-1000, -1000, 4000, 4000);
-
+            
         }
 
         public override float GetCloudAlpha()
