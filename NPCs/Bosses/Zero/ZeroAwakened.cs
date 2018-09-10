@@ -379,12 +379,6 @@ namespace AAMod.NPCs.Bosses.Zero
                     else
                     {
                         Main.PlaySound(3, (int)npc.position.X, (int)npc.position.Y, 1, 1f, 0f);
-                        for (int num387 = 0; num387 < 2; num387++)
-                        {
-                            Gore.NewGore(npc.position, new Vector2((float)Main.rand.Next(-30, 31) * 0.2f, (float)Main.rand.Next(-30, 31) * 0.2f), 143, 1f);
-                            Gore.NewGore(npc.position, new Vector2((float)Main.rand.Next(-30, 31) * 0.2f, (float)Main.rand.Next(-30, 31) * 0.2f), 7, 1f);
-                            Gore.NewGore(npc.position, new Vector2((float)Main.rand.Next(-30, 31) * 0.2f, (float)Main.rand.Next(-30, 31) * 0.2f), 6, 1f);
-                        }
                         for (int num388 = 0; num388 < 20; num388++)
                         {
                             Dust.NewDust(npc.position, npc.width, npc.height, 5, (float)Main.rand.Next(-30, 31) * 0.2f, (float)Main.rand.Next(-30, 31) * 0.2f, 0, default(Color), 1f);
