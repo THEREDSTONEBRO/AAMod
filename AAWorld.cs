@@ -23,6 +23,7 @@ namespace AAMod
         public static int infernoTiles = 0;
         public static int voidTiles = 0;
         //Worldgen
+        public static bool Ancients;
         public static bool Luminite;
         public static bool DarkMatter;
         public static bool FulguriteOre;
@@ -447,24 +448,12 @@ namespace AAMod
                         WorldGen.OreRunner(WorldGen.genRand.Next(0, Main.maxTilesX), WorldGen.genRand.Next((int)Main.rockLayer, Main.maxTilesY - 200), (double)WorldGen.genRand.Next(10, 11), WorldGen.genRand.Next(11, 12), (ushort)mod.TileType("DarkmatterOre"));
                     }
                 }
-                /*
-                 public void OreComet()
-        {
-            int x = Main.rand.Next(0, Main.maxTilesX);
-            int y = Main.worldSurface - 200;
-            int[] tileIDs = { 6, 7, 8, 9 , 166, 167, 168, 169};
-            if (Main.tile[x, y].type <= -1)
-            {
-                y--;
-            }
-            else
-            {
-                WorldGen.TileRunner(x, y, 2, 4, tileIDs[Main.rand.Next(tileIDs.Length)], false, 0f, 0f, true, true);
-                return;
-            }
-        }
-                 */
-                 
+                if (Ancients == false)
+                {
+                    Ancients = true;
+                    Main.NewText("The Ancients have Awakened", Color.ForestGreen.R, Color.ForestGreen.G, Color.ForestGreen.B);
+                }
+
                 if (RadiumOre == false)
                 {
                     RadiumOre = true;
@@ -498,7 +487,7 @@ namespace AAMod
                 if (Dynaskull == false)
                 {
                     Dynaskull = true;
-                    Main.NewText("The bones of the ancient past burst with energy", Color.DarkOrange.R, Color.DarkOrange.G, Color.DarkOrange.B);
+                    Main.NewText("Bones of the ancient past burst with energy", Color.DarkOrange.R, Color.DarkOrange.G, Color.DarkOrange.B);
                     for (int k = 0; k < (int)((double)(Main.maxTilesX * Main.maxTilesY) * 6E-05); k++)
                     {
                         WorldGen.OreRunner(WorldGen.genRand.Next(0, Main.maxTilesX), WorldGen.genRand.Next((int)Main.rockLayer, Main.maxTilesY - 200), (double)WorldGen.genRand.Next(7, 9), WorldGen.genRand.Next(10, 11), (ushort)mod.TileType("DynaskullOre"));
@@ -518,7 +507,7 @@ namespace AAMod
                 if (FulguriteOre == false)
                 {
                     FulguriteOre = true;
-                    Main.NewText("The sound of a thunderbolt roars in the caverns", Color.MediumPurple.R, Color.MediumPurple.G, Color.MediumPurple.B);
+                    Main.NewText("The clap of a thunderbolt roars in the caverns", Color.MediumPurple.R, Color.MediumPurple.G, Color.MediumPurple.B);
                     for (int k = 0; k < (int)((double)(Main.maxTilesX * Main.maxTilesY) * 6E-05); k++)
                     {
                         WorldGen.OreRunner(WorldGen.genRand.Next(0, Main.maxTilesX), WorldGen.genRand.Next((int)Main.rockLayer, Main.maxTilesY - 200), (double)WorldGen.genRand.Next(10, 11), WorldGen.genRand.Next(10, 11), (ushort)mod.TileType("FulguriteOre"));
