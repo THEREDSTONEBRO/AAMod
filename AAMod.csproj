@@ -424,6 +424,7 @@
     <Compile Include="Tiles\OroborosLamp.cs" />
     <Compile Include="Tiles\SunAltar.cs" />
     <Compile Include="Tiles\VoidUnit.cs" />
+    <Compile Include="Tiles\Zero2Box.cs" />
     <Compile Include="Tiles\ZeroBox.cs" />
     <Compile Include="Tiles\VoidBox.cs" />
     <Compile Include="Tiles\OroborosWood.cs" />
@@ -1188,6 +1189,11 @@
     <Content Include="NPCs\Bosses\Grips\GripOfChaosRedPunch.png" />
     <Content Include="NPCs\Bosses\Grips\GripOfChaosRed_Head_Boss.png" />
     <Content Include="NPCs\Bosses\MrBonesRevenge.png" />
+    <Content Include="NPCs\Bosses\Nightcrawler\NightcrawlerBody.png" />
+    <Content Include="NPCs\Bosses\Nightcrawler\NightcrawlerBodyGlowmask.png" />
+    <Content Include="NPCs\Bosses\Nightcrawler\NightcrawlerHead.png" />
+    <Content Include="NPCs\Bosses\Nightcrawler\NightcrawlerHeadGlowmask.png" />
+    <Content Include="NPCs\Bosses\Nightcrawler\NightcrawlerTail.png" />
     <Content Include="NPCs\Bosses\Retriever\Retriever.png" />
     <Content Include="NPCs\Bosses\Retriever\Retriever_Head_Boss.png" />
     <Content Include="NPCs\Bosses\SoC\Soul of Cthulhu.png" />
@@ -1423,6 +1429,7 @@
     <None Include=".vs\AAMod\v15\Server\sqlite3\storage.ide" />
     <None Include=".vs\AAMod\v15\Server\sqlite3\storage.ide-shm" />
     <None Include=".vs\AAMod\v15\Server\sqlite3\storage.ide-wal" />
+    <None Include="NPCs\Bosses\Nightcrawler\Thumbs.db" />
     <None Include="obj\Debug\AAMod.csproj.CopyComplete" />
     <None Include="obj\Debug\AAMod.csproj.CoreCompileInputs.cache" />
     <None Include="obj\Debug\AAMod.csprojAssemblyReference.cache" />

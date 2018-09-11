@@ -11,7 +11,7 @@ namespace AAMod.Walls
 		public override void SetDefaults()
 		{
             dustType = mod.DustType("IncineriteDust");
-			AddMapEntry(new Color(50, 150, 0));
+			AddMapEntry(new Color(25, 12, 10));
 		}
 
 		public override void NumDust(int i, int j, bool fail, ref int num)

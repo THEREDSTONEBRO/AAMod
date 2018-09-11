@@ -13,8 +13,13 @@ namespace AAMod.Backgrounds.Mire
 
         public static Texture2D PlanetTexture;
         public static Texture2D BGTexture;
+<<<<<<< HEAD
         public bool Active;
         public float Intensity;
+=======
+        public bool _isActive;
+        public float _fadeOpacity;
+>>>>>>> faebf1def1479bca55ad918d2d95236089e79ac8
 
         public override void OnLoad()
         {
