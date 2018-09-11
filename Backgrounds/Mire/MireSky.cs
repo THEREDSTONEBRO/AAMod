@@ -11,13 +11,15 @@ namespace AAMod.Backgrounds.Mire
     public class MireSky : CustomSky
     {
 
-        private UnifiedRandom _random = new UnifiedRandom();
-
-
         public static Texture2D PlanetTexture;
         public static Texture2D BGTexture;
+<<<<<<< HEAD
+        public bool Active;
+        public float Intensity;
+=======
         public bool _isActive;
         public float _fadeOpacity;
+>>>>>>> faebf1def1479bca55ad918d2d95236089e79ac8
 
         public override void OnLoad()
         {
@@ -27,13 +29,13 @@ namespace AAMod.Backgrounds.Mire
 
         public override void Update(GameTime gameTime)
         {
-            if (_isActive)
+            if (Active)
             {
-                _fadeOpacity = Math.Min(1f, 0.01f + _fadeOpacity);
+                Intensity = Math.Min(1f, 0.01f + Intensity);
             }
             else
             {
-                _fadeOpacity = Math.Max(0f, _fadeOpacity - 0.01f);
+                Intensity = Math.Max(0f, Intensity - 0.01f);
             }
 
         }
@@ -41,7 +43,7 @@ namespace AAMod.Backgrounds.Mire
         public override Color OnTileColor(Color inColor)
         {
             Vector4 value = inColor.ToVector4();
-            return new Color(Vector4.Lerp(value, Vector4.One, _fadeOpacity * 0.5f));
+            return new Color(Vector4.Lerp(value, Vector4.One, Intensity * 0.5f));
         }
 
         public override void Draw(SpriteBatch spriteBatch, float minDepth, float maxDepth)
@@ -50,11 +52,11 @@ namespace AAMod.Backgrounds.Mire
             if (maxDepth >= 3.40282347E+38f && minDepth < 3.40282347E+38f)
             {
 
-                spriteBatch.Draw(Main.blackTileTexture, new Rectangle(0, 0, Main.screenWidth, Main.screenHeight), Color.Black * this._fadeOpacity);
-                spriteBatch.Draw(BGTexture, new Rectangle(0, Math.Max(0, (int)((Main.worldSurface * 16.0 - (double)Main.screenPosition.Y - 2400.0) * 0.10000000149011612)), Main.screenWidth, Main.screenHeight), Color.White * Math.Min(1f, (Main.screenPosition.Y - 800f) / 1000f * this._fadeOpacity));
+                spriteBatch.Draw(Main.blackTileTexture, new Rectangle(0, 0, Main.screenWidth, Main.screenHeight), Color.Black * this.Intensity);
+                spriteBatch.Draw(BGTexture, new Rectangle(0, Math.Max(0, (int)((Main.worldSurface * 16.0 - (double)Main.screenPosition.Y - 2400.0) * 0.10000000149011612)), Main.screenWidth, Main.screenHeight), Color.White * Math.Min(1f, (Main.screenPosition.Y - 800f) / 1000f * this.Intensity));
                 Vector2 value = new Vector2((float)(Main.screenWidth >> 1), (float)(Main.screenHeight >> 1));
                 Vector2 value2 = 0.01f * (new Vector2((float)Main.maxTilesX * 8f, (float)Main.worldSurface / 2f) - Main.screenPosition);
-                spriteBatch.Draw(PlanetTexture, value + new Vector2(-100f, -200f) + value2, null, Color.White * 0.9f * this._fadeOpacity, 0f, new Vector2((float)(PlanetTexture.Width >> 1), (float)(PlanetTexture.Height >> 1)), 1f, SpriteEffects.None, 1f);
+                spriteBatch.Draw(PlanetTexture, value + new Vector2(-100f, -200f) + value2, null, Color.White * 0.9f * this.Intensity, 0f, new Vector2((float)(PlanetTexture.Width >> 1), (float)(PlanetTexture.Height >> 1)), 1f, SpriteEffects.None, 1f);
 
             }
             float scale = Math.Min(1f, (Main.screenPosition.Y - 1000f) / 1000f);
@@ -65,28 +67,28 @@ namespace AAMod.Backgrounds.Mire
 
         public override float GetCloudAlpha()
         {
-            return (1f - _fadeOpacity) * 0.3f + 0.7f;
+            return (1f - Intensity);
         }
 
         public override void Activate(Vector2 position, params object[] args)
         {
-            _fadeOpacity = 0.002f;
-            _isActive = true;
+            Intensity = 0.002f;
+            Active = true;
         }
 
         public override void Deactivate(params object[] args)
         {
-            _isActive = false;
+            Active = false;
         }
 
         public override void Reset()
         {
-            _isActive = false;
+            Active = false;
         }
 
         public override bool IsActive()
         {
-            return _isActive || _fadeOpacity > 0.001f;
+            return Active || Intensity > 0.001f;
         }
     }
 }
