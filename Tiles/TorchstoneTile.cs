@@ -15,7 +15,7 @@ namespace AAMod.Tiles
             soundType = 21;
             dustType = mod.DustType("RazeleafDust");
             drop = mod.ItemType("Torchstone");   //put your CustomBlock name
-            AddMapEntry(new Color(204, 102, 0));
+            AddMapEntry(new Color(50, 25, 12));
 			minPick = 65;
         }
     }

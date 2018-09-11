@@ -17,10 +17,7 @@ namespace AAMod.Backgrounds.Inferno
         public static Texture2D PlanetTexture;
         public static Texture2D BGTexture;
         public bool _isActive;
-        public int _ticksUntilNextBolt;
         public float _fadeOpacity;
-        bool Active;
-        float Intensity;
 
         public override void OnLoad()
         {
