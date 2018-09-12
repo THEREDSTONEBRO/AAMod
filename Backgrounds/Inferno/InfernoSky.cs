@@ -19,7 +19,6 @@ namespace AAMod.Backgrounds.Inferno
         public override void OnLoad()
         {
             PlanetTexture = TextureManager.Load("Backgrounds/Inferno/InfernoSun");
-            BGTexture = TextureManager.Load("Backgrounds/Inferno/InfernoSky");
         }
 
         public override void Update(GameTime gameTime)
@@ -32,7 +31,6 @@ namespace AAMod.Backgrounds.Inferno
             {
                 Intensity = Math.Max(0f, Intensity - 0.01f);
             }
-            
         }
 
         public override Color OnTileColor(Color inColor)
@@ -43,18 +41,15 @@ namespace AAMod.Backgrounds.Inferno
 
         public override void Draw(SpriteBatch spriteBatch, float minDepth, float maxDepth)
         {
-
             if (maxDepth >= 3.40282347E+38f && minDepth < 3.40282347E+38f)
             {
-
-                spriteBatch.Draw(Main.blackTileTexture, new Rectangle(0, 0, Main.screenWidth, Main.screenHeight), Color.Black * this.Intensity);
-                spriteBatch.Draw(BGTexture, new Rectangle(0, Math.Max(0, (int)((Main.worldSurface * 16.0 - (double)Main.screenPosition.Y - 2400.0) * 0.10000000149011612)), Main.screenWidth, Main.screenHeight), Color.White * Math.Min(1f, (Main.screenPosition.Y - 800f) / 1000f * this.Intensity));
-                Vector2 value = new Vector2((float)(Main.screenWidth >> 1), (float)(Main.screenHeight >> 1));
-                Vector2 value2 = 0.01f * (new Vector2((float)Main.maxTilesX * 8f, (float)Main.worldSurface / 2f) - Main.screenPosition);
-                spriteBatch.Draw(PlanetTexture, value + new Vector2(-100f, -200f) + value2, null, Color.White * 0.9f * this.Intensity, 0f, new Vector2((float)(PlanetTexture.Width >> 1), (float)(PlanetTexture.Height >> 1)), 1f, SpriteEffects.None, 1f);
-
+                if (Main.dayTime)
+                {
+                    spriteBatch.Draw(Main.blackTileTexture, new Rectangle(0, 0, Main.screenWidth, Main.screenHeight), Color.Black * this.Intensity);
+                    var planetPos = new Vector2((Main.screenWidth / 4) * 1, Main.screenHeight / 4);
+                    spriteBatch.Draw(PlanetTexture, planetPos, null, Color.White * 0.9f * this.Intensity, 0f, new Vector2((float)(PlanetTexture.Width >> 1), (float)(PlanetTexture.Height >> 1)), 1f, SpriteEffects.None, 1f);
+                }
             }
-            
         }
 
         public override float GetCloudAlpha()

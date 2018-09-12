@@ -95,7 +95,7 @@ namespace AAMod
                 //AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Zero2"), ItemType("Zero2Box"), TileType("Zero2Box"));
 
                 Filters.Scene["AAMod:MireSky"] = new Filter(new MireSkyData("FilterMiniTower").UseColor(0f, 0.20f, 1f).UseOpacity(0.4f), EffectPriority.VeryHigh);
-                SkyManager.Instance["AAMod: MireSky"] = new MireSky();
+                SkyManager.Instance["AAMod:MireSky"] = new MireSky();
                 MireSky.PlanetTexture = GetTexture("Backgrounds/Mire/MireMoon");
                 Filters.Scene["AAMod:VoidSky"] = new Filter(new VoidSkyData("FilterMiniTower").UseColor(0.15f, 0.1f, 0.1f).UseOpacity(0.2f), EffectPriority.VeryHigh);
                 SkyManager.Instance["AAMod:VoidSky"] = new VoidSky();
