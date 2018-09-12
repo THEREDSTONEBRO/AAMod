@@ -399,17 +399,6 @@
     <Compile Include="NPCs\Bosses\Grips\GripOfChaosRed.cs" />
     <Compile Include="NPCs\AAModGlobalNPC.cs" />
     <Compile Include="NPCs\Bosses\Retriever\Retriever.cs" />
-<<<<<<< HEAD
-=======
-    <Compile Include="NPCs\Bosses\Zero\RealityTearer.cs" />
-    <Compile Include="NPCs\Bosses\Zero\RiftShredder.cs" />
-    <Compile Include="NPCs\Bosses\Zero\VoidStar.cs" />
-    <Compile Include="NPCs\Bosses\Zero\Zero.cs" />
-    <Compile Include="NPCs\Bosses\Zero\ZeroArm.cs" />
-    <Compile Include="NPCs\Bosses\Zero\ZeroAwakened.cs" />
-    <Compile Include="NPCs\Bosses\Zero\ZeroD.cs" />
-    <Compile Include="NPCs\Bosses\Zero\ZeroHandler.cs" />
->>>>>>> 1310a46425e04db87a85190099659fba4b118dff
     <Compile Include="NPCs\Enemies\Other\ElderDragon.cs" />
     <Compile Include="NPCs\Enemies\Other\DragonClaw.cs" />
     <Compile Include="NPCs\Enemies\Other\HydraClaw.cs" />
@@ -1210,26 +1199,9 @@
     <Content Include="NPCs\Bosses\Retriever\Retriever.png" />
     <Content Include="NPCs\Bosses\Retriever\Retriever_Head_Boss.png" />
     <Content Include="NPCs\Bosses\SoC\Soul of Cthulhu.png" />
-    <Content Include="NPCs\Bosses\Zero\RealityTearer.png" />
-    <Content Include="NPCs\Bosses\Zero\RealityTearer_Glow.png" />
-    <Content Include="NPCs\Bosses\Zero\RiftShredder.png" />
-    <Content Include="NPCs\Bosses\Zero\RiftShredder_Glow.png" />
-    <Content Include="NPCs\Bosses\Zero\VoidStar.png" />
-    <Content Include="NPCs\Bosses\Zero\VoidStarP.png" />
-    <Content Include="NPCs\Bosses\Zero\VoidStar_Glow.png" />
-    <Content Include="NPCs\Bosses\Zero\Zero.png" />
-    <Content Include="NPCs\Bosses\Zero\Zero1.png" />
-    <Content Include="NPCs\Bosses\Zero\Zero2\Zero.png" />
-    <Content Include="NPCs\Bosses\Zero\Zero2\Zero2.png" />
-    <Content Include="NPCs\Bosses\Zero\ZeroArm.png" />
     <Content Include="NPCs\Bosses\Zero\ZeroAwakened.png" />
     <Content Include="NPCs\Bosses\Zero\ZeroAwakened1.png" />
     <Content Include="NPCs\Bosses\Zero\ZeroAwakened_Head_Boss.png" />
-    <Content Include="NPCs\Bosses\Zero\ZeroD.png" />
-    <Content Include="NPCs\Bosses\Zero\ZeroD_Glow.png" />
-    <Content Include="NPCs\Bosses\Zero\ZeroWire.png" />
-    <Content Include="NPCs\Bosses\Zero\Zero_Glow.png" />
-    <Content Include="NPCs\Bosses\Zero\Zero_Head_Boss.png" />
     <Content Include="NPCs\Enemies\Inferno\InfernoSalamander.png" />
     <Content Include="NPCs\Enemies\Inferno\WyrmBody1.png" />
     <Content Include="NPCs\Enemies\Inferno\WyrmBody2.png" />
