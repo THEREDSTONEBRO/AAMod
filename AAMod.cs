@@ -31,9 +31,28 @@ namespace AAMod
             Mod bossChecklist = ModLoader.GetMod("BossChecklist");
             if (bossChecklist != null)
             {
-                bossChecklist.Call("AddBossWithInfo", "The Grips of Chaos", 2.00000000001f, (Func<bool>)(() => AAWorld.downedGrips), "Use a [i:" + ItemType("CuriousClaw") + "] or [i:" + ItemType("InterestingClaw") + "] at night");
+                bossChecklist.Call("AddBossWithInfo", "Grips of Chaos", 2.00000000001f, (Func<bool>)(() => AAWorld.downedGrips), "Use a [i:" + ItemType("CuriousClaw") + "] or [i:" + ItemType("InterestingClaw") + "] at night");
                 bossChecklist.Call("AddBossWithInfo", "Retriever", 6.9999999f, (Func<bool>)(() => AAWorld.downedRetriever), "Use a [i:" + ItemType("CyberneticClaw") + "] at night");
+                bossChecklist.Call("AddBossWithInfo", "Daybringer", 14.00000000001f, (Func<bool>)(() => AAWorld.downedGrips), "Use a [i:" + ItemType("CuriousClaw") + "] or [i:" + ItemType("InterestingClaw") + "] at night");
+                bossChecklist.Call("AddBossWithInfo", "Nightcrawler", 14.00000000001f, (Func<bool>)(() => AAWorld.downedGrips), "Use a [i:" + ItemType("CuriousClaw") + "] or [i:" + ItemType("InterestingClaw") + "] at night");
+               
                 //bossChecklist.Call("AddBossWithInfo", "Zero", 14.000003f, (Func<bool>)(() => AAWorld.downedZero), "Use a [i:" + ItemType("0") + "] in the Void");
+                //SlimeKing = 1f;
+                //EyeOfCthulhu = 2f;
+                //EaterOfWorlds = 3f;
+                //QueenBee = 4f;
+                //Skeletron = 5f;
+                //WallOfFlesh = 6f;
+                //TheTwins = 7f;
+                //TheDestroyer = 8f;
+                //SkeletronPrime = 9f;
+                //Plantera = 10f;
+                //Golem = 11f;
+                //DukeFishron = 12f;
+                //LunaticCultist = 13f;
+                //Moonlord = 14f;
+
+
             }
         }
 
