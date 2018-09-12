@@ -13,13 +13,8 @@ namespace AAMod.Backgrounds.Mire
 
         public static Texture2D PlanetTexture;
         public static Texture2D BGTexture;
-<<<<<<< HEAD
         public bool Active;
         public float Intensity;
-=======
-        public bool _isActive;
-        public float _fadeOpacity;
->>>>>>> faebf1def1479bca55ad918d2d95236089e79ac8
 
         public override void OnLoad()
         {
@@ -59,9 +54,6 @@ namespace AAMod.Backgrounds.Mire
                 spriteBatch.Draw(PlanetTexture, value + new Vector2(-100f, -200f) + value2, null, Color.White * 0.9f * this.Intensity, 0f, new Vector2((float)(PlanetTexture.Width >> 1), (float)(PlanetTexture.Height >> 1)), 1f, SpriteEffects.None, 1f);
 
             }
-            float scale = Math.Min(1f, (Main.screenPosition.Y - 1000f) / 1000f);
-            Vector2 value3 = Main.screenPosition + new Vector2(Main.screenWidth >> 1, Main.screenHeight >> 1);
-            Rectangle rectangle = new Rectangle(-1000, -1000, 4000, 4000);
 
         }
 
