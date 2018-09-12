@@ -59,15 +59,12 @@
     <Compile Include="AAPlayer.cs" />
     <Compile Include="AAUtils.cs" />
     <Compile Include="AAWorld.cs" />
-    <Compile Include="Backgrounds\Inferno\InfernoSkyData.cs" />
     <Compile Include="Backgrounds\Inferno\InfernoSky.cs" />
     <Compile Include="Backgrounds\Inferno\InfernoSurfaceBgStyle.cs" />
     <Compile Include="Backgrounds\Inferno\InfernoUgBgStyle.cs" />
-    <Compile Include="Backgrounds\Mire\MireSkyData.cs" />
     <Compile Include="Backgrounds\Mire\MireSky.cs" />
     <Compile Include="Backgrounds\Mire\MireSurfaceBgStyle.cs" />
     <Compile Include="Backgrounds\Mire\MireUgBgStyle.cs" />
-    <Compile Include="Backgrounds\Void\VoidSkyData.cs" />
     <Compile Include="Backgrounds\Void\VoidSky.cs" />
     <Compile Include="Buffs\EnderMinionBuff.cs" />
     <Compile Include="Buffs\InfinityOverload.cs" />
@@ -399,6 +396,7 @@
     <Compile Include="NPCs\Bosses\Grips\GripOfChaosRed.cs" />
     <Compile Include="NPCs\AAModGlobalNPC.cs" />
     <Compile Include="NPCs\Bosses\Retriever\Retriever.cs" />
+    <Compile Include="NPCs\Bosses\Zero\ZeroAwakened.cs" />
     <Compile Include="NPCs\Enemies\Other\ElderDragon.cs" />
     <Compile Include="NPCs\Enemies\Other\DragonClaw.cs" />
     <Compile Include="NPCs\Enemies\Other\HydraClaw.cs" />
@@ -1180,6 +1178,12 @@
     <Content Include="NPCs\Bosses\Akuma\AkumaTail.png" />
     <Content Include="NPCs\Bosses\Daybringer\Body.png" />
     <Content Include="NPCs\Bosses\Daybringer\Body_Glowmask.png" />
+    <Content Include="NPCs\Bosses\Daybringer\DaybringerBody.png" />
+    <Content Include="NPCs\Bosses\Daybringer\DaybringerBodyGlowmask.png" />
+    <Content Include="NPCs\Bosses\Daybringer\DaybringerHead.png" />
+    <Content Include="NPCs\Bosses\Daybringer\DaybringerHeadGlowmask.png" />
+    <Content Include="NPCs\Bosses\Daybringer\DaybringerTail.png" />
+    <Content Include="NPCs\Bosses\Daybringer\DaybringerTailGlowmask.png" />
     <Content Include="NPCs\Bosses\Daybringer\Head.png" />
     <Content Include="NPCs\Bosses\Daybringer\Head_Glowmask.png" />
     <Content Include="NPCs\Bosses\Daybringer\Tail.png" />
