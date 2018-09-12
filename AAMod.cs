@@ -21,11 +21,14 @@ namespace AAMod
         public static Mod Instance;
         public static ModHotKey InfinityHotKey;
         internal static AAMod instance;
+        internal bool BaseLoaded;
 
         public AAMod()
         {
 
         }
+        
+
         public override void PostSetupContent()
         {
             Mod bossChecklist = ModLoader.GetMod("BossChecklist");
@@ -34,6 +37,14 @@ namespace AAMod
                 bossChecklist.Call("AddBossWithInfo", "The Grips of Chaos", 2.00000000001f, (Func<bool>)(() => AAWorld.downedGrips), "Use a [i:" + ItemType("CuriousClaw") + "] or [i:" + ItemType("InterestingClaw") + "] at night");
                 bossChecklist.Call("AddBossWithInfo", "Retriever", 6.9999999f, (Func<bool>)(() => AAWorld.downedRetriever), "Use a [i:" + ItemType("CyberneticClaw") + "] at night");
                 //bossChecklist.Call("AddBossWithInfo", "Zero", 14.000003f, (Func<bool>)(() => AAWorld.downedZero), "Use a [i:" + ItemType("0") + "] in the Void");
+            }
+            try
+            {
+                BaseLoaded = ModLoader.GetMod("BaseMod") != null;
+            }
+            catch (Exception e)
+            {
+                ErrorLogger.Log("AAMod PostSetupContent Error: " + e.StackTrace + e.Message);
             }
         }
 
