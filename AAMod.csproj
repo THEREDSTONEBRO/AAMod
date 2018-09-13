@@ -487,6 +487,7 @@
     <Compile Include="Tiles\TorchstoneTile.cs" />
     <Compile Include="Tiles\QuantumFusionAccelerator.cs" />
     <Compile Include="Tiles\TruePaladinsSmeltery.cs" />
+    <Compile Include="UI\TerratoolUI.cs" />
     <Compile Include="Walls\InfernoGrassWall.cs" />
     <Compile Include="Walls\LivingBogleafWall.cs" />
     <Compile Include="Walls\MireJungleWall.cs" />
@@ -1405,6 +1406,10 @@
     <Content Include="Tiles\ZerO.png" />
     <Content Include="Tiles\Zero2Box.png" />
     <Content Include="Tiles\ZeroBox.png" />
+    <Content Include="UI\Axe.png" />
+    <Content Include="UI\Base.png" />
+    <Content Include="UI\Hammer.png" />
+    <Content Include="UI\Pickaxe.png" />
     <Content Include="Walls\AbyssiumChunkWall.png" />
     <Content Include="Walls\DarkmudWall.png" />
     <Content Include="Walls\DepthstoneWall.png" />
