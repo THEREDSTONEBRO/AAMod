@@ -59,12 +59,15 @@
     <Compile Include="AAPlayer.cs" />
     <Compile Include="AAUtils.cs" />
     <Compile Include="AAWorld.cs" />
+    <Compile Include="Backgrounds\Inferno\InfernoSkyData.cs" />
     <Compile Include="Backgrounds\Inferno\InfernoSky.cs" />
     <Compile Include="Backgrounds\Inferno\InfernoSurfaceBgStyle.cs" />
     <Compile Include="Backgrounds\Inferno\InfernoUgBgStyle.cs" />
+    <Compile Include="Backgrounds\Mire\MireSkyData.cs" />
     <Compile Include="Backgrounds\Mire\MireSky.cs" />
     <Compile Include="Backgrounds\Mire\MireSurfaceBgStyle.cs" />
     <Compile Include="Backgrounds\Mire\MireUgBgStyle.cs" />
+    <Compile Include="Backgrounds\Void\VoidSkyData.cs" />
     <Compile Include="Backgrounds\Void\VoidSky.cs" />
     <Compile Include="Buffs\EnderMinionBuff.cs" />
     <Compile Include="Buffs\InfinityOverload.cs" />
@@ -1178,6 +1181,7 @@
     <Content Include="NPCs\Bosses\Akuma\AkumaBody2.png" />
     <Content Include="NPCs\Bosses\Akuma\AkumaHead.png" />
     <Content Include="NPCs\Bosses\Akuma\AkumaTail.png" />
+<<<<<<< HEAD
     <Content Include="NPCs\Bosses\Daybringer\Daybringer.png" />
     <Content Include="NPCs\Bosses\Daybringer\DaybringerHeadGlowmask.png" />
     <Content Include="NPCs\Bosses\Daybringer\DBBody.png" />
@@ -1185,6 +1189,19 @@
     <Content Include="NPCs\Bosses\Daybringer\DBTail.png" />
     <Content Include="NPCs\Bosses\Daybringer\DBTail_Glowmask.png" />
     <Content Include="NPCs\Bosses\Daybringer\Daybringer_Boss_Head.png" />
+=======
+    <Content Include="NPCs\Bosses\Daybringer\Body.png" />
+    <Content Include="NPCs\Bosses\Daybringer\Body_Glowmask.png" />
+    <Content Include="NPCs\Bosses\Daybringer\DaybringerBody.png" />
+    <Content Include="NPCs\Bosses\Daybringer\DaybringerBodyGlowmask.png" />
+    <Content Include="NPCs\Bosses\Daybringer\DaybringerHead.png" />
+    <Content Include="NPCs\Bosses\Daybringer\DaybringerHeadGlowmask.png" />
+    <Content Include="NPCs\Bosses\Daybringer\DaybringerTail.png" />
+    <Content Include="NPCs\Bosses\Daybringer\DaybringerTailGlowmask.png" />
+    <Content Include="NPCs\Bosses\Daybringer\Head.png" />
+    <Content Include="NPCs\Bosses\Daybringer\Head_Glowmask.png" />
+    <Content Include="NPCs\Bosses\Daybringer\Tail.png" />
+>>>>>>> 51ee300beb175d4bb33338261cd757812f53a381
     <Content Include="NPCs\Bosses\Decay\Decay.png" />
     <Content Include="NPCs\Bosses\Grips\GripOfChaosBlue.png" />
     <Content Include="NPCs\Bosses\Grips\GripOfChaosBluePunch.png" />
@@ -1201,8 +1218,14 @@
     <Content Include="NPCs\Bosses\Retriever\Retriever.png" />
     <Content Include="NPCs\Bosses\Retriever\Retriever_Head_Boss.png" />
     <Content Include="NPCs\Bosses\SoC\Soul of Cthulhu.png" />
+<<<<<<< HEAD
     <Content Include="NPCs\Bosses\Zero\Zero2\Zero.png" />
     <Content Include="NPCs\Bosses\Zero\Zero2\Zero2.png" />
+=======
+    <Content Include="NPCs\Bosses\Zero\ZeroAwakened.png" />
+    <Content Include="NPCs\Bosses\Zero\ZeroAwakened1.png" />
+    <Content Include="NPCs\Bosses\Zero\ZeroAwakened_Head_Boss.png" />
+>>>>>>> 51ee300beb175d4bb33338261cd757812f53a381
     <Content Include="NPCs\Enemies\Inferno\InfernoSalamander.png" />
     <Content Include="NPCs\Enemies\Inferno\WyrmBody1.png" />
     <Content Include="NPCs\Enemies\Inferno\WyrmBody2.png" />
