@@ -13,7 +13,6 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 using AAMod.Backgrounds.Inferno;
 using AAMod.Backgrounds.Mire;
-using AAMod.UI;
 
 namespace AAMod
 {
@@ -24,9 +23,11 @@ namespace AAMod
         internal static AAMod instance;
         internal bool BaseLoaded;
 
-        internal UserInterface UserInterface;
+        public AAMod()
+        {
 
-        internal TerratoolUI TerratoolUI;
+        }
+        
 
         public override void PostSetupContent()
         {
@@ -121,21 +122,9 @@ namespace AAMod
                 Filters.Scene["AAMod:InfernoSky"] = new Filter(new InfernoSkyData("FilterMiniTower").UseColor(1f, 0.20f, 0f).UseOpacity(0.4f), EffectPriority.VeryHigh);
                 SkyManager.Instance["AAMod:InfernoSky"] = new InfernoSky();
                 InfernoSky.PlanetTexture = GetTexture("Backgrounds/Inferno/InfernoSun");
-
-                TerratoolUI = new TerratoolUI();
-                UserInterface = new UserInterface();
             }
         }
-
-        public override void UpdateUI(GameTime gameTime)
-        {
-            if (UserInterface != null && TerratoolUI.visible)
-            {
-                UserInterface.Update(gameTime);
-            }
-        }
-
-
+        
 
         public override void Unload()
         {
