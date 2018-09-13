@@ -41,7 +41,9 @@ namespace AAMod
         public static bool downedGripBlue;
         public static bool downedGrips;
         public static bool downedRetriever;
-        //public static bool zeroUS;
+        public static bool downedDB;
+        public static bool downedNC;
+        public static bool zeroUS;
         public static bool downedZero;
 
         public string nums = "1234567890";
@@ -51,8 +53,10 @@ namespace AAMod
             downedGrips = false;
             downedGripRed = false;
             downedGripBlue = false;
-            //zeroUS = false;
-            //downedZero = false;
+            zeroUS = false;
+            downedZero = false;
+            downedDB = false;
+            downedNC = false;
             downedRetriever = false;
             if (NPC.downedMechBoss3 == true || NPC.downedMechBoss2 == true || NPC.downedMechBoss1 == true)
             {
@@ -70,14 +74,20 @@ namespace AAMod
             {
                 Luminite = false;
             }
-            if (NPC.downedMoonlord == true)
+            if (downedNC == true)
             {
                 DarkMatter = true;
-                RadiumOre = true;
             }
             else
             {
                 DarkMatter = false;
+            }
+            if (downedDB == true)
+            {
+                RadiumOre = true;
+            }
+            else
+            {
                 RadiumOre = false;
             }
             if (NPC.downedPlantBoss == true)
@@ -154,8 +164,10 @@ namespace AAMod
             if (NPC.downedBoss3) downed.Add("Dynaskull");
             if (downedGrips) downed.Add("Grips");
             if (downedRetriever) downed.Add("Storm1");
-            //if (zeroUS) downed.Add("0U");
+            if (zeroUS) downed.Add("0U");
             if (downedZero) downed.Add("0");
+            if (downedNC) downed.Add("NC");
+            if (downedDB) downed.Add("DB");
 
             return new TagCompound {
                 {"downed", downed}
@@ -176,8 +188,10 @@ namespace AAMod
             writer.Write(flags);
 
             BitsByte flags2 = new BitsByte();
-            flags2[0] = downedZero;
-            //flags2[1] = zeroUS;
+            flags2[0] = zeroUS;
+            flags2[1] = downedZero;
+            flags2[2] = downedDB;
+            flags2[3] = downedNC;
             writer.Write(flags2);
         }
 
@@ -195,7 +209,9 @@ namespace AAMod
 
             BitsByte flags2 = reader.ReadByte();
             downedZero = flags2[0];
-            //zeroUS = flags2[1];
+            zeroUS = flags2[1];
+            downedDB = flags2[2];
+            downedNC = flags2[3];
         }
 
         public override void Load(TagCompound tag)
@@ -209,8 +225,10 @@ namespace AAMod
             NPC.downedBoss3 = downed.Contains("Dynaskull");
             downedGrips = downed.Contains("Grips");
             downedRetriever = downed.Contains("Storm1");
-            //zeroUS = downed.Contains("0U");
+            zeroUS = downed.Contains("0U");
             downedZero = downed.Contains("0");
+            downedDB = downed.Contains("DB");
+            downedNC = downed.Contains("NC");
         }
 
         private string NumberRand(int size)
@@ -427,32 +445,8 @@ namespace AAMod
                 }
             }
 
-            if (NPC.downedMoonlord == true)
+            if (downedDB == true)
             {
-                if (Luminite == false)
-                {
-                    Luminite = true;
-                    Main.NewText("The Essence of the Moon Lord sparkles in the caves below", Color.DarkSeaGreen.R, Color.DarkSeaGreen.G, Color.DarkSeaGreen.B);
-                    for (int k = 0; k < (int)((double)(Main.maxTilesX * Main.maxTilesY) * 6E-05); k++)
-                    {
-                        WorldGen.OreRunner(WorldGen.genRand.Next(0, Main.maxTilesX), WorldGen.genRand.Next((int)Main.rockLayer, Main.maxTilesY - 200), (double)WorldGen.genRand.Next(5, 9), WorldGen.genRand.Next(6, 10), (ushort)mod.TileType("LuminiteOre"));
-                    }
-                }
-                if (DarkMatter == false)
-                {
-                    DarkMatter = true;
-                    Main.NewText("Darkness grows in the depths of the world", Color.DarkBlue.R, Color.DarkBlue.G, Color.DarkBlue.B);
-                    for (int k = 0; k < (int)((double)(Main.maxTilesX * Main.maxTilesY) * 6E-05); k++)
-                    {
-                        WorldGen.OreRunner(WorldGen.genRand.Next(0, Main.maxTilesX), WorldGen.genRand.Next((int)Main.rockLayer, Main.maxTilesY - 200), (double)WorldGen.genRand.Next(10, 11), WorldGen.genRand.Next(11, 12), (ushort)mod.TileType("DarkmatterOre"));
-                    }
-                }
-                if (Ancients == false)
-                {
-                    Ancients = true;
-                    Main.NewText("The Ancients have Awakened", Color.ForestGreen.R, Color.ForestGreen.G, Color.ForestGreen.B);
-                }
-
                 if (RadiumOre == false)
                 {
                     RadiumOre = true;
@@ -468,6 +462,40 @@ namespace AAMod
                                     WorldGen.PlaceTile(x, y, mod.TileType<RadiumOre>(), true); //Places tile of type InsertTypeHere at the specified coords
                     }
                 }
+            }
+
+            if (downedNC == true)
+            {
+                if (DarkMatter == false)
+                {
+                    DarkMatter = true;
+                    Main.NewText("Darkness grows in the depths of the world", Color.DarkBlue.R, Color.DarkBlue.G, Color.DarkBlue.B);
+                    for (int k = 0; k < (int)((double)(Main.maxTilesX * Main.maxTilesY) * 6E-05); k++)
+                    {
+                        WorldGen.OreRunner(WorldGen.genRand.Next(0, Main.maxTilesX), WorldGen.genRand.Next((int)Main.rockLayer, Main.maxTilesY - 200), (double)WorldGen.genRand.Next(10, 11), WorldGen.genRand.Next(11, 12), (ushort)mod.TileType("DarkmatterOre"));
+                    }
+                }
+            }
+
+            if (NPC.downedMoonlord == true)
+            {
+                if (Luminite == false)
+                {
+                    Luminite = true;
+                    Main.NewText("The Essence of the Moon Lord sparkles in the caves below", Color.DarkSeaGreen.R, Color.DarkSeaGreen.G, Color.DarkSeaGreen.B);
+                    for (int k = 0; k < (int)((double)(Main.maxTilesX * Main.maxTilesY) * 6E-05); k++)
+                    {
+                        WorldGen.OreRunner(WorldGen.genRand.Next(0, Main.maxTilesX), WorldGen.genRand.Next((int)Main.rockLayer, Main.maxTilesY - 200), (double)WorldGen.genRand.Next(5, 9), WorldGen.genRand.Next(6, 10), (ushort)mod.TileType("LuminiteOre"));
+                    }
+                }
+                
+                if (Ancients == false)
+                {
+                    Ancients = true;
+                    Main.NewText("The Ancients have Awakened", Color.ForestGreen.R, Color.ForestGreen.G, Color.ForestGreen.B);
+                }
+
+                
             }
             if (NPC.downedMechBossAny == true)
             {
