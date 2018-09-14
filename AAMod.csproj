@@ -407,6 +407,11 @@
     <Compile Include="NPCs\Bosses\Grips\GripOfChaosBlue.cs" />
     <Compile Include="NPCs\Bosses\Grips\GripOfChaosRed.cs" />
     <Compile Include="NPCs\Bosses\Retriever\Retriever.cs" />
+    <Compile Include="NPCs\Bosses\Zero\RealityCannon.cs" />
+    <Compile Include="NPCs\Bosses\Zero\RiftShredder.cs" />
+    <Compile Include="NPCs\Bosses\Zero\TeslaHand.cs" />
+    <Compile Include="NPCs\Bosses\Zero\VoidStar.cs" />
+    <Compile Include="NPCs\Bosses\Zero\Zero.cs" />
     <Compile Include="NPCs\Bosses\Zero\ZeroAwakened.cs" />
     <Compile Include="NPCs\Enemies\Other\DragonClaw.cs" />
     <Compile Include="NPCs\Enemies\Other\ElderDragon.cs" />
@@ -1221,6 +1226,12 @@
     <Content Include="NPCs\Bosses\Retriever\Retriever.png" />
     <Content Include="NPCs\Bosses\Retriever\Retriever_Head_Boss.png" />
     <Content Include="NPCs\Bosses\SoC\Soul of Cthulhu.png" />
+    <Content Include="NPCs\Bosses\Zero\RealityCanon.png" />
+    <Content Include="NPCs\Bosses\Zero\RiftShredder.png" />
+    <Content Include="NPCs\Bosses\Zero\TeslaHand.png" />
+    <Content Include="NPCs\Bosses\Zero\VoidStar.png" />
+    <Content Include="NPCs\Bosses\Zero\Zero.png" />
+    <Content Include="NPCs\Bosses\Zero\ZeroArm.png" />
     <Content Include="NPCs\Bosses\Zero\ZeroAwakened.png" />
     <Content Include="NPCs\Bosses\Zero\ZeroAwakened1.png" />
     <Content Include="NPCs\Bosses\Zero\ZeroAwakened_Head_Boss.png" />
@@ -1458,7 +1469,6 @@
     <Folder Include="bin\Release\" />
     <Folder Include="Items\Mounts\" />
     <Folder Include="Items\Pets\" />
-    <Folder Include="NPCs\Bosses\Zero\Zero2\" />
     <Folder Include="obj\Debug\TempPE\" />
     <Folder Include="obj\NPCs\" />
   </ItemGroup>

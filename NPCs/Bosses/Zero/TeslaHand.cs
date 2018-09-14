@@ -1,53 +1,36 @@
 using Terraria;
 using Terraria.ID;
+using Terraria.Audio;
 using Terraria.ModLoader;
+using Microsoft.Xna.Framework;
+using System;
 
-namespace AAMod.NPCs.Enemies.Other
+namespace AAMod.NPCs.Bosses.Zero
 {
-    public class DragonClaw : ModNPC
+    public class TeslaHand : ModNPC
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Dragon Claw");
-            Main.npcFrameCount[npc.type] = 2;
+            DisplayName.SetDefault("Broken Weapon");
         }
         public override void SetDefaults()
         {
-            npc.width = 28;
-            npc.height = 24;
+            npc.width = 36;
+            npc.height = 42;
             npc.friendly = false;
-            npc.damage = 15;
-            npc.defense = 4;
-            npc.lifeMax = 65;
-            npc.HitSound = SoundID.NPCHit1;
-            npc.DeathSound = SoundID.NPCDeath1;
+            npc.damage = 100;
+            npc.defense = 90;
+            npc.lifeMax = 28000;
+            npc.HitSound = new LegacySoundStyle(3, 4, Terraria.Audio.SoundType.Sound);
+            npc.DeathSound = new LegacySoundStyle(4, 14, Terraria.Audio.SoundType.Sound);
             npc.value = 0f;
-            npc.knockBackResist = 0.6f;
-            npc.aiStyle = 2;
-            aiType = NPCID.DemonEye;  //npc behavior
-            animationType = NPCID.DemonEye;
+            npc.knockBackResist = -1f;
+            npc.aiStyle = 34;
+            animationType = NPCID.PrimeVice;
         }
-        public override float SpawnChance(NPCSpawnInfo spawnInfo)
+        public override void AI()
         {
-            return SpawnCondition.OverworldNightMonster.Chance * 0.12f;
-        }
-        public override void HitEffect(int hitDirection, double damage)
-        {
-            if (npc.life <= 0)          //this make so when the npc has 0 life(dead) he will spawn this
-            {
-                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gore/DragonClawGore1"), 1f);
-                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gore/DragonClawGore2"), 1f);
-                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gore/DragonClawGore3"), 1f);
-                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gore/DragonClawGore4"), 1f);
-            }
-        }
-        public override void ModifyHitPlayer(Player target, ref int damage, ref bool crit)
-        {
-            target.AddBuff(BuffID.OnFire, 180);
-        }
-        public override void NPCLoot()
-        {
-                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("DragonClaw"));
+
         }
     }
 }
