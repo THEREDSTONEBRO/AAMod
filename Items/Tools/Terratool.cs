@@ -1,3 +1,5 @@
+using AAMod.UI;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -5,6 +7,11 @@ namespace AAMod.Items.Tools
 {
     public class Terratool : ModItem
     {
+        public static bool AxeBool = false;
+        public static bool PickBool = false;
+        public static bool HammerBool = false;
+        internal static bool visible;
+
         public override void SetDefaults()
         {
 
@@ -14,7 +21,9 @@ namespace AAMod.Items.Tools
             item.height = 40;
             item.useTime = 5;
             item.useAnimation = 20;
-            item.pick = 300;    //pickaxe power
+            item.axe = 0;
+            item.pick = 0;
+            item.hammer = 0;
             item.useStyle = 1;
             item.knockBack = 3;
             item.value = 1000000;
@@ -24,11 +33,11 @@ namespace AAMod.Items.Tools
             item.useTurn = true;
         }
 
-    public override void SetStaticDefaults()
-    {
-      DisplayName.SetDefault("Terratool");
-      Tooltip.SetDefault("");
-    }
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("Terratool");
+            Tooltip.SetDefault("");
+        }
 
         public override void AddRecipes()  //How to craft this item
         {
@@ -37,6 +46,23 @@ namespace AAMod.Items.Tools
             recipe.AddTile(TileID.Anvils);   //at work bench
             recipe.SetResult(this);  
             recipe.AddRecipe();
+        }
+
+        public override bool AltFunctionUse(Player player)
+        {
+            if (!TerratoolUI.visible)
+            {
+                Main.PlaySound(SoundID.MenuOpen);
+                TerratoolUI.visible = true;
+                AAMod.instance.UserInterface.SetState(AAMod.instance.TerratoolUI);
+            }
+            else
+            {
+                Main.PlaySound(SoundID.MenuClose);
+                TerratoolUI.visible = false;
+                AAMod.instance.UserInterface.SetState(null);
+            }
+            return true;
         }
     }
 }
