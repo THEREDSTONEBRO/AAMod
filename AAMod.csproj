@@ -30,9 +30,18 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.Xna.Framework, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553" />
+    <Reference Include="Microsoft.Xna.Framework.Game, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553" />
+    <Reference Include="Microsoft.Xna.Framework.Graphics, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553" />
     <Reference Include="ModdedTerraria">
       <HintPath>..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Terraria\ModdedTerraria.exe</HintPath>
+    </Reference>
+    <Reference Include="ReLogic">
+      <HintPath>..\..\ReLogic.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -389,9 +398,6 @@
     <Compile Include="Items\Vanity\N1\N1.cs" />
     <Compile Include="Items\Vanity\RetrieverMask.cs" />
     <Compile Include="NPCs\AAModGlobalNPC.cs" />
-    <Compile Include="NPCs\Bosses\Daybringer\Daybringer.cs" />
-    <Compile Include="NPCs\Bosses\Daybringer\DBBody.cs" />
-    <Compile Include="NPCs\Bosses\Daybringer\DBTail.cs" />
     <Compile Include="NPCs\Bosses\Grips\GripOfChaosBlue.cs" />
     <Compile Include="NPCs\Bosses\Grips\GripOfChaosRed.cs" />
     <Compile Include="NPCs\Bosses\Retriever\Retriever.cs" />
@@ -484,6 +490,7 @@
     <Compile Include="Tiles\VoidUnit.cs" />
     <Compile Include="Tiles\Zero2Box.cs" />
     <Compile Include="Tiles\ZeroBox.cs" />
+    <Compile Include="UI\TerratoolUI.cs" />
     <Compile Include="Walls\DepthstoneWall.cs" />
     <Compile Include="Walls\DoomstoneBrickWall.cs" />
     <Compile Include="Walls\InfernoGrassWall.cs" />
@@ -1186,13 +1193,6 @@
     <Content Include="NPCs\Bosses\Akuma\AkumaBody2.png" />
     <Content Include="NPCs\Bosses\Akuma\AkumaHead.png" />
     <Content Include="NPCs\Bosses\Akuma\AkumaTail.png" />
-    <Content Include="NPCs\Bosses\Daybringer\Daybringer.png" />
-    <Content Include="NPCs\Bosses\Daybringer\DaybringerHeadGlowmask.png" />
-    <Content Include="NPCs\Bosses\Daybringer\Daybringer_Boss_Head.png" />
-    <Content Include="NPCs\Bosses\Daybringer\DBBody.png" />
-    <Content Include="NPCs\Bosses\Daybringer\DBBody_Glowmask.png" />
-    <Content Include="NPCs\Bosses\Daybringer\DBTail.png" />
-    <Content Include="NPCs\Bosses\Daybringer\DBTail_Glowmask.png" />
     <Content Include="NPCs\Bosses\Decay\Decay.png" />
     <Content Include="NPCs\Bosses\Grips\GripOfChaosBlue.png" />
     <Content Include="NPCs\Bosses\Grips\GripOfChaosBluePunch.png" />
@@ -1403,6 +1403,10 @@
     <Content Include="Tiles\ZerO.png" />
     <Content Include="Tiles\Zero2Box.png" />
     <Content Include="Tiles\ZeroBox.png" />
+    <Content Include="UI\Axe.png" />
+    <Content Include="UI\Base.png" />
+    <Content Include="UI\Hammer.png" />
+    <Content Include="UI\Pick.png" />
     <Content Include="Walls\AbyssiumChunkWall.png" />
     <Content Include="Walls\DarkmudWall.png" />
     <Content Include="Walls\DepthstoneWall.png" />
@@ -1430,7 +1434,6 @@
     <Content Include="Water\VoidWaterStyle_Block.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="NPCs\Bosses\Daybringer\Thumbs.db" />
     <None Include="NPCs\Bosses\Nightcrawler\Thumbs.db" />
     <None Include="obj\Debug\AAMod.csproj.CopyComplete" />
     <None Include="obj\Debug\AAMod.csproj.CoreCompileInputs.cache" />
@@ -1451,4 +1454,7 @@
     <Folder Include="obj\NPCs\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>"D:\SteamLibrary\steamapps\common\Terraria\tModLoaderServer.exe" -build "$(ProjectDir)\" -eac "$(TargetPath)"</PostBuildEvent>
+  </PropertyGroup>
 </Project>
