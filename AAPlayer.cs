@@ -504,7 +504,7 @@ namespace AAMod
             {
                 for (int i = 0; i < 200; i++)
                 {
-                    Main.npc[i].GetGlobalNPC<AAModGlobalNPC>().TimeFrozen = true;
+                    target.AddBuff(BuffID.Chilled, 180);
                 }
             }
 
