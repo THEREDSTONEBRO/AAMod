@@ -6,7 +6,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.GameContent.Achievements;
 
-namespace AAMod.Items.Projectiles
+namespace AAMod.NPCs.Bosses.Zero
 {
 	// to investigate: Projectile.Damage, (8843)
 	class VoidStarP : ModProjectile
