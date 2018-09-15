@@ -332,6 +332,8 @@
     <Compile Include="Items\Projectiles\JungleReaperP.cs" />
     <Compile Include="Items\Projectiles\ManaShot.cs" />
     <Compile Include="Items\Projectiles\MireProj.cs" />
+    <Compile Include="Items\Projectiles\Moonray.cs" />
+    <Compile Include="Items\Projectiles\MoonrayScatter.cs" />
     <Compile Include="Items\Projectiles\Number1.cs" />
     <Compile Include="Items\Projectiles\OrangeSolution.cs" />
     <Compile Include="Items\Projectiles\OrderSolution.cs" />
@@ -340,6 +342,8 @@
     <Compile Include="Items\Projectiles\ReaperArrow.cs" />
     <Compile Include="Items\Projectiles\Ryugen.cs" />
     <Compile Include="Items\Projectiles\Squirt.cs" />
+    <Compile Include="Items\Projectiles\Sunbeam.cs" />
+    <Compile Include="Items\Projectiles\SunbeamScatter.cs" />
     <Compile Include="Items\Projectiles\Taserblast.cs" />
     <Compile Include="Items\Projectiles\TerraRoseShot.cs" />
     <Compile Include="Items\Projectiles\TFGWP.cs" />
@@ -398,8 +402,10 @@
     <Compile Include="Items\Vanity\N1\N1.cs" />
     <Compile Include="Items\Vanity\RetrieverMask.cs" />
     <Compile Include="NPCs\AAModGlobalNPC.cs" />
+    <Compile Include="NPCs\Bosses\Daybringer\Daybringer.cs" />
     <Compile Include="NPCs\Bosses\Grips\GripOfChaosBlue.cs" />
     <Compile Include="NPCs\Bosses\Grips\GripOfChaosRed.cs" />
+    <Compile Include="NPCs\Bosses\Nightcrawler\Nightcrawler.cs" />
     <Compile Include="NPCs\Bosses\Retriever\Retriever.cs" />
     <Compile Include="NPCs\Bosses\Zero\RealityCannon.cs" />
     <Compile Include="NPCs\Bosses\Zero\RiftShredder.cs" />
@@ -1198,6 +1204,13 @@
     <Content Include="NPCs\Bosses\Akuma\AkumaBody2.png" />
     <Content Include="NPCs\Bosses\Akuma\AkumaHead.png" />
     <Content Include="NPCs\Bosses\Akuma\AkumaTail.png" />
+    <Content Include="NPCs\Bosses\Daybringer\Daybringer.png" />
+    <Content Include="NPCs\Bosses\Daybringer\Daybringer_Glowmask.png" />
+    <Content Include="NPCs\Bosses\Daybringer\Daybringer_Head.png" />
+    <Content Include="NPCs\Bosses\Daybringer\DBBody.png" />
+    <Content Include="NPCs\Bosses\Daybringer\DBBody_Glowmask.png" />
+    <Content Include="NPCs\Bosses\Daybringer\DBTail.png" />
+    <Content Include="NPCs\Bosses\Daybringer\DBTail_Glowmask.png" />
     <Content Include="NPCs\Bosses\Decay\Decay.png" />
     <Content Include="NPCs\Bosses\Grips\GripOfChaosBlue.png" />
     <Content Include="NPCs\Bosses\Grips\GripOfChaosBluePunch.png" />
@@ -1445,7 +1458,6 @@
     <Content Include="Water\VoidWaterStyle_Block.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="NPCs\Bosses\Nightcrawler\Thumbs.db" />
     <None Include="obj\Debug\AAMod.csproj.CopyComplete" />
     <None Include="obj\Debug\AAMod.csproj.CoreCompileInputs.cache" />
     <None Include="obj\Debug\AAMod.csprojAssemblyReference.cache" />
