@@ -494,5 +494,4 @@ namespace AAMod.NPCs.Bosses.Zero
         }*/
 
     }
-    }
 }
