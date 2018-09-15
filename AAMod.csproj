@@ -398,6 +398,9 @@
     <Compile Include="Items\Vanity\N1\N1.cs" />
     <Compile Include="Items\Vanity\RetrieverMask.cs" />
     <Compile Include="NPCs\AAModGlobalNPC.cs" />
+    <Compile Include="NPCs\Bosses\Daybringer\Daybringer.cs" />
+    <Compile Include="NPCs\Bosses\Daybringer\DBBody.cs" />
+    <Compile Include="NPCs\Bosses\Daybringer\DBTail.cs" />
     <Compile Include="NPCs\Bosses\Grips\GripOfChaosBlue.cs" />
     <Compile Include="NPCs\Bosses\Grips\GripOfChaosRed.cs" />
     <Compile Include="NPCs\Bosses\Retriever\Retriever.cs" />
@@ -1198,6 +1201,13 @@
     <Content Include="NPCs\Bosses\Akuma\AkumaBody2.png" />
     <Content Include="NPCs\Bosses\Akuma\AkumaHead.png" />
     <Content Include="NPCs\Bosses\Akuma\AkumaTail.png" />
+    <Content Include="NPCs\Bosses\Daybringer\Daybringer.png" />
+    <Content Include="NPCs\Bosses\Daybringer\DaybringerHeadGlowmask.png" />
+    <Content Include="NPCs\Bosses\Daybringer\Daybringer_Boss_Head.png" />
+    <Content Include="NPCs\Bosses\Daybringer\DBBody.png" />
+    <Content Include="NPCs\Bosses\Daybringer\DBBody_Glowmask.png" />
+    <Content Include="NPCs\Bosses\Daybringer\DBTail.png" />
+    <Content Include="NPCs\Bosses\Daybringer\DBTail_Glowmask.png" />
     <Content Include="NPCs\Bosses\Decay\Decay.png" />
     <Content Include="NPCs\Bosses\Grips\GripOfChaosBlue.png" />
     <Content Include="NPCs\Bosses\Grips\GripOfChaosBluePunch.png" />
