@@ -136,23 +136,23 @@ namespace AAMod.NPCs.Bosses.Zero
             {
                 npc.TargetClosest(true);
                 npc.ai[0] = 1f;
-                int num440 = NPC.NewNPC((int)(npc.position.X + (float)(npc.width / 2)), (int)npc.position.Y + npc.height / 2, mod.NPCType("Retriever"), npc.whoAmI, 0f, 0f, 0f, 0f, 255);
+                int num440 = NPC.NewNPC((int)(npc.position.X + (float)(npc.width / 2)), (int)npc.position.Y + npc.height / 2, mod.NPCType("RealitySlasher"), npc.whoAmI, 0f, 0f, 0f, 0f, 255);
                 Main.npc[num440].ai[0] = -1f;
                 Main.npc[num440].ai[1] = (float)npc.whoAmI;
                 Main.npc[num440].target = npc.target;
                 Main.npc[num440].netUpdate = true;
-                num440 = NPC.NewNPC((int)(npc.position.X + (float)(npc.width / 2)), (int)npc.position.Y + npc.height / 2, 129, npc.whoAmI, 0f, 0f, 0f, 0f, 255);
+                num440 = NPC.NewNPC((int)(npc.position.X + (float)(npc.width / 2)), (int)npc.position.Y + npc.height / 2, 129, mod.NPCType("TeslaHand"), 0f, 0f, 0f, 0f, 255);
                 Main.npc[num440].ai[0] = 1f;
                 Main.npc[num440].ai[1] = (float)npc.whoAmI;
                 Main.npc[num440].target = npc.target;
                 Main.npc[num440].netUpdate = true;
-                num440 = NPC.NewNPC((int)(npc.position.X + (float)(npc.width / 2)), (int)npc.position.Y + npc.height / 2, 130, npc.whoAmI, 0f, 0f, 0f, 0f, 255);
+                num440 = NPC.NewNPC((int)(npc.position.X + (float)(npc.width / 2)), (int)npc.position.Y + npc.height / 2, 130, mod.NPCType("VoidStar"), 0f, 0f, 0f, 0f, 255);
                 Main.npc[num440].ai[0] = -1f;
                 Main.npc[num440].ai[1] = (float)npc.whoAmI;
                 Main.npc[num440].target = npc.target;
                 Main.npc[num440].ai[3] = 150f;
                 Main.npc[num440].netUpdate = true;
-                num440 = NPC.NewNPC((int)(npc.position.X + (float)(npc.width / 2)), (int)npc.position.Y + npc.height / 2, 131, npc.whoAmI, 0f, 0f, 0f, 0f, 255);
+                num440 = NPC.NewNPC((int)(npc.position.X + (float)(npc.width / 2)), (int)npc.position.Y + npc.height / 2, 131, mod.NPCType("RealityCannon"), 0f, 0f, 0f, 0f, 255);
                 Main.npc[num440].ai[0] = 1f;
                 Main.npc[num440].ai[1] = (float)npc.whoAmI;
                 Main.npc[num440].target = npc.target;
@@ -166,11 +166,6 @@ namespace AAMod.NPCs.Bosses.Zero
                 {
                     npc.ai[1] = 3f;
                 }
-            }
-            if (Main.dayTime && npc.ai[1] != 3f && npc.ai[1] != 2f)
-            {
-                npc.ai[1] = 2f;
-                Main.PlaySound(15, (int)npc.position.X, (int)npc.position.Y, 0, 1f, 0f);
             }
             if (npc.ai[1] == 0f)
             {

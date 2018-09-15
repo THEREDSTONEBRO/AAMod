@@ -36,7 +36,7 @@ namespace AAMod.NPCs.Bosses.Daybringer
             npc.behindTiles = true;
             npc.DeathSound = null;
             music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/Equinox");
-            musicPriority = MusicPriority.BossMedium;
+            musicPriority = MusicPriority.BossHigh;
             //bossBag = mod.ItemType("");
         }
 
