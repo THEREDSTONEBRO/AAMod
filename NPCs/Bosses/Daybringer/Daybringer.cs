@@ -32,7 +32,7 @@ namespace AAMod.NPCs.Bosses.Daybringer
             npc.DeathSound = null;
             music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/Equinox");
             musicPriority = MusicPriority.BossMedium;
-            bossBag = /*for alpha*/ mod.ItemType("");
+            //bossBag = mod.ItemType("");
         }
 
         public override void ScaleExpertStats(int numPlayers, float bossLifeScale)

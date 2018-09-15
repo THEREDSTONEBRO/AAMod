@@ -7,7 +7,6 @@ using AAMod.NPCs.Bosses.Daybringer;
 
 namespace AAMod.NPCs.Bosses.Nightcrawler
 {
-    [AutoloadBossHead]
     class NightcrawlerHead : WormNightConnector
     {
         public override string Texture { get { return "AAMod/NPCs/Bosses/Nightcrawler/NightcrawlerHead"; } }
@@ -32,7 +31,7 @@ namespace AAMod.NPCs.Bosses.Nightcrawler
             npc.DeathSound = null;
             music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/Equinox");
             musicPriority = MusicPriority.BossMedium;
-            bossBag = mod.ItemType("");
+            //bossBag = mod.ItemType("");
         }
 
         public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
