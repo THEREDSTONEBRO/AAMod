@@ -1262,6 +1262,7 @@
     <Content Include="NPCs\Bosses\Zero\VoidStar.png" />
     <Content Include="NPCs\Bosses\Zero\VoidStarP.png" />
     <Content Include="NPCs\Bosses\Zero\Zero.png" />
+    <Content Include="NPCs\Bosses\Zero\Zero1.png" />
     <Content Include="NPCs\Bosses\Zero\ZeroArm.png" />
     <Content Include="NPCs\Bosses\Zero\ZeroAwakened.png" />
     <Content Include="NPCs\Bosses\Zero\ZeroAwakened1.png" />
@@ -1495,6 +1496,7 @@
     <Content Include="Water\VoidWaterStyle_Block.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include=".gitignore" />
     <None Include=".vs\AAMod\DesignTimeBuild\.dtbcache" />
     <None Include=".vs\AAMod\v15\.suo" />
     <None Include=".vs\AAMod\v15\Server\sqlite3\db.lock" />

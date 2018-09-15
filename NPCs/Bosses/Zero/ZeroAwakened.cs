@@ -37,7 +37,7 @@ namespace AAMod.NPCs.Bosses.Zero
             npc.noGravity = true;
             npc.noTileCollide = true;
             npc.HitSound = new LegacySoundStyle(4, 36, Terraria.Audio.SoundType.Sound);
-            npc.DeathSound = new LegacySoundStyle(4, 39, Terraria.Audio.SoundType.Sound);
+            npc.DeathSound = mod.GetLegacySoundSlot(Terraria.ModLoader.SoundType.Custom, "Sounds/Sounds/ZeroDeath");
             music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/Zero2");
             npc.buffImmune[BuffID.Poisoned] = true;
             npc.buffImmune[BuffID.Ichor] = true;

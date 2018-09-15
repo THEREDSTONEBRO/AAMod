@@ -19,29 +19,25 @@ namespace AAMod.NPCs.Bosses.Zero
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Zero Awakened");
-            Main.npcFrameCount[npc.type] = 2;    //boss frame/animation 
+            Main.npcFrameCount[npc.type] = 3;    //boss frame/animation 
 
         }
         public override void SetDefaults()
         {
-            npc.width = 80;
-            npc.height = 102;
+            npc.width = 206;
+            npc.height = 208;
             npc.aiStyle = 32;
             npc.damage = 130;  //boss damage
             npc.defense = 70;    //boss defense
-            npc.lifeMax = 28000;
-            npc.HitSound = new LegacySoundStyle(4, 36, Terraria.Audio.SoundType.Sound);
-            npc.DeathSound = new LegacySoundStyle(4, 39, Terraria.Audio.SoundType.Sound);
+            npc.lifeMax = 200000;
+            npc.HitSound = new LegacySoundStyle(4, 4, Terraria.Audio.SoundType.Sound);
+            npc.DeathSound = new LegacySoundStyle(4, 14, Terraria.Audio.SoundType.Sound);
             npc.noGravity = true;
             music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/Zero");
             npc.noTileCollide = true;
             npc.value = 120000f;
             npc.knockBackResist = -1f;
             npc.boss = true;
-            npc.buffImmune[20] = true;
-            npc.buffImmune[24] = true;
-            npc.buffImmune[39] = true;
-            npc.buffImmune[189] = (npc.buffImmune[169] = (npc.buffImmune[183] = true));
             npc.friendly = false;
             animationType = NPCID.SkeletronPrime;
             npc.npcSlots = 1f;
