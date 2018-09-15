@@ -30,7 +30,7 @@ namespace AAMod.NPCs.Bosses.Zero
         }
         public override void AI()
         {
-            if (npc.aiStyle == 33)
+            else if (npc.aiStyle == 33)
             {
                 Vector2 vector46 = new Vector2(npc.position.X + (float)npc.width * 0.5f, npc.position.Y + (float)npc.height * 0.5f);
                 float num448 = Main.npc[(int)npc.ai[1]].position.X + (float)(Main.npc[(int)npc.ai[1]].width / 2) - 200f * npc.ai[0] - vector46.X;
