@@ -3,14 +3,13 @@ using Terraria;
 using Terraria.ModLoader;
 using Terraria.ID;
 using System.IO;
-using AAMod.NPCs.Bosses.Nightcrawler;
+using AAMod.NPCs.Bosses.Daybringer;
 
-namespace AAMod.NPCs.Bosses.Daybringer
+namespace AAMod.NPCs.Bosses.Nightcrawler
 {
-    [AutoloadBossHead]
-    class DaybringerHead : WormDayConnector
+    class NightcrawlerHead : WormNightConnector
     {
-        public override string Texture { get { return "AAMod/NPCs/Bosses/Daybringer/Daybringer"; } }
+        public override string Texture { get { return "AAMod/NPCs/Bosses/Nightcrawler/NightcrawlerHead"; } }
 
         public static bool ExpertTimeSpeed = false;
 
@@ -20,8 +19,8 @@ namespace AAMod.NPCs.Bosses.Daybringer
             npc.damage = 70;
             npc.defense = 70;
             npc.knockBackResist = 0f;
-            npc.width = 46;
-            npc.height = 68;
+            npc.width = 66;
+            npc.height = 62;
             npc.value = Item.buyPrice(0, 55, 0, 0);
             npc.boss = true;
             npc.aiStyle = -1;
@@ -71,7 +70,7 @@ namespace AAMod.NPCs.Bosses.Daybringer
                     Vector2 direction = (target.Center - npc.Center).SafeNormalize(Vector2.UnitX);
                     direction = direction.RotatedByRandom(MathHelper.ToRadians(10));
 
-                    int projectile = Projectile.NewProjectile(npc.Center, direction * 1, mod.ProjectileType("Sunbeam"), 35, 0, Main.myPlayer);
+                    int projectile = Projectile.NewProjectile(npc.Center, direction * 1, mod.ProjectileType("Moonray"), 35, 0, Main.myPlayer);
                     Main.projectile[projectile].timeLeft = 300;
                     attackCounter = 500;
                     npc.netUpdate = true;
@@ -80,28 +79,28 @@ namespace AAMod.NPCs.Bosses.Daybringer
         }
     }
 
-    class DaybringerBody : WormDayConnector
+    class NightcrawlerBody : WormNightConnector
     {
-        public override string Texture { get { return "AAMod/NPCs/Bosses/Daybringer/DBBody"; } }
+        public override string Texture { get { return "AAMod/NPCs/Bosses/Nightcrawler/NightcrawlerBody"; } }
 
         public override void SetDefaults()
         {
-            npc.CloneDefaults(mod.NPCType<DaybringerHead>());
+            npc.CloneDefaults(mod.NPCType<NightcrawlerHead>());
             npc.width = 54;
             npc.height = 48;
             npc.DeathSound = null;
         }
     }
 
-    class DaybringerTail : WormDayConnector
+    class NightcrawlerTail : WormNightConnector
     {
-        public override string Texture { get { return "AAMod/NPCs/Bosses/Daybringer/DBTail"; } }
+        public override string Texture { get { return "AAMod/NPCs/Bosses/Nightcrawler/NightcrawlerTail"; } }
 
         public override void SetDefaults()
         {
-            npc.CloneDefaults(mod.NPCType<DaybringerHead>());
-            npc.width = 34;
-            npc.height = 52;
+            npc.CloneDefaults(mod.NPCType<NightcrawlerHead>());
+            npc.width = 26;
+            npc.height = 38;
             npc.DeathSound = null;
         }
 
@@ -112,25 +111,25 @@ namespace AAMod.NPCs.Bosses.Daybringer
         }
     }
     // I made this 2nd base class to limit code repetition.
-    public abstract class WormDayConnector : WormDay
+    public abstract class WormNightConnector : WormNight
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Daybringer");
+            DisplayName.SetDefault("Nightcrawler");
         }
 
         public override void Init()
         {
             minLength = 12;
             maxLength = 16;
-            tailType = mod.NPCType<DaybringerTail>();
-            bodyType = mod.NPCType<DaybringerBody>();
-            headType = mod.NPCType<DaybringerHead>();
+            tailType = mod.NPCType<NightcrawlerTail>();
+            bodyType = mod.NPCType<NightcrawlerBody>();
+            headType = mod.NPCType<NightcrawlerHead>();
             speed = 3.5f;
             turnSpeed = 0.045f;
         }
     }
-    public abstract class WormDay : ModNPC
+    public abstract class WormNight : ModNPC
     {
         /* ai[0] = follower
 		 * ai[1] = following
@@ -636,18 +635,18 @@ namespace AAMod.NPCs.Bosses.Daybringer
             {
                 Main.dayRate = 1;
             }
-            if (Main.dayTime && NPC.AnyNPCs(mod.NPCType<DaybringerHead>()))
+            if (!Main.dayTime && NPC.AnyNPCs(mod.NPCType<NightcrawlerHead>()))
             {
                 npc.scale = 1.5f;
-                speed = 6.5f;
+                speed = 2.5f;
                 npc.damage = 75;
                 if (Main.expertMode)
                 {
-                    npc.defense = 68;
+                    npc.defense = 79;
                 }
                 else
                 {
-                    npc.defense = 64;
+                    npc.defense = 75;
                 }
             }
             else
