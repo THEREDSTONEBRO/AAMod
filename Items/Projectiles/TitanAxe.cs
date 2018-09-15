@@ -22,7 +22,7 @@ namespace AAMod.Items.Projectiles
 			projectile.penetrate = -1;
 			projectile.timeLeft = 300;
             projectile.CloneDefaults(ProjectileID.PaladinsHammerFriendly);
-            aiType = ProjectileID.LightDisc;
+            aiType = ProjectileID.PaladinsHammerFriendly;
             drawOffsetX = 5;
 			drawOriginOffsetY = 5;
 		

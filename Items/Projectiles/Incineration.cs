@@ -35,19 +35,6 @@ namespace AAMod.Items.Projectiles   //The directory for your .cs and .png; Examp
     {
       DisplayName.SetDefault("Incineration");
     }
-
-        //Add this if you want the yoyo to make dust when used
-        public override void PostAI()
-        {
-            if (Main.rand.NextFloat() < 1f)
-            {
-                Dust dust;
-                Vector2 position = projectile.position;
-                dust = Main.dust[Terraria.Dust.NewDust(position, 31, 30, 27, 0f, 0f, 124, new Color(255, 75, 0), 1.381579f)];
-                dust.noGravity = true;
-                dust.fadeIn = 2.407895f;
-            }
-        }
                 //dust = Main.dust[Terraria.Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, 15, 0f, 0f, 46, new Color(255, 75, 0), 1.381579f)];
 
     }

@@ -29,7 +29,7 @@ namespace AAMod.NPCs.Bosses.Retriever
             npc.width = 92;
             npc.height = 54;
             npc.friendly = false;
-            animationType = NPCID.Retinazer;   //this boss will behavior like the DemonEye
+            animationType = NPCID.DemonEye;   //this boss will behavior like the DemonEye
             npc.value = Item.buyPrice(0, 10, 50, 0);
             npc.npcSlots = 1f;
             npc.boss = true;  

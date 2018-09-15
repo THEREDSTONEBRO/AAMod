@@ -28,23 +28,13 @@ namespace AAMod.Items.Projectiles   //The directory for your .cs and .png; Examp
             ProjectileID.Sets.YoyosMaximumRange[projectile.type] = 360f;
             // YoyosTopSpeed is top speed of the yoyo projectile.
             // Vanilla values range from 9f(Wood) to 17.5f(Terrarian), and defaults to 10f
-            ProjectileID.Sets.YoyosTopSpeed[projectile.type] = 20f;
+            ProjectileID.Sets.YoyosTopSpeed[projectile.type] = 15f;
         }
 
     public override void SetStaticDefaults()
     {
       DisplayName.SetDefault("Depthwalker");
     }
-
-        //Add this if you want the yoyo to make dust when used
-        public override void AI()
-        {
-            if (Main.rand.Next(2) == 0) // this is how many duspt particles will spawn
-            {// DustID.Fire is a vanilla terrraria dust, change it to what you like. To add a modded dust the change DustID.Fire with mod.DustType("DustName")
-                Dust.NewDust(projectile.position + projectile.velocity, projectile.width, projectile.height, 186, projectile.velocity.X * 0.5f, projectile.velocity.Y * 0.5f);
-            }
-        }
- 
- 
-    }
+        
+     }
 }

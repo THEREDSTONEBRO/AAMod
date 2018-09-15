@@ -1,6 +1,8 @@
 using System;
+using System.IO;
 using AAMod;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
@@ -13,6 +15,7 @@ namespace AAMod.NPCs.Bosses.Zero
     {
         private Player player;
         private float speed;
+        public static Texture2D boneArm2Texture;
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Zero Awakened");
@@ -30,7 +33,7 @@ namespace AAMod.NPCs.Bosses.Zero
             npc.HitSound = new LegacySoundStyle(4, 36, Terraria.Audio.SoundType.Sound);
             npc.DeathSound = new LegacySoundStyle(4, 39, Terraria.Audio.SoundType.Sound);
             npc.noGravity = true;
-            music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/Zero2");
+            music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/Zero");
             npc.noTileCollide = true;
             npc.value = 120000f;
             npc.knockBackResist = -1f;
@@ -47,14 +50,77 @@ namespace AAMod.NPCs.Bosses.Zero
         }
         public override void HitEffect(int hitDirection, double damage)
         {
-
+            if (npc.life <= 0)
+            {
+                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gore/ZeroGore1"), 1f);
+                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gore/ZeroGore1"), 1f);
+                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gore/ZeroGore1"), 1f);
+                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gore/ZeroGore1"), 1f);
+                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gore/ZeroGore2"), 1f);
+                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gore/ZeroGore3"), 1f);
+                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gore/ZeroGore3"), 1f);
+                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gore/ZeroGore3"), 1f);
+                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gore/ZeroGore3"), 1f);
+                npc.position.X = npc.position.X + npc.width / 2;
+                npc.position.Y = npc.position.Y + npc.height / 2;
+                npc.width = 100;
+                npc.height = 100;
+                npc.position.X = npc.position.X - npc.width / 2;
+                npc.position.Y = npc.position.Y - npc.height / 2;
+                Vector2 spawnAt = npc.Center + new Vector2(0f, npc.height / 2f);
+                NPC.NewNPC((int)spawnAt.X, (int)spawnAt.Y, mod.NPCType("ZeroAwakened"));
+            }
         }
-
-        public override void NPCLoot()
+        /*public override void Main.LoadTextures();
         {
-            
+            Main.boneArmTexture = NPC.OurLoad<Texture2D>("Images" + Path.DirectorySeparatorChar + "Arm_Bone");
         }
 
+    /*if (nPC.aiStyle >= 33 && nPC.aiStyle <= 36)
+			{
+				Vector2 vector7 = new Vector2(nPC.position.X + (float)nPC.width * 0.5f - 5f * nPC.ai[0], nPC.position.Y + 20f);
+				for (int k = 0; k < 2; k++)
+				{
+					float num22 = Main.npc[(int)nPC.ai[1]].position.X + (float)(Main.npc[(int)nPC.ai[1]].width / 2) - vector7.X;
+					float num23 = Main.npc[(int)nPC.ai[1]].position.Y + (float)(Main.npc[(int)nPC.ai[1]].height / 2) - vector7.Y;
+					float num24;
+					if (k == 0)
+					{
+						num22 -= 200f * nPC.ai[0];
+						num23 += 130f;
+						num24 = (float)Math.Sqrt((double)(num22 * num22 + num23 * num23));
+						num24 = 92f / num24;
+						vector7.X += num22 * num24;
+						vector7.Y += num23 * num24;
+					}
+					else
+					{
+						num22 -= 50f * nPC.ai[0];
+						num23 += 80f;
+						num24 = (float)Math.Sqrt((double)(num22 * num22 + num23 * num23));
+						num24 = 60f / num24;
+						vector7.X += num22 * num24;
+						vector7.Y += num23 * num24;
+					}
+					float rotation7 = (float)Math.Atan2((double)num23, (double)num22) - 1.57f;
+					Microsoft.Xna.Framework.Color color7 = Lighting.GetColor((int)vector7.X / 16, (int)(vector7.Y / 16f));
+					Main.spriteBatch.Draw(Main.boneArm2Texture, new Vector2(vector7.X - Main.screenPosition.X, vector7.Y - Main.screenPosition.Y), new Microsoft.Xna.Framework.Rectangle?(new Microsoft.Xna.Framework.Rectangle(0, 0, Main.boneArmTexture.Width, Main.boneArmTexture.Height)), color7, rotation7, new Vector2((float)Main.boneArmTexture.Width * 0.5f, (float)Main.boneArmTexture.Height * 0.5f), 1f, SpriteEffects.None, 0f);
+					if (k == 0)
+					{
+						vector7.X += num22 * num24 / 2f;
+						vector7.Y += num23 * num24 / 2f;
+					}
+					else if (base.IsActive)
+					{
+						vector7.X += num22 * num24 - 16f;
+						vector7.Y += num23 * num24 - 6f;
+						int num25 = Dust.NewDust(new Vector2(vector7.X, vector7.Y), 30, 10, 6, num22 * 0.02f, num23 * 0.02f, 0, default(Microsoft.Xna.Framework.Color), 2.5f);
+						Main.dust[num25].noGravity = true;
+					}
+				}
+			}*/
+
+            
        
         public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
         {
@@ -70,7 +136,7 @@ namespace AAMod.NPCs.Bosses.Zero
             {
                 npc.TargetClosest(true);
                 npc.ai[0] = 1f;
-                int num440 = NPC.NewNPC((int)(npc.position.X + (float)(npc.width / 2)), (int)npc.position.Y + npc.height / 2, 128, npc.whoAmI, 0f, 0f, 0f, 0f, 255);
+                int num440 = NPC.NewNPC((int)(npc.position.X + (float)(npc.width / 2)), (int)npc.position.Y + npc.height / 2, mod.NPCType("Retriever"), npc.whoAmI, 0f, 0f, 0f, 0f, 255);
                 Main.npc[num440].ai[0] = -1f;
                 Main.npc[num440].ai[1] = (float)npc.whoAmI;
                 Main.npc[num440].target = npc.target;

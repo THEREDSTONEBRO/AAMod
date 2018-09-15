@@ -31,10 +31,10 @@ namespace AAMod.Items.Melee
 		public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(mod, "Incinerite", 20);
-			recipe.AddIngredient(mod, "Abyssium", 20);
-            recipe.AddIngredient(mod, "FlamingFury", 20);
-            recipe.AddIngredient(mod, "ExilesKatana", 20);
+			recipe.AddIngredient(mod, "IncineriteBar", 20);
+			recipe.AddIngredient(mod, "AbyssiumBar", 20);
+            recipe.AddIngredient(mod, "FlamingFury", 1);
+            recipe.AddIngredient(mod, "ExilesKatana", 1);
             recipe.AddTile(TileID.DemonAltar);
 			recipe.SetResult(this);
 			recipe.AddRecipe();
