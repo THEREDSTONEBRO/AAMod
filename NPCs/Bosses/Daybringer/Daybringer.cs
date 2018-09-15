@@ -83,6 +83,35 @@ namespace AAMod.NPCs.Bosses.Daybringer
                 }
             }
         }
+
+        public override void NPCLoot()
+        {
+            int bossAlive = mod.NPCType("DaybringerHead");
+            if (NPC.CountNPCS(bossAlive) < 2)
+            {
+                if (Main.rand.Next(10) == 0)
+                {
+                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("DaybringerTrophy"));
+                }
+                if (Main.expertMode)
+                {
+                    npc.DropBossBags();
+                }
+                else
+                {
+                    if (Main.rand.Next(7) == 0)
+                    {
+                        Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("DaybringerMask"));
+                    }
+                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("Radium"), Main.rand.Next(30, 75));
+                }
+            }
+            else
+            {
+                npc.value = 0f;
+                npc.boss = false;
+            }
+        }
     }
 
     class DaybringerBody : DaybringerHead

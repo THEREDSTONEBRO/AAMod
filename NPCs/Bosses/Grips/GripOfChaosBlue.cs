@@ -115,7 +115,7 @@ namespace AAMod.NPCs.Bosses.Grips
             npc.netUpdate = true;
             if (Main.rand.Next(450) == 0) // The lower the value, the higher chance of a grippy boi spawning
             {
-                NPC.NewNPC((int)npc.position.X + 70, (int)npc.position.Y + 70, mod.NPCType("GripAAAAAAAAAAAAAAAAAAAAAAAAAAA")); //Change name AAAAAAAAAAAAAAAAAAAA
+                NPC.NewNPC((int)npc.position.X + 70, (int)npc.position.Y + 70, mod.NPCType("HydraClaw")); //Change name AAAAAAAAAAAAAAAAAAAA
             }
             timer++;                //Makes the int start
             if (timer == 450)          //if the timer has gotten to 7.5 seconds, this happens (60 = 1 second)

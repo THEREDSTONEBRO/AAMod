@@ -53,6 +53,35 @@ namespace AAMod.NPCs.Bosses.Nightcrawler
             head = true;
         }
 
+        public override void NPCLoot()
+        {
+            int bossAlive = mod.NPCType("NightcrawlerHead");
+            if (NPC.CountNPCS(bossAlive) < 2)
+            {
+                if (Main.rand.Next(10) == 0)
+                {
+                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("NightcrawlerTrophy"));
+                }
+                if (Main.expertMode)
+                {
+                    npc.DropBossBags();
+                }
+                else
+                {
+                    if (Main.rand.Next(7) == 0)
+                    {
+                        Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("NightcrawlerMask"));
+                    }
+                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("DarkmatterOre"), Main.rand.Next(30, 75));
+                }
+            }
+            else
+            {
+                npc.value = 0f;
+                npc.boss = false;
+            }
+        }
+
         int attackCounter = 0;
         public override void SendExtraAI(BinaryWriter writer)
         {
@@ -83,6 +112,8 @@ namespace AAMod.NPCs.Bosses.Nightcrawler
             }
         }
     }
+
+    
 
     class NightcrawlerBody : NightcrawlerHead
     {
