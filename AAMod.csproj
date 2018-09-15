@@ -380,7 +380,6 @@
     <Compile Include="Items\Usable\CuriousClaw.cs" />
     <Compile Include="Items\Usable\CyberneticClaw.cs" />
     <Compile Include="Items\Usable\DoomstopperKey.cs" />
-    <Compile Include="Items\Usable\EquinoxWorm.cs" />
     <Compile Include="Items\Usable\GoblinDoll.cs" />
     <Compile Include="Items\Usable\IndigoSolution.cs" />
     <Compile Include="Items\Usable\InfernoInsignia.cs" />
@@ -392,7 +391,6 @@
     <Compile Include="Items\Usable\MireInsignia.cs" />
     <Compile Include="Items\Usable\OrangeSolution.cs" />
     <Compile Include="Items\Usable\OrderSolution.cs" />
-    <Compile Include="Items\Usable\ZeroTesseract.cs" />
     <Compile Include="Items\Vanity\Alphakip\FishDiverBoots.cs" />
     <Compile Include="Items\Vanity\Alphakip\FishDiverJacket.cs" />
     <Compile Include="Items\Vanity\Alphakip\FishDiverMask.cs" />
@@ -408,10 +406,9 @@
 <<<<<<< HEAD
     <Compile Include="NPCs\Bosses\Daybringer\DBBody.cs" />
     <Compile Include="NPCs\Bosses\Daybringer\DBTail.cs" />
-    <Compile Include="NPCs\Bosses\Daybringer\Sunbeam.cs" />
-    <Compile Include="NPCs\Bosses\Daybringer\SunbeamScatter.cs" />
     <Compile Include="NPCs\Bosses\Grips\GripOfChaosBlue.cs" />
     <Compile Include="NPCs\Bosses\Grips\GripOfChaosRed.cs" />
+<<<<<<< HEAD
     <Compile Include="NPCs\Bosses\Nightcrawler\Moonray.cs" />
     <Compile Include="NPCs\Bosses\Nightcrawler\MoonrayScatter.cs" />
 =======
@@ -419,11 +416,12 @@
     <Compile Include="NPCs\Bosses\Grips\GripOfChaosRed.cs" />
     <Compile Include="NPCs\Bosses\Nightcrawler\Nightcrawler.cs" />
 >>>>>>> 5bcd093c571f7a949b24e6e600122e78cfc5e6c2
+=======
+>>>>>>> parent of 433dd60... o
     <Compile Include="NPCs\Bosses\Retriever\Retriever.cs" />
     <Compile Include="NPCs\Bosses\Zero\RealityCannon.cs" />
     <Compile Include="NPCs\Bosses\Zero\RiftShredder.cs" />
     <Compile Include="NPCs\Bosses\Zero\TeslaHand.cs" />
-    <Compile Include="NPCs\Bosses\Zero\VoidStarP.cs" />
     <Compile Include="NPCs\Bosses\Zero\VoidStar.cs" />
     <Compile Include="NPCs\Bosses\Zero\Zero.cs" />
     <Compile Include="NPCs\Bosses\Zero\ZeroAwakened.cs" />
@@ -564,7 +562,6 @@
     <Content Include="bin\Debug\Microsoft.Xna.Framework.Game.dll" />
     <Content Include="bin\Debug\Microsoft.Xna.Framework.Graphics.dll" />
     <Content Include="bin\Debug\Microsoft.Xna.Framework.Xact.dll" />
-    <Content Include="bin\Debug\ReLogic.dll" />
     <Content Include="bin\Debug\Terraria.exe" />
     <Content Include="bin\Debug\TerrariaModded.exe" />
     <Content Include="Buffs\EnderMinionBuff.png" />
@@ -830,8 +827,6 @@
     <Content Include="Items\Armor\Valkyrie\ValkyrieHelm_Head.png" />
     <Content Include="Items\Armor\Valkyrie\ValkyrieHelm_Head_Glow.png" />
     <Content Include="Items\Blocks\Abyssium.png" />
-    <Content Include="Items\Blocks\AkumaBox.png" />
-    <Content Include="Items\Blocks\AkumataBox.png" />
     <Content Include="Items\Blocks\Apocalyptite.png" />
     <Content Include="Items\Blocks\BinaryReassembler.png" />
     <Content Include="Items\Blocks\Bogwood.png" />
@@ -873,7 +868,6 @@
     <Content Include="Items\Blocks\RadiumOre.png" />
     <Content Include="Items\Blocks\Razewood.png" />
     <Content Include="Items\Blocks\RetrieverTrophy.png" />
-    <Content Include="Items\Blocks\RoHBox.png" />
     <Content Include="Items\Blocks\RottedDynastyWood.png" />
     <Content Include="Items\Blocks\RottedShingles.png" />
     <Content Include="Items\Blocks\RRBox.png" />
@@ -885,7 +879,6 @@
     <Content Include="Items\Blocks\TruePaladinsSmeltery.png" />
     <Content Include="Items\Blocks\VoidBox.png" />
     <Content Include="Items\Blocks\VoidUnit.png" />
-    <Content Include="Items\Blocks\YamataBox.png" />
     <Content Include="Items\Blocks\Zero2Box.png" />
     <Content Include="Items\Blocks\ZeroBox.png" />
     <Content Include="Items\Boss\Akuma\Dawnstrike.png" />
@@ -1157,13 +1150,13 @@
     <Content Include="Items\Tools\Terratool.png" />
     <Content Include="Items\Tools\YtriumAxe.png" />
     <Content Include="Items\Tools\YtriumPickaxe.png" />
+    <Content Include="Items\Usable\0Tesseract.png" />
     <Content Include="Items\Usable\CalciumSkull.png" />
     <Content Include="Items\Usable\CuriousClaw.png" />
     <Content Include="Items\Usable\CyberneticClaw.png" />
     <Content Include="Items\Usable\DesertCrate.png" />
     <Content Include="Items\Usable\DoomstopperKey.png" />
     <Content Include="Items\Usable\DragonBell.png" />
-    <Content Include="Items\Usable\EquinoxWorm.png" />
     <Content Include="Items\Usable\GoblinDoll.png" />
     <Content Include="Items\Usable\HellCrate.png" />
     <Content Include="Items\Usable\IceCrate.png" />
@@ -1180,8 +1173,6 @@
     <Content Include="Items\Usable\ManaLanternG.png" />
     <Content Include="Items\Usable\ManaLanternP.png" />
     <Content Include="Items\Usable\ManaRadar.png" />
-    <Content Include="Items\Usable\MiddayWorm.png" />
-    <Content Include="Items\Usable\MidnightWorm.png" />
     <Content Include="Items\Usable\MireCrate.png" />
     <Content Include="Items\Usable\MireInsignia.png" />
     <Content Include="Items\Usable\MireKey.png" />
@@ -1190,7 +1181,6 @@
     <Content Include="Items\Usable\StoneOrb.png" />
     <Content Include="Items\Usable\StoneTesseract.png" />
     <Content Include="Items\Usable\untitled.png" />
-    <Content Include="Items\Usable\ZeroTesseract.png" />
     <Content Include="Items\Vanity\Alphakip\FishDiverBoots.png" />
     <Content Include="Items\Vanity\Alphakip\FishDiverBoots_Legs.png" />
     <Content Include="Items\Vanity\Alphakip\FishDiverJacket.png" />
@@ -1234,11 +1224,14 @@
     <Content Include="NPCs\Bosses\Daybringer\DBTail.png" />
 <<<<<<< HEAD
     <Content Include="NPCs\Bosses\Daybringer\DBTail_Glowmask.png" />
+<<<<<<< HEAD
     <Content Include="NPCs\Bosses\Daybringer\Sunbeam.png" />
     <Content Include="NPCs\Bosses\Daybringer\SunbeamScatter.png" />
 =======
     <Content Include="NPCs\Bosses\Daybringer\DBTailGlowmask.png" />
 >>>>>>> 5bcd093c571f7a949b24e6e600122e78cfc5e6c2
+=======
+>>>>>>> parent of 433dd60... o
     <Content Include="NPCs\Bosses\Decay\Decay.png" />
     <Content Include="NPCs\Bosses\Grips\GripOfChaosBlue.png" />
     <Content Include="NPCs\Bosses\Grips\GripOfChaosBluePunch.png" />
@@ -1247,8 +1240,6 @@
     <Content Include="NPCs\Bosses\Grips\GripOfChaosRedPunch.png" />
     <Content Include="NPCs\Bosses\Grips\GripOfChaosRed_Head_Boss.png" />
     <Content Include="NPCs\Bosses\MrBonesRevenge.png" />
-    <Content Include="NPCs\Bosses\Nightcrawler\Moonray.png" />
-    <Content Include="NPCs\Bosses\Nightcrawler\MoonrayScatter.png" />
     <Content Include="NPCs\Bosses\Nightcrawler\NightcrawlerBody.png" />
     <Content Include="NPCs\Bosses\Nightcrawler\NightcrawlerBodyGlowmask.png" />
     <Content Include="NPCs\Bosses\Nightcrawler\NightcrawlerHead.png" />
@@ -1261,7 +1252,6 @@
     <Content Include="NPCs\Bosses\Zero\RiftShredder.png" />
     <Content Include="NPCs\Bosses\Zero\TeslaHand.png" />
     <Content Include="NPCs\Bosses\Zero\VoidStar.png" />
-    <Content Include="NPCs\Bosses\Zero\VoidStarP.png" />
     <Content Include="NPCs\Bosses\Zero\Zero.png" />
     <Content Include="NPCs\Bosses\Zero\ZeroArm.png" />
     <Content Include="NPCs\Bosses\Zero\ZeroAwakened.png" />
@@ -1284,7 +1274,6 @@
     <Content Include="NPCs\Enemies\Other\DragonClaw.png" />
     <Content Include="NPCs\Enemies\Other\ElderDragon.png" />
     <Content Include="NPCs\Enemies\Other\HydraClaw.png" />
-    <Content Include="NPCs\Enemies\Other\Steve.png" />
     <Content Include="NPCs\Enemies\Void\MiniProbe.gif" />
     <Content Include="NPCs\Enemies\Void\Null.gif" />
     <Content Include="NPCs\Enemies\Void\Null.png" />
@@ -1298,7 +1287,6 @@
     <Content Include="obj\Debug\AAMod.pdb" />
     <Content Include="Sounds\Music\Boss6.mp3" />
     <Content Include="Sounds\Music\BroodTheme.mp3" />
-    <Content Include="Sounds\Music\Equinox.mp3" />
     <Content Include="Sounds\Music\GripsTheme.mp3" />
     <Content Include="Sounds\Music\HydraTheme.mp3" />
     <Content Include="Sounds\Music\InfernoSurface.mp3" />
@@ -1318,8 +1306,6 @@
     <Content Include="Tiles\AbyssiumClump.png" />
     <Content Include="Tiles\AbyssiumOreTile.png" />
     <Content Include="Tiles\AbyssiumOreTile_glow.png" />
-    <Content Include="Tiles\AkumaBox.png" />
-    <Content Include="Tiles\AkumataBox.png" />
     <Content Include="Tiles\Apocalyptite.png" />
     <Content Include="Tiles\Apocalyptite_glow.png" />
     <Content Include="Tiles\Apocalyptite_Old.png" />
@@ -1445,7 +1431,6 @@
     <Content Include="Tiles\RazewoodTile.png" />
     <Content Include="Tiles\RazewoodTree.png" />
     <Content Include="Tiles\RazewoodTreetop.png" />
-    <Content Include="Tiles\RoHBox.png" />
     <Content Include="Tiles\RottedDynastyWood.png" />
     <Content Include="Tiles\RottedShingles.png" />
     <Content Include="Tiles\RRBox.png" />
@@ -1460,7 +1445,6 @@
     <Content Include="Tiles\VoidBox.png" />
     <Content Include="Tiles\VoidUnit.png" />
     <Content Include="Tiles\VoidUnit_Glow.png" />
-    <Content Include="Tiles\YamataBox.png" />
     <Content Include="Tiles\ZerO.png" />
     <Content Include="Tiles\Zero2Box.png" />
     <Content Include="Tiles\ZeroBox.png" />
@@ -1496,6 +1480,7 @@
   </ItemGroup>
   <ItemGroup>
 <<<<<<< HEAD
+<<<<<<< HEAD
     <Folder Include="bin\Release\" />
     <Folder Include="Items\Mounts\" />
     <Folder Include="Items\Pets\" />
@@ -1505,17 +1490,25 @@
   <ItemGroup>
 =======
 >>>>>>> 5bcd093c571f7a949b24e6e600122e78cfc5e6c2
+=======
+    <None Include="NPCs\Bosses\Nightcrawler\Thumbs.db" />
+>>>>>>> parent of 433dd60... o
     <None Include="obj\Debug\AAMod.csproj.CopyComplete" />
     <None Include="obj\Debug\AAMod.csproj.CoreCompileInputs.cache" />
     <None Include="obj\Debug\AAMod.csprojAssemblyReference.cache" />
     <None Include="obj\Debug\AAMod.csprojResolveAssemblyReference.cache" />
-    <None Include="obj\Debug\AssemblyReference.cache" />
-    <None Include="obj\Debug\build.force" />
     <None Include="obj\Debug\DesignTimeResolveAssemblyReferences.cache" />
     <None Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
     <None Include="obj\Debug\ResolveAssemblyReference.cache" />
     <None Include="obj\Release\AAMod.csproj.CoreCompileInputs.cache" />
     <None Include="obj\Release\AAMod.csprojAssemblyReference.cache" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="bin\Release\" />
+    <Folder Include="Items\Mounts\" />
+    <Folder Include="Items\Pets\" />
+    <Folder Include="obj\Debug\TempPE\" />
+    <Folder Include="obj\NPCs\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
