@@ -3,9 +3,4 @@
   <PropertyGroup>
     <ProjectView>ShowAllFiles</ProjectView>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
-    <StartAction>Program</StartAction>
-    <StartProgram>D:\SteamLibrary\steamapps\common\Terraria\Terraria.exe</StartProgram>
-    <StartWorkingDirectory>D:\SteamLibrary\steamapps\common\Terraria\</StartWorkingDirectory>
-  </PropertyGroup>
 </Project>
