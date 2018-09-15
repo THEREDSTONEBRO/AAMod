@@ -404,6 +404,7 @@
     <Compile Include="NPCs\Bosses\Grips\GripOfChaosBlue.cs" />
     <Compile Include="NPCs\Bosses\Grips\GripOfChaosRed.cs" />
 <<<<<<< HEAD
+<<<<<<< HEAD
     <Compile Include="NPCs\Bosses\Nightcrawler\Moonray.cs" />
     <Compile Include="NPCs\Bosses\Nightcrawler\MoonrayScatter.cs" />
 <<<<<<< HEAD
@@ -416,6 +417,8 @@
 >>>>>>> parent of 433dd60... o
 =======
 >>>>>>> parent of c5d5f21... Merge branch 'master' of https://github.com/AncientsAwakened/AAMod
+=======
+>>>>>>> parent of 433dd60... o
     <Compile Include="NPCs\Bosses\Retriever\Retriever.cs" />
     <Compile Include="NPCs\Bosses\Zero\RealityCannon.cs" />
     <Compile Include="NPCs\Bosses\Zero\RiftShredder.cs" />
@@ -1222,6 +1225,7 @@
     <Content Include="NPCs\Bosses\Daybringer\DBTail.png" />
     <Content Include="NPCs\Bosses\Daybringer\DBTail_Glowmask.png" />
 <<<<<<< HEAD
+<<<<<<< HEAD
     <Content Include="NPCs\Bosses\Daybringer\Sunbeam.png" />
     <Content Include="NPCs\Bosses\Daybringer\SunbeamScatter.png" />
 <<<<<<< HEAD
@@ -1232,6 +1236,8 @@
 >>>>>>> parent of 433dd60... o
 =======
 >>>>>>> parent of c5d5f21... Merge branch 'master' of https://github.com/AncientsAwakened/AAMod
+=======
+>>>>>>> parent of 433dd60... o
     <Content Include="NPCs\Bosses\Decay\Decay.png" />
     <Content Include="NPCs\Bosses\Grips\GripOfChaosBlue.png" />
     <Content Include="NPCs\Bosses\Grips\GripOfChaosBluePunch.png" />
@@ -1482,6 +1488,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> parent of c5d5f21... Merge branch 'master' of https://github.com/AncientsAwakened/AAMod
     <Folder Include="bin\Release\" />
@@ -1499,6 +1506,9 @@
 >>>>>>> parent of 433dd60... o
 =======
 >>>>>>> parent of c5d5f21... Merge branch 'master' of https://github.com/AncientsAwakened/AAMod
+=======
+    <None Include="NPCs\Bosses\Nightcrawler\Thumbs.db" />
+>>>>>>> parent of 433dd60... o
     <None Include="obj\Debug\AAMod.csproj.CopyComplete" />
     <None Include="obj\Debug\AAMod.csproj.CoreCompileInputs.cache" />
     <None Include="obj\Debug\AAMod.csprojAssemblyReference.cache" />
