@@ -14,6 +14,11 @@ namespace AAMod.NPCs.Bosses.Daybringer
 
         public static bool ExpertTimeSpeed = false;
 
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("Daybringer");
+        }
+
         public override void SetDefaults()
         {
             npc.lifeMax = 40500;
@@ -80,26 +85,26 @@ namespace AAMod.NPCs.Bosses.Daybringer
         }
     }
 
-    class DaybringerBody : WormDayConnector
+    class DaybringerBody : DaybringerHead
     {
         public override string Texture { get { return "AAMod/NPCs/Bosses/Daybringer/DBBody"; } }
 
         public override void SetDefaults()
         {
-            npc.CloneDefaults(mod.NPCType<DaybringerHead>());
+            base.SetDefaults();
             npc.width = 54;
             npc.height = 48;
             npc.DeathSound = null;
         }
     }
 
-    class DaybringerTail : WormDayConnector
+    class DaybringerTail : DaybringerHead
     {
         public override string Texture { get { return "AAMod/NPCs/Bosses/Daybringer/DBTail"; } }
 
         public override void SetDefaults()
         {
-            npc.CloneDefaults(mod.NPCType<DaybringerHead>());
+            base.SetDefaults();
             npc.width = 34;
             npc.height = 52;
             npc.DeathSound = null;
@@ -114,10 +119,6 @@ namespace AAMod.NPCs.Bosses.Daybringer
     // I made this 2nd base class to limit code repetition.
     public abstract class WormDayConnector : WormDay
     {
-        public override void SetStaticDefaults()
-        {
-            DisplayName.SetDefault("Daybringer");
-        }
 
         public override void Init()
         {

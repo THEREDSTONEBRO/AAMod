@@ -1,6 +1,8 @@
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using AAMod.NPCs.Bosses.Daybringer;
+using AAMod.NPCs.Bosses.Nightcrawler;
 
 namespace AAMod.Items.Usable
 {
@@ -23,20 +25,19 @@ namespace AAMod.Items.Usable
             item.useAnimation = 45;
             item.useTime = 45;
             item.useStyle = 4;
-            item.UseSound = SoundID.Item44;
             item.consumable = true;
         }
 
         // We use the CanUseItem hook to prevent a player from using this item while the boss is present in the world.
         public override bool CanUseItem(Player player)
         {
-            return !NPC.AnyNPCs(mod.NPCType("Nightcrawler")) && !NPC.AnyNPCs(mod.NPCType("Daybringer"));
+            return !NPC.AnyNPCs(mod.NPCType<NightcrawlerHead>()) && !NPC.AnyNPCs(mod.NPCType<DaybringerHead>());
         }
 
         public override bool UseItem(Player player)
         {
-            NPC.SpawnOnPlayer(player.whoAmI, mod.NPCType("Nightcrawler"));
-            NPC.SpawnOnPlayer(player.whoAmI, mod.NPCType("Daybringer"));
+            NPC.SpawnOnPlayer(player.whoAmI, mod.NPCType<NightcrawlerHead>());
+            NPC.SpawnOnPlayer(player.whoAmI, mod.NPCType<DaybringerHead>());
             Main.PlaySound(SoundID.Roar, player.position, 0);
             return true;
         }

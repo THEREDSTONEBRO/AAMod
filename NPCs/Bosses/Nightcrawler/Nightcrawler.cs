@@ -13,6 +13,11 @@ namespace AAMod.NPCs.Bosses.Nightcrawler
 
         public static bool ExpertTimeSpeed = false;
 
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("Nightcrawler");
+        }
+
         public override void SetDefaults()
         {
             npc.lifeMax = 40500;
@@ -79,26 +84,26 @@ namespace AAMod.NPCs.Bosses.Nightcrawler
         }
     }
 
-    class NightcrawlerBody : WormNightConnector
+    class NightcrawlerBody : NightcrawlerHead
     {
         public override string Texture { get { return "AAMod/NPCs/Bosses/Nightcrawler/NightcrawlerBody"; } }
 
         public override void SetDefaults()
         {
-            npc.CloneDefaults(mod.NPCType<NightcrawlerHead>());
+            base.SetDefaults();
             npc.width = 54;
             npc.height = 48;
             npc.DeathSound = null;
         }
     }
 
-    class NightcrawlerTail : WormNightConnector
+    class NightcrawlerTail : NightcrawlerHead
     {
         public override string Texture { get { return "AAMod/NPCs/Bosses/Nightcrawler/NightcrawlerTail"; } }
 
         public override void SetDefaults()
         {
-            npc.CloneDefaults(mod.NPCType<NightcrawlerHead>());
+            base.SetDefaults();
             npc.width = 26;
             npc.height = 38;
             npc.DeathSound = null;
@@ -113,10 +118,6 @@ namespace AAMod.NPCs.Bosses.Nightcrawler
     // I made this 2nd base class to limit code repetition.
     public abstract class WormNightConnector : WormNight
     {
-        public override void SetStaticDefaults()
-        {
-            DisplayName.SetDefault("Nightcrawler");
-        }
 
         public override void Init()
         {

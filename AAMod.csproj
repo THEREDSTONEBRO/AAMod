@@ -344,8 +344,6 @@
     <Compile Include="Items\Projectiles\JungleReaperP.cs" />
     <Compile Include="Items\Projectiles\ManaShot.cs" />
     <Compile Include="Items\Projectiles\MireProj.cs" />
-    <Compile Include="Items\Projectiles\Moonray.cs" />
-    <Compile Include="Items\Projectiles\MoonrayScatter.cs" />
     <Compile Include="Items\Projectiles\Number1.cs" />
     <Compile Include="Items\Projectiles\OrangeSolution.cs" />
     <Compile Include="Items\Projectiles\OrderSolution.cs" />
@@ -354,8 +352,6 @@
     <Compile Include="Items\Projectiles\ReaperArrow.cs" />
     <Compile Include="Items\Projectiles\Ryugen.cs" />
     <Compile Include="Items\Projectiles\Squirt.cs" />
-    <Compile Include="Items\Projectiles\Sunbeam.cs" />
-    <Compile Include="Items\Projectiles\SunbeamScatter.cs" />
     <Compile Include="Items\Projectiles\Taserblast.cs" />
     <Compile Include="Items\Projectiles\TerraRoseShot.cs" />
     <Compile Include="Items\Projectiles\TFGWP.cs" />
@@ -1075,8 +1071,6 @@
     <Content Include="Items\Projectiles\JungleReaperP.png" />
     <Content Include="Items\Projectiles\ManaShot.png" />
     <Content Include="Items\Projectiles\MireProj.png" />
-    <Content Include="Items\Projectiles\Moonray.png" />
-    <Content Include="Items\Projectiles\MoonrayScatter.png" />
     <Content Include="Items\Projectiles\Number1.png" />
     <Content Include="Items\Projectiles\OrangeSolution.png" />
     <Content Include="Items\Projectiles\OrderSolution.png" />
@@ -1086,8 +1080,6 @@
     <Content Include="Items\Projectiles\Ryugen.png" />
     <Content Include="Items\Projectiles\Solar.png" />
     <Content Include="Items\Projectiles\Squirt.png" />
-    <Content Include="Items\Projectiles\Sunbeam.png" />
-    <Content Include="Items\Projectiles\SunbeamScatter.png" />
     <Content Include="Items\Projectiles\SunOrb.png" />
     <Content Include="Items\Projectiles\SunSpear.png" />
     <Content Include="Items\Projectiles\Taserblast.png" />
@@ -1260,7 +1252,7 @@
     <Content Include="NPCs\Bosses\Retriever\Retriever.png" />
     <Content Include="NPCs\Bosses\Retriever\Retriever_Head_Boss.png" />
     <Content Include="NPCs\Bosses\SoC\Soul of Cthulhu.png" />
-    <Content Include="NPCs\Bosses\Zero\RealityCanon.png" />
+    <Content Include="NPCs\Bosses\Zero\RealityCannon.png" />
     <Content Include="NPCs\Bosses\Zero\RiftShredder.png" />
     <Content Include="NPCs\Bosses\Zero\TeslaHand.png" />
     <Content Include="NPCs\Bosses\Zero\VoidStar.png" />
@@ -1524,4 +1516,7 @@
     <Folder Include="obj\NPCs\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>"D:\SteamLibrary\steamapps\common\Terraria\tModLoaderServer.exe" -build "$(ProjectDir)\" -eac "$(TargetPath)"</PostBuildEvent>
+  </PropertyGroup>
 </Project>
