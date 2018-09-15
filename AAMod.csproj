@@ -407,6 +407,7 @@
     <Compile Include="NPCs\Bosses\Nightcrawler\Moonray.cs" />
     <Compile Include="NPCs\Bosses\Nightcrawler\MoonrayScatter.cs" />
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     <Compile Include="NPCs\Bosses\Grips\GripOfChaosBlue.cs" />
     <Compile Include="NPCs\Bosses\Grips\GripOfChaosRed.cs" />
@@ -414,6 +415,8 @@
 >>>>>>> 5bcd093c571f7a949b24e6e600122e78cfc5e6c2
 =======
 >>>>>>> parent of 433dd60... o
+=======
+>>>>>>> parent of c5d5f21... Merge branch 'master' of https://github.com/AncientsAwakened/AAMod
 =======
 >>>>>>> parent of c5d5f21... Merge branch 'master' of https://github.com/AncientsAwakened/AAMod
     <Compile Include="NPCs\Bosses\Retriever\Retriever.cs" />
@@ -1225,11 +1228,14 @@
     <Content Include="NPCs\Bosses\Daybringer\Sunbeam.png" />
     <Content Include="NPCs\Bosses\Daybringer\SunbeamScatter.png" />
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     <Content Include="NPCs\Bosses\Daybringer\DBTailGlowmask.png" />
 >>>>>>> 5bcd093c571f7a949b24e6e600122e78cfc5e6c2
 =======
 >>>>>>> parent of 433dd60... o
+=======
+>>>>>>> parent of c5d5f21... Merge branch 'master' of https://github.com/AncientsAwakened/AAMod
 =======
 >>>>>>> parent of c5d5f21... Merge branch 'master' of https://github.com/AncientsAwakened/AAMod
     <Content Include="NPCs\Bosses\Decay\Decay.png" />
@@ -1482,6 +1488,9 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> parent of c5d5f21... Merge branch 'master' of https://github.com/AncientsAwakened/AAMod
 =======
 >>>>>>> parent of c5d5f21... Merge branch 'master' of https://github.com/AncientsAwakened/AAMod
     <Folder Include="bin\Release\" />
@@ -1492,11 +1501,14 @@
   </ItemGroup>
   <ItemGroup>
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> 5bcd093c571f7a949b24e6e600122e78cfc5e6c2
 =======
     <None Include="NPCs\Bosses\Nightcrawler\Thumbs.db" />
 >>>>>>> parent of 433dd60... o
+=======
+>>>>>>> parent of c5d5f21... Merge branch 'master' of https://github.com/AncientsAwakened/AAMod
 =======
 >>>>>>> parent of c5d5f21... Merge branch 'master' of https://github.com/AncientsAwakened/AAMod
     <None Include="obj\Debug\AAMod.csproj.CopyComplete" />
