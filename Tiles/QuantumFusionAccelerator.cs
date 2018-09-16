@@ -44,7 +44,7 @@ namespace AAMod.Tiles
             b = 0.40f;
         }
 
-        public override bool PreDraw(int i, int j, SpriteBatch spriteBatch)
+        /*public override bool PreDraw(int i, int j, SpriteBatch spriteBatch)
         {
             Tile tile = Main.tile[i, j];
             Texture2D texture;
@@ -70,7 +70,7 @@ namespace AAMod.Tiles
             Main.spriteBatch.Draw(texture, new Vector2(i * 16 - (int)Main.screenPosition.X, j * 16 - (int)Main.screenPosition.Y) + zero, new Rectangle(tile.frameX, tile.frameY + animate, 16, height), Lighting.GetColor(i, j), 0f, default(Vector2), 1f, SpriteEffects.None, 0f);
             Main.spriteBatch.Draw(mod.GetTexture("Tiles/QuantumFusionAccelerator_Glow"), new Vector2(i * 16 - (int)Main.screenPosition.X, j * 16 - (int)Main.screenPosition.Y) + zero, new Rectangle(tile.frameX, tile.frameY + animate, 16, height), Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
             return false;
-        }
+        }*/
 
         public override void KillMultiTile(int i, int j, int frameX, int frameY)
         {

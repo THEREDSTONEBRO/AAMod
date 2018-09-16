@@ -12,6 +12,7 @@ namespace AAMod.NPCs.Bosses.Zero
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Rift Shredder");
+            Main.npcFrameCount[npc.type] = 2;
         }
         public override void SetDefaults()
         {
@@ -24,14 +25,13 @@ namespace AAMod.NPCs.Bosses.Zero
             npc.HitSound = new LegacySoundStyle(3, 4, Terraria.Audio.SoundType.Sound);
             npc.DeathSound = new LegacySoundStyle(4, 14, Terraria.Audio.SoundType.Sound);
             npc.value = 0f;
+            npc.noGravity = true;
             npc.knockBackResist = -1f;
             npc.aiStyle = 0;
             animationType = NPCID.PrimeSaw;
         }
         public override void AI()
         {
-            if (npc.aiStyle == 33)
-            {
                 Vector2 vector46 = new Vector2(npc.position.X + (float)npc.width * 0.5f, npc.position.Y + (float)npc.height * 0.5f);
                 float num448 = Main.npc[(int)npc.ai[1]].position.X + (float)(Main.npc[(int)npc.ai[1]].width / 2) - 200f * npc.ai[0] - vector46.X;
                 float num449 = Main.npc[(int)npc.ai[1]].position.Y + 230f - vector46.Y;
@@ -346,7 +346,6 @@ namespace AAMod.NPCs.Bosses.Zero
                         }
                     }
                 }
-            }
         }
     }
 }
