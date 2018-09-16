@@ -81,6 +81,11 @@ namespace AAMod.NPCs.Bosses.Nightcrawler
                 npc.boss = false;
             }
         }
+        public override void BossLoot(ref string name, ref int potionType)
+        {
+            potionType = ItemID.GreaterHealingPotion;   //boss drops
+            AAWorld.downedNC = true;
+        }
 
         int attackCounter = 0;
         public override void SendExtraAI(BinaryWriter writer)

@@ -21,7 +21,7 @@ namespace AAMod.NPCs.Bosses.Zero
         }
         public override void SetDefaults()
         {
-            npc.aiStyle = 30;  //5 is the flying AI
+            npc.aiStyle = 0;  //5 is the flying AI
             npc.lifeMax = 120000;   //boss life
             npc.damage = 130;  //boss damage
             npc.defense = 70;    //boss defense
@@ -36,7 +36,7 @@ namespace AAMod.NPCs.Bosses.Zero
             npc.lavaImmune = true;
             npc.noGravity = true;
             npc.noTileCollide = true;
-            npc.HitSound = new LegacySoundStyle(4, 36, Terraria.Audio.SoundType.Sound);
+            npc.HitSound = mod.GetLegacySoundSlot(Terraria.ModLoader.SoundType.Custom, "Sounds/Sounds/Zerohit");
             npc.DeathSound = mod.GetLegacySoundSlot(Terraria.ModLoader.SoundType.Custom, "Sounds/Sounds/ZeroDeath");
             music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/Zero2");
             npc.buffImmune[BuffID.Poisoned] = true;
@@ -44,39 +44,38 @@ namespace AAMod.NPCs.Bosses.Zero
             npc.netAlways = true;
             bossBag = mod.ItemType("ZeroBag");
         }
-        public override void HitEffect(int hitDirection, double damage)
-        {
-
-        }
 
         public override void NPCLoot()
         {
             if (Main.rand.Next(10) == 0)
             {
-                //Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("ZeroTrophy"));
+                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("ZeroTrophy"));
             }
             if (Main.expertMode)
             {
-                    npc.DropBossBags();
+                npc.DropBossBags();
             }
             else
             {
-                if (Main.rand.Next(10) == 0)
+                if (Main.rand.Next(7) == 0)
                 {
-                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("UnstableSingularity"), Main.rand.Next(15, 20));
+                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("ZeroMask"));
                 }
-                {
-                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("Apocalyptite"), Main.rand.Next(30, 44));
-                }
-
-            }
+                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("ApocalyptitePlate"), Main.rand.Next(30, 40));
+                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("UnstableSingularity"), Main.rand.Next(20, 25));
+            } 
         }
-
         public override void BossLoot(ref string name, ref int potionType)
         {
-            potionType = ItemID.SuperHealingPotion;   //boss drops
-            AAWorld.downedZero = true;
+            potionType = ItemID.GreaterHealingPotion;   //boss drops
+            AAWorld.downedDB = true;
         }
+        public override void HitEffect(int hitDirection, double damage)
+        {
+
+        }
+
+       
         public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
         {
             npc.lifeMax = (int)(npc.lifeMax * 0.8f * bossLifeScale);  //boss life scale in expertmode
@@ -403,7 +402,7 @@ namespace AAMod.NPCs.Bosses.Zero
             {
                 npc.damage = (int)((double)npc.defDamage * 1.5);
                 npc.defense = npc.defDefense + 10;
-                npc.HitSound = SoundID.NPCHit4;
+                npc.HitSound = mod.GetLegacySoundSlot(Terraria.ModLoader.SoundType.Custom, "Sounds/Sounds/Zerohit2");
                 if (npc.ai[1] == 0f)
                 {
                     float num389 = 8f;

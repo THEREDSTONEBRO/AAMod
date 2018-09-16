@@ -183,6 +183,7 @@
     <Compile Include="Items\Armor\Valkyrie\ValkyrieChestplate.cs" />
     <Compile Include="Items\Armor\Valkyrie\ValkyrieHelm.cs" />
     <Compile Include="Items\Blocks\Abyssium.cs" />
+    <Compile Include="Items\Blocks\AkumaBox.cs" />
     <Compile Include="Items\Blocks\Apocalyptite.cs" />
     <Compile Include="Items\Blocks\BinaryReassembler.cs" />
     <Compile Include="Items\Blocks\Bogwood.cs" />
@@ -404,6 +405,9 @@
     <Compile Include="Items\Vanity\Alphakip\FishDiverBoots.cs" />
     <Compile Include="Items\Vanity\Alphakip\FishDiverJacket.cs" />
     <Compile Include="Items\Vanity\Alphakip\FishDiverMask.cs" />
+    <Compile Include="Items\Vanity\Glitched\GlitchesBreastplate.cs" />
+    <Compile Include="Items\Vanity\Glitched\GlitchesGreaves.cs" />
+    <Compile Include="Items\Vanity\Glitched\GlitchesHat.cs" />
     <Compile Include="Items\Vanity\GripMaskBlue.cs" />
     <Compile Include="Items\Vanity\GripMaskRed.cs" />
     <Compile Include="Items\Vanity\Hallam\HalHat.cs" />
@@ -411,6 +415,7 @@
     <Compile Include="Items\Vanity\Hallam\HalTux.cs" />
     <Compile Include="Items\Vanity\N1\N1.cs" />
     <Compile Include="Items\Vanity\RetrieverMask.cs" />
+    <Compile Include="Items\Vanity\ZeroMask.cs" />
     <Compile Include="NPCs\AAModGlobalNPC.cs" />
     <Compile Include="NPCs\Bosses\Daybringer\Daybringer.cs" />
     <Compile Include="NPCs\Bosses\Daybringer\Sunbeam.cs" />
@@ -1197,6 +1202,14 @@
     <Content Include="Items\Vanity\Alphakip\FishDiverJacket_Female.png" />
     <Content Include="Items\Vanity\Alphakip\FishDiverMask.png" />
     <Content Include="Items\Vanity\Alphakip\FishDiverMask_Head.png" />
+    <Content Include="Items\Vanity\Glitched\GlitchesBreastplate.png" />
+    <Content Include="Items\Vanity\Glitched\GlitchesBreastplate_Arms.png" />
+    <Content Include="Items\Vanity\Glitched\GlitchesBreastplate_Body.png" />
+    <Content Include="Items\Vanity\Glitched\GlitchesBreastplate_FemaleBody.png" />
+    <Content Include="Items\Vanity\Glitched\GlitchesGreaves.png" />
+    <Content Include="Items\Vanity\Glitched\GlitchesGreaves_Legs.png" />
+    <Content Include="Items\Vanity\Glitched\GlitchesHat.png" />
+    <Content Include="Items\Vanity\Glitched\GlitchesHat_Head.png" />
     <Content Include="Items\Vanity\GripMaskBlue.png" />
     <Content Include="Items\Vanity\GripMaskBlue_Head.png" />
     <Content Include="Items\Vanity\GripMaskRed.png" />
@@ -1217,6 +1230,7 @@
     <Content Include="Items\Vanity\RetrieverMask.png" />
     <Content Include="Items\Vanity\RetrieverMask_Head.png" />
     <Content Include="Items\Vanity\ZeroMask.png" />
+    <Content Include="Items\Vanity\ZeroMask_Head.png" />
     <Content Include="Map\InfernoMap.png" />
     <Content Include="Map\MireMap.png" />
     <Content Include="Map\VoidMap.png" />

@@ -112,6 +112,11 @@ namespace AAMod.NPCs.Bosses.Daybringer
                 npc.boss = false;
             }
         }
+        public override void BossLoot(ref string name, ref int potionType)
+        {
+            potionType = ItemID.GreaterHealingPotion;   //boss drops
+            AAWorld.downedDB = true;
+        }
     }
 
     class DaybringerBody : DaybringerHead

@@ -39,6 +39,9 @@ namespace AAMod.Tiles
                 case 3:
                     item = mod.ItemType("RetrieverTrophy");
                     break;
+                case 4:
+                    item = mod.ItemType("ZeroTrophy");
+                    break;
             }
 			if (item > 0)
 			{
