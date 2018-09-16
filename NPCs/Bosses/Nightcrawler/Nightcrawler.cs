@@ -50,7 +50,71 @@ namespace AAMod.NPCs.Bosses.Nightcrawler
             base.Init();
             head = true;
         }
+<<<<<<< HEAD
+=======
+
+        public override void NPCLoot()
+        {
+            int bossAlive = mod.NPCType("NightcrawlerHead");
+            if (NPC.CountNPCS(bossAlive) < 2)
+            {
+                if (Main.rand.Next(10) == 0)
+                {
+                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("NightcrawlerTrophy"));
+                }
+                if (Main.expertMode)
+                {
+                    npc.DropBossBags();
+                }
+                else
+                {
+                    if (Main.rand.Next(7) == 0)
+                    {
+                        Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("NightcrawlerMask"));
+                    }
+                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("DarkmatterOre"), Main.rand.Next(30, 75));
+                }
+            }
+            else
+            {
+                npc.value = 0f;
+                npc.boss = false;
+            }
+        }
+
+        int attackCounter = 0;
+        public override void SendExtraAI(BinaryWriter writer)
+        {
+            writer.Write(attackCounter);
+        }
+
+        public override void ReceiveExtraAI(BinaryReader reader)
+        {
+            attackCounter = reader.ReadInt32();
+        }
+        public override void CustomBehavior()
+        {
+            if (Main.netMode != 1)
+            {
+                if (attackCounter > 0)
+                    attackCounter--;
+                Player target = Main.player[npc.target];
+                if (attackCounter <= 0 && Vector2.Distance(npc.Center, target.Center) < 200 && Collision.CanHit(npc.Center, 1, 1, target.Center, 1, 1))
+                {
+                    Vector2 direction = (target.Center - npc.Center).SafeNormalize(Vector2.UnitX);
+                    direction = direction.RotatedByRandom(MathHelper.ToRadians(10));
+
+                    int projectile = Projectile.NewProjectile(npc.Center, direction * 1, mod.ProjectileType("Moonray"), 35, 0, Main.myPlayer);
+                    Main.projectile[projectile].timeLeft = 300;
+                    attackCounter = 500;
+                    npc.netUpdate = true;
+                }
+            }
+        }
+>>>>>>> df41e7af791d55bb77701433af4826fb28a64e4b
     }
+
+    
 
     class NightcrawlerBody : NightcrawlerHead
     {
