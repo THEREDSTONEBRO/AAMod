@@ -14,6 +14,8 @@ using Terraria.Utilities;
 using System.Runtime.Serialization.Formatters.Binary;
 using AAMod.Tiles;
 using AAMod.Walls;
+using AAMod.NPCs.Bosses.Nightcrawler;
+using AAMod.NPCs.Bosses.Daybringer;
 
 namespace AAMod
 {
@@ -45,6 +47,7 @@ namespace AAMod
         public static bool downedNC;
         public static bool zeroUS;
         public static bool downedZero;
+        public static bool downedEquinox;
 
         public string nums = "1234567890";
 
@@ -65,6 +68,7 @@ namespace AAMod
             downedDB = false;
             downedNC = false;
             downedRetriever = false;
+<<<<<<< HEAD
             HallowedOre = NPC.downedMechBossAny;
             Luminite = NPC.downedMoonlord;
             DarkMatter = downedNC;
@@ -81,6 +85,93 @@ namespace AAMod
             ErrorLogger.Log("Darkmatter before initialize:" + downedNC);
             ErrorLogger.Log("Fulgurite before initialize:" + downedRetriever);
             ErrorLogger.Log("Dynaskull before initialize:" + NPC.downedMechBoss3);
+=======
+            downedEquinox = false;
+            if (NPC.downedMechBoss3 == true || NPC.downedMechBoss2 == true || NPC.downedMechBoss1 == true)
+            {
+                HallowedOre = true;
+            }
+            else
+            {
+                HallowedOre = false;
+            }
+            if (NPC.downedMoonlord == true)
+            {
+                Luminite = true;
+            }
+            else
+            {
+                Luminite = false;
+            }
+            if (downedNC == true)
+            {
+                DarkMatter = true;
+            }
+            else
+            {
+                DarkMatter = false;
+            }
+            if (downedDB == true)
+            {
+                RadiumOre = true;
+            }
+            else
+            {
+                RadiumOre = false;
+            }
+            if (NPC.downedPlantBoss == true)
+            {
+                Evil = true;
+            }
+            else
+            {
+                Evil = false;
+            }
+            if (downedGripRed == true || downedGripBlue == true)
+            {
+                downedGrips = true;
+            }
+            else
+            {
+                downedGrips = false;
+            }
+            if (downedGrips == true)
+            {
+                ChaosOres = true;
+            }
+            else
+            {
+                ChaosOres = false;
+            }
+            if (NPC.downedBoss3 == true)
+            {
+                Dynaskull = true;
+            }
+            else
+            {
+                Dynaskull = false;
+            }
+            if (downedRetriever == true)
+            {
+                FulguriteOre = true;
+            }
+            else
+            {
+                FulguriteOre = false;
+            }
+            if (downedNC && downedDB)
+            {
+                downedEquinox = true;
+            }
+            else if (downedDB && !downedNC && !NPC.AnyNPCs(mod.NPCType<NightcrawlerHead>()))
+            {
+                downedDB = false;
+            }
+            else if (downedNC && !downedDB && !NPC.AnyNPCs(mod.NPCType<DaybringerHead>()))
+            {
+                downedNC = false;
+            }
+>>>>>>> ad7553046b05f1f962d865310ffcb714358cd2c3
         }
 
         public static int Raycast(int x, int y)
