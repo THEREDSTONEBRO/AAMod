@@ -189,6 +189,7 @@
     <Compile Include="Items\Blocks\Bogwood.cs" />
     <Compile Include="Items\Blocks\BogwoodChest.cs" />
     <Compile Include="Items\Blocks\BroodBox.cs" />
+    <Compile Include="Items\Blocks\ZeroTrophy.cs" />
     <Compile Include="Items\Blocks\BroodmotherTrophy.cs" />
     <Compile Include="Items\Blocks\ChaosCrucible.cs" />
     <Compile Include="Items\Blocks\DarkmatterOre.cs" />
@@ -446,6 +447,7 @@
     <Compile Include="Tiles\AATrophy.cs" />
     <Compile Include="Tiles\AbyssiumBarTile.cs" />
     <Compile Include="Tiles\AbyssiumOreTile.cs" />
+    <Compile Include="Tiles\AkumaBox.cs" />
     <Compile Include="Tiles\Apocalyptite.cs" />
     <Compile Include="Tiles\BinaryReassembler.cs" />
     <Compile Include="Tiles\BogwoodChair.cs" />
@@ -1281,6 +1283,7 @@
     <Content Include="NPCs\Bosses\Zero\ZeroAwakened.png" />
     <Content Include="NPCs\Bosses\Zero\ZeroAwakened1.png" />
     <Content Include="NPCs\Bosses\Zero\ZeroAwakened_Head_Boss.png" />
+    <Content Include="NPCs\Bosses\Zero\ZeroDeath.png" />
     <Content Include="NPCs\Bosses\Zero\Zero_Head_Boss.png" />
     <Content Include="NPCs\Enemies\Inferno\InfernalSlimeSheet.png" />
     <Content Include="NPCs\Enemies\Inferno\InfernoSalamander.png" />

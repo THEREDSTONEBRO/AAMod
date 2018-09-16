@@ -23,7 +23,6 @@ namespace AAMod
         public static int infernoTiles = 0;
         public static int voidTiles = 0;
         //Worldgen
-        public static bool Ancients;
         public static bool Luminite;
         public static bool DarkMatter;
         public static bool FulguriteOre;
@@ -37,6 +36,7 @@ namespace AAMod
         //Messages
         public static bool Evil;
         //Boss Bools
+        public static bool Ancients;
         public static bool downedGripRed;
         public static bool downedGripBlue;
         public static bool downedGrips;
@@ -50,6 +50,13 @@ namespace AAMod
 
         public override void Initialize()
         {
+            ErrorLogger.Log("ChaosOre before initialize:" + downedGrips);
+            ErrorLogger.Log("Luminite before initialize:" + NPC.downedMoonlord);
+            ErrorLogger.Log("HalowedOre before initialize:" + NPC.downedMechBossAny);
+            ErrorLogger.Log("Radium before initialize:" + downedDB);
+            ErrorLogger.Log("Darkmatter before initialize:" + downedNC);
+            ErrorLogger.Log("Fulgurite before initialize:" + downedRetriever);
+            ErrorLogger.Log("Dynaskull before initialize:" + NPC.downedMechBoss3);
             downedGrips = false;
             downedGripRed = false;
             downedGripBlue = false;
@@ -58,78 +65,22 @@ namespace AAMod
             downedDB = false;
             downedNC = false;
             downedRetriever = false;
-            if (NPC.downedMechBoss3 == true || NPC.downedMechBoss2 == true || NPC.downedMechBoss1 == true)
-            {
-                HallowedOre = true;
-            }
-            else
-            {
-                HallowedOre = false;
-            }
-            if (NPC.downedMoonlord == true)
-            {
-                Luminite = true;
-            }
-            else
-            {
-                Luminite = false;
-            }
-            if (downedNC == true)
-            {
-                DarkMatter = true;
-            }
-            else
-            {
-                DarkMatter = false;
-            }
-            if (downedDB == true)
-            {
-                RadiumOre = true;
-            }
-            else
-            {
-                RadiumOre = false;
-            }
-            if (NPC.downedPlantBoss == true)
-            {
-                Evil = true;
-            }
-            else
-            {
-                Evil = false;
-            }
-            if (downedGripRed == true || downedGripBlue == true)
-            {
-                downedGrips = true;
-            }
-            else
-            {
-                downedGrips = false;
-            }
-            if (downedGrips == true)
-            {
-                ChaosOres = true;
-            }
-            else
-            {
-                ChaosOres = false;
-            }
-            if (NPC.downedBoss3 == true)
-            {
-                Dynaskull = true;
-            }
-            else
-            {
-                Dynaskull = false;
-            }
-            if (downedRetriever == true)
-            {
-                FulguriteOre = true;
-            }
-            else
-            {
-                FulguriteOre = false;
-            }
+            HallowedOre = NPC.downedMechBossAny;
+            Luminite = NPC.downedMoonlord;
+            DarkMatter = downedNC;
+            RadiumOre = downedDB;
+            Evil = NPC.downedPlantBoss;
+            downedGrips = downedGripRed && downedGripBlue;
+            ChaosOres = downedGrips;
+            Dynaskull = NPC.downedBoss3;
+            FulguriteOre = downedRetriever;
+            ErrorLogger.Log("ChaosOre before initialize:" + downedGrips);
+            ErrorLogger.Log("Luminite before initialize:" + NPC.downedMoonlord);
+            ErrorLogger.Log("HalowedOre before initialize:" + NPC.downedMechBossAny);
+            ErrorLogger.Log("Radium before initialize:" + downedDB);
+            ErrorLogger.Log("Darkmatter before initialize:" + downedNC);
+            ErrorLogger.Log("Fulgurite before initialize:" + downedRetriever);
+            ErrorLogger.Log("Dynaskull before initialize:" + NPC.downedMechBoss3);
         }
 
         public static int Raycast(int x, int y)
@@ -155,6 +106,13 @@ namespace AAMod
 
         public override TagCompound Save()
         {
+            ErrorLogger.Log("ChaosOre before save:" + downedGrips);
+            ErrorLogger.Log("Luminite before save:" + NPC.downedMoonlord);
+            ErrorLogger.Log("HalowedOre before save:" + NPC.downedMechBossAny);
+            ErrorLogger.Log("Radium before save:" + downedDB);
+            ErrorLogger.Log("Darkmatter before save:" + downedNC);
+            ErrorLogger.Log("Fulgurite before save:" + downedRetriever);
+            ErrorLogger.Log("Dynaskull before save:" + NPC.downedMechBoss3);
             var downed = new List<string>();
             if (downedGripRed) downed.Add("GripRed");
             if (downedGripBlue) downed.Add("GripBlue");
@@ -168,12 +126,19 @@ namespace AAMod
             if (downedZero) downed.Add("0");
             if (downedNC) downed.Add("NC");
             if (downedDB) downed.Add("DB");
+            ErrorLogger.Log("ChaosOre after save:" + downedGrips);
+            ErrorLogger.Log("Luminite after save:" + NPC.downedMoonlord);
+            ErrorLogger.Log("HalowedOre after save:" + NPC.downedMechBossAny);
+            ErrorLogger.Log("Radium after save:" + downedDB);
+            ErrorLogger.Log("Darkmatter after save:" + downedNC);
+            ErrorLogger.Log("Fulgurite after save:" + downedRetriever);
+            ErrorLogger.Log("Dynaskull after save:" + NPC.downedMechBoss3);
 
             return new TagCompound {
                 {"downed", downed}
             };
         }
-
+        
         public override void NetSend(BinaryWriter writer)
         {
             BitsByte flags = new BitsByte();
@@ -216,6 +181,13 @@ namespace AAMod
 
         public override void Load(TagCompound tag)
         {
+            //ErrorLogger.Log("ChaosOre before load:" + downedGrips);
+            //ErrorLogger.Log("Luminite before load:" + NPC.downedMoonlord);
+            //ErrorLogger.Log("HalowedOre before load:" + NPC.downedMechBossAny);
+            //ErrorLogger.Log("Radium before load:" + downedDB);
+            //ErrorLogger.Log("Darkmatter before load:" + downedNC);
+            //ErrorLogger.Log("Fulgurite before load:" + downedRetriever);
+            //ErrorLogger.Log("Dynaskull before load:" + NPC.downedMechBoss3);
             var downed = tag.GetList<string>("downed");
             downedGripRed = downed.Contains("GripRed");
             downedGripBlue = downed.Contains("GripBlue");
@@ -229,6 +201,22 @@ namespace AAMod
             downedZero = downed.Contains("0");
             downedDB = downed.Contains("DB");
             downedNC = downed.Contains("NC");
+            HallowedOre = NPC.downedMechBossAny;
+            Luminite = NPC.downedMoonlord;
+            DarkMatter = downedNC;
+            RadiumOre = downedDB;
+            Evil = NPC.downedPlantBoss;
+            downedGrips = downedGripRed && downedGripBlue;
+            ChaosOres = downedGrips;
+            Dynaskull = NPC.downedBoss3;
+            FulguriteOre = downedRetriever;
+            //ErrorLogger.Log("ChaosOre after load:" + downedGrips);
+            //ErrorLogger.Log("Luminite after load:" + NPC.downedMoonlord);
+            //ErrorLogger.Log("HalowedOre after load:" + NPC.downedMechBossAny);
+            //ErrorLogger.Log("Radium after load:" + downedDB);
+            //ErrorLogger.Log("Darkmatter after load:" + downedNC);
+            //ErrorLogger.Log("Fulgurite after load:" + downedRetriever);
+            //ErrorLogger.Log("Dynaskull after load:" + NPC.downedMechBoss3);
         }
 
         private string NumberRand(int size)
@@ -529,18 +517,18 @@ namespace AAMod
                     Main.NewText("Devils in the underworld begin to plot", Color.Purple.R, Color.Purple.G, Color.Purple.B);
                 }
             }
-            if (downedRetriever == true)
-            {
-                if (FulguriteOre == false)
-                {
-                    FulguriteOre = true;
-                    Main.NewText("The clap of a thunderbolt roars in the caverns", Color.MediumPurple.R, Color.MediumPurple.G, Color.MediumPurple.B);
-                    for (int k = 0; k < (int)((double)(Main.maxTilesX * Main.maxTilesY) * 6E-05); k++)
-                    {
-                        WorldGen.OreRunner(WorldGen.genRand.Next(0, Main.maxTilesX), WorldGen.genRand.Next((int)Main.rockLayer, Main.maxTilesY - 200), (double)WorldGen.genRand.Next(10, 11), WorldGen.genRand.Next(10, 11), (ushort)mod.TileType("FulguriteOre"));
-                    }
-                }
-            }
+            //if (downedRetriever == true)
+            //{
+                //if (FulguriteOre == false)
+                //{
+                    //FulguriteOre = true;
+                    //Main.NewText("The clap of a thunderbolt roars in the caverns", Color.MediumPurple.R, Color.MediumPurple.G, Color.MediumPurple.B);
+                    //for (int k = 0; k < (int)((double)(Main.maxTilesX * Main.maxTilesY) * 6E-05); k++)
+                    //{
+                        //WorldGen.OreRunner(WorldGen.genRand.Next(0, Main.maxTilesX), WorldGen.genRand.Next((int)Main.rockLayer, Main.maxTilesY - 200), (double)WorldGen.genRand.Next(10, 11), WorldGen.genRand.Next(10, 11), (ushort)mod.TileType("FulguriteOre"));
+                    //}
+                //}
+            //}
         }
 
         public override void TileCountsAvailable(int[] tileCounts)

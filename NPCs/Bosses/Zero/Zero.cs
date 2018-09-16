@@ -26,7 +26,7 @@ namespace AAMod.NPCs.Bosses.Zero
         {
             npc.width = 206;
             npc.height = 208;
-            npc.aiStyle = 32;
+            npc.aiStyle = 0;
             npc.damage = 130;  //boss damage
             npc.defense = 70;    //boss defense
             npc.lifeMax = 200000;

@@ -68,7 +68,7 @@ namespace AAMod.NPCs.Bosses.Zero
         public override void BossLoot(ref string name, ref int potionType)
         {
             potionType = ItemID.GreaterHealingPotion;   //boss drops
-            AAWorld.downedDB = true;
+            AAWorld.downedZero = true;
         }
         public override void HitEffect(int hitDirection, double damage)
         {

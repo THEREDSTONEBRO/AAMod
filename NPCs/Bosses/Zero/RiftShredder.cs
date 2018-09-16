@@ -25,7 +25,7 @@ namespace AAMod.NPCs.Bosses.Zero
             npc.DeathSound = new LegacySoundStyle(4, 14, Terraria.Audio.SoundType.Sound);
             npc.value = 0f;
             npc.knockBackResist = -1f;
-            npc.aiStyle = 33;
+            npc.aiStyle = 0;
             animationType = NPCID.PrimeSaw;
         }
         public override void AI()
