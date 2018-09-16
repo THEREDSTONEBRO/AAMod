@@ -50,8 +50,6 @@ namespace AAMod.NPCs.Bosses.Daybringer
             base.Init();
             head = true;
         }
-<<<<<<< HEAD
-=======
 
         int attackCounter = 0;
         public override void SendExtraAI(BinaryWriter writer)
@@ -111,15 +109,11 @@ namespace AAMod.NPCs.Bosses.Daybringer
                 npc.boss = false;
             }
         }
-<<<<<<< HEAD
         public override void BossLoot(ref string name, ref int potionType)
         {
             potionType = ItemID.GreaterHealingPotion;   //boss drops
             AAWorld.downedDB = true;
         }
-=======
->>>>>>> df41e7af791d55bb77701433af4826fb28a64e4b
->>>>>>> ad7553046b05f1f962d865310ffcb714358cd2c3
     }
 
     class DaybringerBody : DaybringerHead

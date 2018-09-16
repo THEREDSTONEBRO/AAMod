@@ -50,8 +50,6 @@ namespace AAMod.NPCs.Bosses.Nightcrawler
             base.Init();
             head = true;
         }
-<<<<<<< HEAD
-=======
 
         public override void NPCLoot()
         {
@@ -116,7 +114,6 @@ namespace AAMod.NPCs.Bosses.Nightcrawler
                 }
             }
         }
->>>>>>> df41e7af791d55bb77701433af4826fb28a64e4b
     }
 
     

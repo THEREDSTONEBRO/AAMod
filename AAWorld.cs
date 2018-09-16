@@ -68,7 +68,6 @@ namespace AAMod
             downedDB = false;
             downedNC = false;
             downedRetriever = false;
-<<<<<<< HEAD
             HallowedOre = NPC.downedMechBossAny;
             Luminite = NPC.downedMoonlord;
             DarkMatter = downedNC;
@@ -85,7 +84,6 @@ namespace AAMod
             ErrorLogger.Log("Darkmatter before initialize:" + downedNC);
             ErrorLogger.Log("Fulgurite before initialize:" + downedRetriever);
             ErrorLogger.Log("Dynaskull before initialize:" + NPC.downedMechBoss3);
-=======
             downedEquinox = false;
             if (NPC.downedMechBoss3 == true || NPC.downedMechBoss2 == true || NPC.downedMechBoss1 == true)
             {
@@ -171,7 +169,6 @@ namespace AAMod
             {
                 downedNC = false;
             }
->>>>>>> ad7553046b05f1f962d865310ffcb714358cd2c3
         }
 
         public static int Raycast(int x, int y)
