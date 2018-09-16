@@ -7,11 +7,10 @@ using AAMod.NPCs.Bosses.Daybringer;
 
 namespace AAMod.NPCs.Bosses.Nightcrawler
 {
-    class NightcrawlerHead : WormNightConnector
+    [AutoloadBossHead]
+    class NightcrawlerHead : Nightcrawler
     {
-        public override string Texture { get { return "AAMod/NPCs/Bosses/Nightcrawler/NightcrawlerHead"; } }
-
-        public static bool ExpertTimeSpeed = false;
+        public override string Texture { get { return "AAMod/NPCs/Bosses/Nightcrawler/Nightcrawler"; } }
 
         public override void SetStaticDefaults()
         {
@@ -43,7 +42,6 @@ namespace AAMod.NPCs.Bosses.Nightcrawler
         {
             npc.lifeMax = (int)(npc.lifeMax / Main.expertLife * 1.4f * bossLifeScale);
             npc.defense = 74;
-            ExpertTimeSpeed = true;
         }
 
 
@@ -51,36 +49,6 @@ namespace AAMod.NPCs.Bosses.Nightcrawler
         {
             base.Init();
             head = true;
-        }
-
-        int attackCounter = 0;
-        public override void SendExtraAI(BinaryWriter writer)
-        {
-            writer.Write(attackCounter);
-        }
-
-        public override void ReceiveExtraAI(BinaryReader reader)
-        {
-            attackCounter = reader.ReadInt32();
-        }
-        public override void CustomBehavior()
-        {
-            if (Main.netMode != 1)
-            {
-                if (attackCounter > 0)
-                    attackCounter--;
-                Player target = Main.player[npc.target];
-                if (attackCounter <= 0 && Vector2.Distance(npc.Center, target.Center) < 200 && Collision.CanHit(npc.Center, 1, 1, target.Center, 1, 1))
-                {
-                    Vector2 direction = (target.Center - npc.Center).SafeNormalize(Vector2.UnitX);
-                    direction = direction.RotatedByRandom(MathHelper.ToRadians(10));
-
-                    int projectile = Projectile.NewProjectile(npc.Center, direction * 1, mod.ProjectileType("Moonray"), 35, 0, Main.myPlayer);
-                    Main.projectile[projectile].timeLeft = 300;
-                    attackCounter = 500;
-                    npc.netUpdate = true;
-                }
-            }
         }
     }
 
@@ -94,6 +62,12 @@ namespace AAMod.NPCs.Bosses.Nightcrawler
             npc.width = 54;
             npc.height = 48;
             npc.DeathSound = null;
+        }
+
+        public override void Init()
+        {
+            base.Init();
+            body = true;
         }
     }
 
@@ -116,28 +90,29 @@ namespace AAMod.NPCs.Bosses.Nightcrawler
         }
     }
     // I made this 2nd base class to limit code repetition.
-    public abstract class WormNightConnector : WormNight
+    class Nightcrawler : WormNight
     {
-
         public override void Init()
         {
-            minLength = 12;
-            maxLength = 16;
+            minLength = 6;
+            maxLength = 12;
             tailType = mod.NPCType<NightcrawlerTail>();
             bodyType = mod.NPCType<NightcrawlerBody>();
             headType = mod.NPCType<NightcrawlerHead>();
-            speed = 3.5f;
+            speed = 6.5f;
             turnSpeed = 0.045f;
         }
     }
+
     public abstract class WormNight : ModNPC
     {
         /* ai[0] = follower
 		 * ai[1] = following
 		 * ai[2] = distanceFromTail
 		 * ai[3] = head
-		 */
+         */
         public bool head;
+        public bool body;
         public bool tail;
         public int minLength;
         public int maxLength;
@@ -148,6 +123,7 @@ namespace AAMod.NPCs.Bosses.Nightcrawler
         public bool directional = false;
         public float speed;
         public float turnSpeed;
+        public bool NCInit = false;
 
         public override void AI()
         {
@@ -180,10 +156,14 @@ namespace AAMod.NPCs.Bosses.Nightcrawler
                     {
                         npc.ai[3] = (float)npc.whoAmI;
                         npc.realLife = npc.whoAmI;
-                        npc.ai[2] = (float)Main.rand.Next(minLength, maxLength + 1);
+                        if (!NCInit)
+                        {
+                            npc.ai[2] = Main.rand.Next(minLength, maxLength);
+                            NCInit = true;
+                        }
                         npc.ai[0] = (float)NPC.NewNPC((int)(npc.position.X + (float)(npc.width / 2)), (int)(npc.position.Y + (float)npc.height), bodyType, npc.whoAmI);
                     }
-                    else if (npc.ai[2] > 0f)
+                    else if (npc.ai[2] != 0)
                     {
                         npc.ai[0] = (float)NPC.NewNPC((int)(npc.position.X + (float)(npc.width / 2)), (int)(npc.position.Y + (float)npc.height), npc.type, npc.whoAmI);
                     }
@@ -194,20 +174,8 @@ namespace AAMod.NPCs.Bosses.Nightcrawler
                     Main.npc[(int)npc.ai[0]].ai[3] = npc.ai[3];
                     Main.npc[(int)npc.ai[0]].realLife = npc.realLife;
                     Main.npc[(int)npc.ai[0]].ai[1] = (float)npc.whoAmI;
-                    Main.npc[(int)npc.ai[0]].ai[2] = npc.ai[2] - 1f;
+                    Main.npc[(int)npc.ai[0]].ai[2] = npc.ai[2] - 1;
                     npc.netUpdate = true;
-                }
-                if (!head && (!Main.npc[(int)npc.ai[1]].active || (Main.npc[(int)npc.ai[1]].type != headType && Main.npc[(int)npc.ai[1]].type != bodyType)))
-                {
-                    npc.life = 0;
-                    npc.HitEffect(0, 10.0);
-                    npc.active = false;
-                }
-                if (!tail && (!Main.npc[(int)npc.ai[0]].active || (Main.npc[(int)npc.ai[0]].type != bodyType && Main.npc[(int)npc.ai[0]].type != tailType)))
-                {
-                    npc.life = 0;
-                    npc.HitEffect(0, 10.0);
-                    npc.active = false;
                 }
                 if (!npc.active && Main.netMode == 2)
                 {
@@ -572,7 +540,6 @@ namespace AAMod.NPCs.Bosses.Nightcrawler
 
         public virtual void Init()
         {
-
         }
 
         public virtual bool ShouldRun()
@@ -580,17 +547,33 @@ namespace AAMod.NPCs.Bosses.Nightcrawler
             return false;
         }
 
+        public override void BossLoot(ref string name, ref int potionType)
+        {
+            potionType = ItemID.SuperHealingPotion;   //boss drops
+            AAWorld.downedNC = true;
+        }
+
+        int attackCounter = 0;
+        public override void SendExtraAI(BinaryWriter writer)
+        {
+            writer.Write(attackCounter);
+        }
+
+        public override void ReceiveExtraAI(BinaryReader reader)
+        {
+            attackCounter = reader.ReadInt32();
+        }
         public virtual void CustomBehavior()
         {
             if (NPC.AnyNPCs(mod.NPCType<DaybringerHead>()) && NPC.AnyNPCs(mod.NPCType<NightcrawlerHead>()))
             {
-                if (DaybringerHead.ExpertTimeSpeed)
+                if (Main.expertMode)
                 {
-                    Main.dayRate = 40;
+                    Main.dayRate = 60;
                 }
                 else
                 {
-                    Main.dayRate = 30;
+                    Main.dayRate = 50;
                 }
             }
             if (NPC.AnyNPCs(mod.NPCType<DaybringerHead>()) && !NPC.AnyNPCs(mod.NPCType<NightcrawlerHead>()))
@@ -609,8 +592,8 @@ namespace AAMod.NPCs.Bosses.Nightcrawler
             }
             if (!Main.dayTime && NPC.AnyNPCs(mod.NPCType<NightcrawlerHead>()))
             {
-                npc.scale = 1.5f;
-                speed = 2.5f;
+                npc.scale = 2f;
+                speed = 3.5f;
                 npc.damage = 75;
                 if (Main.expertMode)
                 {
@@ -623,8 +606,8 @@ namespace AAMod.NPCs.Bosses.Nightcrawler
             }
             else
             {
-                npc.scale = 1f;
-                speed = 3.5f;
+                npc.scale = 1.5f;
+                speed = 6.5f;
                 npc.damage = 70;
                 if (Main.expertMode)
                 {
@@ -635,11 +618,29 @@ namespace AAMod.NPCs.Bosses.Nightcrawler
                     npc.defense = 70;
                 }
             }
+            if (Main.netMode != 1)
+            {
+                if (attackCounter > 0)
+                    attackCounter--;
+                Player target = Main.player[npc.target];
+                if (attackCounter <= 0 && Vector2.Distance(npc.Center, target.Center) < 200 && Collision.CanHit(npc.Center, 1, 1, target.Center, 1, 1))
+                {
+                    Vector2 direction = (target.Center - npc.Center).SafeNormalize(Vector2.UnitX);
+                    direction = direction.RotatedByRandom(MathHelper.ToRadians(10));
+                    if (Main.rand.Next(4) == 0)
+                    {
+                        int projectile = Projectile.NewProjectile(npc.Center, direction * 1, mod.ProjectileType("Moonray"), 35, 0, Main.myPlayer);
+                        Main.projectile[projectile].timeLeft = 300;
+                    }
+                    attackCounter = 600;
+                    npc.netUpdate = true;
+                }
+            }
         }
 
         public override bool? DrawHealthBar(byte hbPosition, ref float scale, ref Vector2 position)
         {
-            return head ? (bool?)null : false;
+            return (tail || body) ? false : (bool?)null;
         }
     }
 }

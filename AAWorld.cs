@@ -14,6 +14,8 @@ using Terraria.Utilities;
 using System.Runtime.Serialization.Formatters.Binary;
 using AAMod.Tiles;
 using AAMod.Walls;
+using AAMod.NPCs.Bosses.Nightcrawler;
+using AAMod.NPCs.Bosses.Daybringer;
 
 namespace AAMod
 {
@@ -45,6 +47,7 @@ namespace AAMod
         public static bool downedNC;
         public static bool zeroUS;
         public static bool downedZero;
+        public static bool downedEquinox;
 
         public string nums = "1234567890";
 
@@ -58,6 +61,7 @@ namespace AAMod
             downedDB = false;
             downedNC = false;
             downedRetriever = false;
+            downedEquinox = false;
             if (NPC.downedMechBoss3 == true || NPC.downedMechBoss2 == true || NPC.downedMechBoss1 == true)
             {
                 HallowedOre = true;
@@ -129,6 +133,18 @@ namespace AAMod
             else
             {
                 FulguriteOre = false;
+            }
+            if (downedNC && downedDB)
+            {
+                downedEquinox = true;
+            }
+            else if (downedDB && !downedNC && !NPC.AnyNPCs(mod.NPCType<NightcrawlerHead>()))
+            {
+                downedDB = false;
+            }
+            else if (downedNC && !downedDB && !NPC.AnyNPCs(mod.NPCType<DaybringerHead>()))
+            {
+                downedNC = false;
             }
         }
 
