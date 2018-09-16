@@ -86,7 +86,6 @@
     <Compile Include="Buffs\InfinityOverload.cs" />
     <Compile Include="Buffs\UnstableSoul.cs" />
     <Compile Include="Dusts\AbyssiumDust.cs" />
-    <Compile Include="Dusts\Binary.cs" />
     <Compile Include="Dusts\BinaryDust.cs" />
     <Compile Include="Dusts\BogleafDust.cs" />
     <Compile Include="Dusts\BogwoodDust.cs" />

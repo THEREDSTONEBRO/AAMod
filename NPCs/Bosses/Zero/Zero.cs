@@ -67,36 +67,22 @@ namespace AAMod.NPCs.Bosses.Zero
                 NPC.NewNPC((int)spawnAt.X, (int)spawnAt.Y, mod.NPCType("ZeroAwakened"));
             }
         }
-        public void LoadTextures()
+
+        /*protected void DrawNPC(int iNPCIndex, bool behindTiles)
         {
-            for (int num32 = 0; num32 < 17; num32++)
-            {
-                Main.chainsTexture[num32] = Main.OurLoad<Texture2D>(string.Concat(new object[]
-                {
-                    "Images",
-                    Path.DirectorySeparatorChar,
-                    "Chains_",
-                    num32
-                }));
-            }
-            ZeroArmTex = Main.OurLoad<Texture2D>("Images" + Path.DirectorySeparatorChar + "ZeroArm");
-            
-        }
-        protected void DrawNPC(int iNPCIndex, bool behindTiles)
-        {
-            if (npc.aiStyle >= 33 && npc.aiStyle <= 36)
+            if (mod.NPCType("VoidStar") != null || mod.NPCType("RealityCannon") != null || mod.NPCType("RiftShredder") != null || mod.NPCType("TeslaHand") != null))
             {
                 Vector2 vector7 = new Vector2(npc.position.X + (float)npc.width * 0.5f - 5f * npc.ai[0], npc.position.Y + 20f);
                 for (int k = 0; k < 2; k++)
                 {
-                    float num22 = Main.npc[(int)npc.ai[1]].position.X + (float)(Main.npc[(int)npc.ai[1]].width / 2) - vector7.X;
-                    float num23 = Main.npc[(int)npc.ai[1]].position.Y + (float)(Main.npc[(int)npc.ai[1]].height / 2) - vector7.Y;
+                    float num22 = Main.npc[(int)npc.ai[1]].position.X + Main.npc[(int)npc.ai[1]].width / 2 - vector7.X;
+                    float num23 = Main.npc[(int)npc.ai[1]].position.Y + Main.npc[(int)npc.ai[1]].height / 2 - vector7.Y;
                     float num24;
                     if (k == 0)
                     {
                         num22 -= 200f * npc.ai[0];
                         num23 += 130f;
-                        num24 = (float)Math.Sqrt((double)(num22 * num22 + num23 * num23));
+                        num24 = (float)Math.Sqrt(num22 * num22 + num23 * num23);
                         num24 = 92f / num24;
                         vector7.X += num22 * num24;
                         vector7.Y += num23 * num24;
@@ -105,14 +91,14 @@ namespace AAMod.NPCs.Bosses.Zero
                     {
                         num22 -= 50f * npc.ai[0];
                         num23 += 80f;
-                        num24 = (float)Math.Sqrt((double)(num22 * num22 + num23 * num23));
+                        num24 = (float)Math.Sqrt(num22 * num22 + num23 * num23);
                         num24 = 60f / num24;
                         vector7.X += num22 * num24;
                         vector7.Y += num23 * num24;
                     }
-                    float rotation7 = (float)Math.Atan2((double)num23, (double)num22) - 1.57f;
-                    Microsoft.Xna.Framework.Color color7 = Lighting.GetColor((int)vector7.X / 16, (int)(vector7.Y / 16f));
-                    Main.spriteBatch.Draw(Main.boneArm2Texture, new Vector2(vector7.X - Main.screenPosition.X, vector7.Y - Main.screenPosition.Y), new Microsoft.Xna.Framework.Rectangle?(new Microsoft.Xna.Framework.Rectangle(0, 0, Main.boneArmTexture.Width, Main.boneArmTexture.Height)), color7, rotation7, new Vector2((float)Main.boneArmTexture.Width * 0.5f, (float)Main.boneArmTexture.Height * 0.5f), 1f, SpriteEffects.None, 0f);
+                    float rotation7 = (float)Math.Atan2(num23, num22) - 1.57f;
+                    Color color7 = Lighting.GetColor((int)vector7.X / 16, (int)(vector7.Y / 16f));
+                    Main.spriteBatch.Draw(Main.boneArm2Texture, new Vector2(vector7.X - Main.screenPosition.X, vector7.Y - Main.screenPosition.Y), new Microsoft.Xna.Framework.Rectangle?(new Rectangle(0, 0, Main.boneArmTexture.Width, Main.boneArmTexture.Height)), color7, rotation7, new Vector2(Main.boneArmTexture.Width * 0.5f, Main.boneArmTexture.Height * 0.5f), 1f, SpriteEffects.None, 0f);
                     if (k == 0)
                     {
                         vector7.X += num22 * num24 / 2f;
@@ -122,12 +108,12 @@ namespace AAMod.NPCs.Bosses.Zero
                     {
                         vector7.X += num22 * num24 - 16f;
                         vector7.Y += num23 * num24 - 6f;
-                        int num25 = Dust.NewDust(new Vector2(vector7.X, vector7.Y), 30, 10, 6, num22 * 0.02f, num23 * 0.02f, 0, default(Microsoft.Xna.Framework.Color), 2.5f);
+                        int num25 = Dust.NewDust(new Vector2(vector7.X, vector7.Y), 30, 10, 6, num22 * 0.02f, num23 * 0.02f, 0, default(Color), 2.5f);
                         Main.dust[num25].noGravity = true;
                     }
                 }
             }
-        }
+        }*/
        
         public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
         {
