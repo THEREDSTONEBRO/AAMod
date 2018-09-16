@@ -36,7 +36,7 @@ namespace AAMod.Items.Tools
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Terratool");
-            Tooltip.SetDefault("");
+            Tooltip.SetDefault("Not Working Yet...");
         }
 
         public override void AddRecipes()  //How to craft this item

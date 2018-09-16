@@ -50,73 +50,7 @@ namespace AAMod.NPCs.Bosses.Nightcrawler
             base.Init();
             head = true;
         }
-
-        public override void NPCLoot()
-        {
-            int bossAlive = mod.NPCType("NightcrawlerHead");
-            if (NPC.CountNPCS(bossAlive) < 2)
-            {
-                if (Main.rand.Next(10) == 0)
-                {
-                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("NightcrawlerTrophy"));
-                }
-                if (Main.expertMode)
-                {
-                    npc.DropBossBags();
-                }
-                else
-                {
-                    if (Main.rand.Next(7) == 0)
-                    {
-                        Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("NightcrawlerMask"));
-                    }
-                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("DarkmatterOre"), Main.rand.Next(30, 75));
-                }
-            }
-            else
-            {
-                npc.value = 0f;
-                npc.boss = false;
-            }
-        }
-        public override void BossLoot(ref string name, ref int potionType)
-        {
-            potionType = ItemID.GreaterHealingPotion;   //boss drops
-            AAWorld.downedNC = true;
-        }
-
-        int attackCounter = 0;
-        public override void SendExtraAI(BinaryWriter writer)
-        {
-            writer.Write(attackCounter);
-        }
-
-        public override void ReceiveExtraAI(BinaryReader reader)
-        {
-            attackCounter = reader.ReadInt32();
-        }
-        public override void CustomBehavior()
-        {
-            if (Main.netMode != 1)
-            {
-                if (attackCounter > 0)
-                    attackCounter--;
-                Player target = Main.player[npc.target];
-                if (attackCounter <= 0 && Vector2.Distance(npc.Center, target.Center) < 200 && Collision.CanHit(npc.Center, 1, 1, target.Center, 1, 1))
-                {
-                    Vector2 direction = (target.Center - npc.Center).SafeNormalize(Vector2.UnitX);
-                    direction = direction.RotatedByRandom(MathHelper.ToRadians(10));
-
-                    int projectile = Projectile.NewProjectile(npc.Center, direction * 1, mod.ProjectileType("Moonray"), 35, 0, Main.myPlayer);
-                    Main.projectile[projectile].timeLeft = 300;
-                    attackCounter = 500;
-                    npc.netUpdate = true;
-                }
-            }
-        }
     }
-
-    
 
     class NightcrawlerBody : NightcrawlerHead
     {
@@ -160,8 +94,6 @@ namespace AAMod.NPCs.Bosses.Nightcrawler
     {
         public override void Init()
         {
-            minLength = 6;
-            maxLength = 12;
             tailType = mod.NPCType<NightcrawlerTail>();
             bodyType = mod.NPCType<NightcrawlerBody>();
             headType = mod.NPCType<NightcrawlerHead>();
@@ -218,13 +150,13 @@ namespace AAMod.NPCs.Bosses.Nightcrawler
             {
                 if (!tail && npc.ai[0] == 0f)
                 {
-                    if (head)
+                    if (head && !body && !tail)
                     {
                         npc.ai[3] = (float)npc.whoAmI;
                         npc.realLife = npc.whoAmI;
                         if (!NCInit)
                         {
-                            npc.ai[2] = Main.rand.Next(minLength, maxLength);
+                            npc.ai[2] = 10;
                             NCInit = true;
                         }
                         npc.ai[0] = (float)NPC.NewNPC((int)(npc.position.X + (float)(npc.width / 2)), (int)(npc.position.Y + (float)npc.height), bodyType, npc.whoAmI);
@@ -233,7 +165,7 @@ namespace AAMod.NPCs.Bosses.Nightcrawler
                     {
                         npc.ai[0] = (float)NPC.NewNPC((int)(npc.position.X + (float)(npc.width / 2)), (int)(npc.position.Y + (float)npc.height), npc.type, npc.whoAmI);
                     }
-                    else
+                    if (npc.ai[2] == 0)
                     {
                         npc.ai[0] = (float)NPC.NewNPC((int)(npc.position.X + (float)(npc.width / 2)), (int)(npc.position.Y + (float)npc.height), tailType, npc.whoAmI);
                     }
@@ -635,26 +567,31 @@ namespace AAMod.NPCs.Bosses.Nightcrawler
             {
                 if (Main.expertMode)
                 {
-                    Main.dayRate = 60;
+                    Main.fastForwardTime = true;
+                    Main.dayRate = 40;
                 }
                 else
                 {
-                    Main.dayRate = 50;
+                    Main.fastForwardTime = true;
+                    Main.dayRate = 30;
                 }
             }
             if (NPC.AnyNPCs(mod.NPCType<DaybringerHead>()) && !NPC.AnyNPCs(mod.NPCType<NightcrawlerHead>()))
             {
+                Main.fastForwardTime = true;
                 Main.dayTime = true;
                 Main.dayRate = 0;
             }
             if (!NPC.AnyNPCs(mod.NPCType<DaybringerHead>()) && NPC.AnyNPCs(mod.NPCType<NightcrawlerHead>()))
             {
+                Main.fastForwardTime = true;
                 Main.dayTime = false;
                 Main.dayRate = 0;
             }
             if (!NPC.AnyNPCs(mod.NPCType<DaybringerHead>()) && !NPC.AnyNPCs(mod.NPCType<NightcrawlerHead>()))
             {
                 Main.dayRate = 1;
+                Main.fastForwardTime = false;
             }
             if (!Main.dayTime && NPC.AnyNPCs(mod.NPCType<NightcrawlerHead>()))
             {
@@ -701,6 +638,35 @@ namespace AAMod.NPCs.Bosses.Nightcrawler
                     attackCounter = 600;
                     npc.netUpdate = true;
                 }
+            }
+        }
+
+        public override void NPCLoot()
+        {
+            int bossAlive = mod.NPCType("NightcrawlerHead");
+            if (NPC.CountNPCS(bossAlive) < 2)
+            {
+                if (Main.rand.Next(10) == 0)
+                {
+                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("NightcrawlerTrophy"));
+                }
+                if (Main.expertMode)
+                {
+                    npc.DropBossBags();
+                }
+                else
+                {
+                    if (Main.rand.Next(7) == 0)
+                    {
+                        Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("NightcrawlerMask"));
+                    }
+                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("DarkmatterOre"), Main.rand.Next(30, 75));
+                }
+            }
+            else
+            {
+                npc.value = 0f;
+                npc.boss = false;
             }
         }
 

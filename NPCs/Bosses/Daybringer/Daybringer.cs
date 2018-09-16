@@ -50,70 +50,6 @@ namespace AAMod.NPCs.Bosses.Daybringer
             base.Init();
             head = true;
         }
-
-        int attackCounter = 0;
-        public override void SendExtraAI(BinaryWriter writer)
-        {
-            writer.Write(attackCounter);
-        }
-
-        public override void ReceiveExtraAI(BinaryReader reader)
-        {
-            attackCounter = reader.ReadInt32();
-        }
-        public override void CustomBehavior()
-        {
-            if (Main.netMode != 1)
-            {
-                if (attackCounter > 0)
-                    attackCounter--;
-                Player target = Main.player[npc.target];
-                if (attackCounter <= 0 && Vector2.Distance(npc.Center, target.Center) < 200 && Collision.CanHit(npc.Center, 1, 1, target.Center, 1, 1))
-                {
-                    Vector2 direction = (target.Center - npc.Center).SafeNormalize(Vector2.UnitX);
-                    direction = direction.RotatedByRandom(MathHelper.ToRadians(10));
-
-                    int projectile = Projectile.NewProjectile(npc.Center, direction * 1, mod.ProjectileType("Sunbeam"), 35, 0, Main.myPlayer);
-                    Main.projectile[projectile].timeLeft = 300;
-                    attackCounter = 500;
-                    npc.netUpdate = true;
-                }
-            }
-        }
-
-        public override void NPCLoot()
-        {
-            int bossAlive = mod.NPCType("DaybringerHead");
-            if (NPC.CountNPCS(bossAlive) < 2)
-            {
-                if (Main.rand.Next(10) == 0)
-                {
-                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("DaybringerTrophy"));
-                }
-                if (Main.expertMode)
-                {
-                    npc.DropBossBags();
-                }
-                else
-                {
-                    if (Main.rand.Next(7) == 0)
-                    {
-                        Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("DaybringerMask"));
-                    }
-                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("Radium"), Main.rand.Next(30, 75));
-                }
-            }
-            else
-            {
-                npc.value = 0f;
-                npc.boss = false;
-            }
-        }
-        public override void BossLoot(ref string name, ref int potionType)
-        {
-            potionType = ItemID.GreaterHealingPotion;   //boss drops
-            AAWorld.downedDB = true;
-        }
     }
 
     class DaybringerBody : DaybringerHead
@@ -158,8 +94,6 @@ namespace AAMod.NPCs.Bosses.Daybringer
     {
         public override void Init()
         {
-            minLength = 6;
-            maxLength = 12;
             tailType = mod.NPCType<DaybringerTail>();
             bodyType = mod.NPCType<DaybringerBody>();
             headType = mod.NPCType<DaybringerHead>();
@@ -216,13 +150,13 @@ namespace AAMod.NPCs.Bosses.Daybringer
             {
                 if (!tail && npc.ai[0] == 0f)
                 {
-                    if (head)
+                    if (head && !body && !tail)
                     {
                         npc.ai[3] = (float)npc.whoAmI;
                         npc.realLife = npc.whoAmI;
                         if (!DBInit)
                         {
-                            npc.ai[2] = Main.rand.Next(minLength, maxLength);
+                            npc.ai[2] = 10;
                             DBInit = true;
                         }
                         npc.ai[0] = (float)NPC.NewNPC((int)(npc.position.X + (float)(npc.width / 2)), (int)(npc.position.Y + (float)npc.height), bodyType, npc.whoAmI);
@@ -231,7 +165,7 @@ namespace AAMod.NPCs.Bosses.Daybringer
                     {
                         npc.ai[0] = (float)NPC.NewNPC((int)(npc.position.X + (float)(npc.width / 2)), (int)(npc.position.Y + (float)npc.height), npc.type, npc.whoAmI);
                     }
-                    else
+                    if (npc.ai[2] == 0)
                     {
                         npc.ai[0] = (float)NPC.NewNPC((int)(npc.position.X + (float)(npc.width / 2)), (int)(npc.position.Y + (float)npc.height), tailType, npc.whoAmI);
                     }
@@ -633,26 +567,31 @@ namespace AAMod.NPCs.Bosses.Daybringer
             {
                 if (Main.expertMode)
                 {
+                    Main.fastForwardTime = true;
                     Main.dayRate = 60;
                 }
                 else
                 {
+                    Main.fastForwardTime = true;
                     Main.dayRate = 50;
                 }
             }
             if (NPC.AnyNPCs(mod.NPCType<DaybringerHead>()) && !NPC.AnyNPCs(mod.NPCType<NightcrawlerHead>()))
             {
+                Main.fastForwardTime = true;
                 Main.dayTime = true;
                 Main.dayRate = 0;
             }
             if (!NPC.AnyNPCs(mod.NPCType<DaybringerHead>()) && NPC.AnyNPCs(mod.NPCType<NightcrawlerHead>()))
             {
+                Main.fastForwardTime = true;
                 Main.dayTime = false;
                 Main.dayRate = 0;
             }
             if (!NPC.AnyNPCs(mod.NPCType<DaybringerHead>()) && !NPC.AnyNPCs(mod.NPCType<NightcrawlerHead>()))
             {
                 Main.dayRate = 1;
+                Main.fastForwardTime = false;
             }
             if (Main.dayTime && NPC.AnyNPCs(mod.NPCType<DaybringerHead>()))
             {
@@ -699,6 +638,35 @@ namespace AAMod.NPCs.Bosses.Daybringer
                     attackCounter = 600;
                     npc.netUpdate = true;
                 }
+            }
+        }
+
+        public override void NPCLoot()
+        {
+            int bossAlive = mod.NPCType("DaybringerHead");
+            if (NPC.CountNPCS(bossAlive) < 2)
+            {
+                if (Main.rand.Next(10) == 0)
+                {
+                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("DaybringerTrophy"));
+                }
+                if (Main.expertMode)
+                {
+                    npc.DropBossBags();
+                }
+                else
+                {
+                    if (Main.rand.Next(7) == 0)
+                    {
+                        Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("DaybringerMask"));
+                    }
+                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("Radium"), Main.rand.Next(30, 75));
+                }
+            }
+            else
+            {
+                npc.value = 0f;
+                npc.boss = false;
             }
         }
 
