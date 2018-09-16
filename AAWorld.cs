@@ -484,23 +484,6 @@ namespace AAMod
                 WorldGen.KillTile(X, i);
         }
 
-        
-
-        /*Point position = new Point(center.X + WorldGen.genRand.Next(-50, 50), center.Y + WorldGen.genRand.Next(-50, 50));
-            int ShiniesIndex = tasks.FindIndex(genpass => genpass.Name.Equals("Shinies"));
-            if (ShiniesIndex == -1)
-            {
-                return;
-            }
-            tasks.Insert(ShiniesIndex + 1, new PassLegacy("Custom Mod Ores", delegate (GenerationProgress progress)
-            {
-                progress.Message = "00000000000000";
-                                                                                                                                                                                                                                         
-                for (int k = 0; k < (int)((double)(Main.maxTilesX * Main.maxTilesY) * 6E-05); k++)                                                                                                                                      
-                {                                                                                                                                                                                                                      
-                    WorldGen.TileRunner(WorldGen.genRand.Next(0, Main.maxTilesX), WorldGen.genRand.Next((int)WorldGen.rockLayerLow, Main.maxTilesY), (double)WorldGen.genRand.Next(4, 7), WorldGen.genRand.Next(5, 10), mod.TileType("AbyssiumOreTile"), false, 0f, 0f, false, true);
-                }*/
-
         public override void PostUpdate()
         {
 

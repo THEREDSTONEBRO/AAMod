@@ -21,6 +21,7 @@ namespace AAMod.NPCs.Bosses.Zero
             npc.damage = 100;
             npc.defense = 90;
             npc.lifeMax = 28000;
+            npc.noGravity = true;
             npc.HitSound = new LegacySoundStyle(3, 4, Terraria.Audio.SoundType.Sound);
             npc.DeathSound = new LegacySoundStyle(4, 14, Terraria.Audio.SoundType.Sound);
             npc.value = 0f;

@@ -87,6 +87,7 @@
     <Compile Include="Buffs\UnstableSoul.cs" />
     <Compile Include="Dusts\AbyssiumDust.cs" />
     <Compile Include="Dusts\Binary.cs" />
+    <Compile Include="Dusts\BinaryDust.cs" />
     <Compile Include="Dusts\BogleafDust.cs" />
     <Compile Include="Dusts\BogwoodDust.cs" />
     <Compile Include="Dusts\DarkmatterDust.cs" />
@@ -106,6 +107,7 @@
     <Compile Include="Dusts\RadiantIncinerite.cs" />
     <Compile Include="Dusts\RazeleafDust.cs" />
     <Compile Include="Dusts\RazewoodDust.cs" />
+    <Compile Include="Dusts\ZeroDust.cs" />
     <Compile Include="Items\Accessories\DemonGauntet.cs" />
     <Compile Include="Items\Accessories\DwarvenGauntlet.cs" />
     <Compile Include="Items\Accessories\InfinityGauntlet.cs" />
