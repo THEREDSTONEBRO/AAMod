@@ -9,7 +9,7 @@ using Terraria.GameContent.Achievements;
 namespace AAMod.Items.Projectiles
 {
 	// to investigate: Projectile.Damage, (8843)
-	class VoidStarPf : ModProjectile
+	class VoidStarPF : ModProjectile
 	{
 		public override void SetDefaults()
 		{
