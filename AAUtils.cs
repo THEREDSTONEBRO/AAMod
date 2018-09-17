@@ -11,6 +11,24 @@ using Terraria.ModLoader;
 
 namespace AAMod
 {
+    public static class ItemUtilities
+    {
+        public static void DropLoot(this Entity ent, int type, int stack = 1)
+        {
+            Item.NewItem((int)ent.position.X, (int)ent.position.Y, ent.width, ent.height, type, stack);
+        }
+
+        public static void DropLoot(this Entity ent, int type, float chance)
+        {
+            if (Main.rand.NextDouble() < chance)
+                Item.NewItem((int)ent.position.X, (int)ent.position.Y, ent.width, ent.height, type);
+        }
+
+        public static void DropLoot(this Entity ent, int type, int min, int max)
+        {
+            Item.NewItem((int)ent.position.X, (int)ent.position.Y, ent.width, ent.height, type, Main.rand.Next(min, max));
+        }
+    }
     public class AAUtils : ModPlayer
     {
         public static void DrawNPCGlowMask(SpriteBatch spriteBatch, NPC npc, Texture2D texture)

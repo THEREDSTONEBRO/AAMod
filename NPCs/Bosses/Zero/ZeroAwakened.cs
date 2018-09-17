@@ -11,6 +11,8 @@ namespace AAMod.NPCs.Bosses.Zero
     [AutoloadBossHead]
     public class ZeroAwakened : ModNPC
     {
+
+        public static int type;
         private Player player;
         private float speed;
         public override void SetStaticDefaults()
@@ -47,7 +49,7 @@ namespace AAMod.NPCs.Bosses.Zero
 
         public override void NPCLoot()
         {
-            if (Main.rand.Next(10) == 0)
+            /*if (Main.rand.Next(10) == 0)
             {
                 Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("ZeroTrophy"));
             }
@@ -77,12 +79,30 @@ namespace AAMod.NPCs.Bosses.Zero
                 {
                     Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("VoidStar"));
                 }
-            } 
+            } */
+            
+
+            if (Main.expertMode)
+            {
+                npc.DropBossBags();
+                return;
+            }
+
+            npc.DropLoot(mod.ItemType("UnstableSingularity"), 25, 35);
+
+            string[] lootTable = { "RiftShredder", "EventHorizon", "VoidStar", "RealityCannon", "TeslaHand" };
+            int loot = Main.rand.Next(lootTable.Length);
+            npc.DropLoot(mod.ItemType(lootTable[loot]));
+
+            npc.DropLoot(Items.Vanity.Mask.ZeroMask.type, 1f / 7);
+            npc.DropLoot(Items.Blocks.ZeroTrophy.type, 1f / 10);
         }
         public override void BossLoot(ref string name, ref int potionType)
         {
             potionType = ItemID.GreaterHealingPotion;   //boss drops
             AAWorld.downedZero = true;
+            Projectile.NewProjectile((new Vector2(npc.position.X + 100f, npc.position.Y + 89f)), (new Vector2(0f, 0f)), mod.ProjectileType("ZeroDeath1"), 0, 0);
+            
         }
         public override void HitEffect(int hitDirection, double damage)
         {
