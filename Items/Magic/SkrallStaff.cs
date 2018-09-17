@@ -1,3 +1,5 @@
+using Microsoft.Xna.Framework;
+using System.Collections.Generic;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -29,7 +31,6 @@ It's the stick that's magic. The diamond is just for show
 			item.knockBack = 5;
 			item.value = 1000000;
 			item.rare = 11;
-            item.expert = true;
 			item.UseSound = SoundID.Item20;
 			item.autoReuse = true;
 			item.shoot = mod.ProjectileType("Crystal");
@@ -39,6 +40,17 @@ It's the stick that's magic. The diamond is just for show
         public override bool AltFunctionUse(Player player)
         {
             return true;
+        }
+
+        public override void ModifyTooltips(List<TooltipLine> list)
+        {
+            foreach (TooltipLine line2 in list)
+            {
+                if (line2.mod == "Terraria" && line2.Name == "ItemName")
+                {
+                    line2.overrideColor = new Color(54, 69, 79);
+                }
+            }
         }
 
         public override bool CanUseItem(Player player)

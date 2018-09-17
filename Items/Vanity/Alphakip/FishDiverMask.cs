@@ -1,6 +1,8 @@
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Microsoft.Xna.Framework;
+using System.Collections.Generic;
 
 namespace AAMod.Items.Vanity.Alphakip
 {
@@ -14,6 +16,17 @@ namespace AAMod.Items.Vanity.Alphakip
             Tooltip.SetDefault(@"So I heard you like mudkips
 'Great for impersonating Ancients Awakened Devs!'");
 
+        }
+
+        public override void ModifyTooltips(List<TooltipLine> list)
+        {
+            foreach (TooltipLine line2 in list)
+            {
+                if (line2.mod == "Terraria" && line2.Name == "ItemName")
+                {
+                    line2.overrideColor = new Color(39, 115, 189);
+                }
+            }
         }
 
         public override void SetDefaults()

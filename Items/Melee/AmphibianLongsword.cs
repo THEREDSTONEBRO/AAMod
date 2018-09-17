@@ -1,6 +1,8 @@
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Microsoft.Xna.Framework;
+using System.Collections.Generic;
 
 namespace AAMod.Items.Melee
 {
@@ -23,14 +25,24 @@ namespace AAMod.Items.Melee
 			item.knockBack = 7;
 			item.value = 300000;
 			item.rare = 9;
-			item.expert = true;
 			item.UseSound = SoundID.Item1;
 			item.autoReuse = true;
 			item.shoot = mod.ProjectileType("AmphibiousProjectile");
             item.shootSpeed = 9f;
 		}
 
-		public override void AddRecipes()
+        public override void ModifyTooltips(List<TooltipLine> list)
+        {
+            foreach (TooltipLine line2 in list)
+            {
+                if (line2.mod == "Terraria" && line2.Name == "ItemName")
+                {
+                    line2.overrideColor = new Color(39, 115, 189);
+                }
+            }
+        }
+
+        public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);
 			recipe.AddIngredient(ItemID.LunarBar, 10);

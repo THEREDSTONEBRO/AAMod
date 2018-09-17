@@ -29,10 +29,10 @@ namespace AAMod.Items.Boss.Zero
 
 		public override void OpenBossBag(Player player)
 		{
-            /*if (Main.rand.Next(7) == 0)
+            if (Main.rand.Next(7) == 0)
             {
                 player.QuickSpawnItem(mod.ItemType("ZeroMask"));
-            }*/
+            }
             if (Main.rand.Next(2) == 0)
             {
                 int choice = Main.rand.Next(7);
@@ -48,6 +48,7 @@ namespace AAMod.Items.Boss.Zero
                         player.QuickSpawnItem(mod.ItemType("FishDiverMask"));
                         player.QuickSpawnItem(mod.ItemType("FishDiverJacket"));
                         player.QuickSpawnItem(mod.ItemType("FishDiverBoots"));
+                        player.QuickSpawnItem(mod.ItemType("AquamancerWings"));
                     }
                     else if (choice == 2)
                     {
@@ -56,7 +57,10 @@ namespace AAMod.Items.Boss.Zero
 
                 }
             }
-            player.QuickSpawnItem(mod.ItemType("EventHorizon"));
-		}
+            player.QuickSpawnItem(mod.ItemType("UnstableSingularity"), Main.rand.Next(25, 36));
+            string[] lootTable = { "EventHorizon", "RealityCannon", "RiftShredder", "VoidStar" };
+            int loot = Main.rand.Next(lootTable.Length);
+            player.QuickSpawnItem(mod.ItemType(lootTable[loot]));
+        }
 	}
 }

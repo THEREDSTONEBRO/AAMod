@@ -205,6 +205,43 @@ namespace AAMod
             }
         }
 
+        public void DrawItem(int i)
+        {
+
+            if (player.HeldItem.type == mod.ItemType("VoidStar"))
+            {
+                Vector2 vector25 = Main.OffsetsPlayerOnhand[player.bodyFrame.Y / 56] * 2f;
+                if (player.direction != 1)
+                {
+                    vector25.X = (float)player.bodyFrame.Width - vector25.X;
+                }
+                if (player.gravDir != 1f)
+                {
+                    vector25.Y = (float)player.bodyFrame.Height - vector25.Y;
+                }
+                vector25 -= new Vector2((float)(player.bodyFrame.Width - player.width), (float)(player.bodyFrame.Height - 42)) / 2f;
+                Vector2 position17 = player.RotatedRelativePoint(player.position + vector25, true) - player.velocity;
+                for (int num277 = 0; num277 < 4; num277++)
+                {
+                    Dust dust = Main.dust[Dust.NewDust(player.Center, 0, 0, 242, player.direction * 2, 0f, 150, new Color(110, 20, 0), 1.3f)];
+                    dust.position = position17;
+                    dust.velocity *= 0f;
+                    dust.noGravity = true;
+                    dust.fadeIn = 1f;
+                    dust.velocity += player.velocity;
+                    if (Main.rand.Next(2) == 0)
+                    {
+                        dust.position += Utils.RandomVector2(Main.rand, -4f, 4f);
+                        dust.scale += Main.rand.NextFloat();
+                        if (Main.rand.Next(2) == 0)
+                        {
+                            dust.customData = this;
+                        }
+                    }
+                }
+            }
+        }
+
         public virtual float UseTimeMultiplier(Item item, Player player)
         {
             float multiplier = 1f;
