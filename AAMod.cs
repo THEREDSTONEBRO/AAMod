@@ -51,8 +51,6 @@ namespace AAMod
                 //DukeFishron = 12f;
                 //LunaticCultist = 13f;
                 //Moonlord = 14f;
-
-
             }
             try
             {

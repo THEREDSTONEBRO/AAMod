@@ -44,18 +44,17 @@ namespace AAMod.Items.Boss.Zero
 
 
         public override void AddRecipes()
-		{
-			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(mod, "ExilesKatana", 1);
-			recipe.AddIngredient(mod, "OceanRazor", 1);
-			recipe.AddIngredient(mod, "DesertScimitar", 1);
-			recipe.AddIngredient(mod, "IceLongsword", 1);
-			recipe.AddTile(TileID.DemonAltar);
-			recipe.SetResult(this);
-			recipe.AddRecipe();
-		}
-		
-		public override void MeleeEffects(Player player, Rectangle hitbox)
+        {
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(null, "ApocalyptitePlate", 5);
+            recipe.AddIngredient(null, "UnstableSingularity", 5);
+            recipe.AddIngredient(ItemID.StarWrath);
+            recipe.AddTile(null, "BinaryReassembler");
+            recipe.SetResult(this);
+            recipe.AddRecipe();
+        }
+
+        public override void MeleeEffects(Player player, Rectangle hitbox)
         {
             Dust dust;
             dust = Terraria.Dust.NewDustDirect(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, 15, 0f, 0f, 46, new Color(33, 0, 255), 1.25f);

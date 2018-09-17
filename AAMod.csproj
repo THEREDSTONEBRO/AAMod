@@ -248,6 +248,8 @@
     <Compile Include="Items\Boss\Zero\EventHorizon.cs" />
     <Compile Include="Items\Boss\Zero\RiftShredder.cs" />
     <Compile Include="Items\Boss\Zero\UnstableSingularity.cs" />
+    <Compile Include="Items\Boss\Zero\RealityCannon.cs" />
+    <Compile Include="Items\Boss\Zero\VoidStar.cs" />
     <Compile Include="Items\Boss\Zero\ZeroBag.cs" />
     <Compile Include="Items\Magic\DragonStaff.cs" />
     <Compile Include="Items\Magic\DuckstepGun.cs" />
@@ -356,6 +358,7 @@
     <Compile Include="Items\Projectiles\ReaperArrow.cs" />
     <Compile Include="Items\Projectiles\Ryugen.cs" />
     <Compile Include="Items\Projectiles\Squirt.cs" />
+    <Compile Include="Items\Projectiles\RealityLaser.cs" />
     <Compile Include="Items\Projectiles\Taserblast.cs" />
     <Compile Include="Items\Projectiles\TerraRoseShot.cs" />
     <Compile Include="Items\Projectiles\TFGWP.cs" />
@@ -368,6 +371,7 @@
     <Compile Include="Items\Projectiles\TrueFleshClaymoreShot.cs" />
     <Compile Include="Items\Projectiles\TrueManaShot.cs" />
     <Compile Include="Items\Projectiles\Void.cs" />
+    <Compile Include="Items\Projectiles\VoidStarPF.cs" />
     <Compile Include="Items\Ranged\Apollo.cs" />
     <Compile Include="Items\Ranged\ApollosWrath.cs" />
     <Compile Include="Items\Ranged\BoneBow.cs" />
@@ -405,6 +409,7 @@
     <Compile Include="Items\Usable\OrangeSolution.cs" />
     <Compile Include="Items\Usable\OrderSolution.cs" />
     <Compile Include="Items\Usable\ZeroTesseract.cs" />
+    <Compile Include="Items\Vanity\Alphakip\AquamancerWings.cs" />
     <Compile Include="Items\Vanity\Alphakip\FishDiverBoots.cs" />
     <Compile Include="Items\Vanity\Alphakip\FishDiverJacket.cs" />
     <Compile Include="Items\Vanity\Alphakip\FishDiverMask.cs" />
@@ -630,7 +635,6 @@
     <Content Include="Gore\ZeroGore3.png" />
     <Content Include="icon.png" />
     <Content Include="IMPORTANTREADME.txt" />
-    <Content Include="Items\Accessories\AquamancerWings_Wings.png" />
     <Content Include="Items\Accessories\BotchedBand.png" />
     <Content Include="Items\Accessories\DemonGauntlet.png" />
     <Content Include="Items\Accessories\DemonGauntlet_HandsOff.png" />
@@ -927,9 +931,14 @@
     <Content Include="Items\Boss\Retriever\StormRiot_Shield.png" />
     <Content Include="Items\Boss\Yamata\Masamune.png" />
     <Content Include="Items\Boss\Zero\EventHorizon.png" />
+    <Content Include="Items\Boss\Zero\Neutralizer.png" />
+    <Content Include="Items\Boss\Zero\RealityCannon.png" />
     <Content Include="Items\Boss\Zero\RiftShredder.png" />
+    <Content Include="Items\Boss\Zero\TeslaHand.png" />
     <Content Include="Items\Boss\Zero\UnstableSingularity.png" />
+    <Content Include="Items\Boss\Zero\VoidStar.png" />
     <Content Include="Items\Boss\Zero\ZeroBag.png" />
+    <Content Include="Items\Boss\Zero\ZeroStar.png" />
     <Content Include="Items\Hooks\DragonsGrip.png" />
     <Content Include="Items\Magic\AncientArcanum.png" />
     <Content Include="Items\Magic\BogBomb.png" />
@@ -1088,6 +1097,7 @@
     <Content Include="Items\Projectiles\OrangeSolution.png" />
     <Content Include="Items\Projectiles\OrderSolution.png" />
     <Content Include="Items\Projectiles\RainbowCatPro.png" />
+    <Content Include="Items\Projectiles\RealityLaser.png" />
     <Content Include="Items\Projectiles\ReaperArrow.png" />
     <Content Include="Items\Projectiles\ReaperArrow_glow.png" />
     <Content Include="Items\Projectiles\Ryugen.png" />
@@ -1109,6 +1119,7 @@
     <Content Include="Items\Projectiles\TrueManaShot.png" />
     <Content Include="Items\Projectiles\ValkyrieLance.png" />
     <Content Include="Items\Projectiles\Void.png" />
+    <Content Include="Items\Projectiles\VoidStarPF.png" />
     <Content Include="Items\Ranged\Apollo.png" />
     <Content Include="Items\Ranged\ApollosWrath.png" />
     <Content Include="Items\Ranged\BoneBow.png" />
@@ -1202,6 +1213,8 @@
     <Content Include="Items\Usable\StoneTesseract.png" />
     <Content Include="Items\Usable\untitled.png" />
     <Content Include="Items\Usable\ZeroTesseract.png" />
+    <Content Include="Items\Vanity\Alphakip\AquamancerWings.png" />
+    <Content Include="Items\Vanity\Alphakip\AquamancerWings_Wings.png" />
     <Content Include="Items\Vanity\Alphakip\FishDiverBoots.png" />
     <Content Include="Items\Vanity\Alphakip\FishDiverBoots_Legs.png" />
     <Content Include="Items\Vanity\Alphakip\FishDiverJacket.png" />
