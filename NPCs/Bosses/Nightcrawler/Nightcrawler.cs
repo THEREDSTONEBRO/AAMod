@@ -97,7 +97,7 @@ namespace AAMod.NPCs.Bosses.Nightcrawler
             tailType = mod.NPCType<NightcrawlerTail>();
             bodyType = mod.NPCType<NightcrawlerBody>();
             headType = mod.NPCType<NightcrawlerHead>();
-            speed = 6.5f;
+            speed = 13.25f;
             turnSpeed = 0.045f;
         }
     }
@@ -156,7 +156,7 @@ namespace AAMod.NPCs.Bosses.Nightcrawler
                         npc.realLife = npc.whoAmI;
                         if (!NCInit)
                         {
-                            npc.ai[2] = 10;
+                            npc.ai[2] = 25;
                             NCInit = true;
                         }
                         npc.ai[0] = (float)NPC.NewNPC((int)(npc.position.X + (float)(npc.width / 2)), (int)(npc.position.Y + (float)npc.height), bodyType, npc.whoAmI);
@@ -174,6 +174,12 @@ namespace AAMod.NPCs.Bosses.Nightcrawler
                     Main.npc[(int)npc.ai[0]].ai[1] = (float)npc.whoAmI;
                     Main.npc[(int)npc.ai[0]].ai[2] = npc.ai[2] - 1;
                     npc.netUpdate = true;
+                }
+                if (!NPC.AnyNPCs(mod.NPCType<NightcrawlerHead>()) && (body || tail))
+                {
+                    npc.life = 0;
+                    npc.HitEffect(0, 10.0);
+                    npc.active = false;
                 }
                 if (!npc.active && Main.netMode == 2)
                 {
@@ -596,7 +602,7 @@ namespace AAMod.NPCs.Bosses.Nightcrawler
             if (!Main.dayTime && NPC.AnyNPCs(mod.NPCType<NightcrawlerHead>()))
             {
                 npc.scale = 2f;
-                speed = 3.5f;
+                speed = 10.5f;
                 npc.damage = 75;
                 if (Main.expertMode)
                 {
@@ -610,7 +616,7 @@ namespace AAMod.NPCs.Bosses.Nightcrawler
             else
             {
                 npc.scale = 1.5f;
-                speed = 6.5f;
+                speed = 13.25f;
                 npc.damage = 70;
                 if (Main.expertMode)
                 {

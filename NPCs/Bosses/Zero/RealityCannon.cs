@@ -7,8 +7,21 @@ using System;
 
 namespace AAMod.NPCs.Bosses.Zero
 {
-    public class RealityCannon : ModNPC
+    class RealityCannon : Army
     {
+        public override string Texture { get { return "AAMod/NPCs/Bosses/Zero/RealityCannon"; } }
+
+        public override void Init()
+        {
+            base.Init();
+            RC = true;
+        }
+
+        float floatzero = 0f;
+        float floatone = 0f;
+        float floattwo = 0f;
+        float floatthree = 0f;
+
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Reality Cannon");
@@ -21,6 +34,7 @@ namespace AAMod.NPCs.Bosses.Zero
             npc.damage = 100;
             npc.defense = 90;
             npc.lifeMax = 28000;
+            npc.life = 28000;
             npc.HitSound = new LegacySoundStyle(3, 4, Terraria.Audio.SoundType.Sound);
             npc.DeathSound = new LegacySoundStyle(4, 14, Terraria.Audio.SoundType.Sound);
             npc.value = 0f;
@@ -29,29 +43,30 @@ namespace AAMod.NPCs.Bosses.Zero
             npc.aiStyle = 0;
             animationType = NPCID.PrimeLaser;
         }
+
         public override void AI()
         {
-            npc.spriteDirection = -(int)npc.ai[0];
-            if (!Main.npc[(int)npc.ai[1]].active || Main.npc[(int)npc.ai[1]].aiStyle != 32)
+            npc.spriteDirection = -(int)floatzero;
+            if (!Main.npc[(int)floatone].active || Main.npc[(int)floatone].aiStyle != 32)
             {
-                npc.ai[2] += 10f;
-                if (npc.ai[2] > 50f || Main.netMode != 2)
+                floattwo += 10f;
+                if (floattwo > 50f || Main.netMode != 2)
                 {
                     npc.life = -1;
                     npc.HitEffect(0, 10.0);
                     npc.active = false;
                 }
             }
-            if (npc.ai[2] == 0f || npc.ai[2] == 3f)
+            if (floattwo == 0f || floattwo == 3f)
             {
-                if (Main.npc[(int)npc.ai[1]].ai[1] == 3f && npc.timeLeft > 10)
+                if (Main.npc[(int)floatone].ai[1] == 3f && npc.timeLeft > 10)
                 {
                     npc.timeLeft = 10;
                 }
-                if (Main.npc[(int)npc.ai[1]].ai[1] != 0f)
+                if (Main.npc[(int)floatone].ai[1] != 0f)
                 {
                     npc.localAI[0] += 3f;
-                    if (npc.position.Y > Main.npc[(int)npc.ai[1]].position.Y - 100f)
+                    if (npc.position.Y > Main.npc[(int)floatone].position.Y - 100f)
                     {
                         if (npc.velocity.Y > 0f)
                         {
@@ -63,7 +78,7 @@ namespace AAMod.NPCs.Bosses.Zero
                             npc.velocity.Y = 6f;
                         }
                     }
-                    else if (npc.position.Y < Main.npc[(int)npc.ai[1]].position.Y - 100f)
+                    else if (npc.position.Y < Main.npc[(int)floatone].position.Y - 100f)
                     {
                         if (npc.velocity.Y < 0f)
                         {
@@ -75,7 +90,7 @@ namespace AAMod.NPCs.Bosses.Zero
                             npc.velocity.Y = -6f;
                         }
                     }
-                    if (npc.position.X + (float)(npc.width / 2) > Main.npc[(int)npc.ai[1]].position.X + (float)(Main.npc[(int)npc.ai[1]].width / 2) - 120f * npc.ai[0])
+                    if (npc.position.X + (float)(npc.width / 2) > Main.npc[(int)floatone].position.X + (float)(Main.npc[(int)floatone].width / 2) - 120f * floatzero)
                     {
                         if (npc.velocity.X > 0f)
                         {
@@ -87,7 +102,7 @@ namespace AAMod.NPCs.Bosses.Zero
                             npc.velocity.X = 8f;
                         }
                     }
-                    if (npc.position.X + (float)(npc.width / 2) < Main.npc[(int)npc.ai[1]].position.X + (float)(Main.npc[(int)npc.ai[1]].width / 2) - 120f * npc.ai[0])
+                    if (npc.position.X + (float)(npc.width / 2) < Main.npc[(int)floatone].position.X + (float)(Main.npc[(int)floatone].width / 2) - 120f * floatzero)
                     {
                         if (npc.velocity.X < 0f)
                         {
@@ -102,14 +117,14 @@ namespace AAMod.NPCs.Bosses.Zero
                 }
                 else
                 {
-                    npc.ai[3] += 1f;
-                    if (npc.ai[3] >= 800f)
+                    floatthree += 1f;
+                    if (floatthree >= 800f)
                     {
-                        npc.ai[2] += 1f;
-                        npc.ai[3] = 0f;
+                        floattwo += 1f;
+                        floatthree = 0f;
                         npc.netUpdate = true;
                     }
-                    if (npc.position.Y > Main.npc[(int)npc.ai[1]].position.Y - 100f)
+                    if (npc.position.Y > Main.npc[(int)floatone].position.Y - 100f)
                     {
                         if (npc.velocity.Y > 0f)
                         {
@@ -121,7 +136,7 @@ namespace AAMod.NPCs.Bosses.Zero
                             npc.velocity.Y = 3f;
                         }
                     }
-                    else if (npc.position.Y < Main.npc[(int)npc.ai[1]].position.Y - 100f)
+                    else if (npc.position.Y < Main.npc[(int)floatone].position.Y - 100f)
                     {
                         if (npc.velocity.Y < 0f)
                         {
@@ -133,7 +148,7 @@ namespace AAMod.NPCs.Bosses.Zero
                             npc.velocity.Y = -3f;
                         }
                     }
-                    if (npc.position.X + (float)(npc.width / 2) > Main.npc[(int)npc.ai[1]].position.X + (float)(Main.npc[(int)npc.ai[1]].width / 2) - 180f * npc.ai[0])
+                    if (npc.position.X + (float)(npc.width / 2) > Main.npc[(int)floatone].position.X + (float)(Main.npc[(int)floatone].width / 2) - 180f * floatzero)
                     {
                         if (npc.velocity.X > 0f)
                         {
@@ -145,7 +160,7 @@ namespace AAMod.NPCs.Bosses.Zero
                             npc.velocity.X = 8f;
                         }
                     }
-                    if (npc.position.X + (float)(npc.width / 2) < Main.npc[(int)npc.ai[1]].position.X + (float)(Main.npc[(int)npc.ai[1]].width / 2) - 180f * npc.ai[0])
+                    if (npc.position.X + (float)(npc.width / 2) < Main.npc[(int)floatone].position.X + (float)(Main.npc[(int)floatone].width / 2) - 180f * floatzero)
                     {
                         if (npc.velocity.X < 0f)
                         {
@@ -185,14 +200,14 @@ namespace AAMod.NPCs.Bosses.Zero
                     }
                 }
             }
-            else if (npc.ai[2] == 1f)
+            else if (floattwo == 1f)
             {
-                npc.ai[3] += 1f;
-                if (npc.ai[3] >= 200f)
+                floatthree += 1f;
+                if (floatthree >= 200f)
                 {
                     npc.localAI[0] = 0f;
-                    npc.ai[2] = 0f;
-                    npc.ai[3] = 0f;
+                    floattwo = 0f;
+                    floatthree = 0f;
                     npc.netUpdate = true;
                 }
                 Vector2 vector59 = new Vector2(npc.position.X + (float)npc.width * 0.5f, npc.position.Y + (float)npc.height * 0.5f);

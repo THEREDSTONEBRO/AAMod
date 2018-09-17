@@ -190,6 +190,7 @@
     <Compile Include="Items\Blocks\Bogwood.cs" />
     <Compile Include="Items\Blocks\BogwoodChest.cs" />
     <Compile Include="Items\Blocks\BroodBox.cs" />
+    <Compile Include="Items\Blocks\YamataBox.cs" />
     <Compile Include="Items\Blocks\ZeroTrophy.cs" />
     <Compile Include="Items\Blocks\BroodmotherTrophy.cs" />
     <Compile Include="Items\Blocks\ChaosCrucible.cs" />
@@ -445,6 +446,9 @@
     <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sounds\Sounds\Doot.cs" />
+    <Compile Include="Sounds\Sounds\ZeroDeath.cs" />
+    <Compile Include="Sounds\Sounds\Zerohit.cs" />
+    <Compile Include="Sounds\Sounds\Zerohit2.cs" />
     <Compile Include="Tiles\AATrophy.cs" />
     <Compile Include="Tiles\AbyssiumBarTile.cs" />
     <Compile Include="Tiles\AbyssiumOreTile.cs" />
@@ -522,6 +526,7 @@
     <Compile Include="Tiles\TruePaladinsSmeltery.cs" />
     <Compile Include="Tiles\VoidBox.cs" />
     <Compile Include="Tiles\VoidUnit.cs" />
+    <Compile Include="Tiles\YamataBox.cs" />
     <Compile Include="Tiles\Zero2Box.cs" />
     <Compile Include="Tiles\ZeroBox.cs" />
     <Compile Include="UI\TerratoolUI.cs" />
@@ -1311,6 +1316,7 @@
     <Content Include="obj\Debug\AAMod.csproj.FileListAbsolute.txt" />
     <Content Include="obj\Debug\AAMod.dll" />
     <Content Include="obj\Debug\AAMod.pdb" />
+    <Content Include="Sounds\Music\Akuma.mp3" />
     <Content Include="Sounds\Music\Boss6.mp3" />
     <Content Include="Sounds\Music\BroodTheme.mp3" />
     <Content Include="Sounds\Music\Equinox.mp3" />
@@ -1327,6 +1333,9 @@
     <Content Include="Sounds\Music\Zero.mp3" />
     <Content Include="Sounds\Music\Zero2.mp3" />
     <Content Include="Sounds\Sounds\Doot.wav" />
+    <Content Include="Sounds\Sounds\ZeroDeath.wav" />
+    <Content Include="Sounds\Sounds\Zerohit.wav" />
+    <Content Include="Sounds\Sounds\Zerohit2.wav" />
     <Content Include="Tiles\AACrate.png" />
     <Content Include="Tiles\AATrophy.png" />
     <Content Include="Tiles\AbyssiumBarTile.png" />
