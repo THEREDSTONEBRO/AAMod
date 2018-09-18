@@ -42,7 +42,7 @@ namespace AAMod.Items.Boss.Zero
 	        {
 	            if (line2.mod == "Terraria" && line2.Name == "ItemName")
 	            {
-	                line2.overrideColor = new Color(120, 0, 30);
+	                line2.overrideColor = new Color(100, 0, 10);
 	            }
 	        }
 	    }
@@ -72,12 +72,8 @@ namespace AAMod.Items.Boss.Zero
             for (int i = 0; i < 4; i++)
             {
                 offsetAngle = startAngle + deltaAngle * i;
-<<<<<<< HEAD
                 Projectile.NewProjectile(position.X, position.Y, speedX * (float)Math.Sin(offsetAngle), speedY * (float)Math.Cos(offsetAngle), mod.ProjectileType("EventHorizon"), damage, knockBack, player.whoAmI, 0.0f, ai3);
                 //Projectile.NewProjectile(position.X, position.Y, baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle), item.shoot, damage, knockBack, item.owner, ai3);
-=======
-                Projectile.NewProjectile(position.X, position.Y, speedX * (float)Math.Sin(offsetAngle), speedY * (float)Math.Sin(offsetAngle), mod.ProjectileType("EventHorizon"), damage, knockBack, player.whoAmI, 0.0f, ai3);
->>>>>>> 448baa85bafb67ad7f37961deb2c4dbd11c32465
             }
             //Projectile.NewProjectile(position.X, position.Y, speedX, speedY, mod.ProjectileType("EventHorizon"), damage, knockBack, player.whoAmI, 0.0f, ai3);
 	    	//Projectile.NewProjectile(position.X, position.Y, speedX, speedY, mod.ProjectileType("EventHorizon"), damage, knockBack, player.whoAmI, 0.0f, ai3X);
