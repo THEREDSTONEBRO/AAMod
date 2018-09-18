@@ -35,8 +35,8 @@ namespace AAMod
                 bossChecklist.Call("AddBossWithInfo", "Grips of Chaos", 2.00000000001f, (Func<bool>)(() => AAWorld.downedGrips), "Use a [i:" + ItemType("CuriousClaw") + "] or [i:" + ItemType("InterestingClaw") + "] at night");
                 bossChecklist.Call("AddBossWithInfo", "Retriever", 6.9999999f, (Func<bool>)(() => AAWorld.downedRetriever), "Use a [i:" + ItemType("CyberneticClaw") + "] at night");
                 bossChecklist.Call("AddBossWithInfo", "Daybringer", 14.00000000001f, (Func<bool>)(() => AAWorld.downedGrips), "Use a [i:" + ItemType("CuriousClaw") + "] or [i:" + ItemType("InterestingClaw") + "] at night");
-                bossChecklist.Call("AddBossWithInfo", "Nightcrawler", 14.00000000001f, (Func<bool>)(() => AAWorld.downedGrips), "Use a [i:" + ItemType("CuriousClaw") + "] or [i:" + ItemType("InterestingClaw") + "] at night");
-                bossChecklist.Call("AddBossWithInfo", "Zero", 14.000003f, (Func<bool>)(() => AAWorld.downedZero), "Use a [i:" + ItemType("0Tesseract") + "] in the Void");
+                bossChecklist.Call("AddBossWithInfo", "Nightcrawler", 14.00000000001f, (Func<bool>)(() => AAWorld.downedGrips), "Use a [i:" + ItemType("EquinoxWorm"));
+                bossChecklist.Call("AddBossWithInfo", "Zero", 14.000003f, (Func<bool>)(() => AAWorld.downedZero), "Use a [i:" + ItemType("ZeroTesseract") + "] in the Void");
                 //SlimeKing = 1f;
                 //EyeOfCthulhu = 2f;
                 //EaterOfWorlds = 3f;

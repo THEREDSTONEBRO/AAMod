@@ -22,7 +22,9 @@ namespace AAMod.Items.Boss.Zero
 			item.width = 94;
 			item.height = 70;
 			item.useTime = 15;
-			item.useAnimation = 15;
+            item.shoot = mod.ProjectileType("Rift");
+            item.shootSpeed = 22f;
+            item.useAnimation = 15;
 			item.useStyle = 1;
 			item.knockBack = 3;
 			item.value = 1000000;
@@ -57,7 +59,7 @@ namespace AAMod.Items.Boss.Zero
         public override void MeleeEffects(Player player, Rectangle hitbox)
         {
             Dust dust;
-            dust = Terraria.Dust.NewDustDirect(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, 15, 0f, 0f, 46, new Color(33, 0, 255), 1.25f);
+            dust = Terraria.Dust.NewDustDirect(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, 15, 0f, 0f, 46, new Color(120, 0, 30), 1.25f);
 			dust.noGravity = true;
         }
 		

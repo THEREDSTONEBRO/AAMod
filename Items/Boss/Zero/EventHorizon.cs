@@ -32,8 +32,8 @@ namespace AAMod.Items.Boss.Zero
             item.knockBack = 2f;
             item.UseSound = SoundID.Item116;
             item.value = 1000000;
-            item.shootSpeed = 22f;
             item.shoot = mod.ProjectileType("EventHorizon");
+            item.shootSpeed = 22f;
 		}
 		
 		public override void ModifyTooltips(List<TooltipLine> list)
@@ -60,29 +60,18 @@ namespace AAMod.Items.Boss.Zero
 		
 		public override bool Shoot(Player player, ref Microsoft.Xna.Framework.Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
 		{
-            float spread = 45f * 0.0174f;
-            float baseSpeed = (float)Math.Sqrt(speedX * speedX + speedY * speedY);
             float ai3 = (Main.rand.NextFloat() - 0.75f) * 0.7853982f; //0.5
-	    	//float ai3X = (Main.rand.NextFloat() - 0.50f) * 0.7853982f; //0.5
-            //float ai3Y = (Main.rand.NextFloat() - 0.25f) * 0.7853982f; //0.5
-            //float ai3Z = (Main.rand.NextFloat() - 0.12f) * 0.7853982f; //0.5
-            double startAngle = Math.Atan2(speedX, speedY) - .1d;
-            double deltaAngle = spread / 6f;
-            double offsetAngle;
+	    	float ai3X = (Main.rand.NextFloat() - 0.50f) * 0.7853982f; //0.5
+            float ai3Y = (Main.rand.NextFloat() - 0.25f) * 0.7853982f; //0.5
+            float ai3Z = (Main.rand.NextFloat() - 0.12f) * 0.7853982f; //0.5
             for (int i = 0; i < 4; i++)
             {
-                offsetAngle = startAngle + deltaAngle * i;
-<<<<<<< HEAD
-                Projectile.NewProjectile(position.X, position.Y, speedX * (float)Math.Sin(offsetAngle), speedY * (float)Math.Cos(offsetAngle), mod.ProjectileType("EventHorizon"), damage, knockBack, player.whoAmI, 0.0f, ai3);
-                //Projectile.NewProjectile(position.X, position.Y, baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle), item.shoot, damage, knockBack, item.owner, ai3);
-=======
-                Projectile.NewProjectile(position.X, position.Y, speedX * (float)Math.Sin(offsetAngle), speedY * (float)Math.Sin(offsetAngle), mod.ProjectileType("EventHorizon"), damage, knockBack, player.whoAmI, 0.0f, ai3);
->>>>>>> 448baa85bafb67ad7f37961deb2c4dbd11c32465
+                Projectile.NewProjectile(position.X, position.Y, speedX, speedY, mod.ProjectileType("EventHorizon"), damage, knockBack, player.whoAmI, 0.0f, ai3);
+                Projectile.NewProjectile(position.X, position.Y, speedX, speedY, mod.ProjectileType("EventHorizon"), damage, knockBack, player.whoAmI, 0.0f, ai3X);
+                Projectile.NewProjectile(position.X, position.Y, speedX, speedY, mod.ProjectileType("EventHorizon"), damage, knockBack, player.whoAmI, 0.0f, ai3Y);
+                Projectile.NewProjectile(position.X, position.Y, speedX, speedY, mod.ProjectileType("EventHorizon"), damage, knockBack, player.whoAmI, 0.0f, ai3Z);
             }
-            //Projectile.NewProjectile(position.X, position.Y, speedX, speedY, mod.ProjectileType("EventHorizon"), damage, knockBack, player.whoAmI, 0.0f, ai3);
-	    	//Projectile.NewProjectile(position.X, position.Y, speedX, speedY, mod.ProjectileType("EventHorizon"), damage, knockBack, player.whoAmI, 0.0f, ai3X);
-            //Projectile.NewProjectile(position.X, position.Y, speedX, speedY, mod.ProjectileType("EventHorizon"), damage, knockBack, player.whoAmI, 0.0f, ai3Y);
-            //Projectile.NewProjectile(position.X, position.Y, speedX, speedY, mod.ProjectileType("EventHorizon"), damage, knockBack, player.whoAmI, 0.0f, ai3Z);
+
             return false;
         }
 	}

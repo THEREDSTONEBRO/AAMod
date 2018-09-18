@@ -53,13 +53,6 @@ namespace AAMod
 
         public override void Initialize()
         {
-            ErrorLogger.Log("ChaosOre before initialize:" + downedGrips);
-            ErrorLogger.Log("Luminite before initialize:" + NPC.downedMoonlord);
-            ErrorLogger.Log("HalowedOre before initialize:" + NPC.downedMechBossAny);
-            ErrorLogger.Log("Radium before initialize:" + downedDB);
-            ErrorLogger.Log("Darkmatter before initialize:" + downedNC);
-            ErrorLogger.Log("Fulgurite before initialize:" + downedRetriever);
-            ErrorLogger.Log("Dynaskull before initialize:" + NPC.downedMechBoss3);
             downedGrips = false;
             downedGripRed = false;
             downedGripBlue = false;
@@ -77,13 +70,6 @@ namespace AAMod
             ChaosOres = downedGrips;
             Dynaskull = NPC.downedBoss3;
             FulguriteOre = downedRetriever;
-            ErrorLogger.Log("ChaosOre before initialize:" + downedGrips);
-            ErrorLogger.Log("Luminite before initialize:" + NPC.downedMoonlord);
-            ErrorLogger.Log("HalowedOre before initialize:" + NPC.downedMechBossAny);
-            ErrorLogger.Log("Radium before initialize:" + downedDB);
-            ErrorLogger.Log("Darkmatter before initialize:" + downedNC);
-            ErrorLogger.Log("Fulgurite before initialize:" + downedRetriever);
-            ErrorLogger.Log("Dynaskull before initialize:" + NPC.downedMechBoss3);
             downedEquinox = false;
             if (NPC.downedMechBoss3 == true || NPC.downedMechBoss2 == true || NPC.downedMechBoss1 == true)
             {
@@ -194,13 +180,6 @@ namespace AAMod
 
         public override TagCompound Save()
         {
-            ErrorLogger.Log("ChaosOre before save:" + downedGrips);
-            ErrorLogger.Log("Luminite before save:" + NPC.downedMoonlord);
-            ErrorLogger.Log("HalowedOre before save:" + NPC.downedMechBossAny);
-            ErrorLogger.Log("Radium before save:" + downedDB);
-            ErrorLogger.Log("Darkmatter before save:" + downedNC);
-            ErrorLogger.Log("Fulgurite before save:" + downedRetriever);
-            ErrorLogger.Log("Dynaskull before save:" + NPC.downedMechBoss3);
             var downed = new List<string>();
             if (downedGripRed) downed.Add("GripRed");
             if (downedGripBlue) downed.Add("GripBlue");
@@ -214,13 +193,6 @@ namespace AAMod
             if (downedZero) downed.Add("0");
             if (downedNC) downed.Add("NC");
             if (downedDB) downed.Add("DB");
-            ErrorLogger.Log("ChaosOre after save:" + downedGrips);
-            ErrorLogger.Log("Luminite after save:" + NPC.downedMoonlord);
-            ErrorLogger.Log("HalowedOre after save:" + NPC.downedMechBossAny);
-            ErrorLogger.Log("Radium after save:" + downedDB);
-            ErrorLogger.Log("Darkmatter after save:" + downedNC);
-            ErrorLogger.Log("Fulgurite after save:" + downedRetriever);
-            ErrorLogger.Log("Dynaskull after save:" + NPC.downedMechBoss3);
 
             return new TagCompound {
                 {"downed", downed}
@@ -269,13 +241,6 @@ namespace AAMod
 
         public override void Load(TagCompound tag)
         {
-            //ErrorLogger.Log("ChaosOre before load:" + downedGrips);
-            //ErrorLogger.Log("Luminite before load:" + NPC.downedMoonlord);
-            //ErrorLogger.Log("HalowedOre before load:" + NPC.downedMechBossAny);
-            //ErrorLogger.Log("Radium before load:" + downedDB);
-            //ErrorLogger.Log("Darkmatter before load:" + downedNC);
-            //ErrorLogger.Log("Fulgurite before load:" + downedRetriever);
-            //ErrorLogger.Log("Dynaskull before load:" + NPC.downedMechBoss3);
             var downed = tag.GetList<string>("downed");
             downedGripRed = downed.Contains("GripRed");
             downedGripBlue = downed.Contains("GripBlue");
@@ -298,13 +263,6 @@ namespace AAMod
             ChaosOres = downedGrips;
             Dynaskull = NPC.downedBoss3;
             FulguriteOre = downedRetriever;
-            //ErrorLogger.Log("ChaosOre after load:" + downedGrips);
-            //ErrorLogger.Log("Luminite after load:" + NPC.downedMoonlord);
-            //ErrorLogger.Log("HalowedOre after load:" + NPC.downedMechBossAny);
-            //ErrorLogger.Log("Radium after load:" + downedDB);
-            //ErrorLogger.Log("Darkmatter after load:" + downedNC);
-            //ErrorLogger.Log("Fulgurite after load:" + downedRetriever);
-            //ErrorLogger.Log("Dynaskull after load:" + NPC.downedMechBoss3);
         }
 
         private string NumberRand(int size)
