@@ -52,7 +52,7 @@ namespace AAMod.Items.Boss.Zero
 			ModRecipe recipe = new ModRecipe(mod);
 			recipe.AddIngredient(null, "ApocalyptitePlate", 5);
 			recipe.AddIngredient(null, "UnstableSingularity", 5);
-			recipe.AddIngredient(ItemID.NebulaBlaze);
+			recipe.AddIngredient(ItemID.NebulaArcanum);
 	        recipe.AddTile(null, "BinaryReassembler");
 	        recipe.SetResult(this);
 	        recipe.AddRecipe();

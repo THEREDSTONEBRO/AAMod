@@ -13,7 +13,7 @@ namespace AAMod.Items.Boss.Zero
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Event Horizon");
-            Tooltip.SetDefault("Throws out 4 razor sharp blades");
+            Tooltip.SetDefault("Throws out 4 razor sharp flails");
         }
 
         public override void SetDefaults()
@@ -69,10 +69,11 @@ namespace AAMod.Items.Boss.Zero
             double startAngle = Math.Atan2(speedX, speedY) - .1d;
             double deltaAngle = spread / 6f;
             double offsetAngle;
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < 4; i++)
             {
                 offsetAngle = startAngle + deltaAngle * i;
-                Terraria.Projectile.NewProjectile(position.X, position.Y, baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle), item.shoot, damage, knockBack, item.owner, ai3);
+                Projectile.NewProjectile(position.X, position.Y, speedX * (float)Math.Sin(offsetAngle), speedY * (float)Math.Cos(offsetAngle), mod.ProjectileType("EventHorizon"), damage, knockBack, player.whoAmI, 0.0f, ai3);
+                //Projectile.NewProjectile(position.X, position.Y, baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle), item.shoot, damage, knockBack, item.owner, ai3);
             }
             //Projectile.NewProjectile(position.X, position.Y, speedX, speedY, mod.ProjectileType("EventHorizon"), damage, knockBack, player.whoAmI, 0.0f, ai3);
 	    	//Projectile.NewProjectile(position.X, position.Y, speedX, speedY, mod.ProjectileType("EventHorizon"), damage, knockBack, player.whoAmI, 0.0f, ai3X);

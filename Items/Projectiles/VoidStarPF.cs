@@ -13,8 +13,9 @@ namespace AAMod.Items.Projectiles
 	{
 		public override void SetDefaults()
 		{
-			// while the sprite is actually bigger than 15x15, we use 15x15 since it lets the projectile clip into tiles as it bounces. It looks better.
-			projectile.width = 60;
+            // while the sprite is actually bigger than 15x15, we use 15x15 since it lets the projectile clip into tiles as it bounces. It looks better.
+            projectile.CloneDefaults(ProjectileID.NebulaArcanum);
+            projectile.width = 60;
 			projectile.height = 60;
 			projectile.friendly = true;
             projectile.hostile = false;

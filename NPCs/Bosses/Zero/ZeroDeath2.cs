@@ -5,7 +5,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace NPCs.Bosses.Zero
+namespace AAMod.NPCs.Bosses.Zero
 {
     public class ZeroDeath2 : ModProjectile
     {
