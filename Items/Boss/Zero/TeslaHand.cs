@@ -8,34 +8,33 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Boss.Zero
 {
-	public class VoidStar : ModItem
+	public class TeslaHand : ModItem
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Void Star");
-            Tooltip.SetDefault("Fires a dark, spinning vortex that homes in on enemies");
+			DisplayName.SetDefault("Broken Zero Weapon");
+            Tooltip.SetDefault("Just swing it around and it'll shock whatever's in front of you");
         }
 
         public override void SetDefaults()
         {
-            item.useStyle = 5;
-            item.useAnimation = 15;
-            item.useTime = 15;
-            item.shootSpeed = 10f;
-            item.knockBack = 0f;
-            item.width = 30;
-            item.height = 26;
-            item.damage = 190;
-            item.UseSound = SoundID.Item20;
-            item.shoot = mod.ProjectileType("VoidStarPF");
-            item.mana = 18;
-            item.rare = 10;
-            item.value = Item.sellPrice(0, 50, 0, 0);
+            item.width = 36;
+            item.height = 42;
+            item.damage = 140;
             item.noMelee = true;
-            item.magic = true;
+            item.noUseGraphic = false;
+            item.channel = true;
             item.autoReuse = true;
-            item.noUseGraphic = true;
-        }
+            item.thrown = true;
+            item.useAnimation = 13;
+            item.useTime = 13;
+            item.useStyle = 1;
+            item.knockBack = 2f;
+            item.UseSound = SoundID.Item116;
+            item.value = 1000000;
+            item.shootSpeed = 20f;
+            item.shoot = mod.ProjectileType("Teslashock");
+		}
 		
 		public override void ModifyTooltips(List<TooltipLine> list)
 	    {
@@ -47,12 +46,12 @@ namespace AAMod.Items.Boss.Zero
 	            }
 	        }
 	    }
+		
 		public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);
 			recipe.AddIngredient(null, "ApocalyptitePlate", 5);
 			recipe.AddIngredient(null, "UnstableSingularity", 5);
-			recipe.AddIngredient(ItemID.NebulaBlaze);
 	        recipe.AddTile(null, "BinaryReassembler");
 	        recipe.SetResult(this);
 	        recipe.AddRecipe();

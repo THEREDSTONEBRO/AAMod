@@ -4,7 +4,9 @@ namespace AAMod.Items.Blocks
 {
 	public class ZeroTrophy : ModItem
 	{
-		public override void SetStaticDefaults()
+        public static int type;
+
+        public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Zero Trophy");
 		}

@@ -36,7 +36,7 @@ UNSTABLE. C0NTAINS C0DE TO ACTIVATE THE BRINGER 0F DEATH");
             {
                 if (line2.mod == "Terraria" && line2.Name == "ItemName")
                 {
-                    line2.overrideColor = new Color(70, 0, 10);
+                    line2.overrideColor = new Color(120, 0, 30);
                 }
             }
         }

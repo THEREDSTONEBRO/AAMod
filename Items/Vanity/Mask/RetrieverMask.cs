@@ -2,15 +2,15 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AAMod.Items.Vanity
+namespace AAMod.Items.Vanity.Mask
 {
 	[AutoloadEquip(EquipType.Head)]
-	public class GripMaskRed : ModItem
+	public class RetrieverMask : ModItem
 	{
 		public override void SetStaticDefaults()
         {
             base.SetStaticDefaults();
-            DisplayName.SetDefault("Red Grip of Chaos Mask");
+            DisplayName.SetDefault("Retriever Mask");
 		}
 
         public override void SetDefaults()

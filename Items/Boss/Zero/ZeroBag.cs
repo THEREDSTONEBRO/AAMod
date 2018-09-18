@@ -58,7 +58,7 @@ namespace AAMod.Items.Boss.Zero
                 }
             }
             player.QuickSpawnItem(mod.ItemType("UnstableSingularity"), Main.rand.Next(25, 36));
-            string[] lootTable = { "EventHorizon", "RealityCannon", "RiftShredder", "VoidStar" };
+            string[] lootTable = { "EventHorizon", "RealityCannon", "RiftShredder", "VoidStar", "TeslaHand", "ZeroStar" };
             int loot = Main.rand.Next(lootTable.Length);
             player.QuickSpawnItem(mod.ItemType(lootTable[loot]));
         }

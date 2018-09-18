@@ -15,7 +15,7 @@ namespace AAMod.Items.Boss.Zero
             DisplayName.SetDefault("Unstable Singularity");
             Tooltip.SetDefault("Barely stable enough to hold");
             // ticksperframe, frameCount
-            Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(4, 18));
+            Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(18, 4));
             ItemID.Sets.AnimatesAsSoul[item.type] = true;
             ItemID.Sets.ItemIconPulse[item.type] = true;
             ItemID.Sets.ItemNoGravity[item.type] = true;
@@ -27,7 +27,7 @@ namespace AAMod.Items.Boss.Zero
             {
                 if (line2.mod == "Terraria" && line2.Name == "ItemName")
                 {
-                    line2.overrideColor = new Color(80, 0, 10);
+                    line2.overrideColor = new Color(120, 0, 30);
                 }
             }
         }
@@ -41,7 +41,7 @@ namespace AAMod.Items.Boss.Zero
             item.height = 24;
             item.maxStack = 999;
             item.value = 10000;
-            item.rare = 7;
+            item.rare = 10;
         }
 
         // The following 2 methods are purely to show off these 2 hooks. Don't use them in your own code.
