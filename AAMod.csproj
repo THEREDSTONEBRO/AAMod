@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{9C43A461-1C1E-45BF-9AE1-FA26C86F870C}</ProjectGuid>
+    <ProjectGuid>{37210C98-A454-4A70-82A7-925B6393DEF7}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>AAMod</RootNamespace>
@@ -31,25 +31,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.Xna.Framework, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\..\..\Windows\Microsoft.NET\assembly\GAC_32\Microsoft.Xna.Framework\v4.0_4.0.0.0__842cf8be1de50553\Microsoft.Xna.Framework.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Xna.Framework.Game, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\..\..\Windows\Microsoft.NET\assembly\GAC_32\Microsoft.Xna.Framework.Game\v4.0_4.0.0.0__842cf8be1de50553\Microsoft.Xna.Framework.Game.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Xna.Framework.Graphics, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\..\..\Windows\Microsoft.NET\assembly\GAC_32\Microsoft.Xna.Framework.Graphics\v4.0_4.0.0.0__842cf8be1de50553\Microsoft.Xna.Framework.Graphics.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Xna.Framework.Xact, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\..\..\Windows\Microsoft.NET\assembly\GAC_32\Microsoft.Xna.Framework.Xact\v4.0_4.0.0.0__842cf8be1de50553\Microsoft.Xna.Framework.Xact.dll</HintPath>
-    </Reference>
-    <Reference Include="ModdedTerraria">
-      <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Terraria\ModdedTerraria.exe</HintPath>
-    </Reference>
     <Reference Include="ReLogic, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\ReLogic.dll</HintPath>
@@ -58,6 +39,9 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.Xna.Framework" />
+    <Reference Include="Microsoft.Xna.Framework.Game" />
+    <Reference Include="Microsoft.Xna.Framework.Graphics" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
@@ -245,15 +229,14 @@
     <Compile Include="Items\Boss\Retriever\RetrieverBag.cs" />
     <Compile Include="Items\Boss\Retriever\StormClaw.cs" />
     <Compile Include="Items\Boss\Retriever\StormRiot.cs" />
-    <Compile Include="Items\Boss\Zero\TeslaHand.cs" />
     <Compile Include="Items\Boss\Zero\EventHorizon.cs" />
     <Compile Include="Items\Boss\Zero\RealityCannon.cs" />
     <Compile Include="Items\Boss\Zero\RiftShredder.cs" />
     <Compile Include="Items\Boss\Zero\TeslaHand.cs" />
-    <Compile Include="Items\Boss\Zero\ZeroStar.cs" />
     <Compile Include="Items\Boss\Zero\UnstableSingularity.cs" />
     <Compile Include="Items\Boss\Zero\VoidStar.cs" />
     <Compile Include="Items\Boss\Zero\ZeroBag.cs" />
+    <Compile Include="Items\Boss\Zero\ZeroStar.cs" />
     <Compile Include="Items\Magic\DragonStaff.cs" />
     <Compile Include="Items\Magic\DuckstepGun.cs" />
     <Compile Include="Items\Magic\GelWand.cs" />
@@ -367,7 +350,6 @@
     <Compile Include="Items\Projectiles\Teslashock.cs" />
     <Compile Include="Items\Projectiles\TFGWP.cs" />
     <Compile Include="Items\Projectiles\TimeTeller.cs" />
-    <Compile Include="Items\Projectiles\ZeroStarP.cs" />
     <Compile Include="Items\Projectiles\TitanAxe.cs" />
     <Compile Include="Items\Projectiles\Toxin.cs" />
     <Compile Include="Items\Projectiles\TrueAbyssalTwilightShot.cs" />
@@ -377,6 +359,7 @@
     <Compile Include="Items\Projectiles\TrueManaShot.cs" />
     <Compile Include="Items\Projectiles\Void.cs" />
     <Compile Include="Items\Projectiles\VoidStarPF.cs" />
+    <Compile Include="Items\Projectiles\ZeroStarP.cs" />
     <Compile Include="Items\Ranged\Apollo.cs" />
     <Compile Include="Items\Ranged\ApollosWrath.cs" />
     <Compile Include="Items\Ranged\BoneBow.cs" />
@@ -621,6 +604,7 @@
     <Content Include="Dusts\RadiantIncineriteDust.png" />
     <Content Include="Dusts\RazeleafDust.png" />
     <Content Include="Dusts\RazewoodDust.png" />
+    <Content Include="Dusts\ZeroDust.png" />
     <Content Include="Gore\DragonClawGore1.png" />
     <Content Include="Gore\DragonClawGore2.png" />
     <Content Include="Gore\DragonClawGore3.png" />
@@ -1132,11 +1116,8 @@
     <Content Include="Items\Projectiles\ValkyrieLance.png" />
     <Content Include="Items\Projectiles\Void.png" />
     <Content Include="Items\Projectiles\VoidStarPF.png" />
-<<<<<<< HEAD
     <Content Include="Items\Projectiles\VoidStarPF_Glow.png" />
-=======
     <Content Include="Items\Projectiles\ZeroStarP.png" />
->>>>>>> 448baa85bafb67ad7f37961deb2c4dbd11c32465
     <Content Include="Items\Ranged\Apollo.png" />
     <Content Include="Items\Ranged\ApollosWrath.png" />
     <Content Include="Items\Ranged\BoneBow.png" />
@@ -1299,12 +1280,12 @@
     <Content Include="NPCs\Bosses\MrBonesRevenge.png" />
     <Content Include="NPCs\Bosses\Nightcrawler\Moonray.png" />
     <Content Include="NPCs\Bosses\Nightcrawler\MoonrayScatter.png" />
+    <Content Include="NPCs\Bosses\Nightcrawler\Nightcrawler.png" />
     <Content Include="NPCs\Bosses\Nightcrawler\NightcrawlerBody.png" />
     <Content Include="NPCs\Bosses\Nightcrawler\NightcrawlerBody_Glowmask.png" />
-    <Content Include="NPCs\Bosses\Nightcrawler\Nightcrawler.png" />
+    <Content Include="NPCs\Bosses\Nightcrawler\NightcrawlerTail.png" />
     <Content Include="NPCs\Bosses\Nightcrawler\Nightcrawler_Glowmask.png" />
     <Content Include="NPCs\Bosses\Nightcrawler\Nightcrawler_Head_Boss.png" />
-    <Content Include="NPCs\Bosses\Nightcrawler\NightcrawlerTail.png" />
     <Content Include="NPCs\Bosses\Retriever\Retriever.png" />
     <Content Include="NPCs\Bosses\Retriever\Retriever_Head_Boss.png" />
     <Content Include="NPCs\Bosses\SoC\Soul of Cthulhu.png" />
@@ -1349,9 +1330,6 @@
     <Content Include="NPCs\TownNPCs\Samurai_1.png" />
     <Content Include="NPCs\TownNPCs\Samurai_Head.png" />
     <Content Include="NPCs\TownNPCs\Samurai_P.png" />
-    <Content Include="obj\Debug\AAMod.csproj.FileListAbsolute.txt" />
-    <Content Include="obj\Debug\AAMod.dll" />
-    <Content Include="obj\Debug\AAMod.pdb" />
     <Content Include="Sounds\Music\Akuma.mp3" />
     <Content Include="Sounds\Music\Boss6.mp3" />
     <Content Include="Sounds\Music\BroodTheme.mp3" />
@@ -1557,19 +1535,10 @@
   <ItemGroup>
     <None Include=".gitignore" />
     <None Include=".vs\AAMod\DesignTimeBuild\.dtbcache" />
-    <None Include=".vs\AAMod\v15\.suo" />
     <None Include=".vs\AAMod\v15\Server\sqlite3\db.lock" />
     <None Include=".vs\AAMod\v15\Server\sqlite3\storage.ide" />
     <None Include=".vs\AAMod\v15\Server\sqlite3\storage.ide-shm" />
     <None Include=".vs\AAMod\v15\Server\sqlite3\storage.ide-wal" />
-    <None Include="obj\Debug\AAMod.csproj.CopyComplete" />
-    <None Include="obj\Debug\AAMod.csproj.CoreCompileInputs.cache" />
-    <None Include="obj\Debug\AAMod.csprojAssemblyReference.cache" />
-    <None Include="obj\Debug\AAMod.csprojResolveAssemblyReference.cache" />
-    <None Include="obj\Debug\AssemblyReference.cache" />
-    <None Include="obj\Debug\DesignTimeResolveAssemblyReferences.cache" />
-    <None Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
-    <None Include="obj\Debug\ResolveAssemblyReference.cache" />
     <None Include="obj\Release\AAMod.csproj.CoreCompileInputs.cache" />
     <None Include="obj\Release\AAMod.csprojAssemblyReference.cache" />
   </ItemGroup>
@@ -1577,7 +1546,7 @@
     <Folder Include="bin\Release\" />
     <Folder Include="Items\Mounts\" />
     <Folder Include="Items\Pets\" />
-    <Folder Include="obj\Debug\TempPE\" />
+    <Folder Include="NPCs\Bosses\Zero\Zero2\" />
     <Folder Include="obj\NPCs\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

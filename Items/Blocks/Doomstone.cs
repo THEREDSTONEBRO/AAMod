@@ -28,11 +28,7 @@ namespace AAMod.Items.Blocks
             {
                 if (line2.mod == "Terraria" && line2.Name == "ItemName")
                 {
-<<<<<<< HEAD
-                    line2.overrideColor = new Color(100, 0, 10);
-=======
                     line2.overrideColor = new Color(120, 0, 30);
->>>>>>> 448baa85bafb67ad7f37961deb2c4dbd11c32465
                 }
             }
         }
