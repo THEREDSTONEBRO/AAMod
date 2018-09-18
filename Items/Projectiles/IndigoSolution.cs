@@ -124,7 +124,7 @@ namespace AAMod.Items.Projectiles
                             WorldGen.SquareTileFrame(k, l, true);
                             NetMessage.SendTileSquare(-1, k, l, 1);
                         }
-                        else if (type == 61)
+                        /*else if (type == 61)
                         {
                             Main.tile[k, l].type = 0;
                             WorldGen.SquareTileFrame(k, l, true);
@@ -141,7 +141,7 @@ namespace AAMod.Items.Projectiles
                             Main.tile[k, l].type = 0;
                             WorldGen.SquareTileFrame(k, l, true);
                             NetMessage.SendTileSquare(-1, k, l, 1);
-                        }
+                        }*/
                         else if (type == 383)
                         {
                             Main.tile[k, l].type = (ushort)mod.TileType("LivingBogwood");

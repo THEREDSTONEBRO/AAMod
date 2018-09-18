@@ -19,14 +19,14 @@ namespace AAMod.Items.Boss.Zero
         public override void SetDefaults()
         {
             item.useStyle = 5;
-            item.useAnimation = 4;
-            item.useTime = 4;
-            item.shootSpeed = 10f;
+            item.useAnimation = 5;
+            item.useTime = 5;
+            item.shootSpeed = 16f;
             item.knockBack = 0f;
             item.width = 30;
             item.height = 26;
             item.damage = 120;
-            item.UseSound = SoundID.Item20;
+            item.UseSound = SoundID.Item12;
             item.shoot = mod.ProjectileType("RealityLaser");
             item.mana = 18;
             item.rare = 10;
@@ -43,7 +43,7 @@ namespace AAMod.Items.Boss.Zero
             {
                 if (line2.mod == "Terraria" && line2.Name == "ItemName")
                 {
-                    line2.overrideColor = new Color(80, 0, 10);
+                    line2.overrideColor = new Color(100, 0, 10);
                 }
             }
         }

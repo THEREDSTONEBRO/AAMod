@@ -33,7 +33,7 @@ namespace AAMod.Items.Boss.Zero
             item.UseSound = SoundID.Item116;
             item.value = 1000000;
             item.shootSpeed = 22f;
-            item.shoot = 611;
+            item.shoot = mod.ProjectileType("EventHorizon");
 		}
 		
 		public override void ModifyTooltips(List<TooltipLine> list)
@@ -42,7 +42,7 @@ namespace AAMod.Items.Boss.Zero
 	        {
 	            if (line2.mod == "Terraria" && line2.Name == "ItemName")
 	            {
-	                line2.overrideColor = new Color(80, 0, 10);
+	                line2.overrideColor = new Color(100, 0, 10);
 	            }
 	        }
 	    }
@@ -60,14 +60,24 @@ namespace AAMod.Items.Boss.Zero
 		
 		public override bool Shoot(Player player, ref Microsoft.Xna.Framework.Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
 		{
-	    	float ai3 = (Main.rand.NextFloat() - 0.75f) * 0.7853982f; //0.5
-	    	float ai3X = (Main.rand.NextFloat() - 0.50f) * 0.7853982f; //0.5
-            float ai3Y = (Main.rand.NextFloat() - 0.25f) * 0.7853982f; //0.5
-            float ai3Z = (Main.rand.NextFloat() - 0.12f) * 0.7853982f; //0.5
-            Projectile.NewProjectile(position.X, position.Y, speedX, speedY, mod.ProjectileType("EventHorizon"), damage, knockBack, player.whoAmI, 0.0f, ai3);
-	    	Projectile.NewProjectile(position.X, position.Y, speedX, speedY, mod.ProjectileType("EventHorizon"), damage, knockBack, player.whoAmI, 0.0f, ai3X);
-            Projectile.NewProjectile(position.X, position.Y, speedX, speedY, mod.ProjectileType("EventHorizon"), damage, knockBack, player.whoAmI, 0.0f, ai3Y);
-            Projectile.NewProjectile(position.X, position.Y, speedX, speedY, mod.ProjectileType("EventHorizon"), damage, knockBack, player.whoAmI, 0.0f, ai3Z);
+            float spread = 45f * 0.0174f;
+            float baseSpeed = (float)Math.Sqrt(speedX * speedX + speedY * speedY);
+            float ai3 = (Main.rand.NextFloat() - 0.75f) * 0.7853982f; //0.5
+	    	//float ai3X = (Main.rand.NextFloat() - 0.50f) * 0.7853982f; //0.5
+            //float ai3Y = (Main.rand.NextFloat() - 0.25f) * 0.7853982f; //0.5
+            //float ai3Z = (Main.rand.NextFloat() - 0.12f) * 0.7853982f; //0.5
+            double startAngle = Math.Atan2(speedX, speedY) - .1d;
+            double deltaAngle = spread / 6f;
+            double offsetAngle;
+            for (int i = 0; i < 3; i++)
+            {
+                offsetAngle = startAngle + deltaAngle * i;
+                Terraria.Projectile.NewProjectile(position.X, position.Y, baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle), item.shoot, damage, knockBack, item.owner, ai3);
+            }
+            //Projectile.NewProjectile(position.X, position.Y, speedX, speedY, mod.ProjectileType("EventHorizon"), damage, knockBack, player.whoAmI, 0.0f, ai3);
+	    	//Projectile.NewProjectile(position.X, position.Y, speedX, speedY, mod.ProjectileType("EventHorizon"), damage, knockBack, player.whoAmI, 0.0f, ai3X);
+            //Projectile.NewProjectile(position.X, position.Y, speedX, speedY, mod.ProjectileType("EventHorizon"), damage, knockBack, player.whoAmI, 0.0f, ai3Y);
+            //Projectile.NewProjectile(position.X, position.Y, speedX, speedY, mod.ProjectileType("EventHorizon"), damage, knockBack, player.whoAmI, 0.0f, ai3Z);
             return false;
         }
 	}
