@@ -382,10 +382,6 @@ namespace AAMod.NPCs.Bosses.Nightcrawler
                         bool flag20 = true;
                         for (int num199 = 0; num199 < 255; num199++)
                         {
-                            if (Main.player[num199].active && !Main.player[num199].dead && Main.player[num199].ZoneCorrupt)
-                            {
-                                flag20 = false;
-                            }
                         }
                         if (flag20)
                         {
@@ -574,12 +570,12 @@ namespace AAMod.NPCs.Bosses.Nightcrawler
                 if (Main.expertMode)
                 {
                     Main.fastForwardTime = true;
-                    Main.dayRate = 40;
+                    Main.dayRate = 20;
                 }
                 else
                 {
                     Main.fastForwardTime = true;
-                    Main.dayRate = 30;
+                    Main.dayRate = 15;
                 }
             }
             if (NPC.AnyNPCs(mod.NPCType<DaybringerHead>()) && !NPC.AnyNPCs(mod.NPCType<NightcrawlerHead>()))

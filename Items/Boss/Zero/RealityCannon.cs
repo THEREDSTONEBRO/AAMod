@@ -13,7 +13,7 @@ namespace AAMod.Items.Boss.Zero
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Reality Cannon");
-            Tooltip.SetDefault("Rapidly Fires a dark spread of piercing lasers");
+            Tooltip.SetDefault("Rapidly Fires a spread of dark piercing lasers");
         }
 
         public override void SetDefaults()
@@ -28,13 +28,12 @@ namespace AAMod.Items.Boss.Zero
             item.damage = 120;
             item.UseSound = SoundID.Item12;
             item.shoot = mod.ProjectileType("RealityLaser");
-            item.mana = 18;
             item.rare = 10;
             item.value = Item.sellPrice(0, 50, 0, 0);
             item.noMelee = true;
-            item.magic = true;
+            item.ranged = true;
             item.autoReuse = true;
-            item.noUseGraphic = true;
+            item.noUseGraphic = false;
         }
 
         public override void ModifyTooltips(List<TooltipLine> list)
@@ -43,14 +42,14 @@ namespace AAMod.Items.Boss.Zero
             {
                 if (line2.mod == "Terraria" && line2.Name == "ItemName")
                 {
-                    line2.overrideColor = new Color(100, 0, 10);
+                    line2.overrideColor = new Color(120, 0, 30);
                 }
             }
         }
 
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
-            float spread = 45f * 0.0174f;
+            float spread = 12f * 0.0174f;
             float baseSpeed = (float)Math.Sqrt(speedX * speedX + speedY * speedY);
             double startAngle = Math.Atan2(speedX, speedY) - .1d;
             double deltaAngle = spread / 6f;

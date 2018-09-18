@@ -306,8 +306,10 @@ namespace AAMod
             {
                 if (AAMod.InfinityHotKey.JustPressed)
                 {
-                    Main.npc.Where(x => x.active && !x.townNPC && x.type != NPCID.TargetDummy).ToList().ForEach(x =>
+
+                    Main.npc.Where(x => x.active && !x.townNPC && x.type != NPCID.TargetDummy && !x.boss).ToList().ForEach(x =>
                     {
+
                         Main.NewText("Perfectly Balanced, as all things should be");
                         if (death || TrueInfinityGauntlet)
                         {
