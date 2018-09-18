@@ -249,6 +249,8 @@
     <Compile Include="Items\Boss\Zero\EventHorizon.cs" />
     <Compile Include="Items\Boss\Zero\RealityCannon.cs" />
     <Compile Include="Items\Boss\Zero\RiftShredder.cs" />
+    <Compile Include="Items\Boss\Zero\TeslaHand.cs" />
+    <Compile Include="Items\Boss\Zero\ZeroStar.cs" />
     <Compile Include="Items\Boss\Zero\UnstableSingularity.cs" />
     <Compile Include="Items\Boss\Zero\VoidStar.cs" />
     <Compile Include="Items\Boss\Zero\ZeroBag.cs" />
@@ -365,6 +367,7 @@
     <Compile Include="Items\Projectiles\Teslashock.cs" />
     <Compile Include="Items\Projectiles\TFGWP.cs" />
     <Compile Include="Items\Projectiles\TimeTeller.cs" />
+    <Compile Include="Items\Projectiles\ZeroStarP.cs" />
     <Compile Include="Items\Projectiles\TitanAxe.cs" />
     <Compile Include="Items\Projectiles\Toxin.cs" />
     <Compile Include="Items\Projectiles\TrueAbyssalTwilightShot.cs" />
@@ -937,6 +940,7 @@
     <Content Include="Items\Boss\Retriever\StormRiot.png" />
     <Content Include="Items\Boss\Retriever\StormRiot_Shield.png" />
     <Content Include="Items\Boss\Yamata\Masamune.png" />
+    <Content Include="Items\Boss\Zero\Battery.png" />
     <Content Include="Items\Boss\Zero\EventHorizon.png" />
     <Content Include="Items\Boss\Zero\Neutralizer.png" />
     <Content Include="Items\Boss\Zero\RealityCannon.png" />
@@ -1128,7 +1132,11 @@
     <Content Include="Items\Projectiles\ValkyrieLance.png" />
     <Content Include="Items\Projectiles\Void.png" />
     <Content Include="Items\Projectiles\VoidStarPF.png" />
+<<<<<<< HEAD
     <Content Include="Items\Projectiles\VoidStarPF_Glow.png" />
+=======
+    <Content Include="Items\Projectiles\ZeroStarP.png" />
+>>>>>>> 448baa85bafb67ad7f37961deb2c4dbd11c32465
     <Content Include="Items\Ranged\Apollo.png" />
     <Content Include="Items\Ranged\ApollosWrath.png" />
     <Content Include="Items\Ranged\BoneBow.png" />

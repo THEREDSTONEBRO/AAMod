@@ -49,39 +49,6 @@ namespace AAMod.NPCs.Bosses.Zero
 
         public override void NPCLoot()
         {
-            /*if (Main.rand.Next(10) == 0)
-            {
-                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("ZeroTrophy"));
-            }
-            if (Main.expertMode)
-            {
-                npc.DropBossBags();
-            }
-            else
-            {
-                if(Main.rand.Next(7) == 0)
-                {
-                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("ZeroMask"));
-                }
-                if (Main.rand.Next(4) == 0)
-                {
-                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("RiftShredder"));
-                }
-                if (Main.rand.Next(4) == 0)
-                {
-                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("EventHorizon"));
-                }
-                if (Main.rand.Next(4) == 0)
-                {
-                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("RealityCannon"));
-                }
-                if (Main.rand.Next(4) == 0)
-                {
-                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("VoidStar"));
-                }
-            } */
-            
-
             if (Main.expertMode)
             {
                 npc.DropBossBags();
@@ -90,7 +57,7 @@ namespace AAMod.NPCs.Bosses.Zero
 
             npc.DropLoot(mod.ItemType("UnstableSingularity"), 25, 35);
 
-            string[] lootTable = { "RiftShredder", "EventHorizon", "VoidStar", "RealityCannon", "TeslaHand" };
+            string[] lootTable = { "RiftShredder", "EventHorizon", "VoidStar", "RealityCannon", "TeslaHand", "ZeroStar" };
             int loot = Main.rand.Next(lootTable.Length);
             npc.DropLoot(mod.ItemType(lootTable[loot]));
 
