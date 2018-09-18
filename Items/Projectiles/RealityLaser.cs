@@ -16,14 +16,14 @@ namespace AAMod.Items.Projectiles
         }
         public override void SetDefaults()
         {
-            projectile.width = 3;
-            projectile.height = 10;
+            projectile.width = 20;
+            projectile.height = 1;
             projectile.friendly = true;
             projectile.penetrate = -1;           //this is projectile frames
             projectile.hostile = false;
             projectile.friendly = true;
             projectile.magic = true;                        //this make the projectile do magic damage
-            projectile.tileCollide = true;                 //this make that the projectile does not go thru walls
+            projectile.tileCollide = false;                 //this make that the projectile does not go thru walls
             projectile.ignoreWater = true;
             projectile.timeLeft = 900;
         }
