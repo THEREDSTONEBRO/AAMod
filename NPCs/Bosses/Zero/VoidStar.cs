@@ -7,8 +7,10 @@ using System;
 
 namespace AAMod.NPCs.Bosses.Zero
 {
-    public class VoidStar : ModNPC
+    public class VoidStar : Zero
     {
+        public override string Texture { get { return "AAMod/NPCs/Bosses/Zero/VoidStar"; } }
+
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Void Star");
@@ -172,7 +174,7 @@ namespace AAMod.NPCs.Bosses.Zero
                         npc.localAI[0] = 0f;
                         float num491 = 8f;
                         int num492 = 25;
-                        int num493 = 100;
+                        int num493 = mod.ProjectileType<VoidStarP>();
                         num490 = num491 / num490;
                         num488 *= num490;
                         num489 *= num490;
@@ -248,7 +250,7 @@ namespace AAMod.NPCs.Bosses.Zero
                         npc.localAI[0] = 0f;
                         float num497 = 10f;
                         int num498 = 25;
-                        int num499 = 100;
+                        int num499 = mod.ProjectileType<VoidStarP>();
                         num496 = num497 / num496;
                         num494 *= num496;
                         num495 *= num496;

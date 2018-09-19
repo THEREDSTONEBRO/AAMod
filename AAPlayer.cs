@@ -165,7 +165,7 @@ namespace AAMod
             {
                 if (player.whoAmI == Main.myPlayer)
                 {
-                    for (int i = 0; i < 40; i++) ;
+                    for (int i = 0; i < 40; i++)
                     {
                         Dust dust;
                         Vector2 position;

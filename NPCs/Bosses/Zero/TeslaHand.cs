@@ -7,8 +7,10 @@ using System;
 
 namespace AAMod.NPCs.Bosses.Zero
 {
-    public class TeslaHand : ModNPC
+    public class TeslaHand : Zero
     {
+        public override string Texture { get { return "AAMod/NPCs/Bosses/Zero/TeslaHand"; } }
+
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Broken Weapon");

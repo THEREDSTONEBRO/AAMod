@@ -7,8 +7,10 @@ using System;
 
 namespace AAMod.NPCs.Bosses.Zero
 {
-    public class RealityCannon : ModNPC
+    public class RealityCannon : Zero
     {
+        public override string Texture { get { return "AAMod/NPCs/Bosses/Zero/RealityCannon"; } }
+
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Reality Cannon");
