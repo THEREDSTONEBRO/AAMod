@@ -23,6 +23,7 @@ namespace AAMod.Items.Vanity.Alphakip
 			item.value = 500000;
 			item.rare = 11;
 			item.accessory = true;
+            item.glowMask = 0;
 		}
 
         public override void ModifyTooltips(List<TooltipLine> list)
@@ -38,7 +39,7 @@ namespace AAMod.Items.Vanity.Alphakip
         //these wings use the same values as the solar wings
         public override void UpdateAccessory(Player player, bool hideVisual)
 		{
-			player.wingTimeMax = 400;
+			player.wingTimeMax = 300;
 		}
 
 		public override void VerticalWingSpeeds(Player player, ref float ascentWhenFalling, ref float ascentWhenRising,
