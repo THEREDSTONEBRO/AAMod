@@ -934,6 +934,7 @@
     <Content Include="Items\Boss\Retriever\StormRiot.png" />
     <Content Include="Items\Boss\Retriever\StormRiot_Shield.png" />
     <Content Include="Items\Boss\Yamata\Masamune.png" />
+    <Content Include="Items\Boss\Zero\AMR.png" />
     <Content Include="Items\Boss\Zero\Battery.png" />
     <Content Include="Items\Boss\Zero\EventHorizon.png" />
     <Content Include="Items\Boss\Zero\Neutralizer.png" />
@@ -1548,6 +1549,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include=".gitignore" />
+    <None Include=".vs\AAMod\DesignTimeBuild\.dtbcache" />
+    <None Include=".vs\AAMod\v15\.suo" />
+    <None Include=".vs\AAMod\v15\Server\sqlite3\db.lock" />
+    <None Include=".vs\AAMod\v15\Server\sqlite3\storage.ide" />
+    <None Include=".vs\AAMod\v15\Server\sqlite3\storage.ide-shm" />
+    <None Include=".vs\AAMod\v15\Server\sqlite3\storage.ide-wal" />
     <None Include="obj\Debug\AAMod.csproj.CopyComplete" />
     <None Include="obj\Debug\AAMod.csproj.CoreCompileInputs.cache" />
     <None Include="obj\Debug\AAMod.csprojAssemblyReference.cache" />

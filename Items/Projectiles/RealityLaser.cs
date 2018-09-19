@@ -5,7 +5,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AAMod.NPCs.Bosses.Nightcrawler
+namespace AAMod.Items.Projectiles
 {
     public class RealityLaser : ModProjectile
     {
@@ -18,7 +18,8 @@ namespace AAMod.NPCs.Bosses.Nightcrawler
         {
             projectile.width = 2;
             projectile.height = 32;
-            projectile.hostile = true;
+            projectile.hostile = false;
+            projectile.friendly = true;
             projectile.scale = 2f;
             projectile.ignoreWater = true;
             projectile.tileCollide = true;
