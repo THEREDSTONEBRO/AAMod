@@ -4,6 +4,7 @@ using Terraria.ModLoader;
 using Terraria.ID;
 using System.IO;
 using AAMod.NPCs.Bosses.Nightcrawler;
+using System;
 
 namespace AAMod.NPCs.Bosses.Daybringer
 {
@@ -97,8 +98,8 @@ namespace AAMod.NPCs.Bosses.Daybringer
             tailType = mod.NPCType<DaybringerTail>();
             bodyType = mod.NPCType<DaybringerBody>();
             headType = mod.NPCType<DaybringerHead>();
-            speed = 13.25f;
-            turnSpeed = 0.045f;
+            speed = 18.25f;
+            turnSpeed = 0.185f;
         }
     }
 
@@ -583,6 +584,7 @@ namespace AAMod.NPCs.Bosses.Daybringer
                 Main.fastForwardTime = true;
                 Main.dayTime = true;
                 Main.dayRate = 0;
+
             }
             if (!NPC.AnyNPCs(mod.NPCType<DaybringerHead>()) && NPC.AnyNPCs(mod.NPCType<NightcrawlerHead>()))
             {
@@ -598,7 +600,7 @@ namespace AAMod.NPCs.Bosses.Daybringer
             if (Main.dayTime && NPC.AnyNPCs(mod.NPCType<DaybringerHead>()))
             {
                 npc.scale = 2f;
-                speed = 15f;
+                speed = 20f;
                 npc.damage = 75;
                 if (Main.expertMode)
                 {
@@ -612,7 +614,7 @@ namespace AAMod.NPCs.Bosses.Daybringer
             else
             {
                 npc.scale = 1.5f;
-                speed = 13.25f;
+                speed = 18.25f;
                 npc.damage = 70;
                 if (Main.expertMode)
                 {
