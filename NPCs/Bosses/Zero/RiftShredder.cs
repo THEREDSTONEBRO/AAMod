@@ -7,8 +7,10 @@ using System;
 
 namespace AAMod.NPCs.Bosses.Zero
 {
-    public class RiftShredder : ModNPC
+    public class RiftShredder : Zero
     {
+        public override string Texture { get { return "AAMod/NPCs/Bosses/Zero/RiftShredder"; } }
+
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Rift Shredder");
