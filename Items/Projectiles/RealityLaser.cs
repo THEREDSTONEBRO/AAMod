@@ -1,46 +1,55 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AAMod.Items.Projectiles
+namespace AAMod.NPCs.Bosses.Nightcrawler
 {
     public class RealityLaser : ModProjectile
     {
-        public override void SetStaticDefaults()
-        {
-            DisplayName.SetDefault("RealityLaser");
-        }
+    	public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Moonray");
+		}
+    	
         public override void SetDefaults()
         {
-
-            projectile.width = 32;
-
-            projectile.width = 20;
-//448baa85bafb67ad7f37961deb2c4dbd11c32465
-            projectile.height = 1;
-            projectile.friendly = true;
-            projectile.penetrate = -1;           //this is projectile frames
-            projectile.hostile = false;
-            projectile.friendly = true;
-
-            projectile.ranged = true;                        //this make the projectile do magic damage
-
-            projectile.magic = true;                        //this make the projectile do magic damage
-//448baa85bafb67ad7f37961deb2c4dbd11c32465
-            projectile.tileCollide = false;                 //this make that the projectile does not go thru walls
+            projectile.width = 2;
+            projectile.height = 32;
+            projectile.hostile = true;
+            projectile.scale = 2f;
             projectile.ignoreWater = true;
-            projectile.timeLeft = 900;
+            projectile.tileCollide = true;
+            projectile.penetrate = -1;
+            projectile.timeLeft = 150;
+            projectile.alpha = 120;
         }
 
-        public override bool OnTileCollide(Vector2 oldVelocity)
+        public override void AI()
         {
-            Collision.HitTiles(projectile.position, oldVelocity, projectile.width, projectile.height);
-            Main.PlaySound(0, (int)projectile.position.X, (int)projectile.position.Y, 1);
-            return true;
+        	int num103 = (int)Player.FindClosest(projectile.Center, 1, 1);
+			projectile.ai[1] += 1f;
+			if (projectile.ai[1] < 110f && projectile.ai[1] > 30f)
+			{
+				float scaleFactor2 = projectile.velocity.Length();
+				Vector2 vector11 = Main.player[num103].Center - projectile.Center;
+				vector11.Normalize();
+				vector11 *= scaleFactor2;
+				projectile.velocity = (projectile.velocity * 24f + vector11) / 25f;
+				projectile.velocity.Normalize();
+				projectile.velocity *= scaleFactor2;
+			}
+			if (projectile.ai[0] < 0f)
+			{
+				if (projectile.velocity.Length() < 18f)
+				{
+					projectile.velocity *= 1.02f;
+				}
+			}
+			projectile.rotation = (float)Math.Atan2((double)projectile.velocity.Y, (double)projectile.velocity.X) + 1.57f;
+        	Lighting.AddLight(projectile.Center, ((255 - projectile.alpha) * 0.5f) / 255f, ((255 - projectile.alpha) * 0.05f) / 255f, ((255 - projectile.alpha) * 0.05f) / 255f);
         }
     }
 }

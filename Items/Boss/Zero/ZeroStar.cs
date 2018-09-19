@@ -4,7 +4,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AAMod.Items.Melee
+namespace AAMod.Items.Boss.Zero
 {
 	public class ZeroStar : ModItem
 	{
@@ -57,10 +57,5 @@ namespace AAMod.Items.Melee
                 recipe.AddRecipe();
             }
         }
-
-		public override bool AltFunctionUse(Player player)
-		{
-			return true;
-		}
 	}
 }
