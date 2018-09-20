@@ -162,6 +162,7 @@ namespace AAMod.NPCs.Bosses.Zero
             }
         }
 
+<<<<<<< HEAD
         public override void BossLoot(ref string name, ref int potionType)
         {
             if (!Main.expertMode)
@@ -173,6 +174,9 @@ namespace AAMod.NPCs.Bosses.Zero
         }
         
         public override void PostDraw(SpriteBatch spriteBatch, Color drawColor)
+=======
+        public override bool PreDraw(SpriteBatch spriteBatch, Color drawColor)
+>>>>>>> c908d4b5869719a61f93fd1c35938487c2a7a320
         {
             
             {
@@ -228,6 +232,7 @@ namespace AAMod.NPCs.Bosses.Zero
                     }
                 }
             }
+            return true;
         }
 
 
