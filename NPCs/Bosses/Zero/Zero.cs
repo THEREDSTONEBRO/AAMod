@@ -125,7 +125,7 @@ namespace AAMod.NPCs.Bosses.Zero
 
 
 
-        public override void PostDraw(SpriteBatch spriteBatch, Color drawColor)
+        public override bool PreDraw(SpriteBatch spriteBatch, Color drawColor)
         {
             if (npc.type == mod.NPCType("VoidStar") || npc.type == mod.NPCType("RealityCannon") || npc.type == mod.NPCType("RiftShredder") || npc.type == mod.NPCType("TeslaHand"))
             {
@@ -170,6 +170,7 @@ namespace AAMod.NPCs.Bosses.Zero
                     }
                 }
             }
+            return true;
         }
 
 
