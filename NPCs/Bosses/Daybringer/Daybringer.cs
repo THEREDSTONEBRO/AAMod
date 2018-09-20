@@ -5,6 +5,7 @@ using Terraria.ID;
 using System.IO;
 using AAMod.NPCs.Bosses.Nightcrawler;
 using System;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace AAMod.NPCs.Bosses.Daybringer
 {
@@ -17,7 +18,19 @@ namespace AAMod.NPCs.Bosses.Daybringer
         {
             DisplayName.SetDefault("Daybringer");
         }
-
+        public override void PostDraw(SpriteBatch spriteBatch, Color drawColor)
+        {
+            {
+                SpriteEffects spriteEffects = SpriteEffects.None;
+                if (npc.spriteDirection == 1)
+                {
+                    spriteEffects = SpriteEffects.FlipHorizontally;
+                }
+                spriteBatch.Draw(mod.GetTexture("NPCs/Bosses/Zero/Daybringer_Glow"), new Vector2(npc.Center.X - Main.screenPosition.X, npc.Center.Y - Main.screenPosition.Y),
+                npc.frame, Color.White, npc.rotation,
+                new Vector2(npc.width * 0.5f, npc.height * 0.5f), 1f, spriteEffects, 0f);
+            }
+        }
         public override void SetDefaults()
         {
             npc.lifeMax = 40500;
@@ -65,6 +78,20 @@ namespace AAMod.NPCs.Bosses.Daybringer
             npc.DeathSound = null;
         }
 
+        public override void PostDraw(SpriteBatch spriteBatch, Color drawColor)
+        {
+            {
+                SpriteEffects spriteEffects = SpriteEffects.None;
+                if (npc.spriteDirection == 1)
+                {
+                    spriteEffects = SpriteEffects.FlipHorizontally;
+                }
+                spriteBatch.Draw(mod.GetTexture("NPCs/Bosses/Zero/DaybringerBody_Glow"), new Vector2(npc.Center.X - Main.screenPosition.X, npc.Center.Y - Main.screenPosition.Y),
+                npc.frame, Color.White, npc.rotation,
+                new Vector2(npc.width * 0.5f, npc.height * 0.5f), 1f, spriteEffects, 0f);
+            }
+        }
+        
         public override void Init()
         {
             base.Init();
@@ -83,7 +110,19 @@ namespace AAMod.NPCs.Bosses.Daybringer
             npc.height = 52;
             npc.DeathSound = null;
         }
-
+        public override void PostDraw(SpriteBatch spriteBatch, Color drawColor)
+        {
+            {
+                SpriteEffects spriteEffects = SpriteEffects.None;
+                if (npc.spriteDirection == 1)
+                {
+                    spriteEffects = SpriteEffects.FlipHorizontally;
+                }
+                spriteBatch.Draw(mod.GetTexture("NPCs/Bosses/Zero/DaybringerTail_Glow"), new Vector2(npc.Center.X - Main.screenPosition.X, npc.Center.Y - Main.screenPosition.Y),
+                npc.frame, Color.White, npc.rotation,
+                new Vector2(npc.width * 0.5f, npc.height * 0.5f), 1f, spriteEffects, 0f);
+            }
+        }
         public override void Init()
         {
             base.Init();

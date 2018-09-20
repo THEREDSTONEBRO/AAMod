@@ -16,7 +16,7 @@ namespace AAMod.NPCs.Bosses.Zero
 
     {
 
-        public override string Texture { get { return "AAMod/NPCs/Bosses/Zero/Zero"; } }
+        public override string Texture { get { return "NPCs/Bosses/Zero/Zero"; } }
 
         private Player player;
 
@@ -127,6 +127,16 @@ namespace AAMod.NPCs.Bosses.Zero
 
         public override void PostDraw(SpriteBatch spriteBatch, Color drawColor)
         {
+            {
+                SpriteEffects spriteEffects = SpriteEffects.None;
+                if (npc.spriteDirection == 1)
+                {
+                    spriteEffects = SpriteEffects.FlipHorizontally;
+                }
+                spriteBatch.Draw(mod.GetTexture("NPCs/Bosses/Zero/Zero_Glow"), new Vector2(npc.Center.X - Main.screenPosition.X, npc.Center.Y - Main.screenPosition.Y),
+                npc.frame, Color.White, npc.rotation,
+                new Vector2(npc.width * 0.5f, npc.height * 0.5f), 1f, spriteEffects, 0f);
+            }
             if (npc.type == mod.NPCType("VoidStar") || npc.type == mod.NPCType("RealityCannon") || npc.type == mod.NPCType("RiftShredder") || npc.type == mod.NPCType("TeslaHand"))
             {
                 Vector2 vector7 = new Vector2(npc.position.X + (float)npc.width * 0.5f - 5f * npc.ai[0], npc.position.Y + 20f);
@@ -155,7 +165,7 @@ namespace AAMod.NPCs.Bosses.Zero
                     }
                     float rotation7 = (float)Math.Atan2(num23, num22) - 1.57f;
                     Color color7 = Lighting.GetColor((int)vector7.X / 16, (int)(vector7.Y / 16f));
-                    spriteBatch.Draw(mod.GetTexture("AAMod/NPCs/Bosses/Zero/ZeroArm"), new Vector2(vector7.X - Main.screenPosition.X, vector7.Y - Main.screenPosition.Y), new Microsoft.Xna.Framework.Rectangle?(new Rectangle(0, 0, 94, 18)), color7, rotation7, new Vector2(94 * 0.5f, 18 * 0.5f), 1f, SpriteEffects.None, 0f);
+                    spriteBatch.Draw(mod.GetTexture("NPCs/Bosses/Zero/ZeroArm"), new Vector2(vector7.X - Main.screenPosition.X, vector7.Y - Main.screenPosition.Y), new Microsoft.Xna.Framework.Rectangle?(new Rectangle(0, 0, 94, 18)), color7, rotation7, new Vector2(94 * 0.5f, 18 * 0.5f), 1f, SpriteEffects.None, 0f);
                     if (k == 0)
                     {
                         vector7.X += num22 * num24 / 2f;
@@ -522,7 +532,7 @@ namespace AAMod.NPCs.Bosses.Zero
 
     public class RealityCannon : Zero
     {
-        public override string Texture { get { return "AAMod/NPCs/Bosses/Zero/RealityCannon"; } }
+        public override string Texture { get { return "NPCs/Bosses/Zero/RealityCannon"; } }
 
         public override void SetStaticDefaults()
         {
@@ -544,6 +554,21 @@ namespace AAMod.NPCs.Bosses.Zero
             animationType = NPCID.PrimeLaser;
             npc.noGravity = true;
         }
+
+        public override void PostDraw(SpriteBatch spriteBatch, Color drawColor)
+        {
+            {
+                SpriteEffects spriteEffects = SpriteEffects.None;
+                if (npc.spriteDirection == 1)
+                {
+                    spriteEffects = SpriteEffects.FlipHorizontally;
+                }
+                spriteBatch.Draw(mod.GetTexture("NPCs/Bosses/Zero/RealityCannon_Glow"), new Vector2(npc.Center.X - Main.screenPosition.X, npc.Center.Y - Main.screenPosition.Y),
+                npc.frame, Color.White, npc.rotation,
+                new Vector2(npc.width * 0.5f, npc.height * 0.5f), 1f, spriteEffects, 0f);
+            }
+        }
+
         public override void AI()
         {
             npc.spriteDirection = -(int)npc.ai[0];
@@ -781,7 +806,7 @@ namespace AAMod.NPCs.Bosses.Zero
 
     public class RiftShredder : Zero
     {
-        public override string Texture { get { return "AAMod/NPCs/Bosses/Zero/RiftShredder"; } }
+        public override string Texture { get { return "NPCs/Bosses/Zero/RiftShredder"; } }
 
         public override void SetStaticDefaults()
         {
@@ -805,6 +830,21 @@ namespace AAMod.NPCs.Bosses.Zero
             animationType = NPCID.PrimeSaw;
             npc.noGravity = true;
         }
+
+        public override void PostDraw(SpriteBatch spriteBatch, Color drawColor)
+        {
+            {
+                SpriteEffects spriteEffects = SpriteEffects.None;
+                if (npc.spriteDirection == 1)
+                {
+                    spriteEffects = SpriteEffects.FlipHorizontally;
+                }
+                spriteBatch.Draw(mod.GetTexture("NPCs/Bosses/Zero/RiftShredder_Glow"), new Vector2(npc.Center.X - Main.screenPosition.X, npc.Center.Y - Main.screenPosition.Y),
+                npc.frame, Color.White, npc.rotation,
+                new Vector2(npc.width * 0.5f, npc.height * 0.5f), 1f, spriteEffects, 0f);
+            }
+        }
+
         public override void AI()
         {
             Vector2 vector46 = new Vector2(npc.position.X + (float)npc.width * 0.5f, npc.position.Y + (float)npc.height * 0.5f);
@@ -1126,7 +1166,7 @@ namespace AAMod.NPCs.Bosses.Zero
 
     public class TeslaHand : Zero
     {
-        public override string Texture { get { return "AAMod/NPCs/Bosses/Zero/TeslaHand"; } }
+        public override string Texture { get { return "/NPCs/Bosses/Zero/TeslaHand"; } }
 
         public override void SetStaticDefaults()
         {
@@ -1148,6 +1188,21 @@ namespace AAMod.NPCs.Bosses.Zero
             animationType = NPCID.PrimeVice;
             npc.noGravity = true;
         }
+
+        public override void PostDraw(SpriteBatch spriteBatch, Color drawColor)
+        {
+            {
+                SpriteEffects spriteEffects = SpriteEffects.None;
+                if (npc.spriteDirection == 1)
+                {
+                    spriteEffects = SpriteEffects.FlipHorizontally;
+                }
+                spriteBatch.Draw(mod.GetTexture("NPCs/Bosses/Zero/TeslaHand_Glow"), new Vector2(npc.Center.X - Main.screenPosition.X, npc.Center.Y - Main.screenPosition.Y),
+                npc.frame, Color.White, npc.rotation,
+                new Vector2(npc.width * 0.5f, npc.height * 0.5f), 1f, spriteEffects, 0f);
+            }
+        }
+
         public override void AI()
         {
             npc.spriteDirection = -(int)npc.ai[0];
@@ -1437,7 +1492,7 @@ namespace AAMod.NPCs.Bosses.Zero
 
     public class VoidStar : Zero
     {
-        public override string Texture { get { return "AAMod/NPCs/Bosses/Zero/VoidStar"; } }
+        public override string Texture { get { return "NPCs/Bosses/Zero/VoidStar"; } }
 
         public override void SetStaticDefaults()
         {
@@ -1459,6 +1514,21 @@ namespace AAMod.NPCs.Bosses.Zero
             animationType = NPCID.PrimeCannon;
             npc.noGravity = true;
         }
+
+        public override void PostDraw(SpriteBatch spriteBatch, Color drawColor)
+        {
+            {
+                SpriteEffects spriteEffects = SpriteEffects.None;
+                if (npc.spriteDirection == 1)
+                {
+                    spriteEffects = SpriteEffects.FlipHorizontally;
+                }
+                spriteBatch.Draw(mod.GetTexture("NPCs/Bosses/Zero/VoidStar_Glow"), new Vector2(npc.Center.X - Main.screenPosition.X, npc.Center.Y - Main.screenPosition.Y),
+                npc.frame, Color.White, npc.rotation,
+                new Vector2(npc.width * 0.5f, npc.height * 0.5f), 1f, spriteEffects, 0f);
+            }
+        }
+
         public override void AI()
         {
             npc.spriteDirection = -(int)npc.ai[0];
