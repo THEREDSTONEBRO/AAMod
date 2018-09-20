@@ -57,7 +57,12 @@ namespace AAMod.Items.Boss.Grips
                     {
                         player.QuickSpawnItem(mod.ItemType("N1"));
                     }
-
+                    if (choice == 3)
+                    {
+                        player.QuickSpawnItem(mod.ItemType("GlitchesHat"));
+                        player.QuickSpawnItem(mod.ItemType("GlitchesBreastplate"));
+                        player.QuickSpawnItem(mod.ItemType("GlitchesGreaves"));
+                    }
                 }
             }
             player.QuickSpawnItem(mod.ItemType("Abyssium"), Main.rand.Next(25, 56));
