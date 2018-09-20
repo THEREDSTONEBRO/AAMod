@@ -59,7 +59,15 @@ namespace AAMod.NPCs.Bosses.Zero
 
             npc.noTileCollide = true;
 
-            npc.value = 120000f;
+
+            if (Main.expertMode)
+            {
+                npc.value = 0;
+            }
+            else
+            {
+                npc.value = 120000f;
+            }
 
             npc.knockBackResist = -1f;
 
@@ -117,13 +125,45 @@ namespace AAMod.NPCs.Bosses.Zero
 
                 Vector2 spawnAt = npc.Center + new Vector2(0f, npc.height / 2f);
 
-                NPC.NewNPC((int)spawnAt.X, (int)spawnAt.Y, mod.NPCType("ZeroAwakened"));
-
+                
+                if (Main.expertMode)
+                {
+                    NPC.NewNPC((int)spawnAt.X, (int)spawnAt.Y, mod.NPCType("ZeroAwakened"));
+                }
             }
 
         }
 
+        public override void NPCLoot()
+        {
+            if (Main.expertMode)
+            {
+                npc.DropLoot(mod.ItemType("ApocalyptitePlate"), 2, 4);
+            }
+            else
+            {
 
+                npc.DropLoot(mod.ItemType("ApocalyptitePlate"), 20, 30);
+                npc.DropLoot(mod.ItemType("UnstableSingularity"), 25, 35);
+
+                string[] lootTable = { "RiftShredder", "EventHorizon", "VoidStar", "RealityCannon", "TeslaHand", "ZeroStar" };
+                int loot = Main.rand.Next(lootTable.Length);
+                npc.DropLoot(mod.ItemType(lootTable[loot]));
+
+                npc.DropLoot(Items.Vanity.Mask.ZeroMask.type, 1f / 7);
+                npc.DropLoot(Items.Blocks.ZeroTrophy.type, 1f / 10);
+            }
+        }
+
+        public override void BossLoot(ref string name, ref int potionType)
+        {
+            if (!Main.expertMode)
+            {
+                potionType = ItemID.GreaterHealingPotion;   //boss drops
+                AAWorld.downedZero = true;
+            }
+            
+        }
 
         public override void PostDraw(SpriteBatch spriteBatch, Color drawColor)
         {
