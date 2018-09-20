@@ -64,6 +64,13 @@ namespace AAMod.NPCs.Bosses.Zero
             Projectile.NewProjectile((new Vector2(npc.position.X + 100f, npc.position.Y + 89f)), (new Vector2(0f, 0f)), mod.ProjectileType("ZeroDeath1"), 0, 0);
             
         }
+
+        public override bool? DrawHealthBar(byte hbPosition, ref float scale, ref Vector2 position)
+        {
+            scale = 1.5f;
+            return null;
+        }
+
         public override void HitEffect(int hitDirection, double damage)
         {
 

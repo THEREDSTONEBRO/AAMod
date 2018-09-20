@@ -53,6 +53,12 @@ namespace AAMod.NPCs.Bosses.Grips
             }
         }
 
+        public override bool? DrawHealthBar(byte hbPosition, ref float scale, ref Vector2 position)
+        {
+            scale = 1.5f;
+            return null;
+        }
+
         public override void NPCLoot()
         {
             int GripBlue = NPC.CountNPCS(mod.NPCType("GripOfChaosBlue"));
