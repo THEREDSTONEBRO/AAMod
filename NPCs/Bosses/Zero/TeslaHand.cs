@@ -7,7 +7,7 @@ using System;
 
 namespace AAMod.NPCs.Bosses.Zero
 {
-    public class TeslaHand : Zero
+    public class TeslaHand : ModNPC
     {
         public override string Texture { get { return "AAMod/NPCs/Bosses/Zero/TeslaHand"; } }
 

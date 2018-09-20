@@ -154,7 +154,7 @@ namespace AAMod.NPCs.Bosses.Zero
                     }
                     float rotation7 = (float)Math.Atan2(num23, num22) - 1.57f;
                     Color color7 = Lighting.GetColor((int)vector7.X / 16, (int)(vector7.Y / 16f));
-                    spriteBatch.Draw(mod.GetTexture("AAMod/NPCs/Bosses/Zero/ZeroArm"), new Vector2(vector7.X - Main.screenPosition.X, vector7.Y - Main.screenPosition.Y), new Microsoft.Xna.Framework.Rectangle?(new Rectangle(0, 0, Main.boneArmTexture.Width, Main.boneArmTexture.Height)), color7, rotation7, new Vector2(Main.boneArmTexture.Width * 0.5f, Main.boneArmTexture.Height * 0.5f), 1f, SpriteEffects.None, 0f);
+                    spriteBatch.Draw(mod.GetTexture("AAMod/NPCs/Bosses/Zero/ZeroArm"), new Vector2(vector7.X - Main.screenPosition.X, vector7.Y - Main.screenPosition.Y), new Microsoft.Xna.Framework.Rectangle?(new Rectangle(0, 0, 94, 18)), color7, rotation7, new Vector2(94 * 0.5f, 18 * 0.5f), 1f, SpriteEffects.None, 0f);
                     if (k == 0)
                     {
                         vector7.X += num22 * num24 / 2f;
