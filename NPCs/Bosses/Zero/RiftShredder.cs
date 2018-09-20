@@ -7,7 +7,7 @@ using System;
 
 namespace AAMod.NPCs.Bosses.Zero
 {
-    public class RiftShredder : Zero
+    public class RiftShredder : ModNPC
     {
         public override string Texture { get { return "AAMod/NPCs/Bosses/Zero/RiftShredder"; } }
 

@@ -7,7 +7,7 @@ using System;
 
 namespace AAMod.NPCs.Bosses.Zero
 {
-    public class RealityCannon : Zero
+    public class RealityCannon : ModNPC
     {
         public override string Texture { get { return "AAMod/NPCs/Bosses/Zero/RealityCannon"; } }
 

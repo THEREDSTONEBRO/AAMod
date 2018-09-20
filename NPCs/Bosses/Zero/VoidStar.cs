@@ -7,7 +7,7 @@ using System;
 
 namespace AAMod.NPCs.Bosses.Zero
 {
-    public class VoidStar : Zero
+    public class VoidStar : ModNPC
     {
         public override string Texture { get { return "AAMod/NPCs/Bosses/Zero/VoidStar"; } }
 
