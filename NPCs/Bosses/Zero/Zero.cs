@@ -16,7 +16,7 @@ namespace AAMod.NPCs.Bosses.Zero
 
     {
 
-        public override string Texture { get { return "NPCs/Bosses/Zero/Zero"; } }
+        public override string Texture { get { return "AAMod/NPCs/Bosses/Zero/Zero"; } }
 
         private Player player;
 
