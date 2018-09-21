@@ -47,7 +47,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\..\Desktop\Ancients Awakened\xna\Microsoft.Xna.Framework.Xact.dll</HintPath>
     </Reference>
-    <Reference Include="ReLogic, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -239,7 +238,9 @@
     <Compile Include="Items\Boss\Retriever\RetrieverBag.cs" />
     <Compile Include="Items\Boss\Retriever\StormClaw.cs" />
     <Compile Include="Items\Boss\Retriever\StormRiot.cs" />
+    <Compile Include="Items\Boss\Zero\AMR.cs" />
     <Compile Include="Items\Boss\Zero\EventHorizon.cs" />
+    <Compile Include="Items\Boss\Zero\Neutralizer.cs" />
     <Compile Include="Items\Boss\Zero\RealityCannon.cs" />
     <Compile Include="Items\Boss\Zero\RiftShredder.cs" />
     <Compile Include="Items\Boss\Zero\TeslaHand.cs" />
@@ -948,10 +949,13 @@
     <Content Include="Items\Boss\Zero\UnstableSingularity.png" />
     <Content Include="Items\Boss\Zero\UnstableSingularity_Glow.png" />
     <Content Include="Items\Boss\Zero\VoidStar.png" />
+    <Content Include="Items\Boss\Zero\VoidStar_Glow.png" />
     <Content Include="Items\Boss\Zero\ZeroBag.png" />
     <Content Include="Items\Boss\Zero\ZeroStar.png" />
+    <Content Include="Items\Boss\Zero\ZeroStar_Glow.png" />
     <Content Include="Items\Boss\Zero\ZeroWings.png" />
     <Content Include="Items\Boss\Zero\ZeroWings_Wings.png" />
+    <Content Include="Items\Boss\Zero\ZeroWings_Wings_Glow.png" />
     <Content Include="Items\Hooks\DragonsGrip.png" />
     <Content Include="Items\Magic\AncientArcanum.png" />
     <Content Include="Items\Magic\BogBomb.png" />
@@ -1289,7 +1293,6 @@
     <Content Include="NPCs\Bosses\Daybringer\DBTail_Glowmask.png" />
     <Content Include="NPCs\Bosses\Daybringer\Sunbeam.png" />
     <Content Include="NPCs\Bosses\Daybringer\SunbeamScatter.png" />
-    <Content Include="NPCs\Bosses\Decay\Decay.png" />
     <Content Include="NPCs\Bosses\Grips\GripOfChaosBlue.png" />
     <Content Include="NPCs\Bosses\Grips\GripOfChaosBluePunch.png" />
     <Content Include="NPCs\Bosses\Grips\GripOfChaosBlue_Head_Boss.png" />
@@ -1306,7 +1309,9 @@
     <Content Include="NPCs\Bosses\Nightcrawler\Nightcrawler_Head_Boss.png" />
     <Content Include="NPCs\Bosses\Retriever\Retriever.png" />
     <Content Include="NPCs\Bosses\Retriever\Retriever_Head_Boss.png" />
-    <Content Include="NPCs\Bosses\SoC\Soul of Cthulhu.png" />
+    <Content Include="NPCs\Bosses\Unused\Decay.png" />
+    <Content Include="NPCs\Bosses\Unused\MrBonesRevenge.png" />
+    <Content Include="NPCs\Bosses\Unused\Soul of Cthulhu.png" />
     <Content Include="NPCs\Bosses\Zero\RealityCannon.png" />
     <Content Include="NPCs\Bosses\Zero\RealityCannon_Glow.png" />
     <Content Include="NPCs\Bosses\Zero\RiftShredder.png" />
@@ -1589,7 +1594,6 @@
     <Folder Include="bin\Release\" />
     <Folder Include="Items\Mounts\" />
     <Folder Include="Items\Pets\" />
-    <Folder Include="NPCs\Bosses\Zero\Zero2\" />
     <Folder Include="obj\Debug\TempPE\" />
     <Folder Include="obj\NPCs\" />
   </ItemGroup>
