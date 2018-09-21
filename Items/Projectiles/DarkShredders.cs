@@ -10,8 +10,8 @@ namespace AAMod.Items.Projectiles     //We need this to basically indicate the f
     {
         public override void SetDefaults()
         {
-            projectile.width = 87;     //Set the hitbox width
-            projectile.height = 130;       //Set the hitbox height
+            projectile.width = 130;     //Set the hitbox width
+            projectile.height = 180;       //Set the hitbox height
             projectile.friendly = true;    //Tells the game whether it is friendly to players/friendly npcs or not
             projectile.penetrate = -1;    //Tells the game how many enemies it can hit before being destroyed. -1 = never
             projectile.tileCollide = false; //Tells the game whether or not it can collide with a tile
@@ -47,7 +47,7 @@ namespace AAMod.Items.Projectiles     //We need this to basically indicate the f
             projectile.Center = player.MountedCenter;
             projectile.position.X += player.width / 2 * player.direction;  //this is the projectile width sptrite direction from the playr
             projectile.spriteDirection = player.direction;
-            projectile.rotation += 0.6f * player.direction; //this is the projectile rotation/spinning speed
+            projectile.rotation += 1.2f * player.direction; //this is the projectile rotation/spinning speed
             if (projectile.rotation > MathHelper.TwoPi)
             {
                 projectile.rotation -= MathHelper.TwoPi;
@@ -60,7 +60,7 @@ namespace AAMod.Items.Projectiles     //We need this to basically indicate the f
             player.itemTime = 2;
             player.itemAnimation = 2;
             player.itemRotation = projectile.rotation;
-            int dust = Dust.NewDust(projectile.position, projectile.width, projectile.height, DustID.Fire);  //this is the dust that this projectile will spawn
+            int dust = Dust.NewDust(projectile.position, projectile.width, projectile.height, DustID.Electric);  //this is the dust that this projectile will spawn
             Main.dust[dust].velocity /= 1f;
  
         }

@@ -7,7 +7,7 @@ using Terraria.ModLoader;
  
 namespace AAMod.Items.Projectiles   //The directory for your .cs and .png; Example: TutorialMOD/Projectiles
 {
-    public class Incineration : ModProjectile   //make sure the sprite file is named like the class name (CustomYoyoProjectile)
+    public class DragonBreathP : ModProjectile   //make sure the sprite file is named like the class name (CustomYoyoProjectile)
     {
 
         public override void SetDefaults()

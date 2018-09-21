@@ -13,16 +13,17 @@ namespace AAMod.Items.Projectiles
 	{
 		public override void SetDefaults()
 		{
-			// while the sprite is actually bigger than 15x15, we use 15x15 since it lets the projectile clip into tiles as it bounces. It looks better.
-			projectile.width = 90;
+
+            projectile.CloneDefaults(ProjectileID.LightDisc);
+            aiType = ProjectileID.LightDisc;
+            // while the sprite is actually bigger than 15x15, we use 15x15 since it lets the projectile clip into tiles as it bounces. It looks better.
+            projectile.width = 90;
 			projectile.height = 90;
 			projectile.friendly = true;
             projectile.hostile = false;
             projectile.tileCollide = false;
 			projectile.penetrate = -1;
 			projectile.timeLeft = 300;
-            projectile.CloneDefaults(ProjectileID.LightDisc);
-            aiType = ProjectileID.LightDisc;
 		
 		}
 	}
