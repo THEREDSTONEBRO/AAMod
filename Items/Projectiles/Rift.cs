@@ -20,7 +20,7 @@ namespace AAMod.Items.Projectiles
             projectile.light = 0.2f;
             projectile.aiStyle = 0;
             projectile.friendly = true;
-            projectile.penetrate = 5;
+            projectile.penetrate = -1;
             projectile.tileCollide = false;
             projectile.scale = 0.9f;
             projectile.melee = true;

@@ -15,7 +15,7 @@ namespace AAMod.Items.Boss.Zero
             DisplayName.SetDefault("Unstable Singularity");
             Tooltip.SetDefault("Barely stable enough to hold");
             // ticksperframe, frameCount
-            Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(18, 4));
+            Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(4, 18));
             ItemID.Sets.AnimatesAsSoul[item.type] = true;
             ItemID.Sets.ItemIconPulse[item.type] = true;
             ItemID.Sets.ItemNoGravity[item.type] = true;
