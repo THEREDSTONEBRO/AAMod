@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Terraria;
@@ -8,11 +8,11 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Boss.Zero
 {
-	public class VoidStar : ModItem
-	{
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Void Star");
+    public class VoidStar : ModItem
+    {
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("Void Star");
             Tooltip.SetDefault("Fires a dark, spinning vortex that homes in on enemies");
             Item.staff[item.type] = true;
         }
@@ -37,26 +37,26 @@ namespace AAMod.Items.Boss.Zero
             item.autoReuse = true;
             item.noUseGraphic = true;
         }
-		
-		public override void ModifyTooltips(List<TooltipLine> list)
-	    {
-	        foreach (TooltipLine line2 in list)
-	        {
-	            if (line2.mod == "Terraria" && line2.Name == "ItemName")
-	            {
-	                line2.overrideColor = new Color(120, 0, 30);
-	            }
-	        }
-	    }
-		public override void AddRecipes()
-		{
-			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(null, "ApocalyptitePlate", 5);
-			recipe.AddIngredient(null, "UnstableSingularity", 5);
-			recipe.AddIngredient(ItemID.NebulaArcanum);
-	        recipe.AddTile(null, "BinaryReassembler");
-	        recipe.SetResult(this);
-	        recipe.AddRecipe();
-		}
-	}
+
+        public override void ModifyTooltips(List<TooltipLine> list)
+        {
+            foreach (TooltipLine line2 in list)
+            {
+                if (line2.mod == "Terraria" && line2.Name == "ItemName")
+                {
+                    line2.overrideColor = new Color(120, 0, 30);
+                }
+            }
+        }
+        public override void AddRecipes()
+        {
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(null, "ApocalyptitePlate", 5);
+            recipe.AddIngredient(null, "UnstableSingularity", 5);
+            recipe.AddIngredient(ItemID.NebulaArcanum);
+            recipe.AddTile(null, "BinaryReassembler");
+            recipe.SetResult(this);
+            recipe.AddRecipe();
+        }
+    }
 }
