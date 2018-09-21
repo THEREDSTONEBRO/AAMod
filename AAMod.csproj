@@ -47,6 +47,7 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\..\Desktop\Ancients Awakened\xna\Microsoft.Xna.Framework.Xact.dll</HintPath>
     </Reference>
+    <Reference Include="ReLogic, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -434,10 +435,6 @@
     <Compile Include="NPCs\Bosses\Nightcrawler\MoonrayScatter.cs" />
     <Compile Include="NPCs\Bosses\Nightcrawler\Nightcrawler.cs" />
     <Compile Include="NPCs\Bosses\Retriever\Retriever.cs" />
-    <Compile Include="NPCs\Bosses\Zero\RealityCannon.cs" />
-    <Compile Include="NPCs\Bosses\Zero\RiftShredder.cs" />
-    <Compile Include="NPCs\Bosses\Zero\TeslaHand.cs" />
-    <Compile Include="NPCs\Bosses\Zero\VoidStar.cs" />
     <Compile Include="NPCs\Bosses\Zero\VoidStarP.cs" />
     <Compile Include="NPCs\Bosses\Zero\Zero.cs" />
     <Compile Include="NPCs\Bosses\Zero\ZeroAwakened.cs" />
@@ -935,16 +932,26 @@
     <Content Include="Items\Boss\Retriever\StormRiot_Shield.png" />
     <Content Include="Items\Boss\Yamata\Masamune.png" />
     <Content Include="Items\Boss\Zero\AMR.png" />
+    <Content Include="Items\Boss\Zero\AMR_Glow.png" />
     <Content Include="Items\Boss\Zero\Battery.png" />
+    <Content Include="Items\Boss\Zero\Battery_Glow.png" />
     <Content Include="Items\Boss\Zero\EventHorizon.png" />
+    <Content Include="Items\Boss\Zero\EventHorizon_Glow.png" />
     <Content Include="Items\Boss\Zero\Neutralizer.png" />
+    <Content Include="Items\Boss\Zero\Neutralizer_Glow.png" />
     <Content Include="Items\Boss\Zero\RealityCannon.png" />
+    <Content Include="Items\Boss\Zero\RealityCannon_Glow.png" />
     <Content Include="Items\Boss\Zero\RiftShredder.png" />
+    <Content Include="Items\Boss\Zero\RiftShredder_Glow.png" />
     <Content Include="Items\Boss\Zero\TeslaHand.png" />
+    <Content Include="Items\Boss\Zero\TeslaHand_Glow.png" />
     <Content Include="Items\Boss\Zero\UnstableSingularity.png" />
+    <Content Include="Items\Boss\Zero\UnstableSingularity_Glow.png" />
     <Content Include="Items\Boss\Zero\VoidStar.png" />
     <Content Include="Items\Boss\Zero\ZeroBag.png" />
     <Content Include="Items\Boss\Zero\ZeroStar.png" />
+    <Content Include="Items\Boss\Zero\ZeroWings.png" />
+    <Content Include="Items\Boss\Zero\ZeroWings_Wings.png" />
     <Content Include="Items\Hooks\DragonsGrip.png" />
     <Content Include="Items\Magic\AncientArcanum.png" />
     <Content Include="Items\Magic\BogBomb.png" />
@@ -1289,7 +1296,6 @@
     <Content Include="NPCs\Bosses\Grips\GripOfChaosRed.png" />
     <Content Include="NPCs\Bosses\Grips\GripOfChaosRedPunch.png" />
     <Content Include="NPCs\Bosses\Grips\GripOfChaosRed_Head_Boss.png" />
-    <Content Include="NPCs\Bosses\MrBonesRevenge.png" />
     <Content Include="NPCs\Bosses\Nightcrawler\Moonray.png" />
     <Content Include="NPCs\Bosses\Nightcrawler\MoonrayScatter.png" />
     <Content Include="NPCs\Bosses\Nightcrawler\Nightcrawler.png" />
@@ -1302,19 +1308,31 @@
     <Content Include="NPCs\Bosses\Retriever\Retriever_Head_Boss.png" />
     <Content Include="NPCs\Bosses\SoC\Soul of Cthulhu.png" />
     <Content Include="NPCs\Bosses\Zero\RealityCannon.png" />
+    <Content Include="NPCs\Bosses\Zero\RealityCannon_Glow.png" />
     <Content Include="NPCs\Bosses\Zero\RiftShredder.png" />
+    <Content Include="NPCs\Bosses\Zero\RiftShredder_Glow.png" />
     <Content Include="NPCs\Bosses\Zero\TeslaHand.png" />
+    <Content Include="NPCs\Bosses\Zero\TeslaHand_Glow.png" />
     <Content Include="NPCs\Bosses\Zero\VoidStar.png" />
     <Content Include="NPCs\Bosses\Zero\VoidStarP.png" />
+    <Content Include="NPCs\Bosses\Zero\VoidStar_Glow.png" />
     <Content Include="NPCs\Bosses\Zero\Zero.png" />
     <Content Include="NPCs\Bosses\Zero\Zero1.png" />
     <Content Include="NPCs\Bosses\Zero\ZeroArm.png" />
+    <Content Include="NPCs\Bosses\Zero\ZeroArm1.png" />
     <Content Include="NPCs\Bosses\Zero\ZeroAwakened.png" />
     <Content Include="NPCs\Bosses\Zero\ZeroAwakened1.png" />
+    <Content Include="NPCs\Bosses\Zero\ZeroAwakened_Glow.png" />
     <Content Include="NPCs\Bosses\Zero\ZeroAwakened_Head_Boss.png" />
+    <Content Include="NPCs\Bosses\Zero\ZeroBody.png" />
+    <Content Include="NPCs\Bosses\Zero\ZeroCenter.png" />
     <Content Include="NPCs\Bosses\Zero\ZeroDeath.png" />
     <Content Include="NPCs\Bosses\Zero\ZeroDeath1.png" />
+    <Content Include="NPCs\Bosses\Zero\ZeroDeath1_Glow.png" />
     <Content Include="NPCs\Bosses\Zero\ZeroDeath2.png" />
+    <Content Include="NPCs\Bosses\Zero\ZeroDeath2_Glow.png" />
+    <Content Include="NPCs\Bosses\Zero\ZeroTrail.png" />
+    <Content Include="NPCs\Bosses\Zero\Zero_Glow.png" />
     <Content Include="NPCs\Bosses\Zero\Zero_Head_Boss.png" />
     <Content Include="NPCs\Enemies\Inferno\InfernalSlimeSheet.png" />
     <Content Include="NPCs\Enemies\Inferno\InfernoSalamander.png" />
@@ -1570,6 +1588,7 @@
     <Folder Include="bin\Release\" />
     <Folder Include="Items\Mounts\" />
     <Folder Include="Items\Pets\" />
+    <Folder Include="NPCs\Bosses\Zero\Zero2\" />
     <Folder Include="obj\Debug\TempPE\" />
     <Folder Include="obj\NPCs\" />
   </ItemGroup>
