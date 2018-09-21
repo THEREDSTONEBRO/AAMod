@@ -39,18 +39,18 @@ namespace AAMod.Items.Projectiles
             {
                 projectile.localAI[0] = projectile.velocity.ToRotation();
             }
-            float num32 = (float)((projectile.localAI[0].ToRotationVector2().X >= 0f) ? 1 : -1);
+            float num32 = (projectile.localAI[0].ToRotationVector2().X >= 0f) ? 1 : -1;
             if (projectile.ai[1] <= 0f)
             {
                 num32 *= -1f;
             }
             Vector2 vector17 = (num32 * (projectile.ai[0] / 30f * 6.28318548f - 1.57079637f)).ToRotationVector2();
-            vector17.Y *= (float)Math.Sin((double)projectile.ai[1]);
+            vector17.Y *= (float)Math.Sin(projectile.ai[1]);
             if (projectile.ai[1] <= 0f)
             {
                 vector17.Y *= -1f;
             }
-            vector17 = vector17.RotatedBy((double)projectile.localAI[0], default(Vector2));
+            vector17 = vector17.RotatedBy(projectile.localAI[0], default(Vector2));
             projectile.ai[0] += 1f;
             if (projectile.ai[0] < 30f)
             {
@@ -68,30 +68,30 @@ namespace AAMod.Items.Projectiles
             player.heldProj = projectile.whoAmI;
             player.itemTime = 2;
             player.itemAnimation = 2;
-            player.itemRotation = (float)Math.Atan2((double)(projectile.velocity.Y * (float)projectile.direction), (double)(projectile.velocity.X * (float)projectile.direction));
+            player.itemRotation = (float)Math.Atan2(projectile.velocity.Y * projectile.direction, projectile.velocity.X * projectile.direction);
             Vector2 vector24 = Main.OffsetsPlayerOnhand[player.bodyFrame.Y / 56] * 2f;
             if (player.direction != 1)
             {
-                vector24.X = (float)player.bodyFrame.Width - vector24.X;
+                vector24.X = player.bodyFrame.Width - vector24.X;
             }
             if (player.gravDir != 1f)
             {
-                vector24.Y = (float)player.bodyFrame.Height - vector24.Y;
+                vector24.Y = player.bodyFrame.Height - vector24.Y;
             }
-            vector24 -= new Vector2((float)(player.bodyFrame.Width - player.width), (float)(player.bodyFrame.Height - 42)) / 2f;
+            vector24 -= new Vector2(player.bodyFrame.Width - player.width, player.bodyFrame.Height - 42) / 2f;
             projectile.Center = player.RotatedRelativePoint(player.position + vector24, true) - projectile.velocity;
         }
 
         public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
         {
             Vector2 mountedCenter = Main.player[projectile.owner].MountedCenter;
-            Microsoft.Xna.Framework.Color color25 = Lighting.GetColor((int)((double)projectile.position.X + (double)projectile.width * 0.5) / 16, (int)(((double)projectile.position.Y + (double)projectile.height * 0.5) / 16.0));
+            Microsoft.Xna.Framework.Color color25 = Lighting.GetColor((int)(projectile.position.X + projectile.width * 0.5) / 16, (int)((projectile.position.Y + projectile.height * 0.5) / 16.0));
             if (projectile.hide && !ProjectileID.Sets.DontAttachHideToAlpha[projectile.type])
             {
                 color25 = Lighting.GetColor((int)mountedCenter.X / 16, (int)(mountedCenter.Y / 16f));
             }
             Vector2 projPos = projectile.position;
-            projPos = new Vector2((float)projectile.width, (float)projectile.height) / 2f + Vector2.UnitY * projectile.gfxOffY - Main.screenPosition; //fuck it
+            projPos = new Vector2(projectile.width, projectile.height) / 2f + Vector2.UnitY * projectile.gfxOffY - Main.screenPosition; //fuck it
             Texture2D texture2D22 = Main.projectileTexture[projectile.type];
             Microsoft.Xna.Framework.Color alpha3 = projectile.GetAlpha(color25);
             if (projectile.velocity == Vector2.Zero)
@@ -114,13 +114,13 @@ namespace AAMod.Items.Projectiles
                 float num231 = 0f;
                 while (num231 + 1f < num230)
                 {
-                    if (num230 - num231 < (float)rectangle8.Height)
+                    if (num230 - num231 < rectangle8.Height)
                     {
                         rectangle8.Height = (int)(num230 - num231);
                     }
-                    Main.spriteBatch.Draw(texture2D22, vector31 - Main.screenPosition + value29, new Microsoft.Xna.Framework.Rectangle?(rectangle8), alpha3, rotation24, new Vector2((float)(rectangle8.Width / 2), 0f), projectile.scale, SpriteEffects.None, 0f);
-                    num231 += (float)rectangle8.Height * projectile.scale;
-                    vector31 += value28 * (float)rectangle8.Height * projectile.scale;
+                    Main.spriteBatch.Draw(texture2D22, vector31 - Main.screenPosition + value29, new Microsoft.Xna.Framework.Rectangle?(rectangle8), alpha3, rotation24, new Vector2(rectangle8.Width / 2, 0f), projectile.scale, SpriteEffects.None, 0f);
+                    num231 += rectangle8.Height * projectile.scale;
+                    vector31 += value28 * rectangle8.Height * projectile.scale;
                 }
             }
             Vector2 value30 = vector31;
@@ -136,7 +136,7 @@ namespace AAMod.Items.Projectiles
             if (num230 > 0f)
             {
                 float num234 = 0f;
-                float num235 = num233 / (float)num232;
+                float num235 = num233 / num232;
                 num234 += num235 * 0.25f;
                 vector31 += value28 * num235 * 0.25f;
                 for (int num236 = 0; num236 < num232; num236++)
@@ -146,7 +146,7 @@ namespace AAMod.Items.Projectiles
                     {
                         num237 *= 0.75f;
                     }
-                    Main.spriteBatch.Draw(texture2D22, vector31 - Main.screenPosition + value29, new Microsoft.Xna.Framework.Rectangle?(rectangle8), alpha3, rotation24, new Vector2((float)(rectangle8.Width / 2), 0f), projectile.scale, SpriteEffects.None, 0f);
+                    Main.spriteBatch.Draw(texture2D22, vector31 - Main.screenPosition + value29, new Microsoft.Xna.Framework.Rectangle?(rectangle8), alpha3, rotation24, new Vector2(rectangle8.Width / 2, 0f), projectile.scale, SpriteEffects.None, 0f);
                     num234 += num237;
                     vector31 += value28 * num237;
                 }
@@ -160,7 +160,7 @@ namespace AAMod.Items.Projectiles
         {
             DelegateMethods.tilecut_0 = TileCuttingContext.AttackProjectile;
             Vector2 unit = projectile.velocity;
-            Utils.PlotTileLine(projectile.Center, projectile.Center + unit * projectile.localAI[1], (float)projectile.width * projectile.scale, new Utils.PerLinePoint(DelegateMethods.CutTiles));
+            Utils.PlotTileLine(projectile.Center, projectile.Center + unit * projectile.localAI[1], projectile.width * projectile.scale, new Utils.PerLinePoint(DelegateMethods.CutTiles));
         }
 
         public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox)

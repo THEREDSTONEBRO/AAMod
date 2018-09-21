@@ -12,7 +12,7 @@ namespace AAMod.Sounds.Sounds
                 return null;
             soundInstance.Volume = volume * 1f;
             soundInstance.Pan = pan;
-            soundInstance.Pitch = (float)Main.rand.Next(-5, 6) * .05f;
+            soundInstance.Pitch = Main.rand.Next(-5, 6) * .05f;
             return soundInstance;
         }
     }

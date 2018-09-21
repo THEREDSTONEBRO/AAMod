@@ -60,8 +60,8 @@ namespace AAMod.Items.Projectiles
 
                     if (Math.Sqrt(x * x + y * y) <= radius + 0.5)   //circle
                     {
-                        int type = (int)Main.tile[x, y].type;
-                        int wall = (int)Main.tile[x, y].wall;
+                        int type = Main.tile[x, y].type;
+                        int wall = Main.tile[x, y].wall;
                         if (wall != 0)
                             if (wall == 1)
                             {

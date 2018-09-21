@@ -14,8 +14,8 @@ namespace AAMod.Projectiles
 		public static void HomingAI(ModProjectile modProj, NPC target, float velocity = 4f, float acceleration = 0.1f)
 		{
 			Projectile projectile = modProj.projectile;
-			Vector2 aim = new Vector2(target.position.X + (float)(target.width >> 1), target.position.Y + (float)(target.height >> 1));
-			Vector2 pos = new Vector2(projectile.position.X + (float)(projectile.width >> 1), projectile.position.Y + (float)(projectile.height >> 1));
+			Vector2 aim = new Vector2(target.position.X + (target.width >> 1), target.position.Y + (target.height >> 1));
+			Vector2 pos = new Vector2(projectile.position.X + (projectile.width >> 1), projectile.position.Y + (projectile.height >> 1));
 			aim -= pos;
 			aim *= velocity / aim.Length();
 			Vector2 diff = aim - projectile.velocity;
@@ -31,8 +31,8 @@ namespace AAMod.Projectiles
 		public static void HomingAIPredictive(ModProjectile modProj, NPC target, float velocity = 4f, float acceleration = 0.1f)
 		{
 			Projectile projectile = modProj.projectile;
-			Vector2 aim = new Vector2(target.position.X + (float)(target.width >> 1), target.position.Y + (float)(target.height >> 1));
-			Vector2 pos = new Vector2(projectile.position.X + (float)(projectile.width >> 1), projectile.position.Y + (float)(projectile.height >> 1));
+			Vector2 aim = new Vector2(target.position.X + (target.width >> 1), target.position.Y + (target.height >> 1));
+			Vector2 pos = new Vector2(projectile.position.X + (projectile.width >> 1), projectile.position.Y + (projectile.height >> 1));
 			aim -= pos;
 			aim += target.velocity * (aim.Length()/velocity);
 			aim *= velocity / aim.Length();
@@ -119,8 +119,8 @@ namespace AAMod.Projectiles
         public static void HomingAIVanilla(ModProjectile modProj, NPC target, float velocity = 4f, float weight = 0.0333f)
         {
             Projectile projectile = modProj.projectile;
-            Vector2 pos = new Vector2(projectile.position.X + (float)(projectile.width >> 1), projectile.position.Y + (float)(projectile.height >> 1));
-            Vector2 aim = new Vector2(target.position.X + (float)(target.width >> 1), target.position.Y + (float)(target.height >> 1));
+            Vector2 pos = new Vector2(projectile.position.X + (projectile.width >> 1), projectile.position.Y + (projectile.height >> 1));
+            Vector2 aim = new Vector2(target.position.X + (target.width >> 1), target.position.Y + (target.height >> 1));
             aim -= pos;
             aim *= velocity / aim.Length();
             projectile.velocity *= 1f - weight;
@@ -185,8 +185,8 @@ namespace AAMod.Projectiles
 			projectile.direction = Main.player[projectile.owner].direction;
 			Main.player[projectile.owner].heldProj = projectile.whoAmI;
 			Main.player[projectile.owner].itemTime = Main.player[projectile.owner].itemAnimation;
-			projectile.position.X = vector.X - (float)(projectile.width / 2);
-			projectile.position.Y = vector.Y - (float)(projectile.height / 2);
+			projectile.position.X = vector.X - projectile.width / 2;
+			projectile.position.Y = vector.Y - projectile.height / 2;
 			if (!Main.player[projectile.owner].frozen)
 			{
 				if (projectile.ai[0] == 0f)
@@ -203,7 +203,7 @@ namespace AAMod.Projectiles
 			if (Main.player[projectile.owner].itemAnimation == 0)
 				projectile.Kill();
 
-			projectile.rotation = (float)Math.Atan2((double)projectile.velocity.Y, (double)projectile.velocity.X) + 2.355f;
+			projectile.rotation = (float)Math.Atan2(projectile.velocity.Y, projectile.velocity.X) + 2.355f;
 			if (projectile.spriteDirection == -1)
 				projectile.rotation -= 1.57f;
 
@@ -230,7 +230,7 @@ namespace AAMod.Projectiles
             {
                 projectile.localAI[0] += 1f;
                 if (flag)
-                    projectile.localAI[0] += (float)Main.rand.Next(10, 31) * 0.1f;
+                    projectile.localAI[0] += Main.rand.Next(10, 31) * 0.1f;
 
                 float num = projectile.localAI[0] / 60f;
                 num /= (1f + Main.player[projectile.owner].meleeSpeed) / 2f;
@@ -249,7 +249,7 @@ namespace AAMod.Projectiles
                 Main.player[projectile.owner].heldProj = projectile.whoAmI;
                 Main.player[projectile.owner].itemAnimation = 2;
                 Main.player[projectile.owner].itemTime = 2;
-                if (projectile.position.X + (float)(projectile.width / 2) > Main.player[projectile.owner].position.X + (float)(Main.player[projectile.owner].width / 2))
+                if (projectile.position.X + projectile.width / 2 > Main.player[projectile.owner].position.X + Main.player[projectile.owner].width / 2)
                 {
                     Main.player[projectile.owner].ChangeDir(1);
                     projectile.direction = 1;
@@ -374,7 +374,7 @@ namespace AAMod.Projectiles
                     }
                     else if (flag)
                     {
-                        if ((double)projectile.velocity.Length() < (double)num3 * 0.6)
+                        if (projectile.velocity.Length() < num3 * 0.6)
                         {
                             vector5 = projectile.velocity;
                             vector5.Normalize();
@@ -387,7 +387,7 @@ namespace AAMod.Projectiles
                         projectile.velocity *= 0.8f;
                     }
 
-                    if (flag && !flag3 && (double)projectile.velocity.Length() < (double)num3 * 0.6)
+                    if (flag && !flag3 && projectile.velocity.Length() < num3 * 0.6)
                     {
                         projectile.velocity.Normalize();
                         projectile.velocity *= num3 * 0.6f;
@@ -400,7 +400,7 @@ namespace AAMod.Projectiles
             }
             else
             {
-                num4 = (float)((int)((double)num4 * 0.8));
+                num4 = (int)(num4 * 0.8);
                 num3 *= 1.5f;
                 projectile.tileCollide = false;
                 Vector2 vector6 = Main.player[projectile.owner].position - projectile.Center;
@@ -433,7 +433,7 @@ namespace AAMod.Projectiles
 			Main.player[projectile.owner].itemAnimation = 10;
 			Main.player[projectile.owner].itemTime = 10;
 
-			if (projectile.position.X + (float)(projectile.width / 2) > Main.player[projectile.owner].position.X + (float)(Main.player[projectile.owner].width / 2))
+			if (projectile.position.X + projectile.width / 2 > Main.player[projectile.owner].position.X + Main.player[projectile.owner].width / 2)
 			{
 				Main.player[projectile.owner].ChangeDir(1);
 				projectile.direction = 1;
@@ -444,10 +444,10 @@ namespace AAMod.Projectiles
 				projectile.direction = -1;
 			}
 			Vector2 mountedCenter = Main.player[projectile.owner].MountedCenter;
-			Vector2 vector = new Vector2(projectile.position.X + (float)projectile.width * 0.5f, projectile.position.Y + (float)projectile.height * 0.5f);
+			Vector2 vector = new Vector2(projectile.position.X + projectile.width * 0.5f, projectile.position.Y + projectile.height * 0.5f);
 			float num = mountedCenter.X - vector.X;
 			float num2 = mountedCenter.Y - vector.Y;
-			float num3 = (float)Math.Sqrt((double)(num * num + num2 * num2));
+			float num3 = (float)Math.Sqrt(num * num + num2 * num2);
 			if (projectile.ai[0] == 0f)
 			{
 				projectile.tileCollide = true;
@@ -489,7 +489,7 @@ namespace AAMod.Projectiles
 					num5 *= 2f;
 
 				int num6 = (int)retractRange;
-				if (num3 > (float)num6 || !projectile.tileCollide)
+				if (num3 > num6 || !projectile.tileCollide)
 				{
 					num3 = num4 / num3;
 					num *= num3;
@@ -497,7 +497,7 @@ namespace AAMod.Projectiles
 					new Vector2(projectile.velocity.X, projectile.velocity.Y);
 					float num7 = num - projectile.velocity.X;
 					float num8 = num2 - projectile.velocity.Y;
-					float num9 = (float)Math.Sqrt((double)(num7 * num7 + num8 * num8));
+					float num9 = (float)Math.Sqrt(num7 * num7 + num8 * num8);
 					num9 = num5 / num9;
 					num7 *= num9;
 					num8 *= num9;
@@ -581,10 +581,10 @@ namespace AAMod.Projectiles
 			else
 			{
 				projectile.tileCollide = false;
-				Vector2 vector = new Vector2(projectile.position.X + (float)projectile.width * 0.5f, projectile.position.Y + (float)projectile.height * 0.5f);
-				float num = Main.player[projectile.owner].position.X + (float)(Main.player[projectile.owner].width / 2) - vector.X;
-				float num2 = Main.player[projectile.owner].position.Y + (float)(Main.player[projectile.owner].height / 2) - vector.Y;
-				float num3 = (float)Math.Sqrt((double)(num * num + num2 * num2));
+				Vector2 vector = new Vector2(projectile.position.X + projectile.width * 0.5f, projectile.position.Y + projectile.height * 0.5f);
+				float num = Main.player[projectile.owner].position.X + Main.player[projectile.owner].width / 2 - vector.X;
+				float num2 = Main.player[projectile.owner].position.Y + Main.player[projectile.owner].height / 2 - vector.Y;
+				float num3 = (float)Math.Sqrt(num * num + num2 * num2);
 				if (num3 > 3000f)
 					projectile.Kill();
 
@@ -626,7 +626,7 @@ namespace AAMod.Projectiles
 						projectile.Kill();
 				}
 			}
-			projectile.rotation += 0.4f * (float)projectile.direction;
+			projectile.rotation += 0.4f * projectile.direction;
 			if (action != null)
 				action();
 		}
@@ -663,15 +663,15 @@ namespace AAMod.Projectiles
 				projectile.localAI[1] = 1f;
 				initialize();
 			}
-			projectile.rotation += (Math.Abs(projectile.velocity.X) + Math.Abs(projectile.velocity.Y)) * 0.03f * (float)projectile.direction;
+			projectile.rotation += (Math.Abs(projectile.velocity.X) + Math.Abs(projectile.velocity.Y)) * 0.03f * projectile.direction;
 			projectile.localAI[0] += 1f;
-			if (projectile.localAI[0] >= (float)airTime)
+			if (projectile.localAI[0] >= airTime)
 			{
 				projectile.velocity.Y = projectile.velocity.Y + 0.4f;
 				projectile.velocity.X = projectile.velocity.X * 0.98f;
 			}
 			else
-				projectile.rotation = (float)Math.Atan2((double)projectile.velocity.Y, (double)projectile.velocity.X) + 1.57f;
+				projectile.rotation = (float)Math.Atan2(projectile.velocity.Y, projectile.velocity.X) + 1.57f;
 
 			if (projectile.velocity.Y > 16f)
 				projectile.velocity.Y = 16f;
@@ -688,20 +688,20 @@ namespace AAMod.Projectiles
 
 			projectile.tileCollide = false;
 			projectile.alpha = 255;
-			projectile.position.X = projectile.position.X + (float)(projectile.width / 2);
-			projectile.position.Y = projectile.position.Y + (float)(projectile.height / 2);
+			projectile.position.X = projectile.position.X + projectile.width / 2;
+			projectile.position.Y = projectile.position.Y + projectile.height / 2;
 			projectile.width = sizeX;
 			projectile.height = sizeY;
-			projectile.position.X = projectile.position.X - (float)(projectile.width / 2);
-			projectile.position.Y = projectile.position.Y - (float)(projectile.height / 2);
+			projectile.position.X = projectile.position.X - projectile.width / 2;
+			projectile.position.Y = projectile.position.Y - projectile.height / 2;
 			projectile.Damage();
 			Main.projectileIdentity[projectile.owner, projectile.identity] = -1;
-			projectile.position.X = projectile.position.X + (float)(projectile.width / 2);
-			projectile.position.Y = projectile.position.Y + (float)(projectile.height / 2);
-			projectile.width = (int)((float)sizeX / 5.8f);
-			projectile.height = (int)((float)sizeY / 5.8f);
-			projectile.position.X = projectile.position.X - (float)(projectile.width / 2);
-			projectile.position.Y = projectile.position.Y - (float)(projectile.height / 2);
+			projectile.position.X = projectile.position.X + projectile.width / 2;
+			projectile.position.Y = projectile.position.Y + projectile.height / 2;
+			projectile.width = (int)(sizeX / 5.8f);
+			projectile.height = (int)(sizeY / 5.8f);
+			projectile.position.X = projectile.position.X - projectile.width / 2;
+			projectile.position.Y = projectile.position.Y - projectile.height / 2;
 			if (visualAction == null)
 			{
 				for (int i = 0; i < 30; i++)
@@ -765,17 +765,17 @@ namespace AAMod.Projectiles
 
 			float num = projectile.Center.X - vector.X;
 			float num2 = projectile.Center.Y - vector.Y;
-			Math.Sqrt((double)(num * num + num2 * num2));
-			float rotation = (float)Math.Atan2((double)num2, (double)num) - 1.57f;
+			Math.Sqrt(num * num + num2 * num2);
+			float rotation = (float)Math.Atan2(num2, num) - 1.57f;
 			if (!projectile.counterweight)
 			{
 				int num3 = -1;
-				if (projectile.position.X + (float)(projectile.width / 2) < Main.player[projectile.owner].position.X + (float)(Main.player[projectile.owner].width / 2))
+				if (projectile.position.X + projectile.width / 2 < Main.player[projectile.owner].position.X + Main.player[projectile.owner].width / 2)
 				{
 					num3 = 1;
 				}
 				num3 *= -1;
-				Main.player[projectile.owner].itemRotation = (float)Math.Atan2((double)(num2 * (float)num3), (double)(num * (float)num3));
+				Main.player[projectile.owner].itemRotation = (float)Math.Atan2(num2 * num3, num * num3);
 			}
 
 			bool flag = true;
@@ -785,20 +785,20 @@ namespace AAMod.Projectiles
 			}
 			else
 			{
-				float num4 = (float)Math.Sqrt((double)(num * num + num2 * num2));
+				float num4 = (float)Math.Sqrt(num * num + num2 * num2);
 				num4 = 12f / num4;
 				num *= num4;
 				num2 *= num4;
 				vector.X -= num * 0.1f;
 				vector.Y -= num2 * 0.1f;
-				num = projectile.position.X + (float)projectile.width * 0.5f - vector.X;
-				num2 = projectile.position.Y + (float)projectile.height * 0.5f - vector.Y;
+				num = projectile.position.X + projectile.width * 0.5f - vector.X;
+				num2 = projectile.position.Y + projectile.height * 0.5f - vector.Y;
 			}
 
 			while (flag)
 			{
 				float num5 = 12f;
-				float num6 = (float)Math.Sqrt((double)(num * num + num2 * num2));
+				float num6 = (float)Math.Sqrt(num * num + num2 * num2);
 				float num7 = num6;
 				if (float.IsNaN(num6) || float.IsNaN(num7))
 				{
@@ -816,8 +816,8 @@ namespace AAMod.Projectiles
 					num2 *= num6;
 					vector.X += num;
 					vector.Y += num2;
-					num = projectile.position.X + (float)projectile.width * 0.5f - vector.X;
-					num2 = projectile.position.Y + (float)projectile.height * 0.1f - vector.Y;
+					num = projectile.position.X + projectile.width * 0.5f - vector.X;
+					num2 = projectile.position.Y + projectile.height * 0.1f - vector.Y;
 					if (num7 > 12f)
 					{
 						float num8 = 0.3f;
@@ -862,7 +862,7 @@ namespace AAMod.Projectiles
 							num *= 1f - num8;
 						}
 					}
-					rotation = (float)Math.Atan2((double)num2, (double)num) - 1.57f;
+					rotation = (float)Math.Atan2(num2, num) - 1.57f;
 					int stringColor = Main.player[projectile.owner].stringColor;
 					Color color = WorldGen.paintColor(stringColor);
 					if (color.R < 75)
@@ -893,11 +893,11 @@ namespace AAMod.Projectiles
 					{
 						color = new Color(Main.DiscoR, Main.DiscoG, Main.DiscoB);
 					}
-					color.A = (byte)((float)color.A * 0.4f);
+					color.A = (byte)(color.A * 0.4f);
 					float num10 = 0.5f;
 					color = Lighting.GetColor((int)vector.X / 16, (int)(vector.Y / 16f), color);
-					color = new Color((int)((byte)((float)color.R * num10)), (int)((byte)((float)color.G * num10)), (int)((byte)((float)color.B * num10)), (int)((byte)((float)color.A * num10)));
-					Main.spriteBatch.Draw(Main.fishingLineTexture, new Vector2(vector.X - Main.screenPosition.X + (float)Main.fishingLineTexture.Width * 0.5f, vector.Y - Main.screenPosition.Y + (float)Main.fishingLineTexture.Height * 0.5f) - new Vector2(6f, 0f), new Rectangle?(new Rectangle(0, 0, Main.fishingLineTexture.Width, (int)num5)), color, rotation, new Vector2((float)Main.fishingLineTexture.Width * 0.5f, 0f), 1f, SpriteEffects.None, 0f);
+					color = new Color((byte)(color.R * num10), (byte)(color.G * num10), (byte)(color.B * num10), (byte)(color.A * num10));
+					Main.spriteBatch.Draw(Main.fishingLineTexture, new Vector2(vector.X - Main.screenPosition.X + Main.fishingLineTexture.Width * 0.5f, vector.Y - Main.screenPosition.Y + Main.fishingLineTexture.Height * 0.5f) - new Vector2(6f, 0f), new Rectangle?(new Rectangle(0, 0, Main.fishingLineTexture.Width, (int)num5)), color, rotation, new Vector2(Main.fishingLineTexture.Width * 0.5f, 0f), 1f, SpriteEffects.None, 0f);
 				}
 			}
 		}
@@ -908,10 +908,10 @@ namespace AAMod.Projectiles
 			Projectile projectile = Main.projectile[index];
 			Vector2 vector = projectile.Center;
 			Rectangle? sourceRectangle = null;
-			Vector2 origin = new Vector2((float)texture.Width * 0.5f, (float)texture.Height * 0.5f);
-			float num = (float)texture.Height;
+			Vector2 origin = new Vector2(texture.Width * 0.5f, texture.Height * 0.5f);
+			float num = texture.Height;
 			Vector2 vector2 = to - vector;
-			float rotation = (float)Math.Atan2((double)vector2.Y, (double)vector2.X) - 1.57f;
+			float rotation = (float)Math.Atan2(vector2.Y, vector2.X) - 1.57f;
 			bool flag = true;
 			if (float.IsNaN(vector.X) && float.IsNaN(vector.Y))
 			{
@@ -924,7 +924,7 @@ namespace AAMod.Projectiles
 
 			while (flag)
 			{
-				if ((double)vector2.Length() < (double)num + 1.0)
+				if (vector2.Length() < num + 1.0)
 				{
 					flag = false;
 				}
@@ -934,7 +934,7 @@ namespace AAMod.Projectiles
 					value.Normalize();
 					vector += value * num;
 					vector2 = to - vector;
-					Color color = Lighting.GetColor((int)vector.X / 16, (int)((double)vector.Y / 16.0));
+					Color color = Lighting.GetColor((int)vector.X / 16, (int)(vector.Y / 16.0));
 					color = projectile.GetAlpha(color);
 					Main.spriteBatch.Draw(texture, vector - Main.screenPosition, sourceRectangle, color, rotation, origin, 1f, SpriteEffects.None, 0f);
 				}
@@ -945,7 +945,7 @@ namespace AAMod.Projectiles
 		{
 			Projectile projectile = Main.projectile[index];
 			Texture2D texture2D = Main.projectileTexture[projectile.type];
-			Vector2 origin = new Vector2((float)texture2D.Width * 0.5f, (float)(texture2D.Height / Main.projFrames[projectile.type]) * 0.5f);
+			Vector2 origin = new Vector2(texture2D.Width * 0.5f, texture2D.Height / Main.projFrames[projectile.type] * 0.5f);
 			SpriteEffects effects = (projectile.direction == -1) ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
 			Main.spriteBatch.Draw(texture2D, projectile.Center - Main.screenPosition, new Rectangle?(Utils.Frame(texture2D, 1, Main.projFrames[projectile.type], 0, projectile.frame)), lightColor, projectile.rotation, origin, projectile.scale, effects, 0f);
 		}
@@ -957,10 +957,10 @@ namespace AAMod.Projectiles
 			SpriteEffects effects = SpriteEffects.None;
 			if (projectile.spriteDirection == -1)
 			{
-				zero.X = (float)Main.projectileTexture[projectile.type].Width;
+				zero.X = Main.projectileTexture[projectile.type].Width;
 				effects = SpriteEffects.FlipHorizontally;
 			}
-			Main.spriteBatch.Draw(Main.projectileTexture[projectile.type], new Vector2(projectile.position.X - Main.screenPosition.X + (float)(projectile.width / 2), projectile.position.Y - Main.screenPosition.Y + (float)(projectile.height / 2) + projectile.gfxOffY), new Rectangle?(new Rectangle(0, 0, Main.projectileTexture[projectile.type].Width, Main.projectileTexture[projectile.type].Height)), projectile.GetAlpha(lightColor), projectile.rotation, zero, projectile.scale, effects, 0f);
+			Main.spriteBatch.Draw(Main.projectileTexture[projectile.type], new Vector2(projectile.position.X - Main.screenPosition.X + projectile.width / 2, projectile.position.Y - Main.screenPosition.Y + projectile.height / 2 + projectile.gfxOffY), new Rectangle?(new Rectangle(0, 0, Main.projectileTexture[projectile.type].Width, Main.projectileTexture[projectile.type].Height)), projectile.GetAlpha(lightColor), projectile.rotation, zero, projectile.scale, effects, 0f);
 		}
 	}
 }

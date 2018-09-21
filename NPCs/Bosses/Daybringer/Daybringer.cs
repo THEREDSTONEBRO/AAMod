@@ -197,26 +197,26 @@ namespace AAMod.NPCs.Bosses.Daybringer
                 {
                     if (head && !body && !tail)
                     {
-                        npc.ai[3] = (float)npc.whoAmI;
+                        npc.ai[3] = npc.whoAmI;
                         npc.realLife = npc.whoAmI;
                         if (!DBInit)
                         {
                             npc.ai[2] = 30;
                             DBInit = true;
                         }
-                        npc.ai[0] = (float)NPC.NewNPC((int)(npc.position.X + (float)(npc.width / 2)), (int)(npc.position.Y + (float)npc.height), bodyType, npc.whoAmI);
+                        npc.ai[0] = NPC.NewNPC((int)(npc.position.X + npc.width / 2), (int)(npc.position.Y + npc.height), bodyType, npc.whoAmI);
                     }
                     else if (npc.ai[2] != 0)
                     {
-                        npc.ai[0] = (float)NPC.NewNPC((int)(npc.position.X + (float)(npc.width / 2)), (int)(npc.position.Y + (float)npc.height), npc.type, npc.whoAmI);
+                        npc.ai[0] = NPC.NewNPC((int)(npc.position.X + npc.width / 2), (int)(npc.position.Y + npc.height), npc.type, npc.whoAmI);
                     }
                     if (npc.ai[2] == 0)
                     {
-                        npc.ai[0] = (float)NPC.NewNPC((int)(npc.position.X + (float)(npc.width / 2)), (int)(npc.position.Y + (float)npc.height), tailType, npc.whoAmI);
+                        npc.ai[0] = NPC.NewNPC((int)(npc.position.X + npc.width / 2), (int)(npc.position.Y + npc.height), tailType, npc.whoAmI);
                     }
                     Main.npc[(int)npc.ai[0]].ai[3] = npc.ai[3];
                     Main.npc[(int)npc.ai[0]].realLife = npc.realLife;
-                    Main.npc[(int)npc.ai[0]].ai[1] = (float)npc.whoAmI;
+                    Main.npc[(int)npc.ai[0]].ai[1] = npc.whoAmI;
                     Main.npc[(int)npc.ai[0]].ai[2] = npc.ai[2] - 1;
                     npc.netUpdate = true;
                 }
@@ -232,9 +232,9 @@ namespace AAMod.NPCs.Bosses.Daybringer
                 }
             }
             int num180 = (int)(npc.position.X / 16f) - 1;
-            int num181 = (int)((npc.position.X + (float)npc.width) / 16f) + 2;
+            int num181 = (int)((npc.position.X + npc.width) / 16f) + 2;
             int num182 = (int)(npc.position.Y / 16f) - 1;
-            int num183 = (int)((npc.position.Y + (float)npc.height) / 16f) + 2;
+            int num183 = (int)((npc.position.Y + npc.height) / 16f) + 2;
             if (num180 < 0)
             {
                 num180 = 0;
@@ -258,12 +258,12 @@ namespace AAMod.NPCs.Bosses.Daybringer
                 {
                     for (int num185 = num182; num185 < num183; num185++)
                     {
-                        if (Main.tile[num184, num185] != null && ((Main.tile[num184, num185].nactive() && (Main.tileSolid[(int)Main.tile[num184, num185].type] || (Main.tileSolidTop[(int)Main.tile[num184, num185].type] && Main.tile[num184, num185].frameY == 0))) || Main.tile[num184, num185].liquid > 64))
+                        if (Main.tile[num184, num185] != null && ((Main.tile[num184, num185].nactive() && (Main.tileSolid[Main.tile[num184, num185].type] || (Main.tileSolidTop[Main.tile[num184, num185].type] && Main.tile[num184, num185].frameY == 0))) || Main.tile[num184, num185].liquid > 64))
                         {
                             Vector2 vector17;
-                            vector17.X = (float)(num184 * 16);
-                            vector17.Y = (float)(num185 * 16);
-                            if (npc.position.X + (float)npc.width > vector17.X && npc.position.X < vector17.X + 16f && npc.position.Y + (float)npc.height > vector17.Y && npc.position.Y < vector17.Y + 16f)
+                            vector17.X = num184 * 16;
+                            vector17.Y = num185 * 16;
+                            if (npc.position.X + npc.width > vector17.X && npc.position.X < vector17.X + 16f && npc.position.Y + npc.height > vector17.Y && npc.position.Y < vector17.Y + 16f)
                             {
                                 flag18 = true;
                                 if (Main.rand.Next(100) == 0 && npc.behindTiles && Main.tile[num184, num185].nactive())
@@ -314,31 +314,31 @@ namespace AAMod.NPCs.Bosses.Daybringer
             }
             float num188 = speed;
             float num189 = turnSpeed;
-            Vector2 vector18 = new Vector2(npc.position.X + (float)npc.width * 0.5f, npc.position.Y + (float)npc.height * 0.5f);
-            float num191 = Main.player[npc.target].position.X + (float)(Main.player[npc.target].width / 2);
-            float num192 = Main.player[npc.target].position.Y + (float)(Main.player[npc.target].height / 2);
-            num191 = (float)((int)(num191 / 16f) * 16);
-            num192 = (float)((int)(num192 / 16f) * 16);
-            vector18.X = (float)((int)(vector18.X / 16f) * 16);
-            vector18.Y = (float)((int)(vector18.Y / 16f) * 16);
+            Vector2 vector18 = new Vector2(npc.position.X + npc.width * 0.5f, npc.position.Y + npc.height * 0.5f);
+            float num191 = Main.player[npc.target].position.X + Main.player[npc.target].width / 2;
+            float num192 = Main.player[npc.target].position.Y + Main.player[npc.target].height / 2;
+            num191 = (int)(num191 / 16f) * 16;
+            num192 = (int)(num192 / 16f) * 16;
+            vector18.X = (int)(vector18.X / 16f) * 16;
+            vector18.Y = (int)(vector18.Y / 16f) * 16;
             num191 -= vector18.X;
             num192 -= vector18.Y;
-            float num193 = (float)System.Math.Sqrt((double)(num191 * num191 + num192 * num192));
-            if (npc.ai[1] > 0f && npc.ai[1] < (float)Main.npc.Length)
+            float num193 = (float)System.Math.Sqrt(num191 * num191 + num192 * num192);
+            if (npc.ai[1] > 0f && npc.ai[1] < Main.npc.Length)
             {
                 try
                 {
-                    vector18 = new Vector2(npc.position.X + (float)npc.width * 0.5f, npc.position.Y + (float)npc.height * 0.5f);
-                    num191 = Main.npc[(int)npc.ai[1]].position.X + (float)(Main.npc[(int)npc.ai[1]].width / 2) - vector18.X;
-                    num192 = Main.npc[(int)npc.ai[1]].position.Y + (float)(Main.npc[(int)npc.ai[1]].height / 2) - vector18.Y;
+                    vector18 = new Vector2(npc.position.X + npc.width * 0.5f, npc.position.Y + npc.height * 0.5f);
+                    num191 = Main.npc[(int)npc.ai[1]].position.X + Main.npc[(int)npc.ai[1]].width / 2 - vector18.X;
+                    num192 = Main.npc[(int)npc.ai[1]].position.Y + Main.npc[(int)npc.ai[1]].height / 2 - vector18.Y;
                 }
                 catch
                 {
                 }
-                npc.rotation = (float)System.Math.Atan2((double)num192, (double)num191) + 1.57f;
-                num193 = (float)System.Math.Sqrt((double)(num191 * num191 + num192 * num192));
+                npc.rotation = (float)System.Math.Atan2(num192, num191) + 1.57f;
+                num193 = (float)System.Math.Sqrt(num191 * num191 + num192 * num192);
                 int num194 = npc.width;
-                num193 = (num193 - (float)num194) / num193;
+                num193 = (num193 - num194) / num193;
                 num191 *= num193;
                 num192 *= num193;
                 npc.velocity = Vector2.Zero;
@@ -366,7 +366,7 @@ namespace AAMod.NPCs.Bosses.Daybringer
                     {
                         npc.velocity.Y = num188;
                     }
-                    if ((double)(System.Math.Abs(npc.velocity.X) + System.Math.Abs(npc.velocity.Y)) < (double)num188 * 0.4)
+                    if (System.Math.Abs(npc.velocity.X) + System.Math.Abs(npc.velocity.Y) < num188 * 0.4)
                     {
                         if (npc.velocity.X < 0f)
                         {
@@ -416,7 +416,7 @@ namespace AAMod.NPCs.Bosses.Daybringer
                         npc.soundDelay = (int)num195;
                         Main.PlaySound(SoundID.Roar, npc.position, 1);
                     }
-                    num193 = (float)System.Math.Sqrt((double)(num191 * num191 + num192 * num192));
+                    num193 = (float)System.Math.Sqrt(num191 * num191 + num192 * num192);
                     float num196 = System.Math.Abs(num191);
                     float num197 = System.Math.Abs(num192);
                     float num198 = num188 / num193;
@@ -430,7 +430,7 @@ namespace AAMod.NPCs.Bosses.Daybringer
                         }
                         if (flag20)
                         {
-                            if (Main.netMode != 1 && (double)(npc.position.Y / 16f) > (Main.rockLayer + (double)Main.maxTilesY) / 2.0)
+                            if (Main.netMode != 1 && npc.position.Y / 16f > (Main.rockLayer + Main.maxTilesY) / 2.0)
                             {
                                 npc.active = false;
                                 int num200 = (int)npc.ai[0];
@@ -482,7 +482,7 @@ namespace AAMod.NPCs.Bosses.Daybringer
                                     npc.velocity.Y = npc.velocity.Y - num189;
                                 }
                             }
-                            if ((double)System.Math.Abs(num192) < (double)num188 * 0.2 && ((npc.velocity.X > 0f && num191 < 0f) || (npc.velocity.X < 0f && num191 > 0f)))
+                            if (System.Math.Abs(num192) < num188 * 0.2 && ((npc.velocity.X > 0f && num191 < 0f) || (npc.velocity.X < 0f && num191 > 0f)))
                             {
                                 if (npc.velocity.Y > 0f)
                                 {
@@ -493,7 +493,7 @@ namespace AAMod.NPCs.Bosses.Daybringer
                                     npc.velocity.Y = npc.velocity.Y - num189 * 2f;
                                 }
                             }
-                            if ((double)System.Math.Abs(num191) < (double)num188 * 0.2 && ((npc.velocity.Y > 0f && num192 < 0f) || (npc.velocity.Y < 0f && num192 > 0f)))
+                            if (System.Math.Abs(num191) < num188 * 0.2 && ((npc.velocity.Y > 0f && num192 < 0f) || (npc.velocity.Y < 0f && num192 > 0f)))
                             {
                                 if (npc.velocity.X > 0f)
                                 {
@@ -517,7 +517,7 @@ namespace AAMod.NPCs.Bosses.Daybringer
                                 {
                                     npc.velocity.X = npc.velocity.X - num189 * 1.1f;
                                 }
-                                if ((double)(System.Math.Abs(npc.velocity.X) + System.Math.Abs(npc.velocity.Y)) < (double)num188 * 0.5)
+                                if (System.Math.Abs(npc.velocity.X) + System.Math.Abs(npc.velocity.Y) < num188 * 0.5)
                                 {
                                     if (npc.velocity.Y > 0f)
                                     {
@@ -539,7 +539,7 @@ namespace AAMod.NPCs.Bosses.Daybringer
                                 {
                                     npc.velocity.Y = npc.velocity.Y - num189 * 1.1f;
                                 }
-                                if ((double)(System.Math.Abs(npc.velocity.X) + System.Math.Abs(npc.velocity.Y)) < (double)num188 * 0.5)
+                                if (System.Math.Abs(npc.velocity.X) + System.Math.Abs(npc.velocity.Y) < num188 * 0.5)
                                 {
                                     if (npc.velocity.X > 0f)
                                     {
@@ -554,7 +554,7 @@ namespace AAMod.NPCs.Bosses.Daybringer
                         }
                     }
                 }
-                npc.rotation = (float)System.Math.Atan2((double)npc.velocity.Y, (double)npc.velocity.X) + 1.57f;
+                npc.rotation = (float)System.Math.Atan2(npc.velocity.Y, npc.velocity.X) + 1.57f;
                 if (head)
                 {
                     if (flag18)

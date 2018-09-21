@@ -20,7 +20,7 @@ namespace AAMod.Items.Projectiles
 		public override void AI()
 		{
 			{
-				projectile.rotation += (float)projectile.direction * 0.25f;
+				projectile.rotation += projectile.direction * 0.25f;
 				projectile.spriteDirection = projectile.direction;
 			}	
 			if (Main.rand.NextFloat() < 1f)

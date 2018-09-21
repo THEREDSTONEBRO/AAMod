@@ -213,13 +213,13 @@ namespace AAMod
                 Vector2 vector25 = Main.OffsetsPlayerOnhand[player.bodyFrame.Y / 56] * 2f;
                 if (player.direction != 1)
                 {
-                    vector25.X = (float)player.bodyFrame.Width - vector25.X;
+                    vector25.X = player.bodyFrame.Width - vector25.X;
                 }
                 if (player.gravDir != 1f)
                 {
-                    vector25.Y = (float)player.bodyFrame.Height - vector25.Y;
+                    vector25.Y = player.bodyFrame.Height - vector25.Y;
                 }
-                vector25 -= new Vector2((float)(player.bodyFrame.Width - player.width), (float)(player.bodyFrame.Height - 42)) / 2f;
+                vector25 -= new Vector2(player.bodyFrame.Width - player.width, player.bodyFrame.Height - 42) / 2f;
                 Vector2 position17 = player.RotatedRelativePoint(player.position + vector25, true) - player.velocity;
                 for (int num277 = 0; num277 < 4; num277++)
                 {

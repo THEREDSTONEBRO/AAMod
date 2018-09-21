@@ -30,7 +30,7 @@ namespace AAMod.Items.Projectiles
             int dustType = mod.DustType("OrderSolution");
             if (projectile.owner == Main.myPlayer)
 			{
-				Convert((int)(projectile.position.X + (float)(projectile.width / 2)) / 16, (int)(projectile.position.Y + (float)(projectile.height / 2)) / 16, 2);
+				Convert((int)(projectile.position.X + projectile.width / 2) / 16, (int)(projectile.position.Y + projectile.height / 2) / 16, 2);
 			}
 			if (projectile.timeLeft > 133)
 			{
@@ -71,7 +71,7 @@ namespace AAMod.Items.Projectiles
 			{
 				projectile.ai[0] += 1f;
 			}
-			projectile.rotation += 0.3f * (float)projectile.direction;
+			projectile.rotation += 0.3f * projectile.direction;
 		}
 
 		public void Convert(int i, int j, int size = 4)
@@ -82,8 +82,8 @@ namespace AAMod.Items.Projectiles
 				{
 					if (WorldGen.InWorld(k, l, 1) && Math.Abs(k - i) + Math.Abs(l - j) < Math.Sqrt(size * size + size * size))
 					{
-						int type = (int)Main.tile[k, l].type;
-						int wall = (int)Main.tile[k, l].wall;
+						int type = Main.tile[k, l].type;
+						int wall = Main.tile[k, l].wall;
 						if (wall != 0)
                         if (wall == (ushort)mod.WallType("TorchstoneWall"))
                         {

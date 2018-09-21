@@ -36,7 +36,7 @@ namespace AAMod.Items.Projectiles
             }
             if (projectile.type != 263 && projectile.type != 274)
             {
-                projectile.rotation += (float)projectile.direction * 0.8f;
+                projectile.rotation += projectile.direction * 0.8f;
                 projectile.ai[0] += 1f;
                 if (projectile.ai[0] >= 30f)
                 {
@@ -60,8 +60,8 @@ namespace AAMod.Items.Projectiles
             {
                 projectile.spriteDirection = -1;
             }
-            projectile.rotation += (float)projectile.direction * 0.05f;
-            projectile.rotation += (float)projectile.direction * 0.5f * ((float)projectile.timeLeft / 180f);
+            projectile.rotation += projectile.direction * 0.05f;
+            projectile.rotation += projectile.direction * 0.5f * (projectile.timeLeft / 180f);
             if (projectile.type == 274)
             {
                 projectile.velocity *= 0.96f;

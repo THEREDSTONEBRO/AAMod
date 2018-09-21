@@ -40,7 +40,7 @@ namespace AAMod.NPCs.Bosses.Daybringer
 		            for (int i = 0; i < numProj + 1; i++)
 		            {
 		                Vector2 perturbedSpeed = new Vector2(projectile.velocity.X, projectile.velocity.Y).RotatedBy(MathHelper.Lerp(-rotation, rotation, i / (numProj - 1)));
-		                Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, perturbedSpeed.X, perturbedSpeed.Y, mod.ProjectileType("SunbeamScatter"), (int)((double)projectile.damage), projectile.knockBack, projectile.owner, 0f, 0f);
+		                Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, perturbedSpeed.X, perturbedSpeed.Y, mod.ProjectileType("SunbeamScatter"), (int)projectile.damage, projectile.knockBack, projectile.owner, 0f, 0f);
 		            }
 	            }
 	            projectile.Kill();
@@ -48,7 +48,7 @@ namespace AAMod.NPCs.Bosses.Daybringer
         	Lighting.AddLight(projectile.Center, ((255 - projectile.alpha) * 0.5f) / 255f, ((255 - projectile.alpha) * 0.05f) / 255f, ((255 - projectile.alpha) * 0.05f) / 255f);
         	projectile.velocity.X *= 1.05f;
         	projectile.velocity.Y *= 1.05f;
-        	projectile.rotation = (float)Math.Atan2((double)projectile.velocity.Y, (double)projectile.velocity.X) + 1.57f;
+        	projectile.rotation = (float)Math.Atan2(projectile.velocity.Y, projectile.velocity.X) + 1.57f;
         }
     }
 }
