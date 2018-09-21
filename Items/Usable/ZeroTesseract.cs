@@ -40,7 +40,6 @@ UNSTABLE. C0NTAINS C0DE TO ACTIVATE THE BRINGER 0F DEATH");
                     line2.overrideColor = new Color(100, 0, 10);
 
                     line2.overrideColor = new Color(120, 0, 30);
-//448baa85bafb67ad7f37961deb2c4dbd11c32465
                 }
             }
         }
@@ -54,10 +53,6 @@ UNSTABLE. C0NTAINS C0DE TO ACTIVATE THE BRINGER 0F DEATH");
         public override bool UseItem(Player player)
         {
             NPC.SpawnOnPlayer(player.whoAmI, mod.NPCType("Zero"));
-            NPC.SpawnOnPlayer(player.whoAmI, mod.NPCType("RiftShredder"));
-            NPC.SpawnOnPlayer(player.whoAmI, mod.NPCType("TeslaHand"));
-            NPC.SpawnOnPlayer(player.whoAmI, mod.NPCType("VoidStar"));
-            NPC.SpawnOnPlayer(player.whoAmI, mod.NPCType("RealityCannon"));
             Main.PlaySound(SoundID.MoonLord, player.position, 0);
             return true;
         }

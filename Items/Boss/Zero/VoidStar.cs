@@ -26,7 +26,7 @@ namespace AAMod.Items.Boss.Zero
             item.knockBack = 0f;
             item.width = 30;
             item.height = 26;
-            item.damage = 190;
+            item.damage = 290;
             item.UseSound = SoundID.Item20;
             item.shoot = mod.ProjectileType("VoidStarPF");
             item.mana = 18;

@@ -238,9 +238,7 @@
     <Compile Include="Items\Boss\Retriever\RetrieverBag.cs" />
     <Compile Include="Items\Boss\Retriever\StormClaw.cs" />
     <Compile Include="Items\Boss\Retriever\StormRiot.cs" />
-    <Compile Include="Items\Boss\Zero\AMR.cs" />
     <Compile Include="Items\Boss\Zero\EventHorizon.cs" />
-    <Compile Include="Items\Boss\Zero\Neutralizer.cs" />
     <Compile Include="Items\Boss\Zero\RealityCannon.cs" />
     <Compile Include="Items\Boss\Zero\RiftShredder.cs" />
     <Compile Include="Items\Boss\Zero\TeslaHand.cs" />

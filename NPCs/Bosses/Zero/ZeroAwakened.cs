@@ -78,12 +78,24 @@ namespace AAMod.NPCs.Bosses.Zero
 
         }
 
+        public override void PostDraw(SpriteBatch spriteBatch, Color drawColor)
+        {
+            SpriteEffects spriteEffects = SpriteEffects.None;
+            if (npc.spriteDirection == 1)
+            {
+                spriteEffects = SpriteEffects.FlipHorizontally;
+            }
+            spriteBatch.Draw(mod.GetTexture("NPCs/Bosses/Zero/ZeroAwakened_Glow"), new Vector2(npc.Center.X - Main.screenPosition.X, npc.Center.Y - Main.screenPosition.Y),
+            npc.frame, Color.White, npc.rotation,
+            new Vector2(npc.width * 0.5f, npc.height * 0.5f), 1f, spriteEffects, 0f);
+        }
+
         public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
         {
             Vector2 drawOrigin = new Vector2(Main.npcTexture[npc.type].Width * 0.5f, npc.height * 0.5f);
             for (int k = 0; k < npc.oldPos.Length; k++)
             {
-                Texture2D ZeroTrail = mod.GetTexture("NPCs/Boss/Zero/ZeroTrail");
+                Texture2D ZeroTrail = mod.GetTexture("NPCs/Bosses/Zero/ZeroTrail");
                 lightColor = new Color(k * 50, 0, 0);
                 Vector2 drawPos = npc.oldPos[k] - Main.screenPosition + drawOrigin + new Vector2(0f, npc.gfxOffY);
                 drawPos.Y += 33;

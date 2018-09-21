@@ -20,7 +20,7 @@ namespace AAMod.Items.Boss.Zero
         {
             item.width = 36;
             item.height = 42;
-            item.damage = 140;
+            item.damage = 240;
             item.noMelee = true;
             item.noUseGraphic = false;
             item.channel = true;
