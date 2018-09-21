@@ -22,8 +22,6 @@ namespace AAMod.NPCs.Bosses.Zero
 
         private float speed;
 
-        public static Texture2D ZeroArmTex;
-
         public override void SetStaticDefaults()
 
         {
@@ -161,8 +159,7 @@ namespace AAMod.NPCs.Bosses.Zero
                 npc.DropLoot(Items.Blocks.ZeroTrophy.type, 1f / 10);
             }
         }
-
-<<<<<<< HEAD
+        
         public override void BossLoot(ref string name, ref int potionType)
         {
             if (!Main.expertMode)
@@ -173,12 +170,9 @@ namespace AAMod.NPCs.Bosses.Zero
             
         }
         
-        public override void PostDraw(SpriteBatch spriteBatch, Color drawColor)
-=======
         public override bool PreDraw(SpriteBatch spriteBatch, Color drawColor)
->>>>>>> c908d4b5869719a61f93fd1c35938487c2a7a320
         {
-            
+            Texture2D ZeroArmTex;
             {
                 SpriteEffects spriteEffects = SpriteEffects.None;
                 if (npc.spriteDirection == 1)
