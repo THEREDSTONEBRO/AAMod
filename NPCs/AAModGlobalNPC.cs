@@ -237,7 +237,7 @@ namespace AAMod.NPCs
                 npc.type != NPCID.DD2WyvernT2 ||
                 npc.type != NPCID.DD2WyvernT3 ||
                 npc.type != NPCID.ShadowFlameApparition)
-                {
+            {
                 if (TimeFrozen)
                 {
                     npc.position = npc.oldPosition;
@@ -245,14 +245,7 @@ namespace AAMod.NPCs
                     return false;
                 }
             }
-
             return true;
         }
-
-        // Make any NPC with a chat complain to the player if they have the stinky debuff.
-        public override void GetChat(NPC npc, ref string chat)
-		{
-			
-		}
-	}
+    }
 }
