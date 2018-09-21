@@ -231,8 +231,6 @@ namespace AAMod.NPCs.Bosses.Zero
             return true;
         }
 
-
-
         public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
 
         {
@@ -580,7 +578,7 @@ namespace AAMod.NPCs.Bosses.Zero
 
     }
 
-    public class RealityCannon : Zero
+    public class RealityCannon : ModNPC
     {
         public override string Texture { get { return "AAMod/NPCs/Bosses/Zero/RealityCannon"; } }
 
@@ -617,6 +615,18 @@ namespace AAMod.NPCs.Bosses.Zero
                 npc.frame, Color.White, npc.rotation,
                 new Vector2(npc.width * 0.5f, npc.height * 0.5f), 1f, spriteEffects, 0f);
             }
+        }
+
+        public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
+        {
+            Texture2D drawTexture = Main.npcTexture[npc.type];
+            Vector2 origin = new Vector2((drawTexture.Width / 2) * 0.5F, (drawTexture.Height / Main.npcFrameCount[npc.type]) * 0.5F);
+            Vector2 drawPos = new Vector2(
+                npc.position.X - Main.screenPosition.X + (npc.width / 2) - (Main.npcTexture[npc.type].Width / 2) * npc.scale / 2f + origin.X * npc.scale,
+                npc.position.Y - Main.screenPosition.Y + npc.height - Main.npcTexture[npc.type].Height * npc.scale / Main.npcFrameCount[npc.type] + 4f + origin.Y * npc.scale + npc.gfxOffY);
+            SpriteEffects effects = npc.spriteDirection == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
+            spriteBatch.Draw(drawTexture, drawPos, npc.frame, Color.White, npc.rotation, origin, npc.scale, effects, 0);
+            return true;
         }
 
         public override void AI()
@@ -854,7 +864,7 @@ namespace AAMod.NPCs.Bosses.Zero
         }
     }
 
-    public class RiftShredder : Zero
+    public class RiftShredder : ModNPC
     {
         public override string Texture { get { return "AAMod/NPCs/Bosses/Zero/RiftShredder"; } }
 
@@ -893,6 +903,18 @@ namespace AAMod.NPCs.Bosses.Zero
                 npc.frame, Color.White, npc.rotation,
                 new Vector2(npc.width * 0.5f, npc.height * 0.5f), 1f, spriteEffects, 0f);
             }
+        }
+
+        public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
+        {
+            Texture2D drawTexture = Main.npcTexture[npc.type];
+            Vector2 origin = new Vector2((drawTexture.Width / 2) * 0.5F, (drawTexture.Height / Main.npcFrameCount[npc.type]) * 0.5F);
+            Vector2 drawPos = new Vector2(
+                npc.position.X - Main.screenPosition.X + (npc.width / 2) - (Main.npcTexture[npc.type].Width / 2) * npc.scale / 2f + origin.X * npc.scale,
+                npc.position.Y - Main.screenPosition.Y + npc.height - Main.npcTexture[npc.type].Height * npc.scale / Main.npcFrameCount[npc.type] + 4f + origin.Y * npc.scale + npc.gfxOffY);
+            SpriteEffects effects = npc.spriteDirection == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
+            spriteBatch.Draw(drawTexture, drawPos, npc.frame, Color.White, npc.rotation, origin, npc.scale, effects, 0);
+            return true;
         }
 
         public override void AI()
@@ -1214,7 +1236,7 @@ namespace AAMod.NPCs.Bosses.Zero
         }
     }
 
-    public class TeslaHand : Zero
+    public class TeslaHand : ModNPC
     {
         public override string Texture { get { return "AAMod/NPCs/Bosses/Zero/TeslaHand"; } }
 
@@ -1251,6 +1273,18 @@ namespace AAMod.NPCs.Bosses.Zero
                 npc.frame, Color.White, npc.rotation,
                 new Vector2(npc.width * 0.5f, npc.height * 0.5f), 1f, spriteEffects, 0f);
             }
+        }
+
+        public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
+        {
+            Texture2D drawTexture = Main.npcTexture[npc.type];
+            Vector2 origin = new Vector2((drawTexture.Width / 2) * 0.5F, (drawTexture.Height / Main.npcFrameCount[npc.type]) * 0.5F);
+            Vector2 drawPos = new Vector2(
+                npc.position.X - Main.screenPosition.X + (npc.width / 2) - (Main.npcTexture[npc.type].Width / 2) * npc.scale / 2f + origin.X * npc.scale,
+                npc.position.Y - Main.screenPosition.Y + npc.height - Main.npcTexture[npc.type].Height * npc.scale / Main.npcFrameCount[npc.type] + 4f + origin.Y * npc.scale + npc.gfxOffY);
+            SpriteEffects effects = npc.spriteDirection == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
+            spriteBatch.Draw(drawTexture, drawPos, npc.frame, Color.White, npc.rotation, origin, npc.scale, effects, 0);
+            return true;
         }
 
         public override void AI()
@@ -1540,7 +1574,7 @@ namespace AAMod.NPCs.Bosses.Zero
         }
     }
 
-    public class VoidStar : Zero
+    public class VoidStar : ModNPC
     {
         public override string Texture { get { return "AAMod/NPCs/Bosses/Zero/VoidStar"; } }
 
@@ -1577,6 +1611,18 @@ namespace AAMod.NPCs.Bosses.Zero
                 npc.frame, Color.White, npc.rotation,
                 new Vector2(npc.width * 0.5f, npc.height * 0.5f), 1f, spriteEffects, 0f);
             }
+        }
+
+        public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
+        {
+            Texture2D drawTexture = Main.npcTexture[npc.type];
+            Vector2 origin = new Vector2((drawTexture.Width / 2) * 0.5F, (drawTexture.Height / Main.npcFrameCount[npc.type]) * 0.5F);
+            Vector2 drawPos = new Vector2(
+                npc.position.X - Main.screenPosition.X + (npc.width / 2) - (Main.npcTexture[npc.type].Width / 2) * npc.scale / 2f + origin.X * npc.scale,
+                npc.position.Y - Main.screenPosition.Y + npc.height - Main.npcTexture[npc.type].Height * npc.scale / Main.npcFrameCount[npc.type] + 4f + origin.Y * npc.scale + npc.gfxOffY);
+            SpriteEffects effects = npc.spriteDirection == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
+            spriteBatch.Draw(drawTexture, drawPos, npc.frame, Color.White, npc.rotation, origin, npc.scale, effects, 0);
+            return true;
         }
 
         public override void AI()
@@ -1812,6 +1858,22 @@ namespace AAMod.NPCs.Bosses.Zero
                 }
             }
         }
+    }
+    class ZeroArm1 : ModNPC
+    {
+        public override string Texture { get { return "AAMod/NPCs/Bosses/Zero/ZeroArm1"; } }
+    }
+    class ZeroArm2 : ModNPC
+    {
+        public override string Texture { get { return "AAMod/NPCs/Bosses/Zero/ZeroArm1"; } }
+    }
+    class ZeroArm3 : ModNPC
+    {
+        public override string Texture { get { return "AAMod/NPCs/Bosses/Zero/ZeroArm1"; } }
+    }
+    class ZeroArm4 : ModNPC
+    {
+        public override string Texture { get { return "AAMod/NPCs/Bosses/Zero/ZeroArm1"; } }
     }
 }
 

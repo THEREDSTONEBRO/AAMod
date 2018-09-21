@@ -23,6 +23,10 @@ namespace AAMod.Backgrounds.Inferno
 
         public override void Update(GameTime gameTime)
         {
+            Eggroll = Math.Abs(Main.GameUpdateCount) / 5f;
+            Pie = 1f * (float)Math.Sin(Eggroll);
+            color = Color.Lerp(Color.Firebrick, Color.IndianRed, Pie);
+
             if (Active)
             {
                 Intensity = Math.Min(1f, 0.01f + Intensity);
@@ -39,15 +43,22 @@ namespace AAMod.Backgrounds.Inferno
             return new Color(Vector4.Lerp(value, Vector4.One, Intensity * 0.5f));
         }
 
+        public static float Eggroll;
+        public static float Pie;
+        public static Color color;
+
         public override void Draw(SpriteBatch spriteBatch, float minDepth, float maxDepth)
         {
             if (maxDepth >= 3.40282347E+38f && minDepth < 3.40282347E+38f)
             {
                 if (Main.dayTime)
                 {
-                    spriteBatch.Draw(Main.blackTileTexture, new Rectangle(0, 0, Main.screenWidth, Main.screenHeight), Color.OrangeRed * this.Intensity);
-                    var planetPos = new Vector2((Main.screenWidth / 4) * 1, Main.screenHeight / 4);
-                    spriteBatch.Draw(PlanetTexture, planetPos, null, Color.White * 0.9f * this.Intensity, 0f, new Vector2(PlanetTexture.Width >> 1, PlanetTexture.Height >> 1), 1f, SpriteEffects.None, 1f);
+                    if (color != null)
+                    {
+                        spriteBatch.Draw(Main.blackTileTexture, new Rectangle(0, 0, Main.screenWidth, Main.screenHeight), color * this.Intensity);
+                        var planetPos = new Vector2((Main.screenWidth / 4) * 1, Main.screenHeight / 4);
+                        spriteBatch.Draw(PlanetTexture, planetPos, null, Color.White * 0.9f * this.Intensity, 0f, new Vector2(PlanetTexture.Width >> 1, PlanetTexture.Height >> 1), 1f, SpriteEffects.None, 1f);
+                    }
                 }
             }
         }
