@@ -259,7 +259,7 @@ namespace AAMod.NPCs.Bosses.Zero
 
                 npc.ai[0] = 1f;
 
-                int num440 = NPC.NewNPC((int)(npc.position.X + (float)(npc.width / 2)), (int)npc.position.Y + npc.height / 2, mod.NPCType("RealitySlasher"), npc.whoAmI, 0f, 0f, 0f, 0f, 255);
+                int num440 = NPC.NewNPC((int)(npc.position.X + (float)(npc.width / 2)), (int)npc.position.Y + npc.height / 2, mod.NPCType("RiftShredder"), npc.whoAmI, 0f, 0f, 0f, 0f, 255);
 
                 Main.npc[num440].ai[0] = -1f;
 

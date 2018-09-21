@@ -54,6 +54,10 @@ UNSTABLE. C0NTAINS C0DE TO ACTIVATE THE BRINGER 0F DEATH");
         public override bool UseItem(Player player)
         {
             NPC.SpawnOnPlayer(player.whoAmI, mod.NPCType("Zero"));
+            NPC.SpawnOnPlayer(player.whoAmI, mod.NPCType("RiftShredder"));
+            NPC.SpawnOnPlayer(player.whoAmI, mod.NPCType("TeslaHand"));
+            NPC.SpawnOnPlayer(player.whoAmI, mod.NPCType("VoidStar"));
+            NPC.SpawnOnPlayer(player.whoAmI, mod.NPCType("RealityCannon"));
             Main.PlaySound(SoundID.MoonLord, player.position, 0);
             return true;
         }
