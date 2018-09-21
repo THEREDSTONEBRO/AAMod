@@ -19,7 +19,7 @@ namespace AAMod.Items.Boss.Retriever
         }
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Storm Riot Shielf");
+            DisplayName.SetDefault("Storm Riot Shield");
             Tooltip.SetDefault(
 @"For every hit you land on an enemy, 45 true damage (damage unassigned to any class) is dealt
 Allows you to dash into enemies, damaging them

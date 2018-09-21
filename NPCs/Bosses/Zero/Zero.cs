@@ -184,14 +184,14 @@ namespace AAMod.NPCs.Bosses.Zero
 
         public override bool PreDraw(SpriteBatch spriteBatch, Color drawColor)
         {
-            Texture2D ZeroArmTex;
+            Texture2D ZeroArmTex = mod.GetTexture("AAMod/NPCs/Bosses/Zero/ZeroArm");
             if (npc.type == mod.NPCType("VoidStar") || npc.type == mod.NPCType("RealityCannon") || npc.type == mod.NPCType("RiftShredder") || npc.type == mod.NPCType("TeslaHand"))
             {
-                Vector2 vector7 = new Vector2(npc.position.X + npc.width * 0.5f - 5f * npc.ai[0], npc.position.Y + 20f);
+                Vector2 vector7 = new Vector2(npc.position.X + (float)npc.width * 0.5f - 5f * npc.ai[0], npc.position.Y + 20f);
                 for (int k = 0; k < 2; k++)
                 {
-                    float num22 = Main.npc[(int)npc.ai[1]].position.X + Main.npc[(int)npc.ai[1]].width / 2 - vector7.X;
-                    float num23 = Main.npc[(int)npc.ai[1]].position.Y + Main.npc[(int)npc.ai[1]].height / 2 - vector7.Y;
+                    float num22 = Main.npc[(int)npc.ai[1]].position.X + (float)(Main.npc[(int)npc.ai[1]].width / 2) - vector7.X;
+                    float num23 = Main.npc[(int)npc.ai[1]].position.Y + (float)(Main.npc[(int)npc.ai[1]].height / 2) - vector7.Y;
                     float num24;
                     if (k == 0)
                     {
@@ -213,7 +213,7 @@ namespace AAMod.NPCs.Bosses.Zero
                     }
                     float rotation7 = (float)Math.Atan2(num23, num22) - 1.57f;
                     Color color7 = Lighting.GetColor((int)vector7.X / 16, (int)(vector7.Y / 16f));
-                    spriteBatch.Draw(mod.GetTexture("AAMod/NPCs/Bosses/Zero/ZeroArm"), new Vector2(vector7.X - Main.screenPosition.X, vector7.Y - Main.screenPosition.Y), new Microsoft.Xna.Framework.Rectangle?(new Rectangle(0, 0, 94, 18)), color7, rotation7, new Vector2(94 * 0.5f, 18 * 0.5f), 1f, SpriteEffects.None, 0f);
+                    Main.spriteBatch.Draw(ZeroArmTex, new Vector2(vector7.X - Main.screenPosition.X, vector7.Y - Main.screenPosition.Y), new Microsoft.Xna.Framework.Rectangle?(new Rectangle(0, 0, ZeroArmTex.Width, ZeroArmTex.Height)), color7, rotation7, new Vector2(ZeroArmTex.Width * 0.5f, (float)ZeroArmTex.Height * 0.5f), 1f, SpriteEffects.None, 0f);
                     if (k == 0)
                     {
                         vector7.X += num22 * num24 / 2f;
@@ -223,7 +223,7 @@ namespace AAMod.NPCs.Bosses.Zero
                     {
                         vector7.X += num22 * num24 - 16f;
                         vector7.Y += num23 * num24 - 6f;
-                        int num25 = Dust.NewDust(new Vector2(vector7.X, vector7.Y), 30, 10, 6, num22 * 0.02f, num23 * 0.02f, 0, default(Color), 2.5f);
+                        int num25 = Dust.NewDust(new Vector2(vector7.X, vector7.Y), 30, 10, 6, num22 * 0.02f, num23 * 0.02f, 0, default(Microsoft.Xna.Framework.Color), 2.5f);
                         Main.dust[num25].noGravity = true;
                     }
                 }
