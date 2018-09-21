@@ -26,7 +26,7 @@ namespace AAMod.NPCs.Bosses.Daybringer
                 {
                     spriteEffects = SpriteEffects.FlipHorizontally;
                 }
-                spriteBatch.Draw(mod.GetTexture("NPCs/Bosses/Zero/Daybringer_Glow"), new Vector2(npc.Center.X - Main.screenPosition.X, npc.Center.Y - Main.screenPosition.Y),
+                spriteBatch.Draw(mod.GetTexture("NPCs/Bosses/Daybringer/Daybringer_Glow"), new Vector2(npc.Center.X - Main.screenPosition.X, npc.Center.Y - Main.screenPosition.Y),
                 npc.frame, Color.White, npc.rotation,
                 new Vector2(npc.width * 0.5f, npc.height * 0.5f), 1f, spriteEffects, 0f);
             }
@@ -91,12 +91,12 @@ namespace AAMod.NPCs.Bosses.Daybringer
                 {
                     spriteEffects = SpriteEffects.FlipHorizontally;
                 }
-                spriteBatch.Draw(mod.GetTexture("NPCs/Bosses/Zero/DaybringerBody_Glow"), new Vector2(npc.Center.X - Main.screenPosition.X, npc.Center.Y - Main.screenPosition.Y),
+                spriteBatch.Draw(mod.GetTexture("NPCs/Bosses/Daybringer/DBBody_Glow"), new Vector2(npc.Center.X - Main.screenPosition.X, npc.Center.Y - Main.screenPosition.Y),
                 npc.frame, Color.White, npc.rotation,
                 new Vector2(npc.width * 0.5f, npc.height * 0.5f), 1f, spriteEffects, 0f);
             }
         }
-        
+
         public override void Init()
         {
             base.Init();
@@ -123,7 +123,7 @@ namespace AAMod.NPCs.Bosses.Daybringer
                 {
                     spriteEffects = SpriteEffects.FlipHorizontally;
                 }
-                spriteBatch.Draw(mod.GetTexture("NPCs/Bosses/Zero/DaybringerTail_Glow"), new Vector2(npc.Center.X - Main.screenPosition.X, npc.Center.Y - Main.screenPosition.Y),
+                spriteBatch.Draw(mod.GetTexture("NPCs/Bosses/Daybringer/DBTail_Glow"), new Vector2(npc.Center.X - Main.screenPosition.X, npc.Center.Y - Main.screenPosition.Y),
                 npc.frame, Color.White, npc.rotation,
                 new Vector2(npc.width * 0.5f, npc.height * 0.5f), 1f, spriteEffects, 0f);
             }
@@ -708,7 +708,7 @@ namespace AAMod.NPCs.Bosses.Daybringer
                     {
                         Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("DaybringerMask"));
                     }
-                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("Radium"), Main.rand.Next(30, 75));
+                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("RadiumOre"), Main.rand.Next(30, 75));
                 }
             }
             else

@@ -12,7 +12,7 @@ namespace AAMod.NPCs.Bosses.Zero
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Zero");
-            Main.projFrames[projectile.type] = 4;
+            Main.projFrames[projectile.type] = 8;
         }
         public override void SetDefaults()
         {
@@ -23,16 +23,16 @@ namespace AAMod.NPCs.Bosses.Zero
             projectile.friendly = false;
             projectile.tileCollide = false;
             projectile.ignoreWater = true;
-            projectile.timeLeft = 12;
+            projectile.timeLeft = 24;
         }
         public override void AI()
         {
-            if (++projectile.frameCounter >= 3)
+            if (++projectile.frameCounter >= 7)
             {
                 projectile.frameCounter = 0;
-                if (++projectile.frame >= 4)
+                if (++projectile.frame >= 8)
                 {
-                    projectile.frame = 3;
+                    projectile.frame = 7;
                 }
             }
             projectile.velocity.X *= 0.00f;
@@ -40,7 +40,7 @@ namespace AAMod.NPCs.Bosses.Zero
         }
         public override void Kill(int timeLeft)
         {
-            Projectile.NewProjectile((new Vector2(projectile.position.X + 100f, projectile.position.Y + 89f)), (new Vector2(0f, 0f)), mod.ProjectileType("ZeroDeath2"), 0, 0);
+            Projectile.NewProjectile((new Vector2(projectile.position.X + 200f, projectile.position.Y + 178f)), (new Vector2(0f, 0f)), mod.ProjectileType("ZeroDeath2"), 0, 0);
         }
     }
 }
