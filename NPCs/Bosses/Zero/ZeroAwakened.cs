@@ -21,7 +21,8 @@ namespace AAMod.NPCs.Bosses.Zero
         {
             DisplayName.SetDefault("Zero Awakened");
             Main.npcFrameCount[npc.type] = 12;    //boss frame/animation 
-
+            NPCID.Sets.TrailCacheLength[npc.type] = 5;
+            NPCID.Sets.TrailingMode[npc.type] = 0;
         }
         public override void SetDefaults()
         {
