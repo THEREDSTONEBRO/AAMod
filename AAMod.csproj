@@ -412,6 +412,9 @@
     <Compile Include="Items\Vanity\Alphakip\FishDiverBoots.cs" />
     <Compile Include="Items\Vanity\Alphakip\FishDiverJacket.cs" />
     <Compile Include="Items\Vanity\Alphakip\FishDiverMask.cs" />
+    <Compile Include="Items\Vanity\Gavran\GavransChest.cs" />
+    <Compile Include="Items\Vanity\Gavran\GavransGoggles.cs" />
+    <Compile Include="Items\Vanity\Gavran\GavransTrunks.cs" />
     <Compile Include="Items\Vanity\Glitched\GlitchesBreastplate.cs" />
     <Compile Include="Items\Vanity\Glitched\GlitchesGreaves.cs" />
     <Compile Include="Items\Vanity\Glitched\GlitchesHat.cs" />
@@ -1250,6 +1253,13 @@
     <Content Include="Items\Vanity\Alphakip\FishDiverJacket_Female.png" />
     <Content Include="Items\Vanity\Alphakip\FishDiverMask.png" />
     <Content Include="Items\Vanity\Alphakip\FishDiverMask_Head.png" />
+    <Content Include="Items\Vanity\Gavran\GavransChest_Arms.png" />
+    <Content Include="Items\Vanity\Gavran\GavransChest_Body.png" />
+    <Content Include="Items\Vanity\Gavran\GavransChest_Female.png" />
+    <Content Include="Items\Vanity\Gavran\GavransGoggles.png" />
+    <Content Include="Items\Vanity\Gavran\GavransGoggles_Head.png" />
+    <Content Include="Items\Vanity\Gavran\GavransTrunks.png" />
+    <Content Include="Items\Vanity\Gavran\GavransTrunks_Legs.png" />
     <Content Include="Items\Vanity\Glitched\GlitchesBreastplate.png" />
     <Content Include="Items\Vanity\Glitched\GlitchesBreastplate_Arms.png" />
     <Content Include="Items\Vanity\Glitched\GlitchesBreastplate_Body.png" />
