@@ -24,10 +24,10 @@ namespace AAMod.Items.Projectiles
             projectile.melee = true;
             projectile.ignoreWater = true;
             projectile.tileCollide = false;
-            projectile.alpha = 60;
+            projectile.alpha = 120;
             projectile.penetrate = -1;
             projectile.usesLocalNPCImmunity = true;
-            projectile.localNPCHitCooldown = 0;
+            projectile.localNPCHitCooldown = 10;
         }
 
         public override Color? GetAlpha(Color lightColor)

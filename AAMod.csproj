@@ -917,6 +917,11 @@
     <Content Include="Items\Boss\Broodmother\BroodmotherBag.png" />
     <Content Include="Items\Boss\Broodmother\DragonCape.png" />
     <Content Include="Items\Boss\Broodmother\DragonScale.png" />
+    <Content Include="Items\Boss\Equinox\DarkVoid.png" />
+    <Content Include="Items\Boss\Equinox\DBBag.png" />
+    <Content Include="Items\Boss\Equinox\Equinox.png" />
+    <Content Include="Items\Boss\Equinox\NCBag.png" />
+    <Content Include="Items\Boss\Equinox\RadiantStar.png" />
     <Content Include="Items\Boss\Grips\BulwarkOfChaos.png" />
     <Content Include="Items\Boss\Grips\BulwarkOfChaos_Shield.png" />
     <Content Include="Items\Boss\Grips\ClawOfChaos.png" />
@@ -932,16 +937,29 @@
     <Content Include="Items\Boss\Retriever\StormRiot_Shield.png" />
     <Content Include="Items\Boss\Yamata\Masamune.png" />
     <Content Include="Items\Boss\Zero\AMR.png" />
+    <Content Include="Items\Boss\Zero\AMR_Glow.png" />
     <Content Include="Items\Boss\Zero\Battery.png" />
+    <Content Include="Items\Boss\Zero\Battery_Glow.png" />
     <Content Include="Items\Boss\Zero\EventHorizon.png" />
+    <Content Include="Items\Boss\Zero\EventHorizon_Glow.png" />
     <Content Include="Items\Boss\Zero\Neutralizer.png" />
+    <Content Include="Items\Boss\Zero\Neutralizer_Glow.png" />
     <Content Include="Items\Boss\Zero\RealityCannon.png" />
+    <Content Include="Items\Boss\Zero\RealityCannon_Glow.png" />
     <Content Include="Items\Boss\Zero\RiftShredder.png" />
+    <Content Include="Items\Boss\Zero\RiftShredder_Glow.png" />
     <Content Include="Items\Boss\Zero\TeslaHand.png" />
+    <Content Include="Items\Boss\Zero\TeslaHand_Glow.png" />
     <Content Include="Items\Boss\Zero\UnstableSingularity.png" />
+    <Content Include="Items\Boss\Zero\UnstableSingularity_Glow.png" />
     <Content Include="Items\Boss\Zero\VoidStar.png" />
+    <Content Include="Items\Boss\Zero\VoidStar_Glow.png" />
     <Content Include="Items\Boss\Zero\ZeroBag.png" />
     <Content Include="Items\Boss\Zero\ZeroStar.png" />
+    <Content Include="Items\Boss\Zero\ZeroStar_Glow.png" />
+    <Content Include="Items\Boss\Zero\ZeroWings.png" />
+    <Content Include="Items\Boss\Zero\ZeroWings_Wings.png" />
+    <Content Include="Items\Boss\Zero\ZeroWings_Wings_Glow.png" />
     <Content Include="Items\Hooks\DragonsGrip.png" />
     <Content Include="Items\Magic\AncientArcanum.png" />
     <Content Include="Items\Magic\BogBomb.png" />
@@ -1017,6 +1035,7 @@
     <Content Include="Items\Melee\DragonBreath.png" />
     <Content Include="Items\Melee\Dragonfire.png" />
     <Content Include="Items\Melee\Dragonkite.png" />
+    <Content Include="Items\Melee\Ectoblade.png" />
     <Content Include="Items\Melee\EnchantedWarhammer.png" />
     <Content Include="Items\Melee\EventHorizon.png" />
     <Content Include="Items\Melee\ExilesKatana.png" />
@@ -1049,6 +1068,7 @@
     <Content Include="Items\Melee\ScorchDagger.png" />
     <Content Include="Items\Melee\SlapBone.png" />
     <Content Include="Items\Melee\Soul Sword.png" />
+    <Content Include="Items\Melee\SoulSword.png" />
     <Content Include="Items\Melee\Spirit Blade.png" />
     <Content Include="Items\Melee\SultansScimitar.png" />
     <Content Include="Items\Melee\Sword.png" />
@@ -1580,8 +1600,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="bin\Release\" />
-    <Folder Include="Items\Mounts\" />
-    <Folder Include="Items\Pets\" />
     <Folder Include="obj\Debug\TempPE\" />
     <Folder Include="obj\NPCs\" />
   </ItemGroup>

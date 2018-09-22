@@ -23,6 +23,7 @@ namespace AAMod.Items.Melee   //where is located
             item.knockBack = 4;      //Sword knockback
             item.value = 20000;        
             item.rare = 4;
+            item.shoot = mod.ProjectileType("DragonBreathP");
             item.UseSound = SoundID.Item20;       //1 is the sound of the sword
             item.autoReuse = true;   //if it's capable of autoswing.
             item.useTurn = true; 
