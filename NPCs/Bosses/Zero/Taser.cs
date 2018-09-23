@@ -21,10 +21,10 @@ namespace AAMod.NPCs.Bosses.Zero
             npc.width = 52;
             npc.height = 52;
             npc.damage = 52;
-            npc.defense = 34;
-            npc.lifeMax = 9000;
+            npc.defense = 70;
             npc.HitSound = SoundID.NPCHit4;
             npc.DeathSound = SoundID.NPCHit4;
+            npc.lifeMax = 100000;
             npc.noGravity = true;
             animationType = NPCID.PrimeVice;
             npc.noTileCollide = true;

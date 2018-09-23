@@ -17,14 +17,15 @@ namespace AAMod.Items.Vanity.Alphakip
 
 		public override void SetDefaults()
 		{
-            item.CloneDefaults(ItemID.JimsWings);
 			item.width = 42;
 			item.height = 42;
 			item.value = 500000;
 			item.rare = 11;
 			item.accessory = true;
-            item.glowMask = 0;
+            item.alpha = 100;
 		}
+
+        
 
         public override void ModifyTooltips(List<TooltipLine> list)
         {
