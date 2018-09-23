@@ -23,8 +23,10 @@ namespace AAMod.Items.Vanity.Alphakip
 			item.value = 500000;
 			item.rare = 11;
 			item.accessory = true;
-            item.glowMask = 0;
+            item.alpha = 100;
 		}
+
+        
 
         public override void ModifyTooltips(List<TooltipLine> list)
         {

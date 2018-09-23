@@ -179,7 +179,7 @@ namespace AAMod
         {
             if (Main.gameMenu)
                 return;
-            if (priority > MusicPriority.Event)
+            if (priority > MusicPriority.Environment)
                 return;
             Player player = Main.LocalPlayer;
             if (!player.active)
@@ -202,34 +202,36 @@ namespace AAMod
             AAPlayer Ancients = player.GetModPlayer<AAPlayer>();
             if (Ancients.ZoneInferno)
             {
-                priority = MusicPriority.BiomeHigh;
                 if (player.ZoneRockLayerHeight)
                 {
-                    Main.UseHeatDistortion = true;
+                    priority = MusicPriority.BiomeHigh;
                     music = GetSoundSlot(SoundType.Music, "Sounds/Music/InfernoSurface");
                 }
                 else
                 {
+                    priority = MusicPriority.BiomeHigh;
                     music = GetSoundSlot(SoundType.Music, "Sounds/Music/InfernoSurface");
                 }
             }
             if (Ancients.ZoneMire)
             {
-                priority = MusicPriority.BiomeHigh;
+                
                 if (player.ZoneRockLayerHeight)
                 {
+                    priority = MusicPriority.BiomeHigh;
                     music = GetSoundSlot(SoundType.Music, "Sounds/Music/MireUnderground");
                 }
                 else
                 {
+                    priority = MusicPriority.BiomeHigh;
                     music = GetSoundSlot(SoundType.Music, "Sounds/Music/MireSurface");
                 }
             }
             if (Ancients.ZoneVoid)
             {
-                priority = MusicPriority.Event;
                 if (player.ZoneSkyHeight)
                 {
+                    priority = MusicPriority.Event;
                     music = GetSoundSlot(SoundType.Music, "Sounds/Music/Void");
                 }
             }
