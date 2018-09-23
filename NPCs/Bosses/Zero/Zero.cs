@@ -124,7 +124,7 @@ namespace AAMod.NPCs.Bosses.Zero
 
         public override bool PreDraw(SpriteBatch spriteBatch, Color drawColor)
         {
-            Texture2D ZeroArmTex = mod.GetTexture("AAMod/NPCs/Bosses/Zero/ZeroArm");
+            Texture2D ZeroArmTex = mod.GetTexture("NPCs/Bosses/Zero/ZeroArm");
             if (npc.type == mod.NPCType("VoidStar") || npc.type == mod.NPCType("RealityCannon") || npc.type == mod.NPCType("RiftShredder") || npc.type == mod.NPCType("TeslaHand"))
             {
                 Vector2 vector7 = new Vector2(npc.position.X + (float)npc.width * 0.5f - 5f * npc.ai[0], npc.position.Y + 20f);
