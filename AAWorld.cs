@@ -299,12 +299,12 @@ namespace AAMod
             progress.Set(0.2f);
             if (Main.maxTilesY < 3600)
             {
-                VoidHeight = 120;
+                VoidHeight = 140;
             }
             progress.Set(0.3f);
             if (Main.maxTilesY > 3600)
             {
-                VoidHeight = 180;
+                VoidHeight = 160;
             }
             progress.Set(0.4f);
             Point center = new Point((Main.maxTilesX / 15 * 14) + (Main.maxTilesX / 15 / 2) - 100, center.Y = VoidHeight);
