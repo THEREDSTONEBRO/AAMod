@@ -176,7 +176,7 @@ namespace AAMod.NPCs.Bosses.Zero
                 Main.npc[index1].ai[1] = npc.whoAmI;
                 Main.npc[index1].target = npc.target;
                 Main.npc[index1].netUpdate = true;
-                int index2 = NPC.NewNPC((int)(npc.position.X + (double)(npc.width / 2)), (int)npc.position.Y + npc.height / 2, mod.NPCType("RealityShredder"), npc.whoAmI, 0.0f, 0.0f, 0.0f, 0.0f, byte.MaxValue);
+                int index2 = NPC.NewNPC((int)(npc.position.X + (double)(npc.width / 2)), (int)npc.position.Y + npc.height / 2, mod.NPCType("RiftShredder"), npc.whoAmI, 0.0f, 0.0f, 0.0f, 0.0f, byte.MaxValue);
                 Main.npc[index2].ai[0] = 1f;
                 Main.npc[index2].ai[1] = npc.whoAmI;
                 Main.npc[index2].target = npc.target;
@@ -195,7 +195,7 @@ namespace AAMod.NPCs.Bosses.Zero
                 Main.npc[index4].ai[3] = 150f;
                 
             }
-            if (Main.player[npc.target].dead || Math.Abs(npc.position.X - Main.player[npc.target].position.X) > 6000.0 || Math.Abs(npc.position.Y - Main.player[npc.target].position.Y) > 6000.0)
+            if (Main.player[npc.target].dead)
             {
                 npc.TargetClosest(true);
                 if (Main.player[npc.target].dead || Math.Abs(npc.position.X - Main.player[npc.target].position.X) > 6000.0 || Math.Abs(npc.position.Y - Main.player[npc.target].position.Y) > 6000.0)
