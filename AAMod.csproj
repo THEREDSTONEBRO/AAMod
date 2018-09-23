@@ -907,6 +907,8 @@
     <Content Include="Items\Blocks\Zero2Box.png" />
     <Content Include="Items\Blocks\ZeroBox.png" />
     <Content Include="Items\Blocks\ZeroTrophy.png" />
+    <Content Include="Items\Boss\Akumata\Akumata.png" />
+    <Content Include="Items\Boss\Akumata\AkumataWings.png" />
     <Content Include="Items\Boss\Akuma\Dawnstrike.png" />
     <Content Include="Items\Boss\Akuma\Daycrusher.png" />
     <Content Include="Items\Boss\Akuma\DragonSlasher.png" />
@@ -1253,6 +1255,7 @@
     <Content Include="Items\Vanity\Alphakip\FishDiverJacket_Female.png" />
     <Content Include="Items\Vanity\Alphakip\FishDiverMask.png" />
     <Content Include="Items\Vanity\Alphakip\FishDiverMask_Head.png" />
+    <Content Include="Items\Vanity\Gavran\GavransChest.png" />
     <Content Include="Items\Vanity\Gavran\GavransChest_Arms.png" />
     <Content Include="Items\Vanity\Gavran\GavransChest_Body.png" />
     <Content Include="Items\Vanity\Gavran\GavransChest_Female.png" />
