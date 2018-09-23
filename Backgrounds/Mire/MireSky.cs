@@ -55,7 +55,7 @@ namespace AAMod.Backgrounds.Mire
                 {
                     if (color != null)
                     {
-                        spriteBatch.Draw(Main.blackTileTexture, new Rectangle(0, 0, Main.screenWidth, Main.screenHeight), color * this.Intensity);
+                        spriteBatch.Draw(Main.blackTileTexture, new Rectangle(0, 0, Main.screenWidth, Main.screenHeight), Color.Indigo * this.Intensity);
                         var planetPos = new Vector2((Main.screenWidth / 4) * 3, Main.screenHeight / 4);
                         spriteBatch.Draw(PlanetTexture, planetPos, null, Color.White * 0.9f * this.Intensity, 0f, new Vector2(PlanetTexture.Width >> 1, PlanetTexture.Height >> 1), 1f, SpriteEffects.None, 1f);
                     }

@@ -21,7 +21,8 @@ namespace AAMod.NPCs.Bosses.Zero
         {
             DisplayName.SetDefault("Zero Awakened");
             Main.npcFrameCount[npc.type] = 12;    //boss frame/animation 
-
+            NPCID.Sets.TrailCacheLength[npc.type] = 5;
+            NPCID.Sets.TrailingMode[npc.type] = 0;
         }
         public override void SetDefaults()
         {
@@ -90,7 +91,7 @@ namespace AAMod.NPCs.Bosses.Zero
             new Vector2(npc.width * 0.5f, npc.height * 0.5f), 1f, spriteEffects, 0f);
         }
 
-        public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
+        /*public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
         {
             Vector2 drawOrigin = new Vector2(Main.npcTexture[npc.type].Width * 0.5f, npc.height * 0.5f);
             for (int k = 0; k < npc.oldPos.Length; k++)
@@ -103,7 +104,7 @@ namespace AAMod.NPCs.Bosses.Zero
                 spriteBatch.Draw(ZeroTrail, drawPos, null, color, npc.rotation, drawOrigin, npc.scale, SpriteEffects.None, 0f);
             }
             return true;
-        }
+        }*/
 
         public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
         {

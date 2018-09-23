@@ -12,7 +12,7 @@ namespace AAMod.Items.Vanity.Hallam
             base.SetStaticDefaults();
             DisplayName.SetDefault("Hallam's Dapper Top Hat");
             Tooltip.SetDefault(
-@"You can't help but feel fancy just wearing thiS
+@"You can't help but feel fancy just wearing this
 'Great for impersonating Ancients Awakened Devs!'");
 		}
 

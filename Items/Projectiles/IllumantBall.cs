@@ -22,7 +22,7 @@ namespace AAMod.Items.Projectiles
         public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
         {
             ProjectileDraw.DrawChain(projectile.whoAmI, Main.player[projectile.owner].MountedCenter,
-                "SpiritMod/Projectiles/Flail/IllumantBall_Chain");
+                "AAMod/Projectiles/Flail/IllumantBall_Chain");
             ProjectileDraw.DrawAroundOrigin(projectile.whoAmI, lightColor);
             return false;
         }
