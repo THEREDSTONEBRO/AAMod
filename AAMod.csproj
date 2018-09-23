@@ -447,6 +447,7 @@
     <Compile Include="NPCs\Bosses\SatanSkull\SatansSkull.cs" />
     <Compile Include="NPCs\Bosses\Zero\RealityCannon.cs" />
     <Compile Include="NPCs\Bosses\Zero\RiftShredder.cs" />
+    <Compile Include="NPCs\Bosses\Zero\Taser.cs" />
     <Compile Include="NPCs\Bosses\Zero\TeslaHand.cs" />
     <Compile Include="NPCs\Bosses\Zero\VoidStar.cs" />
     <Compile Include="NPCs\Bosses\Zero\VoidStarP.cs" />
@@ -1357,6 +1358,7 @@
     <Content Include="NPCs\Bosses\Zero\RealityCannon_Glow.png" />
     <Content Include="NPCs\Bosses\Zero\RiftShredder.png" />
     <Content Include="NPCs\Bosses\Zero\RiftShredder_Glow.png" />
+    <Content Include="NPCs\Bosses\Zero\Taser.png" />
     <Content Include="NPCs\Bosses\Zero\TeslaHand.png" />
     <Content Include="NPCs\Bosses\Zero\TeslaHand_Glow.png" />
     <Content Include="NPCs\Bosses\Zero\VoidStar.png" />

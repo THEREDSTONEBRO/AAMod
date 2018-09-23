@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
@@ -21,7 +22,7 @@ namespace AAMod.NPCs.Bosses.Zero
         {
             npc.width = 206;
             npc.height = 208;
-            npc.aiStyle = 0;
+            npc.aiStyle = -1;
             npc.damage = 130;
             npc.defense = 70;
             npc.lifeMax = 200000;
@@ -45,6 +46,16 @@ namespace AAMod.NPCs.Bosses.Zero
             npc.npcSlots = 1f;
             npc.lavaImmune = true;
             npc.netAlways = true;
+        }
+
+        public override void SendExtraAI(BinaryWriter writer)
+        {
+            writer.Write((short)npc.localAI[0]);
+        }
+
+        public override void ReceiveExtraAI(BinaryReader reader)
+        {
+            npc.localAI[0] = reader.ReadInt16();
         }
 
         public override bool? DrawHealthBar(byte hbPosition, ref float scale, ref Vector2 position)
@@ -129,177 +140,194 @@ namespace AAMod.NPCs.Bosses.Zero
         {
             npc.damage = npc.defDamage;
             npc.defense = npc.defDefense;
-            if (npc.ai[0] == 0f && Main.netMode != 1)
-            {
-                npc.TargetClosest(true);
-                npc.ai[0] = 1f;
-                int Index1 = NPC.NewNPC((int)(npc.position.X + (float)(npc.width / 2)), (int)npc.position.Y + npc.height / 2, mod.NPCType("RiftShredder"), npc.whoAmI, 0f, 0f, 0f, 0f, 255);
-                Main.npc[Index1].ai[0] = -1f;
-                Main.npc[Index1].ai[1] = npc.whoAmI;
-                Main.npc[Index1].target = npc.target;
-                Main.npc[Index1].netUpdate = true;
-                int Index2 = NPC.NewNPC((int)(npc.position.X + npc.width / 2), (int)npc.position.Y + npc.height / 2, mod.NPCType("TeslaHand"), npc.whoAmI, 0f, 0f, 0f, 0f, 255);
-                Main.npc[Index2].ai[0] = 1f;
-                Main.npc[Index2].ai[1] = npc.whoAmI;
-                Main.npc[Index2].target = npc.target;
-                Main.npc[Index2].netUpdate = true;
-                int Index3 = NPC.NewNPC((int)(npc.position.X + npc.width / 2), (int)npc.position.Y + npc.height / 2, mod.NPCType("VoidStar"), npc.whoAmI, 0f, 0f, 0f, 0f, 255);
-                Main.npc[Index3].ai[0] = -1f;
-                Main.npc[Index3].ai[1] = npc.whoAmI;
-                Main.npc[Index3].target = npc.target;
-                Main.npc[Index3].ai[3] = 150f;
-                Main.npc[Index3].netUpdate = true;
-                int Index4 = NPC.NewNPC((int)(npc.position.X + npc.width / 2), (int)npc.position.Y + npc.height / 2, mod.NPCType("RealityCannon"), npc.whoAmI, 0f, 0f, 0f, 0f, 255);
-                Main.npc[Index4].ai[0] = 1f;
-                Main.npc[Index4].ai[1] = npc.whoAmI;
-                Main.npc[Index4].target = npc.target;
-                Main.npc[Index4].netUpdate = true;
-                Main.npc[Index4].ai[3] = 150f;
-            }
+            bool expert = Main.expertMode;
 
-            if (Main.player[npc.target].dead || Math.Abs(npc.position.X - Main.player[npc.target].position.X) > 6000f || Math.Abs(npc.position.Y - Main.player[npc.target].position.Y) > 6000f)
+
+            if (npc.ai[3] != 6)
             {
-                npc.TargetClosest(true);
-                if (Main.player[npc.target].dead || Math.Abs(npc.position.X - Main.player[npc.target].position.X) > 6000f || Math.Abs(npc.position.Y - Main.player[npc.target].position.Y) > 6000f)
+                if (npc.ai[3] != npc.localAI[0])
                 {
-                    npc.ai[1] = 3f;
+                    npc.localAI[0] = npc.ai[3];
+                    for (int i = 0; i < 200; i++)
+                    {
+                        NPC npc2 = Main.npc[i];
+                        if (npc2.type == mod.NPCType("TeslaHand") && npc2.active)
+                        {
+                            npc2.ai[2] = 0f;
+                            npc2.ai[3] = 0f;
+                        }
+                    }
                 }
+                if (expert)
+                    npc.dontTakeDamage = true;
             }
-
-            if (npc.ai[1] == 0f)
+            else
             {
-                npc.ai[2] += 1f;
-                if (npc.ai[2] >= 600f)
+                if (expert)
+                    npc.dontTakeDamage = false;
+            }
+            if (npc.ai[0] < 300f) npc.ai[0]++;
+            if (npc.ai[0] == 300.0 && Main.netMode != 1)
+            {
+                npc.TargetClosest(true);
+                npc.ai[0]++;
+                int index1 = NPC.NewNPC((int)(npc.position.X + (double)(npc.width / 2)), (int)npc.position.Y + npc.height / 2, mod.NPCType("VoidStar"), npc.whoAmI, 0.0f, 0.0f, 0.0f, 0.0f, byte.MaxValue);
+                Main.npc[index1].ai[0] = -1f;
+                Main.npc[index1].ai[1] = npc.whoAmI;
+                Main.npc[index1].target = npc.target;
+                Main.npc[index1].netUpdate = true;
+                int index2 = NPC.NewNPC((int)(npc.position.X + (double)(npc.width / 2)), (int)npc.position.Y + npc.height / 2, mod.NPCType("RealityShredder"), npc.whoAmI, 0.0f, 0.0f, 0.0f, 0.0f, byte.MaxValue);
+                Main.npc[index2].ai[0] = 1f;
+                Main.npc[index2].ai[1] = npc.whoAmI;
+                Main.npc[index2].target = npc.target;
+                Main.npc[index2].netUpdate = true;
+                int index3 = NPC.NewNPC((int)(npc.position.X + (double)(npc.width / 2)), (int)npc.position.Y + npc.height / 2, mod.NPCType("Taser"), npc.whoAmI, 0.0f, 0.0f, 0.0f, 0.0f, byte.MaxValue);
+                Main.npc[index3].ai[0] = -1f;
+                Main.npc[index3].ai[1] = npc.whoAmI;
+                Main.npc[index3].target = npc.target;
+                Main.npc[index3].ai[3] = 150f;
+                Main.npc[index3].netUpdate = true;
+                int index4 = NPC.NewNPC((int)(npc.position.X + (double)(npc.width / 2)), (int)npc.position.Y + npc.height / 2, mod.NPCType("RealityCannon"), npc.whoAmI, 0.0f, 0.0f, 0.0f, 0.0f, byte.MaxValue);
+                Main.npc[index4].ai[0] = 1f;
+                Main.npc[index4].ai[1] = npc.whoAmI;
+                Main.npc[index4].target = npc.target;
+                Main.npc[index4].netUpdate = true;
+                Main.npc[index4].ai[3] = 150f;
+                
+            }
+            if (Main.player[npc.target].dead || Math.Abs(npc.position.X - Main.player[npc.target].position.X) > 6000.0 || Math.Abs(npc.position.Y - Main.player[npc.target].position.Y) > 6000.0)
+            {
+                npc.TargetClosest(true);
+                if (Main.player[npc.target].dead || Math.Abs(npc.position.X - Main.player[npc.target].position.X) > 6000.0 || Math.Abs(npc.position.Y - Main.player[npc.target].position.Y) > 6000.0)
+                    npc.ai[1] = 3f;
+            }
+            if (((int)(Main.player[npc.target].position.Y / 16) <= Main.maxTilesY - 190 - (int)(Main.maxTilesY / 5)) && npc.ai[1] != 3.0 && npc.ai[1] != 2.0)
+            {
+                npc.ai[1] = 2f;
+                Main.PlaySound(15, (int)npc.position.X, (int)npc.position.Y, 0);
+            }
+            if (npc.ai[1] == 0.0)
+            {
+                ++npc.ai[2];
+                if (npc.ai[2] >= 600.0)
                 {
-                    npc.ai[2] = 0f;
+                    npc.ai[2] = 0.0f;
                     npc.ai[1] = 1f;
                     npc.TargetClosest(true);
                     npc.netUpdate = true;
                 }
-
                 npc.rotation = npc.velocity.X / 15f;
-                if (npc.position.Y > Main.player[npc.target].position.Y - 200f)
+                if (npc.position.Y > Main.player[npc.target].position.Y - 200.0)
                 {
-                    if (npc.velocity.Y > 0f)
-                    {
-                        npc.velocity.Y = npc.velocity.Y * 0.98f;
-                    }
-                    npc.velocity.Y = npc.velocity.Y - 0.1f;
-                    if (npc.velocity.Y > 2f)
-                    {
+                    if (npc.velocity.Y > 0.0)
+                        npc.velocity.Y *= 0.98f;
+                    npc.velocity.Y -= 0.1f;
+                    if (npc.velocity.Y > 2.0)
                         npc.velocity.Y = 2f;
-                    }
                 }
-
-                else if (npc.position.Y < Main.player[npc.target].position.Y - 500f)
+                else if (npc.position.Y < Main.player[npc.target].position.Y - 500.0)
                 {
-                    if (npc.velocity.Y < 0f)
-                    {
-                        npc.velocity.Y = npc.velocity.Y * 0.98f;
-                    }
-                    npc.velocity.Y = npc.velocity.Y + 0.1f;
-                    if (npc.velocity.Y < -2f)
-                    {
+                    if (npc.velocity.Y < 0.0)
+                        npc.velocity.Y *= 0.98f;
+                    npc.velocity.Y += 0.1f;
+                    if (npc.velocity.Y < -2.0)
                         npc.velocity.Y = -2f;
-                    }
                 }
-
-                if (npc.position.X + npc.width / 2 > Main.player[npc.target].position.X + Main.player[npc.target].width / 2 + 100f)
+                if (npc.position.X + (double)(npc.width / 2) > Main.player[npc.target].position.X + (double)(Main.player[npc.target].width / 2) + 100.0)
                 {
-                    if (npc.velocity.X > 0f)
-                    {
-                        npc.velocity.X = npc.velocity.X * 0.98f;
-                    }
-                    npc.velocity.X = npc.velocity.X - 0.1f;
-                    if (npc.velocity.X > 8f)
-                    {
+                    if (npc.velocity.X > 0.0)
+                        npc.velocity.X *= 0.98f;
+                    npc.velocity.X -= 0.1f;
+                    if (npc.velocity.X > 8.0)
                         npc.velocity.X = 8f;
-                    }
                 }
 
-                if (npc.position.X + npc.width / 2 < Main.player[npc.target].position.X + Main.player[npc.target].width / 2 - 100f)
-                {
-                    if (npc.velocity.X < 0f)
-                    {
-                        npc.velocity.X = npc.velocity.X * 0.98f;
-                    }
-                    npc.velocity.X = npc.velocity.X + 0.1f;
-                    if (npc.velocity.X < -8f)
-                    {
-                        npc.velocity.X = -8f;
-                        return;
-                    }
-                }
+
+                if (npc.position.X + (double)(npc.width / 2) >= Main.player[npc.target].position.X + (double)(Main.player[npc.target].width / 2) - 100.0)
+                    return;
+                if (npc.velocity.X < 0.0)
+                    npc.velocity.X *= 0.98f;
+                npc.velocity.X += 0.1f;
+                if (npc.velocity.X >= -8.0)
+                    return;
+                npc.velocity.X = -8f;
+
+
+
+                if (Main.netMode == 1 || !expert || npc.ai[3] != 6)
+                    return;
+                ++npc.localAI[0];
+                if (npc.localAI[0] <= 150.0)
+                    return;
+                npc.localAI[0] = 0.0f;
+                Vector2 vector2_6 = new Vector2(npc.position.X + npc.width * 0.5f, npc.position.Y + npc.height * 0.5f);
+                float num41 = Main.player[npc.target].position.X + Main.player[npc.target].width / 2 - vector2_6.X;
+                float num42 = Main.player[npc.target].position.Y + Main.player[npc.target].height / 2 - vector2_6.Y;
+                float num43 = (float)Math.Sqrt(num41 * (double)num41 + num42 * (double)num42);
+                float num4 = 8f;
+                int Damage = 15;
+                int Type = 258;
+                float num5 = num4 / num43;
+                float num6 = num41 * num5;
+                float num7 = num42 * num5;
+                float SpeedX = num6 + Main.rand.Next(-5, 6) * 0.05f;
+                float SpeedY = num7 + Main.rand.Next(-5, 6) * 0.05f;
+                vector2_6.X += SpeedX * 6f;
+                vector2_6.Y += SpeedY * 6f;
+                Projectile.NewProjectile(vector2_6.X, vector2_6.Y, SpeedX, SpeedY, Type, Damage, 0.0f, Main.myPlayer, 0.0f, 0.0f);
             }
+            else if (npc.ai[1] == 1.0)
+            {
+                npc.defense *= 2;
+                npc.damage *= 2;
+                ++npc.ai[2];
+                if (npc.ai[2] == 2.0)
+                    Main.PlaySound(15, (int)npc.position.X, (int)npc.position.Y, 0);
+                if (npc.ai[2] >= 400.0)
+                {
+                    npc.ai[2] = 0.0f;
+                    npc.ai[1] = 0.0f;
+                }
+                npc.rotation += npc.direction * 0.3f;
+                Vector2 vector2 = new Vector2(npc.position.X + npc.width * 0.5f, npc.position.Y + npc.height * 0.5f);
+                float num1 = Main.player[npc.target].position.X + Main.player[npc.target].width / 2 - vector2.X;
+                float num2 = Main.player[npc.target].position.Y + Main.player[npc.target].height / 2 - vector2.Y;
+                float num3 = 2f / (float)Math.Sqrt(num1 * (double)num1 + num2 * (double)num2);
+                npc.velocity.X = num1 * num3;
+                npc.velocity.Y = num2 * num3;
 
+            }
+            else if (npc.ai[1] == 2.0)
+            {
+                npc.damage = 1000;
+                npc.defense = 9999;
+                npc.rotation += npc.direction * 0.3f;
+                Vector2 vector2 = new Vector2(npc.position.X + npc.width * 0.5f, npc.position.Y + npc.height * 0.5f);
+                float num1 = Main.player[npc.target].position.X + Main.player[npc.target].width / 2 - vector2.X;
+                float num2 = Main.player[npc.target].position.Y + Main.player[npc.target].height / 2 - vector2.Y;
+                float num3 = (float)Math.Sqrt(num1 * (double)num1 + num2 * (double)num2);
+                float num4 = 10f + num3 / 100f;
+                if (num4 < 8.0)
+                    num4 = 8f;
+                if (num4 > 32.0)
+                    num4 = 32f;
+                float num5 = num4 / num3;
+                npc.velocity.X = num1 * num5;
+                npc.velocity.Y = num2 * num5;
+            }
             else
             {
-                if (npc.ai[1] == 1f)
-                {
-                    npc.defense *= 2;
-                    npc.damage *= 2;
-                    npc.ai[2] += 1f;
-                    if (npc.ai[2] == 2f)
-                    {
-                        Main.PlaySound(15, (int)npc.position.X, (int)npc.position.Y, 0, 1f, 0f);
-                    }
-
-                    if (npc.ai[2] >= 400f)
-                    {
-                        npc.ai[2] = 0f;
-                        npc.ai[1] = 0f;
-                    }
-                    npc.rotation += npc.direction * 0.3f;
-                    Vector2 vector44 = new Vector2(npc.position.X + npc.width * 0.5f, npc.position.Y + npc.height * 0.5f);
-                    float num441 = Main.player[npc.target].position.X + Main.player[npc.target].width / 2 - vector44.X;
-                    float num442 = Main.player[npc.target].position.Y + Main.player[npc.target].height / 2 - vector44.Y;
-                    float num443 = (float)Math.Sqrt(num441 * num441 + num442 * num442);
-                    num443 = 2f / num443;
-                    npc.velocity.X = num441 * num443;
-                    npc.velocity.Y = num442 * num443;
+                if (npc.ai[1] != 3.0)
                     return;
-                }
-
-                if (npc.ai[1] == 2f)
-                {
-                    npc.damage = 1000;
-                    npc.defense = 9999;
-                    npc.rotation += npc.direction * 0.3f;
-                    Vector2 vector45 = new Vector2(npc.position.X + npc.width * 0.5f, npc.position.Y + npc.height * 0.5f);
-                    float num444 = Main.player[npc.target].position.X + Main.player[npc.target].width / 2 - vector45.X;
-                    float num445 = Main.player[npc.target].position.Y + Main.player[npc.target].height / 2 - vector45.Y;
-                    float num446 = (float)Math.Sqrt(num444 * num444 + num445 * num445);
-                    float num447 = 10f;
-                    num447 += num446 / 100f;
-                    if (num447 < 8f)
-                    {
-                        num447 = 8f;
-                    }
-                    if (num447 > 32f)
-                    {
-                        num447 = 32f;
-                    }
-                    num446 = num447 / num446;
-                    npc.velocity.X = num444 * num446;
-                    npc.velocity.Y = num445 * num446;
+                npc.velocity.Y += 0.1f;
+                if (npc.velocity.Y < 0.0)
+                    npc.velocity.Y *= 0.95f;
+                npc.velocity.X *= 0.95f;
+                if (npc.timeLeft <= 500)
                     return;
-                }
-
-                if (npc.ai[1] == 3f)
-                {
-                    npc.velocity.Y = npc.velocity.Y + 0.1f;
-                    if (npc.velocity.Y < 0f)
-                    {
-                        npc.velocity.Y = npc.velocity.Y * 0.95f;
-                    }
-                    npc.velocity.X = npc.velocity.X * 0.95f;
-                    if (npc.timeLeft > 500)
-                    {
-                        npc.timeLeft = 500;
-                        return;
-                    }
-                }
+                npc.timeLeft = 500;
             }
+
         }
     }
 }
