@@ -17,7 +17,6 @@ namespace AAMod.Items.Vanity.Alphakip
 
 		public override void SetDefaults()
 		{
-            item.CloneDefaults(ItemID.JimsWings);
 			item.width = 42;
 			item.height = 42;
 			item.value = 500000;
