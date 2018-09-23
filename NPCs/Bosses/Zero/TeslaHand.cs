@@ -14,6 +14,7 @@ namespace AAMod.NPCs.Bosses.Zero
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Broken Arm");
+            Main.npcFrameCount[npc.type] = 2;
         }
         public override void SetDefaults()
         {
@@ -28,6 +29,7 @@ namespace AAMod.NPCs.Bosses.Zero
             npc.noGravity = true;
             npc.noTileCollide = true;
             npc.knockBackResist = 0.0f;
+            animationType = NPCID.PrimeVice;
             npc.buffImmune[20] = true;
             npc.lavaImmune = true;
             npc.buffImmune[24] = true;
