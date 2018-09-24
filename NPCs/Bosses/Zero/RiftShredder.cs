@@ -56,23 +56,19 @@ namespace AAMod.NPCs.Bosses.Zero
             }
         }
 
-        public override void HitEffect(int hitDirection, double damage)
+        public override void AI()
         {
-            bool flag = (npc.life <= 0);
+            bool flag = (npc.lifeMax / 2) >= npc.life;
             if (flag && Main.netMode != 1)
             {
-                int ind = NPC.NewNPC((int)(npc.position.X + (double)(npc.width / 2)), (int)npc.position.Y + npc.height / 2, mod.NPCType("TeslaHand"), npc.whoAmI, 1.5f, npc.ai[1], 0f, 0f, byte.MaxValue);
-                Main.npc[ind].life = 1;
+                int ind = NPC.NewNPC((int)(npc.position.X + (double)(npc.width / 2)), (int)npc.position.Y + npc.height / 2, mod.NPCType("TeslaHand"), npc.whoAmI,1.5f, npc.ai[1], 0f,0f, byte.MaxValue);
+                Main.npc[ind].life = npc.life;
                 Main.npc[ind].rotation = npc.rotation;
                 Main.npc[ind].velocity = npc.velocity;
                 Main.npc[ind].netUpdate = true;
                 Main.npc[(int)npc.ai[1]].ai[3]++;
                 Main.npc[(int)npc.ai[1]].netUpdate = true;
             }
-        }
-
-        public override void AI()
-        {
             Vector2 vector2_1 = new Vector2(npc.position.X + npc.width * 0.5f, npc.position.Y + npc.height * 0.5f);
             float num1 = (float)(Main.npc[(int)npc.ai[1]].position.X + (double)(Main.npc[(int)npc.ai[1]].width / 2) - 200.0 * npc.ai[0]) - vector2_1.X;
             float num2 = Main.npc[(int)npc.ai[1]].position.Y + 230f - vector2_1.Y;
@@ -85,7 +81,7 @@ namespace AAMod.NPCs.Bosses.Zero
             else if (num3 < 400.0)
                 npc.ai[2] = 0.0f;
             npc.spriteDirection = -(int)npc.ai[0];
-            if (!Main.npc[(int)npc.ai[1]].active)
+            if (!Main.npc[(int)npc.ai[1]].active || flag)
             {
                 npc.ai[2] += 10f;
                 if (npc.ai[2] > 50.0 || Main.netMode != 2)

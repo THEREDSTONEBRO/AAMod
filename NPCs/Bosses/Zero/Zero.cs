@@ -141,8 +141,8 @@ namespace AAMod.NPCs.Bosses.Zero
             npc.damage = npc.defDamage;
             npc.defense = npc.defDefense;
             bool expert = Main.expertMode;
-            if (npc.ai[0] < 30f) npc.ai[0]++;
-            if (npc.ai[0] == 30.0 && Main.netMode != 1)
+            if (npc.ai[0] < 300f) npc.ai[0]++;
+            if (npc.ai[0] == 300.0 && Main.netMode != 1)
             {
                 npc.TargetClosest(true);
                 npc.ai[0]++;

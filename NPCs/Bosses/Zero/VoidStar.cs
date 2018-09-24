@@ -52,25 +52,22 @@ namespace AAMod.NPCs.Bosses.Zero
             npc.localAI[0] = reader.ReadInt16();
         }
 
-        public override void HitEffect(int hitDirection, double damage)
+        public override void AI()
         {
-            bool flag = (npc.life <= 0);
+            bool flag = (npc.lifeMax / 2) >= npc.life;
             if (flag && Main.netMode != 1)
             {
                 int ind = NPC.NewNPC((int)(npc.position.X + (double)(npc.width / 2)), (int)npc.position.Y + npc.height / 2, mod.NPCType("TeslaHand"), npc.whoAmI, -1.5f, npc.ai[1], 0f, 0f, byte.MaxValue);
-                Main.npc[ind].life = 1;
+                Main.npc[ind].life = npc.life;
                 Main.npc[ind].rotation = npc.rotation;
                 Main.npc[ind].velocity = npc.velocity;
                 Main.npc[ind].netUpdate = true;
                 Main.npc[(int)npc.ai[1]].ai[3]++;
                 Main.npc[(int)npc.ai[1]].netUpdate = true;
             }
-        }
 
-        public override void AI()
-        {
             npc.spriteDirection = -(int)npc.ai[0];
-            if (!Main.npc[(int)npc.ai[1]].active)
+            if (!Main.npc[(int)npc.ai[1]].active || flag)
             {
                 npc.ai[2] += 10f;
                 if (npc.ai[2] > 50.0 || Main.netMode != 2)
@@ -176,7 +173,7 @@ namespace AAMod.NPCs.Bosses.Zero
                 npc.localAI[0] = 0.0f;
                 float num4 = 12f;
                 int Damage = 0;
-                int Type = mod.ProjectileType("VoidStarP");
+                int Type = 102;
                 float num5 = num4 / num3;
                 float num6 = -num1 * num5;
                 float num7 = -num2 * num5;
@@ -243,7 +240,7 @@ namespace AAMod.NPCs.Bosses.Zero
                 npc.localAI[0] = 0.0f;
                 float num10 = 10f;
                 int Damage = 0;
-                int Type = mod.ProjectileType("VoidStarP");
+                int Type = 102;
                 float num11 = num10 / num9;
                 float num12 = num7 * num11;
                 float num13 = num8 * num11;
