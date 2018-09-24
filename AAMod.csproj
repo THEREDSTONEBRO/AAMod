@@ -1358,6 +1358,7 @@
     <Content Include="NPCs\Bosses\Zero\RiftShredder.png" />
     <Content Include="NPCs\Bosses\Zero\RiftShredder_Glow.png" />
     <Content Include="NPCs\Bosses\Zero\Taser.png" />
+    <Content Include="NPCs\Bosses\Zero\Taser_Glow.png" />
     <Content Include="NPCs\Bosses\Zero\TeslaHand.png" />
     <Content Include="NPCs\Bosses\Zero\TeslaHand_Glow.png" />
     <Content Include="NPCs\Bosses\Zero\VoidStar.png" />
@@ -1635,6 +1636,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="bin\Release\" />
+    <Folder Include="Items\Boss\Akumata\" />
     <Folder Include="obj\Debug\TempPE\" />
     <Folder Include="obj\NPCs\" />
   </ItemGroup>
