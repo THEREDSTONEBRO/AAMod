@@ -112,7 +112,7 @@ namespace AAMod
         {
             ZoneMire = (AAWorld.mireTiles > 100);
             ZoneInferno = (AAWorld.infernoTiles > 100);
-            ZoneVoid = (AAWorld.voidTiles > 50);
+            ZoneVoid = (AAWorld.voidTiles > 20);
         }
 
         public override void UpdateBiomeVisuals()
