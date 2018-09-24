@@ -325,8 +325,8 @@ namespace AAMod
                     {
                         while ((int)Vector2.Distance(posIslands[k].ToVector2(), position.ToVector2()) < 35)
                         {
-                            position = new Point(center.X + (WorldGen.genRand.Next(45, 55) * (WorldGen.genRand.NextBool() ? -1 : 1)),
-                              center.Y + (WorldGen.genRand.Next(45, 55) * (WorldGen.genRand.NextBool() ? -1 : 1)));
+                            position = new Point(center.X + (WorldGen.genRand.Next(35, 45) * (WorldGen.genRand.NextBool() ? -1 : 1)),
+                              center.Y + (WorldGen.genRand.Next(35, 45) * (WorldGen.genRand.NextBool() ? -1 : 1)));
                         }
                     }
                 }
