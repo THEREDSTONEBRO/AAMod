@@ -18,8 +18,8 @@ namespace AAMod.NPCs.Bosses.Zero
 
         public override void SetDefaults()
         {
-            npc.width = 52;
-            npc.height = 52;
+            npc.width = 40;
+            npc.height = 70;
             npc.damage = 56;
             npc.defense = 70;
             npc.lifeMax = 100000;
