@@ -51,23 +51,25 @@ namespace AAMod.NPCs.Bosses.Zero
             npc.localAI[0] = reader.ReadInt16();
         }
 
-
-        public override void AI()
+        public override void HitEffect(int hitDirection, double damage)
         {
-            bool flag = (npc.lifeMax / 2) >= npc.life;
+            bool flag = (npc.life <= 0);
             if (flag && Main.netMode != 1)
             {
                 int ind = NPC.NewNPC((int)(npc.position.X + (double)(npc.width / 2)), (int)npc.position.Y + npc.height / 2, mod.NPCType("TeslaHand"), npc.whoAmI, 2f, npc.ai[1], 0f, 0f, byte.MaxValue);
-                Main.npc[ind].life = npc.life;
+                Main.npc[ind].life = 1;
                 Main.npc[ind].rotation = npc.rotation;
                 Main.npc[ind].velocity = npc.velocity;
                 Main.npc[ind].netUpdate = true;
                 Main.npc[(int)npc.ai[1]].ai[3]++;
                 Main.npc[(int)npc.ai[1]].netUpdate = true;
             }
+        }
 
+        public override void AI()
+        {
             npc.spriteDirection = -(int)npc.ai[0];
-            if (!Main.npc[(int)npc.ai[1]].active || flag)
+            if (!Main.npc[(int)npc.ai[1]].active)
             {
                 npc.ai[2] += 10f;
                 if (npc.ai[2] > 50.0 || Main.netMode != 2)
