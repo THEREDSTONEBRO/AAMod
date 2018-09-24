@@ -14,11 +14,12 @@ namespace AAMod.NPCs.Bosses.Zero
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Void Star");
+            Main.npcFrameCount[npc.type] = 2;
         }
         public override void SetDefaults()
         {
-            npc.width = 52;
-            npc.height = 52;
+            npc.width = 40;
+            npc.height = 54;
             npc.damage = 30;
             npc.defense = 70;
             npc.lifeMax = 100000;
@@ -27,6 +28,7 @@ namespace AAMod.NPCs.Bosses.Zero
             npc.noGravity = true;
             npc.noTileCollide = true;
             npc.knockBackResist = 0.0f;
+            animationType = NPCID.PrimeVice;
             npc.buffImmune[20] = true;
             npc.buffImmune[24] = true;
             npc.lavaImmune = true;
