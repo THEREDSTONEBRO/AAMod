@@ -178,10 +178,9 @@ namespace AAMod.NPCs.Bosses.Zero
                     npc.ai[1] = 3f;
                 }
             }
-            if (npc.ai[1] != 3.0 && npc.ai[1] != 2.0)
+            if (Main.player[npc.target].GetModPlayer<AAPlayer>().ZoneVoid == false)
             {
                 npc.ai[1] = 2f;
-                Main.PlaySound(15, (int)npc.position.X, (int)npc.position.Y, 0);
             }
             if (npc.ai[1] == 0f)
             {
