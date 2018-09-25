@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.GameContent.Achievements;
 using Terraria.Utilities;
 
 namespace AAMod.NPCs.Bosses.Zero
@@ -23,9 +21,10 @@ namespace AAMod.NPCs.Bosses.Zero
             projectile.tileCollide = false;
             projectile.penetrate = -1;
             projectile.timeLeft = 300;
-            projectile.aiStyle = 0;
+            projectile.aiStyle = 108;
             projectile.alpha = 100;
             projectile.ignoreWater = true;
+            projectile.Name = "Void Storm";
         }
 
         public override void AI()
@@ -40,7 +39,7 @@ namespace AAMod.NPCs.Bosses.Zero
                                                                                                         229,
                                                                                                         229
             });
-            Dust dust18 = Main.dust[Dust.NewDust(projectile.Center, 0, 0, num949, 0f, 0f, 0, Color.Crimson, 1f)];
+            Dust dust18 = Main.dust[Dust.NewDust(projectile.Center, 0, 0, num949, 0f, 0f, 0, Color.Black, 1f)];
             dust18.noGravity = true;
             dust18.position = projectile.Center + value60;
             dust18.velocity = vector112;
@@ -61,6 +60,7 @@ namespace AAMod.NPCs.Bosses.Zero
         public override void SetDefaults()
         {
             projectile.CloneDefaults(ProjectileID.VortexLightning);
+            projectile.Name = "Dark Shock";
         }
 
         public override void AI()
@@ -71,7 +71,7 @@ namespace AAMod.NPCs.Bosses.Zero
                 projectile.localAI[1] = -1f;
             }
             projectile.frameCounter++;
-            Lighting.AddLight(projectile.Center, 0.3f, 0.45f, 0.5f);
+            Lighting.AddLight(projectile.Center, 0.5f, 0f, 0f);
             if (projectile.velocity == Vector2.Zero)
             {
                 if (projectile.frameCounter >= projectile.extraUpdates * 2)
@@ -98,14 +98,14 @@ namespace AAMod.NPCs.Bosses.Zero
                         float num860 = projectile.rotation + ((Main.rand.Next(2) == 1) ? -1f : 1f) * 1.57079637f;
                         float num861 = (float)Main.rand.NextDouble() * 0.8f + 1f;
                         Vector2 vector86 = new Vector2((float)Math.Cos((double)num860) * num861, (float)Math.Sin((double)num860) * num861);
-                        int num862 = Dust.NewDust(projectile.Center, 0, 0, 226, vector86.X, vector86.Y, 0, default(Color), 1f);
+                        int num862 = Dust.NewDust(projectile.Center, 0, 0, 226, vector86.X, vector86.Y, 0, Color.Black, 1f);
                         Main.dust[num862].noGravity = true;
                         Main.dust[num862].scale = 1.2f;
                     }
                     if (Main.rand.Next(5) == 0)
                     {
                         Vector2 value50 = projectile.velocity.RotatedBy(1.5707963705062866, default(Vector2)) * ((float)Main.rand.NextDouble() - 0.5f) * (float)projectile.width;
-                        int num863 = Dust.NewDust(projectile.Center + value50 - Vector2.One * 4f, 8, 8, 31, 0f, 0f, 100, default(Color), 1.5f);
+                        int num863 = Dust.NewDust(projectile.Center + value50 - Vector2.One * 4f, 8, 8, 31, 0f, 0f, 100, Color.Black, 1.5f);
                         Main.dust[num863].velocity *= 0.5f;
                         Main.dust[num863].velocity.Y = -Math.Abs(Main.dust[num863].velocity.Y);
                         return;
