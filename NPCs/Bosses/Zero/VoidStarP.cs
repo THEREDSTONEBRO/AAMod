@@ -40,7 +40,7 @@ namespace AAMod.NPCs.Bosses.Zero
                                                                                                         229,
                                                                                                         229
             });
-            Dust dust18 = Main.dust[Dust.NewDust(projectile.Center, 0, 0, num949, 0f, 0f, 0, default(Color), 1f)];
+            Dust dust18 = Main.dust[Dust.NewDust(projectile.Center, 0, 0, num949, 0f, 0f, 0, Color.Crimson, 1f)];
             dust18.noGravity = true;
             dust18.position = projectile.Center + value60;
             dust18.velocity = vector112;
