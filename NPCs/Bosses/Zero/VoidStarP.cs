@@ -5,23 +5,24 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.GameContent.Achievements;
+using Terraria.Utilities;
 
 namespace AAMod.NPCs.Bosses.Zero
 {
-	// to investigate: Projectile.Damage, (8843)
-	class VoidStarP : ModProjectile
-	{
-		public override void SetDefaults()
-		{
-			// while the sprite is actually bigger than 15x15, we use 15x15 since it lets the projectile clip into tiles as it bounces. It looks better.
-			projectile.width = 60;
-			projectile.height = 60;
-			projectile.friendly = false;
+    // to investigate: Projectile.Damage, (8843)
+    class VoidStarP : ModProjectile
+    {
+        public override void SetDefaults()
+        {
+            // while the sprite is actually bigger than 15x15, we use 15x15 since it lets the projectile clip into tiles as it bounces. It looks better.
+            projectile.CloneDefaults(ProjectileID.VortexVortexLightning);
+            projectile.width = 60;
+            projectile.height = 60;
+            projectile.friendly = false;
             projectile.hostile = true;
             projectile.tileCollide = false;
-			projectile.penetrate = -1;
-			projectile.timeLeft = 300;
-            projectile.hide = true;
+            projectile.penetrate = -1;
+            projectile.timeLeft = 300;
             projectile.aiStyle = 0;
             projectile.alpha = 100;
             projectile.ignoreWater = true;
@@ -29,178 +30,153 @@ namespace AAMod.NPCs.Bosses.Zero
 
         public override void AI()
         {
+            Vector2 vector111 = projectile.ai[1].ToRotationVector2();
+            Vector2 value60 = vector111.RotatedBy(1.5707963705062866, default(Vector2)) * (float)(Main.rand.Next(2) == 0).ToDirectionInt() * (float)Main.rand.Next(10, 21);
+            vector111 *= (float)Main.rand.Next(-80, 81);
+            Vector2 vector112 = vector111 - value60;
+            vector112 /= 10f;
+            int num949 = Utils.SelectRandom<int>(Main.rand, new int[]
             {
-                projectile.ai[0] += 1f;
-                int num1002 = 0;
-                if (projectile.velocity.Length() <= 4f)
+                                                                                                        229,
+                                                                                                        229
+            });
+            Dust dust18 = Main.dust[Dust.NewDust(projectile.Center, 0, 0, num949, 0f, 0f, 0, default(Color), 1f)];
+            dust18.noGravity = true;
+            dust18.position = projectile.Center + value60;
+            dust18.velocity = vector112;
+            dust18.scale = 0.5f + Main.rand.NextFloat();
+            dust18.fadeIn = 0.5f;
+            if (projectile.ai[0] == 90f && Main.netMode != 1)
+            {
+                Vector2 vector113 = projectile.ai[1].ToRotationVector2() * 8f;
+                float ai2 = (float)Main.rand.Next(80);
+                Projectile.NewProjectile(projectile.Center.X - vector113.X, projectile.Center.Y - vector113.Y, vector113.X, vector113.Y, mod.ProjectileType<DarkShock>(), 15, 1f, Main.myPlayer, projectile.ai[1], ai2);
+                return;
+            }
+        }
+    }
+
+    class DarkShock : ModProjectile
+    {
+        public override void SetDefaults()
+        {
+            projectile.CloneDefaults(ProjectileID.VortexLightning);
+        }
+
+        public override void AI()
+        {
+            if (projectile.localAI[1] == 0f && projectile.ai[0] >= 900f)
+            {
+                projectile.ai[0] -= 1000f;
+                projectile.localAI[1] = -1f;
+            }
+            projectile.frameCounter++;
+            Lighting.AddLight(projectile.Center, 0.3f, 0.45f, 0.5f);
+            if (projectile.velocity == Vector2.Zero)
+            {
+                if (projectile.frameCounter >= projectile.extraUpdates * 2)
                 {
-                    num1002 = 1;
-                }
-                projectile.alpha -= 15;
-                if (projectile.alpha < 0)
-                {
-                    projectile.alpha = 0;
-                }
-                if (num1002 == 0)
-                {
-                    projectile.rotation -= 0.104719758f;
-                    if (Main.rand.Next(3) == 0)
+                    projectile.frameCounter = 0;
+                    bool flag37 = true;
+                    for (int num858 = 1; num858 < projectile.oldPos.Length; num858++)
                     {
-                        if (Main.rand.Next(2) == 0)
+                        if (projectile.oldPos[num858] != projectile.oldPos[0])
                         {
-                            Vector2 vector124 = Vector2.UnitY.RotatedByRandom(6.2831854820251465);
-                            Dust dust27 = Main.dust[Dust.NewDust(projectile.Center - vector124 * 30f, 0, 0, Utils.SelectRandom<int>(Main.rand, new int[]
-                            {
-                                                                                                                    86,
-                                                                                                                    90
-                            }), 0f, 0f, 0, new Color(120, 0, 30), 1f)];
-                            dust27.noGravity = true;
-                            dust27.position = projectile.Center - vector124 * (float)Main.rand.Next(10, 21);
-                            dust27.velocity = vector124.RotatedBy(1.5707963705062866, default(Vector2)) * 6f;
-                            dust27.scale = 0.5f + Main.rand.NextFloat();
-                            dust27.fadeIn = 0.5f;
-                            dust27.customData = this;
-                        }
-                        else
-                        {
-                            Vector2 vector125 = Vector2.UnitY.RotatedByRandom(6.2831854820251465);
-                            Dust dust28 = Main.dust[Dust.NewDust(projectile.Center - vector125 * 30f, 0, 0, 240, 0f, 0f, 0, new Color(120, 0, 30), 1f)];
-                            dust28.noGravity = true;
-                            dust28.position = projectile.Center - vector125 * 30f;
-                            dust28.velocity = vector125.RotatedBy(-1.5707963705062866, default(Vector2)) * 3f;
-                            dust28.scale = 0.5f + Main.rand.NextFloat();
-                            dust28.fadeIn = 0.5f;
-                            dust28.customData = this;
+                            flag37 = false;
                         }
                     }
-                    if (projectile.ai[0] >= 30f)
+                    if (flag37)
                     {
-                        projectile.velocity *= 0.98f;
-                        projectile.scale += 0.00744680827f;
-                        if (projectile.scale > 1.3f)
-                        {
-                            projectile.scale = 1.3f;
-                        }
-                        projectile.rotation -= 0.0174532924f;
-                    }
-                    if (projectile.velocity.Length() < 4.1f)
-                    {
-                        projectile.velocity.Normalize();
-                        projectile.velocity *= 4f;
-                        projectile.ai[0] = 0f;
+                        projectile.Kill();
+                        return;
                     }
                 }
-                else if (num1002 == 1)
+                if (Main.rand.Next(projectile.extraUpdates) == 0 && (projectile.velocity != Vector2.Zero || Main.rand.Next((projectile.localAI[1] == 2f) ? 2 : 6) == 0))
                 {
-                    projectile.rotation -= 0.104719758f;
-                    for (int num1003 = 0; num1003 < 1; num1003++)
+                    for (int num859 = 0; num859 < 2; num859++)
                     {
-                        if (Main.rand.Next(2) == 0)
-                        {
-                            Vector2 vector126 = Vector2.UnitY.RotatedByRandom(6.2831854820251465);
-                            Dust dust29 = Main.dust[Dust.NewDust(projectile.Center - vector126 * 30f, 0, 0, 86, 0f, 0f, 0, new Color(120, 0, 30), 1f)];
-                            dust29.noGravity = true;
-                            dust29.position = projectile.Center - vector126 * (float)Main.rand.Next(10, 21);
-                            dust29.velocity = vector126.RotatedBy(1.5707963705062866, default(Vector2)) * 6f;
-                            dust29.scale = 0.9f + Main.rand.NextFloat();
-                            dust29.fadeIn = 0.5f;
-                            dust29.customData = this;
-                            vector126 = Vector2.UnitY.RotatedByRandom(6.2831854820251465);
-                            dust29 = Main.dust[Dust.NewDust(projectile.Center - vector126 * 30f, 0, 0, 90, 0f, 0f, 0, new Color(120, 0, 30), 1f)];
-                            dust29.noGravity = true;
-                            dust29.position = projectile.Center - vector126 * (float)Main.rand.Next(10, 21);
-                            dust29.velocity = vector126.RotatedBy(1.5707963705062866, default(Vector2)) * 6f;
-                            dust29.scale = 0.9f + Main.rand.NextFloat();
-                            dust29.fadeIn = 0.5f;
-                            dust29.customData = this;
-                            dust29.color = Color.Crimson;
-                        }
-                        else
-                        {
-                            Vector2 vector127 = Vector2.UnitY.RotatedByRandom(6.2831854820251465);
-                            Dust dust30 = Main.dust[Dust.NewDust(projectile.Center - vector127 * 30f, 0, 0, 240, 0f, 0f, 0, new Color(120, 0, 30), 1f)];
-                            dust30.noGravity = true;
-                            dust30.position = projectile.Center - vector127 * (float)Main.rand.Next(20, 31);
-                            dust30.velocity = vector127.RotatedBy(-1.5707963705062866, default(Vector2)) * 5f;
-                            dust30.scale = 0.9f + Main.rand.NextFloat();
-                            dust30.fadeIn = 0.5f;
-                            dust30.customData = this;
-                        }
+                        float num860 = projectile.rotation + ((Main.rand.Next(2) == 1) ? -1f : 1f) * 1.57079637f;
+                        float num861 = (float)Main.rand.NextDouble() * 0.8f + 1f;
+                        Vector2 vector86 = new Vector2((float)Math.Cos((double)num860) * num861, (float)Math.Sin((double)num860) * num861);
+                        int num862 = Dust.NewDust(projectile.Center, 0, 0, 226, vector86.X, vector86.Y, 0, default(Color), 1f);
+                        Main.dust[num862].noGravity = true;
+                        Main.dust[num862].scale = 1.2f;
                     }
-                    if (projectile.ai[0] % 30f == 0f && projectile.ai[0] < 241f && Main.myPlayer == projectile.owner)
+                    if (Main.rand.Next(5) == 0)
                     {
-                        Vector2 vector128 = Vector2.UnitY.RotatedByRandom(6.2831854820251465) * 12f;
-                        Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, vector128.X, vector128.Y, 618, projectile.damage / 2, 0f, projectile.owner, 0f, (float)projectile.whoAmI);
-                    }
-                    Vector2 vector129 = projectile.Center;
-                    float num1004 = 800f;
-                    bool flag58 = false;
-                    int num1005 = 0;
-                    if (projectile.ai[1] == 0f)
-                    {
-                        for (int num1006 = 0; num1006 < 200; num1006++)
-                        {
-                            if (Main.npc[num1006].CanBeChasedBy(this, false))
-                            {
-                                Vector2 center13 = Main.npc[num1006].Center;
-                                if (projectile.Distance(center13) < num1004 && Collision.CanHit(new Vector2(projectile.position.X + (float)(projectile.width / 2), projectile.position.Y + (float)(projectile.height / 2)), 1, 1, Main.npc[num1006].position, Main.npc[num1006].width, Main.npc[num1006].height))
-                                {
-                                    num1004 = projectile.Distance(center13);
-                                    vector129 = center13;
-                                    flag58 = true;
-                                    num1005 = num1006;
-                                }
-                            }
-                        }
-                        if (flag58)
-                        {
-                            if (projectile.ai[1] != (float)(num1005 + 1))
-                            {
-                                projectile.netUpdate = true;
-                            }
-                            projectile.ai[1] = (float)(num1005 + 1);
-                        }
-                        flag58 = false;
-                    }
-                    if (projectile.ai[1] != 0f)
-                    {
-                        int num1007 = (int)(projectile.ai[1] - 1f);
-                        if (Main.npc[num1007].active && Main.npc[num1007].CanBeChasedBy(this, true) && projectile.Distance(Main.npc[num1007].Center) < 1000f)
-                        {
-                            flag58 = true;
-                            vector129 = Main.npc[num1007].Center;
-                        }
-                    }
-                    if (!projectile.friendly)
-                    {
-                        flag58 = false;
-                    }
-                    if (flag58)
-                    {
-                        float num1008 = 4f;
-                        int num1009 = 8;
-                        Vector2 vector130 = new Vector2(projectile.position.X + (float)projectile.width * 0.5f, projectile.position.Y + (float)projectile.height * 0.5f);
-                        float num1010 = vector129.X - vector130.X;
-                        float num1011 = vector129.Y - vector130.Y;
-                        float num1012 = (float)Math.Sqrt((double)(num1010 * num1010 + num1011 * num1011));
-                        num1012 = num1008 / num1012;
-                        num1010 *= num1012;
-                        num1011 *= num1012;
-                        projectile.velocity.X = (projectile.velocity.X * (float)(num1009 - 1) + num1010) / (float)num1009;
-                        projectile.velocity.Y = (projectile.velocity.Y * (float)(num1009 - 1) + num1011) / (float)num1009;
+                        Vector2 value50 = projectile.velocity.RotatedBy(1.5707963705062866, default(Vector2)) * ((float)Main.rand.NextDouble() - 0.5f) * (float)projectile.width;
+                        int num863 = Dust.NewDust(projectile.Center + value50 - Vector2.One * 4f, 8, 8, 31, 0f, 0f, 100, default(Color), 1.5f);
+                        Main.dust[num863].velocity *= 0.5f;
+                        Main.dust[num863].velocity.Y = -Math.Abs(Main.dust[num863].velocity.Y);
+                        return;
                     }
                 }
-                if (projectile.alpha < 150)
+            }
+            else if (projectile.frameCounter >= projectile.extraUpdates * 2)
+            {
+                projectile.frameCounter = 0;
+                float num864 = projectile.velocity.Length();
+                UnifiedRandom unifiedRandom2 = new UnifiedRandom((int)projectile.ai[1]);
+                int num865 = 0;
+                Vector2 spinningpoint3 = -Vector2.UnitY;
+                Vector2 vector87;
+                do
                 {
-                    Lighting.AddLight(projectile.Center, 0.7f, 0.0f, 0.0f);
+                    int num866 = unifiedRandom2.Next();
+                    projectile.ai[1] = (float)num866;
+                    num866 %= 100;
+                    float f2 = (float)num866 / 100f * 6.28318548f;
+                    vector87 = f2.ToRotationVector2();
+                    if (vector87.Y > 0f)
+                    {
+                        vector87.Y *= -1f;
+                    }
+                    bool flag38 = false;
+                    if (vector87.Y > -0.02f)
+                    {
+                        flag38 = true;
+                    }
+                    if (vector87.X * (float)(projectile.extraUpdates + 1) * 2f * num864 + projectile.localAI[0] > 40f)
+                    {
+                        flag38 = true;
+                    }
+                    if (vector87.X * (float)(projectile.extraUpdates + 1) * 2f * num864 + projectile.localAI[0] < -40f)
+                    {
+                        flag38 = true;
+                    }
+                    if (!flag38)
+                    {
+                        goto IL_2361B;
+                    }
                 }
-                if (projectile.ai[0] >= 600f)
+                while (num865++ < 100);
+                projectile.velocity = Vector2.Zero;
+                if (projectile.localAI[1] < 1f)
                 {
-                    projectile.Kill();
-                    return;
+                    projectile.localAI[1] += 2f;
+                    goto IL_23623;
+                }
+                goto IL_23623;
+                IL_2361B:
+                spinningpoint3 = vector87;
+                IL_23623:
+                if (projectile.velocity != Vector2.Zero)
+                {
+                    projectile.localAI[0] += spinningpoint3.X * (float)(projectile.extraUpdates + 1) * 2f * num864;
+                    projectile.velocity = spinningpoint3.RotatedBy((double)(projectile.ai[0] + 1.57079637f), default(Vector2)) * num864;
+                    projectile.rotation = projectile.velocity.ToRotation() + 1.57079637f;
+                    if (Main.rand.Next(4) == 0 && Main.netMode != 1 && projectile.localAI[1] == 0f)
+                    {
+                        float num867 = (float)Main.rand.Next(-3, 4) * 1.04719758f / 3f;
+                        Vector2 vector88 = projectile.ai[0].ToRotationVector2().RotatedBy((double)num867, default(Vector2)) * projectile.velocity.Length();
+                        if (!Collision.CanHitLine(projectile.Center, 0, 0, projectile.Center + vector88 * 50f, 0, 0))
+                        {
+                            Projectile.NewProjectile(projectile.Center.X - vector88.X, projectile.Center.Y - vector88.Y, vector88.X, vector88.Y, projectile.type, projectile.damage, projectile.knockBack, projectile.owner, vector88.ToRotation() + 1000f, projectile.ai[1]);
+                            return;
+                        }
+                    }
                 }
             }
         }
-
     }
 }

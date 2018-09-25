@@ -52,22 +52,25 @@ namespace AAMod.NPCs.Bosses.Zero
             npc.localAI[0] = reader.ReadInt16();
         }
 
-        public override void AI()
+        public override void HitEffect(int hitDirection, double damage)
         {
-            bool flag = (npc.lifeMax / 2) >= npc.life;
+            bool flag = (npc.life <= 0 || (!npc.active && NPC.AnyNPCs(mod.NPCType<Zero>())));
             if (flag && Main.netMode != 1)
             {
                 int ind = NPC.NewNPC((int)(npc.position.X + (double)(npc.width / 2)), (int)npc.position.Y + npc.height / 2, mod.NPCType("TeslaHand"), npc.whoAmI, -1.5f, npc.ai[1], 0f, 0f, byte.MaxValue);
-                Main.npc[ind].life = npc.life;
+                Main.npc[ind].life = 1;
                 Main.npc[ind].rotation = npc.rotation;
                 Main.npc[ind].velocity = npc.velocity;
                 Main.npc[ind].netUpdate = true;
                 Main.npc[(int)npc.ai[1]].ai[3]++;
                 Main.npc[(int)npc.ai[1]].netUpdate = true;
             }
+        }
 
+        public override void AI()
+        {
             npc.spriteDirection = -(int)npc.ai[0];
-            if (!Main.npc[(int)npc.ai[1]].active || Main.npc[(int)npc.ai[1]].aiStyle != 32)
+            if (!Main.npc[(int)npc.ai[1]].active)
             {
                 npc.ai[2] += 10f;
                 if (npc.ai[2] > 50f || Main.netMode != 2)
@@ -206,7 +209,7 @@ namespace AAMod.NPCs.Bosses.Zero
                     {
                         npc.localAI[0] = 0f;
                         float num479 = 12f;
-                        int num480 = 0;
+                        int num480 = npc.damage;
                         int num481 = mod.ProjectileType("VoidStarP");
                         num478 = num479 / num478;
                         num476 = -num476 * num478;
@@ -283,7 +286,7 @@ namespace AAMod.NPCs.Bosses.Zero
                     {
                         npc.localAI[0] = 0f;
                         float num485 = 10f;
-                        int num486 = 0;
+                        int num486 = npc.damage;
                         int num487 = mod.ProjectileType("VoidStarP");
                         num484 = num485 / num484;
                         num482 *= num484;
