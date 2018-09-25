@@ -18,14 +18,14 @@ namespace AAMod.Items.Boss.Zero
 
         public override void SetDefaults()
         {
-            item.useStyle = 5;
-            item.useAnimation = 5;
+            item.useStyle = 7;
+            item.useAnimation = 7;
             item.useTime = 5;
             item.shootSpeed = 16f;
             item.knockBack = 0f;
             item.width = 48;
             item.height = 26;
-            item.damage = 240;
+            item.damage = 150;
             item.UseSound = SoundID.Item12;
             item.shoot = mod.ProjectileType("RealityLaser");
             item.rare = 10;
