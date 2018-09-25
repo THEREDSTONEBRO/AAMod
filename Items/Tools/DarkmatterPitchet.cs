@@ -20,6 +20,7 @@ namespace AAMod.Items.Tools
             item.rare = 11;
 		    item.pick = 235;
             item.axe = 200;
+            item.tileBoost += 4;
 
             item.damage = 60;
             item.knockBack = 4;

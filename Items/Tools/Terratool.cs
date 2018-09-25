@@ -23,6 +23,7 @@ namespace AAMod.Items.Tools
             item.useAnimation = 20;
             item.axe = 0;
             item.pick = 0;
+            item.tileBoost += 20;
             item.hammer = 0;
             item.useStyle = 1;
             item.knockBack = 3;

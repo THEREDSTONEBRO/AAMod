@@ -18,7 +18,8 @@ namespace AAMod.Items.Tools
 			item.melee = true;
 			item.width = 40;
 			item.height = 40;
-			item.useTime = 13;
+            item.tileBoost += 1;
+            item.useTime = 13;
 			item.useAnimation = 22;
 			item.pick = 200;
 			item.useStyle = 1;
