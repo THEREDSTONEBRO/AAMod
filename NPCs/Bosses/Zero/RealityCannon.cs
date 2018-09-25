@@ -174,7 +174,7 @@ namespace AAMod.NPCs.Bosses.Zero
                     return;
                 npc.localAI[0] = 0.0f;
                 float num4 = 8f;
-                int Damage = 25;
+                int Damage = npc.damage;
                 int Type = 100;
                 float num5 = num4 / num3;
                 float num6 = num1 * num5;
@@ -240,7 +240,7 @@ namespace AAMod.NPCs.Bosses.Zero
                     return;
                 npc.localAI[0] = 0.0f;
                 float num9 = 10f;
-                int Damage = 25;
+                int Damage = npc.damage;
                 int Type = 100;
                 float num10 = num9 / num8;
                 float num11 = num6 * num10;
