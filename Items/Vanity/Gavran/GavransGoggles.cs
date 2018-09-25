@@ -12,7 +12,7 @@ namespace AAMod.Items.Vanity.Gavran
 		public override void SetStaticDefaults()
         {
             base.SetStaticDefaults();
-            DisplayName.SetDefault("Hallam's Dapper Top Hat");
+            DisplayName.SetDefault("Gavran's Sexy Goggles");
             Tooltip.SetDefault(
 @"'Great for impersonating Ancients Awakened Devs!'");
 		}

@@ -30,15 +30,15 @@ namespace AAMod.Items.Blocks
             item.createTile = mod.TileType("ChaosCrucible");
         }
         public override void ModifyTooltips(List<TooltipLine> list)
-    {
-        foreach (TooltipLine line2 in list)
         {
-            if (line2.mod == "Terraria" && line2.Name == "ItemName")
+            foreach (TooltipLine line2 in list)
             {
-                line2.overrideColor = new Color(Main.DiscoR, 0, Main.DiscoB);
+                if (line2.mod == "Terraria" && line2.Name == "ItemName")
+                {
+                    line2.overrideColor = new Color(Main.DiscoR, 0, Main.DiscoB);
+                }
             }
         }
-    }
 
     public override void AddRecipes()
         {

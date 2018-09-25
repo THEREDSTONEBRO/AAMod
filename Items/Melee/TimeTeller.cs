@@ -4,6 +4,7 @@ using Terraria.ID;
 using System.Diagnostics;
 using Microsoft.Xna.Framework;
 using Terraria.ModLoader;
+using System.Collections.Generic;
 
 namespace AAMod.Items.Melee
 {
@@ -22,7 +23,6 @@ namespace AAMod.Items.Melee
             item.useStyle = 5;
             item.useAnimation = 18;
             item.useTime = 18;
-            item.expert = true;
             item.shoot = mod.ProjectileType("TimeTeller");
         }
 
@@ -37,6 +37,17 @@ namespace AAMod.Items.Melee
             Tooltip.SetDefault("Slows time for enemies hit \n" +
                 "Time to Die \n" +
                 "-Dallin");
+        }
+
+        public override void ModifyTooltips(List<TooltipLine> list)
+        {
+            foreach (TooltipLine line2 in list)
+            {
+                if (line2.mod == "Terraria" && line2.Name == "ItemName")
+                {
+                    line2.overrideColor = new Color(181, 38, 38);
+                }
+            }
         }
 
         public override void UpdateInventory(Player player)

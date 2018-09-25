@@ -15,10 +15,19 @@ namespace AAMod.Items.Vanity.Glitched
 		{
 			base.SetStaticDefaults();
 			DisplayName.SetDefault("Gl17cH's Breastplate");
-			Tooltip.SetDefault("Great for impersonating AA devs!");
+			Tooltip.SetDefault("'Great for impersonating AA devs!'");
 		}
-
-		public override void SetDefaults()
+        public override void ModifyTooltips(List<TooltipLine> list)
+        {
+            foreach (TooltipLine line2 in list)
+            {
+                if (line2.mod == "Terraria" && line2.Name == "ItemName")
+                {
+                    line2.overrideColor = new Color(247, 0, 42);
+                }
+            }
+        }
+        public override void SetDefaults()
 		{
 			item.width = 26;
 			item.height = 20;

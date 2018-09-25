@@ -13,7 +13,7 @@ namespace AAMod.Items.Vanity.Glitched
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Gl17cH's Helmet");
-			Tooltip.SetDefault("Great for impersonating AA devs!");
+			Tooltip.SetDefault("'Great for impersonating AA devs!'");
 		}
 
 		public override void SetDefaults()
@@ -23,8 +23,18 @@ namespace AAMod.Items.Vanity.Glitched
 			item.rare = 10;
 			item.vanity = true;
 		}
+        public override void ModifyTooltips(List<TooltipLine> list)
+        {
+            foreach (TooltipLine line2 in list)
+            {
+                if (line2.mod == "Terraria" && line2.Name == "ItemName")
+                {
+                    line2.overrideColor = new Color(247, 0, 42);
+                }
+            }
+        }
 
-		public override bool IsArmorSet(Item head, Item body, Item legs)
+        public override bool IsArmorSet(Item head, Item body, Item legs)
 		{
 			return body.type == mod.ItemType("GlitchesBreastplate") && legs.type == mod.ItemType("GlitchesGreaves");
 		}

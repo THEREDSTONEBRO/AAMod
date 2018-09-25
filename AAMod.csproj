@@ -102,6 +102,9 @@
     <Compile Include="Dusts\RazewoodDust.cs" />
     <Compile Include="Dusts\ZeroDust.cs" />
     <Compile Include="Items\Accessories\DemonGauntet.cs" />
+    <Compile Include="Items\Boss\Equinox\Equinox.cs" />
+    <Compile Include="Items\Boss\Equinox\DarkVoid.cs.cs" />
+    <Compile Include="Items\Boss\Equinox\RadiantStar.cs" />
     <Compile Include="Items\Accessories\DwarvenGauntlet.cs" />
     <Compile Include="Items\Accessories\InfinityGauntlet.cs" />
     <Compile Include="Items\Accessories\MindStone.cs" />
@@ -233,6 +236,8 @@
     <Compile Include="Items\Blocks\Zero2Box.cs" />
     <Compile Include="Items\Blocks\ZeroBox.cs" />
     <Compile Include="Items\Blocks\ZeroTrophy.cs" />
+    <Compile Include="Items\Boss\Equinox\DBBag.cs" />
+    <Compile Include="Items\Boss\Equinox\NCBag.cs" />
     <Compile Include="Items\Boss\Grips\BulwarkOfChaos.cs" />
     <Compile Include="Items\Boss\Grips\ClawOfChaos.cs" />
     <Compile Include="Items\Boss\Grips\GripBag.cs" />
@@ -412,6 +417,9 @@
     <Compile Include="Items\Vanity\Alphakip\FishDiverBoots.cs" />
     <Compile Include="Items\Vanity\Alphakip\FishDiverJacket.cs" />
     <Compile Include="Items\Vanity\Alphakip\FishDiverMask.cs" />
+    <Compile Include="Items\Vanity\Chinzilla\ChinMask.cs" />
+    <Compile Include="Items\Vanity\Chinzilla\ChinPants.cs" />
+    <Compile Include="Items\Vanity\Chinzilla\ChinSuit.cs" />
     <Compile Include="Items\Vanity\Gavran\GavransChest.cs" />
     <Compile Include="Items\Vanity\Gavran\GavransGoggles.cs" />
     <Compile Include="Items\Vanity\Gavran\GavransTrunks.cs" />
@@ -933,10 +941,12 @@
     <Content Include="Items\Boss\Broodmother\DragonCape.png" />
     <Content Include="Items\Boss\Broodmother\DragonScale.png" />
     <Content Include="Items\Boss\Equinox\DarkVoid.png" />
+    <Content Include="Items\Boss\Equinox\DarkVoid_Arms.png" />
     <Content Include="Items\Boss\Equinox\DBBag.png" />
     <Content Include="Items\Boss\Equinox\Equinox.png" />
     <Content Include="Items\Boss\Equinox\NCBag.png" />
     <Content Include="Items\Boss\Equinox\RadiantStar.png" />
+    <Content Include="Items\Boss\Equinox\RadiantStar_Arms.png" />
     <Content Include="Items\Boss\Grips\BulwarkOfChaos.png" />
     <Content Include="Items\Boss\Grips\BulwarkOfChaos_Shield.png" />
     <Content Include="Items\Boss\Grips\ClawOfChaos.png" />
@@ -1265,6 +1275,14 @@
     <Content Include="Items\Vanity\Alphakip\FishDiverJacket_Female.png" />
     <Content Include="Items\Vanity\Alphakip\FishDiverMask.png" />
     <Content Include="Items\Vanity\Alphakip\FishDiverMask_Head.png" />
+    <Content Include="Items\Vanity\Chinzilla\ChinMask.png" />
+    <Content Include="Items\Vanity\Chinzilla\ChinMask_Head.png" />
+    <Content Include="Items\Vanity\Chinzilla\ChinPants.png" />
+    <Content Include="Items\Vanity\Chinzilla\ChinPants_Legs.png" />
+    <Content Include="Items\Vanity\Chinzilla\ChinSuit.png" />
+    <Content Include="Items\Vanity\Chinzilla\ChinSuit_Arms.png" />
+    <Content Include="Items\Vanity\Chinzilla\ChinSuit_Body.png" />
+    <Content Include="Items\Vanity\Chinzilla\ChinSuit_Female.png" />
     <Content Include="Items\Vanity\Gavran\GavransChest.png" />
     <Content Include="Items\Vanity\Gavran\GavransChest_Arms.png" />
     <Content Include="Items\Vanity\Gavran\GavransChest_Body.png" />
@@ -1315,6 +1333,7 @@
     <Content Include="NPCs\Bosses\Akuma\AkumaBody2.png" />
     <Content Include="NPCs\Bosses\Akuma\AkumaHead.png" />
     <Content Include="NPCs\Bosses\Akuma\AkumaTail.png" />
+    <Content Include="NPCs\Bosses\Broodmother\Broodmother.png" />
     <Content Include="NPCs\Bosses\Daybringer\Daybringer.png" />
     <Content Include="NPCs\Bosses\Daybringer\Daybringer_Glow.png" />
     <Content Include="NPCs\Bosses\Daybringer\Daybringer_Head_Boss.png" />
@@ -1353,6 +1372,7 @@
     <Content Include="NPCs\Bosses\Unused\Decay.png" />
     <Content Include="NPCs\Bosses\Unused\MrBonesRevenge.png" />
     <Content Include="NPCs\Bosses\Unused\Soul of Cthulhu.png" />
+    <Content Include="NPCs\Bosses\Zero\DarkShock.png" />
     <Content Include="NPCs\Bosses\Zero\RealityCannon.png" />
     <Content Include="NPCs\Bosses\Zero\RealityCannon_Glow.png" />
     <Content Include="NPCs\Bosses\Zero\RiftShredder.png" />

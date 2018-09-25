@@ -1,4 +1,5 @@
 using Microsoft.Xna.Framework;
+using System.Collections.Generic;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -37,8 +38,17 @@ I thought the sky was purple
 			item.buffType = mod.BuffType("EnderMinionBuff");	//The buff added to player after used the item
             item.buffTime = 18000;
 		}
-		
-		public override bool AltFunctionUse(Player player)
+        public override void ModifyTooltips(List<TooltipLine> list)
+        {
+            foreach (TooltipLine line2 in list)
+            {
+                if (line2.mod == "Terraria" && line2.Name == "ItemName")
+                {
+                    line2.overrideColor = new Color(5, 158, 130);
+                }
+            }
+        }
+        public override bool AltFunctionUse(Player player)
 		{
 			return true;
 		}

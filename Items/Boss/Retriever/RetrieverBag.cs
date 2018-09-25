@@ -60,6 +60,12 @@ namespace AAMod.Items.Boss.Retriever
                         player.QuickSpawnItem(mod.ItemType("GlitchesBreastplate"));
                         player.QuickSpawnItem(mod.ItemType("GlitchesGreaves"));
                     }
+                    if (choice == 4)
+                    {
+                        player.QuickSpawnItem(mod.ItemType("GavransGoggles"));
+                        player.QuickSpawnItem(mod.ItemType("GavransChest"));
+                        player.QuickSpawnItem(mod.ItemType("GavransChest"));
+                    }
                 }
             }
             player.QuickSpawnItem(mod.ItemType("Fulgurite"), Main.rand.Next(40, 76));

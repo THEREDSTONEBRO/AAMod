@@ -10,16 +10,17 @@ namespace AAMod.Items.Melee
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Amphibian Longsword");
-			Tooltip.SetDefault("So I heard you like getting hosed. -Alphakip");
+			DisplayName.SetDefault("Amphibious Longsword");
+			Tooltip.SetDefault(@"So I heard you like getting hosed. 
+-Alphakip");
 		}
 		public override void SetDefaults()
 		{
-			item.damage = 230;
+			item.damage = 290;
 			item.melee = true;
 			item.width = 64;
 			item.height = 64;
-			item.useTime = 20;
+			item.useTime = 16;
 			item.useAnimation = 20;
 			item.useStyle = 1;
 			item.knockBack = 7;

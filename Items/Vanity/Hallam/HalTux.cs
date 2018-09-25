@@ -1,6 +1,8 @@
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Microsoft.Xna.Framework;
+using System.Collections.Generic;
 
 namespace AAMod.Items.Vanity.Hallam
 {
@@ -14,6 +16,16 @@ namespace AAMod.Items.Vanity.Hallam
             Tooltip.SetDefault(
 @"This tux was woven with pure class
 'Great for impersonating Ancients Awakened Devs!'");
+        }
+        public override void ModifyTooltips(List<TooltipLine> list)
+        {
+            foreach (TooltipLine line2 in list)
+            {
+                if (line2.mod == "Terraria" && line2.Name == "ItemName")
+                {
+                    line2.overrideColor = new Color(255, 8, 251);
+                }
+            }
         }
         public override void SetDefaults()
         {

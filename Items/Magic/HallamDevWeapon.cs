@@ -1,4 +1,5 @@
 using Microsoft.Xna.Framework;
+using System.Collections.Generic;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -30,8 +31,7 @@ Shoots Rainbow Bolts that move in the direction of your cursor
 			item.noMelee = true; //so the item's animation doesn't do damage
 			item.knockBack = 3;
 			item.value = Item.sellPrice(1, 0, 0, 0);
-			item.rare = 9;
-            item.expert = true;
+			item.rare = 11;
 			item.UseSound = SoundID.Item44;
 			item.autoReuse = false;
 			item.shoot = mod.ProjectileType("RainbowCatPro");
@@ -42,7 +42,16 @@ Shoots Rainbow Bolts that move in the direction of your cursor
             position = Main.MouseWorld;
             return true;
         }
-
+        public override void ModifyTooltips(List<TooltipLine> list)
+        {
+            foreach (TooltipLine line2 in list)
+            {
+                if (line2.mod == "Terraria" && line2.Name == "ItemName")
+                {
+                    line2.overrideColor = new Color(255, 8, 251);
+                }
+            }
+        }
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
