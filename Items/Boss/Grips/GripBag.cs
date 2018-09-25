@@ -69,6 +69,12 @@ namespace AAMod.Items.Boss.Grips
                         player.QuickSpawnItem(mod.ItemType("GavransChest"));
                         player.QuickSpawnItem(mod.ItemType("GavransChest"));
                     }
+                    if (choice == 5)
+                    {
+                        player.QuickSpawnItem(mod.ItemType("ChinMask"));
+                        player.QuickSpawnItem(mod.ItemType("ChinSuit"));
+                        player.QuickSpawnItem(mod.ItemType("ChinPants"));
+                    }
                 }
             }
             player.QuickSpawnItem(mod.ItemType("Abyssium"), Main.rand.Next(25, 56));

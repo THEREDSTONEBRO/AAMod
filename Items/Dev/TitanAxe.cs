@@ -1,9 +1,10 @@
 using Microsoft.Xna.Framework;
+using System.Collections.Generic;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AAMod.Items.Melee
+namespace AAMod.Items.Dev
 {
 	public class TitanAxe : ModItem
 	{
@@ -24,35 +25,23 @@ namespace AAMod.Items.Melee
 			item.useStyle = 1;
 			item.knockBack = 6;
 			item.value = 100000;
-			item.rare = 2;
+			item.rare = 11;
 			item.UseSound = SoundID.Item1;
 			item.autoReuse = true;
-            item.expert = true;
 		}
 
-        public override void AddRecipes()
+        public override void ModifyTooltips(List<TooltipLine> list)
         {
+            foreach (TooltipLine line2 in list)
             {
-                ModRecipe recipe = new ModRecipe(mod);
-                recipe.AddIngredient(ItemID.PlatinumAxe, 1);
-                recipe.AddIngredient(ItemID.LightDisc, 5);
-                recipe.AddIngredient(ItemID.LunarBar, 20);
-                recipe.AddTile(TileID.LunarCraftingStation);
-                recipe.SetResult(this);
-                recipe.AddRecipe();
-            }
-            {
-                ModRecipe recipe = new ModRecipe(mod);
-                recipe.AddIngredient(ItemID.GoldAxe, 1);
-                recipe.AddIngredient(ItemID.LightDisc, 5);
-                recipe.AddIngredient(ItemID.LunarBar, 20);
-                recipe.AddTile(TileID.LunarCraftingStation);
-                recipe.SetResult(this);
-                recipe.AddRecipe();
+                if (line2.mod == "Terraria" && line2.Name == "ItemName")
+                {
+                    line2.overrideColor = new Color(40, 255, 40);
+                }
             }
         }
 
-		public override bool AltFunctionUse(Player player)
+        public override bool AltFunctionUse(Player player)
 		{
 			return true;
 		}

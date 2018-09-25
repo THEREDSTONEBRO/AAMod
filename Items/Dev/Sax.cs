@@ -2,7 +2,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AAMod.Items.Magic
+namespace AAMod.Items.Dev
 {
 	public class Sax : ModItem
 	{
@@ -32,18 +32,6 @@ namespace AAMod.Items.Magic
 			item.autoReuse = true;
 			item.shoot = mod.ProjectileType("Number1");
 			item.shootSpeed = 7f;
-		}
-
-        public override void AddRecipes()
-		{
-			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(null, "YairsGildedKazoo", 1);
-            recipe.AddIngredient(ItemID.MagicalHarp, 1);
-            recipe.AddIngredient(null, "RadiumBar", 5);
-            recipe.AddRecipeGroup("AAMod:Gold", 32);
-            recipe.AddTile(null, "QuantumFusionAccelerator");
-			recipe.SetResult(this);
-			recipe.AddRecipe();
 		}
 	}
 }

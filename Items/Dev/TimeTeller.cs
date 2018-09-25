@@ -6,7 +6,7 @@ using Microsoft.Xna.Framework;
 using Terraria.ModLoader;
 using System.Collections.Generic;
 
-namespace AAMod.Items.Melee
+namespace AAMod.Items.Dev
 {
     public class TimeTeller : ModItem
     {
@@ -54,28 +54,6 @@ namespace AAMod.Items.Melee
         {
             if (player.accWatch < 3)
                 player.accWatch = 3;
-        }
-
-        public override void AddRecipes()
-        {
-            {
-                ModRecipe recipe = new ModRecipe(mod);
-                recipe.AddIngredient(ItemID.Terrarian, 1);
-                recipe.AddIngredient(ItemID.LunarBar, 20);
-                recipe.AddIngredient(ItemID.GoldWatch, 1);
-                recipe.AddTile(TileID.Anvils);
-                recipe.SetResult(this);
-                recipe.AddRecipe();
-            }
-            {
-                ModRecipe recipe = new ModRecipe(mod);
-                recipe.AddIngredient(ItemID.Terrarian, 1);
-                recipe.AddIngredient(ItemID.LunarBar, 20);
-                recipe.AddIngredient(ItemID.PlatinumWatch, 1);
-                recipe.AddTile(TileID.Anvils);
-                recipe.SetResult(this);
-                recipe.AddRecipe();
-            }
         }
 
     }

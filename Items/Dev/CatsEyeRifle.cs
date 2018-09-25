@@ -8,7 +8,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Terraria.Audio;
 using System.Collections.Generic;
 
-namespace AAMod.Items.Ranged
+namespace AAMod.Items.Dev
 {
     public class CatsEyeRifle : ModItem
     {
@@ -69,17 +69,6 @@ Doesn't require ammo
                 SpriteEffects.None,
                 0f
             );
-        }
-        public override void AddRecipes()
-        {
-            ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.SniperRifle, 1);
-            recipe.AddIngredient(ItemID.OnyxBlaster, 1);
-            recipe.AddIngredient(ItemID.LunarBar, 12);
-            recipe.AddIngredient(ItemID.DarkShard, 2);
-            recipe.AddTile(TileID.LunarCraftingStation);
-            recipe.SetResult(this);
-            recipe.AddRecipe();
         }
         public override Vector2? HoldoutOffset()
         {

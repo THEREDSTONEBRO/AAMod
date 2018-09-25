@@ -4,7 +4,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AAMod.Items.Summoning
+namespace AAMod.Items.Dev
 {
 	//imported from my tAPI mod because I'm lazy
 	public class EnderStaff : ModItem
@@ -66,16 +66,5 @@ I thought the sky was purple
 			}
 			return base.UseItem(player);
 		}
-
-        public override void AddRecipes()
-        {
-            ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.DeadlySphereStaff, 1);
-            recipe.AddIngredient(ItemID.LunarBar, 30);
-            recipe.AddIngredient(mod, "RadiumBar", 10);
-            recipe.AddTile(TileID.DemonAltar);
-            recipe.SetResult(this);
-            recipe.AddRecipe();
-        }
     }
 }

@@ -9,7 +9,7 @@ namespace AAMod.NPCs.Bosses.Daybringer
 {
     public class Sunbeam : ModProjectile
     {
-    	public int splitTimer = 30;
+    	public int splitTimer = 100;
     	
     	public override void SetStaticDefaults()
 		{
@@ -45,7 +45,7 @@ namespace AAMod.NPCs.Bosses.Daybringer
 	            }
 	            projectile.Kill();
         	}
-        	Lighting.AddLight(projectile.Center, ((255 - projectile.alpha) * 0.5f) / 255f, ((255 - projectile.alpha) * 0.05f) / 255f, ((255 - projectile.alpha) * 0.05f) / 255f);
+        	Lighting.AddLight(projectile.Center, ((255 - projectile.alpha) * 0.5f) / 255f, ((255 - projectile.alpha) * 0.5f) / 255f, ((255 - projectile.alpha) * 0.05f) / 255f);
         	projectile.velocity.X *= 1.05f;
         	projectile.velocity.Y *= 1.05f;
         	projectile.rotation = (float)Math.Atan2(projectile.velocity.Y, projectile.velocity.X) + 1.57f;
