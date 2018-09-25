@@ -6,7 +6,7 @@ using Terraria.Graphics.Shaders;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AAMod.Items.Melee   //where is located
+namespace AAMod.Items.Dev   //where is located
 {
     public class Ryugen : ModItem
     {
@@ -31,17 +31,6 @@ namespace AAMod.Items.Melee   //where is located
             item.autoReuse = true;   //if it's capable of autoswing.
             item.useTurn = true;
             item.shoot = mod.ProjectileType("Ryugen");
-        }
-        public override void AddRecipes()  //How to craft this sword
-        {
-            ModRecipe recipe = new ModRecipe(mod);      
-            recipe.AddIngredient(ItemID.Arkhalis, 1);   //you need 1 DirtBlock
-            recipe.AddIngredient(ItemID.Katana, 1);
-            recipe.AddIngredient(ItemID.LunarBar, 20);
-            recipe.AddTile(TileID.LunarCraftingStation);   //at work bench
-            recipe.SetResult(this);
-            recipe.AddRecipe();
-
         }
     }
 }

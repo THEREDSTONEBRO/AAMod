@@ -4,7 +4,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AAMod.Items.Magic
+namespace AAMod.Items.Dev
 {
 	public class SkrallStaff : ModItem
 	{
@@ -81,16 +81,5 @@ It's the stick that's magic. The diamond is just for show
             }
             return base.CanUseItem(player);
         }
-
-        public override void AddRecipes()
-		{
-			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(ItemID.WandofSparking, 1);
-            recipe.AddIngredient(ItemID.DD2ElderCrystal, 1);
-            recipe.AddIngredient(ItemID.LunarBar, 15);
-            recipe.AddTile(TileID.LunarCraftingStation);
-			recipe.SetResult(this);
-			recipe.AddRecipe();
-		}
 	}
 }

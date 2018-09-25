@@ -1,3 +1,4 @@
+using System;
 using Terraria;
 using Terraria.ModLoader;
 
@@ -33,15 +34,16 @@ namespace AAMod.Items.Boss.Zero
             {
                 player.QuickSpawnItem(mod.ItemType("ZeroMask"));
             }
-            if (Main.rand.Next(2) == 0)
+            if (Main.rand.NextFloat() < 0.5f)
             {
-                int choice = Main.rand.Next(7);
+                int choice = Main.rand.Next(13);
                 {
                     if (choice == 0)
                     {
                         player.QuickSpawnItem(mod.ItemType("HalHat"));
                         player.QuickSpawnItem(mod.ItemType("HalTux"));
                         player.QuickSpawnItem(mod.ItemType("HalTrousers"));
+                        player.QuickSpawnItem(mod.ItemType("HallamDevWeapon"));
                     }
                     else if (choice == 1)
                     {
@@ -49,22 +51,59 @@ namespace AAMod.Items.Boss.Zero
                         player.QuickSpawnItem(mod.ItemType("FishDiverJacket"));
                         player.QuickSpawnItem(mod.ItemType("FishDiverBoots"));
                         player.QuickSpawnItem(mod.ItemType("AquamancerWings"));
+                        player.QuickSpawnItem(mod.ItemType("AmphibianLongsword"));
                     }
                     else if (choice == 2)
                     {
                         player.QuickSpawnItem(mod.ItemType("N1"));
+                        player.QuickSpawnItem(mod.ItemType("Sax"));
                     }
                     if (choice == 3)
                     {
                         player.QuickSpawnItem(mod.ItemType("GlitchesHat"));
                         player.QuickSpawnItem(mod.ItemType("GlitchesBreastplate"));
                         player.QuickSpawnItem(mod.ItemType("GlitchesGreaves"));
+                        player.QuickSpawnItem(mod.ItemType("BinaryBlade"));
                     }
                     if (choice == 4)
                     {
                         player.QuickSpawnItem(mod.ItemType("GavransGoggles"));
                         player.QuickSpawnItem(mod.ItemType("GavransChest"));
                         player.QuickSpawnItem(mod.ItemType("GavransChest"));
+                    }
+                    if (choice == 5)
+                    {
+                        player.QuickSpawnItem(mod.ItemType("ChinMask"));
+                        player.QuickSpawnItem(mod.ItemType("ChinSuit"));
+                        player.QuickSpawnItem(mod.ItemType("ChinPants"));
+                    }
+                    if (choice == 6)
+                    {
+                        player.QuickSpawnItem(mod.ItemType("SkrallStaff"));
+                    }
+                    if (choice == 7)
+                    {
+                        player.QuickSpawnItem(mod.ItemType("Ryugen"));
+                    }
+                    if (choice == 8)
+                    {
+                        player.QuickSpawnItem(mod.ItemType("TimeTeller"));
+                    }
+                    if (choice == 9)
+                    {
+                        player.QuickSpawnItem(mod.ItemType("TitanAxe"));
+                    }
+                    if (choice == 10)
+                    {
+                        player.QuickSpawnItem(mod.ItemType("EnderStaff"));
+                    }
+                    if (choice == 11)
+                    {
+                        player.QuickSpawnItem(mod.ItemType("CatsEyeRifle"));
+                    }
+                    if (choice == 12)
+                    {
+                        player.QuickSpawnItem(mod.ItemType("DuckstepGun"));
                     }
                 }
             }

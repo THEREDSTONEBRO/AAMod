@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
 using System.Collections.Generic;
 
-namespace AAMod.Items.Melee
+namespace AAMod.Items.Dev
 {
     public class AmphibianLongsword : ModItem
 	{
@@ -42,19 +42,8 @@ namespace AAMod.Items.Melee
                 }
             }
         }
-
-        public override void AddRecipes()
-		{
-			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(ItemID.LunarBar, 10);
-			recipe.AddIngredient(ItemID.Meowmere, 1);
-			recipe.AddIngredient(null, "AbyssiumBar", 20);
-			recipe.AddTile(TileID.LunarCraftingStation);
-			recipe.SetResult(this);
-			recipe.AddRecipe();
-		}
-		
-		 public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)
+        
+		public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)
         {
             target.AddBuff(BuffID.Wet, 1000);
         }
