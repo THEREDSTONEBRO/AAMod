@@ -28,7 +28,7 @@ namespace AAMod.NPCs.Bosses.Zero
             npc.noGravity = true;
             npc.noTileCollide = true;
             npc.knockBackResist = 0.0f;
-            animationType = NPCID.PrimeVice;
+            animationType = NPCID.PrimeSaw;
             npc.buffImmune[20] = true;
             npc.buffImmune[24] = true;
             npc.lavaImmune = true;
