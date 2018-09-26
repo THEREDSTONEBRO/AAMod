@@ -8,9 +8,13 @@ namespace AAMod.Items.Melee
 {
     public class AncientPoker : ModItem
     {
+        public override void SetStaticDefaults()
+		{
+		DisplayName.SetDefault("Aqua Lance");
+		Tooltip.SetDefault("");
+		}
         public override void SetDefaults()
         {
-
             item.damage = 31;
             item.melee = true;
             item.width = 66;
@@ -34,12 +38,6 @@ namespace AAMod.Items.Melee
 		public override bool CanUseItem(Player player)
 		{
 			return player.ownedProjectileCounts[item.shoot] < 1; // This is to ensure the spear doesn't bug out when using autoReuse = true
-		}
-
-		public override void SetStaticDefaults()
-		{
-		DisplayName.SetDefault("Aqua Lance");
-		Tooltip.SetDefault("");
 		}
     }
 }

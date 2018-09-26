@@ -52,7 +52,7 @@ Doesn't require ammo
         }
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
         {
-            Texture2D texture = mod.GetTexture("Items/Melee/CatsEyeRifle_Glow");
+            Texture2D texture = mod.GetTexture("Items/Dev/CatsEyeRifle_Glow");
             spriteBatch.Draw
             (
                 texture,

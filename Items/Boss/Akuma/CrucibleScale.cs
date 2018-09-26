@@ -6,17 +6,15 @@ using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AAMod.Items.Boss.Zero
+namespace AAMod.Items.Boss.Akuma
 {
-    public class UnstableSingularity : ModItem
+    public class CrucibleScale : ModItem
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Unstable Singularity");
-            Tooltip.SetDefault("Barely stable enough to hold");
-            // ticksperframe, frameCount
-            Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(4, 18));
-            ItemID.Sets.ItemNoGravity[item.type] = true;
+            DisplayName.SetDefault("Crucible Scale");
+            Tooltip.SetDefault("The fury of the draconian sun eminates from this scale");
+            Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(4, 6));
         }
 
         public override void ModifyTooltips(List<TooltipLine> list)
@@ -25,7 +23,7 @@ namespace AAMod.Items.Boss.Zero
             {
                 if (line2.mod == "Terraria" && line2.Name == "ItemName")
                 {
-                    line2.overrideColor = new Color(120, 0, 30);
+                    line2.overrideColor = new Color(107, 27, 16);
                 }
             }
         }
@@ -33,13 +31,11 @@ namespace AAMod.Items.Boss.Zero
         // TODO -- Velocity Y smaller, post NewItem?
         public override void SetDefaults()
         {
-            Item refItem = new Item();
-            refItem.SetDefaults(ItemID.SoulofSight);
-            item.width = 22;
-            item.height = 24;
+            item.width = 32;
+            item.height = 34;
             item.maxStack = 999;
             item.value = 10000;
-            item.rare = 10;
+            item.rare = 11;
         }
 
         // The following 2 methods are purely to show off these 2 hooks. Don't use them in your own code.
@@ -47,7 +43,7 @@ namespace AAMod.Items.Boss.Zero
 
         public override void PostUpdate()
         {
-            Lighting.AddLight(item.Center, Color.DarkRed.ToVector3() * 0.55f * Main.essScale);
+            Lighting.AddLight(item.Center, Color.OrangeRed.ToVector3() * 0.55f * Main.essScale);
         }
     }
 }
