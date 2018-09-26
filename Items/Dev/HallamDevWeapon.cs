@@ -4,7 +4,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AAMod.Items.Magic
+namespace AAMod.Items.Dev
 {
 	public class HallamDevWeapon : ModItem
 	{
@@ -51,17 +51,6 @@ Shoots Rainbow Bolts that move in the direction of your cursor
                     line2.overrideColor = new Color(255, 8, 251);
                 }
             }
-        }
-        public override void AddRecipes()
-        {
-            ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.Meowmere, 1);
-            recipe.AddIngredient(ItemID.MoonlordTurretStaff, 1);
-            recipe.AddIngredient(ItemID.LastPrism, 1);
-            recipe.AddIngredient(ItemID.LunarBar, 20);
-            recipe.AddTile(TileID.LunarCraftingStation);
-            recipe.SetResult(this);
-            recipe.AddRecipe();
         }
     }
 }

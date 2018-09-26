@@ -66,6 +66,12 @@ namespace AAMod.Items.Boss.Retriever
                         player.QuickSpawnItem(mod.ItemType("GavransChest"));
                         player.QuickSpawnItem(mod.ItemType("GavransChest"));
                     }
+                    if (choice == 5)
+                    {
+                        player.QuickSpawnItem(mod.ItemType("ChinMask"));
+                        player.QuickSpawnItem(mod.ItemType("ChinSuit"));
+                        player.QuickSpawnItem(mod.ItemType("ChinPants"));
+                    }
                 }
             }
             player.QuickSpawnItem(mod.ItemType("Fulgurite"), Main.rand.Next(40, 76));

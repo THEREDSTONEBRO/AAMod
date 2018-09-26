@@ -37,7 +37,7 @@ namespace AAMod.NPCs.Bosses.Nightcrawler
             npc.DeathSound = null;
             music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/Equinox");
             musicPriority = MusicPriority.BossHigh;
-            //bossBag = mod.ItemType("");
+            bossBag = mod.ItemType("NCBag");
         }
 
         public override void ScaleExpertStats(int numPlayers, float bossLifeScale)

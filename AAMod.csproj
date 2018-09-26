@@ -286,6 +286,7 @@
     <Compile Include="Items\Melee\Amnesia.cs" />
     <Compile Include="Items\Melee\AmphibianLongsword.cs" />
     <Compile Include="Items\Melee\AncientPoker.cs" />
+    <Compile Include="Items\Melee\BInaryBlade.cs" />
     <Compile Include="Items\Melee\BlazingDawn.cs" />
     <Compile Include="Items\Melee\Chaos.cs" />
     <Compile Include="Items\Melee\ClawOfChaosBlue.cs" />
@@ -1038,6 +1039,8 @@
     <Content Include="Items\Melee\AncientPoker.png" />
     <Content Include="Items\Melee\BackScratcher.png" />
     <Content Include="Items\Melee\BaneOfTheBunny.png" />
+    <Content Include="Items\Melee\BinaryBlade.png" />
+    <Content Include="Items\Melee\BinaryBlade_Glow.png" />
     <Content Include="Items\Melee\BlazingDawn.png" />
     <Content Include="Items\Melee\BlazingDawn_glow.png" />
     <Content Include="Items\Melee\BloodThirster.png" />

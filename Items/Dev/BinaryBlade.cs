@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 using System.Collections.Generic;//<---This
 using Microsoft.Xna.Framework.Graphics;//<---and this are used by the glowmask code.
 
-namespace AAMod.Items.Melee
+namespace AAMod.Items.Dev
 {
 	public class BinaryBlade : ModItem
 	{
@@ -22,7 +22,7 @@ namespace AAMod.Items.Melee
                 {
                     glowMasks[i] = Main.glowMaskTexture[i];
                 }
-                glowMasks[glowMasks.Length - 1] = mod.GetTexture("Items/Melee/" + GetType().Name + "_Glow");
+                glowMasks[glowMasks.Length - 1] = mod.GetTexture("Items/Dev/" + GetType().Name + "_Glow");
                 customGlowMask = (short)(glowMasks.Length - 1);
                 Main.glowMaskTexture = glowMasks;
             }
@@ -55,16 +55,6 @@ namespace AAMod.Items.Melee
 			item.autoReuse = true;
 			item.crit = 8;
 			item.glowMask = customGlowMask;
-		}
-		
-		public override void AddRecipes()
-		{
-			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(ItemID.TerraBlade, 1);
-            recipe.AddIngredient(ItemID.LunarBar, 15);
-            recipe.AddTile(TileID.LunarCraftingStation);
-			recipe.SetResult(this);
-			recipe.AddRecipe();
 		}
 	}
 }
