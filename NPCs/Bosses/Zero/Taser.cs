@@ -26,7 +26,7 @@ namespace AAMod.NPCs.Bosses.Zero
             npc.DeathSound = SoundID.NPCHit4;
             npc.lifeMax = 100000;
             npc.noGravity = true;
-            animationType = NPCID.PrimeSaw;
+            animationType = NPCID.PrimeVice;
             npc.noTileCollide = true;
             npc.knockBackResist = 0.0f;
             npc.buffImmune[20] = true;
