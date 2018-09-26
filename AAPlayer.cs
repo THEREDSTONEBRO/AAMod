@@ -16,6 +16,7 @@ namespace AAMod
     {
         //Minions
         public bool enderMinion = false;
+        public bool ChinchillaMinion = false;
         // Biome bools.
         public bool ZoneMire = false;
         public bool ZoneInferno = false;
@@ -84,6 +85,7 @@ namespace AAMod
             depthSet = false;
             fleshrendSet = false;
             enderMinion = false;
+            ChinchillaMinion = false;
             infinityOverload = false;
             tribalSet = false;
             impSet = false;
