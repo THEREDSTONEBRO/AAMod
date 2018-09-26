@@ -29,14 +29,30 @@ namespace AAMod
 
         public override void PostSetupContent()
         {
+            Mod AchievementLibs =  ModLoader.GetMod("AchievementLibs");
             Mod bossChecklist = ModLoader.GetMod("BossChecklist");
             if (bossChecklist != null)
             {
                 bossChecklist.Call("AddBossWithInfo", "Grips of Chaos", 2.00000000001f, (Func<bool>)(() => AAWorld.downedGrips), "Use a [i:" + ItemType("CuriousClaw") + "] or [i:" + ItemType("InterestingClaw") + "] at night");
-                bossChecklist.Call("AddBossWithInfo", "Retriever", 6.9999999f, (Func<bool>)(() => AAWorld.downedRetriever), "Use a [i:" + ItemType("CyberneticClaw") + "] at night");
-                bossChecklist.Call("AddBossWithInfo", "Daybringer", 14.00000000001f, (Func<bool>)(() => AAWorld.downedGrips), "Use a [i:" + ItemType("CuriousClaw") + "] or [i:" + ItemType("InterestingClaw") + "] at night");
-                bossChecklist.Call("AddBossWithInfo", "Nightcrawler", 14.00000000001f, (Func<bool>)(() => AAWorld.downedGrips), "Use a [i:" + ItemType("EquinoxWorm"));
-                bossChecklist.Call("AddBossWithInfo", "Zero", 14.000003f, (Func<bool>)(() => AAWorld.downedZero), "Use a [i:" + ItemType("ZeroTesseract") + "] in the Void");
+                //bossChecklist.Call("AddBossWithInfo", "Hydra", 3.000000001f, (Func<bool>)(() => AAWorld.downedRetriever), "Use a [i:" + ItemType("HydraChow") + "] in the Mire");
+                //bossChecklist.Call("AddBossWithInfo", "Broodmother", 3.000000002f, (Func<bool>)(() => AAWorld.downedRetriever), "Use a [i:" + ItemType("DragonBell") + "] in the Inferno");
+                bossChecklist.Call("AddBossWithInfo", "Retriever", 6.9999997f, (Func<bool>)(() => AAWorld.downedRetriever), "Use a [i:" + ItemType("CyberneticClaw") + "] at night");
+                //bossChecklist.Call("AddBossWithInfo", "Orthrus X", 6.9999998f, (Func<bool>)(() => AAWorld.downedOrthrus), "Use a [i:" + ItemType("CyberneticChow") + "] at night");
+                //bossChecklist.Call("AddBossWithInfo", "Raider Ultima", 6.9999999f, (Func<bool>)(() => AAWorld.downedRaider), "Use a [i:" + ItemType("CyberneticSignal") + "] at night");
+                bossChecklist.Call("AddBossWithInfo", "Nightcrawler & Daybringer", 14.00000000001f, (Func<bool>)(() => AAWorld.downedEquinox), "Use a [i:" + ItemType("EquinoxWorm"));
+                //bossChecklist.Call("AddBossWithInfo", "Akuma", 15.0001f, (Func<bool>)(() => AAWorld.downedAkuma), "Use a [i:" + ItemType("DaybreakSigil") + "] in the Inferno during the day");
+                //bossChecklist.Call("AddBossWithInfo", "Yamata", 15.0002f, (Func<bool>)(() => AAWorld.downedYamata), "Use a [i:" + ItemType("EventideSigil") + "] in the Mire at night");
+                if (Main.expertMode)
+                {
+                    bossChecklist.Call("AddBossWithInfo", "Zero", 16f, (Func<bool>)(() => AAWorld.downedZero), "Use a [i:" + ItemType("ZeroTesseract") + "] in the Void");
+                }
+                else
+                {
+                    bossChecklist.Call("AddBossWithInfo", "Zero", 16f, (Func<bool>)(() => AAWorld.downedZeroA), "Use a [i:" + ItemType("ZeroTesseract") + "] in the Void");
+                }
+                
+                //bossChecklist.Call("AddBossWithInfo", "Akumata", 100f, (Func<bool>)(() => AAWorld.downedAkumata), "Use a [i:" + ItemType("ChaosSigil"));
+                
                 //SlimeKing = 1f;
                 //EyeOfCthulhu = 2f;
                 //EaterOfWorlds = 3f;
@@ -51,6 +67,22 @@ namespace AAMod
                 //DukeFishron = 12f;
                 //LunaticCultist = 13f;
                 //Moonlord = 14f;
+            }
+            if (AchievementLibs != null)
+            {
+                AchievementLibs.Call("AddAchievementWithoutReward", this, "Claws of Catastrophe", "Defeat the rampaging hands of discord, the Grips of Chaos", "AAMod/Achievments/GripsA", (Func<bool>)(() => AAWorld.downedGrips));
+                //AchievementLibs.Call("AddAchievementWithoutReward", this, "Abyssal Wrath", "Defeat the 3 headed monstrosity, the Hydra", "AAMod/Achievments/HydraA", (Func<bool>)(() => AAWorld.downedHydra));
+                //AchievementLibs.Call("AddAchievementWithoutReward", this, "A Mother's Rage", "Defeat the flaming dragoness, the Broodmother", "AAMod/Achievments/BroodA", (Func<bool>)(() => AAWorld.downedBrood));
+                AchievementLibs.Call("AddAchievementWithoutReward", this, "Storming Seige", "Defeat any of the robotic replicas known as the Storm Bosses", "AAMod/Achievments/StormA", (Func<bool>)(() => AAWorld.downedStormAny));
+                //AchievementLibs.Call("AddAchievementWithoutReward", this, "Thunderous Victory", "Defeat all of the Storm Bosses, causing Fulgurite to spawn in your world", "AAMod/Achievments/StormA", (Func<bool>)(() => AAWorld.downedStormAll));
+                //AchievementLibs.Call("AddAchievementWithoutReward", this, "Trial by Fire", "Defeat the draconian sun serpent himself, Akuma", "AAMod/Achievments/AkumaA", (Func<bool>)(() => AAWorld.downedAkuma));
+                //AchievementLibs.Call("AddAchievementWithoutReward", this, "True Blazing Fury", "Defeat Akuma's true, radiant Awakened form", "AAMod/Achievments/AkumaAA", (Func<bool>)(() => AAWorld.downedAkuma));
+                //AchievementLibs.Call("AddAchievementWithoutReward", this, "Crecent of Madness", "Defeat the dread moon hydra himself, Yamata", "AAMod/Achievments/YamataA", (Func<bool>)(() => AAWorld.downedAkuma));
+                //AchievementLibs.Call("AddAchievementWithoutReward", this, "True Abyssal Wrath", "Defeat Yamata's true, deathly Awakened form", "AAMod/Achievments/YamataAA", (Func<bool>)(() => AAWorld.downedAkuma));
+                AchievementLibs.Call("AddAchievementWithoutReward", this, "Clockwork Catastrophe", "Destroy the dark doomsday automaton, Zero", "AAMod/Achievments/ZeroA", (Func<bool>)(() => AAWorld.downedZero));
+                AchievementLibs.Call("AddAchievementWithoutReward", this, "Doomsday Arrives", "Defeat Zero's true, dark Awakened form", "AAMod/Achievments/ZeroAA", (Func<bool>)(() => AAWorld.downedZeroA));
+                //AchievementLibs.Call("AddAchievementWithoutReward", this, "Unyielding Discord", "Defeat the Discordian Drake Akumata", "AAMod/Achievments/AkumataA", (Func<bool>)(() => AAWorld.downedZeroA));
+                //AchievementLibs.Call("AddAchievementWithoutReward", this, "True Unyielding Chaos", "Defeat Akumata's true, chaotic Awakened form", "AAMod/Achievments/AkumataAA", (Func<bool>)(() => AAWorld.downedZeroA));
             }
             try
             {
@@ -110,13 +142,13 @@ namespace AAMod
                 AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Akuma"), ItemType("AkumaBox"), TileType("AkumaBox"));
                 AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Yamata"), ItemType("YamataBox"), TileType("YamataBox"));
 
-                Filters.Scene["AAMod:MireSky"] = new Filter(new MireSkyData("FilterMiniTower").UseColor(0f, 0.20f, 1f).UseOpacity(0.4f), EffectPriority.VeryHigh);
+                Filters.Scene["AAMod:MireSky"] = new Filter(new MireSkyData("FilterMiniTower").UseColor(0f, 0.20f, 1f).UseOpacity(0.3f), EffectPriority.VeryHigh);
                 SkyManager.Instance["AAMod:MireSky"] = new MireSky();
                 MireSky.PlanetTexture = GetTexture("Backgrounds/Mire/MireMoon");
-                Filters.Scene["AAMod:VoidSky"] = new Filter(new VoidSkyData("FilterMiniTower").UseColor(0.15f, 0.1f, 0.1f).UseOpacity(0.2f), EffectPriority.VeryHigh);
+                Filters.Scene["AAMod:VoidSky"] = new Filter(new VoidSkyData("FilterMiniTower").UseColor(0.15f, 0.1f, 0.1f).UseOpacity(0.3f), EffectPriority.VeryHigh);
                 SkyManager.Instance["AAMod:VoidSky"] = new VoidSky();
                 VoidSky.PlanetTexture = GetTexture("Backgrounds/Void/VoidBH");
-                Filters.Scene["AAMod:InfernoSky"] = new Filter(new InfernoSkyData("FilterMiniTower").UseColor(1f, 0.20f, 0f).UseOpacity(0.4f), EffectPriority.VeryHigh);
+                Filters.Scene["AAMod:InfernoSky"] = new Filter(new InfernoSkyData("FilterMiniTower").UseColor(1f, 0.20f, 0f).UseOpacity(0.6f), EffectPriority.VeryHigh);
                 SkyManager.Instance["AAMod:InfernoSky"] = new InfernoSky();
                 InfernoSky.PlanetTexture = GetTexture("Backgrounds/Inferno/InfernoSun");
 

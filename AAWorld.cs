@@ -39,122 +39,58 @@ namespace AAMod
         public static bool Evil;
         //Boss Bools
         public static bool Ancients;
+        public static bool downedBrood;
+        public static bool downedHydra;
         public static bool downedGripRed;
         public static bool downedGripBlue;
         public static bool downedGrips;
         public static bool downedRetriever;
+        public static bool downedOrthrus;
+        public static bool downedRaider;
+        public static bool downedStormAny;
+        public static bool downedStormAll;
         public static bool downedDB;
         public static bool downedNC;
+        public static bool downedEquinox;
+        public static bool downedAkuma;
+        public static bool downedYamata;
         public static bool zeroUS;
         public static bool downedZero;
-        public static bool downedEquinox;
+        public static bool downedZeroA;
+        public static bool downedAkumata;
 
         public string nums = "1234567890";
 
         public override void Initialize()
         {
+            //Bosses
             downedGrips = false;
             downedGripRed = false;
             downedGripBlue = false;
-            zeroUS = false;
-            downedZero = false;
+            downedGrips = downedGripRed && downedGripBlue;
+            downedRetriever = false;
+            downedOrthrus = false;
+            downedRaider = false;
+            downedStormAny = downedRaider || downedOrthrus || downedRetriever;
+            downedStormAll = downedRaider && downedOrthrus && downedRetriever;
             downedDB = false;
             downedNC = false;
-            downedRetriever = false;
+            downedEquinox = downedDB && downedNC;
+            downedAkuma = false;
+            downedYamata = false;
+            zeroUS = false;
+            downedZero = false;
+            downedZeroA = false;
+            downedAkumata = false;
+            //World Changes
+            ChaosOres = downedGrips;
+            Dynaskull = NPC.downedBoss3;
+            FulguriteOre = downedStormAny;
             HallowedOre = NPC.downedMechBossAny;
+            Evil = NPC.downedPlantBoss;
             Luminite = NPC.downedMoonlord;
             DarkMatter = downedNC;
             RadiumOre = downedDB;
-            Evil = NPC.downedPlantBoss;
-            downedGrips = downedGripRed && downedGripBlue;
-            ChaosOres = downedGrips;
-            Dynaskull = NPC.downedBoss3;
-            FulguriteOre = downedRetriever;
-            downedEquinox = false;
-            if (NPC.downedMechBoss3 == true || NPC.downedMechBoss2 == true || NPC.downedMechBoss1 == true)
-            {
-                HallowedOre = true;
-            }
-            else
-            {
-                HallowedOre = false;
-            }
-            if (NPC.downedMoonlord == true)
-            {
-                Luminite = true;
-            }
-            else
-            {
-                Luminite = false;
-            }
-            if (downedNC == true)
-            {
-                DarkMatter = true;
-            }
-            else
-            {
-                DarkMatter = false;
-            }
-            if (downedDB == true)
-            {
-                RadiumOre = true;
-            }
-            else
-            {
-                RadiumOre = false;
-            }
-            if (NPC.downedPlantBoss == true)
-            {
-                Evil = true;
-            }
-            else
-            {
-                Evil = false;
-            }
-            if (downedGripRed == true || downedGripBlue == true)
-            {
-                downedGrips = true;
-            }
-            else
-            {
-                downedGrips = false;
-            }
-            if (downedGrips == true)
-            {
-                ChaosOres = true;
-            }
-            else
-            {
-                ChaosOres = false;
-            }
-            if (NPC.downedBoss3 == true)
-            {
-                Dynaskull = true;
-            }
-            else
-            {
-                Dynaskull = false;
-            }
-            if (downedRetriever == true)
-            {
-                FulguriteOre = true;
-            }
-            else
-            {
-                FulguriteOre = false;
-            }
-            if (downedNC && downedDB)
-            {
-                downedEquinox = true;
-            }
-            else if (downedDB && !downedNC && !NPC.AnyNPCs(mod.NPCType<NightcrawlerHead>()))
-            {
-                downedDB = false;
-            }
-            else if (downedNC && !downedDB && !NPC.AnyNPCs(mod.NPCType<DaybringerHead>()))
-            {
-                downedNC = false;
-            }
         }
 
         public static int Raycast(int x, int y)
@@ -183,16 +119,24 @@ namespace AAMod
             var downed = new List<string>();
             if (downedGripRed) downed.Add("GripRed");
             if (downedGripBlue) downed.Add("GripBlue");
-            if (NPC.downedMoonlord) downed.Add("MoonLord");
+            if (downedGrips) downed.Add("Grips");
+            if (downedHydra) downed.Add("Hydra");
+            if (downedBrood) downed.Add("Brood");
+            if (NPC.downedBoss3) downed.Add("Dynaskull");
+            if (downedRetriever) downed.Add("Storm1");
+            if (downedOrthrus) downed.Add("Storm2");
+            if (downedRaider) downed.Add("Storm3");
             if (NPC.downedMechBossAny) downed.Add("MechBoss");
             if (NPC.downedPlantBoss) downed.Add("Evil");
-            if (NPC.downedBoss3) downed.Add("Dynaskull");
-            if (downedGrips) downed.Add("Grips");
-            if (downedRetriever) downed.Add("Storm1");
-            if (zeroUS) downed.Add("0U");
-            if (downedZero) downed.Add("0");
+            if (NPC.downedMoonlord) downed.Add("MoonLord");
             if (downedNC) downed.Add("NC");
             if (downedDB) downed.Add("DB");
+            if (downedAkuma) downed.Add("Akuma");
+            if (downedYamata) downed.Add("Yamata");
+            if (zeroUS) downed.Add("0U");
+            if (downedZero) downed.Add("0");
+            if (downedZeroA) downed.Add("0A");
+            if (downedAkumata) downed.Add("Akumata");
 
             return new TagCompound {
                 {"downed", downed}
@@ -204,20 +148,31 @@ namespace AAMod
             BitsByte flags = new BitsByte();
             flags[0] = downedGripRed;
             flags[1] = downedGripBlue;
-            flags[2] = NPC.downedMoonlord;
-            flags[3] = NPC.downedMechBossAny;
-            flags[4] = NPC.downedPlantBoss;
+            flags[2] = downedGrips;
+            flags[3] = downedBrood;
+            flags[4] = downedHydra;
             flags[5] = NPC.downedBoss3;
-            flags[6] = downedGrips;
-            flags[7] = downedRetriever;
+            flags[6] = downedRetriever;
+            flags[7] = downedOrthrus;
             writer.Write(flags);
 
             BitsByte flags2 = new BitsByte();
+            flags[0] = downedRaider;
+            flags[1] = NPC.downedMechBossAny;
+            flags[2] = NPC.downedPlantBoss;
+            flags[3] = NPC.downedMoonlord;
+            flags2[4] = downedDB;
+            flags2[5] = downedNC;
+            flags2[6] = downedAkuma;
+            flags2[7] = downedYamata;
+            writer.Write(flags2);
+
+            BitsByte flags3 = new BitsByte();
             flags2[0] = zeroUS;
             flags2[1] = downedZero;
-            flags2[2] = downedDB;
-            flags2[3] = downedNC;
-            writer.Write(flags2);
+            flags2[2] = downedZeroA;
+            flags2[3] = downedAkumata;
+            writer.Write(flags3);
         }
 
         public override void NetReceive(BinaryReader reader)
@@ -225,44 +180,62 @@ namespace AAMod
             BitsByte flags = reader.ReadByte();
             downedGripRed = flags[0];
             downedGripBlue = flags[1];
-            NPC.downedMoonlord = flags[2];
-            NPC.downedMechBossAny = flags[3];
-            NPC.downedPlantBoss = flags[4];
+            downedGrips = flags[2];
+            downedBrood = flags[3];
+            downedHydra = flags[4];
             NPC.downedBoss3 = flags[5];
-            downedGrips = flags[6];
-            downedRetriever = flags[7];
+            downedRetriever = flags[6];
+            downedOrthrus = flags[7];
 
             BitsByte flags2 = reader.ReadByte();
-            downedZero = flags2[0];
-            zeroUS = flags2[1];
-            downedDB = flags2[2];
-            downedNC = flags2[3];
+            downedRaider = flags[0];
+            NPC.downedMechBossAny = flags[1];
+            NPC.downedPlantBoss = flags[2];
+            NPC.downedMoonlord = flags[3];
+            downedDB = flags2[4];
+            downedNC = flags2[5];
+            downedAkuma = flags2[6];
+            downedYamata = flags2[7];
+
+            BitsByte flags3 = reader.ReadByte();
+            zeroUS = flags2[0];
+            downedZero = flags2[1];
+            downedZeroA = flags2[2];
+            downedAkumata = flags2[3];
         }
 
         public override void Load(TagCompound tag)
         {
             var downed = tag.GetList<string>("downed");
+            //bosses
             downedGripRed = downed.Contains("GripRed");
             downedGripBlue = downed.Contains("GripBlue");
-            NPC.downedMoonlord = downed.Contains("MoonLord");
+            downedGrips = downed.Contains("Grips");
+            NPC.downedBoss3 = downed.Contains("Dynaskull");
+            downedRetriever = downed.Contains("Storm1");
+            downedOrthrus = downed.Contains("Storm2");
+            downedRaider = downed.Contains("Storm3");
             NPC.downedMechBossAny = downed.Contains("MechBoss");
             NPC.downedPlantBoss = downed.Contains("Evil");
-            NPC.downedBoss3 = downed.Contains("Dynaskull");
-            downedGrips = downed.Contains("Grips");
-            downedRetriever = downed.Contains("Storm1");
-            zeroUS = downed.Contains("0U");
-            downedZero = downed.Contains("0");
+            NPC.downedMoonlord = downed.Contains("MoonLord");
             downedDB = downed.Contains("DB");
             downedNC = downed.Contains("NC");
-            HallowedOre = NPC.downedMechBossAny;
-            Luminite = NPC.downedMoonlord;
-            DarkMatter = downedNC;
-            RadiumOre = downedDB;
-            Evil = NPC.downedPlantBoss;
+            downedAkuma = downed.Contains("Akuma");
+            downedYamata = downed.Contains("Yamata");
+            zeroUS = downed.Contains("0U");
+            downedZero = downed.Contains("0");
+            downedZeroA = downed.Contains("0A");
+            downedAkumata = downed.Contains("Akumata");
+            //World Changes
             downedGrips = downedGripRed && downedGripBlue;
             ChaosOres = downedGrips;
             Dynaskull = NPC.downedBoss3;
             FulguriteOre = downedRetriever;
+            HallowedOre = NPC.downedMechBossAny;
+            Evil = NPC.downedPlantBoss;
+            Luminite = NPC.downedMoonlord;
+            DarkMatter = downedNC;
+            RadiumOre = downedDB;
         }
 
         private string NumberRand(int size)
@@ -302,7 +275,7 @@ namespace AAMod
                 VoidHeight = 140;
             }
             progress.Set(0.3f);
-            if (Main.maxTilesY > 3600)
+            if (Main.maxTilesY >= 3600)
             {
                 VoidHeight = 160;
             }
@@ -546,18 +519,18 @@ namespace AAMod
                     Main.NewText("Devils in the underworld begin to plot", Color.Purple.R, Color.Purple.G, Color.Purple.B);
                 }
             }
-            //if (downedRetriever == true)
-            //{
-                //if (FulguriteOre == false)
-                //{
-                    //FulguriteOre = true;
-                    //Main.NewText("The clap of a thunderbolt roars in the caverns", Color.MediumPurple.R, Color.MediumPurple.G, Color.MediumPurple.B);
-                    //for (int k = 0; k < (int)((double)(Main.maxTilesX * Main.maxTilesY) * 6E-05); k++)
-                    //{
-                        //WorldGen.OreRunner(WorldGen.genRand.Next(0, Main.maxTilesX), WorldGen.genRand.Next((int)Main.rockLayer, Main.maxTilesY - 200), (double)WorldGen.genRand.Next(10, 11), WorldGen.genRand.Next(10, 11), (ushort)mod.TileType("FulguriteOre"));
-                    //}
-                //}
-            //}
+            if (downedRetriever == true)
+            {
+                if (FulguriteOre == false)
+                {
+                    FulguriteOre = true;
+                    Main.NewText("The clap of a thunderbolt roars in the caverns", Color.MediumPurple.R, Color.MediumPurple.G, Color.MediumPurple.B);
+                    for (int k = 0; k < (int)((double)(Main.maxTilesX * Main.maxTilesY) * 6E-05); k++)
+                    {
+                        WorldGen.OreRunner(WorldGen.genRand.Next(0, Main.maxTilesX), WorldGen.genRand.Next((int)Main.rockLayer, Main.maxTilesY - 200), (double)WorldGen.genRand.Next(10, 11), WorldGen.genRand.Next(10, 11), (ushort)mod.TileType("FulguriteOre"));
+                    }
+                }
+            }
         }
 
         public override void TileCountsAvailable(int[] tileCounts)

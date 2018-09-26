@@ -76,6 +76,7 @@
     <Compile Include="Backgrounds\Mire\MireUgBgStyle.cs" />
     <Compile Include="Backgrounds\Void\VoidSky.cs" />
     <Compile Include="Backgrounds\Void\VoidSkyData.cs" />
+    <Compile Include="Buffs\ChinchillaMinionBuff.cs" />
     <Compile Include="Buffs\EnderMinionBuff.cs" />
     <Compile Include="Buffs\InfinityOverload.cs" />
     <Compile Include="Buffs\UnstableSoul.cs" />
@@ -102,6 +103,7 @@
     <Compile Include="Dusts\RazewoodDust.cs" />
     <Compile Include="Dusts\ZeroDust.cs" />
     <Compile Include="Items\Accessories\DemonGauntet.cs" />
+    <Compile Include="Items\Boss\Akuma\CrucibleScale.cs" />
     <Compile Include="Items\Boss\Equinox\Equinox.cs" />
     <Compile Include="Items\Boss\Equinox\DarkVoid.cs.cs" />
     <Compile Include="Items\Boss\Equinox\RadiantStar.cs" />
@@ -244,6 +246,7 @@
     <Compile Include="Items\Boss\Retriever\RetrieverBag.cs" />
     <Compile Include="Items\Boss\Retriever\StormClaw.cs" />
     <Compile Include="Items\Boss\Retriever\StormRiot.cs" />
+    <Compile Include="Items\Boss\Yamata\DreadScale.cs" />
     <Compile Include="Items\Boss\Zero\EventHorizon.cs" />
     <Compile Include="Items\Boss\Zero\RealityCannon.cs" />
     <Compile Include="Items\Boss\Zero\RiftShredder.cs" />
@@ -576,6 +579,9 @@
     <Compile Include="Water\VoidWaterStyle.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Achievment\BroodAchievement.png" />
+    <Content Include="Achievment\ZeroAAchievment.png" />
+    <Content Include="Achievment\ZeroAchievment.png" />
     <Content Include="Backgrounds\Inferno\InfernoBG1.png" />
     <Content Include="Backgrounds\Inferno\InfernoCavern.png" />
     <Content Include="Backgrounds\Inferno\InfernoFG1.png" />
@@ -606,6 +612,7 @@
     <Content Include="bin\Debug\ReLogic.dll" />
     <Content Include="bin\Debug\Terraria.exe" />
     <Content Include="bin\Debug\TerrariaModded.exe" />
+    <Content Include="Buffs\ChinchillaMinionBuff.png" />
     <Content Include="Buffs\EnderMinionBuff.png" />
     <Content Include="Buffs\InfinityOverload.png" />
     <Content Include="Buffs\UnstableSoul.png" />
@@ -925,6 +932,7 @@
     <Content Include="Items\Blocks\Zero2Box.png" />
     <Content Include="Items\Blocks\ZeroBox.png" />
     <Content Include="Items\Blocks\ZeroTrophy.png" />
+    <Content Include="Items\Boss\Akuma\CrucibleScale.png" />
     <Content Include="Items\Boss\Akuma\Dawnstrike.png" />
     <Content Include="Items\Boss\Akuma\Daycrusher.png" />
     <Content Include="Items\Boss\Akuma\DragonSlasher.png" />
@@ -958,6 +966,7 @@
     <Content Include="Items\Boss\Retriever\StormClaw_HandsOn.png" />
     <Content Include="Items\Boss\Retriever\StormRiot.png" />
     <Content Include="Items\Boss\Retriever\StormRiot_Shield.png" />
+    <Content Include="Items\Boss\Yamata\DreadScale.png" />
     <Content Include="Items\Boss\Yamata\Masamune.png" />
     <Content Include="Items\Boss\Zero\AMR.png" />
     <Content Include="Items\Boss\Zero\AMR_Glow.png" />
@@ -1175,7 +1184,7 @@
     <Content Include="Items\Ranged\BoneBow.png" />
     <Content Include="Items\Ranged\Bubbleshot.png" />
     <Content Include="Items\Ranged\Bunnyzooka.png" />
-    <Content Include="Items\Ranged\CatsEyeRifle_Glow.png" />
+    <Content Include="Items\Dev\CatsEyeRifle_Glow.png" />
     <Content Include="Items\Ranged\CoralBow.png" />
     <Content Include="Items\Ranged\DeathlyLongbow.png" />
     <Content Include="Items\Ranged\DragonArrow.png" />
