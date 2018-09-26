@@ -1,5 +1,6 @@
 using System;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.Graphics.Effects;
 using Terraria.Graphics.Shaders;
@@ -10,10 +11,22 @@ namespace AAMod.Items.Melee   //where is located
 {
     public class Lolkat : ModItem
     {
+        public static short customGlowMask = 0;
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("The Lolkat");
             Tooltip.SetDefault("Memes memes memes galore");
+            if (Main.netMode != 2)
+            {
+                Texture2D[] glowMasks = new Texture2D[Main.glowMaskTexture.Length + 1];
+                for (int i = 0; i < Main.glowMaskTexture.Length; i++)
+                {
+                    glowMasks[i] = Main.glowMaskTexture[i];
+                }
+                glowMasks[glowMasks.Length - 1] = mod.GetTexture("Items/Melee/" + GetType().Name + "_Glow");
+                customGlowMask = (short)(glowMasks.Length - 1);
+                Main.glowMaskTexture = glowMasks;
+            }
         }
 
         public override void SetDefaults()
@@ -35,6 +48,7 @@ namespace AAMod.Items.Melee   //where is located
             item.expert = true;
 			item.shoot = 502;
 			item.shootSpeed = 11f;
+            item.glowMask = customGlowMask;
         }
 
         public override void AddRecipes()  //How to craft this sword

@@ -13,14 +13,14 @@ namespace AAMod.Items.Boss.Zero
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Reality Cannon");
-            Tooltip.SetDefault("Rapidly Fires a spread of dark piercing lasers");
+            Tooltip.SetDefault("Rapidly Fires a spread of dark lasers");
         }
 
         public override void SetDefaults()
         {
-            item.useStyle = 7;
+            item.useStyle = 5;
             item.useAnimation = 7;
-            item.useTime = 5;
+            item.useTime = 7;
             item.shootSpeed = 16f;
             item.knockBack = 0f;
             item.width = 48;
