@@ -24,7 +24,7 @@ namespace AAMod.NPCs.Bosses.Zero
             npc.width = 206;
             npc.height = 208;
             npc.aiStyle = -1;
-            npc.damage = 130;
+            npc.damage = 80;
             npc.defense = 70;
             npc.lifeMax = 200000;
             npc.HitSound = SoundID.NPCHit4;

@@ -27,7 +27,7 @@ namespace AAMod.NPCs.Enemies.Void
 			npc.noGravity = true;
 			npc.noTileCollide = true;
 			npc.chaseable = false;
-			npc.damage = 100;
+			npc.damage = 50;
 			npc.defense = 20;
 			npc.lifeMax = 6000;
 			npc.HitSound = SoundID.NPCHit4;

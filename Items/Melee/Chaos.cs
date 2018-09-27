@@ -10,7 +10,7 @@ namespace AAMod.Items.Melee
         public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Chaos");
-			Tooltip.SetDefault("Wrath and fury upon those struck by this twisted blade");
+			Tooltip.SetDefault("Wrath and fury upon those struck by this ununified blade");
             if (Main.netMode != 2)
             {
                 Microsoft.Xna.Framework.Graphics.Texture2D[] glowMasks = new Microsoft.Xna.Framework.Graphics.Texture2D[Main.glowMaskTexture.Length + 1];
