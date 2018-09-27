@@ -75,6 +75,7 @@ namespace AAMod.Items.Boss.Equinox
                         player.QuickSpawnItem(mod.ItemType("ChinMask"));
                         player.QuickSpawnItem(mod.ItemType("ChinSuit"));
                         player.QuickSpawnItem(mod.ItemType("ChinPants"));
+                        player.QuickSpawnItem(mod.ItemType("ChinStaff"));
                     }
                     if (choice == 6)
                     {

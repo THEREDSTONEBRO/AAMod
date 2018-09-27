@@ -34,7 +34,7 @@ namespace AAMod.Items.Boss.Zero
             {
                 player.QuickSpawnItem(mod.ItemType("ZeroMask"));
             }
-            if (Main.rand.NextFloat() < 0.5f)
+            if (Main.rand.NextFloat() < 0.05f)
             {
                 int choice = Main.rand.Next(13);
                 {
@@ -76,6 +76,7 @@ namespace AAMod.Items.Boss.Zero
                         player.QuickSpawnItem(mod.ItemType("ChinMask"));
                         player.QuickSpawnItem(mod.ItemType("ChinSuit"));
                         player.QuickSpawnItem(mod.ItemType("ChinPants"));
+                        player.QuickSpawnItem(mod.ItemType("ChinStaff"));
                     }
                     if (choice == 6)
                     {
