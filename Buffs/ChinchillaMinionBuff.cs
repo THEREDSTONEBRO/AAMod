@@ -7,8 +7,8 @@ namespace AAMod.Buffs
 	{
 		public override void SetDefaults()
 		{
-			DisplayName.SetDefault("Chinchilla Friend");
-			Description.SetDefault("Extra Fluffy!!");
+			DisplayName.SetDefault("A Magic Chair");
+			Description.SetDefault("Allergic to Liquids!!");
 			Main.buffNoSave[Type] = true;
 			Main.buffNoTimeDisplay[Type] = true;
 		}
@@ -16,11 +16,11 @@ namespace AAMod.Buffs
 		public override void Update(Player player, ref int buffIndex)
 		{
 			AAPlayer modPlayer = player.GetModPlayer<AAPlayer>(mod);
-			if (player.ownedProjectileCounts[mod.ProjectileType("ChinchillaMinion")] > 0)
+			if (player.ownedProjectileCounts[mod.ProjectileType("ChairMinion")] > 0)
 			{
-				modPlayer.ChinchillaMinion = true;
+				modPlayer.ChairMinion = true;
 			}
-			if (!modPlayer.ChinchillaMinion)
+			if (!modPlayer.ChairMinion)
 			{
 				player.DelBuff(buffIndex);
 				buffIndex--;
