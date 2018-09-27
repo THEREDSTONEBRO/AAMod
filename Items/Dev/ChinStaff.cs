@@ -73,6 +73,7 @@ namespace AAMod.Items.Dev
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(ItemID.SlimeStaff, 1);
             recipe.AddIngredient(ItemID.LunarBar, 20);
+            recipe.AddIngredient(ItemID.WandofSparking, 1);
             recipe.AddRecipeGroup("Wood", 10);
             recipe.AddTile(TileID.LunarCraftingStation);
             recipe.SetResult(this);

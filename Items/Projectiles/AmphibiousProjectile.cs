@@ -1,3 +1,6 @@
+﻿using System;
+using System.Collections.Generic;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -6,29 +9,42 @@ namespace AAMod.Items.Projectiles
 {
     public class AmphibiousProjectile : ModProjectile
     {
+    	public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Mudkip");
+		}
+    	
         public override void SetDefaults()
         {
-            projectile.CloneDefaults(ProjectileID.Meowmere);
-            projectile.penetrate = 1;  
-            projectile.width = 28;
-            projectile.height = 26;
-			projectile.friendly = true;
-			projectile.hostile = false;
-        }
-
-        public override void SetStaticDefaults()
-        {
-            DisplayName.SetDefault("Mudkipz");
+            projectile.width = 26;
+            projectile.height = 28;
+            projectile.aiStyle = 1;
+            projectile.friendly = true;
+            projectile.melee = true;
+            projectile.hostile = false;
+            projectile.penetrate = 1;
+            projectile.timeLeft = 600;
+            projectile.alpha = 0;
+            projectile.tileCollide = false;
+            aiType = 270;
         }
 
         public override void AI()
         {
-            if (Main.rand.Next(2) == 0) // this is how many duspt particles will spawn
-            {// DustID.Fire is a vanilla terrraria dust, change it to what you like. To add a modded dust the change DustID.Fire with mod.DustType("DustName")
+            if (Main.rand.Next(3) == 0)
+            {
                 Dust.NewDust(projectile.position + projectile.velocity, projectile.width, projectile.height, 186, projectile.velocity.X * 0.5f, projectile.velocity.Y * 0.5f);
             }
         }
 
+        public override void Kill(int timeLeft)
+        {
+            Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 10);
+        }
 
+        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+        {
+            target.AddBuff(BuffID.Wet, 600);
+        }
     }
 }
