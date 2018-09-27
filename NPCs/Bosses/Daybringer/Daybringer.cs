@@ -33,7 +33,7 @@ namespace AAMod.NPCs.Bosses.Daybringer
         }
         public override void SetDefaults()
         {
-            npc.lifeMax = 40500;
+            npc.lifeMax = 130000;
             npc.damage = 70;
             npc.defense = 70;
             npc.knockBackResist = 0f;
@@ -97,6 +97,12 @@ namespace AAMod.NPCs.Bosses.Daybringer
             }
         }
 
+        public override bool? DrawHealthBar(byte hbPosition, ref float scale, ref Vector2 position)
+        {
+            scale = 0f;
+            return null;
+        }
+
         public override void Init()
         {
             base.Init();
@@ -128,6 +134,13 @@ namespace AAMod.NPCs.Bosses.Daybringer
                 new Vector2(npc.width * 0.5f, npc.height * 0.5f), 1f, spriteEffects, 0f);
             }
         }
+
+        public override bool? DrawHealthBar(byte hbPosition, ref float scale, ref Vector2 position)
+        {
+            scale = 0f;
+            return null;
+        }
+
         public override void Init()
         {
             base.Init();

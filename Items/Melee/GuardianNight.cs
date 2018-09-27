@@ -10,6 +10,7 @@ namespace AAMod.Items.Melee   //where is located
 {
     public class GuardianNight : ModItem
     {
+        public static short customGlowMask = 0;
         public override void SetDefaults()
         {
 
@@ -25,14 +26,26 @@ namespace AAMod.Items.Melee   //where is located
             item.rare = 7;
             item.UseSound = SoundID.Item1;       //1 is the sound of the sword
             item.autoReuse = true;   //if it's capable of autoswing.
-            item.useTurn = true; 
+            item.useTurn = true;
+            item.glowMask = customGlowMask;
         }
 
     public override void SetStaticDefaults()
     {
       DisplayName.SetDefault("Guardian of the Depths");
       Tooltip.SetDefault("");
-    }
+            if (Main.netMode != 2)
+            {
+                Microsoft.Xna.Framework.Graphics.Texture2D[] glowMasks = new Microsoft.Xna.Framework.Graphics.Texture2D[Main.glowMaskTexture.Length + 1];
+                for (int i = 0; i < Main.glowMaskTexture.Length; i++)
+                {
+                    glowMasks[i] = Main.glowMaskTexture[i];
+                }
+                glowMasks[glowMasks.Length - 1] = mod.GetTexture("Items/Melee/" + GetType().Name + "_Glow");
+                customGlowMask = (short)(glowMasks.Length - 1);
+                Main.glowMaskTexture = glowMasks;
+            }
+        }
 
         public override void AddRecipes()  //How to craft this sword
         {

@@ -7,12 +7,24 @@ using Terraria.ModLoader;
 namespace AAMod.Items.Melee
 {
     public class BlazingDawn : ModItem
-	{
-		public override void SetStaticDefaults()
+    {
+        public static short customGlowMask = 0;
+        public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Blazing Dawn");
 			Tooltip.SetDefault("The Radiant Dawn calls");
-		}
+            if (Main.netMode != 2)
+            {
+                Microsoft.Xna.Framework.Graphics.Texture2D[] glowMasks = new Microsoft.Xna.Framework.Graphics.Texture2D[Main.glowMaskTexture.Length + 1];
+                for (int i = 0; i < Main.glowMaskTexture.Length; i++)
+                {
+                    glowMasks[i] = Main.glowMaskTexture[i];
+                }
+                glowMasks[glowMasks.Length - 1] = mod.GetTexture("Items/Melee/" + GetType().Name + "_Glow");
+                customGlowMask = (short)(glowMasks.Length - 1);
+                Main.glowMaskTexture = glowMasks;
+            }
+        }
 		public override void SetDefaults()
 		{
 			item.damage = 47;
@@ -27,6 +39,7 @@ namespace AAMod.Items.Melee
 			item.rare = 3;
 			item.UseSound = SoundID.Item20;
 			item.autoReuse = false;
+            item.glowMask = customGlowMask;
 		}
 		
 		public override void MeleeEffects(Player player, Rectangle hitbox)

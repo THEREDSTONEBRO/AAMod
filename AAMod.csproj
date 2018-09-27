@@ -942,12 +942,12 @@
     <Content Include="Items\Boss\Broodmother\DragonCape.png" />
     <Content Include="Items\Boss\Broodmother\DragonScale.png" />
     <Content Include="Items\Boss\Equinox\DarkVoid.png" />
-    <Content Include="Items\Boss\Equinox\DarkVoid_Arms.png" />
+    <Content Include="Items\Boss\Equinox\DarkVoid_HandsOn.png" />
     <Content Include="Items\Boss\Equinox\DBBag.png" />
     <Content Include="Items\Boss\Equinox\Equinox.png" />
     <Content Include="Items\Boss\Equinox\NCBag.png" />
     <Content Include="Items\Boss\Equinox\RadiantStar.png" />
-    <Content Include="Items\Boss\Equinox\RadiantStar_Arms.png" />
+    <Content Include="Items\Boss\Equinox\RadiantStar_HandsOn.png" />
     <Content Include="Items\Boss\Grips\BulwarkOfChaos.png" />
     <Content Include="Items\Boss\Grips\BulwarkOfChaos_Shield.png" />
     <Content Include="Items\Boss\Grips\ClawOfChaos.png" />

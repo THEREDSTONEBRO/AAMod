@@ -1,3 +1,4 @@
+using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -6,10 +7,22 @@ namespace AAMod.Items.Tools
 {
     public class DarkmatterPitchet : ModItem
     {
-		public override void SetStaticDefaults()
+        public static short customGlowMask = 0;
+        public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Darkmatter Pitchet");
-		}
+            if (Main.netMode != 2)
+            {
+                Texture2D[] glowMasks = new Texture2D[Main.glowMaskTexture.Length + 1];
+                for (int i = 0; i < Main.glowMaskTexture.Length; i++)
+                {
+                    glowMasks[i] = Main.glowMaskTexture[i];
+                }
+                glowMasks[glowMasks.Length - 1] = mod.GetTexture("Items/Tools/" + GetType().Name + "_Glow");
+                customGlowMask = (short)(glowMasks.Length - 1);
+                Main.glowMaskTexture = glowMasks;
+            }
+        }
 
 
         public override void SetDefaults()
@@ -33,6 +46,7 @@ namespace AAMod.Items.Tools
             item.useTurn = true;
             item.autoReuse = true;
 
+            item.glowMask = customGlowMask;
             item.UseSound = SoundID.Item1;
         }
 

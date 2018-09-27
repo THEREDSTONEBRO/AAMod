@@ -10,6 +10,7 @@ namespace AAMod.Items.Boss.Zero
 {
     public class UnstableSingularity : ModItem
     {
+        public static short customGlowMask = 0;
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Unstable Singularity");
@@ -17,6 +18,17 @@ namespace AAMod.Items.Boss.Zero
             // ticksperframe, frameCount
             Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(4, 18));
             ItemID.Sets.ItemNoGravity[item.type] = true;
+            if (Main.netMode != 2)
+            {
+                Microsoft.Xna.Framework.Graphics.Texture2D[] glowMasks = new Microsoft.Xna.Framework.Graphics.Texture2D[Main.glowMaskTexture.Length + 1];
+                for (int i = 0; i < Main.glowMaskTexture.Length; i++)
+                {
+                    glowMasks[i] = Main.glowMaskTexture[i];
+                }
+                glowMasks[glowMasks.Length - 1] = mod.GetTexture("Items/Boss/Zero/" + GetType().Name + "_Glow");
+                customGlowMask = (short)(glowMasks.Length - 1);
+                Main.glowMaskTexture = glowMasks;
+            }
         }
 
         public override void ModifyTooltips(List<TooltipLine> list)
@@ -33,8 +45,7 @@ namespace AAMod.Items.Boss.Zero
         // TODO -- Velocity Y smaller, post NewItem?
         public override void SetDefaults()
         {
-            Item refItem = new Item();
-            refItem.SetDefaults(ItemID.SoulofSight);
+            item.glowMask = customGlowMask;
             item.width = 22;
             item.height = 24;
             item.maxStack = 999;

@@ -44,11 +44,11 @@ namespace AAMod
                 //bossChecklist.Call("AddBossWithInfo", "Yamata", 15.0002f, (Func<bool>)(() => AAWorld.downedYamata), "Use a [i:" + ItemType("EventideSigil") + "] in the Mire at night");
                 if (Main.expertMode)
                 {
-                    bossChecklist.Call("AddBossWithInfo", "Zero", 16f, (Func<bool>)(() => AAWorld.downedZero), "Use a [i:" + ItemType("ZeroTesseract") + "] in the Void");
+                    bossChecklist.Call("AddBossWithInfo", "Zero", 16f, (Func<bool>)(() => AAWorld.downedZeroA), "Use a [i:" + ItemType("ZeroTesseract") + "] in the Void");
                 }
                 else
                 {
-                    bossChecklist.Call("AddBossWithInfo", "Zero", 16f, (Func<bool>)(() => AAWorld.downedZeroA), "Use a [i:" + ItemType("ZeroTesseract") + "] in the Void");
+                    bossChecklist.Call("AddBossWithInfo", "Zero", 16f, (Func<bool>)(() => AAWorld.downedZero), "Use a [i:" + ItemType("ZeroTesseract") + "] in the Void");
                 }
                 
                 //bossChecklist.Call("AddBossWithInfo", "Akumata", 100f, (Func<bool>)(() => AAWorld.downedAkumata), "Use a [i:" + ItemType("ChaosSigil"));
@@ -75,6 +75,7 @@ namespace AAMod
                 //AchievementLibs.Call("AddAchievementWithoutReward", this, "A Mother's Rage", "Defeat the flaming dragoness, the Broodmother", "AAMod/Achievments/BroodA", (Func<bool>)(() => AAWorld.downedBrood));
                 AchievementLibs.Call("AddAchievementWithoutReward", this, "Storming Seige", "Defeat any of the robotic replicas known as the Storm Bosses", "AAMod/Achievments/StormA", (Func<bool>)(() => AAWorld.downedStormAny));
                 //AchievementLibs.Call("AddAchievementWithoutReward", this, "Thunderous Victory", "Defeat all of the Storm Bosses, causing Fulgurite to spawn in your world", "AAMod/Achievments/StormA", (Func<bool>)(() => AAWorld.downedStormAll));
+                AchievementLibs.Call("AddAchievementWithoutReward", this, "Epitome of Equinox", "Defeat the Equinox worms, the Daybringer and the Nightcrawler", "AAMod/Achievments/EquinoxA", (Func<bool>)(() => AAWorld.downedEquinox));
                 //AchievementLibs.Call("AddAchievementWithoutReward", this, "Trial by Fire", "Defeat the draconian sun serpent himself, Akuma", "AAMod/Achievments/AkumaA", (Func<bool>)(() => AAWorld.downedAkuma));
                 //AchievementLibs.Call("AddAchievementWithoutReward", this, "True Blazing Fury", "Defeat Akuma's true, radiant Awakened form", "AAMod/Achievments/AkumaAA", (Func<bool>)(() => AAWorld.downedAkuma));
                 //AchievementLibs.Call("AddAchievementWithoutReward", this, "Crecent of Madness", "Defeat the dread moon hydra himself, Yamata", "AAMod/Achievments/YamataA", (Func<bool>)(() => AAWorld.downedAkuma));
