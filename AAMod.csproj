@@ -1054,7 +1054,7 @@
     <Content Include="Items\Melee\BackScratcher.png" />
     <Content Include="Items\Melee\BaneOfTheBunny.png" />
     <Content Include="Items\Melee\BlazingDawn.png" />
-    <Content Include="Items\Melee\BlazingDawn_glow.png" />
+    <Content Include="Items\Melee\BlazingDawn_Glow.png" />
     <Content Include="Items\Melee\BloodThirster.png" />
     <Content Include="Items\Melee\BreakingDawn.png" />
     <Content Include="Items\Melee\Chaos.png" />
@@ -1077,13 +1077,11 @@
     <Content Include="Items\Melee\EventHorizon.png" />
     <Content Include="Items\Melee\ExilesKatana.png" />
     <Content Include="Items\Melee\Exorcist.png" />
-    <Content Include="Items\Melee\EyeOfTheDragon.png" />
     <Content Include="Items\Melee\Firestorm.png" />
     <Content Include="Items\Melee\FlamingFury.png" />
-    <Content Include="Items\Melee\FlamingFury_glow.png" />
+    <Content Include="Items\Melee\FlamingFury_Glow.png" />
     <Content Include="Items\Melee\FleshrendClaymore.png" />
     <Content Include="Items\Melee\ForsakenKhopesh.png" />
-    <Content Include="Items\Melee\FulguritePhasesaber.png" />
     <Content Include="Items\Melee\GladiatorsGlory.png" />
     <Content Include="Items\Melee\GuardianNight.png" />
     <Content Include="Items\Melee\HydrasSpear.png" />
@@ -1093,6 +1091,7 @@
     <Content Include="Items\Melee\Judgment.png" />
     <Content Include="Items\Melee\JungleReaper.png" />
     <Content Include="Items\Melee\Lolkat.png" />
+    <Content Include="Items\Melee\Lolkat_Glow.png" />
     <Content Include="Items\Melee\MeteorGreatsword.png" />
     <Content Include="Items\Melee\NightKeeper.png" />
     <Content Include="Items\Melee\Oblivion.png" />
@@ -1102,9 +1101,7 @@
     <Content Include="Items\Melee\RubySaber.png" />
     <Content Include="Items\Melee\ScorchDagger.png" />
     <Content Include="Items\Melee\SlapBone.png" />
-    <Content Include="Items\Melee\Soul Sword.png" />
     <Content Include="Items\Melee\SoulSword.png" />
-    <Content Include="Items\Melee\Spirit Blade.png" />
     <Content Include="Items\Melee\SultansScimitar.png" />
     <Content Include="Items\Melee\Sword.png" />
     <Content Include="Items\Melee\TerraShortsword.png" />
