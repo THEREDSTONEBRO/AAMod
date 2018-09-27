@@ -8,7 +8,8 @@ namespace AAMod.Items.Dev
 {
 	public class HallamDevWeapon : ModItem
 	{
-		public override void SetStaticDefaults()
+        public static short customGlowMask = 0;
+        public override void SetStaticDefaults()
 		{
             DisplayName.SetDefault("Prismeow");
             Tooltip.SetDefault(@"Summons a Legendary Rainbow Cat at cursor point
@@ -16,10 +17,22 @@ Shoots Rainbow Bolts that move in the direction of your cursor
 'Godly'
 -Hallam");
             Item.staff[item.type] = true; //this makes the useStyle animate as a staff instead of as a gun
-		}
+            if (Main.netMode != 2)
+            {
+                Microsoft.Xna.Framework.Graphics.Texture2D[] glowMasks = new Microsoft.Xna.Framework.Graphics.Texture2D[Main.glowMaskTexture.Length + 1];
+                for (int i = 0; i < Main.glowMaskTexture.Length; i++)
+                {
+                    glowMasks[i] = Main.glowMaskTexture[i];
+                }
+                glowMasks[glowMasks.Length - 1] = mod.GetTexture("Items/Dev/" + GetType().Name + "_Glow");
+                customGlowMask = (short)(glowMasks.Length - 1);
+                Main.glowMaskTexture = glowMasks;
+            }
+        }
 
 		public override void SetDefaults()
 		{
+            item.glowMask = customGlowMask;
 			item.damage = 200;
 			item.magic = true;
 			item.mana = 200;

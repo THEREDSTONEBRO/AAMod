@@ -97,6 +97,13 @@ namespace AAMod.NPCs.Bosses.Nightcrawler
                 new Vector2(npc.width * 0.5f, npc.height * 0.5f), 1f, spriteEffects, 0f);
             }
         }
+
+        public override bool? DrawHealthBar(byte hbPosition, ref float scale, ref Vector2 position)
+        {
+            scale = 0f;
+            return null;
+        }
+
         public override void Init()
         {
             base.Init();
@@ -114,6 +121,12 @@ namespace AAMod.NPCs.Bosses.Nightcrawler
             npc.width = 26;
             npc.height = 38;
             npc.DeathSound = null;
+        }
+
+        public override bool? DrawHealthBar(byte hbPosition, ref float scale, ref Vector2 position)
+        {
+            scale = 0f;
+            return null;
         }
 
         public override void Init()

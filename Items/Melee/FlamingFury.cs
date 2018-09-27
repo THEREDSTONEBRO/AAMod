@@ -8,13 +8,26 @@ namespace AAMod.Items.Melee
 {
     public class FlamingFury : ModItem
 	{
-		public override void SetStaticDefaults()
+        public static short customGlowMask = 0;
+        public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Flaming Fury");
 			Tooltip.SetDefault("Forged with the kindled rage of ancient dragons.");
-		}
+            if (Main.netMode != 2)
+            {
+                Microsoft.Xna.Framework.Graphics.Texture2D[] glowMasks = new Microsoft.Xna.Framework.Graphics.Texture2D[Main.glowMaskTexture.Length + 1];
+                for (int i = 0; i < Main.glowMaskTexture.Length; i++)
+                {
+                    glowMasks[i] = Main.glowMaskTexture[i];
+                }
+                glowMasks[glowMasks.Length - 1] = mod.GetTexture("Items/Melee/" + GetType().Name + "_Glow");
+                customGlowMask = (short)(glowMasks.Length - 1);
+                Main.glowMaskTexture = glowMasks;
+            }
+        }
 		public override void SetDefaults()
 		{
+            item.glowMask = customGlowMask;
 			item.damage = 26;
 			item.melee = true;
 			item.width = 44;

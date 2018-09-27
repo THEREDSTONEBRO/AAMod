@@ -4,15 +4,29 @@ using Terraria;
 using Microsoft.Xna.Framework;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace AAMod.Items.Ranged
 {
 	public class TrueDeathlyLongbow : ModItem
 	{
+        public static short customGlowMask = 0;
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("True Deathly Longbow");
             Tooltip.SetDefault("Replaces Bone Arrows with Reaper Arrows");
+            if (Main.netMode != 2)
+            {
+                Texture2D[] glowMasks = new Texture2D[Main.glowMaskTexture.Length + 1];
+                for (int i = 0; i < Main.glowMaskTexture.Length; i++)
+                {
+                    glowMasks[i] = Main.glowMaskTexture[i];
+                }
+                glowMasks[glowMasks.Length - 1] = mod.GetTexture("Items/Ranged/" + GetType().Name + "_Glow");
+                customGlowMask = (short)(glowMasks.Length - 1);
+                Main.glowMaskTexture = glowMasks;
+            }
+            
         }
 
         public override void SetDefaults()
@@ -33,6 +47,7 @@ namespace AAMod.Items.Ranged
 			item.shoot = 10; //idk why but all the guns in the vanilla source have this
 			item.shootSpeed = 10f;
 			item.useAmmo = AmmoID.Arrow;
+            item.glowMask = customGlowMask;
 		}
         public override Vector2? HoldoutOffset()
         {

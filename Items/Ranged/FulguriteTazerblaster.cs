@@ -3,21 +3,35 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
 using System;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace AAMod.Items.Ranged
 {
 	public class FulguriteTazerblaster : ModItem
 	{
-		public override void SetStaticDefaults()
+        public static short customGlowMask = 0;
+        public override void SetStaticDefaults()
 		{
             DisplayName.SetDefault("Fulgurite Tazerblaster");
             Tooltip.SetDefault("Rapidly fires taserblasts");
-		}
+            if (Main.netMode != 2)
+            {
+                Texture2D[] glowMasks = new Texture2D[Main.glowMaskTexture.Length + 1];
+                for (int i = 0; i < Main.glowMaskTexture.Length; i++)
+                {
+                    glowMasks[i] = Main.glowMaskTexture[i];
+                }
+                glowMasks[glowMasks.Length - 1] = mod.GetTexture("Items/Ranged/" + GetType().Name + "_Glow");
+                customGlowMask = (short)(glowMasks.Length - 1);
+                Main.glowMaskTexture = glowMasks;
+            }
+            
+        }
 
 		public override void SetDefaults()
 		{
 			item.damage = 38;
-			item.magic = true;
+			item.ranged = true;
 			item.mana = 6;
 			item.width = 52;
 			item.height = 18;
@@ -33,6 +47,7 @@ namespace AAMod.Items.Ranged
             item.autoReuse = true;
             item.shoot = mod.ProjectileType("Taserblast");
             item.shootSpeed = 17f;
+            item.glowMask = customGlowMask;
         }
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {

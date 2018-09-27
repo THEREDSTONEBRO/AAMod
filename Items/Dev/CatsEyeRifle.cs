@@ -12,6 +12,7 @@ namespace AAMod.Items.Dev
 {
     public class CatsEyeRifle : ModItem
     {
+        public static short customGlowMask = 0;
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Cat's Eye Rifle");
@@ -19,10 +20,22 @@ namespace AAMod.Items.Dev
 Doesn't require ammo
 'QUICK HIDE THE LOLI STASH'
 -Liz");
+            if (Main.netMode != 2)
+            {
+                Microsoft.Xna.Framework.Graphics.Texture2D[] glowMasks = new Microsoft.Xna.Framework.Graphics.Texture2D[Main.glowMaskTexture.Length + 1];
+                for (int i = 0; i < Main.glowMaskTexture.Length; i++)
+                {
+                    glowMasks[i] = Main.glowMaskTexture[i];
+                }
+                glowMasks[glowMasks.Length - 1] = mod.GetTexture("Items/Dev/" + GetType().Name + "_Glow");
+                customGlowMask = (short)(glowMasks.Length - 1);
+                Main.glowMaskTexture = glowMasks;
+            }
         }
 
         public override void SetDefaults()
         {
+            item.glowMask = customGlowMask;
             item.damage = 530; //This is the amount of damage the item does
             item.noMelee = true; //This makes sure the bow doesn't do melee damage
             item.ranged = true; //This causes your bow to do ranged damage
