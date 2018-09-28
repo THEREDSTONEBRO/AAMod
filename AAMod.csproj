@@ -1070,10 +1070,13 @@
     <Content Include="Items\Melee\Discord.png" />
     <Content Include="Items\Melee\DiversDoom.png" />
     <Content Include="Items\Melee\DragonBlade.png" />
+    <Content Include="Items\Melee\DragonBlade_Glow.png" />
     <Content Include="Items\Melee\DragonBreath.png" />
     <Content Include="Items\Melee\Dragonfire.png" />
     <Content Include="Items\Melee\Dragonkite.png" />
+    <Content Include="Items\Melee\Dragonkite_Glow.png" />
     <Content Include="Items\Melee\Ectoblade.png" />
+    <Content Include="Items\Melee\Ectoblade_Glow.png" />
     <Content Include="Items\Melee\EnchantedWarhammer.png" />
     <Content Include="Items\Melee\EventHorizon.png" />
     <Content Include="Items\Melee\ExilesKatana.png" />
@@ -1101,6 +1104,7 @@
     <Content Include="Items\Melee\Oblivion.png" />
     <Content Include="Items\Melee\OceanRazor.png" />
     <Content Include="Items\Melee\Poppy.png" />
+    <Content Include="Items\Melee\Poppy_Glow.png" />
     <Content Include="Items\Melee\RubyGreatsword.png" />
     <Content Include="Items\Melee\RubySaber.png" />
     <Content Include="Items\Melee\ScorchDagger.png" />
