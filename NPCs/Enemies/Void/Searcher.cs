@@ -46,8 +46,7 @@ namespace AAMod.NPCs.Enemies.Void
 
         public override void NPCLoot()
         {
-            Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("UnstableSingularity"), Main.rand.Next(1) + 2);
-            Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("Apocalyptite"), Main.rand.Next(1) + 6);
+            Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("Apocalyptite"), 1);
         }
     }
 }

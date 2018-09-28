@@ -404,8 +404,6 @@ namespace AAMod
                 WorldGen.PlaceTile(i, Y + (sizeY - 1), (ushort)mod.TileType("Doomstone"));
             }
             WorldGen.PlaceTile(X + sizeX - 2, Y + (sizeY) - 1, (ushort)mod.TileType("Doomstone"));
-            //WorldGen.KillTile(X + sizeX - 1, Y + (sizeY));
-            //WorldGen.PlaceTile(X + sizeX - 1, Y + (sizeY), TileID.MeteoriteBrick);
             if (chestType == 1)
             {
                 WorldGen.PlaceChest(X + ((sizeX - 1) / 2), Y + sizeY - 2, (ushort)mod.TileType("OroborosChest"), true);
