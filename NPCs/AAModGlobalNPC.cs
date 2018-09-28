@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using AAMod.Buffs;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -136,6 +137,20 @@ namespace AAMod.NPCs
                 if (Main.rand.NextFloat() < 0.1f)
                 {
                     Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("AncientPoker"));
+                }
+            }
+            if (npc.type == NPCID.DungeonGuardian)
+            {
+                for (int i = 0; i < 255; i++)
+                {
+                    Player player = Main.player[i];
+                    if (!player.HasBuff(mod.BuffType<Chairless>()))
+                    {
+                        Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ItemID.BoneKey);
+                    }
+                    else
+                    {
+                    }
                 }
             }
         }

@@ -20,7 +20,7 @@ namespace AAMod.Items.Melee
                 {
                     glowMasks[i] = Main.glowMaskTexture[i];
                 }
-                glowMasks[glowMasks.Length - 1] = mod.GetTexture("Items/Melee/" + GetType().Name + "_Glow");
+                glowMasks[glowMasks.Length - 1] = mod.GetTexture("Items/Melee/" + GetType().Name + "_glow");
                 customGlowMask = (short)(glowMasks.Length - 1);
                 Main.glowMaskTexture = glowMasks;
             }

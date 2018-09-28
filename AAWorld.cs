@@ -11,7 +11,6 @@ using Terraria.GameContent.Generation;
 using Terraria.ModLoader.IO;
 using System.Reflection;
 using Terraria.Utilities;
-using System.Runtime.Serialization.Formatters.Binary;
 using AAMod.Tiles;
 using AAMod.Walls;
 using AAMod.NPCs.Bosses.Nightcrawler;

@@ -1,8 +1,10 @@
 using System;
+using AAMod.Buffs;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace AAMod.Items.Dev
 {
@@ -19,17 +21,19 @@ namespace AAMod.Items.Dev
             projectile.minionSlots = 1;
             projectile.penetrate = -1;
             projectile.timeLeft = 300;
-            projectile.ignoreWater = true;
+            projectile.ignoreWater = false;
             projectile.tileCollide = false;
             projectile.restrikeDelay = 0;
             projectile.localNPCHitCooldown = 0;
             projectile.damage = 1;
+            projectile.alpha = 0;
             ProjectileID.Sets.MinionTargettingFeature[projectile.type] = true;
         }
 
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Chair Minion");
+            Main.projFrames[projectile.type] = 9;
         }
 
         public override bool TileCollideStyle(ref int width, ref int height, ref bool fallThrough)
@@ -40,11 +44,20 @@ namespace AAMod.Items.Dev
 
         public override void AI()
         {
-            if (projectile.wet || projectile.lavaWet || projectile.honeyWet || projectile.frame > 1)
+            if (projectile.timeLeft == 10)
             {
-                projectile.frame++;
+                projectile.timeLeft = 180;
             }
-            if (projectile.frame == 7)
+            Player player = Main.player[projectile.owner];
+            if (player.HasBuff(mod.BuffType<Chairless>()))
+            {
+                projectile.frameCounter++;
+            }
+            if (projectile.wet || projectile.lavaWet || projectile.honeyWet || projectile.frameCounter > 1)
+            {
+                projectile.frameCounter++;
+            }
+            if (projectile.frameCounter == 8)
             {
                 projectile.Kill();
             }
@@ -56,21 +69,21 @@ namespace AAMod.Items.Dev
             {
                 NPC.immuneTime = 0;
             }
-            projectile.penetrate = -1;
-            projectile.maxPenetrate = -1;
             projectile.position += projectile.velocity;
             projectile.velocity = Vector2.Zero;
             projectile.timeLeft = 180;
-            if (target.whoAmI == NPCID.Crab)
+            if (target.type == NPCID.Crab)
             {
+                target.life = 1;
+                target.StrikeNPC(99999, 0, 0);
                 NPC.NewNPC((int)(target.Center.X), (int)(target.Center.Y), NPCID.DungeonGuardian);
+                Player player = Main.player[projectile.owner];
+                player.AddBuff(mod.BuffType<Chairless>(), 1800);
             }
         }
 
         public override bool OnTileCollide(Vector2 oldVelocity)
         {
-            projectile.penetrate = -1;
-            projectile.maxPenetrate = -1;
             projectile.tileCollide = false;
             projectile.position += projectile.velocity;
             projectile.velocity = Vector2.Zero;

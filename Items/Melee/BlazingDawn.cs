@@ -15,7 +15,7 @@ namespace AAMod.Items.Melee
 			Tooltip.SetDefault("The Radiant Dawn calls");
             if (Main.netMode != 2)
             {
-                Microsoft.Xna.Framework.Graphics.Texture2D[] glowMasks = new Microsoft.Xna.Framework.Graphics.Texture2D[Main.glowMaskTexture.Length + 1];
+                Texture2D[] glowMasks = new Texture2D[Main.glowMaskTexture.Length + 1];
                 for (int i = 0; i < Main.glowMaskTexture.Length; i++)
                 {
                     glowMasks[i] = Main.glowMaskTexture[i];
@@ -47,11 +47,12 @@ namespace AAMod.Items.Melee
             if(Main.rand.NextFloat() < 1f);
             {
                 Dust dust;
-                dust = Main.dust[Terraria.Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, 15, 0f, 0f, 46, new Color(255, 75, 0), 1.381579f)];
+                dust = Main.dust[Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, 15, 0f, 0f, 46, new Color(255, 75, 0), 1.381579f)];
                 dust.noGravity = true;
                 dust.fadeIn = 1.184211f;
             }
         }
+
         public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);
