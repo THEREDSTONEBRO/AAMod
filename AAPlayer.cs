@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Linq;
 using AAMod.NPCs;
 using Microsoft.Xna.Framework;

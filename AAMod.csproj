@@ -9,9 +9,10 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>AAMod</RootNamespace>
     <AssemblyName>AAMod</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -21,6 +22,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -29,6 +31,9 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Xna.Framework, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86">
@@ -76,7 +81,9 @@
     <Compile Include="Backgrounds\Mire\MireUgBgStyle.cs" />
     <Compile Include="Backgrounds\Void\VoidSky.cs" />
     <Compile Include="Backgrounds\Void\VoidSkyData.cs" />
-    <Compile Include="Buffs\ChinchillaMinionBuff.cs" />
+    <Compile Include="Backgrounds\Void\VoidSurfaceBgStyle.cs" />
+    <Compile Include="Buffs\Chairless.cs" />
+    <Compile Include="Buffs\ChairMinionBuff.cs" />
     <Compile Include="Buffs\EnderMinionBuff.cs" />
     <Compile Include="Buffs\InfinityOverload.cs" />
     <Compile Include="Buffs\UnstableSoul.cs" />
@@ -449,13 +456,6 @@
     <Compile Include="NPCs\Bosses\Nightcrawler\MoonrayScatter.cs" />
     <Compile Include="NPCs\Bosses\Nightcrawler\Nightcrawler.cs" />
     <Compile Include="NPCs\Bosses\Retriever\Retriever.cs" />
-    <Compile Include="NPCs\Bosses\SatanSkull\handcannon.cs" />
-    <Compile Include="NPCs\Bosses\SatanSkull\handflame.cs" />
-    <Compile Include="NPCs\Bosses\SatanSkull\handhand.cs" />
-    <Compile Include="NPCs\Bosses\SatanSkull\handlaser.cs" />
-    <Compile Include="NPCs\Bosses\SatanSkull\handsaw.cs" />
-    <Compile Include="NPCs\Bosses\SatanSkull\handvice.cs" />
-    <Compile Include="NPCs\Bosses\SatanSkull\SatansSkull.cs" />
     <Compile Include="NPCs\Bosses\Zero\RealityCannon.cs" />
     <Compile Include="NPCs\Bosses\Zero\RiftShredder.cs" />
     <Compile Include="NPCs\Bosses\Zero\Taser.cs" />
@@ -551,7 +551,7 @@
     <Compile Include="Tiles\ScorchedDynastyWood.cs" />
     <Compile Include="Tiles\ScorchedShingles.cs" />
     <Compile Include="Tiles\SunAltar.cs" />
-    <Compile Include="Tiles\TerraCore.CS" />
+    <Compile Include="Tiles\TerraCore.cs" />
     <Compile Include="Tiles\TorchstoneTile.cs" />
     <Compile Include="Tiles\TruePaladinsSmeltery.cs" />
     <Compile Include="Tiles\VoidBox.cs" />
@@ -600,6 +600,7 @@
     <Content Include="Backgrounds\Mire\MireSky.png" />
     <Content Include="Backgrounds\Mire\MireUnderground.png" />
     <Content Include="Backgrounds\Snow\Auroroa.png" />
+    <Content Include="Backgrounds\Void\VoidBG.png" />
     <Content Include="Backgrounds\Void\VoidBH.png" />
     <Content Include="Backgrounds\Void\VoidBolt.png" />
     <Content Include="Backgrounds\Void\VoidFlash.png" />
@@ -614,7 +615,8 @@
     <Content Include="bin\Debug\ReLogic.dll" />
     <Content Include="bin\Debug\Terraria.exe" />
     <Content Include="bin\Debug\TerrariaModded.exe" />
-    <Content Include="Buffs\ChinchillaMinionBuff.png" />
+    <Content Include="Buffs\Chairless.png" />
+    <Content Include="Buffs\ChairMinionBuff.png" />
     <Content Include="Buffs\EnderMinionBuff.png" />
     <Content Include="Buffs\InfinityOverload.png" />
     <Content Include="Buffs\UnstableSoul.png" />
@@ -1077,10 +1079,13 @@
     <Content Include="Items\Melee\Discord.png" />
     <Content Include="Items\Melee\DiversDoom.png" />
     <Content Include="Items\Melee\DragonBlade.png" />
+    <Content Include="Items\Melee\DragonBlade_Glow.png" />
     <Content Include="Items\Melee\DragonBreath.png" />
     <Content Include="Items\Melee\Dragonfire.png" />
     <Content Include="Items\Melee\Dragonkite.png" />
+    <Content Include="Items\Melee\Dragonkite_Glow.png" />
     <Content Include="Items\Melee\Ectoblade.png" />
+    <Content Include="Items\Melee\Ectoblade_Glow.png" />
     <Content Include="Items\Melee\EnchantedWarhammer.png" />
     <Content Include="Items\Melee\EventHorizon.png" />
     <Content Include="Items\Melee\ExilesKatana.png" />
@@ -1108,6 +1113,7 @@
     <Content Include="Items\Melee\Oblivion.png" />
     <Content Include="Items\Melee\OceanRazor.png" />
     <Content Include="Items\Melee\Poppy.png" />
+    <Content Include="Items\Melee\Poppy_Glow.png" />
     <Content Include="Items\Melee\RubyGreatsword.png" />
     <Content Include="Items\Melee\RubySaber.png" />
     <Content Include="Items\Melee\ScorchDagger.png" />
@@ -1125,6 +1131,7 @@
     <Content Include="Items\Melee\TrueFleshrendClaymore.png" />
     <Content Include="Items\Melee\TrueFleshrendClaymore_Glow.png" />
     <Content Include="Items\Melee\TrueOblivion.png" />
+    <Content Include="Items\Melee\TrueOblivion_Glow.png" />
     <Content Include="Items\Melee\ValkyrieLance.png" />
     <Content Include="Items\Melee\Void.png" />
     <Content Include="Items\Melee\YtriumSword.png" />
@@ -1193,25 +1200,33 @@
     <Content Include="Items\Ranged\Bubbleshot.png" />
     <Content Include="Items\Ranged\Bunnyzooka.png" />
     <Content Include="Items\Dev\CatsEyeRifle_Glow.png" />
+    <Content Include="Items\Ranged\Bunnyzooka_Glow.png" />
     <Content Include="Items\Ranged\CoralBow.png" />
     <Content Include="Items\Ranged\DeathlyLongbow.png" />
     <Content Include="Items\Ranged\DragonArrow.png" />
+    <Content Include="Items\Ranged\DragonArrow_Glow.png" />
     <Content Include="Items\Ranged\DragonFlamebow.png" />
     <Content Include="Items\Ranged\DragonFlamebow_glow.png" />
     <Content Include="Items\Ranged\DragonsMaw.png" />
     <Content Include="Items\Ranged\Flare_Minigun.png" />
     <Content Include="Items\Ranged\FulguriteTazerblaster.png" />
+    <Content Include="Items\Ranged\FulguriteTazerblaster_Glow.png" />
     <Content Include="Items\Ranged\HydraTrishot.png" />
     <Content Include="Items\Ranged\Railjaw.png" />
     <Content Include="Items\Ranged\ReaperArrow.png" />
+    <Content Include="Items\Ranged\ReaperArrow_Glow.png" />
     <Content Include="Items\Ranged\ShootingStar.png" />
     <Content Include="Items\Ranged\TerraArrow.png" />
+    <Content Include="Items\Ranged\TerraArrow_Glow.png" />
     <Content Include="Items\Ranged\TerraBallista.png" />
     <Content Include="Items\Ranged\TerraBallista_A.png" />
     <Content Include="Items\Ranged\TheReaper.png" />
+    <Content Include="Items\Ranged\TheReaper_Glow.png" />
     <Content Include="Items\Ranged\TheSquirter.png" />
     <Content Include="Items\Ranged\TheVulcano.png" />
+    <Content Include="Items\Ranged\TheVulcano_Glow.png" />
     <Content Include="Items\Ranged\TrueDeathlyLongbow.png" />
+    <Content Include="Items\Ranged\TrueDeathlyLongbow_Glow.png" />
     <Content Include="Items\Summoning\AntimonStaff.png" />
     <Content Include="Items\Summoning\DemonStaff.png" />
     <Content Include="Items\Summoning\DragonriderStaff.png" />
@@ -1220,7 +1235,9 @@
     <Content Include="Items\Summoning\Minions\EnderMinion.png" />
     <Content Include="Items\Summoning\WyrmStaff.png" />
     <Content Include="Items\Throwing\AbbadonBoomerang.png" />
+    <Content Include="Items\Throwing\AbbadonBoomerang_Glow.png" />
     <Content Include="Items\Throwing\AbbadonKunai.png" />
+    <Content Include="Items\Throwing\AbbadonKunai_Glow.png" />
     <Content Include="Items\Throwing\AbyssalArc.png" />
     <Content Include="Items\Throwing\BurningGel.png" />
     <Content Include="Items\Throwing\CoffeeMug.png" />
@@ -1231,6 +1248,7 @@
     <Content Include="Items\Throwing\MurkyGel.png" />
     <Content Include="Items\Throwing\SandShuriken.png" />
     <Content Include="Items\Throwing\StormJavelin.png" />
+    <Content Include="Items\Throwing\StormJavelin_Glow.png" />
     <Content Include="Items\Throwing\YtriumBoomerang.png" />
     <Content Include="Items\Tools\DarkmatterJackhammer.png" />
     <Content Include="Items\Tools\DarkmatterJackhammer_Glow.png" />
@@ -1244,6 +1262,7 @@
     <Content Include="Items\Tools\OceanPick.png" />
     <Content Include="Items\Tools\Radium Hammaxe.png" />
     <Content Include="Items\Tools\Terratool.png" />
+    <Content Include="Items\Tools\Terratool_Glow.png" />
     <Content Include="Items\Tools\YtriumAxe.png" />
     <Content Include="Items\Tools\YtriumPickaxe.png" />
     <Content Include="Items\Usable\CalciumSkull.png" />
@@ -1375,15 +1394,6 @@
     <Content Include="NPCs\Bosses\Retriever\Retriever.png" />
     <Content Include="NPCs\Bosses\Retriever\Retriever_Glow.png" />
     <Content Include="NPCs\Bosses\Retriever\Retriever_Head_Boss.png" />
-    <Content Include="NPCs\Bosses\SatanSkull\ArmSatan.png" />
-    <Content Include="NPCs\Bosses\SatanSkull\handcannon.png" />
-    <Content Include="NPCs\Bosses\SatanSkull\handflame.png" />
-    <Content Include="NPCs\Bosses\SatanSkull\handhand.png" />
-    <Content Include="NPCs\Bosses\SatanSkull\handlaser.png" />
-    <Content Include="NPCs\Bosses\SatanSkull\handsaw.png" />
-    <Content Include="NPCs\Bosses\SatanSkull\handvice.png" />
-    <Content Include="NPCs\Bosses\SatanSkull\SatansSkull.png" />
-    <Content Include="NPCs\Bosses\SatanSkull\Satan_Head.png" />
     <Content Include="NPCs\Bosses\Unused\Decay.png" />
     <Content Include="NPCs\Bosses\Unused\MrBonesRevenge.png" />
     <Content Include="NPCs\Bosses\Unused\Soul of Cthulhu.png" />
@@ -1679,4 +1689,7 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>"D:\SteamLibrary\steamapps\common\Terraria\tModLoaderServer.exe" -build "$(ProjectDir)\" -eac "$(TargetPath)"</PostBuildEvent>
+  </PropertyGroup>
 </Project>
