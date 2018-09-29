@@ -243,6 +243,7 @@
     <Compile Include="Items\Boss\Grips\BulwarkOfChaos.cs" />
     <Compile Include="Items\Boss\Grips\ClawOfChaos.cs" />
     <Compile Include="Items\Boss\Grips\GripBag.cs" />
+    <Compile Include="Items\Boss\EXSoul.cs" />
     <Compile Include="Items\Boss\Retriever\RetrieverBag.cs" />
     <Compile Include="Items\Boss\Retriever\StormClaw.cs" />
     <Compile Include="Items\Boss\Retriever\StormRiot.cs" />
@@ -256,7 +257,6 @@
     <Compile Include="Items\Boss\Zero\ZeroBag.cs" />
     <Compile Include="Items\Boss\Zero\ZeroStar.cs" />
     <Compile Include="Items\Dev\AmphibianLongsword.cs" />
-    <Compile Include="Items\Dev\BinaryBlade.cs" />
     <Compile Include="Items\Dev\CatsEyeRifle.cs" />
     <Compile Include="Items\Dev\ChairMinion.cs" />
     <Compile Include="Items\Dev\ChinStaff.cs" />
@@ -326,6 +326,7 @@
     <Compile Include="Items\Melee\Poppy.cs" />
     <Compile Include="Items\Melee\RubyGreatsword.cs" />
     <Compile Include="Items\Melee\RubySaber.cs" />
+    <Compile Include="Items\Melee\TerraBladeEX.cs" />
     <Compile Include="Items\Melee\TheFox.cs" />
     <Compile Include="Items\Melee\TrueAbyssalTwilight.cs" />
     <Compile Include="Items\Melee\TrueBlazingDawn.cs" />
@@ -669,10 +670,12 @@
     <Content Include="Items\Accessories\InfinityGauntlet_HandsOn.png" />
     <Content Include="Items\Accessories\InfinityGauntlet_HandsOn_Glow.png" />
     <Content Include="Items\Accessories\InfinityGauntlet_Wings.png" />
+    <Content Include="Items\Accessories\InfinityGauntlet_Wings_Glow.png" />
     <Content Include="Items\Accessories\LifeCharm.png" />
     <Content Include="Items\Accessories\MindStone.png" />
     <Content Include="Items\Accessories\MindStone_Face.png" />
     <Content Include="Items\Accessories\MindStone_Face_Glow.png" />
+    <Content Include="Items\Accessories\MindStone_Glow.png" />
     <Content Include="Items\Accessories\PowerStone.png" />
     <Content Include="Items\Accessories\PowerStone_Face.png" />
     <Content Include="Items\Accessories\PowerStone_Face_Glow.png" />
@@ -680,16 +683,20 @@
     <Content Include="Items\Accessories\RealityStone.png" />
     <Content Include="Items\Accessories\RealityStone_Face.png" />
     <Content Include="Items\Accessories\RealityStone_Face_Glow.png" />
+    <Content Include="Items\Accessories\RealityStone_Glow.png" />
     <Content Include="Items\Accessories\RealityStone_Wings.png" />
+    <Content Include="Items\Accessories\RealityStone_Wings_Glow.png" />
     <Content Include="Items\Accessories\SoulStone.png" />
     <Content Include="Items\Accessories\SoulStone_Face.png" />
     <Content Include="Items\Accessories\SoulStone_Face_Glow.png" />
     <Content Include="Items\Accessories\SpaceStone.png" />
     <Content Include="Items\Accessories\SpaceStone_Face.png" />
     <Content Include="Items\Accessories\SpaceStone_Face_Glow.png" />
+    <Content Include="Items\Accessories\SpaceStone_Glow.png" />
     <Content Include="Items\Accessories\TimeStone.png" />
     <Content Include="Items\Accessories\TimeStone_Face.png" />
     <Content Include="Items\Accessories\TimeStone_Face_Glow.png" />
+    <Content Include="Items\Accessories\TimeStone_Glow.png" />
     <Content Include="Items\Accessories\WingsofChaos.png" />
     <Content Include="Items\Accessories\WingsofChaos_Wings.png" />
     <Content Include="Items\Armor\Darkmatter\DarkmatterBreastplate.png" />
@@ -949,6 +956,8 @@
     <Content Include="Items\Boss\Equinox\NCBag.png" />
     <Content Include="Items\Boss\Equinox\RadiantStar.png" />
     <Content Include="Items\Boss\Equinox\RadiantStar_HandsOn.png" />
+    <Content Include="Items\Boss\EXSoul.png" />
+    <Content Include="Items\Boss\EXSoul1.png" />
     <Content Include="Items\Boss\Grips\BulwarkOfChaos.png" />
     <Content Include="Items\Boss\Grips\BulwarkOfChaos_Shield.png" />
     <Content Include="Items\Boss\Grips\ClawOfChaos.png" />
@@ -968,10 +977,10 @@
     <Content Include="Items\Boss\Zero\AMR_Glow.png" />
     <Content Include="Items\Boss\Zero\Battery.png" />
     <Content Include="Items\Boss\Zero\Battery_Glow.png" />
+    <Content Include="Items\Boss\Zero\DeathRay.png" />
     <Content Include="Items\Boss\Zero\EventHorizon.png" />
     <Content Include="Items\Boss\Zero\EventHorizon_Glow.png" />
     <Content Include="Items\Boss\Zero\Neutralizer.png" />
-    <Content Include="Items\Boss\Zero\Neutralizer_Glow.png" />
     <Content Include="Items\Boss\Zero\RealityCannon.png" />
     <Content Include="Items\Boss\Zero\RealityCannon_Glow.png" />
     <Content Include="Items\Boss\Zero\RiftShredder.png" />
@@ -989,8 +998,7 @@
     <Content Include="Items\Boss\Zero\ZeroWings_Wings.png" />
     <Content Include="Items\Boss\Zero\ZeroWings_Wings_Glow.png" />
     <Content Include="Items\Dev\AmphibianLongsword.png" />
-    <Content Include="Items\Dev\BinaryBlade.png" />
-    <Content Include="Items\Dev\BinaryBlade_Glow.png" />
+    <Content Include="Items\Dev\AmphibianLongswordEX.png" />
     <Content Include="Items\Dev\CatsEyeRifle.png" />
     <Content Include="Items\Dev\ChairMinion.png" />
     <Content Include="Items\Dev\ChinStaff.png" />
@@ -1113,6 +1121,8 @@
     <Content Include="Items\Melee\SoulSword.png" />
     <Content Include="Items\Melee\SultansScimitar.png" />
     <Content Include="Items\Melee\Sword.png" />
+    <Content Include="Items\Melee\TerraBladeEX.png" />
+    <Content Include="Items\Melee\TerraBladeEX_Glow.png" />
     <Content Include="Items\Melee\TerraShortsword.png" />
     <Content Include="Items\Melee\TheFox.png" />
     <Content Include="Items\Melee\TrueAbyssalTwilight.png" />

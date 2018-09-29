@@ -2,6 +2,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
 using Terraria;
+using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -10,9 +11,7 @@ namespace AAMod.Items.Accessories
     [AutoloadEquip(EquipType.Face, EquipType.Wings)]
     public class RealityStone : ModItem
     {
-
-        public static ModItem _ref;
-        public static Texture2D _glow;
+        public static short customGlowMask = 0;
 
         public override void SetStaticDefaults()
         {
@@ -20,14 +19,29 @@ namespace AAMod.Items.Accessories
             Tooltip.SetDefault(
 @"Grants you control over reality around you allowing long flight, insane speed, and uninhibited movement
 'Now...reality can be whatever I want it to be...'");
+
+            Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(4, 13));
+            ItemID.Sets.ItemNoGravity[item.type] = true;
+            if (Main.netMode != 2)
+            {
+                Microsoft.Xna.Framework.Graphics.Texture2D[] glowMasks = new Microsoft.Xna.Framework.Graphics.Texture2D[Main.glowMaskTexture.Length + 1];
+                for (int i = 0; i < Main.glowMaskTexture.Length; i++)
+                {
+                    glowMasks[i] = Main.glowMaskTexture[i];
+                }
+                glowMasks[glowMasks.Length - 1] = mod.GetTexture("Items/Accessories/" + GetType().Name + "_Glow");
+                customGlowMask = (short)(glowMasks.Length - 1);
+                Main.glowMaskTexture = glowMasks;
+            }
         }
         public override void SetDefaults()
         {
-            item.width = 28;
-            item.height = 28;
+            item.width = 40;
+            item.height = 36;
             item.value = Item.sellPrice(0, 0, 0, 0);
             item.rare = 11;
             item.accessory = true;
+            item.glowMask = customGlowMask;
         }
 
         public override void ModifyTooltips(List<TooltipLine> list)
@@ -71,28 +85,7 @@ namespace AAMod.Items.Accessories
             speed = 20f;
             acceleration *= 3.5f;
         }
-
-        public override void AddRecipes()
-        {
-            {
-                ModRecipe recipe = new ModRecipe(mod);
-                recipe.AddIngredient(ItemID.Ruby, 10);
-                recipe.AddIngredient(ItemID.LargeRuby, 1);
-                recipe.AddIngredient(null, "WingsofChaos", 1);
-                recipe.AddIngredient(ItemID.FrostsparkBoots, 1);
-                recipe.AddIngredient(ItemID.LavaWaders, 1);
-                recipe.AddIngredient(ItemID.FragmentNebula, 15);
-                recipe.AddIngredient(ItemID.FragmentSolar, 15);
-                recipe.AddIngredient(ItemID.FragmentVortex, 15);
-                recipe.AddIngredient(ItemID.FragmentStardust, 15);
-                recipe.AddIngredient(ItemID.SoulofFright, 30);
-                recipe.AddIngredient(null, "DarkMatter", 10);
-                recipe.AddIngredient(null, "RadiumBar", 10);
-                recipe.AddTile(null, "QuantumFusionAccelerator");
-                recipe.SetResult(this);
-                recipe.AddRecipe();
-            }
-        }
+        
         public bool CanEquipAccessory(Item item, Player player, int slot)
         {
             if (item.type == mod.ItemType("RealityStone"))

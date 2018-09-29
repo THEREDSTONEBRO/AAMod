@@ -107,6 +107,11 @@ namespace AAMod.NPCs.Bosses.Zero
                 npc.DropLoot(mod.ItemType(lootTable[loot]));
                 npc.DropLoot(Items.Vanity.Mask.ZeroMask.type, 1f / 7);
                 npc.DropLoot(Items.Blocks.ZeroTrophy.type, 1f / 10);
+                if (Main.rand.NextFloat() < 0.05f && AAWorld.RealityDropped == false)
+                {
+                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("RealityStone"));
+                    AAWorld.RealityDropped = true;
+                }
             }
         }
         

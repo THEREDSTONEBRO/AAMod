@@ -57,6 +57,8 @@ namespace AAMod
         public static bool downedZero;
         public static bool downedZeroA;
         public static bool downedAkumata;
+        //Stones
+        public static bool RealityDropped;
 
         public string nums = "1234567890";
 
@@ -90,6 +92,8 @@ namespace AAMod
             Luminite = NPC.downedMoonlord;
             DarkMatter = downedNC;
             RadiumOre = downedDB;
+            //Stones
+            RealityDropped = false;
         }
 
         public static int Raycast(int x, int y)

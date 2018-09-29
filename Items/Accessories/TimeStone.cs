@@ -11,6 +11,7 @@ namespace AAMod.Items.Accessories
     [AutoloadEquip(EquipType.Face)]
     public class TimeStone : ModItem
     {
+        public static short customGlowMask = 0;
 
         public override void SetStaticDefaults()
         {
@@ -19,14 +20,26 @@ namespace AAMod.Items.Accessories
 @"Respawn time cut by 80%
 hitting enemies causes time for them to slow
 'Dread it. Run from it. Destiny still arives.'");
+            if (Main.netMode != 2)
+            {
+                Texture2D[] glowMasks = new Microsoft.Xna.Framework.Graphics.Texture2D[Main.glowMaskTexture.Length + 1];
+                for (int i = 0; i < Main.glowMaskTexture.Length; i++)
+                {
+                    glowMasks[i] = Main.glowMaskTexture[i];
+                }
+                glowMasks[glowMasks.Length - 1] = mod.GetTexture("Items/Accessories/" + GetType().Name + "_Glow");
+                customGlowMask = (short)(glowMasks.Length - 1);
+                Main.glowMaskTexture = glowMasks;
+            }
         }
         public override void SetDefaults()
         {
-            item.width = 20;
-            item.height = 24;
+            item.width = 54;
+            item.height = 52;
             item.value = Item.sellPrice(0, 0, 0, 0);
             item.rare = 11;
             item.accessory = true;
+            item.glowMask = customGlowMask;
         }
 
         public override void ModifyTooltips(List<TooltipLine> list)

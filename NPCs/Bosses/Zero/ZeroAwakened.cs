@@ -57,6 +57,11 @@ namespace AAMod.NPCs.Bosses.Zero
             }
             npc.DropLoot(Items.Vanity.Mask.ZeroMask.type, 1f / 7);
             npc.DropLoot(Items.Blocks.ZeroTrophy.type, 1f / 10);
+            if (Main.rand.NextFloat() < 0.05f && AAWorld.RealityDropped == false)
+            {
+                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("RealityStone"));
+                AAWorld.RealityDropped = true;
+            }
         }
         public override void BossLoot(ref string name, ref int potionType)
         {
@@ -103,14 +108,7 @@ namespace AAMod.NPCs.Bosses.Zero
             }
             return true;
         }*/
-
-        public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
-        {
-            npc.lifeMax = (int)(npc.lifeMax * 0.8f * bossLifeScale);  //boss life scale in expertmode
-            npc.damage = (int)(npc.damage * 0.7f);  //boss damage increase in expermode
-        }
-        public int timer;
-        private bool switchMove = false;  //Creates a bool for this .cs only
+        
         public override void AI()
         {
             if (npc.target < 0 || npc.target == 255 || Main.player[npc.target].dead || !Main.player[npc.target].active)

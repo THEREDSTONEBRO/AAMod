@@ -112,6 +112,11 @@ namespace AAMod.Items.Boss.Zero
             string[] lootTable = { "EventHorizon", "RealityCannon", "RiftShredder", "VoidStar", "TeslaHand", "ZeroStar" };
             int loot = Main.rand.Next(lootTable.Length);
             player.QuickSpawnItem(mod.ItemType(lootTable[loot]));
+            if (Main.rand.NextFloat() < 0.05f && AAWorld.RealityDropped == false)
+            {
+                player.QuickSpawnItem(mod.ItemType("RealityStone"));
+                AAWorld.RealityDropped = true;
+            }
         }
 	}
 }

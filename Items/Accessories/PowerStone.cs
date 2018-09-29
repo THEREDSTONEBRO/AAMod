@@ -12,8 +12,6 @@ namespace AAMod.Items.Accessories
     public class PowerStone : ModItem
     {
         public static short customGlowMask = 0;
-        public static ModItem _ref;
-        public static Texture2D _glow;
 
         public override void SetStaticDefaults()
         {
@@ -27,7 +25,7 @@ Enemies attacked are given the Infinity Overload Debuff
             ItemID.Sets.ItemNoGravity[item.type] = true;
             if (Main.netMode != 2)
             {
-                Microsoft.Xna.Framework.Graphics.Texture2D[] glowMasks = new Microsoft.Xna.Framework.Graphics.Texture2D[Main.glowMaskTexture.Length + 1];
+                Texture2D[] glowMasks = new Microsoft.Xna.Framework.Graphics.Texture2D[Main.glowMaskTexture.Length + 1];
                 for (int i = 0; i < Main.glowMaskTexture.Length; i++)
                 {
                     glowMasks[i] = Main.glowMaskTexture[i];
