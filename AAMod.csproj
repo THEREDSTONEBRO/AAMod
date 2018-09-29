@@ -76,7 +76,7 @@
     <Compile Include="Backgrounds\Mire\MireUgBgStyle.cs" />
     <Compile Include="Backgrounds\Void\VoidSky.cs" />
     <Compile Include="Backgrounds\Void\VoidSkyData.cs" />
-    <Compile Include="Buffs\ChinchillaMinionBuff.cs" />
+    <Compile Include="Buffs\ChairMinionBuff.cs" />
     <Compile Include="Buffs\EnderMinionBuff.cs" />
     <Compile Include="Buffs\InfinityOverload.cs" />
     <Compile Include="Buffs\UnstableSoul.cs" />
@@ -341,6 +341,7 @@
     <Compile Include="Items\Projectiles\Crystal.cs" />
     <Compile Include="Items\Projectiles\DarkShredders.cs" />
     <Compile Include="Items\Projectiles\Depthwalker.cs" />
+    <Compile Include="Items\Projectiles\DoomRay.cs" />
     <Compile Include="Items\Projectiles\Doot.cs" />
     <Compile Include="Items\Projectiles\DragonArrow.cs" />
     <Compile Include="Items\Projectiles\DragonBreathP.cs" />
@@ -608,7 +609,7 @@
     <Content Include="bin\Debug\ReLogic.dll" />
     <Content Include="bin\Debug\Terraria.exe" />
     <Content Include="bin\Debug\TerrariaModded.exe" />
-    <Content Include="Buffs\ChinchillaMinionBuff.png" />
+    <Content Include="Buffs\ChairMinionBuff.png" />
     <Content Include="Buffs\EnderMinionBuff.png" />
     <Content Include="Buffs\InfinityOverload.png" />
     <Content Include="Buffs\UnstableSoul.png" />
@@ -1002,10 +1003,12 @@
     <Content Include="Items\Dev\CatsEyeRifle.png" />
     <Content Include="Items\Dev\ChairMinion.png" />
     <Content Include="Items\Dev\ChinStaff.png" />
+    <Content Include="Items\Dev\CrabGuardian.png" />
     <Content Include="Items\Dev\DuckstepGun.png" />
     <Content Include="Items\Dev\DuckstepGun_Glow.png" />
     <Content Include="Items\Dev\EnderStaff.png" />
     <Content Include="Items\Dev\Ethereal.png" />
+    <Content Include="Items\Dev\EtherealEX.png" />
     <Content Include="Items\Dev\HallamDevWeapon.png" />
     <Content Include="Items\Dev\HallamDevWeapon_Glow.png" />
     <Content Include="Items\Dev\Ryugen.png" />
@@ -1014,13 +1017,13 @@
     <Content Include="Items\Dev\SkrallStaff.png" />
     <Content Include="Items\Dev\TimeTeller.png" />
     <Content Include="Items\Dev\TitanAxe.png" />
+    <Content Include="Items\Dev\Umbra.png" />
     <Content Include="Items\Hooks\DragonsGrip.png" />
     <Content Include="Items\Magic\AncientArcanum.png" />
     <Content Include="Items\Magic\BogBomb.png" />
     <Content Include="Items\Magic\Depthsprayer.png" />
     <Content Include="Items\Magic\DragonsBreath.png" />
     <Content Include="Items\Magic\DragonStaff.png" />
-    <Content Include="Items\Magic\DragonStaff1.png" />
     <Content Include="Items\Magic\GelWand.png" />
     <Content Include="Items\Magic\GildedStaff.png" />
     <Content Include="Items\Magic\MagicFlower.png" />
@@ -1129,10 +1132,11 @@
     <Content Include="Items\Melee\TrueBlazingDawn.png" />
     <Content Include="Items\Melee\TrueBlazingDawn_Glow.png" />
     <Content Include="Items\Melee\TrueCopperShortsword.png" />
-    <Content Include="Items\Melee\TrueCopperShortsword_glow.png" />
+    <Content Include="Items\Melee\TrueCopperShortsword_Glow.png" />
     <Content Include="Items\Melee\TrueFleshrendClaymore.png" />
     <Content Include="Items\Melee\TrueFleshrendClaymore_Glow.png" />
     <Content Include="Items\Melee\TrueOblivion.png" />
+    <Content Include="Items\Melee\TrueOblivion_Glow.png" />
     <Content Include="Items\Melee\ValkyrieLance.png" />
     <Content Include="Items\Melee\Void.png" />
     <Content Include="Items\Melee\YtriumSword.png" />
@@ -1144,6 +1148,7 @@
     <Content Include="Items\Projectiles\DarkShredders.png" />
     <Content Include="Items\Projectiles\DarkShredders_glow.png" />
     <Content Include="Items\Projectiles\Depthwalker.png" />
+    <Content Include="Items\Projectiles\DoomRay.png" />
     <Content Include="Items\Projectiles\Doot.png" />
     <Content Include="Items\Projectiles\DragonArrow.png" />
     <Content Include="Items\Projectiles\DragonBreathP.png" />
@@ -1201,25 +1206,33 @@
     <Content Include="Items\Ranged\Bubbleshot.png" />
     <Content Include="Items\Ranged\Bunnyzooka.png" />
     <Content Include="Items\Dev\CatsEyeRifle_Glow.png" />
+    <Content Include="Items\Ranged\Bunnyzooka_Glow.png" />
     <Content Include="Items\Ranged\CoralBow.png" />
     <Content Include="Items\Ranged\DeathlyLongbow.png" />
     <Content Include="Items\Ranged\DragonArrow.png" />
+    <Content Include="Items\Ranged\DragonArrow_Glow.png" />
     <Content Include="Items\Ranged\DragonFlamebow.png" />
     <Content Include="Items\Ranged\DragonFlamebow_glow.png" />
     <Content Include="Items\Ranged\DragonsMaw.png" />
     <Content Include="Items\Ranged\Flare_Minigun.png" />
     <Content Include="Items\Ranged\FulguriteTazerblaster.png" />
+    <Content Include="Items\Ranged\FulguriteTazerblaster_Glow.png" />
     <Content Include="Items\Ranged\HydraTrishot.png" />
     <Content Include="Items\Ranged\Railjaw.png" />
     <Content Include="Items\Ranged\ReaperArrow.png" />
+    <Content Include="Items\Ranged\ReaperArrow_Glow.png" />
     <Content Include="Items\Ranged\ShootingStar.png" />
     <Content Include="Items\Ranged\TerraArrow.png" />
+    <Content Include="Items\Ranged\TerraArrow_Glow.png" />
     <Content Include="Items\Ranged\TerraBallista.png" />
     <Content Include="Items\Ranged\TerraBallista_A.png" />
     <Content Include="Items\Ranged\TheReaper.png" />
+    <Content Include="Items\Ranged\TheReaper_Glow.png" />
     <Content Include="Items\Ranged\TheSquirter.png" />
     <Content Include="Items\Ranged\TheVulcano.png" />
+    <Content Include="Items\Ranged\TheVulcano_Glow.png" />
     <Content Include="Items\Ranged\TrueDeathlyLongbow.png" />
+    <Content Include="Items\Ranged\TrueDeathlyLongbow_Glow.png" />
     <Content Include="Items\Summoning\AntimonStaff.png" />
     <Content Include="Items\Summoning\DemonStaff.png" />
     <Content Include="Items\Summoning\DragonriderStaff.png" />
@@ -1228,7 +1241,9 @@
     <Content Include="Items\Summoning\Minions\EnderMinion.png" />
     <Content Include="Items\Summoning\WyrmStaff.png" />
     <Content Include="Items\Throwing\AbbadonBoomerang.png" />
+    <Content Include="Items\Throwing\AbbadonBoomerang_Glow.png" />
     <Content Include="Items\Throwing\AbbadonKunai.png" />
+    <Content Include="Items\Throwing\AbbadonKunai_Glow.png" />
     <Content Include="Items\Throwing\AbyssalArc.png" />
     <Content Include="Items\Throwing\BurningGel.png" />
     <Content Include="Items\Throwing\CoffeeMug.png" />
@@ -1239,6 +1254,7 @@
     <Content Include="Items\Throwing\MurkyGel.png" />
     <Content Include="Items\Throwing\SandShuriken.png" />
     <Content Include="Items\Throwing\StormJavelin.png" />
+    <Content Include="Items\Throwing\StormJavelin_Glow.png" />
     <Content Include="Items\Throwing\YtriumBoomerang.png" />
     <Content Include="Items\Tools\DarkmatterJackhammer.png" />
     <Content Include="Items\Tools\DarkmatterJackhammer_Glow.png" />
@@ -1252,6 +1268,7 @@
     <Content Include="Items\Tools\OceanPick.png" />
     <Content Include="Items\Tools\Radium Hammaxe.png" />
     <Content Include="Items\Tools\Terratool.png" />
+    <Content Include="Items\Tools\Terratool_Glow.png" />
     <Content Include="Items\Tools\YtriumAxe.png" />
     <Content Include="Items\Tools\YtriumPickaxe.png" />
     <Content Include="Items\Usable\CalciumSkull.png" />
@@ -1697,6 +1714,6 @@
     </PreBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
-    <PostBuildEvent>"C:\Program Files (x86)\Steam\steamapps\common\Terraria\tModLoaderServer.exe" -build "$(ProjectDir)\"</PostBuildEvent>
+    <PostBuildEvent>"D:\SteamLibrary\steamapps\common\Terraria\tModLoaderServer.exe" -build "$(ProjectDir)\"</PostBuildEvent>
   </PropertyGroup>
 </Project>

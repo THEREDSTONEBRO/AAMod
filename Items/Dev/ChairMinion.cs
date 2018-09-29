@@ -16,7 +16,7 @@ namespace AAMod.Items.Dev
         public override void SetDefaults()
         {
             projectile.netImportant = true;
-            projectile.CloneDefaults(ProjectileID.PirateCaptain);
+            projectile.CloneDefaults(ProjectileID.DeadlySphere);
             projectile.width = 16;
             projectile.height = 34;
             projectile.friendly = true;

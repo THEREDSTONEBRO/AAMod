@@ -276,7 +276,7 @@ namespace AAMod
             progress.Set(0.6f);
             List<Point> posIslands = new List<Point>();
             progress.Set(0.7f);
-            for (int i = 0; i < Main.maxTilesX / 1400; ++i)
+            for (int i = 0; i < 4; i++)
             {
                 Point position = new Point(
                     center.X + (WorldGen.genRand.Next(35, 55) * (WorldGen.genRand.NextBool() ? -1 : 1)),
