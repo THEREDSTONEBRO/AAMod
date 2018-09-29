@@ -676,6 +676,7 @@
     <Content Include="Items\Accessories\PowerStone.png" />
     <Content Include="Items\Accessories\PowerStone_Face.png" />
     <Content Include="Items\Accessories\PowerStone_Face_Glow.png" />
+    <Content Include="Items\Accessories\PowerStone_Glow.png" />
     <Content Include="Items\Accessories\RealityStone.png" />
     <Content Include="Items\Accessories\RealityStone_Face.png" />
     <Content Include="Items\Accessories\RealityStone_Face_Glow.png" />

@@ -264,20 +264,7 @@ namespace AAMod
             progress.Set(0f);
             int VoidHeight = 0;
             progress.Set(0.1f);
-            if (Main.maxTilesY < 2700)
-            {
-                VoidHeight = 120;
-            }
-            progress.Set(0.2f);
-            if (Main.maxTilesY < 3600)
-            {
-                VoidHeight = 140;
-            }
-            progress.Set(0.3f);
-            if (Main.maxTilesY >= 3600)
-            {
-                VoidHeight = 160;
-            }
+            VoidHeight = 120;
             progress.Set(0.4f);
             Point center = new Point((Main.maxTilesX / 15 * 14) + (Main.maxTilesX / 15 / 2) - 100, center.Y = VoidHeight);
             progress.Set(0.5f);
@@ -324,6 +311,7 @@ namespace AAMod
                 position.Y -= 11;
                 VoidHouses(position.X, position.Y, (ushort)mod.TileType("DoomstoneBrick"), 10, 7);
             }
+            ErrorLogger.Log("8");
             progress.Set(0.9f);
             AAWorldGen(progress);
             progress.Set(1f);
