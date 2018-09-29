@@ -2,6 +2,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
 using Terraria;
+using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -10,7 +11,7 @@ namespace AAMod.Items.Accessories
     [AutoloadEquip(EquipType.Face)]
     public class PowerStone : ModItem
     {
-
+        public static short customGlowMask = 0;
         public static ModItem _ref;
         public static Texture2D _glow;
 
@@ -21,14 +22,29 @@ namespace AAMod.Items.Accessories
 @"Triples your attack power
 Enemies attacked are given the Infinity Overload Debuff
 'Fun isn’t something one considers when balancing the universe'");
+
+            Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(4, 8));
+            ItemID.Sets.ItemNoGravity[item.type] = true;
+            if (Main.netMode != 2)
+            {
+                Microsoft.Xna.Framework.Graphics.Texture2D[] glowMasks = new Microsoft.Xna.Framework.Graphics.Texture2D[Main.glowMaskTexture.Length + 1];
+                for (int i = 0; i < Main.glowMaskTexture.Length; i++)
+                {
+                    glowMasks[i] = Main.glowMaskTexture[i];
+                }
+                glowMasks[glowMasks.Length - 1] = mod.GetTexture("Items/Accessories/" + GetType().Name + "_Glow");
+                customGlowMask = (short)(glowMasks.Length - 1);
+                Main.glowMaskTexture = glowMasks;
+            }
         }
         public override void SetDefaults()
         {
-            item.width = 18;
-            item.height = 20;
+            item.width = 66;
+            item.height = 78;
             item.value = Item.sellPrice(0, 0, 0, 0);
             item.rare = 11;
             item.accessory = true;
+            item.glowMask = customGlowMask;
         }
 
         public override void ModifyTooltips(List<TooltipLine> list)

@@ -141,7 +141,7 @@ namespace AAMod.NPCs.Bosses.Zero
         {
             if ((NPC.CountNPCS(mod.NPCType<Searcher>()) < 10 && !Main.expertMode) || (NPC.CountNPCS(mod.NPCType<Searcher>()) < 15 && Main.expertMode))
             {
-                NPC.NewNPC((int)(npc.Center.X + Main.rand.Next(-20, 20)), (int)(npc.Center.Y + Main.rand.Next(-20, 20)), mod.NPCType<Searcher>());
+                NPC.NewNPC((int)(npc.Center.X + Main.rand.Next(-10, 10)), (int)(npc.Center.Y + Main.rand.Next(-10, 10)), mod.NPCType<Searcher>());
             }
             npc.damage = npc.defDamage;
             npc.defense = npc.defDefense;
