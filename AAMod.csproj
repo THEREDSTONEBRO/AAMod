@@ -341,6 +341,7 @@
     <Compile Include="Items\Projectiles\Crystal.cs" />
     <Compile Include="Items\Projectiles\DarkShredders.cs" />
     <Compile Include="Items\Projectiles\Depthwalker.cs" />
+    <Compile Include="Items\Projectiles\DoomRay.cs" />
     <Compile Include="Items\Projectiles\Doot.cs" />
     <Compile Include="Items\Projectiles\DragonArrow.cs" />
     <Compile Include="Items\Projectiles\DragonBreathP.cs" />
@@ -1144,6 +1145,7 @@
     <Content Include="Items\Projectiles\DarkShredders.png" />
     <Content Include="Items\Projectiles\DarkShredders_glow.png" />
     <Content Include="Items\Projectiles\Depthwalker.png" />
+    <Content Include="Items\Projectiles\DoomRay.png" />
     <Content Include="Items\Projectiles\Doot.png" />
     <Content Include="Items\Projectiles\DragonArrow.png" />
     <Content Include="Items\Projectiles\DragonBreathP.png" />

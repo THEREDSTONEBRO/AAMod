@@ -15,7 +15,8 @@ namespace AAMod.Items.Melee   //where is located
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("The Lolkat");
-            Tooltip.SetDefault("Memes memes memes galore");
+            Tooltip.SetDefault(@"Memes memes memes galore
+Meowmere EX");
             if (Main.netMode != 2)
             {
                 Texture2D[] glowMasks = new Texture2D[Main.glowMaskTexture.Length + 1];
@@ -32,7 +33,7 @@ namespace AAMod.Items.Melee   //where is located
         public override void SetDefaults()
         {
 
-            item.damage = 350;            //Sword damage
+            item.damage = 450;            //Sword damage
             item.melee = true;            //if it's melee
             item.width = 64;              //Sword width
             item.height = 70;             //Sword height
@@ -47,20 +48,18 @@ namespace AAMod.Items.Melee   //where is located
             item.useTurn = true;
             item.expert = true;
 			item.shoot = 502;
-			item.shootSpeed = 11f;
+			item.shootSpeed = 12f;
             item.glowMask = customGlowMask;
         }
 
-        public override void AddRecipes()  //How to craft this sword
+        public override void AddRecipes()
         {
-            ModRecipe recipe = new ModRecipe(mod);      
-            recipe.AddIngredient(ItemID.Meowmere, 1);
-            recipe.AddIngredient(null, "TrueCopperShortsword", 1);
-            recipe.AddIngredient(ItemID.LunarBar, 12);
-            recipe.AddTile(TileID.LunarCraftingStation);   //at work bench
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(ItemID.Meowmere);
+            recipe.AddIngredient(null, "EXSoul");
+            recipe.AddTile(null, "QuantumFusionAccelerator");
             recipe.SetResult(this);
             recipe.AddRecipe();
-
         }
     }
 }
