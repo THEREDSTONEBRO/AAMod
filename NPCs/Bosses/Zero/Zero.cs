@@ -139,7 +139,7 @@ namespace AAMod.NPCs.Bosses.Zero
 
         public override void AI()
         {
-            if ((NPC.CountNPCS(mod.NPCType<Searcher>()) < 20 && !Main.expertMode) || (NPC.CountNPCS(mod.NPCType<Searcher>()) < 30 && Main.expertMode))
+            if ((NPC.CountNPCS(mod.NPCType<Searcher>()) < 10 && !Main.expertMode) || (NPC.CountNPCS(mod.NPCType<Searcher>()) < 15 && Main.expertMode))
             {
                 NPC.NewNPC((int)(npc.Center.X + Main.rand.Next(-20, 20)), (int)(npc.Center.Y + Main.rand.Next(-20, 20)), mod.NPCType<Searcher>());
             }
@@ -264,7 +264,7 @@ namespace AAMod.NPCs.Bosses.Zero
                         npc.ai[2] = 0f;
                         npc.ai[1] = 0f;
                     }
-                    npc.rotation += (float)npc.direction * 0.3f;
+                    npc.rotation += (float)npc.direction * 0.7f;
                     Vector2 vector44 = new Vector2(npc.position.X + (float)npc.width * 0.5f, npc.position.Y + (float)npc.height * 0.5f);
                     float num441 = Main.player[npc.target].position.X + (float)(Main.player[npc.target].width / 2) - vector44.X;
                     float num442 = Main.player[npc.target].position.Y + (float)(Main.player[npc.target].height / 2) - vector44.Y;
@@ -278,7 +278,7 @@ namespace AAMod.NPCs.Bosses.Zero
                 {
                     npc.damage = 1000;
                     npc.defense = 9999;
-                    npc.rotation += (float)npc.direction * 0.3f;
+                    npc.rotation += (float)npc.direction * 0.7f;
                     Vector2 vector45 = new Vector2(npc.position.X + (float)npc.width * 0.5f, npc.position.Y + (float)npc.height * 0.5f);
                     float num444 = Main.player[npc.target].position.X + (float)(Main.player[npc.target].width / 2) - vector45.X;
                     float num445 = Main.player[npc.target].position.Y + (float)(Main.player[npc.target].height / 2) - vector45.Y;
