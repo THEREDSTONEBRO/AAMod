@@ -28,10 +28,10 @@ namespace AAMod.Items.Melee
         }
         public override void SetDefaults()
 		{
-			item.rare = 10;
+			item.rare = 11;
 			item.UseSound = SoundID.Item1;
 			item.useStyle = 1;
-			item.damage = 235;
+			item.damage = 400;
 			item.useAnimation = 12;
 			item.useTime = 12;
 			item.width = 62;
@@ -45,6 +45,16 @@ namespace AAMod.Items.Melee
 			item.crit = 8;
 			item.glowMask = customGlowMask;
 		}
-	}
+
+        public override void AddRecipes()
+        {
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(ItemID.TerraBlade);
+            recipe.AddIngredient(null, "EXSoul");
+            recipe.AddTile(null, "QuantumFusionAccelerator");
+            recipe.SetResult(this);
+            recipe.AddRecipe();
+        }
+    }
 }
 
