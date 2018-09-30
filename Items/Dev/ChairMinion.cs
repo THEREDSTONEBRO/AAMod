@@ -1,8 +1,6 @@
 using System;
 using System.Reflection;
-using AAMod.Buffs;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -16,13 +14,12 @@ namespace AAMod.Items.Dev
         public override void SetDefaults()
         {
             projectile.netImportant = true;
-            projectile.CloneDefaults(ProjectileID.DeadlySphere);
             projectile.width = 16;
             projectile.height = 34;
             projectile.friendly = true;
             projectile.minion = true;
             projectile.minionSlots = 1f;
-            projectile.penetrate = 1;
+            projectile.penetrate = -1;
             projectile.timeLeft = 300;
             projectile.ignoreWater = false;
             projectile.tileCollide = false;
@@ -31,6 +28,7 @@ namespace AAMod.Items.Dev
             projectile.damage = 1;
             projectile.alpha = 0;
             ProjectileID.Sets.MinionTargettingFeature[projectile.type] = true;
+            ProjectileID.Sets.MinionSacrificable[projectile.type] = true;
         }
         
         public override void SetStaticDefaults()
@@ -59,10 +57,113 @@ namespace AAMod.Items.Dev
             {
                 projectile.Kill();
             }
-            if ((projectile.wet || projectile.lavaWet || projectile.honeyWet || projectile.frame > 1) && chairdeath == 0)
+            if ((projectile.wet || projectile.lavaWet || projectile.honeyWet || projectile.frame > 0) && chairdeath == 0)
             {
                 projectile.frame++;
                 chairdeath = 10;
+            }
+            Player player = Main.player[projectile.owner];
+            Vector2 targetPos = projectile.position;
+            float targetDist = 400f;
+            bool target = false;
+            projectile.tileCollide = true;
+            if (player.HasMinionAttackTargetNPC)
+            {
+                NPC npc = Main.npc[player.MinionAttackTargetNPC];
+                if (Collision.CanHitLine(projectile.position, projectile.width, projectile.height, npc.position, npc.width, npc.height))
+                {
+                    targetDist = Vector2.Distance(projectile.Center, targetPos);
+                    targetPos = npc.Center;
+                    target = true;
+                }
+            }
+            else for (int k = 0; k < 200; k++)
+            {
+                NPC npc = Main.npc[k];
+                if (npc.CanBeChasedBy(this, false))
+                {
+                    float distance = Vector2.Distance(npc.Center, projectile.Center);
+                    if ((distance < targetDist || !target) && Collision.CanHitLine(projectile.position, projectile.width, projectile.height, npc.position, npc.width, npc.height))
+                    {
+                        targetDist = distance;
+                        targetPos = npc.Center;
+                        target = true;
+                    }
+                }
+            }
+            if (Vector2.Distance(player.Center, projectile.Center) > (target ? 1000f : 500f))
+            {
+                projectile.ai[0] = 1f;
+                projectile.netUpdate = true;
+            }
+            if (projectile.ai[0] == 1f)
+            {
+                projectile.tileCollide = false;
+            }
+            if (target && projectile.ai[0] == 0f)
+            {
+                Vector2 direction = targetPos - projectile.Center;
+                if (direction.Length() > 200f)
+                {
+                    direction.Normalize();
+                    projectile.velocity = (projectile.velocity * 40f + direction * 6f) / (40f + 1);
+                }
+                else
+                {
+                    projectile.velocity *= (float)Math.Pow(0.97, 40.0 / 40f);
+                }
+            }
+            else
+            {
+                if (!Collision.CanHitLine(projectile.Center, 1, 1, player.Center, 1, 1))
+                {
+                    projectile.ai[0] = 1f;
+                }
+                float speed = 6f;
+                if (projectile.ai[0] == 1f)
+                {
+                    speed = 15f;
+                }
+                Vector2 center = projectile.Center;
+                Vector2 direction = player.Center - center;
+                projectile.ai[1] = 3600f;
+                projectile.netUpdate = true;
+                int num = 1;
+                for (int k = 0; k < projectile.whoAmI; k++)
+                {
+                    if (Main.projectile[k].active && Main.projectile[k].owner == projectile.owner && Main.projectile[k].type == projectile.type)
+                    {
+                        num++;
+                    }
+                }
+                direction.X -= (float)((10 + num * 40) * player.direction);
+                direction.Y -= 70f;
+                float distanceTo = direction.Length();
+                if (distanceTo > 200f && speed < 9f)
+                {
+                    speed = 9f;
+                }
+                if (distanceTo < 100f && projectile.ai[0] == 1f && !Collision.SolidCollision(projectile.position, projectile.width, projectile.height))
+                {
+                    projectile.ai[0] = 0f;
+                    projectile.netUpdate = true;
+                }
+                if (distanceTo > 2000f)
+                {
+                    projectile.Center = player.Center;
+                }
+                if (distanceTo > 48f)
+                {
+                    direction.Normalize();
+                    direction *= speed;
+                    float temp = 40f / 2f;
+                    projectile.velocity = (projectile.velocity * temp + direction) / (temp + 1);
+                }
+                else
+                {
+                    projectile.direction = Main.player[projectile.owner].direction;
+                    projectile.velocity *= (float)Math.Pow(0.9, 40.0 / 40f);
+                }
             }
         }
 

@@ -26,7 +26,7 @@ namespace AAMod.Items.Dev
 			item.useAnimation = 26;
 			item.useStyle = 1;
 			item.noMelee = true;
-			item.knockBack = 3;
+			item.knockBack = 0;
 			item.value = Item.buyPrice(0, 20, 0, 0);
 			item.rare = 10;
 			item.UseSound = SoundID.Item44;

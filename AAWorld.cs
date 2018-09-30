@@ -9,12 +9,8 @@ using Terraria.World.Generation;
 using Microsoft.Xna.Framework;
 using Terraria.GameContent.Generation;
 using Terraria.ModLoader.IO;
-using System.Reflection;
-using Terraria.Utilities;
 using AAMod.Tiles;
 using AAMod.Walls;
-using AAMod.NPCs.Bosses.Nightcrawler;
-using AAMod.NPCs.Bosses.Daybringer;
 
 namespace AAMod
 {
@@ -532,8 +528,8 @@ namespace AAMod
         private void AAWorldGen(GenerationProgress progress)
         {
             infernoSide = ((Main.dungeonX > Main.maxTilesX / 2) ? (-1) : (1));
-            infernoPos.X = (infernoSide == 1 ? WorldGen.genRand.Next(1500, 1700) : (Main.maxTilesX - WorldGen.genRand.Next(1500, 1700)));
-            mirePos.X = (infernoSide != 1 ? WorldGen.genRand.Next(1500, 1700) : (Main.maxTilesX - WorldGen.genRand.Next(1500, 1700)));
+            infernoPos.X = ((Main.maxTilesX >= 8000) ? (infernoSide == 1 ? WorldGen.genRand.Next(2000, 2300) : (Main.maxTilesX - WorldGen.genRand.Next(2000, 2300))) : (infernoSide == 1 ? WorldGen.genRand.Next(1500, 1700) : (Main.maxTilesX - WorldGen.genRand.Next(1500, 1700))));
+            mirePos.X = ((Main.maxTilesX >= 8000) ? (infernoSide != 1 ? WorldGen.genRand.Next(2000, 2300) : (Main.maxTilesX - WorldGen.genRand.Next(2000, 2300))) : (infernoSide != 1 ? WorldGen.genRand.Next(1500, 1700) : (Main.maxTilesX - WorldGen.genRand.Next(1500, 1700))));
             int j = 40;
             while (Main.tile[(int)(infernoPos.X), j] != null && !Main.tile[(int)(infernoPos.X), j].active())
             {
@@ -546,7 +542,7 @@ namespace AAMod
                     if (Main.tile[l, m] != null && Main.tile[l, m].active())
                     {
                         int type = Main.tile[l, m].type;
-                        if (type == TileID.Cloud || type == TileID.RainCloud)
+                        if (type == TileID.Cloud || type == TileID.RainCloud || type == TileID.Sunplate)
                         {
                             j++;
                         }
@@ -566,7 +562,7 @@ namespace AAMod
                     if (Main.tile[l, m] != null && Main.tile[l, m].active())
                     {
                         int type = Main.tile[l, m].type;
-                        if (type == TileID.Cloud || type == TileID.RainCloud)
+                        if (type == TileID.Cloud || type == TileID.RainCloud || type == TileID.Sunplate)
                         {
                             q++;
                         }

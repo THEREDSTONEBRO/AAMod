@@ -76,6 +76,7 @@
     <Compile Include="Backgrounds\Mire\MireUgBgStyle.cs" />
     <Compile Include="Backgrounds\Void\VoidSky.cs" />
     <Compile Include="Backgrounds\Void\VoidSkyData.cs" />
+    <Compile Include="Buffs\ChairMinionBuffEX.cs" />
     <Compile Include="Buffs\ChairMinionBuff.cs" />
     <Compile Include="Buffs\EnderMinionBuff.cs" />
     <Compile Include="Buffs\InfinityOverload.cs" />
@@ -258,7 +259,9 @@
     <Compile Include="Items\Boss\Zero\ZeroStar.cs" />
     <Compile Include="Items\Dev\AmphibianLongsword.cs" />
     <Compile Include="Items\Dev\CatsEyeRifle.cs" />
+    <Compile Include="Items\Dev\ChairMinionEX.cs" />
     <Compile Include="Items\Dev\ChairMinion.cs" />
+    <Compile Include="Items\Dev\ChinStaffEX.cs" />
     <Compile Include="Items\Dev\ChinStaff.cs" />
     <Compile Include="Items\Dev\DuckstepGun.cs" />
     <Compile Include="Items\Dev\EnderStaff.cs" />
@@ -576,7 +579,11 @@
     <Compile Include="Water\VoidWaterStyle.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Achievment\AkumaA.png" />
     <Content Include="Achievment\BroodAchievement.png" />
+    <Content Include="Achievment\EquinoxA.png" />
+    <Content Include="Achievment\GripsA.png" />
+    <Content Include="Achievment\StormA.png" />
     <Content Include="Achievment\ZeroAAchievment.png" />
     <Content Include="Achievment\ZeroAchievment.png" />
     <Content Include="Backgrounds\Inferno\InfernoBG1.png" />
@@ -609,6 +616,7 @@
     <Content Include="bin\Debug\ReLogic.dll" />
     <Content Include="bin\Debug\Terraria.exe" />
     <Content Include="bin\Debug\TerrariaModded.exe" />
+    <Content Include="Buffs\ChairMinionBuffEX.png" />
     <Content Include="Buffs\ChairMinionBuff.png" />
     <Content Include="Buffs\EnderMinionBuff.png" />
     <Content Include="Buffs\InfinityOverload.png" />
@@ -1002,7 +1010,9 @@
     <Content Include="Items\Dev\AmphibianLongswordEX.png" />
     <Content Include="Items\Dev\CatsEyeRifle.png" />
     <Content Include="Items\Dev\ChairMinion.png" />
+    <Content Include="Items\Dev\ChairMinionEX.png" />
     <Content Include="Items\Dev\ChinStaff.png" />
+    <Content Include="Items\Dev\ChinStaffEX.png" />
     <Content Include="Items\Dev\CrabGuardian.png" />
     <Content Include="Items\Dev\DuckstepGun.png" />
     <Content Include="Items\Dev\DuckstepGun_Glow.png" />
