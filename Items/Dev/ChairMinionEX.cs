@@ -5,7 +5,7 @@ using Terraria.ID;
 
 namespace AAMod.Items.Dev
 {
-    public class ChairMinionEX : Summoning.Minions.Minion2
+    public class ChairMinionEX : Summoning.Minions.ChairEX
     {
         private int chairanim = 0;
 
@@ -26,7 +26,9 @@ namespace AAMod.Items.Dev
             projectile.damage = 1;
             projectile.alpha = 0;
             ProjectileID.Sets.MinionTargettingFeature[projectile.type] = true;
+            Main.projPet[projectile.type] = true;
             ProjectileID.Sets.MinionSacrificable[projectile.type] = true;
+            ProjectileID.Sets.Homing[projectile.type] = true;
         }
 
         public override void SetStaticDefaults()
@@ -43,6 +45,10 @@ namespace AAMod.Items.Dev
 
         public override void AI()
         {
+            if (projectile.timeLeft == 10)
+            {
+                projectile.timeLeft = 180;
+            }
             if (chairanim > 0)
             {
                 chairanim--;
@@ -56,10 +62,6 @@ namespace AAMod.Items.Dev
             {
                 projectile.frame++;
                 chairanim = 5;
-            }
-            if (projectile.timeLeft == 10)
-            {
-                projectile.timeLeft = 180;
             }
             Player player = Main.player[projectile.owner];
             Vector2 targetPos = projectile.position;
@@ -102,14 +104,10 @@ namespace AAMod.Items.Dev
             if (target && projectile.ai[0] == 0f)
             {
                 Vector2 direction = targetPos - projectile.Center;
-                if (direction.Length() > 200f)
+                if (direction.Length() != 0f)
                 {
                     direction.Normalize();
                     projectile.velocity = (projectile.velocity * 40f + direction * 6f) / (40f + 1);
-                }
-                else
-                {
-                    projectile.velocity *= (float)Math.Pow(0.97, 40.0 / 40f);
                 }
             }
             else
@@ -164,6 +162,14 @@ namespace AAMod.Items.Dev
                     projectile.velocity *= (float)Math.Pow(0.9, 40.0 / 40f);
                 }
             }
+            if (!player.HasBuff(mod.BuffType("ChairMinionBuffEX")))
+            {
+                projectile.Kill();
+            }
+            if (projectile.spriteDirection != player.direction)
+            {
+                projectile.spriteDirection = player.direction;
+            }
         }
 
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
@@ -185,6 +191,11 @@ namespace AAMod.Items.Dev
             return false;
         }
 
+        public override bool MinionContactDamage()
+        {
+            return true;
+        }
+
         public override void CheckActive()
         {
             Player player = Main.player[projectile.owner];
@@ -193,9 +204,9 @@ namespace AAMod.Items.Dev
             {
                 modPlayer.ChairMinionEX = false;
             }
-            if (modPlayer.ChairMinionEX)
+            if (!modPlayer.ChairMinionEX)
             {
-                projectile.timeLeft = 180;
+                projectile.timeLeft = 2;
             }
         }
     }

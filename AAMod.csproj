@@ -401,6 +401,8 @@
     <Compile Include="Items\Ranged\TheVulcano.cs" />
     <Compile Include="Items\Ranged\TrueDeathlyLongbow.cs" />
     <Compile Include="Items\Summoning\Minions\EnderMinion.cs" />
+    <Compile Include="Items\Summoning\Minions\Chair.cs" />
+    <Compile Include="Items\Summoning\Minions\ChairEX.cs" />
     <Compile Include="Items\Summoning\Minions\Minion2.cs" />
     <Compile Include="Items\Tools\DarkmatterPitchet.cs" />
     <Compile Include="Items\Tools\DepthDigger.cs" />

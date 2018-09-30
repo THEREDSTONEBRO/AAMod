@@ -7,7 +7,7 @@ namespace AAMod.Buffs
 	{
 		public override void SetDefaults()
 		{
-			DisplayName.SetDefault("A Powerfull Chair");
+			DisplayName.SetDefault("A Powerful Chair");
 			Description.SetDefault("Liquids? No Problem!!");
 			Main.buffNoSave[Type] = true;
 			Main.buffNoTimeDisplay[Type] = true;

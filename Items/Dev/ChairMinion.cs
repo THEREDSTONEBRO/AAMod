@@ -7,7 +7,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Dev
 {
-    public class ChairMinion : Summoning.Minions.Minion2
+    public class ChairMinion : Summoning.Minions.Chair
     {
         private int chairdeath = 0;
 
@@ -28,7 +28,9 @@ namespace AAMod.Items.Dev
             projectile.damage = 1;
             projectile.alpha = 0;
             ProjectileID.Sets.MinionTargettingFeature[projectile.type] = true;
+            Main.projPet[projectile.type] = true;
             ProjectileID.Sets.MinionSacrificable[projectile.type] = true;
+            ProjectileID.Sets.Homing[projectile.type] = true;
         }
         
         public override void SetStaticDefaults()
@@ -45,13 +47,13 @@ namespace AAMod.Items.Dev
 
         public override void AI()
         {
-            if (chairdeath > 0)
-            {
-                chairdeath--;
-            }
             if (projectile.timeLeft == 10)
             {
                 projectile.timeLeft = 180;
+            }
+            if (chairdeath > 0)
+            {
+                chairdeath--;
             }
             if (projectile.frame == 9 && chairdeath == 0)
             {
@@ -103,14 +105,10 @@ namespace AAMod.Items.Dev
             if (target && projectile.ai[0] == 0f)
             {
                 Vector2 direction = targetPos - projectile.Center;
-                if (direction.Length() > 200f)
+                if (direction.Length() != 0f)
                 {
                     direction.Normalize();
                     projectile.velocity = (projectile.velocity * 40f + direction * 6f) / (40f + 1);
-                }
-                else
-                {
-                    projectile.velocity *= (float)Math.Pow(0.97, 40.0 / 40f);
                 }
             }
             else
@@ -165,6 +163,14 @@ namespace AAMod.Items.Dev
                     projectile.velocity *= (float)Math.Pow(0.9, 40.0 / 40f);
                 }
             }
+            if (!player.HasBuff(mod.BuffType("ChairMinionBuff")))
+            {
+                projectile.Kill();
+            }
+            if (projectile.spriteDirection != player.direction)
+            {
+                projectile.spriteDirection = player.direction;
+            }
         }
 
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
@@ -186,6 +192,11 @@ namespace AAMod.Items.Dev
             return false;
         }
 
+        public override bool MinionContactDamage()
+        {
+            return true;
+        }
+
         public override void CheckActive()
         {
             Player player = Main.player[projectile.owner];
@@ -194,9 +205,9 @@ namespace AAMod.Items.Dev
             {
                 modPlayer.ChairMinion = false;
             }
-            if (modPlayer.ChairMinion)
+            if (!modPlayer.ChairMinion)
             {
-                projectile.timeLeft = 180;
+                projectile.timeLeft = 2;
             }
         }
     }
@@ -219,49 +230,61 @@ namespace AAMod.Items.Dev
             npc.scale = 3f;
             npc.defense = 0;
             npc.damage = 999999;
+            npc.noGravity = true;
+            npc.noTileCollide = true;
         }
 
         public override void AI()
         {
-            if (Main.player[npc.target].dead || Math.Abs(npc.position.X - Main.player[npc.target].position.X) > 6000f || Math.Abs(npc.position.Y - Main.player[npc.target].position.Y) > 6000f)
-            {
-                npc.TargetClosest(true);
-                if (Main.player[npc.target].dead || Math.Abs(npc.position.X - Main.player[npc.target].position.X) > 6000f || Math.Abs(npc.position.Y - Main.player[npc.target].position.Y) > 6000f)
-                {
-                    npc.timeLeft = 10;
-                }
-            }
             if (soundTimer > 0)
             {
                 soundTimer--;
             }
             if (soundTimer == 0)
             {
-                Main.PlaySound(SoundID.MoonLord, npc.position, 0);
-                soundTimer = 600;
+                Main.PlaySound(SoundID.MoonLord, npc.Center, 0);
+                soundTimer = 3600;
             }
-            npc.TargetClosest(true);
-            npc.rotation += (float)npc.direction * 0.5f;
-            Vector2 vector45 = new Vector2(npc.position.X + (float)npc.width * 0.5f, npc.position.Y + (float)npc.height * 0.5f);
-            float num444 = Main.player[npc.target].position.X + (float)(Main.player[npc.target].width / 2) - vector45.X;
-            float num445 = Main.player[npc.target].position.Y + (float)(Main.player[npc.target].height / 2) - vector45.Y;
-            float num446 = (float)Math.Sqrt((double)(num444 * num444 + num445 * num445));
-            float num447 = 10f;
-            num447 += num446 / 100f;
-            if (num447 < 8f)
+            if (npc.ai[1] != 3f && npc.ai[1] != 2f)
             {
-                num447 = 8f;
+                Main.PlaySound(15, (int)npc.position.X, (int)npc.position.Y, 0, 1f, 0f);
+                npc.ai[1] = 2f;
             }
-            if (num447 > 32f)
+            if (Main.player[npc.target].dead || Math.Abs(npc.position.X - Main.player[npc.target].position.X) > 2000f || Math.Abs(npc.position.Y - Main.player[npc.target].position.Y) > 2000f)
             {
-                num447 = 32f;
+                npc.TargetClosest(true);
+                if (Main.player[npc.target].dead || Math.Abs(npc.position.X - Main.player[npc.target].position.X) > 2000f || Math.Abs(npc.position.Y - Main.player[npc.target].position.Y) > 2000f)
+                {
+                    npc.ai[1] = 3f;
+                }
             }
-            num446 = num447 / num446;
-            npc.velocity.X = num444 * num446;
-            npc.velocity.Y = num445 * num446;
-            if (npc.timeLeft < 500 && npc.timeLeft > 10)
+            if (npc.ai[1] == 2f)
             {
-                npc.timeLeft = 500;
+                npc.rotation += (float)npc.direction * 0.3f;
+                Vector2 vector18 = new Vector2(npc.position.X + (float)npc.width * 0.5f, npc.position.Y + (float)npc.height * 0.5f);
+                float num174 = Main.player[npc.target].position.X + (float)(Main.player[npc.target].width / 2) - vector18.X;
+                float num175 = Main.player[npc.target].position.Y + (float)(Main.player[npc.target].height / 2) - vector18.Y;
+                float num176 = (float)Math.Sqrt((double)(num174 * num174 + num175 * num175));
+                num176 = 8f / num176;
+                npc.velocity.X = num174 * num176;
+                npc.velocity.Y = num175 * num176;
+                if (npc.timeLeft < 50)
+                {
+                    npc.timeLeft = 180;
+                }
+            }
+            else if (npc.ai[1] == 3f)
+            {
+                npc.velocity.Y = npc.velocity.Y + 0.1f;
+                if (npc.velocity.Y < 0f)
+                {
+                    npc.velocity.Y = npc.velocity.Y * 0.95f;
+                }
+                npc.velocity.X = npc.velocity.X * 0.95f;
+                if (npc.timeLeft > 50)
+                {
+                    npc.timeLeft = 50;
+                }
             }
         }
 
