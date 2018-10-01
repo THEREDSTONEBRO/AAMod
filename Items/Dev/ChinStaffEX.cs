@@ -7,12 +7,12 @@ using Terraria.ModLoader;
 namespace AAMod.Items.Dev
 {
 	//imported from my tAPI mod because I'm lazy
-	public class ChinStaff : ModItem
+	public class ChinStaffEX : ModItem
 	{
 		public override void SetStaticDefaults()
 		{
-            DisplayName.SetDefault("Deformed Chair Leg");
-            Tooltip.SetDefault(@"Behold My True Power?");
+            DisplayName.SetDefault("A Rare Deformed Chair Leg");
+            Tooltip.SetDefault(@"Behold My True Power!");
         }
 
 		public override void SetDefaults()
@@ -30,9 +30,9 @@ namespace AAMod.Items.Dev
 			item.value = Item.buyPrice(0, 20, 0, 0);
 			item.rare = 10;
 			item.UseSound = SoundID.Item44;
-			item.shoot = mod.ProjectileType("ChairMinion");
+			item.shoot = mod.ProjectileType("ChairMinionEX");
 			item.shootSpeed = 7f;
-			item.buffType = mod.BuffType("ChairMinionBuff");	//The buff added to player after used the item
+			item.buffType = mod.BuffType("ChairMinionBuffEX");	//The buff added to player after used the item
             item.buffTime = 18000;
 		}
         public override void ModifyTooltips(List<TooltipLine> list)

@@ -1,15 +1,13 @@
 using System;
-using System.Reflection;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
-using Terraria.ModLoader;
 
 namespace AAMod.Items.Dev
 {
-    public class ChairMinion : Summoning.Minions.Chair
+    public class ChairMinionEX : Summoning.Minions.ChairEX
     {
-        private int chairdeath = 0;
+        private int chairanim = 0;
 
         public override void SetDefaults()
         {
@@ -32,18 +30,18 @@ namespace AAMod.Items.Dev
             ProjectileID.Sets.MinionSacrificable[projectile.type] = true;
             ProjectileID.Sets.Homing[projectile.type] = true;
         }
-        
+
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Chair Minion");
-            Main.projFrames[projectile.type] = 9;
+            DisplayName.SetDefault("Chair Minion EX");
+            Main.projFrames[projectile.type] = 18;
         }
 
         public override bool TileCollideStyle(ref int width, ref int height, ref bool fallThrough)
-		{
-			fallThrough = true;
-			return true;
-		}
+        {
+            fallThrough = true;
+            return true;
+        }
 
         public override void AI()
         {
@@ -51,18 +49,19 @@ namespace AAMod.Items.Dev
             {
                 projectile.timeLeft = 180;
             }
-            if (chairdeath > 0)
+            if (chairanim > 0)
             {
-                chairdeath--;
+                chairanim--;
             }
-            if (projectile.frame == 9 && chairdeath == 0)
+            if (chairanim == 0 && projectile.frame == 17)
             {
-                projectile.Kill();
+                projectile.frame = 0;
+                chairanim = 5;
             }
-            if ((projectile.wet || projectile.lavaWet || projectile.honeyWet || projectile.frame > 0) && chairdeath == 0)
+            if (chairanim == 0)
             {
                 projectile.frame++;
-                chairdeath = 10;
+                chairanim = 5;
             }
             Player player = Main.player[projectile.owner];
             Vector2 targetPos = projectile.position;
@@ -80,19 +79,19 @@ namespace AAMod.Items.Dev
                 }
             }
             else for (int k = 0; k < 200; k++)
-            {
-                NPC npc = Main.npc[k];
-                if (npc.CanBeChasedBy(this, false))
                 {
-                    float distance = Vector2.Distance(npc.Center, projectile.Center);
-                    if ((distance < targetDist || !target) && Collision.CanHitLine(projectile.position, projectile.width, projectile.height, npc.position, npc.width, npc.height))
+                    NPC npc = Main.npc[k];
+                    if (npc.CanBeChasedBy(this, false))
                     {
-                        targetDist = distance;
-                        targetPos = npc.Center;
-                        target = true;
+                        float distance = Vector2.Distance(npc.Center, projectile.Center);
+                        if ((distance < targetDist || !target) && Collision.CanHitLine(projectile.position, projectile.width, projectile.height, npc.position, npc.width, npc.height))
+                        {
+                            targetDist = distance;
+                            targetPos = npc.Center;
+                            target = true;
+                        }
                     }
                 }
-            }
             if (Vector2.Distance(player.Center, projectile.Center) > (target ? 1000f : 500f))
             {
                 projectile.ai[0] = 1f;
@@ -163,7 +162,7 @@ namespace AAMod.Items.Dev
                     projectile.velocity *= (float)Math.Pow(0.9, 40.0 / 40f);
                 }
             }
-            if (!player.HasBuff(mod.BuffType("ChairMinionBuff")))
+            if (!player.HasBuff(mod.BuffType("ChairMinionBuffEX")))
             {
                 projectile.Kill();
             }
@@ -203,95 +202,12 @@ namespace AAMod.Items.Dev
             AAPlayer modPlayer = (AAPlayer)player.GetModPlayer(mod, "AAPlayer");
             if (player.dead)
             {
-                modPlayer.ChairMinion = false;
+                modPlayer.ChairMinionEX = false;
             }
-            if (!modPlayer.ChairMinion)
+            if (!modPlayer.ChairMinionEX)
             {
                 projectile.timeLeft = 2;
             }
-        }
-    }
-    internal class CrabGuardian : ModNPC
-    {
-        private int soundTimer = 0;
-
-        public override string Texture { get { return "AAMod/Items/Dev/CrabGuardian"; } }
-
-        public override void SetStaticDefaults()
-        {
-            DisplayName.SetDefault("Crab Guardian");
-            npc.CloneDefaults(NPCID.DungeonGuardian);
-        }
-
-        public override void SetDefaults()
-        {
-            npc.lifeMax = 1;
-            npc.immortal = true;
-            npc.scale = 3f;
-            npc.defense = 0;
-            npc.damage = 999999;
-            npc.noGravity = true;
-            npc.noTileCollide = true;
-        }
-
-        public override void AI()
-        {
-            if (soundTimer > 0)
-            {
-                soundTimer--;
-            }
-            if (soundTimer == 0)
-            {
-                Main.PlaySound(SoundID.MoonLord, npc.Center, 0);
-                soundTimer = 3600;
-            }
-            if (npc.ai[1] != 3f && npc.ai[1] != 2f)
-            {
-                Main.PlaySound(15, (int)npc.position.X, (int)npc.position.Y, 0, 1f, 0f);
-                npc.ai[1] = 2f;
-            }
-            if (Main.player[npc.target].dead || Math.Abs(npc.position.X - Main.player[npc.target].position.X) > 2000f || Math.Abs(npc.position.Y - Main.player[npc.target].position.Y) > 2000f)
-            {
-                npc.TargetClosest(true);
-                if (Main.player[npc.target].dead || Math.Abs(npc.position.X - Main.player[npc.target].position.X) > 2000f || Math.Abs(npc.position.Y - Main.player[npc.target].position.Y) > 2000f)
-                {
-                    npc.ai[1] = 3f;
-                }
-            }
-            if (npc.ai[1] == 2f)
-            {
-                npc.rotation += (float)npc.direction * 0.3f;
-                Vector2 vector18 = new Vector2(npc.position.X + (float)npc.width * 0.5f, npc.position.Y + (float)npc.height * 0.5f);
-                float num174 = Main.player[npc.target].position.X + (float)(Main.player[npc.target].width / 2) - vector18.X;
-                float num175 = Main.player[npc.target].position.Y + (float)(Main.player[npc.target].height / 2) - vector18.Y;
-                float num176 = (float)Math.Sqrt((double)(num174 * num174 + num175 * num175));
-                num176 = 8f / num176;
-                npc.velocity.X = num174 * num176;
-                npc.velocity.Y = num175 * num176;
-                if (npc.timeLeft < 50)
-                {
-                    npc.timeLeft = 180;
-                }
-            }
-            else if (npc.ai[1] == 3f)
-            {
-                npc.velocity.Y = npc.velocity.Y + 0.1f;
-                if (npc.velocity.Y < 0f)
-                {
-                    npc.velocity.Y = npc.velocity.Y * 0.95f;
-                }
-                npc.velocity.X = npc.velocity.X * 0.95f;
-                if (npc.timeLeft > 50)
-                {
-                    npc.timeLeft = 50;
-                }
-            }
-        }
-
-        public override void NPCLoot()
-        {
-            MethodInfo methodInfo = typeof(Main).GetMethod("QuitGame", BindingFlags.Instance | BindingFlags.NonPublic);
-            methodInfo.Invoke(Main.instance, null);
         }
     }
 }
