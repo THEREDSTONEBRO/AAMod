@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 namespace AAMod.Items.Dev
 {
-    public class AmphibianLongswordEX : ModItem
+    public class AmphibianLongswordEXS : ModItem
 	{
 		public override void SetStaticDefaults()
 		{
@@ -27,7 +27,7 @@ namespace AAMod.Items.Dev
 			item.rare = 9;
 			item.UseSound = SoundID.Item1;
 			item.autoReuse = true;
-			item.shoot = mod.ProjectileType("AmphibiousProjectileEX");
+			item.shoot = mod.ProjectileType("AmphibiousProjectileEXS");
             item.shootSpeed = 14f;
             item.expert = true;
 		}
@@ -36,15 +36,23 @@ namespace AAMod.Items.Dev
         {
             target.AddBuff(BuffID.Wet, 1000);
         }
-
         public override void AddRecipes()
         {
-            ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(null, "AmphibianLongsword");
-            recipe.AddIngredient(null, "EXSoul");
-            recipe.AddTile(null, "QuantumFusionAccelerator");
-            recipe.SetResult(this);
-            recipe.AddRecipe();
+            {
+                ModRecipe recipe = new ModRecipe(mod);
+                recipe.AddIngredient(null, "AmphibianLongswordEX");
+                recipe.AddIngredient(null, "ShinyCharm");
+                recipe.SetResult(this);
+                recipe.AddRecipe();
+            }
+            {
+                ModRecipe recipe = new ModRecipe(mod);
+                recipe.AddIngredient(null, "AmphibianLongswordS");
+                recipe.AddIngredient(null, "EXSoul");
+                recipe.AddTile(null, "QuantumFusionAccelerator");
+                recipe.SetResult(this);
+                recipe.AddRecipe();
+            }
         }
     }
 }

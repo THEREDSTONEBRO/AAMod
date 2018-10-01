@@ -41,7 +41,6 @@ namespace AAMod.Items.Boss.Zero
 			item.useStyle = 1;
 			item.knockBack = 3;
 			item.value = 1000000;
-			item.rare = 10;
 			item.UseSound = new LegacySoundStyle(2, 15, Terraria.Audio.SoundType.Sound);
 			item.autoReuse = true;
 		}

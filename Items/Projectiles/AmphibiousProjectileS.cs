@@ -7,7 +7,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Projectiles
 {
-    public class AmphibiousProjectile : ModProjectile
+    public class AmphibiousProjectileS : ModProjectile
     {
     	public override void SetStaticDefaults()
 		{

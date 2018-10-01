@@ -735,6 +735,25 @@ namespace AAMod
                 recipe.SetResult(ItemID.MusicBoxDD2, 1);
                 recipe.AddRecipe();
             }
+            {
+                ModRecipe recipe = new ModRecipe(this);
+                recipe.AddIngredient(ItemID.Glass, 10);
+                recipe.AddIngredient(ItemID.SnowBlock, 10);
+                recipe.AddRecipeGroup("Wood");
+                recipe.AddTile(TileID.GlassKiln);
+                recipe.SetResult(ItemID.SnowGlobe, 1);
+                recipe.AddRecipe();
+            }
+            {
+                ModRecipe recipe = new ModRecipe(this);
+                recipe.AddIngredient(ItemID.SnowGlobe, 1);
+                recipe.AddIngredient(ItemID.SoulofFlight, 5);
+                recipe.AddIngredient(ItemID.SoulofNight, 10);
+                recipe.AddIngredient(ItemID.SoulofLight, 10);
+                recipe.AddTile(TileID.MythrilAnvil);
+                recipe.SetResult(ItemID.GravityGlobe, 1);
+                recipe.AddRecipe();
+            }
         }
     }
 }

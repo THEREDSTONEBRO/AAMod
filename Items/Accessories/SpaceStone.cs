@@ -98,6 +98,7 @@ You are immune to the Chaos State Debuff
         {
             {
                 ModRecipe recipe = new ModRecipe(mod);
+                recipe.AddIngredient(null, "BrokenCode", 1);
                 recipe.AddIngredient(ItemID.Sapphire, 10);
                 recipe.AddIngredient(ItemID.LargeSapphire, 1);
                 recipe.AddIngredient(ItemID.RodofDiscord, 1);

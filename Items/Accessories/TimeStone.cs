@@ -31,6 +31,8 @@ hitting enemies causes time for them to slow
                 customGlowMask = (short)(glowMasks.Length - 1);
                 Main.glowMaskTexture = glowMasks;
             }
+            Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(4, 16));
+            ItemID.Sets.ItemNoGravity[item.type] = true;
         }
         public override void SetDefaults()
         {

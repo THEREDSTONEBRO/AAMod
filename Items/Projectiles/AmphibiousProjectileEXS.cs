@@ -7,7 +7,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Projectiles
 {
-    public class AmphibiousProjectile : ModProjectile
+    public class AmphibiousProjectileEXS : ModProjectile
     {
     	public override void SetStaticDefaults()
 		{
@@ -22,10 +22,10 @@ namespace AAMod.Items.Projectiles
             projectile.friendly = true;
             projectile.melee = true;
             projectile.hostile = false;
-            projectile.penetrate = 1;
+            projectile.penetrate = -1;
             projectile.timeLeft = 600;
             projectile.alpha = 0;
-            projectile.tileCollide = true;
+            projectile.tileCollide = false;
             aiType = 270;
         }
 
