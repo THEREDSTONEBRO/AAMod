@@ -46,7 +46,7 @@ namespace AAMod.Items.Accessories
             {
                 if (line2.mod == "Terraria" && line2.Name == "ItemName")
                 {
-                    line2.overrideColor = new Color(0, 255, 255);
+                    line2.overrideColor = new Color(200, 200, 0);
                 }
             }
         }

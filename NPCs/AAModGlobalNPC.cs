@@ -80,6 +80,12 @@ namespace AAMod.NPCs
                     Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("GladiatorsGlory"));
                 }
             }
+
+            if (Main.rand.Next(4096) == 0)   //item rarity
+            {
+                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("ShinyCharm")); //Item spawn
+            }
+
             if (NPC.downedMoonlord == true)
             {
                 if (npc.type == NPCID.GoblinSummoner)   //this is where you choose the npc you want

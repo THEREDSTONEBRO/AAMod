@@ -18,7 +18,6 @@ namespace AAMod.Items.Boss.Zero
 			item.consumable = true;
 			item.width = 36;
 			item.height = 32;
-			item.rare = 9;
 			item.expert = true;
 			bossBagNPC = mod.NPCType("Zero");
 		}
@@ -109,7 +108,7 @@ namespace AAMod.Items.Boss.Zero
                 }
             }
             player.QuickSpawnItem(mod.ItemType("UnstableSingularity"), Main.rand.Next(25, 36));
-            string[] lootTable = { "EventHorizon", "RealityCannon", "RiftShredder", "VoidStar", "TeslaHand", "ZeroStar" };
+            string[] lootTable = { "DoomRay", "EventHorizon", "RealityCannon", "RiftShredder", "VoidStar", "TeslaHand", "ZeroStar" };
             int loot = Main.rand.Next(lootTable.Length);
             player.QuickSpawnItem(mod.ItemType(lootTable[loot]));
             if (Main.rand.NextFloat() < 0.05f && AAWorld.RealityDropped == false)

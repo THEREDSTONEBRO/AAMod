@@ -50,7 +50,6 @@ namespace AAMod.Items.Boss.Zero
             item.height = 24;
             item.maxStack = 999;
             item.value = 10000;
-            item.rare = 10;
         }
 
         // The following 2 methods are purely to show off these 2 hooks. Don't use them in your own code.

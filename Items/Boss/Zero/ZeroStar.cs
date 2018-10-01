@@ -17,19 +17,18 @@ namespace AAMod.Items.Boss.Zero
 		public override void SetDefaults()
 		{
 			item.damage = 170;
-			item.width = 90;
-			item.height = 90;
+			item.width = 46;
+			item.height = 46;
 			item.useTime = 12;
 			item.useAnimation = 12;
 			item.useStyle = 1;
 			item.knockBack = 6;
 			item.value = 100000;
-			item.rare = 2;
 			item.UseSound = SoundID.Item1;
 			item.autoReuse = true;
             item.thrown = true;
             item.shoot = mod.ProjectileType("ZeroStarP");
-            item.shootSpeed = 16f;
+            item.shootSpeed = 20f;
             item.noMelee = true;
             item.noUseGraphic = true;
         }

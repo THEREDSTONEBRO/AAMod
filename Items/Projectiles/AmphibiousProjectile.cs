@@ -25,7 +25,7 @@ namespace AAMod.Items.Projectiles
             projectile.penetrate = 1;
             projectile.timeLeft = 600;
             projectile.alpha = 0;
-            projectile.tileCollide = false;
+            projectile.tileCollide = true;
             aiType = 270;
         }
 

@@ -10,16 +10,17 @@ namespace AAMod.Items.Dev
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Amphibious Longsword EX");
-		}
+			DisplayName.SetDefault("Amphibious Greatblade");
+            Tooltip.SetDefault(@"Amphibious Longsword EX");
+        }
 		public override void SetDefaults()
 		{
 			item.damage = 350;
 			item.melee = true;
 			item.width = 64;
 			item.height = 64;
-			item.useTime = 8;
-			item.useAnimation = 8;
+			item.useTime = 10;
+			item.useAnimation = 10;
 			item.useStyle = 1;
 			item.knockBack = 7;
 			item.value = 300000;
