@@ -431,6 +431,7 @@
     <Compile Include="Items\Vanity\Alphakip\FishDiverMask.cs" />
     <Compile Include="Items\Vanity\Chinzilla\ChinMask.cs" />
     <Compile Include="Items\Vanity\Chinzilla\ChinPants.cs" />
+    <Compile Include="Items\Vanity\Chinzilla\ChinsMagicCoin.cs" />
     <Compile Include="Items\Vanity\Chinzilla\ChinSuit.cs" />
     <Compile Include="Items\Vanity\Gavran\GavransChest.cs" />
     <Compile Include="Items\Vanity\Gavran\GavransGoggles.cs" />
@@ -1340,10 +1341,16 @@
     <Content Include="Items\Vanity\Chinzilla\ChinMask_Head.png" />
     <Content Include="Items\Vanity\Chinzilla\ChinPants.png" />
     <Content Include="Items\Vanity\Chinzilla\ChinPants_Legs.png" />
+    <Content Include="Items\Vanity\Chinzilla\ChinsMagicCoin.png" />
     <Content Include="Items\Vanity\Chinzilla\ChinSuit.png" />
     <Content Include="Items\Vanity\Chinzilla\ChinSuit_Arms.png" />
     <Content Include="Items\Vanity\Chinzilla\ChinSuit_Body.png" />
     <Content Include="Items\Vanity\Chinzilla\ChinSuit_Female.png" />
+    <Content Include="Items\Vanity\Chinzilla\Copper_Platform.png" />
+    <Content Include="Items\Vanity\Chinzilla\Gold_Platform.png" />
+    <Content Include="Items\Vanity\Chinzilla\ChinsMagicCoin_Wings.png" />
+    <Content Include="Items\Vanity\Chinzilla\Platinum_Platform.png" />
+    <Content Include="Items\Vanity\Chinzilla\Silver_Platform.png" />
     <Content Include="Items\Vanity\Gavran\GavransChest.png" />
     <Content Include="Items\Vanity\Gavran\GavransChest_Arms.png" />
     <Content Include="Items\Vanity\Gavran\GavransChest_Body.png" />
