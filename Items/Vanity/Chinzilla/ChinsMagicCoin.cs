@@ -12,14 +12,9 @@ namespace AAMod.Items.Vanity.Chinzilla
     [AutoloadEquip(EquipType.Wings)]
     public class ChinsMagicCoin : ModItem
 	{
-        private int timer = 5;
-        public static bool Frame1 = true;
-        public static bool Frame2 = false;
-        public static bool Frame3 = false;
-        public static bool Frame4 = false;
-
-        public override void SetStaticDefaults()
+		public override void SetStaticDefaults()
 		{
+			base.SetStaticDefaults();
 			DisplayName.SetDefault("Chinzilla00's Coin Barrier");
 			Tooltip.SetDefault("'Great for impersonating AA devs!'");
             Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(5, 8));
@@ -36,23 +31,11 @@ namespace AAMod.Items.Vanity.Chinzilla
         }
         public override void SetDefaults()
 		{
-			item.width = 22;
-			item.height = 28;
+			item.width = 64;
+			item.height = 42;
 			item.rare = 10;
             item.accessory = true;
             item.value = 500000;
-        }
-
-        public override void UpdateVanity(Player player, EquipType type)
-        {
-            if (item.accessory || item.vanity)
-            {
-                player.GetModPlayer<AAPlayer>().CoinWings = true;
-            }
-            else
-            {
-                player.GetModPlayer<AAPlayer>().CoinWings = false;
-            }
         }
 
         public override void UpdateAccessory(Player player, bool hideVisual)
@@ -77,42 +60,6 @@ namespace AAMod.Items.Vanity.Chinzilla
             {
                 player.wingTimeMax = 0;
             }
-        }
-
-        public override bool WingUpdate(Player player, bool inUse)
-        {
-            if (inUse)
-            {
-                if (timer > 0)
-                {
-                    timer--;
-                }
-                if (Frame1 && timer == 0)
-                {
-                    Frame1 = false;
-                    Frame2 = true;
-                    timer = 5;
-                }
-                if (Frame2 && timer == 0)
-                {
-                    Frame2 = false;
-                    Frame3 = true;
-                    timer = 5;
-                }
-                if (Frame3 && timer == 0)
-                {
-                    Frame3 = false;
-                    Frame4 = true;
-                    timer = 5;
-                }
-                if (Frame4 && timer == 0)
-                {
-                    Frame4 = false;
-                    Frame1 = true;
-                    timer = 5;
-                }
-            }
-            return false;
         }
 
         public override void VerticalWingSpeeds(Player player, ref float ascentWhenFalling, ref float ascentWhenRising,
