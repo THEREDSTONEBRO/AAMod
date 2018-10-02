@@ -332,6 +332,7 @@
     <Compile Include="Items\Melee\TrueAbyssalTwilight.cs" />
     <Compile Include="Items\Melee\TrueBlazingDawn.cs" />
     <Compile Include="Items\Melee\TrueCopperShortsword.cs" />
+    <Compile Include="Items\Melee\TrueCopperShortswordEX.cs" />
     <Compile Include="Items\Melee\TrueFleshrendClaymore.cs" />
     <Compile Include="Items\Melee\TrueOblivion.cs" />
     <Compile Include="Items\Melee\Void.cs" />
@@ -1078,7 +1079,6 @@
     <Content Include="Items\Melee\Crawblade.png" />
     <Content Include="Items\Melee\CthulhusBlade.png" />
     <Content Include="Items\Melee\CthulhusBlade_Glow.png" />
-    <Content Include="Items\Melee\DargonsBlade.png" />
     <Content Include="Items\Melee\DarkShredders.png" />
     <Content Include="Items\Melee\Depthwalker.png" />
     <Content Include="Items\Melee\DesertScimitar.png" />
@@ -1136,10 +1136,12 @@
     <Content Include="Items\Melee\TrueBlazingDawn_Glow.png" />
     <Content Include="Items\Melee\TrueCopperShortsword.png" />
     <Content Include="Items\Melee\TrueCopperShortswordEX.png" />
+    <Content Include="Items\Melee\TrueCopperShortswordEX_Glow.png" />
     <Content Include="Items\Melee\TrueCopperShortsword_glow.png" />
     <Content Include="Items\Melee\TrueFleshrendClaymore.png" />
     <Content Include="Items\Melee\TrueFleshrendClaymore_Glow.png" />
     <Content Include="Items\Melee\TrueOblivion.png" />
+    <Content Include="Items\Melee\TrueOblivion_Glow.png" />
     <Content Include="Items\Melee\ValkyrieLance.png" />
     <Content Include="Items\Melee\Void.png" />
     <Content Include="Items\Melee\YtriumSword.png" />
