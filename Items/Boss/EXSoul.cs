@@ -42,8 +42,7 @@ namespace AAMod.Items.Boss
             item.value = 1000000;
             item.rare = 11;
             item.expert = true;
-            item.glowMask = customGlowMask;
-            item.color = new Color(Main.DiscoR, Main.DiscoG, Main.DiscoB);
+            //item.glowMask = customGlowMask;
             item.alpha = 100;
         }
 
@@ -53,6 +52,10 @@ namespace AAMod.Items.Boss
             grabRange *= 2;
         }
 
+        public override void PostUpdate()
+        {
+            item.color = new Color(Main.DiscoR, Main.DiscoG, Main.DiscoB);
+        }
         public static Color GetItemLight(ref Color currentColor, ref float scale, int type, bool outInTheWorld = false)
         {
             currentColor.R = (byte)Main.DiscoR;
