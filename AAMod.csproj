@@ -103,6 +103,7 @@
     <Compile Include="Dusts\RazewoodDust.cs" />
     <Compile Include="Dusts\ZeroDust.cs" />
     <Compile Include="Items\Accessories\DemonGauntet.cs" />
+    <Compile Include="Items\Blocks\AkumataBox.cs" />
     <Compile Include="Items\Boss\Akuma\CrucibleScale.cs" />
     <Compile Include="Items\Boss\Equinox\Equinox.cs" />
     <Compile Include="Items\Boss\Equinox\DarkVoid.cs.cs" />
@@ -335,6 +336,9 @@
     <Compile Include="Items\Melee\TrueOblivion.cs" />
     <Compile Include="Items\Melee\Void.cs" />
     <Compile Include="Items\Projectiles\AmphibiousProjectile.cs" />
+    <Compile Include="Items\Projectiles\AmphibiousProjectileEX.cs" />
+    <Compile Include="Items\Projectiles\AmphibiousProjectileEXS.cs" />
+    <Compile Include="Items\Projectiles\AmphibiousProjectileS.cs" />
     <Compile Include="Items\Projectiles\APP.cs" />
     <Compile Include="Items\Projectiles\BigCrystal.cs" />
     <Compile Include="Items\Projectiles\ChaosShot.cs" />
@@ -342,7 +346,7 @@
     <Compile Include="Items\Projectiles\DarkShredders.cs" />
     <Compile Include="Items\Projectiles\Depthwalker.cs" />
     <Compile Include="Items\Projectiles\DoomRay.cs" />
-    <Compile Include="Items\Projectiles\Doot.cs" />
+    <Compile Include="Items\Projectiles\DoomRayP.cs" />
     <Compile Include="Items\Projectiles\DragonArrow.cs" />
     <Compile Include="Items\Projectiles\DragonBreathP.cs" />
     <Compile Include="Items\Projectiles\DragonP.cs" />
@@ -365,6 +369,7 @@
     <Compile Include="Items\Projectiles\RainbowCatPro.cs" />
     <Compile Include="Items\Projectiles\RealityLaser.cs" />
     <Compile Include="Items\Projectiles\ReaperArrow.cs" />
+    <Compile Include="Items\Projectiles\Rift.cs" />
     <Compile Include="Items\Projectiles\Ryugen.cs" />
     <Compile Include="Items\Projectiles\Squirt.cs" />
     <Compile Include="Items\Projectiles\Taserblast.cs" />
@@ -380,7 +385,6 @@
     <Compile Include="Items\Projectiles\TrueFleshClaymoreShot.cs" />
     <Compile Include="Items\Projectiles\TrueManaShot.cs" />
     <Compile Include="Items\Projectiles\Void.cs" />
-    <Compile Include="Items\Projectiles\Rift.cs" />
     <Compile Include="Items\Projectiles\VoidStarPF.cs" />
     <Compile Include="Items\Projectiles\ZeroStarP.cs" />
     <Compile Include="Items\Ranged\Apollo.cs" />
@@ -477,6 +481,7 @@
     <Compile Include="Tiles\AATrophy.cs" />
     <Compile Include="Tiles\AbyssiumBarTile.cs" />
     <Compile Include="Tiles\AbyssiumOreTile.cs" />
+    <Compile Include="Tiles\AkumataBox.cs" />
     <Compile Include="Tiles\AkumaBox.cs" />
     <Compile Include="Tiles\Apocalyptite.cs" />
     <Compile Include="Tiles\BinaryReassembler.cs" />
@@ -1138,6 +1143,9 @@
     <Content Include="Items\Melee\Void.png" />
     <Content Include="Items\Melee\YtriumSword.png" />
     <Content Include="Items\Projectiles\AmphibiousProjectile.png" />
+    <Content Include="Items\Projectiles\AmphibiousProjectileEX.png" />
+    <Content Include="Items\Projectiles\AmphibiousProjectileEXS.png" />
+    <Content Include="Items\Projectiles\AmphibiousProjectileS.png" />
     <Content Include="Items\Projectiles\APP.png" />
     <Content Include="Items\Projectiles\BigCrystal.png" />
     <Content Include="Items\Projectiles\ChaosShot.png" />
@@ -1146,13 +1154,17 @@
     <Content Include="Items\Projectiles\DarkShredders_glow.png" />
     <Content Include="Items\Projectiles\Depthwalker.png" />
     <Content Include="Items\Projectiles\DoomRay.png" />
-    <Content Include="Items\Projectiles\Doot.png" />
+    <Content Include="Items\Projectiles\DoomRayP.png" />
+    <Content Include="Items\Projectiles\DoomRay_Glow.png" />
     <Content Include="Items\Projectiles\DragonArrow.png" />
     <Content Include="Items\Projectiles\DragonBreathP.png" />
     <Content Include="Items\Projectiles\DragonP.png" />
     <Content Include="Items\Projectiles\DragonSP.png" />
     <Content Include="Items\Projectiles\Duck.png" />
-    <Content Include="Items\Projectiles\EtherealLazer.png" />
+    <Content Include="Items\Projectiles\Etheral.png" />
+    <Content Include="Items\Projectiles\EtheralEX.png" />
+    <Content Include="Items\Projectiles\EtheralLazer.png" />
+    <Content Include="Items\Projectiles\EtheralLazerEX.png" />
     <Content Include="Items\Projectiles\EventHorizon.png" />
     <Content Include="Items\Projectiles\FulguritePhasesaber.png" />
     <Content Include="Items\Projectiles\HydraSpear.png" />
@@ -1186,6 +1198,7 @@
     <Content Include="Items\Projectiles\TFGWP.png" />
     <Content Include="Items\Projectiles\TimeTeller.png" />
     <Content Include="Items\Projectiles\TitanAxe.png" />
+    <Content Include="Items\Projectiles\TopHat.png" />
     <Content Include="Items\Projectiles\Toxin.png" />
     <Content Include="Items\Projectiles\TrueAbyssalTwilightShot.png" />
     <Content Include="Items\Projectiles\TrueBlazingDawnShot.png" />

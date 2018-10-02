@@ -15,7 +15,8 @@ namespace AAMod.Items.Projectiles
         public static short customGlowMask = 0;
         public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Doom Ray");
+            Main.projFrames[projectile.type] = 8;
+            DisplayName.SetDefault("Doom Ray");
             if (Main.netMode != 2)
             {
                 Texture2D[] glowMasks = new Texture2D[Main.glowMaskTexture.Length + 1];
