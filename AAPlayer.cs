@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using AAMod.Items.Vanity.Chinzilla;
 using AAMod.NPCs;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -58,6 +60,7 @@ namespace AAMod
         public bool yamataSet;
         public bool zeroSet;
         public bool valkyrieSet;
+        public bool CoinWings = false;
         // Accessory bools.
         public bool clawsOfChaos;
         public bool demonGauntlet;
@@ -668,6 +671,163 @@ namespace AAMod
             }
         }
 
+        #region a huge mess for drawing
+        public static readonly PlayerLayer MiscEffectsBack = new PlayerLayer("AAMod", "MiscEffectsBack", PlayerLayer.MiscEffectsBack, delegate (PlayerDrawInfo drawInfo)
+        {
+            Player player = drawInfo.drawPlayer;
+            Mod mod = ModLoader.GetMod("AAMod");
+            AAPlayer modPlayer = player.GetModPlayer<AAPlayer>();
+            if (modPlayer.CoinWings)
+            {
+                if (ChinsMagicCoin.Frame1)
+                {
+                    if (player.HasItem(ItemID.PlatinumCoin))
+                    {
+                        Texture2D texture = mod.GetTexture("AAMod/Items/Vanity/Chinzilla/Platinum1");
+                        int drawX = (int)(drawInfo.position.X + player.width / 2f - Main.screenPosition.X);
+                        int drawY = (int)(drawInfo.position.Y + player.height / 2f - Main.screenPosition.Y);
+                        DrawData data = new DrawData(texture, new Vector2(drawX, drawY), null, Color.White, 0f, new Vector2(texture.Width / 2f, texture.Height / 2f), 1f, SpriteEffects.None, 0);
+                        Main.playerDrawData.Add(data);
+                    }
+                    else if (player.HasItem(ItemID.GoldCoin))
+                    {
+                        Texture2D texture = mod.GetTexture("AAMod/Items/Vanity/Chinzilla/Gold1");
+                        int drawX = (int)(drawInfo.position.X + player.width / 2f - Main.screenPosition.X);
+                        int drawY = (int)(drawInfo.position.Y + player.height / 2f - Main.screenPosition.Y);
+                        DrawData data = new DrawData(texture, new Vector2(drawX, drawY), null, Color.White, 0f, new Vector2(texture.Width / 2f, texture.Height / 2f), 1f, SpriteEffects.None, 0);
+                        Main.playerDrawData.Add(data);
+                    }
+                    else if (player.HasItem(ItemID.SilverCoin))
+                    {
+                        Texture2D texture = mod.GetTexture("AAMod/Items/Vanity/Chinzilla/Silver1");
+                        int drawX = (int)(drawInfo.position.X + player.width / 2f - Main.screenPosition.X);
+                        int drawY = (int)(drawInfo.position.Y + player.height / 2f - Main.screenPosition.Y);
+                        DrawData data = new DrawData(texture, new Vector2(drawX, drawY), null, Color.White, 0f, new Vector2(texture.Width / 2f, texture.Height / 2f), 1f, SpriteEffects.None, 0);
+                        Main.playerDrawData.Add(data);
+                    }
+                    else if (player.HasItem(ItemID.CopperCoin))
+                    {
+                        Texture2D texture = mod.GetTexture("AAMod/Items/Vanity/Chinzilla/Copper1");
+                        int drawX = (int)(drawInfo.position.X + player.width / 2f - Main.screenPosition.X);
+                        int drawY = (int)(drawInfo.position.Y + player.height / 2f - Main.screenPosition.Y);
+                        DrawData data = new DrawData(texture, new Vector2(drawX, drawY), null, Color.White, 0f, new Vector2(texture.Width / 2f, texture.Height / 2f), 1f, SpriteEffects.None, 0);
+                        Main.playerDrawData.Add(data);
+                    }
+                }
+                if (ChinsMagicCoin.Frame2)
+                {
+                    if (player.HasItem(ItemID.PlatinumCoin))
+                    {
+                        Texture2D texture = mod.GetTexture("AAMod/Items/Vanity/Chinzilla/Platinum2");
+                        int drawX = (int)(drawInfo.position.X + player.width / 2f - Main.screenPosition.X);
+                        int drawY = (int)(drawInfo.position.Y + player.height / 2f - Main.screenPosition.Y);
+                        DrawData data = new DrawData(texture, new Vector2(drawX, drawY), null, Color.White, 0f, new Vector2(texture.Width / 2f, texture.Height / 2f), 1f, SpriteEffects.None, 0);
+                        Main.playerDrawData.Add(data);
+                    }
+                    else if (player.HasItem(ItemID.GoldCoin))
+                    {
+                        Texture2D texture = mod.GetTexture("AAMod/Items/Vanity/Chinzilla/Gold2");
+                        int drawX = (int)(drawInfo.position.X + player.width / 2f - Main.screenPosition.X);
+                        int drawY = (int)(drawInfo.position.Y + player.height / 2f - Main.screenPosition.Y);
+                        DrawData data = new DrawData(texture, new Vector2(drawX, drawY), null, Color.White, 0f, new Vector2(texture.Width / 2f, texture.Height / 2f), 1f, SpriteEffects.None, 0);
+                        Main.playerDrawData.Add(data);
+                    }
+                    else if (player.HasItem(ItemID.SilverCoin))
+                    {
+                        Texture2D texture = mod.GetTexture("AAMod/Items/Vanity/Chinzilla/Silver2");
+                        int drawX = (int)(drawInfo.position.X + player.width / 2f - Main.screenPosition.X);
+                        int drawY = (int)(drawInfo.position.Y + player.height / 2f - Main.screenPosition.Y);
+                        DrawData data = new DrawData(texture, new Vector2(drawX, drawY), null, Color.White, 0f, new Vector2(texture.Width / 2f, texture.Height / 2f), 1f, SpriteEffects.None, 0);
+                        Main.playerDrawData.Add(data);
+                    }
+                    else if (player.HasItem(ItemID.CopperCoin))
+                    {
+                        Texture2D texture = mod.GetTexture("AAMod/Items/Vanity/Chinzilla/Copper2");
+                        int drawX = (int)(drawInfo.position.X + player.width / 2f - Main.screenPosition.X);
+                        int drawY = (int)(drawInfo.position.Y + player.height / 2f - Main.screenPosition.Y);
+                        DrawData data = new DrawData(texture, new Vector2(drawX, drawY), null, Color.White, 0f, new Vector2(texture.Width / 2f, texture.Height / 2f), 1f, SpriteEffects.None, 0);
+                        Main.playerDrawData.Add(data);
+                    }
+                }
+                if (ChinsMagicCoin.Frame3)
+                {
+                    if (player.HasItem(ItemID.PlatinumCoin))
+                    {
+                        Texture2D texture = mod.GetTexture("AAMod/Items/Vanity/Chinzilla/Platinum3");
+                        int drawX = (int)(drawInfo.position.X + player.width / 2f - Main.screenPosition.X);
+                        int drawY = (int)(drawInfo.position.Y + player.height / 2f - Main.screenPosition.Y);
+                        DrawData data = new DrawData(texture, new Vector2(drawX, drawY), null, Color.White, 0f, new Vector2(texture.Width / 2f, texture.Height / 2f), 1f, SpriteEffects.None, 0);
+                        Main.playerDrawData.Add(data);
+                    }
+                    else if (player.HasItem(ItemID.GoldCoin))
+                    {
+                        Texture2D texture = mod.GetTexture("AAMod/Items/Vanity/Chinzilla/Gold3");
+                        int drawX = (int)(drawInfo.position.X + player.width / 2f - Main.screenPosition.X);
+                        int drawY = (int)(drawInfo.position.Y + player.height / 2f - Main.screenPosition.Y);
+                        DrawData data = new DrawData(texture, new Vector2(drawX, drawY), null, Color.White, 0f, new Vector2(texture.Width / 2f, texture.Height / 2f), 1f, SpriteEffects.None, 0);
+                        Main.playerDrawData.Add(data);
+                    }
+                    else if (player.HasItem(ItemID.SilverCoin))
+                    {
+                        Texture2D texture = mod.GetTexture("AAMod/Items/Vanity/Chinzilla/Silver3");
+                        int drawX = (int)(drawInfo.position.X + player.width / 2f - Main.screenPosition.X);
+                        int drawY = (int)(drawInfo.position.Y + player.height / 2f - Main.screenPosition.Y);
+                        DrawData data = new DrawData(texture, new Vector2(drawX, drawY), null, Color.White, 0f, new Vector2(texture.Width / 2f, texture.Height / 2f), 1f, SpriteEffects.None, 0);
+                        Main.playerDrawData.Add(data);
+                    }
+                    else if (player.HasItem(ItemID.CopperCoin))
+                    {
+                        Texture2D texture = mod.GetTexture("AAMod/Items/Vanity/Chinzilla/Copper3");
+                        int drawX = (int)(drawInfo.position.X + player.width / 2f - Main.screenPosition.X);
+                        int drawY = (int)(drawInfo.position.Y + player.height / 2f - Main.screenPosition.Y);
+                        DrawData data = new DrawData(texture, new Vector2(drawX, drawY), null, Color.White, 0f, new Vector2(texture.Width / 2f, texture.Height / 2f), 1f, SpriteEffects.None, 0);
+                        Main.playerDrawData.Add(data);
+                    }
+                }
+                if (ChinsMagicCoin.Frame4)
+                {
+                    if (player.HasItem(ItemID.PlatinumCoin))
+                    {
+                        Texture2D texture = mod.GetTexture("AAMod/Items/Vanity/Chinzilla/Platinum4");
+                        int drawX = (int)(drawInfo.position.X + player.width / 2f - Main.screenPosition.X);
+                        int drawY = (int)(drawInfo.position.Y + player.height / 2f - Main.screenPosition.Y);
+                        DrawData data = new DrawData(texture, new Vector2(drawX, drawY), null, Color.White, 0f, new Vector2(texture.Width / 2f, texture.Height / 2f), 1f, SpriteEffects.None, 0);
+                        Main.playerDrawData.Add(data);
+                    }
+                    else if (player.HasItem(ItemID.GoldCoin))
+                    {
+                        Texture2D texture = mod.GetTexture("AAMod/Items/Vanity/Chinzilla/Gold4");
+                        int drawX = (int)(drawInfo.position.X + player.width / 2f - Main.screenPosition.X);
+                        int drawY = (int)(drawInfo.position.Y + player.height / 2f - Main.screenPosition.Y);
+                        DrawData data = new DrawData(texture, new Vector2(drawX, drawY), null, Color.White, 0f, new Vector2(texture.Width / 2f, texture.Height / 2f), 1f, SpriteEffects.None, 0);
+                        Main.playerDrawData.Add(data);
+                    }
+                    else if (player.HasItem(ItemID.SilverCoin))
+                    {
+                        Texture2D texture = mod.GetTexture("AAMod/Items/Vanity/Chinzilla/Silver4");
+                        int drawX = (int)(drawInfo.position.X + player.width / 2f - Main.screenPosition.X);
+                        int drawY = (int)(drawInfo.position.Y + player.height / 2f - Main.screenPosition.Y);
+                        DrawData data = new DrawData(texture, new Vector2(drawX, drawY), null, Color.White, 0f, new Vector2(texture.Width / 2f, texture.Height / 2f), 1f, SpriteEffects.None, 0);
+                        Main.playerDrawData.Add(data);
+                    }
+                    else if (player.HasItem(ItemID.CopperCoin))
+                    {
+                        Texture2D texture = mod.GetTexture("AAMod/Items/Vanity/Chinzilla/Copper4");
+                        int drawX = (int)(drawInfo.position.X + player.width / 2f - Main.screenPosition.X);
+                        int drawY = (int)(drawInfo.position.Y + player.height / 2f - Main.screenPosition.Y);
+                        DrawData data = new DrawData(texture, new Vector2(drawX, drawY), null, Color.White, 0f, new Vector2(texture.Width / 2f, texture.Height / 2f), 1f, SpriteEffects.None, 0);
+                        Main.playerDrawData.Add(data);
+                    }
+                }
+            }
+        });
+
+        public override void ModifyDrawLayers(List<PlayerLayer> layers)
+        {
+            MiscEffectsBack.visible = true;
+            layers.Insert(0, MiscEffectsBack);
+        }
+        #endregion
 
         public override Texture2D GetMapBackgroundImage()
         {
