@@ -293,7 +293,7 @@ namespace AAMod
             }
             {
                 ModRecipe recipe = new ModRecipe(this);
-                recipe.AddIngredient(null, "TrueFleshClaymore", 1);
+                recipe.AddIngredient(null, "TrueFleshrendClaymore", 1);
                 recipe.AddIngredient(ItemID.TrueExcalibur, 1);
                 recipe.AddTile(TileID.MythrilAnvil);
                 recipe.SetResult(ItemID.TerraBlade, 1);

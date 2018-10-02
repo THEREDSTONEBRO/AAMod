@@ -1135,6 +1135,7 @@
     <Content Include="Items\Melee\TrueBlazingDawn.png" />
     <Content Include="Items\Melee\TrueBlazingDawn_Glow.png" />
     <Content Include="Items\Melee\TrueCopperShortsword.png" />
+    <Content Include="Items\Melee\TrueCopperShortswordEX.png" />
     <Content Include="Items\Melee\TrueCopperShortsword_glow.png" />
     <Content Include="Items\Melee\TrueFleshrendClaymore.png" />
     <Content Include="Items\Melee\TrueFleshrendClaymore_Glow.png" />

@@ -27,7 +27,7 @@ namespace AAMod.Items.Projectiles
             projectile.timeLeft = 600;
             projectile.alpha = 0;
             projectile.tileCollide = false;
-            aiType = 321;
+            aiType = 270;
         }
 
         public override void AI()
