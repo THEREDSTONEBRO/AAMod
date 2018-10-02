@@ -83,7 +83,7 @@ namespace AAMod
                 AchievementLibs.Call("AddAchievementWithoutReward", this, "Clockwork Catastrophe", "Destroy the dark doomsday automaton, Zero", "AAMod/Achievments/ZeroA", (Func<bool>)(() => AAWorld.downedZero));
                 AchievementLibs.Call("AddAchievementWithoutReward", this, "Doomsday Arrives", "Defeat Zero's true, dark Awakened form", "AAMod/Achievments/ZeroAA", (Func<bool>)(() => AAWorld.downedZeroA));
                 //AchievementLibs.Call("AddAchievementWithoutReward", this, "Unyielding Discord", "Defeat the Discordian Drake Akumata", "AAMod/Achievments/AkumataA", (Func<bool>)(() => AAWorld.downedZeroA));
-                //AchievementLibs.Call("AddAchievementWithoutReward", this, "True Unyielding Chaos", "Defeat Akumata's true, chaotic Awakened form", "AAMod/Achievments/AkumataAA", (Func<bool>)(() => AAWorld.downedZeroA));
+                //AchievementLibs.Call("AddAchievementWithoutReward", this, "Master of Unity", "Defeat Akumata's true, chaotic Awakened form", "AAMod/Achievments/AkumataAA", (Func<bool>)(() => AAWorld.downedZeroA));
             }
             try
             {
@@ -118,10 +118,6 @@ namespace AAMod
 
             if (!Main.dedServ)
             {
-                if (WorldGen.crimson == true)
-                {
-                    Main.itemTexture[521] = GetTexture("Items/Materials/SoulOfNightRed");
-                }
 
                 PremultiplyTexture(GetTexture("Backgrounds/Void/VoidBH"));
                 PremultiplyTexture(GetTexture("Backgrounds/Mire/MireMoon"));
@@ -134,7 +130,7 @@ namespace AAMod
 
                 AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/HydraTheme"), ItemType("HydraBox"), TileType("HydraBox"));
                 AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/BroodTheme"), ItemType("BroodBox"), TileType("BroodBox"));
-                AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/RajahTheme"), ItemType("RRBox"), TileType("RRBox"));
+                //AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/RajahTheme"), ItemType("RRBox"), TileType("RRBox"));
                 AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/InfernoSurface"), ItemType("InfernoBox"), TileType("InfernoBox"));
                 AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/MireSurface"), ItemType("MireBox"), TileType("MireBox"));
                 AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Void"), ItemType("VoidBox"), TileType("VoidBox"));
@@ -142,6 +138,7 @@ namespace AAMod
                 AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Zero2"), ItemType("Zero2Box"), TileType("Zero2Box"));
                 AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Akuma"), ItemType("AkumaBox"), TileType("AkumaBox"));
                 AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Yamata"), ItemType("YamataBox"), TileType("YamataBox"));
+                AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Akumata"), ItemType("AkumataBox"), TileType("AkumataBox"));
 
                 Filters.Scene["AAMod:MireSky"] = new Filter(new MireSkyData("FilterMiniTower").UseColor(0f, 0.20f, 1f).UseOpacity(0.3f), EffectPriority.VeryHigh);
                 SkyManager.Instance["AAMod:MireSky"] = new MireSky();
@@ -271,11 +268,35 @@ namespace AAMod
         }
         public override void AddRecipes()
         {
+            RecipeFinder finder = new RecipeFinder();
+            {
+                finder = new RecipeFinder();
+                finder.AddIngredient(ItemID.BloodButcherer, 1);
+                finder.AddIngredient(ItemID.FieryGreatsword, 1);
+                finder.AddIngredient(ItemID.BladeofGrass, 1);
+                finder.AddIngredient(ItemID.Muramasa, 1);
+                finder.AddTile(TileID.DemonAltar);
+                finder.SetResult(ItemID.NightsEdge, 1);
+                Recipe recipe2 = finder.FindExactRecipe();
+                if (recipe2 != null)
+                {
+                    RecipeEditor editor = new RecipeEditor(recipe2);
+                    editor.DeleteRecipe();
+                }
+            }
             {
                 ModRecipe recipe = new ModRecipe(this);
                 recipe.AddIngredient(null, "HallowedOre", 4);
                 recipe.AddTile(null, "HallowedForge");
                 recipe.SetResult(ItemID.HallowedBar, 1);
+                recipe.AddRecipe();
+            }
+            {
+                ModRecipe recipe = new ModRecipe(this);
+                recipe.AddIngredient(null, "TrueFleshClaymore", 1);
+                recipe.AddIngredient(ItemID.TrueExcalibur, 1);
+                recipe.AddTile(TileID.MythrilAnvil);
+                recipe.SetResult(ItemID.TerraBlade, 1);
                 recipe.AddRecipe();
             }
             {

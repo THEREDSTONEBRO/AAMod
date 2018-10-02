@@ -10,7 +10,7 @@ namespace AAMod.Items.Armor.Nights
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Night's Helm");
+            DisplayName.SetDefault("Night's Plate");
             Tooltip.SetDefault("9% increased melee speed");
 
         }

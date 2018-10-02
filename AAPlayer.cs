@@ -66,6 +66,7 @@ namespace AAMod
         public bool demonGauntlet;
         public bool StormClaw;
         public bool dwarvenGauntlet;
+        public bool BrokenCode;
         public bool InfinityGauntlet;
         public bool TrueInfinityGauntlet;
         public bool Power;
@@ -106,6 +107,7 @@ namespace AAMod
             darkmatterSetSu = false;
             darkmatterSetTh = false;
             StormClaw = false;
+            BrokenCode = false;
             dwarvenGauntlet = false;
             InfinityGauntlet = false;
             Power = false;
@@ -284,7 +286,7 @@ namespace AAMod
             if (trueDeathly && player.FindBuffIndex(mod.BuffType("UnstableSoul")) == -1)
             {
                 player.statLife = 100;
-                player.HealEffect(20);
+                player.HealEffect(80);
                 player.immune = true;
                 player.immuneTime = player.longInvince ? 180 : 120;
                 Main.NewText("Your soul ripples", 51, 255, 255);

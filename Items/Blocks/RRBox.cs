@@ -1,4 +1,4 @@
-using Terraria.ModLoader;
+/*using Terraria.ModLoader;
 using Terraria.ID;
 
 namespace AAMod.Items.Blocks
@@ -35,4 +35,4 @@ namespace AAMod.Items.Blocks
             recipe.AddRecipe();
         }
     }
-}
+}*/

@@ -12,7 +12,8 @@ namespace AAMod.Items.Projectiles
     	public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Mudkip");
-		}
+            Main.projFrames[projectile.type] = 5;
+        }
     	
         public override void SetDefaults()
         {
@@ -26,7 +27,7 @@ namespace AAMod.Items.Projectiles
             projectile.timeLeft = 600;
             projectile.alpha = 0;
             projectile.tileCollide = false;
-            aiType = 270;
+            aiType = 321;
         }
 
         public override void AI()
@@ -37,14 +38,10 @@ namespace AAMod.Items.Projectiles
             }
         }
 
-        public override void Kill(int timeLeft)
-        {
-            Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 10);
-        }
-
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
             target.AddBuff(BuffID.Wet, 600);
+            target.AddBuff(BuffID.Daybreak, 600);
         }
     }
 }
