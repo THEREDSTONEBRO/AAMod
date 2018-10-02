@@ -11,7 +11,6 @@ namespace AAMod.Items.Tools
         public static bool AxeBool = false;
         public static bool PickBool = false;
         public static bool HammerBool = false;
-        internal static bool visible;
         public static short customGlowMask = 0;
 
         public override void SetDefaults()
