@@ -6,13 +6,13 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Melee
 {
-    public class TrueFleshrendClaymore : ModItem
-	{
+    public class TrueCopperShortswordEX : ModItem
+    {
         public static short customGlowMask = 0;
         public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("True Fleshrend Claymore");
-			Tooltip.SetDefault("Despite the name, it's not actually flesh");
+			DisplayName.SetDefault("Ultima Shortsword");
+			Tooltip.SetDefault("Copper Shortsword EX");
             if (Main.netMode != 2)
             {
                 Microsoft.Xna.Framework.Graphics.Texture2D[] glowMasks = new Microsoft.Xna.Framework.Graphics.Texture2D[Main.glowMaskTexture.Length + 1];
@@ -28,37 +28,31 @@ namespace AAMod.Items.Melee
 		public override void SetDefaults()
 		{
             item.glowMask = customGlowMask;
-			item.damage = 115;
+			item.damage = 1000;
 			item.melee = true;
-			item.width = 75;
-			item.height = 71;
-			item.useTime = 29;
-			item.useAnimation = 29;
-			item.useStyle = 1;
-			item.knockBack = 8;
-			item.value = 100000;
-			item.rare = 8;
-			item.UseSound = SoundID.Item1;
-			item.autoReuse = false;
-			item.shoot = mod.ProjectileType("TrueFleshClaymoreShot");
-            item.shootSpeed = 6f;
-		}
+			item.width = 64;
+			item.height = 64;
+			item.useTime = 20;
+			item.useAnimation = 20;
+			item.useStyle = 3;
+			item.knockBack =20;
+			item.value = 10000000;
+			item.rare = 9;
+			item.expert = true;
+			item.UseSound = SoundID.Item37;
+			item.autoReuse = true;
+            item.shoot = mod.ProjectileType("TrueCopperShot");
+            item.shootSpeed = 20f;
+        }
 
-		public override void AddRecipes()
+        public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(mod, "FleshrendClaymore", 1);
-			recipe.AddIngredient(ItemID.BrokenHeroSword, 1);
-			recipe.AddTile(TileID.MythrilAnvil);
+			recipe.AddIngredient(null, "TrueCopperShortsword", 1);
+			recipe.AddIngredient(null, "EXSoul", 1);
+			recipe.AddTile(null, "QuantumFusionAccelerator");
 			recipe.SetResult(this);
 			recipe.AddRecipe();
 		}
-
-
-        public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)
-        {
-           player.statLife += (damage / 20);
-	       player.HealEffect(damage / 20);
-        }
-    }
+	}
 }

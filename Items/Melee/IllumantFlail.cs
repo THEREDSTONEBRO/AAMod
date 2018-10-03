@@ -29,7 +29,7 @@ namespace AAMod.Items.Melee   //where is located
 
     public override void SetStaticDefaults()
     {
-      DisplayName.SetDefault("Illumant Flail");
+      DisplayName.SetDefault("Illuminant Flail");
     }
 
         public override void AddRecipes()  //How to craft this sword

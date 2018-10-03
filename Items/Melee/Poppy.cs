@@ -11,8 +11,23 @@ namespace AAMod.Items.Melee   //where is located
 {
     public class Poppy : ModItem
     {
-
         public static short customGlowMask = 0;
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("Poppy");
+            Tooltip.SetDefault("");
+            if (Main.netMode != 2)
+            {
+                Texture2D[] glowMasks = new Texture2D[Main.glowMaskTexture.Length + 1];
+                for (int i = 0; i < Main.glowMaskTexture.Length; i++)
+                {
+                    glowMasks[i] = Main.glowMaskTexture[i];
+                }
+                glowMasks[glowMasks.Length - 1] = mod.GetTexture("Items/Melee/" + GetType().Name + "_Glow");
+                customGlowMask = (short)(glowMasks.Length - 1);
+                Main.glowMaskTexture = glowMasks;
+            }
+        }
         public override void SetDefaults()
         {
 
@@ -34,22 +49,7 @@ namespace AAMod.Items.Melee   //where is located
             item.glowMask = customGlowMask;
         }
 
-    public override void SetStaticDefaults()
-    {
-      DisplayName.SetDefault("Poppy");
-      Tooltip.SetDefault("");
-            if (Main.netMode != 2)
-            {
-                Texture2D[] glowMasks = new Texture2D[Main.glowMaskTexture.Length + 1];
-                for (int i = 0; i < Main.glowMaskTexture.Length; i++)
-                {
-                    glowMasks[i] = Main.glowMaskTexture[i];
-                }
-                glowMasks[glowMasks.Length - 1] = mod.GetTexture("Items/Melee/" + GetType().Name + "_Glow");
-                customGlowMask = (short)(glowMasks.Length - 1);
-                Main.glowMaskTexture = glowMasks;
-            }
-        }
+    
 
         public override void AddRecipes()  //How to craft this sword
         {

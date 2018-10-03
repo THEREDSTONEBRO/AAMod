@@ -32,7 +32,7 @@ namespace AAMod.Items.Blocks
             recipe.AddIngredient(ItemID.MusicBox);
             recipe.AddIngredient(null, "EventideAbyssium", 5);
             recipe.AddIngredient(null, "DreadScale", 5);
-            recipe.AddTile(TileID.WorkBenches);
+            recipe.AddTile(TileID.Sawmill);
             recipe.SetResult(this);
             recipe.AddRecipe();
         }

@@ -6,7 +6,9 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Vanity.Alphakip
 {
-	public class AquamancerWings : ModItem
+
+    [AutoloadEquip(EquipType.Wings)]
+    public class AquamancerWings : ModItem
 	{
 		public override void SetStaticDefaults()
 		{

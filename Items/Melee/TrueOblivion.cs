@@ -11,6 +11,22 @@ namespace AAMod.Items.Melee   //where is located
     public class TrueOblivion : ModItem
     {
         public static short customGlowMask = 0;
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("True Oblivion");
+            Tooltip.SetDefault("Unleash the true power!");
+            if (Main.netMode != 2)
+            {
+                Microsoft.Xna.Framework.Graphics.Texture2D[] glowMasks = new Microsoft.Xna.Framework.Graphics.Texture2D[Main.glowMaskTexture.Length + 1];
+                for (int i = 0; i < Main.glowMaskTexture.Length; i++)
+                {
+                    glowMasks[i] = Main.glowMaskTexture[i];
+                }
+                glowMasks[glowMasks.Length - 1] = mod.GetTexture("Items/Melee/" + GetType().Name + "_Glow");
+                customGlowMask = (short)(glowMasks.Length - 1);
+                Main.glowMaskTexture = glowMasks;
+            }
+        }
         public override void SetDefaults()
         {
 
@@ -30,22 +46,7 @@ namespace AAMod.Items.Melee   //where is located
             item.glowMask = customGlowMask;
         }
 
-        public override void SetStaticDefaults()
-        {
-            DisplayName.SetDefault("True Oblivion");
-            Tooltip.SetDefault("Unleash the true power!");
-            if (Main.netMode != 2)
-            {
-                Microsoft.Xna.Framework.Graphics.Texture2D[] glowMasks = new Microsoft.Xna.Framework.Graphics.Texture2D[Main.glowMaskTexture.Length + 1];
-                for (int i = 0; i < Main.glowMaskTexture.Length; i++)
-                {
-                    glowMasks[i] = Main.glowMaskTexture[i];
-                }
-                glowMasks[glowMasks.Length - 1] = mod.GetTexture("Items/Melee/" + GetType().Name + "_Glow");
-                customGlowMask = (short)(glowMasks.Length - 1);
-                Main.glowMaskTexture = glowMasks;
-            }
-        }
+        
 
         public override void AddRecipes()  //How to craft this sword
         {

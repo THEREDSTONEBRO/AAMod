@@ -20,42 +20,21 @@ namespace AAMod.Items.Projectiles
 		
 		public override void AI()
 		{
-			if (Main.rand.NextFloat() < 1f)
-			{
-				Dust dust;
-				Vector2 position = projectile.position;
-				dust = Main.dust[Terraria.Dust.NewDust(position, 31, 30, 27, 0f, 0f, 124, new Color(84,0,255), 2.105263f)];
-				dust.noGravity = true;
-				dust.fadeIn = 2.407895f;
-			}
-			
-			if (Main.rand.NextFloat() < 1f)
-			{
-				Dust dust;
-				Vector2 position = projectile.position;
-				dust = Main.dust[Terraria.Dust.NewDust(position, 31, 30, 27, 0f, 0f, 124, new Color(84,0,255), 2.105263f)];
-				dust.noGravity = true;
-				dust.fadeIn = 2.407895f;
-			}
-			
-			if (Main.rand.NextFloat() < 1f)
-			{
-				Dust dust;
-				Vector2 position = projectile.position;
-				dust = Main.dust[Terraria.Dust.NewDust(position, 31, 30, 27, 0f, 0f, 0, new Color(255,50,0), 2.105263f)];
-				dust.noGravity = true;
-				dust.fadeIn = 2.407895f;
-			}
-			
-			if (Main.rand.NextFloat() < 1f)
-			{
-				Dust dust;
-				Vector2 position = projectile.position;
-				dust = Main.dust[Terraria.Dust.NewDust(position, 31, 30, 27, 0f, 0f, 0, new Color(255,50,0), 2.105263f)];
-				dust.noGravity = true;
-				dust.fadeIn = 2.407895f;
-			}
-		}
+            if (Main.rand.NextFloat() < 1f)
+            {
+                Dust dust;
+                Vector2 position = projectile.position;
+                dust = Main.dust[Terraria.Dust.NewDust(position, 31, 30, 27, 0f, 0f, 124, new Color(84,0,255), 2.105263f)];
+                dust.noGravity = true;
+            }
+            if (Main.rand.NextFloat() < 1f)
+            {
+                Dust dust;
+                Vector2 position = projectile.position;
+                dust = Main.dust[Terraria.Dust.NewDust(position, 31, 30, 27, 0f, 0f, 0, new Color(255,50,0), 2.105263f)];
+                dust.noGravity = true;
+            }
+        }
 
 		public override void SetStaticDefaults()
 		{

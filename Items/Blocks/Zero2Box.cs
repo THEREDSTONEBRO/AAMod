@@ -44,7 +44,7 @@ namespace AAMod.Items.Blocks
             recipe.AddIngredient(ItemID.MusicBox);
             recipe.AddIngredient(null, "UnstableSingularity", 5);
             recipe.AddIngredient(null, "ApocalyptitePlate", 5);
-            recipe.AddTile(null, "BinaryReassembler");
+            recipe.AddTile(ItemID.Sawmill);
             recipe.SetResult(this);
             recipe.AddRecipe();
         }
