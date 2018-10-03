@@ -8,7 +8,7 @@ namespace AAMod.Items.Blocks
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Inferno Surface Music Box");
+			DisplayName.SetDefault("Mire Surface Music Box");
 		}
 
 		public override void SetDefaults()

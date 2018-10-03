@@ -30,7 +30,7 @@ namespace AAMod.Items.Blocks
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(ItemID.MusicBox);
             recipe.AddIngredient(ItemID.Bunny, 5);
-            recipe.AddTile(TileID.WorkBenches);
+            recipe.AddTile(TileID.Sawmill);
             recipe.SetResult(this);
             recipe.AddRecipe();
         }

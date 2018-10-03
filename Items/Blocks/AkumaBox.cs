@@ -32,7 +32,7 @@ namespace AAMod.Items.Blocks
             recipe.AddIngredient(ItemID.MusicBox);
             recipe.AddIngredient(null, "DaybreakIncinerite", 5);
             recipe.AddIngredient(null, "CrucibleScale", 5);
-            recipe.AddTile(TileID.WorkBenches);
+            recipe.AddTile(TileID.Sawmill);
             recipe.SetResult(this);
             recipe.AddRecipe();
         }

@@ -45,7 +45,7 @@ namespace AAMod.Items.Blocks
             recipe.AddIngredient(ItemID.MusicBox);
             recipe.AddIngredient(null, "AkumaBox", 5);
             recipe.AddIngredient(null, "YamataBox", 5);
-            recipe.AddTile(TileID.WorkBenches);
+            recipe.AddTile(TileID.Sawmill);
             recipe.SetResult(this);
             recipe.AddRecipe();
         }
