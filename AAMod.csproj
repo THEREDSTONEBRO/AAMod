@@ -429,6 +429,7 @@
     <Compile Include="Items\Vanity\Alphakip\FishDiverMask.cs" />
     <Compile Include="Items\Vanity\Chinzilla\ChinMask.cs" />
     <Compile Include="Items\Vanity\Chinzilla\ChinPants.cs" />
+    <Compile Include="Items\Vanity\Chinzilla\ChinsMagicCoin.cs" />
     <Compile Include="Items\Vanity\Chinzilla\ChinSuit.cs" />
     <Compile Include="Items\Vanity\Gavran\GavransChest.cs" />
     <Compile Include="Items\Vanity\Gavran\GavransGoggles.cs" />
@@ -447,6 +448,7 @@
     <Compile Include="Items\Vanity\Mask\ZeroMask.cs" />
     <Compile Include="Items\Vanity\N1\N1.cs" />
     <Compile Include="NPCs\AAModGlobalNPC.cs" />
+    <Compile Include="NPCs\Bosses\Akumata\Akumata.cs" />
     <Compile Include="NPCs\Bosses\Daybringer\Daybringer.cs" />
     <Compile Include="NPCs\Bosses\Daybringer\Sunbeam.cs" />
     <Compile Include="NPCs\Bosses\Daybringer\SunbeamScatter.cs" />
@@ -1320,10 +1322,16 @@
     <Content Include="Items\Vanity\Chinzilla\ChinMask_Head.png" />
     <Content Include="Items\Vanity\Chinzilla\ChinPants.png" />
     <Content Include="Items\Vanity\Chinzilla\ChinPants_Legs.png" />
+    <Content Include="Items\Vanity\Chinzilla\ChinsMagicCoin.png" />
+    <Content Include="Items\Vanity\Chinzilla\ChinsMagicCoin_Wings.png" />
     <Content Include="Items\Vanity\Chinzilla\ChinSuit.png" />
     <Content Include="Items\Vanity\Chinzilla\ChinSuit_Arms.png" />
     <Content Include="Items\Vanity\Chinzilla\ChinSuit_Body.png" />
     <Content Include="Items\Vanity\Chinzilla\ChinSuit_Female.png" />
+    <Content Include="Items\Vanity\Chinzilla\Copper_Platform.png" />
+    <Content Include="Items\Vanity\Chinzilla\Gold_Platform.png" />
+    <Content Include="Items\Vanity\Chinzilla\Platinum_Platform.png" />
+    <Content Include="Items\Vanity\Chinzilla\Silver_Platform.png" />
     <Content Include="Items\Vanity\Gavran\GavransChest.png" />
     <Content Include="Items\Vanity\Gavran\GavransChest_Arms.png" />
     <Content Include="Items\Vanity\Gavran\GavransChest_Body.png" />
@@ -1368,8 +1376,13 @@
     <Content Include="Map\InfernoMap.png" />
     <Content Include="Map\MireMap.png" />
     <Content Include="Map\VoidMap.png" />
-    <Content Include="NPCs\Bosses\Akumata\Akumata.png" />
-    <Content Include="NPCs\Bosses\Akumata\AkumataWings.png" />
+    <Content Include="NPCs\Bosses\Akumata\AkumataBlueBody.png" />
+    <Content Include="NPCs\Bosses\Akumata\AkumataBlueHead.png" />
+    <Content Include="NPCs\Bosses\Akumata\AkumataBlueTail.png" />
+    <Content Include="NPCs\Bosses\Akumata\AkumataRedBody.png" />
+    <Content Include="NPCs\Bosses\Akumata\AkumataRedHead.png" />
+    <Content Include="NPCs\Bosses\Akumata\AkumataRedTail.png" />
+    <Content Include="NPCs\Bosses\Akumata\AkumataWingBack.png" />
     <Content Include="NPCs\Bosses\Akuma\AkumaBody.png" />
     <Content Include="NPCs\Bosses\Akuma\AkumaBody2.png" />
     <Content Include="NPCs\Bosses\Akuma\AkumaHead.png" />
@@ -1687,7 +1700,6 @@
     <None Include=".vs\AAMod\v15\Server\sqlite3\storage.ide" />
     <None Include=".vs\AAMod\v15\Server\sqlite3\storage.ide-shm" />
     <None Include=".vs\AAMod\v15\Server\sqlite3\storage.ide-wal" />
-    <None Include="NPCs\Bosses\Akumata\desktop.ini" />
     <None Include="obj\Debug\AAMod.csproj.CopyComplete" />
     <None Include="obj\Debug\AAMod.csproj.CoreCompileInputs.cache" />
     <None Include="obj\Debug\AAMod.csprojAssemblyReference.cache" />

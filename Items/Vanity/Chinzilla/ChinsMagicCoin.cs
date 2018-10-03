@@ -14,7 +14,6 @@ namespace AAMod.Items.Vanity.Chinzilla
 	{
 		public override void SetStaticDefaults()
 		{
-			base.SetStaticDefaults();
 			DisplayName.SetDefault("Chinzilla00's Coin Barrier");
 			Tooltip.SetDefault("'Great for impersonating AA devs!'");
             Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(5, 8));
