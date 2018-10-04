@@ -5,7 +5,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace CollisionMod.Items.Armor.DEV
+namespace AAMod.Items.Vanity.Glitched
 {
 	[AutoloadEquip(EquipType.Head)]
 	public class GlitchesHat : ModItem

@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace CollisionMod.Items.Armor.DEV
+namespace AAMod.Items.Vanity.Glitched
 {
 	[AutoloadEquip(EquipType.Legs)]
 	public class GlitchesGreaves : ModItem
