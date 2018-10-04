@@ -36,9 +36,6 @@ UNSTABLE. C0NTAINS C0DE TO ACTIVATE THE BRINGER 0F DEATH");
             {
                 if (line2.mod == "Terraria" && line2.Name == "ItemName")
                 {
-
-                    line2.overrideColor = new Color(100, 0, 10);
-
                     line2.overrideColor = new Color(120, 0, 30);
                 }
             }
@@ -48,13 +45,13 @@ UNSTABLE. C0NTAINS C0DE TO ACTIVATE THE BRINGER 0F DEATH");
         public override bool CanUseItem(Player player)
         {
             AAPlayer modPlayer = player.GetModPlayer<AAPlayer>(mod);
-            return !NPC.AnyNPCs(mod.NPCType("Zero")) && !NPC.AnyNPCs(mod.NPCType("ZeroAwakened")) && modPlayer.ZoneVoid;
+            return modPlayer.ZoneVoid && !NPC.AnyNPCs(mod.NPCType("Zero")) && !NPC.AnyNPCs(mod.NPCType("ZeroAwakened")) && modPlayer.ZoneVoid;
         }
 
         public override bool UseItem(Player player)
         {
             NPC.SpawnOnPlayer(player.whoAmI, mod.NPCType("Zero"));
-            Main.PlaySound(SoundID.MoonLord, player.position, 0);
+            Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Sounds/ZeroDeath"));
             return true;
         }
 

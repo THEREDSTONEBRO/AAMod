@@ -22,7 +22,7 @@ Doesn't require ammo
 -Liz");
             if (Main.netMode != 2)
             {
-                Microsoft.Xna.Framework.Graphics.Texture2D[] glowMasks = new Microsoft.Xna.Framework.Graphics.Texture2D[Main.glowMaskTexture.Length + 1];
+                Texture2D[] glowMasks = new Texture2D[Main.glowMaskTexture.Length + 1];
                 for (int i = 0; i < Main.glowMaskTexture.Length; i++)
                 {
                     glowMasks[i] = Main.glowMaskTexture[i];
@@ -41,8 +41,8 @@ Doesn't require ammo
             item.ranged = true; //This causes your bow to do ranged damage
             item.width = 72; //Hitbox width
             item.height = 22; //Hitbox height
-            item.useTime = 26; //How long it takes to use the weapon. If this is shorter than the useAnimation it will fire twice in one click.
-            item.useAnimation = 34;  //The animations time length
+            item.useTime = 30; //How long it takes to use the weapon. If this is shorter than the useAnimation it will fire twice in one click.
+            item.useAnimation = 30;  //The animations time length
             item.useStyle = 5; //The style in which the item gets used. 5 for bows.
             item.shoot = ProjectileID.BlackBolt;
             item.knockBack = 12; //The amount of knockback the item has

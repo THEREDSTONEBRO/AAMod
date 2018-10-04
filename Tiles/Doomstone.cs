@@ -10,11 +10,9 @@ namespace AAMod.Tiles
         public override void SetDefaults()
         {
             Main.tileSolid[Type] = true;
-            Main.tileMerge[Type][mod.TileType("Apocalyptite")] = true;
-
-            Main.tileMergeDirt[Type] = false;
+            Main.tileMerge[Type][mod.TileType("Incinerite")] = true;
+            Main.tileMergeDirt[Type] = true;
             SetModTree(new OroborosTree());
-            //true for block to emit light
             soundType = 21;
             drop = mod.ItemType("Doomstone");   //put your CustomBlock name
             dustType = mod.DustType("DoomDust");
