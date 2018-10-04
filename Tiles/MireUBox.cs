@@ -26,11 +26,7 @@ namespace AAMod.Tiles
 
 		public override void KillMultiTile(int i, int j, int frameX, int frameY)
 		{
-<<<<<<< HEAD
 			Item.NewItem(i * 16, j * 16, 16, 48, mod.ItemType("MireUBox"));
-=======
-			Item.NewItem(i * 16, j * 16, 16, 48, mod.ItemType("MireBox"));
->>>>>>> 336687ffb238828720b7a1fdd23d0478238097eb
 		}
 
 		public override void MouseOver(int i, int j)
@@ -38,11 +34,7 @@ namespace AAMod.Tiles
 			Player player = Main.LocalPlayer;
 			player.noThrow = 2;
 			player.showItemIcon = true;
-<<<<<<< HEAD
 			player.showItemIcon2 = mod.ItemType("MireUBox");
-=======
-			player.showItemIcon2 = mod.ItemType("MireBox");
->>>>>>> 336687ffb238828720b7a1fdd23d0478238097eb
 		}
 	}
 }
