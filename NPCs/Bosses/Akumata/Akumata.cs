@@ -6,7 +6,7 @@ using System.IO;
 using System;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace AAMod.NPCs.Bosses.Daybringer
+namespace AAMod.NPCs.Bosses.Akumata
 {
     [AutoloadBossHead]
     class AkumataHead : Akumata

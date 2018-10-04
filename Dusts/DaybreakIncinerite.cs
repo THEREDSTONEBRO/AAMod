@@ -10,7 +10,7 @@ namespace AAMod.Dusts
         {
             dust.noLight = true;
             dust.scale = 1.2f;
-            dust.noGravity = true;
+            dust.noGravity = false;
             dust.velocity /= 2f;
         }
 
