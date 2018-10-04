@@ -140,7 +140,7 @@ namespace AAMod
                 AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Zero2"), ItemType("Zero2Box"), TileType("Zero2Box"));
                 AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Akuma"), ItemType("AkumaBox"), TileType("AkumaBox"));
                 AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Yamata"), ItemType("YamataBox"), TileType("YamataBox"));
-                //AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Akumata"), ItemType("AkumataBox"), TileType("AkumataBox"));
+                AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Akumata"), ItemType("AkumataBox"), TileType("AkumataBox"));
 
                 Filters.Scene["AAMod:MireSky"] = new Filter(new MireSkyData("FilterMiniTower").UseColor(0f, 0.20f, 1f).UseOpacity(0.3f), EffectPriority.VeryHigh);
                 SkyManager.Instance["AAMod:MireSky"] = new MireSky();
@@ -237,7 +237,7 @@ namespace AAMod
                 if (player.ZoneRockLayerHeight)
                 {
                     priority = MusicPriority.BiomeHigh;
-                    music = GetSoundSlot(SoundType.Music, "Sounds/Music/InfernoSurface");
+                    music = GetSoundSlot(SoundType.Music, "Sounds/Music/InfernoUnderground");
                 }
                 else
                 {
@@ -534,8 +534,8 @@ namespace AAMod
             {
                 ModRecipe recipe = new ModRecipe(this);
                 recipe.AddIngredient(ItemID.MusicBox, 1);
-                recipe.AddIngredient(ItemID.CrimstoneBlock, 30);
-                recipe.AddIngredient(ItemID.Vertebrae, 10);
+                recipe.AddIngredient(ItemID.PearlstoneBlock, 30);
+                recipe.AddIngredient(ItemID.UnicornHorn, 10);
                 recipe.AddTile(TileID.Sawmill);
                 recipe.SetResult(ItemID.MusicBoxUndergroundHallow, 1);
                 recipe.AddRecipe();

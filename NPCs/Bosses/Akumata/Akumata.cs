@@ -15,6 +15,10 @@ namespace AAMod.NPCs.Bosses.Akumata
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Akumata");
+            if (!body && !tail)
+            {
+                Main.npcFrameCount[npc.type] = 2;
+            }
         }
         public override void SetDefaults()
         {
@@ -22,8 +26,8 @@ namespace AAMod.NPCs.Bosses.Akumata
             npc.damage = 120;
             npc.defense = 140;
             npc.knockBackResist = 0f;
-            npc.width = 46;
-            npc.height = 68;
+            npc.width = 152;
+            npc.height = 168;
             npc.value = Item.buyPrice(0, 60, 0, 0);
             npc.boss = true;
             npc.aiStyle = -1;
@@ -32,8 +36,8 @@ namespace AAMod.NPCs.Bosses.Akumata
             npc.noTileCollide = true;
             npc.behindTiles = false;
             npc.DeathSound = null;
-            //music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/Equinox");
-            //musicPriority = MusicPriority.BossHigh;
+            music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/Akumata");
+            musicPriority = MusicPriority.BossHigh;
             //bossBag = mod.ItemType("DBBag");
         }
 
@@ -63,8 +67,8 @@ namespace AAMod.NPCs.Bosses.Akumata
         public override void SetDefaults()
         {
             base.SetDefaults();
-            npc.width = 54;
-            npc.height = 48;
+            npc.width = 104;
+            npc.height = 56;
             npc.DeathSound = null;
         }
 
@@ -88,8 +92,8 @@ namespace AAMod.NPCs.Bosses.Akumata
         public override void SetDefaults()
         {
             base.SetDefaults();
-            npc.width = 54;
-            npc.height = 48;
+            npc.width = 104;
+            npc.height = 56;
             npc.DeathSound = null;
         }
 
@@ -102,7 +106,7 @@ namespace AAMod.NPCs.Bosses.Akumata
         public override void Init()
         {
             base.Init();
-            body = true;
+            wing = true;
         }
     }
 
@@ -113,8 +117,8 @@ namespace AAMod.NPCs.Bosses.Akumata
         public override void SetDefaults()
         {
             base.SetDefaults();
-            npc.width = 34;
-            npc.height = 52;
+            npc.width = 78;
+            npc.height = 36;
             npc.DeathSound = null;
         }
         public override bool? DrawHealthBar(byte hbPosition, ref float scale, ref Vector2 position)
@@ -136,6 +140,10 @@ namespace AAMod.NPCs.Bosses.Akumata
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Akumata");
+            if (!body && !tail)
+            {
+                Main.npcFrameCount[npc.type] = 2;
+            }
         }
         public override void SetDefaults()
         {
@@ -143,8 +151,8 @@ namespace AAMod.NPCs.Bosses.Akumata
             npc.damage = 120;
             npc.defense = 140;
             npc.knockBackResist = 0f;
-            npc.width = 46;
-            npc.height = 68;
+            npc.width = 152;
+            npc.height = 168;
             npc.value = Item.buyPrice(0, 60, 0, 0);
             npc.boss = true;
             npc.aiStyle = -1;
@@ -153,8 +161,8 @@ namespace AAMod.NPCs.Bosses.Akumata
             npc.noTileCollide = true;
             npc.behindTiles = false;
             npc.DeathSound = null;
-            //music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/Equinox");
-            //musicPriority = MusicPriority.BossHigh;
+            music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/Akumata");
+            musicPriority = MusicPriority.BossHigh;
             //bossBag = mod.ItemType("DBBag");
         }
 
@@ -184,8 +192,8 @@ namespace AAMod.NPCs.Bosses.Akumata
         public override void SetDefaults()
         {
             base.SetDefaults();
-            npc.width = 54;
-            npc.height = 48;
+            npc.width = 104;
+            npc.height = 56;
             npc.DeathSound = null;
         }
 
@@ -209,8 +217,8 @@ namespace AAMod.NPCs.Bosses.Akumata
         public override void SetDefaults()
         {
             base.SetDefaults();
-            npc.width = 54;
-            npc.height = 48;
+            npc.width = 104;
+            npc.height = 56;
             npc.DeathSound = null;
         }
 
@@ -223,7 +231,7 @@ namespace AAMod.NPCs.Bosses.Akumata
         public override void Init()
         {
             base.Init();
-            body = true;
+            wing = true;
         }
     }
 
@@ -234,8 +242,8 @@ namespace AAMod.NPCs.Bosses.Akumata
         public override void SetDefaults()
         {
             base.SetDefaults();
-            npc.width = 34;
-            npc.height = 52;
+            npc.width = 78;
+            npc.height = 36;
             npc.DeathSound = null;
         }
         public override bool? DrawHealthBar(byte hbPosition, ref float scale, ref Vector2 position)
@@ -278,6 +286,7 @@ namespace AAMod.NPCs.Bosses.Akumata
         public bool head;
         public bool body;
         public bool tail;
+        public bool wing;
         public int minLength;
         public int maxLength;
         public int headType;
@@ -293,11 +302,27 @@ namespace AAMod.NPCs.Bosses.Akumata
         public float speed;
         public float turnSpeed;
         public bool Spawnint = false;
-        public bool Spawned = false;
-        public bool swap = false;
+        public bool Blue = false;
+        public bool Red = true;
+        public int frametimer = 10;
 
         public override void AI()
         {
+            if (!body && !tail)
+            {
+                if (frametimer > 0)
+                {
+                    frametimer--;
+                }
+                if (npc.frameCounter == 1 && frametimer == 0)
+                {
+                    frametimer++;
+                }
+                if (npc.frameCounter == 2 && frametimer == 0)
+                {
+                    frametimer--;
+                }
+            }
             if (npc.localAI[1] == 0f)
             {
                 npc.localAI[1] = 1f;
@@ -321,9 +346,9 @@ namespace AAMod.NPCs.Bosses.Akumata
             }
             if (Main.netMode != 1)
             {
-                if (!tail && npc.ai[0] == 0f && !Spawned)
+                if (!tail && Red)
                 {
-                    if (head && !body && !tail)
+                    if (head && !body && !tail && !wing)
                     {
                         npc.ai[3] = npc.whoAmI;
                         npc.realLife = npc.whoAmI;
@@ -344,8 +369,6 @@ namespace AAMod.NPCs.Bosses.Akumata
                     if (npc.ai[2] == 0)
                     {
                         npc.ai[0] = NPC.NewNPC((int)(npc.position.X + npc.width / 2), (int)(npc.position.Y + npc.height), tailType, npc.whoAmI);
-                        Spawned = true;
-                        Spawnint = false;
                     }
                     Main.npc[(int)npc.ai[0]].ai[3] = npc.ai[3];
                     Main.npc[(int)npc.ai[0]].realLife = npc.realLife;
@@ -353,19 +376,9 @@ namespace AAMod.NPCs.Bosses.Akumata
                     Main.npc[(int)npc.ai[0]].ai[2] = npc.ai[2] - 1;
                     npc.netUpdate = true;
                 }
-                if (npc.direction == 1 && !swap)
+                if (!tail && Blue)
                 {
-                    int num = npc.life;
-                    npc.position.X = npc.position.X + npc.width / 2;
-                    npc.position.Y = npc.position.Y + npc.height / 2;
-                    npc.width = 100;
-                    npc.height = 100;
-                    npc.position.X = npc.position.X - npc.width / 2;
-                    npc.position.Y = npc.position.Y - npc.height / 2;
-                    Vector2 spawnAt = npc.Center + new Vector2(0f, npc.height / 2f);
-                    npc.active = false;
-                    npc.ai[0] = NPC.NewNPC((int)spawnAt.X, (int)spawnAt.Y, headType2, npc.whoAmI);
-                    if (head && !body && !tail)
+                    if (head && !body && !tail && !wing)
                     {
                         npc.ai[3] = npc.whoAmI;
                         npc.realLife = npc.whoAmI;
@@ -386,60 +399,53 @@ namespace AAMod.NPCs.Bosses.Akumata
                     if (npc.ai[2] == 0)
                     {
                         npc.ai[0] = NPC.NewNPC((int)(npc.position.X + npc.width / 2), (int)(npc.position.Y + npc.height), tailType2, npc.whoAmI);
-                        swap = true;
-                        Spawnint = false;
                     }
                     Main.npc[(int)npc.ai[0]].ai[3] = npc.ai[3];
                     Main.npc[(int)npc.ai[0]].realLife = npc.realLife;
                     Main.npc[(int)npc.ai[0]].ai[1] = npc.whoAmI;
                     Main.npc[(int)npc.ai[0]].ai[2] = npc.ai[2] - 1;
-                    npc.life = num;
                     npc.netUpdate = true;
                 }
-                if (npc.direction == -1 && swap)
+                if (directional)
+                {
+                    if (npc.velocity.X < 0f)
+                    {
+                        npc.spriteDirection = 1;
+                    }
+                    else if (npc.velocity.X > 0f)
+                    {
+                        npc.spriteDirection = -1;
+                    }
+                }
+                if (npc.spriteDirection == 1)
                 {
                     int num = npc.life;
-                    npc.position.X = npc.position.X + npc.width / 2;
-                    npc.position.Y = npc.position.Y + npc.height / 2;
-                    npc.width = 100;
-                    npc.height = 100;
-                    npc.position.X = npc.position.X - npc.width / 2;
-                    npc.position.Y = npc.position.Y - npc.height / 2;
-                    Vector2 spawnAt = npc.Center + new Vector2(0f, npc.height / 2f);
-                    npc.active = false;
-                    npc.ai[0] = NPC.NewNPC((int)spawnAt.X, (int)spawnAt.Y, headType, npc.whoAmI);
-                    if (head && !body && !tail)
+                    if (head)
                     {
-                        npc.ai[3] = npc.whoAmI;
-                        npc.realLife = npc.whoAmI;
-                        if (!Spawnint)
-                        {
-                            npc.ai[2] = 4;
-                            Spawnint = true;
-                        }
-                        else if (npc.ai[2] > 0 && npc.ai[2] != 3)
-                        {
-                            npc.ai[0] = NPC.NewNPC((int)(npc.position.X + npc.width / 2), (int)(npc.position.Y + npc.height), bodyType, npc.whoAmI);
-                        }
-                        else if (npc.ai[2] == 3)
-                        {
-                            npc.ai[0] = NPC.NewNPC((int)(npc.position.X + npc.width / 2), (int)(npc.position.Y + npc.height), wingType, npc.whoAmI);
-                        }
+                        npc.Transform(mod.NPCType<AkumataBlueHead>());
                     }
-                    if (npc.ai[2] == 0)
-                    {
-                        npc.ai[0] = NPC.NewNPC((int)(npc.position.X + npc.width / 2), (int)(npc.position.Y + npc.height), tailType, npc.whoAmI);
-                        swap = false;
-                        Spawnint = false;
-                    }
-                    Main.npc[(int)npc.ai[0]].ai[3] = npc.ai[3];
-                    Main.npc[(int)npc.ai[0]].realLife = npc.realLife;
-                    Main.npc[(int)npc.ai[0]].ai[1] = npc.whoAmI;
-                    Main.npc[(int)npc.ai[0]].ai[2] = npc.ai[2] - 1;
                     npc.life = num;
-                    npc.netUpdate = true;
+                    Red = false;
+                    Blue = true;
                 }
-                if ((!NPC.AnyNPCs(mod.NPCType<AkumataRedHead>()) || !NPC.AnyNPCs(mod.NPCType<AkumataBlueHead>())) && (body || tail))
+                if (npc.spriteDirection == -1)
+                {
+                    int num = npc.life;
+                    if (head)
+                    {
+                        npc.Transform(mod.NPCType<AkumataRedHead>());
+                    }
+                    npc.life = num;
+                    Blue = false;
+                    Red = true;
+                }
+                if (NPC.AnyNPCs(mod.NPCType<AkumataRedHead>()) && (npc.type == mod.NPCType<AkumataBlueBody>() || npc.type == mod.NPCType<AkumataBlueWing>() || npc.type == mod.NPCType<AkumataBlueTail>()))
+                {
+                    npc.life = 0;
+                    npc.HitEffect(0, 10.0);
+                    npc.active = false;
+                }
+                if (NPC.AnyNPCs(mod.NPCType<AkumataBlueHead>()) && (npc.type == mod.NPCType<AkumataRedBody>() || npc.type == mod.NPCType<AkumataRedWing>() || npc.type == mod.NPCType<AkumataRedTail>()))
                 {
                     npc.life = 0;
                     npc.HitEffect(0, 10.0);
@@ -518,17 +524,6 @@ namespace AAMod.NPCs.Bosses.Akumata
                 if (flag19)
                 {
                     flag18 = true;
-                }
-            }
-            if (directional)
-            {
-                if (npc.velocity.X < 0f)
-                {
-                    npc.spriteDirection = 1;
-                }
-                else if (npc.velocity.X > 0f)
-                {
-                    npc.spriteDirection = -1;
                 }
             }
             float num188 = speed;
@@ -863,7 +858,7 @@ namespace AAMod.NPCs.Bosses.Akumata
 
         public override bool? DrawHealthBar(byte hbPosition, ref float scale, ref Vector2 position)
         {
-            return (tail || body) ? false : (bool?)null;
+            return (tail || body || wing) ? false : (bool?)null;
         }
     }
 }

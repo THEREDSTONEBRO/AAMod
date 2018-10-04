@@ -12,7 +12,9 @@ namespace AAMod.Items.Vanity.Chinzilla
     [AutoloadEquip(EquipType.Wings)]
     public class ChinsMagicCoin : ModItem
 	{
-		public override void SetStaticDefaults()
+        private int timer = 5;
+
+        public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Chinzilla00's Coin Barrier");
 			Tooltip.SetDefault("'Great for impersonating AA devs!'");
@@ -59,6 +61,53 @@ namespace AAMod.Items.Vanity.Chinzilla
             {
                 player.wingTimeMax = 0;
             }
+        }
+
+        public override void UpdateVanity(Player player, EquipType type)
+        {
+            if (player.HasItem(ItemID.PlatinumCoin))
+            {
+                Main.wingsTexture[28] = mod.GetTexture("Items/Vanity/Chinzilla/Platinum_Platform");
+            }
+            else if (player.HasItem(ItemID.GoldCoin))
+            {
+                Main.wingsTexture[28] = mod.GetTexture("Items/Vanity/Chinzilla/Gold_Platform");
+            }
+            else if (player.HasItem(ItemID.SilverCoin))
+            {
+                Main.wingsTexture[28] = mod.GetTexture("Items/Vanity/Chinzilla/Silver_Platform");
+            }
+            else if (player.HasItem(ItemID.CopperCoin))
+            {
+                Main.wingsTexture[28] = mod.GetTexture("Items/Vanity/Chinzilla/Copper_Platform");
+            }
+            else
+            {
+                Main.wingsTexture[28] = mod.GetTexture("Items/Vanity/Chinzilla/ChinsMagicCoin_Wings");
+            }
+            player.wings = 28;
+        }
+
+        public override bool WingUpdate(Player player, bool inUse)
+        {
+            if (timer > 0)
+            {
+                timer--;
+            }
+            if (inUse)
+            {
+                if (player.wingFrame == 4 && timer == 0)
+                {
+                    player.wingFrame = 0;
+                    timer = 5;
+                }
+                if (timer == 0)
+                {
+                    player.wingFrame++;
+                    timer = 5;
+                }
+            }
+            return true;
         }
 
         public override void VerticalWingSpeeds(Player player, ref float ascentWhenFalling, ref float ascentWhenRising,
