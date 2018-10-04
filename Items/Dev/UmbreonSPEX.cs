@@ -42,7 +42,7 @@ namespace AAMod.Items.Dev
 			item.rare = 2;
 			item.UseSound = SoundID.Item71;
 			item.autoReuse = true;
-			item.shoot = mod.ProjectileType("UmbreonProjectile");
+			item.shoot = mod.ProjectileType("UmbreonSPProjectile");
 			item.shootSpeed = 18f;
 			item.glowMask = customGlowMask;
 		}
