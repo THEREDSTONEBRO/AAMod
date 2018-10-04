@@ -34,7 +34,11 @@ namespace AAMod.Tiles
 			Player player = Main.LocalPlayer;
 			player.noThrow = 2;
 			player.showItemIcon = true;
+<<<<<<< HEAD
 			player.showItemIcon2 = mod.ItemType("InfernoUBox");
+=======
+			player.showItemIcon2 = mod.ItemType("InfernoBox");
+>>>>>>> 336687ffb238828720b7a1fdd23d0478238097eb
 		}
 	}
 }
