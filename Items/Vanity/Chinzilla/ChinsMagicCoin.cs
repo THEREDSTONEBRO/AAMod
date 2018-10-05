@@ -87,7 +87,7 @@ namespace AAMod.Items.Vanity.Chinzilla
             {
                 player.GetModPlayer<AAPlayer>().CoinWings = false;
             }
-            return true;
+            return false;
         }
 
         public override void VerticalWingSpeeds(Player player, ref float ascentWhenFalling, ref float ascentWhenRising,
