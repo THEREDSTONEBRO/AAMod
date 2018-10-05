@@ -44,7 +44,7 @@ namespace AAMod.NPCs.Bosses.Zero
                 projectile.velocity.Y += projectile.ai[0];
                 projectile.ai[1] = 1.0f;
             }
-            projectile.velocity *= 1.05f;
+            projectile.velocity *= 1.03f;
         }
 
         public override bool OnTileCollide(Vector2 oldVelocity)
