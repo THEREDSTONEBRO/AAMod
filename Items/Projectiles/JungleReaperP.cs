@@ -11,8 +11,8 @@ namespace AAMod.Items.Projectiles
     {
         public override void SetDefaults()
         {
-            projectile.width = 50;
-            projectile.height = 25;
+            projectile.width = 96;
+            projectile.height = 28;
             projectile.friendly = true;
             projectile.penetrate = -1;                       //this is the projectile penetration
             Main.projFrames[projectile.type] = 1;           //this is projectile frames
