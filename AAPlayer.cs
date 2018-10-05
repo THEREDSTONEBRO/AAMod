@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using AAMod.NPCs;
@@ -58,6 +59,7 @@ namespace AAMod
         public bool yamataSet;
         public bool zeroSet;
         public bool valkyrieSet;
+        public bool CoinWings;
         // Accessory bools.
         public bool clawsOfChaos;
         public bool demonGauntlet;
@@ -76,9 +78,6 @@ namespace AAMod
         //debuffs
         public bool infinityOverload = false;
         //buffs
-        //Ints
-        public int camoCounter;
-        public const int CAMO_DELAY = 100;
 
         public override void ResetEffects()
         {
@@ -644,32 +643,63 @@ namespace AAMod
 
         }
 
-        public override void ModifyDrawInfo(ref PlayerDrawInfo drawInfo)
+        public static readonly PlayerLayer Wings = new PlayerLayer("AAMod", "Wings", PlayerLayer.Wings, delegate (PlayerDrawInfo drawInfo)
         {
-            if (camoCounter > 0)
+            if (drawInfo.shadow != 0f)
             {
-                float camo = 1 - (.75f / CAMO_DELAY) * camoCounter;
-                drawInfo.upperArmorColor = Color.Multiply(drawInfo.upperArmorColor, camo);
-                drawInfo.middleArmorColor = Color.Multiply(drawInfo.middleArmorColor, camo);
-                drawInfo.lowerArmorColor = Color.Multiply(drawInfo.lowerArmorColor, camo);
-                camo *= camo;
-                drawInfo.hairColor = Color.Multiply(drawInfo.hairColor, camo);
-                drawInfo.eyeWhiteColor = Color.Multiply(drawInfo.eyeWhiteColor, camo);
-                drawInfo.eyeColor = Color.Multiply(drawInfo.eyeColor, camo);
-                drawInfo.faceColor = Color.Multiply(drawInfo.faceColor, camo);
-                drawInfo.bodyColor = Color.Multiply(drawInfo.bodyColor, camo);
-                drawInfo.legColor = Color.Multiply(drawInfo.legColor, camo);
-                drawInfo.shirtColor = Color.Multiply(drawInfo.shirtColor, camo);
-                drawInfo.underShirtColor = Color.Multiply(drawInfo.underShirtColor, camo);
-                drawInfo.pantsColor = Color.Multiply(drawInfo.pantsColor, camo);
-                drawInfo.shoeColor = Color.Multiply(drawInfo.shoeColor, camo);
-                drawInfo.headGlowMaskColor = Color.Multiply(drawInfo.headGlowMaskColor, camo);
-                drawInfo.bodyGlowMaskColor = Color.Multiply(drawInfo.bodyGlowMaskColor, camo);
-                drawInfo.armGlowMaskColor = Color.Multiply(drawInfo.armGlowMaskColor, camo);
-                drawInfo.legGlowMaskColor = Color.Multiply(drawInfo.legGlowMaskColor, camo);
+                return;
             }
-        }
+            Player player = drawInfo.drawPlayer;
+            Mod mod = ModLoader.GetMod("AAMod");
+            AAPlayer modPlayer = player.GetModPlayer<AAPlayer>();
+            int frameSize = 42;
+            if (modPlayer.CoinWings && player.HasItem(ItemID.PlatinumCoin))
+            {
+                Texture2D texture = mod.GetTexture("AAMod/Items/Vanity/Chinzilla/Platinum_Platform");
+                int drawX = (int)(player.Center.X);
+                int drawY = (int)(player.Bottom.Y);
+                DrawData data = new DrawData(texture, new Vector2(drawX, drawY), new Rectangle(0, frameSize * 4, texture.Width, frameSize), Color.White, 0f, new Vector2(texture.Width / 2f, texture.Height / 2f), 1f, SpriteEffects.None, 0);
+                Main.playerDrawData.Add(data);
+            }
+            else if (modPlayer.CoinWings && player.HasItem(ItemID.GoldCoin))
+            {
+                Texture2D texture = mod.GetTexture("AAMod/Items/Vanity/Chinzilla/Gold_Platform");
+                int drawX = (int)(player.Center.X);
+                int drawY = (int)(player.Bottom.Y);
+                DrawData data = new DrawData(texture, new Vector2(drawX, drawY), new Rectangle(0, frameSize * 4, texture.Width, frameSize), Color.White, 0f, new Vector2(texture.Width / 2f, texture.Height / 2f), 1f, SpriteEffects.None, 0);
+                Main.playerDrawData.Add(data);
+            }
+            else if (modPlayer.CoinWings && player.HasItem(ItemID.SilverCoin))
+            {
+                Texture2D texture = mod.GetTexture("AAMod/Items/Vanity/Chinzilla/Silver_Platform");
+                int drawX = (int)(player.Center.X);
+                int drawY = (int)(player.Bottom.Y);
+                DrawData data = new DrawData(texture, new Vector2(drawX, drawY), new Rectangle(0, frameSize * 4, texture.Width, frameSize), Color.White, 0f, new Vector2(texture.Width / 2f, texture.Height / 2f), 1f, SpriteEffects.None, 0);
+                Main.playerDrawData.Add(data);
+            }
+            else if (modPlayer.CoinWings && player.HasItem(ItemID.CopperCoin))
+            {
+                Texture2D texture = mod.GetTexture("AAMod/Items/Vanity/Chinzilla/Copper_Platform");
+                int drawX = (int)(player.Center.X);
+                int drawY = (int)(player.Bottom.Y);
+                DrawData data = new DrawData(texture, new Vector2(drawX, drawY), new Rectangle(0, frameSize * 4, texture.Width, frameSize), Color.White, 0f, new Vector2(texture.Width / 2f, texture.Height / 2f), 1f, SpriteEffects.None, 0);
+                Main.playerDrawData.Add(data);
+            }
+            else if (modPlayer.CoinWings)
+            {
+                Texture2D texture = mod.GetTexture("AAMod/Items/Vanity/Chinzilla/ChinsMagicCoin_Wings");
+                int drawX = (int)(player.Center.X);
+                int drawY = (int)(player.Bottom.Y);
+                DrawData data = new DrawData(texture, new Vector2(drawX, drawY), new Rectangle(0, frameSize * 4, texture.Width, frameSize), Color.White, 0f, new Vector2(texture.Width / 2f, texture.Height / 2f), 1f, SpriteEffects.None, 0);
+                Main.playerDrawData.Add(data);
+            }
+        });
 
+        public override void ModifyDrawLayers(List<PlayerLayer> layers)
+        {
+            Wings.visible = true;
+            layers.Insert(0, Wings);
+        }
 
         public override Texture2D GetMapBackgroundImage()
         {

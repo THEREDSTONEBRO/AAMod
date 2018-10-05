@@ -302,8 +302,6 @@ namespace AAMod.NPCs.Bosses.Akumata
         public float speed;
         public float turnSpeed;
         public bool Spawnint = false;
-        public bool Blue = false;
-        public bool Red = true;
         public int frametimer = 10;
 
         public override void AI()
@@ -346,7 +344,7 @@ namespace AAMod.NPCs.Bosses.Akumata
             }
             if (Main.netMode != 1)
             {
-                if (!tail && Red)
+                if (!tail && npc.ai[0] == 0f)
                 {
                     if (head && !body && !tail && !wing)
                     {
@@ -376,36 +374,6 @@ namespace AAMod.NPCs.Bosses.Akumata
                     Main.npc[(int)npc.ai[0]].ai[2] = npc.ai[2] - 1;
                     npc.netUpdate = true;
                 }
-                if (!tail && Blue)
-                {
-                    if (head && !body && !tail && !wing)
-                    {
-                        npc.ai[3] = npc.whoAmI;
-                        npc.realLife = npc.whoAmI;
-                        if (!Spawnint)
-                        {
-                            npc.ai[2] = 4;
-                            Spawnint = true;
-                        }
-                        else if (npc.ai[2] > 0 && npc.ai[2] != 3)
-                        {
-                            npc.ai[0] = NPC.NewNPC((int)(npc.position.X + npc.width / 2), (int)(npc.position.Y + npc.height), bodyType2, npc.whoAmI);
-                        }
-                        else if (npc.ai[2] == 3)
-                        {
-                            npc.ai[0] = NPC.NewNPC((int)(npc.position.X + npc.width / 2), (int)(npc.position.Y + npc.height), wingType2, npc.whoAmI);
-                        }
-                    }
-                    if (npc.ai[2] == 0)
-                    {
-                        npc.ai[0] = NPC.NewNPC((int)(npc.position.X + npc.width / 2), (int)(npc.position.Y + npc.height), tailType2, npc.whoAmI);
-                    }
-                    Main.npc[(int)npc.ai[0]].ai[3] = npc.ai[3];
-                    Main.npc[(int)npc.ai[0]].realLife = npc.realLife;
-                    Main.npc[(int)npc.ai[0]].ai[1] = npc.whoAmI;
-                    Main.npc[(int)npc.ai[0]].ai[2] = npc.ai[2] - 1;
-                    npc.netUpdate = true;
-                }
                 if (directional)
                 {
                     if (npc.velocity.X < 0f)
@@ -420,24 +388,44 @@ namespace AAMod.NPCs.Bosses.Akumata
                 if (npc.spriteDirection == 1)
                 {
                     int num = npc.life;
-                    if (head)
+                    if (head && !body && !tail && !wing)
                     {
                         npc.Transform(mod.NPCType<AkumataBlueHead>());
                     }
+                    if (body && !wing)
+                    {
+                        npc.Transform(mod.NPCType<AkumataBlueBody>());
+                    }
+                    if (tail)
+                    {
+                        npc.Transform(mod.NPCType<AkumataBlueTail>());
+                    }
+                    if (wing)
+                    {
+                        npc.Transform(mod.NPCType<AkumataBlueWing>());
+                    }
                     npc.life = num;
-                    Red = false;
-                    Blue = true;
                 }
                 if (npc.spriteDirection == -1)
                 {
                     int num = npc.life;
-                    if (head)
+                    if (head && !body && !tail && !wing)
                     {
                         npc.Transform(mod.NPCType<AkumataRedHead>());
                     }
+                    if (body && !wing)
+                    {
+                        npc.Transform(mod.NPCType<AkumataRedBody>());
+                    }
+                    if (tail)
+                    {
+                        npc.Transform(mod.NPCType<AkumataRedTail>());
+                    }
+                    if (wing)
+                    {
+                        npc.Transform(mod.NPCType<AkumataRedWing>());
+                    }
                     npc.life = num;
-                    Blue = false;
-                    Red = true;
                 }
                 if (NPC.AnyNPCs(mod.NPCType<AkumataRedHead>()) && (npc.type == mod.NPCType<AkumataBlueBody>() || npc.type == mod.NPCType<AkumataBlueWing>() || npc.type == mod.NPCType<AkumataBlueTail>()))
                 {
