@@ -102,6 +102,8 @@
     <Compile Include="Dusts\RadiantIncinerite.cs" />
     <Compile Include="Dusts\RazeleafDust.cs" />
     <Compile Include="Dusts\RazewoodDust.cs" />
+    <Compile Include="Dusts\UmbreonSPDust.cs" />
+    <Compile Include="Dusts\VoidDust.cs" />
     <Compile Include="Dusts\ZeroDust.cs" />
     <Compile Include="Items\Accessories\DemonGauntet.cs" />
     <Compile Include="Items\Blocks\AkumataBox.cs" />
@@ -252,6 +254,9 @@
     <Compile Include="Items\Boss\Retriever\StormClaw.cs" />
     <Compile Include="Items\Boss\Retriever\StormRiot.cs" />
     <Compile Include="Items\Boss\Yamata\DreadScale.cs" />
+    <Compile Include="Items\Boss\Zero\AMR.cs" />
+    <Compile Include="Items\Boss\Zero\BrokenCode.cs" />
+    <Compile Include="Items\Boss\Zero\DoomRay.cs" />
     <Compile Include="Items\Boss\Zero\EventHorizon.cs" />
     <Compile Include="Items\Boss\Zero\RealityCannon.cs" />
     <Compile Include="Items\Boss\Zero\RiftShredder.cs" />
@@ -270,6 +275,7 @@
     <Compile Include="Items\Dev\ChinStaff.cs" />
     <Compile Include="Items\Dev\ChinStaffEX.cs" />
     <Compile Include="Items\Dev\DuckstepGun.cs" />
+    <Compile Include="Items\Dev\DuckstepGunEX.cs" />
     <Compile Include="Items\Dev\EnderStaff.cs" />
     <Compile Include="Items\Dev\HallamDevWeapon.cs" />
     <Compile Include="Items\Dev\Ryugen.cs" />
@@ -277,6 +283,8 @@
     <Compile Include="Items\Dev\SkrallStaff.cs" />
     <Compile Include="Items\Dev\TimeTeller.cs" />
     <Compile Include="Items\Dev\TitanAxe.cs" />
+    <Compile Include="Items\Dev\UmbreonSP.cs" />
+    <Compile Include="Items\Dev\UmbreonSPEX.cs" />
     <Compile Include="Items\Magic\DragonStaff.cs" />
     <Compile Include="Items\Magic\GelWand.cs" />
     <Compile Include="Items\Magic\MagicFlower.cs" />
@@ -395,6 +403,7 @@
     <Compile Include="Items\Projectiles\TrueCopperShot.cs" />
     <Compile Include="Items\Projectiles\TrueFleshClaymoreShot.cs" />
     <Compile Include="Items\Projectiles\TrueManaShot.cs" />
+    <Compile Include="Items\Projectiles\UmbreonSPProjectile.cs" />
     <Compile Include="Items\Projectiles\Void.cs" />
     <Compile Include="Items\Projectiles\VoidStarPF.cs" />
     <Compile Include="Items\Projectiles\ZeroStarP.cs" />
@@ -670,6 +679,8 @@
     <Content Include="Dusts\RadiantIncineriteDust.png" />
     <Content Include="Dusts\RazeleafDust.png" />
     <Content Include="Dusts\RazewoodDust.png" />
+    <Content Include="Dusts\UmbreonSPDust.png" />
+    <Content Include="Dusts\VoidDust.png" />
     <Content Include="Dusts\ZeroDust.png" />
     <Content Include="Gore\DragonClawGore1.png" />
     <Content Include="Gore\DragonClawGore2.png" />
@@ -1015,7 +1026,10 @@
     <Content Include="Items\Boss\Zero\AMR_Glow.png" />
     <Content Include="Items\Boss\Zero\Battery.png" />
     <Content Include="Items\Boss\Zero\Battery_Glow.png" />
-    <Content Include="Items\Boss\Zero\DeathRay.png" />
+    <Content Include="Items\Boss\Zero\BrokenCode.png" />
+    <Content Include="Items\Boss\Zero\BrokenCode_Glow.png" />
+    <Content Include="Items\Boss\Zero\DoomRay.png" />
+    <Content Include="Items\Boss\Zero\DoomRay_Glow.png" />
     <Content Include="Items\Boss\Zero\EventHorizon.png" />
     <Content Include="Items\Boss\Zero\EventHorizon_Glow.png" />
     <Content Include="Items\Boss\Zero\Neutralizer.png" />
@@ -1031,7 +1045,6 @@
     <Content Include="Items\Boss\Zero\VoidStar_Glow.png" />
     <Content Include="Items\Boss\Zero\ZeroBag.png" />
     <Content Include="Items\Boss\Zero\ZeroStar.png" />
-    <Content Include="Items\Boss\Zero\ZeroStar_Glow.png" />
     <Content Include="Items\Boss\Zero\ZeroWings.png" />
     <Content Include="Items\Boss\Zero\ZeroWings_Wings.png" />
     <Content Include="Items\Boss\Zero\ZeroWings_Wings_Glow.png" />
@@ -1046,6 +1059,8 @@
     <Content Include="Items\Dev\ChinStaffEX.png" />
     <Content Include="Items\Dev\CrabGuardian.png" />
     <Content Include="Items\Dev\DuckstepGun.png" />
+    <Content Include="Items\Dev\DuckstepGunEX.png" />
+    <Content Include="Items\Dev\DuckstepGunEX_Glow.png" />
     <Content Include="Items\Dev\DuckstepGun_Glow.png" />
     <Content Include="Items\Dev\EnderStaff.png" />
     <Content Include="Items\Dev\Ethereal.png" />
@@ -1061,6 +1076,10 @@
     <Content Include="Items\Dev\TimeTeller.png" />
     <Content Include="Items\Dev\TitanAxe.png" />
     <Content Include="Items\Dev\Umbra.png" />
+    <Content Include="Items\Dev\UmbreonSP.png" />
+    <Content Include="Items\Dev\UmbreonSPEX.png" />
+    <Content Include="Items\Dev\UmbreonSPEX_Glow.png" />
+    <Content Include="Items\Dev\UmbreonSP_Glow.png" />
     <Content Include="Items\Hooks\DragonsGrip.png" />
     <Content Include="Items\Magic\AncientArcanum.png" />
     <Content Include="Items\Magic\BogBomb.png" />
@@ -1249,6 +1268,7 @@
     <Content Include="Items\Projectiles\TrueCopperShot.png" />
     <Content Include="Items\Projectiles\TrueFleshClaymoreShot.png" />
     <Content Include="Items\Projectiles\TrueManaShot.png" />
+    <Content Include="Items\Projectiles\UmbreonSPProjectile.png" />
     <Content Include="Items\Projectiles\ValkyrieLance.png" />
     <Content Include="Items\Projectiles\Void.png" />
     <Content Include="Items\Projectiles\VoidStarPF.png" />

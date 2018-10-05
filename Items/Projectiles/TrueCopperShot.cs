@@ -20,10 +20,30 @@ namespace AAMod.Items.Projectiles
 		
 		public override void AI()
 		{
-            if (Main.rand.NextFloat() < 0.5010526f)
+            if (Main.rand.NextFloat() < 1f)
             {
                 Dust dust;
-                // You need to set position depending on what you are doing. You may need to subtract width/2 and height/2 as well to center the spawn rectangle.
+                Vector2 position = projectile.position;
+                dust = Main.dust[Terraria.Dust.NewDust(position, 30, 30, 177, 0f, 0f, 0, new Color(Main.DiscoR, Main.DiscoG, Main.DiscoB), 1.381579f)];
+                dust.noGravity = true;
+            }
+            if (Main.rand.NextFloat() < 1f)
+            {
+                Dust dust;
+                Vector2 position = projectile.position;
+                dust = Main.dust[Terraria.Dust.NewDust(position, 30, 30, 177, 0f, 0f, 0, new Color(Main.DiscoR, Main.DiscoG, Main.DiscoB), 1.381579f)];
+                dust.noGravity = true;
+            }
+            if (Main.rand.NextFloat() < 1f)
+            {
+                Dust dust;
+                Vector2 position = projectile.position;
+                dust = Main.dust[Terraria.Dust.NewDust(position, 30, 30, 177, 0f, 0f, 0, new Color(Main.DiscoR, Main.DiscoG, Main.DiscoB), 1.381579f)];
+                dust.noGravity = true;
+            }
+            if (Main.rand.NextFloat() < 1f)
+            {
+                Dust dust;
                 Vector2 position = projectile.position;
                 dust = Main.dust[Terraria.Dust.NewDust(position, 30, 30, 177, 0f, 0f, 0, new Color(Main.DiscoR, Main.DiscoG, Main.DiscoB), 1.381579f)];
                 dust.noGravity = true;

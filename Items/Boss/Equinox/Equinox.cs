@@ -9,6 +9,17 @@ namespace AAMod.Items.Boss.Equinox
 {
     public class Equinox : ModItem
     {
+
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("Equinox");
+            Tooltip.SetDefault(
+@"Gives immensely increased stats
+'True balance'");
+
+            Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(4, 8));
+            ItemID.Sets.ItemNoGravity[item.type] = true;
+        }
         public override void SetDefaults()
         {
             item.width = 32;
@@ -47,22 +58,12 @@ namespace AAMod.Items.Boss.Equinox
                 }
             }
         }
-
-        public override void SetStaticDefaults()
-        {
-            DisplayName.SetDefault("Equinox");
-            Tooltip.SetDefault(
-@"Gives immensely increased stats
-'True balance'");
-
-            Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(4, 8));
-            ItemID.Sets.ItemNoGravity[item.type] = true;
-        }
+        
 
 		public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            player.AddBuff(BuffID.Wrath, 2);
-            player.AddBuff(BuffID.Shine, 2);
+            player.AddBuff(BuffID.NightOwl, 3);
+            player.AddBuff(BuffID.Shine, 3);
         }
         public override void AddRecipes()
         {

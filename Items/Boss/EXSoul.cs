@@ -45,24 +45,18 @@ namespace AAMod.Items.Boss
             //item.glowMask = customGlowMask;
             item.alpha = 100;
         }
-
-        // The following 2 methods are purely to show off these 2 hooks. Don't use them in your own code.
-        public override void GrabRange(Player player, ref int grabRange)
-        {
-            grabRange *= 2;
-        }
-
+        
         public override void PostUpdate()
         {
             item.color = new Color(Main.DiscoR, Main.DiscoG, Main.DiscoB);
         }
-        public static Color GetItemLight(ref Color currentColor, ref float scale, int type, bool outInTheWorld = false)
+        /*public static Color GetItemLight(ref Color currentColor, ref float scale, int type, bool outInTheWorld = false)
         {
             currentColor.R = (byte)Main.DiscoR;
             currentColor.G = (byte)Main.DiscoG;
             currentColor.B = (byte)Main.DiscoB;
             currentColor.A = 255;
             return currentColor;
-        }
+        }*/
     }
 }

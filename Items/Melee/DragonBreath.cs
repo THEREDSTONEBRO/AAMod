@@ -19,7 +19,7 @@ namespace AAMod.Items.Melee   //where is located
             item.height = 52;             //Sword height
             item.useTime = 25;          //how fast 
             item.useAnimation = 25;     
-            item.useStyle = 1;        //Style is how this item is used, 1 is the style of the sword
+            item.useStyle = 5;        //Style is how this item is used, 1 is the style of the sword
             item.knockBack = 4;      //Sword knockback
             item.value = 20000;        
             item.rare = 4;
