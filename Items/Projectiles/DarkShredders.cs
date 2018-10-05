@@ -17,6 +17,7 @@ namespace AAMod.Items.Projectiles     //We need this to basically indicate the f
             projectile.tileCollide = false; //Tells the game whether or not it can collide with a tile
             projectile.ignoreWater = true; //Tells the game whether or not projectile will be affected by water        
             projectile.melee = true;  //Tells the game whether it is a melee projectile or not
+            projectile.scale = 2f;
  
         }
 
@@ -43,11 +44,11 @@ namespace AAMod.Items.Projectiles     //We need this to basically indicate the f
                     projectile.Kill();
                 }
             }
-            Lighting.AddLight(projectile.Center, 0f, 0f, 1f);     //this is the projectile light color R, G, B (Red, Green, Blue)
+            Lighting.AddLight(projectile.Center, 0f, .5f, .100f);     //this is the projectile light color R, G, B (Red, Green, Blue)
             projectile.Center = player.MountedCenter;
             projectile.position.X += player.width / 2 * player.direction;  //this is the projectile width sptrite direction from the playr
             projectile.spriteDirection = player.direction;
-            projectile.rotation += 1.2f * player.direction; //this is the projectile rotation/spinning speed
+            projectile.rotation += 1f * player.direction; //this is the projectile rotation/spinning speed
             if (projectile.rotation > MathHelper.TwoPi)
             {
                 projectile.rotation -= MathHelper.TwoPi;
