@@ -349,6 +349,7 @@
     <Compile Include="Items\Projectiles\AmphibiousProjectileEX.cs" />
     <Compile Include="Items\Projectiles\AmphibiousProjectileEXS.cs" />
     <Compile Include="Items\Projectiles\AmphibiousProjectileS.cs" />
+    <Compile Include="Items\Projectiles\Antimatter.cs" />
     <Compile Include="Items\Projectiles\APP.cs" />
     <Compile Include="Items\Projectiles\BigCrystal.cs" />
     <Compile Include="Items\Projectiles\ChaosShot.cs" />
@@ -497,6 +498,7 @@
     <Compile Include="Tiles\AbyssiumOreTile.cs" />
     <Compile Include="Tiles\AkumataBox.cs" />
     <Compile Include="Tiles\AkumaBox.cs" />
+    <Compile Include="Tiles\DoomsdayPlating.cs" />
     <Compile Include="Tiles\Apocalyptite.cs" />
     <Compile Include="Tiles\BinaryReassembler.cs" />
     <Compile Include="Tiles\BogwoodChair.cs" />
@@ -574,6 +576,7 @@
     <Compile Include="Tiles\Zero2Box.cs" />
     <Compile Include="Tiles\ZeroBox.cs" />
     <Compile Include="UI\TerratoolUI.cs" />
+    <Compile Include="Walls\DoomsdayWall.cs" />
     <Compile Include="Walls\DepthstoneWall.cs" />
     <Compile Include="Walls\DoomstoneBrickWall.cs" />
     <Compile Include="Walls\InfernoGrassWall.cs" />
@@ -1186,6 +1189,7 @@
     <Content Include="Items\Projectiles\AmphibiousProjectileEX.png" />
     <Content Include="Items\Projectiles\AmphibiousProjectileEXS.png" />
     <Content Include="Items\Projectiles\AmphibiousProjectileS.png" />
+    <Content Include="Items\Projectiles\Antimatter.png" />
     <Content Include="Items\Projectiles\APP.png" />
     <Content Include="Items\Projectiles\BigCrystal.png" />
     <Content Include="Items\Projectiles\ChaosShot.png" />
@@ -1724,6 +1728,8 @@
     <Content Include="Walls\AbyssiumChunkWall.png" />
     <Content Include="Walls\DarkmudWall.png" />
     <Content Include="Walls\DepthstoneWall.png" />
+    <Content Include="Walls\DoomsdayWall.png" />
+    <Content Include="Walls\DoomsdayWall_Glow.png" />
     <Content Include="Walls\DoomstoneBrickWall.png" />
     <Content Include="Walls\IncineriteScaleWall.png" />
     <Content Include="Walls\InfernoGrassWall.png" />
