@@ -106,9 +106,15 @@
     <Compile Include="Dusts\VoidDust.cs" />
     <Compile Include="Dusts\ZeroDust.cs" />
     <Compile Include="Items\Accessories\DemonGauntet.cs" />
+    <Compile Include="Items\Armor\Doomsday\Zerokip\ZeroDiverJacket.cs" />
+    <Compile Include="Items\Armor\Doomsday\Zerokip\ZeroDiverMask.cs" />
+    <Compile Include="Items\Armor\Doomsday\Zerokip\ZeroDiverBoots.cs" />
     <Compile Include="Items\Blocks\AkumataBox.cs" />
+    <Compile Include="Items\Blocks\DoomsdayWall.cs" />
+    <Compile Include="Items\Blocks\DoomsdayPlating.cs" />
     <Compile Include="Items\Blocks\InfernoUBox.cs" />
     <Compile Include="Items\Blocks\MireUBox.cs" />
+    <Compile Include="Items\Blocks\N1Box.cs" />
     <Compile Include="Items\Boss\Akuma\CrucibleScale.cs" />
     <Compile Include="Items\Boss\Equinox\Equinox.cs" />
     <Compile Include="Items\Boss\Equinox\DarkVoid.cs.cs" />
@@ -270,6 +276,7 @@
     <Compile Include="Items\Dev\AmphibianLongswordEXS.cs" />
     <Compile Include="Items\Dev\AmphibianLongswordS.cs" />
     <Compile Include="Items\Dev\CatsEyeRifle.cs" />
+    <Compile Include="Items\Dev\CatsEyeRifleEX.cs" />
     <Compile Include="Items\Dev\ChairMinion.cs" />
     <Compile Include="Items\Dev\ChairMinionEX.cs" />
     <Compile Include="Items\Dev\ChinStaff.cs" />
@@ -505,6 +512,7 @@
     <Compile Include="Tiles\AATrophy.cs" />
     <Compile Include="Tiles\AbyssiumBarTile.cs" />
     <Compile Include="Tiles\AbyssiumOreTile.cs" />
+    <Compile Include="Tiles\N1Box.cs" />
     <Compile Include="Tiles\AkumataBox.cs" />
     <Compile Include="Tiles\AkumaBox.cs" />
     <Compile Include="Tiles\DoomsdayPlating.cs" />
@@ -795,6 +803,14 @@
     <Content Include="Items\Armor\Doomsday\DoomsdayHelmet_Head.png" />
     <Content Include="Items\Armor\Doomsday\DoomsdayLeggings.png" />
     <Content Include="Items\Armor\Doomsday\DoomsdayLeggings_Legs.png" />
+    <Content Include="Items\Armor\Doomsday\Zerokip\ZeroDiverBoots.png" />
+    <Content Include="Items\Armor\Doomsday\Zerokip\ZeroDiverBoots_Legs.png" />
+    <Content Include="Items\Armor\Doomsday\Zerokip\ZeroDiverJacket.png" />
+    <Content Include="Items\Armor\Doomsday\Zerokip\ZeroDiverJacket_Arms.png" />
+    <Content Include="Items\Armor\Doomsday\Zerokip\ZeroDiverJacket_Body.png" />
+    <Content Include="Items\Armor\Doomsday\Zerokip\ZeroDiverJacket_Female.png" />
+    <Content Include="Items\Armor\Doomsday\Zerokip\ZeroDiverMask.png" />
+    <Content Include="Items\Armor\Doomsday\Zerokip\ZeroDiverMask_Head.png" />
     <Content Include="Items\Armor\Dynaskull\Dynaskull.png" />
     <Content Include="Items\Armor\Dynaskull\DynaskullGreaves.png" />
     <Content Include="Items\Armor\Dynaskull\DynaskullGreaves_Legs.png" />
@@ -935,6 +951,8 @@
     <Content Include="Items\Blocks\DarkmatterOre.png" />
     <Content Include="Items\Blocks\Darkmud.png" />
     <Content Include="Items\Blocks\Depthstone.png" />
+    <Content Include="Items\Blocks\DoomsdayPlating.png" />
+    <Content Include="Items\Blocks\DoomsdayWall.png" />
     <Content Include="Items\Blocks\Doomstone.png" />
     <Content Include="Items\Blocks\DoomstoneBrick.png" />
     <Content Include="Items\Blocks\DynaskullOre.png" />
@@ -959,6 +977,7 @@
     <Content Include="Items\Blocks\MireGrassBlock.png" />
     <Content Include="Items\Blocks\MireUBox.png" />
     <Content Include="Items\Blocks\MoonAltar.png" />
+    <Content Include="Items\Blocks\N1Box.png" />
     <Content Include="Items\Blocks\OroborosChest.png" />
     <Content Include="Items\Blocks\OroborosWood.png" />
     <Content Include="Items\Blocks\PaladinsSmeltery.png" />
@@ -1053,6 +1072,8 @@
     <Content Include="Items\Dev\AmphibianLongswordEXS.png" />
     <Content Include="Items\Dev\AmphibianLongswordS.png" />
     <Content Include="Items\Dev\CatsEyeRifle.png" />
+    <Content Include="Items\Dev\CatsEyeRifleEX.png" />
+    <Content Include="Items\Dev\CatsEyeRifleEX_Glow.png" />
     <Content Include="Items\Dev\ChairMinion.png" />
     <Content Include="Items\Dev\ChairMinionEX.png" />
     <Content Include="Items\Dev\ChinStaff.png" />

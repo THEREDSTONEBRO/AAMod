@@ -39,7 +39,7 @@ namespace AAMod.NPCs.Enemies.Void
             if (!(player.ZoneTowerSolar || player.ZoneTowerVortex || player.ZoneTowerNebula || player.ZoneTowerStardust) && ((!Main.pumpkinMoon && !Main.snowMoon) || spawnInfo.spawnTileY > Main.worldSurface || Main.dayTime) && (!Main.eclipse || spawnInfo.spawnTileY > Main.worldSurface || !Main.dayTime) && (SpawnCondition.GoblinArmy.Chance == 0))
             {
                 int[] TileArray2 = { mod.TileType("Voidstone") };
-                return SpawnCondition.Sky.Chance * 0.12f;
+                return SpawnCondition.Sky.Chance * 0.3f;
             }
             return 0f;
         }
