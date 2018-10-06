@@ -1,9 +1,9 @@
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AAMod.Items.Blocks
+namespace AAMod.Items.Walls
 {
-    public class DoomsdayWall : ModItem
+    public class DoomstoneBrickWall : ModItem
     {
         public override void SetDefaults()
         {
@@ -17,17 +17,17 @@ namespace AAMod.Items.Blocks
             item.useTime = 10;
             item.useStyle = 1;
             item.consumable = true;
-            item.createWall = mod.WallType("DoomsdayWall"); //put your CustomBlock Tile name
+            item.createWall = mod.WallType("DoomstoneBrickWall"); //put your CustomBlock Tile name
         }
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Doomsday Curcuit Wall");
+            DisplayName.SetDefault("Doomsday Brick Wall");
         }
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(null, "DoomsdayPlating", 2);
+            recipe.AddIngredient(null, "Doomstone", 2);
             recipe.AddTile(null, "BinaryReassembler");
             recipe.SetResult(this, 4);
             recipe.AddRecipe();

@@ -98,7 +98,7 @@ namespace AAMod.NPCs.Bosses.Zero
             new Vector2(npc.width * 0.5f, npc.height * 0.5f), 1f, spriteEffects, 0f);
         }
 
-        /*public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
+        public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
         {
             Vector2 drawOrigin = new Vector2(Main.npcTexture[npc.type].Width * 0.5f, npc.height * 0.5f);
             for (int k = 0; k < npc.oldPos.Length; k++)
@@ -106,12 +106,11 @@ namespace AAMod.NPCs.Bosses.Zero
                 Texture2D ZeroTrail = mod.GetTexture("NPCs/Bosses/Zero/ZeroTrail");
                 lightColor = new Color(k * 50, 0, 0);
                 Vector2 drawPos = npc.oldPos[k] - Main.screenPosition + drawOrigin + new Vector2(0f, npc.gfxOffY);
-                drawPos.Y += 33;
                 Color color = npc.GetAlpha(lightColor) * ((npc.oldPos.Length - k) / (float)npc.oldPos.Length);
                 spriteBatch.Draw(ZeroTrail, drawPos, null, color, npc.rotation, drawOrigin, npc.scale, SpriteEffects.None, 0f);
             }
             return true;
-        }*/
+        }
         
         public override void AI()
         {
