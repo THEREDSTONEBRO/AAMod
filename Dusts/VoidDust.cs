@@ -11,7 +11,7 @@ namespace AAMod.Dusts
 			dust.velocity.Y = Main.rand.Next(-10, 6) * 0.1f;
 			dust.velocity.X *= 0.3f;
 			dust.scale *= 0.7f;
-            dust.noGravity = true;
+            dust.noGravity = false;
 		}
 
 		public override bool MidUpdate(Dust dust)
@@ -27,14 +27,14 @@ namespace AAMod.Dusts
 				{
 					strength = 1f;
 				}
-				Lighting.AddLight(dust.position, 0.1f * strength, 0.2f * strength, 0.7f * strength);
+				Lighting.AddLight(dust.position, 0.3f * strength, 0.0f * strength, 0.1f * strength);
 			}
 			return false;
 		}
 
         public override Color? GetAlpha(Dust dust, Color lightColor)
         {
-            return new Color(Main.DiscoR, 0, 0, 25);
+            return new Color(100, 0, 0, 25);
         }
     }
 }
