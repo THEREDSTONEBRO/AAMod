@@ -73,6 +73,7 @@ namespace AAMod
         public bool Time;
         public bool Soul;
         public bool Space;
+        public int SnapCD;
         public bool death;
         //debuffs
         public bool infinityOverload = false;
@@ -311,9 +312,9 @@ namespace AAMod
         {
             if (InfinityGauntlet || TrueInfinityGauntlet)
             {
-                if (AAMod.InfinityHotKey.JustPressed)
+                if (AAMod.InfinityHotKey.JustPressed && SnapCD == 0)
                 {
-
+                    SnapCD = 72000;
                     Main.npc.Where(x => x.active && !x.townNPC && x.type != NPCID.TargetDummy && !x.boss).ToList().ForEach(x =>
                     {
 
@@ -329,6 +330,10 @@ namespace AAMod
                         }
                     });
                 }
+            }
+            if (SnapCD != 0)
+            {
+                SnapCD--;
             }
         }
 
