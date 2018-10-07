@@ -599,7 +599,7 @@ namespace AAMod
                             }
                             if (Main.tile[h, e] != null && (Main.tile[h, e].type == TileID.Sand || Main.tile[h, e].type == TileID.Dirt || Main.tile[h, e].type == TileID.Grass || Main.tile[h, e].type == TileID.FleshGrass || Main.tile[h, e].type == TileID.CorruptGrass || Main.tile[h, e].type == TileID.Mud || Main.tile[h, e].type == TileID.JungleGrass || Main.tile[h, e].type == TileID.Crimsand || Main.tile[h, e].type == TileID.Ebonsand))
                             {
-                                Framing.GetTileSafely(h, e).type = 59;
+                                Framing.GetTileSafely(h, e).type = (ushort)(mod.TileType("Darkmud"));
                                 Framing.GetTileSafely(h, e).active(true);
                                 if (!Main.tile[h, e - 1].active() || !Main.tile[h, e + 1].active() || !Main.tile[h - 1, e].active() || !Main.tile[h + 1, e].active())
                                 {
