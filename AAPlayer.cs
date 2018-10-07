@@ -59,7 +59,6 @@ namespace AAMod
         public bool yamataSet;
         public bool zeroSet;
         public bool valkyrieSet;
-        public bool CoinWings;
         // Accessory bools.
         public bool clawsOfChaos;
         public bool demonGauntlet;
@@ -78,6 +77,7 @@ namespace AAMod
         public bool death;
         //debuffs
         public bool infinityOverload = false;
+
         //buffs
 
         public override void ResetEffects()
@@ -645,65 +645,6 @@ namespace AAMod
                     target.AddBuff(BuffID.Ichor, 180);
                 }
             }
-
-        }
-
-        public static readonly PlayerLayer Wings = new PlayerLayer("AAMod", "Wings", PlayerLayer.Wings, delegate (PlayerDrawInfo drawInfo)
-        {
-            if (drawInfo.shadow != 0f)
-            {
-                return;
-            }
-            Player player = drawInfo.drawPlayer;
-            Mod mod = ModLoader.GetMod("AAMod");
-            AAPlayer modPlayer = player.GetModPlayer<AAPlayer>();
-            int frameSize = 42;
-            if (modPlayer.CoinWings && player.HasItem(ItemID.PlatinumCoin))
-            {
-                Texture2D texture = mod.GetTexture("AAMod/Items/Vanity/Chinzilla/Platinum_Platform");
-                int drawX = (int)(drawInfo.position.X + player.width / 2f - Main.screenPosition.X);
-                int drawY = (int)(drawInfo.position.Y + 4f - Main.screenPosition.Y);
-                DrawData data = new DrawData(texture, new Vector2(drawX, drawY), new Rectangle(0, frameSize * 4, texture.Width, frameSize), Color.White, 0f, new Vector2(texture.Width / 2f, texture.Height / 2f), 1f, SpriteEffects.None, 0);
-                Main.playerDrawData.Add(data);
-            }
-            else if (modPlayer.CoinWings && player.HasItem(ItemID.GoldCoin))
-            {
-                Texture2D texture = mod.GetTexture("AAMod/Items/Vanity/Chinzilla/Gold_Platform");
-                int drawX = (int)(drawInfo.position.X + player.width / 2f - Main.screenPosition.X);
-                int drawY = (int)(drawInfo.position.Y + 4f - Main.screenPosition.Y);
-                DrawData data = new DrawData(texture, new Vector2(drawX, drawY), new Rectangle(0, frameSize * 4, texture.Width, frameSize), Color.White, 0f, new Vector2(texture.Width / 2f, texture.Height / 2f), 1f, SpriteEffects.None, 0);
-                Main.playerDrawData.Add(data);
-            }
-            else if (modPlayer.CoinWings && player.HasItem(ItemID.SilverCoin))
-            {
-                Texture2D texture = mod.GetTexture("AAMod/Items/Vanity/Chinzilla/Silver_Platform");
-                int drawX = (int)(drawInfo.position.X + player.width / 2f - Main.screenPosition.X);
-                int drawY = (int)(drawInfo.position.Y + 4f - Main.screenPosition.Y);
-                DrawData data = new DrawData(texture, new Vector2(drawX, drawY), new Rectangle(0, frameSize * 4, texture.Width, frameSize), Color.White, 0f, new Vector2(texture.Width / 2f, texture.Height / 2f), 1f, SpriteEffects.None, 0);
-                Main.playerDrawData.Add(data);
-            }
-            else if (modPlayer.CoinWings && player.HasItem(ItemID.CopperCoin))
-            {
-                Texture2D texture = mod.GetTexture("AAMod/Items/Vanity/Chinzilla/Copper_Platform");
-                int drawX = (int)(drawInfo.position.X + player.width / 2f - Main.screenPosition.X);
-                int drawY = (int)(drawInfo.position.Y + 4f - Main.screenPosition.Y);
-                DrawData data = new DrawData(texture, new Vector2(drawX, drawY), new Rectangle(0, frameSize * 4, texture.Width, frameSize), Color.White, 0f, new Vector2(texture.Width / 2f, texture.Height / 2f), 1f, SpriteEffects.None, 0);
-                Main.playerDrawData.Add(data);
-            }
-            else if (modPlayer.CoinWings)
-            {
-                Texture2D texture = mod.GetTexture("AAMod/Items/Vanity/Chinzilla/ChinsMagicCoin_Wings");
-                int drawX = (int)(drawInfo.position.X + player.width / 2f - Main.screenPosition.X);
-                int drawY = (int)(drawInfo.position.Y + 4f - Main.screenPosition.Y);
-                DrawData data = new DrawData(texture, new Vector2(drawX, drawY), new Rectangle(0, frameSize * 4, texture.Width, frameSize), Color.White, 0f, new Vector2(texture.Width / 2f, texture.Height / 2f), 1f, SpriteEffects.None, 0);
-                Main.playerDrawData.Add(data);
-            }
-        });
-
-        public override void ModifyDrawLayers(List<PlayerLayer> layers)
-        {
-            Wings.visible = true;
-            layers.Insert(0, Wings);
         }
 
         public override Texture2D GetMapBackgroundImage()
