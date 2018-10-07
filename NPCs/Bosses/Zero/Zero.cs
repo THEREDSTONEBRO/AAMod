@@ -274,7 +274,7 @@ namespace AAMod.NPCs.Bosses.Zero
                     float num441 = Main.player[npc.target].position.X + (float)(Main.player[npc.target].width / 2) - vector44.X;
                     float num442 = Main.player[npc.target].position.Y + (float)(Main.player[npc.target].height / 2) - vector44.Y;
                     float num443 = (float)Math.Sqrt((double)(num441 * num441 + num442 * num442));
-                    num443 = num443 / 3f;
+                    num443 = 2f / num443;
                     npc.velocity.X = num441 * num443;
                     npc.velocity.Y = num442 * num443;
                     return;

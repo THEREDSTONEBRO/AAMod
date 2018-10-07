@@ -41,7 +41,8 @@ namespace AAMod.NPCs.Bosses.Zero
         {
             if (projectile.ai[1] == 0.0f)
             {
-                projectile.velocity.Y += projectile.ai[0];
+                projectile.ai[0] -= 0.3f;
+                projectile.velocity.Y -= projectile.ai[0];
                 projectile.ai[1] = 1.0f;
             }
             projectile.velocity *= 1.03f;
