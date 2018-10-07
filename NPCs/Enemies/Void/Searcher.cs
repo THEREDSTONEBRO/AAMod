@@ -22,14 +22,15 @@ namespace AAMod.NPCs.Enemies.Void
 		public override void SetDefaults()
 		{
             npc.CloneDefaults(NPCID.Probe);
+            npc.aiStyle = 5;
 			npc.width = 30;
 			npc.height = 30;
 			npc.noGravity = true;
 			npc.noTileCollide = true;
 			npc.chaseable = false;
-			npc.damage = 50;
+			npc.damage = 30;
 			npc.defense = 20;
-			npc.lifeMax = 6000;
+			npc.lifeMax = 1000;
 			npc.HitSound = SoundID.NPCHit4;
 			npc.DeathSound = SoundID.NPCDeath14;
 		}
@@ -39,7 +40,7 @@ namespace AAMod.NPCs.Enemies.Void
             if (!(player.ZoneTowerSolar || player.ZoneTowerVortex || player.ZoneTowerNebula || player.ZoneTowerStardust) && ((!Main.pumpkinMoon && !Main.snowMoon) || spawnInfo.spawnTileY > Main.worldSurface || Main.dayTime) && (!Main.eclipse || spawnInfo.spawnTileY > Main.worldSurface || !Main.dayTime) && (SpawnCondition.GoblinArmy.Chance == 0))
             {
                 int[] TileArray2 = { mod.TileType("Voidstone") };
-                return SpawnCondition.Sky.Chance * 0.3f;
+                return TileArray2.Contains(Main.tile[spawnInfo.spawnTileX, spawnInfo.spawnTileY].type) && NPC.downedMoonlord ? 6.09f : 0f;
             }
             return 0f;
         }

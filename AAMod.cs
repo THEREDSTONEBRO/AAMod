@@ -27,6 +27,17 @@ namespace AAMod
         internal TerratoolUI TerratoolUI;
         public static Texture2D ZeroArmTex;
 
+        public AAMod()
+        {
+            Properties = new ModProperties()
+            {
+                Autoload = true,
+                AutoloadGores = true,
+                AutoloadSounds = true,
+                AutoloadBackgrounds = true
+            };
+        }
+
         public override void PostSetupContent()
         {
             Mod AchievementLibs =  ModLoader.GetMod("AchievementLibs");

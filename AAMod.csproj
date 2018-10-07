@@ -110,6 +110,9 @@
     <Compile Include="Items\Armor\Doomsday\Zerokip\ZeroDiverMask.cs" />
     <Compile Include="Items\Armor\Doomsday\Zerokip\ZeroDiverBoots.cs" />
     <Compile Include="Items\Blocks\AkumataBox.cs" />
+    <Compile Include="Items\Dev\GentlemansLongblade.cs" />
+    <Compile Include="Items\Dev\GentlemansRapier.cs" />
+    <Compile Include="Items\Projectiles\TopHat.cs" />
     <Compile Include="Items\Walls\DoomstoneBrickWall.cs" />
     <Compile Include="Items\Walls\DoomsdayWall.cs" />
     <Compile Include="Items\Blocks\DoomsdayPlating.cs" />
@@ -497,6 +500,7 @@
     <Compile Include="NPCs\Bosses\Zero\ZeroAwakened.cs" />
     <Compile Include="NPCs\Bosses\Zero\ZeroDeath1.cs" />
     <Compile Include="NPCs\Bosses\Zero\ZeroDeath2.cs" />
+    <Compile Include="NPCs\Enemies\Inferno\InfernalSlime.cs" />
     <Compile Include="NPCs\Enemies\Other\DragonClaw.cs" />
     <Compile Include="NPCs\Enemies\Other\ElderDragon.cs" />
     <Compile Include="NPCs\Enemies\Other\HydraClaw.cs" />
@@ -513,6 +517,7 @@
     <Compile Include="Tiles\AATrophy.cs" />
     <Compile Include="Tiles\AbyssiumBarTile.cs" />
     <Compile Include="Tiles\AbyssiumOreTile.cs" />
+    <Compile Include="Tiles\InfernoUBox.cs" />
     <Compile Include="Tiles\N1Box.cs" />
     <Compile Include="Tiles\AkumataBox.cs" />
     <Compile Include="Tiles\AkumaBox.cs" />
@@ -632,11 +637,13 @@
     <Content Include="Achievment\ZeroAchievmentNot.png" />
     <Content Include="Backgrounds\Inferno\InfernoBG1.png" />
     <Content Include="Backgrounds\Inferno\InfernoCavern.png" />
+    <Content Include="Backgrounds\Inferno\InfernoCavern1.png" />
     <Content Include="Backgrounds\Inferno\InfernoFG1.png" />
     <Content Include="Backgrounds\Inferno\InfernoFG2.png" />
     <Content Include="Backgrounds\Inferno\InfernoSky.png" />
     <Content Include="Backgrounds\Inferno\InfernoSun.png" />
     <Content Include="Backgrounds\Inferno\InfernoUnderground.png" />
+    <Content Include="Backgrounds\Inferno\InfernoUnderground1.png" />
     <Content Include="Backgrounds\Mire\Mire1.png" />
     <Content Include="Backgrounds\Mire\MireBG.png" />
     <Content Include="Backgrounds\Mire\MireCavern.png" />
@@ -1087,7 +1094,9 @@
     <Content Include="Items\Dev\Ethereal.png" />
     <Content Include="Items\Dev\EtherealEX.png" />
     <Content Include="Items\Dev\GentlemansLongblade.png" />
+    <Content Include="Items\Dev\GentlemansLongblade_Glow.png" />
     <Content Include="Items\Dev\GentlemansRapier.png" />
+    <Content Include="Items\Dev\GentlemansRapier_Glow.png" />
     <Content Include="Items\Dev\HallamDevWeapon.png" />
     <Content Include="Items\Dev\HallamDevWeapon_Glow.png" />
     <Content Include="Items\Dev\Ryugen.png" />
@@ -1250,6 +1259,7 @@
     <Content Include="Items\Projectiles\EtheralLazer.png" />
     <Content Include="Items\Projectiles\EtheralLazerEX.png" />
     <Content Include="Items\Projectiles\EventHorizon.png" />
+    <Content Include="Items\Projectiles\EventHorizon_Glow.png" />
     <Content Include="Items\Projectiles\FulguritePhasesaber.png" />
     <Content Include="Items\Projectiles\HydraSpear.png" />
     <Content Include="Items\Projectiles\HydraTuneller.png" />
@@ -1547,7 +1557,7 @@
     <Content Include="NPCs\Bosses\Zero\ZeroTrail.png" />
     <Content Include="NPCs\Bosses\Zero\Zero_Glow.png" />
     <Content Include="NPCs\Bosses\Zero\Zero_Head_Boss.png" />
-    <Content Include="NPCs\Enemies\Inferno\InfernalSlimeSheet.png" />
+    <Content Include="NPCs\Enemies\Inferno\InfernalSlime.png" />
     <Content Include="NPCs\Enemies\Inferno\InfernoSalamander.png" />
     <Content Include="NPCs\Enemies\Inferno\WyrmBody1.png" />
     <Content Include="NPCs\Enemies\Inferno\WyrmBody2.png" />
@@ -1651,6 +1661,8 @@
     <Content Include="Tiles\DeepAbyssium.png" />
     <Content Include="Tiles\DepthstoneTile.png" />
     <Content Include="Tiles\DiscordianOreTile.png" />
+    <Content Include="Tiles\DoomsdayPlating.png" />
+    <Content Include="Tiles\DoomsdayPlating_Glow.png" />
     <Content Include="Tiles\Doomstone.png" />
     <Content Include="Tiles\DoomstoneBrick.png" />
     <Content Include="Tiles\DoomstoneBrick_Glow.png" />
@@ -1660,6 +1672,7 @@
     <Content Include="Tiles\DragonRosePlanterBox.png" />
     <Content Include="Tiles\DynaskullOre.png" />
     <Content Include="Tiles\EventideAbyssiumBarTile.png" />
+    <Content Include="Tiles\EventideBrick.png" />
     <Content Include="Tiles\FulguriteOre.png" />
     <Content Include="Tiles\FulguriteOre_glow.png" />
     <Content Include="Tiles\HallowedAnvil.png" />
@@ -1700,6 +1713,7 @@
     <Content Include="Tiles\MireVines.png" />
     <Content Include="Tiles\MoonAltar.png" />
     <Content Include="Tiles\MoonAltar_Glow.png" />
+    <Content Include="Tiles\N1Box.png" />
     <Content Include="Tiles\OroborosBathtub.png" />
     <Content Include="Tiles\OroborosBathtub_Glow.png" />
     <Content Include="Tiles\OroborosBathtub_Highlight.png" />

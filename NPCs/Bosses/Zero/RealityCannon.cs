@@ -79,6 +79,14 @@ namespace AAMod.NPCs.Bosses.Zero
                     npc.active = false;
                 }
             }
+            if (Main.player[npc.target].GetModPlayer<AAPlayer>().ZoneVoid == false)
+            {
+                npc.defense = 999999999;
+            }
+            else
+            {
+                npc.defense = 70;
+            }
             if (npc.ai[2] == 0.0 || npc.ai[2] == 3.0)
             {
                 if (Main.npc[(int)npc.ai[1]].ai[1] == 3.0 && npc.timeLeft > 10)
@@ -293,7 +301,7 @@ namespace AAMod.NPCs.Bosses.Zero
 
                     vector7.X += num21 * num23 - 16f;
                     vector7.Y += num22 * num23 - 6f;
-                    int num24 = Dust.NewDust(new Vector2(vector7.X, vector7.Y), 30, 10, 6, num21 * 0.02f, num22 * 0.02f, 0, default(Microsoft.Xna.Framework.Color), 2.5f);
+                    int num24 = Dust.NewDust(new Vector2(vector7.X, vector7.Y), 30, 10, mod.DustType<Dusts.VoidDust>(), num21 * 0.02f, num22 * 0.02f, 0, default(Color), 2.5f);
                     Main.dust[num24].noGravity = true;
                 }
             }
@@ -310,7 +318,7 @@ namespace AAMod.NPCs.Bosses.Zero
             {
                 spriteEffects = SpriteEffects.FlipHorizontally;
             }
-            Main.spriteBatch.Draw(Main.BoneLaserTexture, new Vector2(npc.position.X - Main.screenPosition.X + (float)(npc.width / 2) - (float)Main.npcTexture[npc.type].Width * npc.scale / 2f + vector10.X * npc.scale, npc.position.Y - Main.screenPosition.Y + (float)npc.height - (float)Main.npcTexture[npc.type].Height * npc.scale / (float)Main.npcFrameCount[npc.type] + 4f + vector10.Y * npc.scale + num66 + num65), new Microsoft.Xna.Framework.Rectangle?(npc.frame), new Microsoft.Xna.Framework.Color(200, 200, 200, 0), npc.rotation, vector10, npc.scale, spriteEffects, 0f);
+            Main.spriteBatch.Draw(mod.GetTexture("NPCs/Bosses/Zero/RealityCannon_Glow"), new Vector2(npc.position.X - Main.screenPosition.X + (float)(npc.width / 2) - (float)Main.npcTexture[npc.type].Width * npc.scale / 2f + vector10.X * npc.scale, npc.position.Y - Main.screenPosition.Y + (float)npc.height - (float)Main.npcTexture[npc.type].Height * npc.scale / (float)Main.npcFrameCount[npc.type] + 4f + vector10.Y * npc.scale + num66 + num65), new Microsoft.Xna.Framework.Rectangle?(npc.frame), new Microsoft.Xna.Framework.Color(200, 200, 200, 0), npc.rotation, vector10, npc.scale, spriteEffects, 0f);
             base.PostDraw(spriteBatch, drawColor);
         }
 
