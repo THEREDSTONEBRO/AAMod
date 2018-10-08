@@ -52,6 +52,21 @@ Meowmere EX");
             item.glowMask = customGlowMask;
         }
 
+        public override bool Shoot(Player player, ref Microsoft.Xna.Framework.Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
+        {
+            float spread = 30f * 0.0174f;
+            float baseSpeed = (float)Math.Sqrt(speedX * speedX + speedY * speedY);
+            double startAngle = Math.Atan2(speedX, speedY) - .1d;
+            double deltaAngle = spread / 6f;
+            double offsetAngle;
+            for (int i = 0; i < 2; i++)
+            {
+                offsetAngle = startAngle + deltaAngle * i;
+                Terraria.Projectile.NewProjectile(position.X, position.Y, baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle), item.shoot, damage, knockBack, item.owner);
+            }
+            return false;
+        }
+
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
