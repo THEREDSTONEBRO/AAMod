@@ -7,7 +7,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Projectiles
 {
-    class Duck : ModProjectile
+    class DuckEX : ModProjectile
     {
         public override void SetStaticDefaults()
         {
@@ -29,6 +29,11 @@ namespace AAMod.Items.Projectiles
             projectile.timeLeft = 900;
             projectile.friendly = true;
             projectile.hostile = false;
+        }
+
+        public override Color? GetAlpha(Color lightColor)
+        {
+            return new Color(80, Main.DiscoG, 80, 0) * (1f - projectile.alpha / 255f);
         }
     }
 }

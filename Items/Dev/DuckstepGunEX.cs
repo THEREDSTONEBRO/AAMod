@@ -45,7 +45,7 @@ namespace AAMod.Items.Dev
 			item.autoReuse = true;
 			item.shoot = 10; //idk why but all the guns in the vanilla source have this
 			item.shootSpeed = 15f;
-            item.shoot = mod.ProjectileType("Duck");
+            item.shoot = mod.ProjectileType("DuckEX");
         }
         public override void ModifyTooltips(List<TooltipLine> list)
         {
