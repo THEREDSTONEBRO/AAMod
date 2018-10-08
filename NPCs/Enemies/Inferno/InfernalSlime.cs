@@ -12,7 +12,7 @@ namespace AAMod.NPCs.Enemies.Inferno
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("InfernalSlime");
+			DisplayName.SetDefault("Infernal Slime");
 			Main.npcFrameCount[npc.type] = Main.npcFrameCount[NPCID.BlueSlime];
 		}
 
