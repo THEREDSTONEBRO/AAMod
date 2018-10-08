@@ -71,13 +71,13 @@ namespace AAMod.Items.Boss.Zero
         public override void MeleeEffects(Player player, Rectangle hitbox)
         {
             Dust dust;
-            dust = Terraria.Dust.NewDustDirect(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, 15, 0f, 0f, 46, new Color(120, 0, 30), 1.25f);
+            dust = Terraria.Dust.NewDustDirect(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, mod.DustType<Dusts.VoidDust>(), 0f, 0f, 46, default(Color), 1.25f);
 			dust.noGravity = true;
         }
 		
 		public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)
         {
-            target.AddBuff(BuffID.Poisoned, 400);
+            target.AddBuff(BuffID.Daybreak, 400);
         }
 	}
 }

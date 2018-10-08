@@ -144,7 +144,30 @@ namespace AAMod.NPCs.Bosses.Zero
 
         public override void AI()
         {
-            if ((NPC.CountNPCS(mod.NPCType<Searcher>()) < 10 && !Main.expertMode) || (NPC.CountNPCS(mod.NPCType<Searcher>()) < 15 && Main.expertMode))
+
+            /*if (npc.ai[3] != 6)
+            {
+                if (npc.ai[3] != npc.localAI[0])
+                {
+                    npc.localAI[0] = npc.ai[3];
+                    for (int i = 0; i < 200; i++)
+                    {
+                        NPC npc2 = Main.npc[i];
+                        if (npc2.type == mod.NPCType("TeslaHand") && npc2.active)
+                        {
+                            npc2.ai[2] = 0f;
+                            npc2.ai[3] = 0f;
+                        }
+                    }
+                }
+                npc.dontTakeDamage = true;
+            }
+            else
+            {
+                npc.dontTakeDamage = false;
+            }*/
+
+            if ((NPC.CountNPCS(mod.NPCType<Searcher>()) < 5 && !Main.expertMode) || (NPC.CountNPCS(mod.NPCType<Searcher>()) < 10 && Main.expertMode))
             {
                 NPC.NewNPC((int)(npc.Center.X + Main.rand.Next(-10, 10)), (int)(npc.Center.Y + Main.rand.Next(-10, 10)), mod.NPCType<Searcher>());
             }
@@ -183,14 +206,18 @@ namespace AAMod.NPCs.Bosses.Zero
             if (Main.player[npc.target].dead || Math.Abs(npc.position.X - Main.player[npc.target].position.X) > 6000f || Math.Abs(npc.position.Y - Main.player[npc.target].position.Y) > 6000f)
             {
                 npc.TargetClosest(true);
-                if (Main.player[npc.target].dead || Math.Abs(npc.position.X - Main.player[npc.target].position.X) > 6000f || Math.Abs(npc.position.Y - Main.player[npc.target].position.Y) > 6000f)
+                if (Main.player[npc.target].dead /*|| Math.Abs(npc.position.X - Main.player[npc.target].position.X) > 6000f || Math.Abs(npc.position.Y - Main.player[npc.target].position.Y) > 6000f*/)
                 {
                     npc.ai[1] = 3f;
                 }
             }
             if (Main.player[npc.target].GetModPlayer<AAPlayer>().ZoneVoid == false)
             {
-                npc.ai[1] = 2f;
+                npc.defense = 999999999;
+            }
+            else
+            {
+                npc.defense = 70;
             }
             if (npc.ai[1] == 0f)
             {
@@ -274,7 +301,7 @@ namespace AAMod.NPCs.Bosses.Zero
                     float num441 = Main.player[npc.target].position.X + (float)(Main.player[npc.target].width / 2) - vector44.X;
                     float num442 = Main.player[npc.target].position.Y + (float)(Main.player[npc.target].height / 2) - vector44.Y;
                     float num443 = (float)Math.Sqrt((double)(num441 * num441 + num442 * num442));
-                    num443 = num443 / 3f;
+                    num443 = 2f / num443;
                     npc.velocity.X = num441 * num443;
                     npc.velocity.Y = num442 * num443;
                     return;

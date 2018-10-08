@@ -27,6 +27,17 @@ namespace AAMod
         internal TerratoolUI TerratoolUI;
         public static Texture2D ZeroArmTex;
 
+        public AAMod()
+        {
+            Properties = new ModProperties()
+            {
+                Autoload = true,
+                AutoloadGores = true,
+                AutoloadSounds = true,
+                AutoloadBackgrounds = true
+            };
+        }
+
         public override void PostSetupContent()
         {
             Mod AchievementLibs =  ModLoader.GetMod("AchievementLibs");
@@ -128,6 +139,7 @@ namespace AAMod
 
                 AddEquipTexture(null, EquipType.Legs, "N1_Legs", "AAMod/Items/Vanity/N1/N1_Legs");
 
+                AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/WeAreNumberOne"), ItemType("N1Box"), TileType("N1Box"));
                 AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/HydraTheme"), ItemType("HydraBox"), TileType("HydraBox"));
                 AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/BroodTheme"), ItemType("BroodBox"), TileType("BroodBox"));
                 //AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/RajahTheme"), ItemType("RRBox"), TileType("RRBox"));

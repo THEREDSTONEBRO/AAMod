@@ -10,7 +10,9 @@ namespace AAMod.Walls
 		{
 			dustType = mod.DustType("DoomDust");
 			AddMapEntry(new Color(10, 10, 10));
-		}
+            soundType = 21;
+            drop = mod.ItemType("DoomstoneBrickWall");
+        }
 
 		public override void NumDust(int i, int j, bool fail, ref int num)
 		{

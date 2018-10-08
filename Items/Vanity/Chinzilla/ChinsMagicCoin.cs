@@ -39,6 +39,31 @@ namespace AAMod.Items.Vanity.Chinzilla
             item.value = 500000;
         }
 
+        public override void UpdateVanity(Player player, EquipType type)
+        {
+            player.wings = 28;
+            if (player.HasItem(ItemID.PlatinumCoin))
+            {
+                Main.wingsTexture[28] = mod.GetTexture("Items/Vanity/Chinzilla/Platinum_Platform");
+            }
+            else if (player.HasItem(ItemID.GoldCoin))
+            {
+                Main.wingsTexture[28] = mod.GetTexture("Items/Vanity/Chinzilla/Gold_Platform");
+            }
+            else if (player.HasItem(ItemID.SilverCoin))
+            {
+                Main.wingsTexture[28] = mod.GetTexture("Items/Vanity/Chinzilla/Silver_Platform");
+            }
+            else if (player.HasItem(ItemID.CopperCoin))
+            {
+                Main.wingsTexture[28] = mod.GetTexture("Items/Vanity/Chinzilla/Copper_Platform");
+            }
+            else
+            {
+                Main.wingsTexture[28] = mod.GetTexture("Items/Vanity/Chinzilla/ChinsMagicCoin_Wings");
+            }
+        }
+
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             if (player.HasItem(ItemID.PlatinumCoin))
@@ -71,7 +96,6 @@ namespace AAMod.Items.Vanity.Chinzilla
             }
             if (inUse)
             {
-                player.GetModPlayer<AAPlayer>().CoinWings = true;
                 if (player.wingFrame == 4 && timer == 0)
                 {
                     player.wingFrame = 0;
@@ -83,11 +107,7 @@ namespace AAMod.Items.Vanity.Chinzilla
                     timer = 5;
                 }
             }
-            else
-            {
-                player.GetModPlayer<AAPlayer>().CoinWings = false;
-            }
-            return false;
+            return true;
         }
 
         public override void VerticalWingSpeeds(Player player, ref float ascentWhenFalling, ref float ascentWhenRising,
