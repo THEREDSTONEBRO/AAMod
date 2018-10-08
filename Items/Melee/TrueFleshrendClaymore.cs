@@ -12,10 +12,11 @@ namespace AAMod.Items.Melee
         public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("True Fleshrend Claymore");
-			Tooltip.SetDefault("Despite the name, it's not actually flesh");
+			Tooltip.SetDefault(@"Inflics Ichor on your target
+Despite the name, it's not actually made of flesh");
             if (Main.netMode != 2)
             {
-                Microsoft.Xna.Framework.Graphics.Texture2D[] glowMasks = new Microsoft.Xna.Framework.Graphics.Texture2D[Main.glowMaskTexture.Length + 1];
+                Texture2D[] glowMasks = new Texture2D[Main.glowMaskTexture.Length + 1];
                 for (int i = 0; i < Main.glowMaskTexture.Length; i++)
                 {
                     glowMasks[i] = Main.glowMaskTexture[i];

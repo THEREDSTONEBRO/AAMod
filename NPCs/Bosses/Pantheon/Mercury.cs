@@ -5,43 +5,33 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AAMod.NPCs.Enemies.Inferno
+/*namespace AAMod.NPCs.Bosses.Pantheon
 {
     // Party Zombie is a pretty basic clone of a vanilla NPC. To learn how to further adapt vanilla NPC behaviors, see https://github.com/blushiemagic/tModLoader/wiki/Advanced-Vanilla-Code-Adaption#example-npc-npc-clone-with-modified-projectile-hoplite
-	public class InfernalSlime : ModNPC
+	public class Mercury : ModNPC
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Infernal Slime");
-			Main.npcFrameCount[npc.type] = Main.npcFrameCount[NPCID.BlueSlime];
+			DisplayName.SetDefault("Mercury");
+			Main.npcFrameCount[npc.type] = Main.npcFrameCount[NPCID.MoonLordFreeEye];
 		}
 
 		public override void SetDefaults()
 		{
-            npc.CloneDefaults(NPCID.BlueSlime);
-			npc.width = 32;
-			npc.height = 26;
-			npc.damage = 14;
-			npc.defense = 2;
-			npc.lifeMax = 100;
+            npc.defense = 0;
+            npc.damage = 60;
+            npc.lifeMax = 20000;
+            npc.aiStyle = 0;
+            npc.width = 98;
+            npc.height = 78;
+            npc.value = 0f;
+            npc.knockBackResist = 0f;
             npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = SoundID.NPCDeath1;
-            npc.value = 60f;
-			npc.knockBackResist = 0.5f;
-			npc.aiStyle = 3;
-			aiType = NPCID.BlueSlime;
-			animationType = NPCID.BlueSlime;
-		}
-
-		public override float SpawnChance(NPCSpawnInfo spawnInfo)
-		{
-            Player player = spawnInfo.player;
-            if (!(player.ZoneTowerSolar || player.ZoneTowerVortex || player.ZoneTowerNebula || player.ZoneTowerStardust) && ((!Main.pumpkinMoon && !Main.snowMoon) || spawnInfo.spawnTileY > Main.worldSurface || Main.dayTime) && (!Main.eclipse || spawnInfo.spawnTileY > Main.worldSurface || !Main.dayTime) && (SpawnCondition.GoblinArmy.Chance == 0))
-            {
-                int[] TileArray2 = { mod.TileType("InfernoGrassTile"), mod.TileType("TorchstoneTile") };
-                return TileArray2.Contains(Main.tile[spawnInfo.spawnTileX, spawnInfo.spawnTileY].type) ? 6.09f : 0f;
-            }
-            return 0f;
+            npc.npcSlots = 0f;
+            npc.noGravity = true;
+            npc.noTileCollide = true;
+            npc.netAlways = true;
         }
 
         public override void PostDraw(SpriteBatch spriteBatch, Color drawColor)
@@ -67,3 +57,4 @@ namespace AAMod.NPCs.Enemies.Inferno
 		}
 	}
 }
+*/

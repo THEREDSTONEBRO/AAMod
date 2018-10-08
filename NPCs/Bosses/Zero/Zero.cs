@@ -145,7 +145,7 @@ namespace AAMod.NPCs.Bosses.Zero
         public override void AI()
         {
 
-            if (npc.ai[3] != 6)
+            /*if (npc.ai[3] != 6)
             {
                 if (npc.ai[3] != npc.localAI[0])
                 {
@@ -165,7 +165,7 @@ namespace AAMod.NPCs.Bosses.Zero
             else
             {
                 npc.dontTakeDamage = false;
-            }
+            }*/
 
             if ((NPC.CountNPCS(mod.NPCType<Searcher>()) < 5 && !Main.expertMode) || (NPC.CountNPCS(mod.NPCType<Searcher>()) < 10 && Main.expertMode))
             {
@@ -206,7 +206,7 @@ namespace AAMod.NPCs.Bosses.Zero
             if (Main.player[npc.target].dead || Math.Abs(npc.position.X - Main.player[npc.target].position.X) > 6000f || Math.Abs(npc.position.Y - Main.player[npc.target].position.Y) > 6000f)
             {
                 npc.TargetClosest(true);
-                if (Main.player[npc.target].dead || Math.Abs(npc.position.X - Main.player[npc.target].position.X) > 6000f || Math.Abs(npc.position.Y - Main.player[npc.target].position.Y) > 6000f)
+                if (Main.player[npc.target].dead /*|| Math.Abs(npc.position.X - Main.player[npc.target].position.X) > 6000f || Math.Abs(npc.position.Y - Main.player[npc.target].position.Y) > 6000f*/)
                 {
                     npc.ai[1] = 3f;
                 }

@@ -7,7 +7,7 @@ namespace AAMod.Items.Blocks
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("RadiantArcanum");
+            DisplayName.SetDefault("Radiant Arcanum");
             Tooltip.SetDefault(
 @"Wish upon a star
 Allows you to work with Dark Matter and Radium");

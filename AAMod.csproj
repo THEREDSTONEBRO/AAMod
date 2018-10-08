@@ -490,6 +490,7 @@
     <Compile Include="NPCs\Bosses\Nightcrawler\Moonray.cs" />
     <Compile Include="NPCs\Bosses\Nightcrawler\MoonrayScatter.cs" />
     <Compile Include="NPCs\Bosses\Nightcrawler\Nightcrawler.cs" />
+    <Compile Include="NPCs\Bosses\Pantheon\Mercury.cs" />
     <Compile Include="NPCs\Bosses\Retriever\Retriever.cs" />
     <Compile Include="NPCs\Bosses\Zero\RealityCannon.cs" />
     <Compile Include="NPCs\Bosses\Zero\RiftShredder.cs" />
@@ -1524,6 +1525,15 @@
     <Content Include="NPCs\Bosses\Nightcrawler\NightcrawlerTail.png" />
     <Content Include="NPCs\Bosses\Nightcrawler\Nightcrawler_Glow.png" />
     <Content Include="NPCs\Bosses\Nightcrawler\Nightcrawler_Head_Boss.png" />
+    <Content Include="NPCs\Bosses\Pantheon\Earth.png" />
+    <Content Include="NPCs\Bosses\Pantheon\Jupiter.png" />
+    <Content Include="NPCs\Bosses\Pantheon\Mars.png" />
+    <Content Include="NPCs\Bosses\Pantheon\Mercury.png" />
+    <Content Include="NPCs\Bosses\Pantheon\Neptune.png" />
+    <Content Include="NPCs\Bosses\Pantheon\Pluto.png" />
+    <Content Include="NPCs\Bosses\Pantheon\Saturn.png" />
+    <Content Include="NPCs\Bosses\Pantheon\Uranus.png" />
+    <Content Include="NPCs\Bosses\Pantheon\Venus.png" />
     <Content Include="NPCs\Bosses\Retriever\Retriever.png" />
     <Content Include="NPCs\Bosses\Retriever\Retriever_Glow.png" />
     <Content Include="NPCs\Bosses\Retriever\Retriever_Head_Boss.png" />
@@ -1839,6 +1849,7 @@
   <ItemGroup>
     <Folder Include="bin\Release\" />
     <Folder Include="Items\Boss\Akumata\" />
+    <Folder Include="NPCs\Bosses\Hydra\" />
     <Folder Include="obj\Debug\TempPE\" />
     <Folder Include="obj\NPCs\" />
   </ItemGroup>
