@@ -15,6 +15,8 @@ namespace AAMod.Items.Dev
             Tooltip.SetDefault(@"Summons a spinning construct that shreds through enemies
 I thought the sky was purple
 -Ender");
+
+            Item.staff[item.type] = true;
         }
 
 		public override void SetDefaults()
