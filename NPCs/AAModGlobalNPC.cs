@@ -154,23 +154,34 @@ namespace AAMod.NPCs
 
         public override void EditSpawnPool(IDictionary<int, float> pool, NPCSpawnInfo spawnInfo)
         {
-            Player player = Main.clientPlayer;
-            AAPlayer modPlayer = player.GetModPlayer<AAPlayer>();
-            foreach (KeyValuePair<int, float> item in pool)
+            if(spawnInfo.player.GetModPlayer<AAPlayer>().ZoneVoid) //modded npc's need to be removed manually
             {
-                int Key = item.Key;
-                float Value = item.Value;
-                if (modPlayer.ZoneVoid)
+                if (pool.ContainsKey(NPCID.Harpy))
                 {
-                    pool.Clear();
-                    //add below (pool.Add(mod.NPCType<--npc class-->(), --spawn chance as a float--))
-                    pool.Add(mod.NPCType<Searcher>(), 3f);
+                    pool.Remove(NPCID.Harpy);
                 }
-                else
+                if (pool.ContainsKey(NPCID.MartianProbe))
                 {
-                    pool.Remove(mod.NPCType<Searcher>());
-                    //remove above (pool.Remove(mod.NPCType<--npc class-->()))
-                    pool.Add(Key, Value);
+                    pool.Remove(NPCID.MartianProbe);
+                }
+                if (pool.ContainsKey(NPCID.WyvernHead))
+                {
+                    pool.Remove(NPCID.WyvernHead);
+                }
+            }
+            else if (spawnInfo.player.ZoneSkyHeight)
+            {
+                if (!pool.ContainsKey(NPCID.Harpy))
+                {
+                    pool.Add(NPCID.Harpy, 600); //please change 600 to spawnrate
+                }
+                if (!pool.ContainsKey(NPCID.MartianProbe) && NPC.downedGolemBoss)
+                {
+                    pool.Add(NPCID.MartianProbe, 600); //please change 600 to spawnrate
+                }
+                if (!pool.ContainsKey(NPCID.WyvernHead) && Main.hardMode)
+                {
+                    pool.Add(NPCID.WyvernHead, 600); //please change 600 to spawnrate
                 }
             }
         }

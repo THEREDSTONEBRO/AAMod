@@ -88,7 +88,7 @@ namespace AAMod.NPCs.Bosses.Zero
             {
                 if (Main.rand.Next(10) == 0)
                 {
-                    Vector2 tele = new Vector2(npc.position.X + Main.rand.Next(-20, 20), npc.position.Y + Main.rand.Next(-20, 20));
+                    Vector2 tele = new Vector2(npc.position.X + Main.rand.Next(-7, 7), npc.position.Y + Main.rand.Next(-7, 7));
                     npc.velocity = tele;
                 }
             }
