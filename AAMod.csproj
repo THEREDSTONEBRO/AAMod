@@ -76,10 +76,10 @@
     <Compile Include="Backgrounds\Mire\MireUgBgStyle.cs" />
     <Compile Include="Backgrounds\Void\VoidSky.cs" />
     <Compile Include="Backgrounds\Void\VoidSkyData.cs" />
-    <Compile Include="Backgrounds\Void\VoidSurfaceBgStyle.cs" />
     <Compile Include="Buffs\ChairMinionBuff.cs" />
     <Compile Include="Buffs\ChairMinionBuffEX.cs" />
     <Compile Include="Buffs\EnderMinionBuff.cs" />
+    <Compile Include="Buffs\EnderMinionBuffEX.cs" />
     <Compile Include="Buffs\InfinityOverload.cs" />
     <Compile Include="Buffs\UnstableSoul.cs" />
     <Compile Include="Dusts\AbyssiumDust.cs" />
@@ -111,9 +111,14 @@
     <Compile Include="Items\Armor\Doomsday\Zerokip\ZeroDiverMask.cs" />
     <Compile Include="Items\Armor\Doomsday\Zerokip\ZeroDiverBoots.cs" />
     <Compile Include="Items\Blocks\AkumataBox.cs" />
+    <Compile Include="Items\Dev\EnderStaffEX.cs" />
     <Compile Include="Items\Dev\GentlemansLongblade.cs" />
     <Compile Include="Items\Dev\GentlemansRapier.cs" />
+    <Compile Include="Items\Projectiles\EnderSickle.cs" />
+    <Compile Include="Items\Projectiles\DragonBreathP.cs" />
+    <Compile Include="Items\Projectiles\DuckEX.cs" />
     <Compile Include="Items\Projectiles\TopHat.cs" />
+    <Compile Include="Items\Summoning\Minions\EnderMinionEX.cs" />
     <Compile Include="Items\Walls\DoomstoneBrickWall.cs" />
     <Compile Include="Items\Walls\DoomsdayWall.cs" />
     <Compile Include="Items\Blocks\DoomsdayPlating.cs" />
@@ -378,7 +383,6 @@
     <Compile Include="Items\Projectiles\DoomRay.cs" />
     <Compile Include="Items\Projectiles\DoomRayP.cs" />
     <Compile Include="Items\Projectiles\DragonArrow.cs" />
-    <Compile Include="Items\Projectiles\DragonBreathP.cs" />
     <Compile Include="Items\Projectiles\DragonP.cs" />
     <Compile Include="Items\Projectiles\DragonSP.cs" />
     <Compile Include="Items\Projectiles\Duck.cs" />
@@ -649,15 +653,12 @@
     <Content Include="Backgrounds\Mire\Mire1.png" />
     <Content Include="Backgrounds\Mire\MireBG.png" />
     <Content Include="Backgrounds\Mire\MireCavern.png" />
-    <Content Include="Backgrounds\Mire\MireCavern1.png" />
     <Content Include="Backgrounds\Mire\MireFG1.png" />
     <Content Include="Backgrounds\Mire\MireFG2.png" />
     <Content Include="Backgrounds\Mire\MireMoon.png" />
     <Content Include="Backgrounds\Mire\MireSky.png" />
     <Content Include="Backgrounds\Mire\MireUnderground.png" />
-    <Content Include="Backgrounds\Mire\MireUnderground1.png" />
     <Content Include="Backgrounds\Snow\Auroroa.png" />
-    <Content Include="Backgrounds\Void\VoidBG.png" />
     <Content Include="Backgrounds\Void\VoidBH.png" />
     <Content Include="Backgrounds\Void\VoidBolt.png" />
     <Content Include="Backgrounds\Void\VoidFlash.png" />
@@ -675,6 +676,7 @@
     <Content Include="Buffs\ChairMinionBuff.png" />
     <Content Include="Buffs\ChairMinionBuffEX.png" />
     <Content Include="Buffs\EnderMinionBuff.png" />
+    <Content Include="Buffs\EnderMinionBuffEX.png" />
     <Content Include="Buffs\InfinityOverload.png" />
     <Content Include="Buffs\UnstableSoul.png" />
     <Content Include="build.txt" />
@@ -1096,6 +1098,7 @@
     <Content Include="Items\Dev\DuckstepGunEX_Glow.png" />
     <Content Include="Items\Dev\DuckstepGun_Glow.png" />
     <Content Include="Items\Dev\EnderStaff.png" />
+    <Content Include="Items\Dev\EnderStaffEX.png" />
     <Content Include="Items\Dev\Ethereal.png" />
     <Content Include="Items\Dev\EtherealEX.png" />
     <Content Include="Items\Dev\GentlemansLongblade.png" />
@@ -1259,6 +1262,8 @@
     <Content Include="Items\Projectiles\DragonP.png" />
     <Content Include="Items\Projectiles\DragonSP.png" />
     <Content Include="Items\Projectiles\Duck.png" />
+    <Content Include="Items\Projectiles\DuckEX.png" />
+    <Content Include="Items\Projectiles\EnderSickle.png" />
     <Content Include="Items\Projectiles\Etheral.png" />
     <Content Include="Items\Projectiles\EtheralEX.png" />
     <Content Include="Items\Projectiles\EtheralLazer.png" />
@@ -1349,6 +1354,7 @@
     <Content Include="Items\Summoning\HydraHeadStaff.png" />
     <Content Include="Items\Summoning\Minions\DemonStaffMinion.png" />
     <Content Include="Items\Summoning\Minions\EnderMinion.png" />
+    <Content Include="Items\Summoning\Minions\EnderMinionEX.png" />
     <Content Include="Items\Summoning\WyrmStaff.png" />
     <Content Include="Items\Throwing\AbbadonBoomerang.png" />
     <Content Include="Items\Throwing\AbbadonBoomerang_Glow.png" />
@@ -1439,10 +1445,10 @@
     <Content Include="Items\Vanity\Chinzilla\ChinSuit_Arms.png" />
     <Content Include="Items\Vanity\Chinzilla\ChinSuit_Body.png" />
     <Content Include="Items\Vanity\Chinzilla\ChinSuit_Female.png" />
-    <Content Include="Items\Vanity\Chinzilla\Copper_Wings.png" />
-    <Content Include="Items\Vanity\Chinzilla\Gold_Wings.png" />
-    <Content Include="Items\Vanity\Chinzilla\Platinum_Wings.png" />
-    <Content Include="Items\Vanity\Chinzilla\Silver_Wings.png" />
+    <Content Include="Items\Vanity\Chinzilla\Copper_Platform.png" />
+    <Content Include="Items\Vanity\Chinzilla\Gold_Platform.png" />
+    <Content Include="Items\Vanity\Chinzilla\Platinum_Platform.png" />
+    <Content Include="Items\Vanity\Chinzilla\Silver_Platform.png" />
     <Content Include="Items\Vanity\Gavran\GavransChest.png" />
     <Content Include="Items\Vanity\Gavran\GavransChest_Arms.png" />
     <Content Include="Items\Vanity\Gavran\GavransChest_Body.png" />
@@ -1572,7 +1578,6 @@
     <Content Include="NPCs\Bosses\Zero\Zero_Glow.png" />
     <Content Include="NPCs\Bosses\Zero\Zero_Head_Boss.png" />
     <Content Include="NPCs\Enemies\Inferno\InfernalSlime.png" />
-    <Content Include="NPCs\Enemies\Inferno\InfernalSlime_Glow.png" />
     <Content Include="NPCs\Enemies\Inferno\InfernoSalamander.png" />
     <Content Include="NPCs\Enemies\Inferno\WyrmBody1.png" />
     <Content Include="NPCs\Enemies\Inferno\WyrmBody2.png" />
