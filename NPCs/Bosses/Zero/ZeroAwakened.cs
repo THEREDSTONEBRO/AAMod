@@ -38,7 +38,6 @@ namespace AAMod.NPCs.Bosses.Zero
             npc.boss = true;  
             npc.lavaImmune = true;
             npc.noGravity = true;
-            npc.chaseable = false;
             npc.noTileCollide = true;
             npc.HitSound = mod.GetLegacySoundSlot(Terraria.ModLoader.SoundType.Custom, "Sounds/Sounds/Zerohit");
             npc.DeathSound = mod.GetLegacySoundSlot(Terraria.ModLoader.SoundType.Custom, "Sounds/Sounds/ZeroDeath");
@@ -88,8 +87,12 @@ namespace AAMod.NPCs.Bosses.Zero
             {
                 if (Main.rand.Next(10) == 0)
                 {
-                    Vector2 tele = new Vector2(npc.position.X + Main.rand.Next(-7, 7), npc.position.Y + Main.rand.Next(-7, 7));
-                    npc.velocity = tele;
+                    Vector2 tele = new Vector2(npc.position.X + Main.rand.Next(-3, 3), npc.position.Y + Main.rand.Next(-3, 3));
+                    Player player = Main.player[npc.target];
+                    if (tele.X < player.position.X + (Main.screenWidth / 2) && tele.X > player.position.X - (Main.screenWidth / 2) && tele.Y < player.position.Y + (Main.screenHeight / 2) && tele.Y > player.position.Y - (Main.screenHeight / 2))
+                    {
+                        npc.velocity = tele;
+                    }
                 }
             }
         }

@@ -10,6 +10,11 @@ namespace AAMod.Items.Vanity.Chinzilla
     [AutoloadEquip(EquipType.Wings)]
     public class ChinsMagicCoin : ModItem
 	{
+        private bool flag1 = true;
+        private bool flag2 = false;
+        private bool flag3 = false;
+        private bool flag4 = false;
+
         public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Chinzilla00's Coin Barrier");
@@ -61,18 +66,54 @@ namespace AAMod.Items.Vanity.Chinzilla
 
         public override bool WingUpdate(Player player, bool inUse)
         {
-            if (inUse)
+            if (inUse || (player.wingTime == 0 && player.controlJump))
             {
-                if (player.carpetFrame == -1)
+                if (flag1)
                 {
                     player.carpetFrame = 1;
-                }
-                if (++player.carpetFrameCounter >= 10)
-                {
-                    player.carpetFrameCounter = 0;
-                    if (++player.carpetFrame >= 4)
+                    if (++player.carpetFrameCounter >= 10)
                     {
-                        player.carpetFrame = 0;
+                        flag1 = false;
+                        flag2 = true;
+                        flag3 = false;
+                        flag4 = false;
+                        player.carpetFrameCounter = 0;
+                    }
+                }
+                if (flag2)
+                {
+                    player.carpetFrame = 2;
+                    if (++player.carpetFrameCounter >= 10)
+                    {
+                        flag1 = false;
+                        flag2 = false;
+                        flag3 = true;
+                        flag4 = false;
+                        player.carpetFrameCounter = 0;
+                    }
+                }
+                if (flag3)
+                {
+                    player.carpetFrame = 3;
+                    if (++player.carpetFrameCounter >= 10)
+                    {
+                        flag1 = false;
+                        flag2 = false;
+                        flag3 = false;
+                        flag4 = true;
+                        player.carpetFrameCounter = 0;
+                    }
+                }
+                if (flag4)
+                {
+                    player.carpetFrame = 4;
+                    if (++player.carpetFrameCounter >= 10)
+                    {
+                        flag1 = true;
+                        flag2 = false;
+                        flag3 = false;
+                        flag4 = false;
+                        player.carpetFrameCounter = 0;
                     }
                 }
             }
@@ -99,7 +140,7 @@ namespace AAMod.Items.Vanity.Chinzilla
             }
             else
             {
-                player.wingTimeMax = 0;
+                player.wingTimeMax = -1;
             }
         }
 
