@@ -76,6 +76,7 @@
     <Compile Include="Backgrounds\Mire\MireUgBgStyle.cs" />
     <Compile Include="Backgrounds\Void\VoidSky.cs" />
     <Compile Include="Backgrounds\Void\VoidSkyData.cs" />
+    <Compile Include="Backgrounds\Void\VoidSurfaceBgStyle.cs" />
     <Compile Include="Buffs\ChairMinionBuff.cs" />
     <Compile Include="Buffs\ChairMinionBuffEX.cs" />
     <Compile Include="Buffs\EnderMinionBuff.cs" />
@@ -653,12 +654,15 @@
     <Content Include="Backgrounds\Mire\Mire1.png" />
     <Content Include="Backgrounds\Mire\MireBG.png" />
     <Content Include="Backgrounds\Mire\MireCavern.png" />
+    <Content Include="Backgrounds\Mire\MireCavern1.png" />
     <Content Include="Backgrounds\Mire\MireFG1.png" />
     <Content Include="Backgrounds\Mire\MireFG2.png" />
     <Content Include="Backgrounds\Mire\MireMoon.png" />
     <Content Include="Backgrounds\Mire\MireSky.png" />
     <Content Include="Backgrounds\Mire\MireUnderground.png" />
+    <Content Include="Backgrounds\Mire\MireUnderground1.png" />
     <Content Include="Backgrounds\Snow\Auroroa.png" />
+    <Content Include="Backgrounds\Void\VoidBG.png" />
     <Content Include="Backgrounds\Void\VoidBH.png" />
     <Content Include="Backgrounds\Void\VoidBolt.png" />
     <Content Include="Backgrounds\Void\VoidFlash.png" />
@@ -1445,10 +1449,10 @@
     <Content Include="Items\Vanity\Chinzilla\ChinSuit_Arms.png" />
     <Content Include="Items\Vanity\Chinzilla\ChinSuit_Body.png" />
     <Content Include="Items\Vanity\Chinzilla\ChinSuit_Female.png" />
-    <Content Include="Items\Vanity\Chinzilla\Copper_Platform.png" />
-    <Content Include="Items\Vanity\Chinzilla\Gold_Platform.png" />
-    <Content Include="Items\Vanity\Chinzilla\Platinum_Platform.png" />
-    <Content Include="Items\Vanity\Chinzilla\Silver_Platform.png" />
+    <Content Include="Items\Vanity\Chinzilla\Copper_Wings.png" />
+    <Content Include="Items\Vanity\Chinzilla\Gold_Wings.png" />
+    <Content Include="Items\Vanity\Chinzilla\Platinum_Wings.png" />
+    <Content Include="Items\Vanity\Chinzilla\Silver_Wings.png" />
     <Content Include="Items\Vanity\Gavran\GavransChest.png" />
     <Content Include="Items\Vanity\Gavran\GavransChest_Arms.png" />
     <Content Include="Items\Vanity\Gavran\GavransChest_Body.png" />
@@ -1578,6 +1582,7 @@
     <Content Include="NPCs\Bosses\Zero\Zero_Glow.png" />
     <Content Include="NPCs\Bosses\Zero\Zero_Head_Boss.png" />
     <Content Include="NPCs\Enemies\Inferno\InfernalSlime.png" />
+    <Content Include="NPCs\Enemies\Inferno\InfernalSlime_Glow.png" />
     <Content Include="NPCs\Enemies\Inferno\InfernoSalamander.png" />
     <Content Include="NPCs\Enemies\Inferno\WyrmBody1.png" />
     <Content Include="NPCs\Enemies\Inferno\WyrmBody2.png" />
