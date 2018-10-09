@@ -2,6 +2,7 @@ using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
+using Terraria.Audio;
 using Terraria.Graphics.Effects;
 using Terraria.Graphics.Shaders;
 using Terraria.ID;
@@ -15,7 +16,7 @@ namespace AAMod.Items.Melee   //where is located
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("The Lolkat");
-            Tooltip.SetDefault(@"Memes memes memes galore
+            Tooltip.SetDefault(@"WHAT DOES IT MEAN?!?!?!111!!11
 Meowmere EX");
             if (Main.netMode != 2)
             {
@@ -43,7 +44,7 @@ Meowmere EX");
             item.knockBack = 4;      //Sword knockback
             item.value = 300000;        
             item.rare = 11;
-            item.UseSound = SoundID.Item1;       //1 is the sound of the sword
+            item.UseSound = new LegacySoundStyle(2, 57, Terraria.Audio.SoundType.Sound);      //1 is the sound of the sword
             item.autoReuse = true;   //if it's capable of autoswing.
             item.useTurn = true;
             item.expert = true;
@@ -62,7 +63,7 @@ Meowmere EX");
             for (int i = 0; i < 2; i++)
             {
                 offsetAngle = startAngle + deltaAngle * i;
-                Terraria.Projectile.NewProjectile(position.X, position.Y, baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle), item.shoot, damage, knockBack, item.owner);
+                Projectile.NewProjectile(position.X, position.Y, baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle), item.shoot, damage, knockBack, item.owner);
             }
             return false;
         }
