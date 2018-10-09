@@ -24,8 +24,8 @@ namespace AAMod.NPCs.Bosses.Retriever
         {
             npc.aiStyle = 5;  //5 is the flying AI
             npc.lifeMax = 70000;   //boss life
-            npc.damage = 50;  //boss damage
-            npc.defense = 42;    //boss defense
+            npc.damage = 80;  //boss damage
+            npc.defense = 72;    //boss defense
             npc.knockBackResist = 0f;
             npc.width = 92;
             npc.height = 54;
@@ -82,7 +82,7 @@ namespace AAMod.NPCs.Bosses.Retriever
                     Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("RetrieverMask"));
                 }
                 {
-                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("Fulgurite"), Main.rand.Next(30, 64));
+                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("FulguriteBar"), Main.rand.Next(30, 64));
                 }
             }
         }
@@ -120,7 +120,7 @@ namespace AAMod.NPCs.Bosses.Retriever
             npc.netUpdate = true;
             if (Main.rand.Next(450) == 0) // The lower the value, the higher chance of a grippy boi spawning
             {
-                NPC.NewNPC((int)npc.position.X + 70, (int)npc.position.Y + 70, mod.NPCType("GripAAAAAAAAAAAAAAAAAAAAAAAAAAA")); //Change name AAAAAAAAAAAAAAAAAAAA
+                NPC.NewNPC((int)npc.position.X + 70, (int)npc.position.Y + 70, mod.NPCType("CyberClaw")); //Change name AAAAAAAAAAAAAAAAAAAA
             }
             timer++;                //Makes the int start
             if (timer == 450)          //if the timer has gotten to 7.5 seconds, this happens (60 = 1 second)
@@ -146,7 +146,7 @@ namespace AAMod.NPCs.Bosses.Retriever
                 }
                 else
                 {
-                    speed = 60f; // Sets the max speed of the npc.
+                    speed = 90f; // Sets the max speed of the npc.
                 }
                 Vector2 moveTo = player.Center + offset; // Gets the point that the npc will be moving to.
                 Vector2 move = moveTo - npc.Center;

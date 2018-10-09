@@ -71,6 +71,7 @@ namespace AAMod.Items.Boss.Retriever
                         player.QuickSpawnItem(mod.ItemType("ChinMask"));
                         player.QuickSpawnItem(mod.ItemType("ChinSuit"));
                         player.QuickSpawnItem(mod.ItemType("ChinPants"));
+                        player.QuickSpawnItem(mod.ItemType("ChinsMagicCoin"));
                     }
                 }
             }
