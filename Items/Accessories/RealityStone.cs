@@ -15,7 +15,7 @@ namespace AAMod.Items.Accessories
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Infinity Stone");
+            DisplayName.SetDefault("Reality Stone");
             Tooltip.SetDefault(
 @"Grants you control over reality around you allowing long flight, insane speed, and uninhibited movement
 'Now...reality can be whatever I want it to be...'");

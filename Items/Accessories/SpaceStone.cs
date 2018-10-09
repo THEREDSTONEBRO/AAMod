@@ -17,7 +17,7 @@ namespace AAMod.Items.Accessories
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Infinity Stone");
+            DisplayName.SetDefault("Space Stone");
             Tooltip.SetDefault(
 @"Allows you to teleport with the hook funtion like with the rod of discord
 You are immune to the Chaos State Debuff

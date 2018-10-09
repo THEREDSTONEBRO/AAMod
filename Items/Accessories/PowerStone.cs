@@ -15,7 +15,7 @@ namespace AAMod.Items.Accessories
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Infinity Stone");
+            DisplayName.SetDefault("Power Stone");
             Tooltip.SetDefault(
 @"Triples your attack power
 Enemies attacked are given the Infinity Overload Debuff

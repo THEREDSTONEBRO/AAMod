@@ -15,7 +15,7 @@ namespace AAMod.Items.Accessories
         public static Texture2D _glow;
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Infinity Stone");
+            DisplayName.SetDefault("Soul Stone");
             Tooltip.SetDefault(
 @"+15 max minions
 Allows you to detect the souls of creatures, detect valuable resources, and see traps

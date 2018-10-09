@@ -15,7 +15,7 @@ namespace AAMod.Items.Accessories
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Infinity Stone");
+            DisplayName.SetDefault("Time Stone");
             Tooltip.SetDefault(
 @"Respawn time cut by 80%
 hitting enemies causes time for them to slow
