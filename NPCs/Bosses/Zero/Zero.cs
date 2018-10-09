@@ -30,7 +30,6 @@ namespace AAMod.NPCs.Bosses.Zero
             npc.HitSound = SoundID.NPCHit4;
             npc.DeathSound = SoundID.NPCHit4;
             npc.noGravity = true;
-            npc.chaseable = false;
             music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/Zero");
             npc.noTileCollide = true;
             if (Main.expertMode)
@@ -68,6 +67,12 @@ namespace AAMod.NPCs.Bosses.Zero
 
         public override void HitEffect(int hitDirection, double damage)
         {
+            if (npc.life <= npc.lifeMax && npc.type == mod.NPCType<Zero>() && NPC.AnyNPCs(mod.NPCType<VoidStar>()) && NPC.AnyNPCs(mod.NPCType<Taser>()) && NPC.AnyNPCs(mod.NPCType<RealityCannon>()) && NPC.AnyNPCs(mod.NPCType<RiftShredder>()))
+            {
+                hitDirection = 0;
+                damage = 0.0;
+                npc.life = npc.lifeMax;
+            }
             if (npc.life <= 0 && npc.type == mod.NPCType<Zero>())
             {
                 Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gore/ZeroGore1"), 1f);
