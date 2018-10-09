@@ -117,7 +117,6 @@
     <Compile Include="Items\Dev\GentlemansRapier.cs" />
     <Compile Include="Items\Projectiles\EnderSickle.cs" />
     <Compile Include="Items\Projectiles\DragonBreathP.cs" />
-    <Compile Include="Items\Projectiles\DuckEX.cs" />
     <Compile Include="Items\Projectiles\TopHat.cs" />
     <Compile Include="Items\Summoning\Minions\EnderMinionEX.cs" />
     <Compile Include="Items\Walls\DoomstoneBrickWall.cs" />

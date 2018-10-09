@@ -33,9 +33,7 @@ I thought the sky was purple
 			item.rare = 8;
             item.expert = true;
 			item.UseSound = SoundID.Item44;
-			item.shoot = mod.ProjectileType("EnderMinionEX");
-			item.shootSpeed = 7f;
-			item.buffType = mod.BuffType("EnderMinionBuffEX");	//The buff added to player after used the item
+			item.shootSpeed = 7f;	//The buff added to player after used the item
             item.buffTime = 18000;
 		}
         public override bool AltFunctionUse(Player player)
@@ -58,19 +56,20 @@ I thought the sky was purple
 		{
             if (player.altFunctionUse == 2)
             {
-                Item.staff[item.type] = true;
-                item.useTime = 16;
-                item.useAnimation = 16;
-                item.shoot = mod.ProjectileType("EnderMinionEX");
-                item.noMelee = true;
-            }
-            else
-            {
                 Item.staff[item.type] = false;
                 item.useTime = 13;
                 item.useAnimation = 13;
                 item.shoot = mod.ProjectileType("EnderSickle");
                 item.noMelee = false;
+            }
+            else
+            {
+                Item.staff[item.type] = true;
+                item.useTime = 16;
+                item.useAnimation = 16;
+                item.shoot = mod.ProjectileType("EnderMinionEX");
+                item.buffType = mod.BuffType("EnderMinionBuffEX");
+                item.noMelee = true;
             }
             return base.CanUseItem(player);
         }
