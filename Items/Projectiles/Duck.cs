@@ -16,7 +16,7 @@ namespace AAMod.Items.Projectiles
 
         public override void SetDefaults()
         {
-            projectile.CloneDefaults(ProjectileID.RocketSnowmanIV);
+            projectile.CloneDefaults(ProjectileID.RocketSnowmanIII);
             aiType = ProjectileID.RocketSnowmanIII;
             projectile.width = 28;
             projectile.height = 32;

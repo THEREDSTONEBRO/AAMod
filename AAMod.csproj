@@ -1084,6 +1084,7 @@
     <Content Include="Items\Boss\Zero\VoidStar_Glow.png" />
     <Content Include="Items\Boss\Zero\ZeroBag.png" />
     <Content Include="Items\Boss\Zero\ZeroStar.png" />
+    <Content Include="Items\Boss\Zero\ZeroStar_Glow.png" />
     <Content Include="Items\Boss\Zero\ZeroWings.png" />
     <Content Include="Items\Boss\Zero\ZeroWings_Wings.png" />
     <Content Include="Items\Boss\Zero\ZeroWings_Wings_Glow.png" />
@@ -1250,6 +1251,8 @@
     <Content Include="Items\Projectiles\AmphibiousProjectile.png" />
     <Content Include="Items\Projectiles\AmphibiousProjectileEX.png" />
     <Content Include="Items\Projectiles\AmphibiousProjectileEXS.png" />
+    <Content Include="Items\Projectiles\AmphibiousProjectileEXS_Glow.png" />
+    <Content Include="Items\Projectiles\AmphibiousProjectileEX_Glow.png" />
     <Content Include="Items\Projectiles\AmphibiousProjectileS.png" />
     <Content Include="Items\Projectiles\Antimatter.png" />
     <Content Include="Items\Projectiles\APP.png" />
@@ -1269,6 +1272,7 @@
     <Content Include="Items\Projectiles\Duck.png" />
     <Content Include="Items\Projectiles\DuckEX.png" />
     <Content Include="Items\Projectiles\EnderSickle.png" />
+    <Content Include="Items\Projectiles\EnderSickle_Glow.png" />
     <Content Include="Items\Projectiles\Etheral.png" />
     <Content Include="Items\Projectiles\EtheralEX.png" />
     <Content Include="Items\Projectiles\EtheralLazer.png" />
@@ -1874,6 +1878,6 @@
     </PreBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
-    <PostBuildEvent>"D:\SteamLibrary\steamapps\common\Terraria\tModLoaderServer.exe" -build "$(ProjectDir)\"</PostBuildEvent>
+    <PostBuildEvent>"C:\Program Files (x86)\Steam\steamapps\common\Terraria\tModLoaderServer.exe" -build "$(ProjectDir)\" -eac  "$(TargetPath)"</PostBuildEvent>
   </PropertyGroup>
 </Project>
