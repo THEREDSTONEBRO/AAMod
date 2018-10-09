@@ -1,10 +1,8 @@
-using System;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using System.Collections.Generic;
-using Microsoft.Xna.Framework.Graphics;
 using Terraria.DataStructures;
 
 namespace AAMod.Items.Vanity.Chinzilla
@@ -12,8 +10,6 @@ namespace AAMod.Items.Vanity.Chinzilla
     [AutoloadEquip(EquipType.Wings)]
     public class ChinsMagicCoin : ModItem
 	{
-        private int timer = 5;
-
         public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Chinzilla00's Coin Barrier");
@@ -32,8 +28,8 @@ namespace AAMod.Items.Vanity.Chinzilla
         }
         public override void SetDefaults()
 		{
-			item.width = 64;
-			item.height = 42;
+            item.width = 22;
+			item.height = 28;
 			item.rare = 10;
             item.accessory = true;
             item.value = 500000;
@@ -41,27 +37,46 @@ namespace AAMod.Items.Vanity.Chinzilla
 
         public override void UpdateVanity(Player player, EquipType type)
         {
-            player.wings = 28;
             if (player.HasItem(ItemID.PlatinumCoin))
             {
-                Main.wingsTexture[28] = mod.GetTexture("Items/Vanity/Chinzilla/Platinum_Platform");
+                Main.flyingCarpetTexture = mod.GetTexture("Items/Vanity/Chinzilla/Platinum_Wings");
             }
             else if (player.HasItem(ItemID.GoldCoin))
             {
-                Main.wingsTexture[28] = mod.GetTexture("Items/Vanity/Chinzilla/Gold_Platform");
+                Main.flyingCarpetTexture = mod.GetTexture("Items/Vanity/Chinzilla/Gold_Wings");
             }
             else if (player.HasItem(ItemID.SilverCoin))
             {
-                Main.wingsTexture[28] = mod.GetTexture("Items/Vanity/Chinzilla/Silver_Platform");
+                Main.flyingCarpetTexture = mod.GetTexture("Items/Vanity/Chinzilla/Silver_Wings");
             }
             else if (player.HasItem(ItemID.CopperCoin))
             {
-                Main.wingsTexture[28] = mod.GetTexture("Items/Vanity/Chinzilla/Copper_Platform");
+                Main.flyingCarpetTexture = mod.GetTexture("Items/Vanity/Chinzilla/Copper_Wings");
             }
             else
             {
-                Main.wingsTexture[28] = mod.GetTexture("Items/Vanity/Chinzilla/ChinsMagicCoin_Wings");
+                Main.flyingCarpetTexture = mod.GetTexture("Items/Vanity/Chinzilla/ChinsMagicCoin_Wings");
             }
+        }
+
+        public override bool WingUpdate(Player player, bool inUse)
+        {
+            if (inUse)
+            {
+                if (player.carpetFrame == -1)
+                {
+                    player.carpetFrame = 1;
+                }
+                if (++player.carpetFrameCounter >= 10)
+                {
+                    player.carpetFrameCounter = 0;
+                    if (++player.carpetFrame >= 4)
+                    {
+                        player.carpetFrame = 0;
+                    }
+                }
+            }
+            return true;
         }
 
         public override void UpdateAccessory(Player player, bool hideVisual)
@@ -88,42 +103,78 @@ namespace AAMod.Items.Vanity.Chinzilla
             }
         }
 
-        public override bool WingUpdate(Player player, bool inUse)
-        {
-            if (timer > 0)
-            {
-                timer--;
-            }
-            if (inUse)
-            {
-                if (player.wingFrame == 4 && timer == 0)
-                {
-                    player.wingFrame = 0;
-                    timer = 5;
-                }
-                if (timer == 0)
-                {
-                    player.wingFrame++;
-                    timer = 5;
-                }
-            }
-            return true;
-        }
-
         public override void VerticalWingSpeeds(Player player, ref float ascentWhenFalling, ref float ascentWhenRising,
             ref float maxCanAscendMultiplier, ref float maxAscentMultiplier, ref float constantAscend)
         {
-            ascentWhenFalling = 0.85f;
-            ascentWhenRising = 0.15f;
-            maxCanAscendMultiplier = 1f;
-            maxAscentMultiplier = 3f;
-            constantAscend = 0.135f;
+            if (player.HasItem(ItemID.PlatinumCoin))
+            {
+                ascentWhenFalling = 0.90f;
+                ascentWhenRising = 0.2f;
+                maxCanAscendMultiplier = 1.5f;
+                maxAscentMultiplier = 4f;
+                constantAscend = 0.165f;
+            }
+            else if (player.HasItem(ItemID.GoldCoin))
+            {
+                ascentWhenFalling = 0.85f;
+                ascentWhenRising = 0.15f;
+                maxCanAscendMultiplier = 1f;
+                maxAscentMultiplier = 3f;
+                constantAscend = 0.135f;
+            }
+            else if (player.HasItem(ItemID.SilverCoin))
+            {
+                ascentWhenFalling = 0.80f;
+                ascentWhenRising = 0.1f;
+                maxCanAscendMultiplier = 0.5f;
+                maxAscentMultiplier = 2f;
+                constantAscend = 0.115f;
+            }
+            else if (player.HasItem(ItemID.CopperCoin))
+            {
+                ascentWhenFalling = 0.75f;
+                ascentWhenRising = 0.05f;
+                maxCanAscendMultiplier = 0.25f;
+                maxAscentMultiplier = 1f;
+                constantAscend = 0.1f;
+            }
+            else
+            {
+                ascentWhenFalling = 0f;
+                ascentWhenRising = 0f;
+                maxCanAscendMultiplier = 0f;
+                maxAscentMultiplier = 0f;
+                constantAscend = 0f;
+            }
         }
 
         public override void HorizontalWingSpeeds(Player player, ref float speed, ref float acceleration)
         {
-            speed = 10f;
-            acceleration *= 2.5f;
+            if (player.HasItem(ItemID.PlatinumCoin))
+            {
+                speed = 14f;
+                acceleration *= 3f;
+            }
+            else if (player.HasItem(ItemID.GoldCoin))
+            {
+                speed = 13f;
+                acceleration *= 2.5f;
+            }
+            else if (player.HasItem(ItemID.SilverCoin))
+            {
+                speed = 12f;
+                acceleration *= 2f;
+            }
+            else if (player.HasItem(ItemID.CopperCoin))
+            {
+                speed = 11f;
+                acceleration *= 1.5f;
+            }
+            else
+            {
+                speed = 10f;
+                acceleration *= 1f;
+            }
         }
     }
 }
