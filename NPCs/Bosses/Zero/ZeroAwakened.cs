@@ -38,6 +38,7 @@ namespace AAMod.NPCs.Bosses.Zero
             npc.boss = true;  
             npc.lavaImmune = true;
             npc.noGravity = true;
+            npc.chaseable = false;
             npc.noTileCollide = true;
             npc.HitSound = mod.GetLegacySoundSlot(Terraria.ModLoader.SoundType.Custom, "Sounds/Sounds/Zerohit");
             npc.DeathSound = mod.GetLegacySoundSlot(Terraria.ModLoader.SoundType.Custom, "Sounds/Sounds/ZeroDeath");
@@ -83,7 +84,14 @@ namespace AAMod.NPCs.Bosses.Zero
 
         public override void HitEffect(int hitDirection, double damage)
         {
-
+            if (damage > 20)
+            {
+                if (Main.rand.Next(10) == 0)
+                {
+                    Vector2 tele = new Vector2(npc.position.X + Main.rand.Next(-20, 20), npc.position.Y + Main.rand.Next(-20, 20));
+                    npc.velocity = tele;
+                }
+            }
         }
 
         public override void PostDraw(SpriteBatch spriteBatch, Color drawColor)

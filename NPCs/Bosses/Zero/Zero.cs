@@ -30,6 +30,7 @@ namespace AAMod.NPCs.Bosses.Zero
             npc.HitSound = SoundID.NPCHit4;
             npc.DeathSound = SoundID.NPCHit4;
             npc.noGravity = true;
+            npc.chaseable = false;
             music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/Zero");
             npc.noTileCollide = true;
             if (Main.expertMode)

@@ -194,7 +194,6 @@ namespace AAMod
             }
         }
 
-
         public override void GetWeaponKnockback(Item item, ref float knockback)
         {
             if (demonGauntlet == true)

@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using AAMod.Buffs;
+using AAMod.NPCs.Enemies.Void;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -151,11 +152,30 @@ namespace AAMod.NPCs
 		{
 		}
 
-		public override void EditSpawnRate(Player player, ref int spawnRate, ref int maxSpawns)
-		{
-		}
+        public override void EditSpawnPool(IDictionary<int, float> pool, NPCSpawnInfo spawnInfo)
+        {
+            Player player = Main.clientPlayer;
+            AAPlayer modPlayer = player.GetModPlayer<AAPlayer>();
+            foreach (KeyValuePair<int, float> item in pool)
+            {
+                int Key = item.Key;
+                float Value = item.Value;
+                if (modPlayer.ZoneVoid)
+                {
+                    pool.Clear();
+                    //add below (pool.Add(mod.NPCType<--npc class-->(), --spawn chance as a float--))
+                    pool.Add(mod.NPCType<Searcher>(), 3f);
+                }
+                else
+                {
+                    pool.Remove(mod.NPCType<Searcher>());
+                    //remove above (pool.Remove(mod.NPCType<--npc class-->()))
+                    pool.Add(Key, Value);
+                }
+            }
+        }
 
-		public override void SetupShop(int type, Chest shop, ref int nextSlot)
+        public override void SetupShop(int type, Chest shop, ref int nextSlot)
 		{
 		}
 
