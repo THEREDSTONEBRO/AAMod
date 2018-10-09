@@ -12,7 +12,6 @@ namespace AAMod.Items.Blocks
 		{
 			DisplayName.SetDefault("Zero Awakened Music Box");
 		}
-        //
 		public override void SetDefaults()
 		{
 			item.useStyle = 1;
@@ -34,19 +33,22 @@ namespace AAMod.Items.Blocks
             {
                 if (line2.mod == "Terraria" && line2.Name == "ItemName")
                 {
-                    line2.overrideColor = new Color(70, 0, 20);
+                    line2.overrideColor = new Color(120, 0, 30);
                 }
             }
         }
         public override void AddRecipes()
         {
-            ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.MusicBox);
-            recipe.AddIngredient(null, "UnstableSingularity", 5);
-            recipe.AddIngredient(null, "ApocalyptitePlate", 5);
-            recipe.AddTile(ItemID.Sawmill);
-            recipe.SetResult(this);
-            recipe.AddRecipe();
+            if (Main.expertMode == true)
+            { 
+                ModRecipe recipe = new ModRecipe(mod);
+                recipe.AddIngredient(ItemID.MusicBox);
+                recipe.AddIngredient(null, "UnstableSingularity", 5);
+                recipe.AddIngredient(null, "ApocalyptitePlate", 5);
+                recipe.AddTile(ItemID.Sawmill);
+                recipe.SetResult(this);
+                recipe.AddRecipe();
+            }
         }
     }
 }

@@ -25,10 +25,16 @@ namespace AAMod.Items.Projectiles
             projectile.ignoreWater = true;
             projectile.tileCollide = true;
             projectile.alpha = 0;
-            projectile.penetrate = 0;
+            projectile.penetrate = 1;
             projectile.timeLeft = 900;
             projectile.friendly = true;
             projectile.hostile = false;
+        }
+
+        public override Color? GetAlpha(Color lightColor)
+        {
+            //return Color.White;
+            return new Color(100, 200, 0, 0) * (1f - projectile.alpha / 255f);
         }
     }
 }

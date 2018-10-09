@@ -27,7 +27,8 @@ namespace AAMod.Items.Projectiles
             projectile.timeLeft = 600;
             projectile.alpha = 0;
             projectile.tileCollide = false;
-            aiType = 270;
+            projectile.CloneDefaults(ProjectileID.RocketSnowmanIV);
+            aiType = ProjectileID.RocketSnowmanIII;
         }
 
         public override void AI()

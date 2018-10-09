@@ -48,7 +48,7 @@ While cooldown is occurring, your invincibility frames and speed are increased
             item.glowMask = customGlowMask;
             item.width = 60;
             item.height = 52;
-            item.maxStack = 999;
+            item.maxStack = 1;
             item.value = 10000;
             item.expert = true;
             item.accessory = true;

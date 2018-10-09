@@ -10,7 +10,7 @@ namespace AAMod.Tiles
         public override void SetDefaults()
         {
             Main.tileSolid[Type] = true;
-            Main.tileMerge[Type][mod.TileType("Incinerite")] = true;
+            Main.tileMerge[Type][mod.TileType("Apocalyptite")] = true;
             Main.tileMergeDirt[Type] = true;
             SetModTree(new OroborosTree());
             soundType = 21;
