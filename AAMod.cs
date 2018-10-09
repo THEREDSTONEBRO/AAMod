@@ -273,11 +273,8 @@ namespace AAMod
             }
             if (Ancients.ZoneVoid)
             {
-                if (player.ZoneSkyHeight)
-                {
-                    priority = MusicPriority.Event;
-                    music = GetSoundSlot(SoundType.Music, "Sounds/Music/Void");
-                }
+                priority = MusicPriority.Event;
+                music = GetSoundSlot(SoundType.Music, "Sounds/Music/Void");
             }
         }
         public override void AddRecipes()

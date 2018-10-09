@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using AAMod.Buffs;
+using AAMod.NPCs.Enemies.Void;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -151,11 +152,41 @@ namespace AAMod.NPCs
 		{
 		}
 
-		public override void EditSpawnRate(Player player, ref int spawnRate, ref int maxSpawns)
-		{
-		}
+        public override void EditSpawnPool(IDictionary<int, float> pool, NPCSpawnInfo spawnInfo)
+        {
+            if(spawnInfo.player.GetModPlayer<AAPlayer>().ZoneVoid) //modded npc's need to be removed manually
+            {
+                if (pool.ContainsKey(NPCID.Harpy))
+                {
+                    pool.Remove(NPCID.Harpy);
+                }
+                if (pool.ContainsKey(NPCID.MartianProbe))
+                {
+                    pool.Remove(NPCID.MartianProbe);
+                }
+                if (pool.ContainsKey(NPCID.WyvernHead))
+                {
+                    pool.Remove(NPCID.WyvernHead);
+                }
+            }
+            else if (spawnInfo.player.ZoneSkyHeight)
+            {
+                if (!pool.ContainsKey(NPCID.Harpy))
+                {
+                    pool.Add(NPCID.Harpy, 600); //please change 600 to spawnrate
+                }
+                if (!pool.ContainsKey(NPCID.MartianProbe) && NPC.downedGolemBoss)
+                {
+                    pool.Add(NPCID.MartianProbe, 600); //please change 600 to spawnrate
+                }
+                if (!pool.ContainsKey(NPCID.WyvernHead) && Main.hardMode)
+                {
+                    pool.Add(NPCID.WyvernHead, 600); //please change 600 to spawnrate
+                }
+            }
+        }
 
-		public override void SetupShop(int type, Chest shop, ref int nextSlot)
+        public override void SetupShop(int type, Chest shop, ref int nextSlot)
 		{
 		}
 
