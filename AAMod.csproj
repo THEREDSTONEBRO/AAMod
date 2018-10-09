@@ -508,6 +508,7 @@
     <Compile Include="NPCs\Bosses\Zero\ZeroDeath1.cs" />
     <Compile Include="NPCs\Bosses\Zero\ZeroDeath2.cs" />
     <Compile Include="NPCs\Enemies\Inferno\InfernalSlime.cs" />
+    <Compile Include="NPCs\Enemies\Other\CyberClaw.cs" />
     <Compile Include="NPCs\Enemies\Other\DragonClaw.cs" />
     <Compile Include="NPCs\Enemies\Other\ElderDragon.cs" />
     <Compile Include="NPCs\Enemies\Other\HydraClaw.cs" />
@@ -1070,6 +1071,7 @@
     <Content Include="Items\Boss\Zero\EventHorizon.png" />
     <Content Include="Items\Boss\Zero\EventHorizon_Glow.png" />
     <Content Include="Items\Boss\Zero\Neutralizer.png" />
+    <Content Include="Items\Boss\Zero\Neutralizer_Glow.png" />
     <Content Include="Items\Boss\Zero\RealityCannon.png" />
     <Content Include="Items\Boss\Zero\RealityCannon_Glow.png" />
     <Content Include="Items\Boss\Zero\RiftShredder.png" />
@@ -1162,7 +1164,6 @@
     <Content Include="Items\Materials\RadiantIncinerite.png" />
     <Content Include="Items\Materials\RadiumBar.png" />
     <Content Include="Items\Materials\ShinyCharm.png" />
-    <Content Include="Items\Materials\SoulOfNightRed.png" />
     <Content Include="Items\Materials\SoulOfSpite.png" />
     <Content Include="Items\Melee\AbyssalTwilight.png" />
     <Content Include="Items\Melee\Amnesia.png" />
@@ -1596,6 +1597,7 @@
     <Content Include="NPCs\Enemies\Mire\ChaoticTwilight.png" />
     <Content Include="NPCs\Enemies\Mire\MireMimic.png" />
     <Content Include="NPCs\Enemies\Mire\MireMimic_1.png" />
+    <Content Include="NPCs\Enemies\Other\CyberClaw.png" />
     <Content Include="NPCs\Enemies\Other\DragonClaw.png" />
     <Content Include="NPCs\Enemies\Other\ElderDragon.png" />
     <Content Include="NPCs\Enemies\Other\HydraClaw.png" />
