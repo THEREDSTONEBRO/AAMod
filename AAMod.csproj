@@ -117,7 +117,6 @@
     <Compile Include="Items\Dev\GentlemansRapier.cs" />
     <Compile Include="Items\Projectiles\EnderSickle.cs" />
     <Compile Include="Items\Projectiles\DragonBreathP.cs" />
-    <Compile Include="Items\Projectiles\DuckEX.cs" />
     <Compile Include="Items\Projectiles\TopHat.cs" />
     <Compile Include="Items\Summoning\Minions\EnderMinionEX.cs" />
     <Compile Include="Items\Walls\DoomstoneBrickWall.cs" />
@@ -1250,6 +1249,8 @@
     <Content Include="Items\Projectiles\AmphibiousProjectile.png" />
     <Content Include="Items\Projectiles\AmphibiousProjectileEX.png" />
     <Content Include="Items\Projectiles\AmphibiousProjectileEXS.png" />
+    <Content Include="Items\Projectiles\AmphibiousProjectileEXS_Glow.png" />
+    <Content Include="Items\Projectiles\AmphibiousProjectileEX_Glow.png" />
     <Content Include="Items\Projectiles\AmphibiousProjectileS.png" />
     <Content Include="Items\Projectiles\Antimatter.png" />
     <Content Include="Items\Projectiles\APP.png" />
@@ -1269,6 +1270,7 @@
     <Content Include="Items\Projectiles\Duck.png" />
     <Content Include="Items\Projectiles\DuckEX.png" />
     <Content Include="Items\Projectiles\EnderSickle.png" />
+    <Content Include="Items\Projectiles\EnderSickle_Glow.png" />
     <Content Include="Items\Projectiles\Etheral.png" />
     <Content Include="Items\Projectiles\EtheralEX.png" />
     <Content Include="Items\Projectiles\EtheralLazer.png" />
@@ -1319,7 +1321,9 @@
     <Content Include="Items\Projectiles\Void.png" />
     <Content Include="Items\Projectiles\VoidStarPF.png" />
     <Content Include="Items\Projectiles\VoidStarPF_Glow.png" />
+    <Content Include="Items\Projectiles\Void_Glow.png" />
     <Content Include="Items\Projectiles\ZeroStarP.png" />
+    <Content Include="Items\Projectiles\ZeroStarP_Glow.png" />
     <Content Include="Items\Ranged\Apollo.png" />
     <Content Include="Items\Ranged\ApollosWrath.png" />
     <Content Include="Items\Ranged\BoneBow.png" />

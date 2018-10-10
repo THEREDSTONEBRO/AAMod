@@ -85,13 +85,22 @@ namespace AAMod.NPCs.Bosses.Zero
         {
             if (damage > 20)
             {
-                if (Main.rand.Next(10) == 0)
+                if (Main.rand.Next(0,10) == 0)
                 {
-                    Vector2 tele = new Vector2(npc.position.X + Main.rand.Next(-3, 3), npc.position.Y + Main.rand.Next(-3, 3));
                     Player player = Main.player[npc.target];
-                    if (tele.X < player.position.X + (Main.screenWidth / 2) && tele.X > player.position.X - (Main.screenWidth / 2) && tele.Y < player.position.Y + (Main.screenHeight / 2) && tele.Y > player.position.Y - (Main.screenHeight / 2))
+                    int dist = 7;
+                    for (int a = (int)(npc.position.X - dist); a <= (int)(npc.position.X + dist); a++)
                     {
-                        npc.velocity = tele;
+                        for (int b = (int)(npc.position.Y - dist); b <= (int)(npc.position.Y + dist); b++)
+                        {
+                            if (Vector2.Distance(new Vector2(npc.position.X, npc.position.Y), new Vector2(a, b)) <= dist)
+                            {
+                                Vector2 tele = new Vector2(a, b);
+                                Main.PlaySound(mod.GetLegacySoundSlot(Terraria.ModLoader.SoundType.Custom, "Sounds/Sounds/Glitch"), npc.position);
+                                npc.velocity = tele;
+                                Main.PlaySound(mod.GetLegacySoundSlot(Terraria.ModLoader.SoundType.Custom, "Sounds/Sounds/Glitch"), tele);
+                            }
+                        }
                     }
                 }
             }
