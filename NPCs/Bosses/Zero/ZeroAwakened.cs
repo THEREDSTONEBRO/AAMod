@@ -85,14 +85,11 @@ namespace AAMod.NPCs.Bosses.Zero
         {
             if (damage > 20)
             {
-                if (Main.rand.Next(10) == 0)
+                if (Main.rand.Next(0,10) == 0)
                 {
-                    Vector2 tele = new Vector2(npc.position.X + Main.rand.Next(-3, 3), npc.position.Y + Main.rand.Next(-3, 3));
                     Player player = Main.player[npc.target];
-                    if (tele.X < player.position.X + (Main.screenWidth / 2) && tele.X > player.position.X - (Main.screenWidth / 2) && tele.Y < player.position.Y + (Main.screenHeight / 2) && tele.Y > player.position.Y - (Main.screenHeight / 2))
-                    {
-                        npc.velocity = tele;
-                    }
+                    Vector2 tele = new Vector2(player.Center.X + (Main.rand.Next(-20, 21) * 16), player.Center.Y + (Main.rand.Next(-20, 21) * 16));
+                    npc.Center = tele;
                 }
             }
         }
