@@ -71,7 +71,7 @@ namespace AAMod.NPCs.Bosses.Zero
         {
             potionType = ItemID.GreaterHealingPotion;   //boss drops
             AAWorld.downedZero = true;
-            Projectile.NewProjectile((new Vector2(npc.position.X + 100f, npc.position.Y + 89f)), (new Vector2(0f, 0f)), mod.ProjectileType("ZeroDeath1"), 0, 0);
+            Projectile.NewProjectile((new Vector2(npc.position.X, npc.position.Y)), (new Vector2(0f, 0f)), mod.ProjectileType("ZeroDeath1"), 0, 0);
             
         }
 

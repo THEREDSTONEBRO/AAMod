@@ -5,13 +5,31 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.GameContent.Achievements;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace AAMod.Items.Projectiles
 {
 	// to investigate: Projectile.Damage, (8843)
 	class ZeroStarP : ModProjectile
 	{
-		public override void SetDefaults()
+        public static short customGlowMask = 0;
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("Zero Star");
+            Main.projFrames[projectile.type] = 5;
+            if (Main.netMode != 2)
+            {
+                Texture2D[] glowMasks = new Texture2D[Main.glowMaskTexture.Length + 1];
+                for (int i = 0; i < Main.glowMaskTexture.Length; i++)
+                {
+                    glowMasks[i] = Main.glowMaskTexture[i];
+                }
+                glowMasks[glowMasks.Length - 1] = mod.GetTexture("Items/Projectiles/" + GetType().Name + "_Glow");
+                customGlowMask = (short)(glowMasks.Length - 1);
+                Main.glowMaskTexture = glowMasks;
+            }
+        }
+        public override void SetDefaults()
 		{
 
             projectile.CloneDefaults(ProjectileID.LightDisc);
@@ -24,7 +42,7 @@ namespace AAMod.Items.Projectiles
             projectile.tileCollide = false;
 			projectile.penetrate = -1;
 			projectile.timeLeft = 300;
-		
-		}
+            projectile.glowMask = customGlowMask;
+        }
 	}
 }

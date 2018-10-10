@@ -8,6 +8,24 @@ namespace AAMod.Items.Projectiles     //We need this to basically indicate the f
 {
     public class DarkShredders : ModProjectile
     {
+        public static short customGlowMask = 0;
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("DarkShredders");
+            if (Main.netMode != 2)
+            {
+                Texture2D[] glowMasks = new Texture2D[Main.glowMaskTexture.Length + 1];
+                for (int i = 0; i < Main.glowMaskTexture.Length; i++)
+                {
+                    glowMasks[i] = Main.glowMaskTexture[i];
+                }
+                glowMasks[glowMasks.Length - 1] = mod.GetTexture("Items/Projectiles/" + GetType().Name + "_Glow");
+                customGlowMask = (short)(glowMasks.Length - 1);
+                Main.glowMaskTexture = glowMasks;
+            }
+            
+        }
+
         public override void SetDefaults()
         {
             projectile.width = 130;     //Set the hitbox width
@@ -18,14 +36,8 @@ namespace AAMod.Items.Projectiles     //We need this to basically indicate the f
             projectile.ignoreWater = true; //Tells the game whether or not projectile will be affected by water        
             projectile.melee = true;  //Tells the game whether it is a melee projectile or not
             projectile.scale = 2f;
- 
+            projectile.glowMask = customGlowMask;
         }
-
-        public override void SetStaticDefaults()
-        {
-            DisplayName.SetDefault("DarkShredders");
-        }
-
         public override void AI()
         {
             //-------------------------------------------------------------Sound-------------------------------------------------------

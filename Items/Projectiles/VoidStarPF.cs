@@ -5,12 +5,30 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.GameContent.Achievements;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace AAMod.Items.Projectiles
 {
 	class VoidStarPF : ModProjectile
 	{
-		public override void SetDefaults()
+        public static short customGlowMask = 0;
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("Void Star");
+            if (Main.netMode != 2)
+            {
+                Texture2D[] glowMasks = new Texture2D[Main.glowMaskTexture.Length + 1];
+                for (int i = 0; i < Main.glowMaskTexture.Length; i++)
+                {
+                    glowMasks[i] = Main.glowMaskTexture[i];
+                }
+                glowMasks[glowMasks.Length - 1] = mod.GetTexture("Items/Projectiles/" + GetType().Name + "_Glow");
+                customGlowMask = (short)(glowMasks.Length - 1);
+                Main.glowMaskTexture = glowMasks;
+            }
+        }
+
+        public override void SetDefaults()
 		{
             projectile.width = 60;
             projectile.height = 60;
@@ -21,8 +39,9 @@ namespace AAMod.Items.Projectiles
             projectile.timeLeft = 300;
             projectile.hide = true;
             projectile.aiStyle = 0;
-            projectile.alpha = 255;
+            projectile.alpha = 100;
             projectile.ignoreWater = true;
+            projectile.glowMask = customGlowMask;
         }
 
         public override void AI()
