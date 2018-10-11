@@ -55,6 +55,7 @@ namespace AAMod.Items.Dev
                 item.useTime = 26;
                 item.useAnimation = 26;
                 item.thrown = true;
+                item.melee = false;
                 item.damage = 200;
                 item.shoot = mod.ProjectileType("TitanAxe");
                 item.shootSpeed = 12f;
@@ -67,6 +68,7 @@ namespace AAMod.Items.Dev
                 item.useTime = 26;
                 item.useAnimation = 26;
                 item.melee = true;
+                item.thrown = false;
                 item.shoot = 0;
                 item.damage = 200;
                 item.noMelee = false;

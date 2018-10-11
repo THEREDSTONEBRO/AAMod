@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Projectiles
 {
-    public class Antimatter : ModProjectile
+    public class Neutralizer : ModProjectile
     {
         public override void SetDefaults()
         {
@@ -16,7 +16,7 @@ namespace AAMod.Items.Projectiles
             projectile.hostile = false;
             projectile.ranged = true;
             projectile.extraUpdates = 100;
-            projectile.timeLeft = 700;
+            projectile.timeLeft = 600;
             projectile.penetrate = -1;
             projectile.tileCollide = false;
         }
@@ -25,6 +25,21 @@ namespace AAMod.Items.Projectiles
 		{
 		DisplayName.SetDefault("Antimatter");
 		}
+
+        public override bool OnTileCollide(Vector2 oldVelocity)
+        {
+            if (projectile.velocity.X != oldVelocity.X)
+            {
+                projectile.position.X = projectile.position.X + projectile.velocity.X;
+                projectile.velocity.X = -oldVelocity.X;
+            }
+            if (projectile.velocity.Y != oldVelocity.Y)
+            {
+                projectile.position.Y = projectile.position.Y + projectile.velocity.Y;
+                projectile.velocity.Y = -oldVelocity.Y;
+            }
+            return false; // return false because we are handling collision
+        }
 
         public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
         {
@@ -47,7 +62,6 @@ namespace AAMod.Items.Projectiles
                     Main.dust[num448].velocity *= 0.2f;
                     Main.dust[num448].noGravity = true;
                 }
-                return;
             }
         }
 
