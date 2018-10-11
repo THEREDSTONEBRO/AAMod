@@ -92,7 +92,7 @@ While cooldown is occurring, your invincibility frames and speed are increased
                         player.Teleport(vector32, 1, 0);
                         NetMessage.SendData(65, -1, -1, null, 0, player.whoAmI, vector32.X, vector32.Y, 1, 0, 0);
                         Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Sounds/Glitch"));
-                        rodCD = 300;
+                        rodCD = 180;
                     }
                 }
             }
