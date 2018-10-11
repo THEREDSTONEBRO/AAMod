@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace AAMod.Items.Ranged
+namespace AAMod.Items.Boss.Zero
 {
 	public class Neutralizer : ModItem
 	{
