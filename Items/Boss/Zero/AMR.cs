@@ -17,6 +17,7 @@ namespace AAMod.Items.Boss.Zero
         {
             DisplayName.SetDefault("Anti-matter Rifle");
             Tooltip.SetDefault(@"Fires an infinitely piercing laser that ignores tiles
+Gets stronger the more the laser pierces
 Doesn't require ammo");
             if (Main.netMode != 2)
             {
@@ -64,6 +65,17 @@ Doesn't require ammo");
         public override Vector2? HoldoutOffset()
         {
             return new Vector2(-1, 0);
+        }
+
+        public override void AddRecipes()
+        {
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(null, "ApocalyptitePlate", 5);
+            recipe.AddIngredient(null, "UnstableSingularity", 5);
+            recipe.AddIngredient(ItemID.SniperRifle);
+            recipe.AddTile(null, "BinaryReassembler");
+            recipe.SetResult(this);
+            recipe.AddRecipe();
         }
     }
 }

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+using System.IO;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
@@ -8,12 +7,11 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Projectiles
 {
-    public class AmphibiousProjectileEX : ModProjectile
+    class AmphibiousProjectileEX : ModProjectile
     {
         public static short customGlowMask = 0;
-    	public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Mudkip");
+        public override void SetStaticDefaults()
+        {
             Main.projFrames[projectile.type] = 5;
             if (Main.netMode != 2)
             {
@@ -27,41 +25,65 @@ namespace AAMod.Items.Projectiles
                 Main.glowMaskTexture = glowMasks;
             }
         }
-    	
+
         public override void SetDefaults()
         {
-            projectile.CloneDefaults(ProjectileID.RocketSnowmanIV);
-            aiType = ProjectileID.RocketSnowmanIII;
-            projectile.width = 26;
-            projectile.height = 28;
-            projectile.aiStyle = 1;
+            projectile.width = 48;
+            projectile.height = 30;
             projectile.friendly = true;
-            projectile.melee = true;
-            projectile.hostile = false;
-            projectile.penetrate = -1;
-            projectile.timeLeft = 600;
+            projectile.magic = true;
+            projectile.ignoreWater = true;
+            projectile.tileCollide = true;
             projectile.alpha = 0;
-            projectile.tileCollide = false;
+            projectile.penetrate = 1;
+            projectile.timeLeft = 900;
+            projectile.friendly = true;
+            projectile.hostile = false;
             projectile.glowMask = customGlowMask;
+        }
+
+        public override bool PreDraw(SpriteBatch sb, Color lightColor) //this is where the animation happens
+        {
+            projectile.frameCounter++; //increase the frameCounter by one
+            if (projectile.frameCounter >= 10) //once the frameCounter has reached 10 - change the 10 to change how fast the projectile animates
+            {
+                projectile.frame++; //go to the next frame
+                projectile.frameCounter = 0; //reset the counter
+                if (projectile.frame > 5) //if past the last frame
+                    projectile.frame = 0; //go back to the first frame
+            }
+            return true;
         }
 
         public override void AI()
         {
-            if (Main.rand.Next(3) == 0)
+            for (int i = 0; i < 200; i++)
             {
-                Dust.NewDust(projectile.position + projectile.velocity, projectile.width, projectile.height, 186, projectile.velocity.X * 0.5f, projectile.velocity.Y * 0.5f);
+                NPC target = Main.npc[i];
+                //If the npc is hostile
+                if (!target.friendly)
+                {
+                    //Get the shoot trajectory from the projectile and target
+                    float shootToX = target.position.X + (float)target.width * 0.5f - projectile.Center.X;
+                    float shootToY = target.position.Y - projectile.Center.Y;
+                    float distance = (float)System.Math.Sqrt((double)(shootToX * shootToX + shootToY * shootToY));
+
+                    //If the distance between the live targeted npc and the projectile is less than 480 pixels
+                    if (distance < 480f && !target.friendly && target.active)
+                    {
+                        //Divide the factor, 3f, which is the desired velocity
+                        distance = 3f / distance;
+
+                        //Multiply the distance by a multiplier if you wish the projectile to have go faster
+                        shootToX *= distance * 5;
+                        shootToY *= distance * 5;
+
+                        //Set the velocities to the shoot values
+                        projectile.velocity.X = shootToX;
+                        projectile.velocity.Y = shootToY;
+                    }
+                }
             }
-        }
-
-        public override void Kill(int timeLeft)
-        {
-            Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 10);
-        }
-
-        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
-        {
-            target.AddBuff(BuffID.Wet, 600);
-            target.AddBuff(BuffID.Daybreak, 600);
         }
     }
 }

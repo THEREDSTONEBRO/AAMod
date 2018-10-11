@@ -16,8 +16,7 @@ namespace AAMod.Items.Armor.Doomsday.Zerokip
 			Tooltip.SetDefault(@"18% increased movement speed
 16% increased melee speed
 25% decreased ammo consumption
-8% increased damage resistance
-The power to destroy entire planets rests in this armor");
+8% increased damage resistance");
 
 		}
 

@@ -14,7 +14,8 @@ namespace AAMod.Items.Dev
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Umbra");
-			Tooltip.SetDefault("A dark sword from a dark creature.");
+			Tooltip.SetDefault(@"A dark sword from a dark creature
+Blade of Night EX");
 			if (Main.netMode != 2)
 			{
 				Texture2D[] glowMasks = new Texture2D[Main.glowMaskTexture.Length + 1];

@@ -36,10 +36,10 @@ namespace AAMod.NPCs.Enemies.Other
         {
             if (npc.life <= 0)          //this make so when the npc has 0 life(dead) he will spawn this
             {
-                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gore/CyberClawGore1"), 1f);
-                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gore/CyberClawGore2"), 1f);
-                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gore/CyberClawGore3"), 1f);
-                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gore/CyberClawGore4"), 1f);
+                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/CyberClawGore1"), 1f);
+                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/CyberClawGore2"), 1f);
+                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/CyberClawGore3"), 1f);
+                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/CyberClawGore4"), 1f);
             }
         }
         public override void ModifyHitPlayer(Player target, ref int damage, ref bool crit)

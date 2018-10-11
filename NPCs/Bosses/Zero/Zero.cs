@@ -7,6 +7,7 @@ using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
+using AAMod;
 
 namespace AAMod.NPCs.Bosses.Zero
 {
@@ -67,7 +68,7 @@ namespace AAMod.NPCs.Bosses.Zero
 
         public override void HitEffect(int hitDirection, double damage)
         {
-            if (npc.life <= npc.lifeMax && npc.type == mod.NPCType<Zero>() && NPC.AnyNPCs(mod.NPCType<VoidStar>()) && NPC.AnyNPCs(mod.NPCType<Taser>()) && NPC.AnyNPCs(mod.NPCType<RealityCannon>()) && NPC.AnyNPCs(mod.NPCType<RiftShredder>()))
+            if (npc.life <= npc.lifeMax && npc.type == mod.NPCType<Zero>() && (NPC.AnyNPCs(mod.NPCType<VoidStar>()) || NPC.AnyNPCs(mod.NPCType<Taser>()) || NPC.AnyNPCs(mod.NPCType<RealityCannon>()) || NPC.AnyNPCs(mod.NPCType<RiftShredder>())))
             {
                 hitDirection = 0;
                 damage = 0.0;
@@ -75,15 +76,15 @@ namespace AAMod.NPCs.Bosses.Zero
             }
             if (npc.life <= 0 && npc.type == mod.NPCType<Zero>())
             {
-                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gore/ZeroGore1"), 1f);
-                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gore/ZeroGore1"), 1f);
-                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gore/ZeroGore1"), 1f);
-                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gore/ZeroGore1"), 1f);
-                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gore/ZeroGore2"), 1f);
-                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gore/ZeroGore3"), 1f);
-                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gore/ZeroGore3"), 1f);
-                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gore/ZeroGore3"), 1f);
-                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gore/ZeroGore3"), 1f);
+                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/ZeroGore1"), 1f);
+                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/ZeroGore1"), 1f);
+                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/ZeroGore1"), 1f);
+                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/ZeroGore1"), 1f);
+                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/ZeroGore2"), 1f);
+                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/ZeroGore3"), 1f);
+                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/ZeroGore3"), 1f);
+                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/ZeroGore3"), 1f);
+                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/ZeroGore3"), 1f);
                 npc.position.X = npc.position.X + npc.width / 2;
                 npc.position.Y = npc.position.Y + npc.height / 2;
                 npc.width = 100;
@@ -108,7 +109,7 @@ namespace AAMod.NPCs.Bosses.Zero
             {
                 npc.DropLoot(mod.ItemType("ApocalyptitePlate"), 20, 30);
                 npc.DropLoot(mod.ItemType("UnstableSingularity"), 25, 35);
-                string[] lootTable = { "DoomRay", "RiftShredder", "EventHorizon", "VoidStar", "RealityCannon", "TeslaHand", "ZeroStar" };
+                string[] lootTable = { "DoomRay", "RiftShredder", "EventHorizon", "VoidStar", "RealityCannon", "TeslaHand", "ZeroStar", "Neutralizer" };
                 int loot = Main.rand.Next(lootTable.Length);
                 npc.DropLoot(mod.ItemType(lootTable[loot]));
                 npc.DropLoot(Items.Vanity.Mask.ZeroMask.type, 1f / 7);

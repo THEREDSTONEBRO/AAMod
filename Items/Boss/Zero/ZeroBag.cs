@@ -33,9 +33,9 @@ namespace AAMod.Items.Boss.Zero
             {
                 player.QuickSpawnItem(mod.ItemType("ZeroMask"));
             }
-            if (Main.rand.NextFloat() < 0.05f)
+            if (Main.rand.NextFloat() < 0.01f)
             {
-                int choice = Main.rand.Next(13);
+                int choice = Main.rand.Next(14);
                 {
                     if (choice == 0)
                     {
@@ -106,10 +106,14 @@ namespace AAMod.Items.Boss.Zero
                     {
                         player.QuickSpawnItem(mod.ItemType("DuckstepGun"));
                     }
+                    if (choice == 13)
+                    {
+                        player.QuickSpawnItem(mod.ItemType("GentlemansRapier"));
+                    }
                 }
             }
             player.QuickSpawnItem(mod.ItemType("UnstableSingularity"), Main.rand.Next(25, 36));
-            string[] lootTable = { "DoomRay", "EventHorizon", "RealityCannon", "RiftShredder", "VoidStar", "TeslaHand", "ZeroStar" };
+            string[] lootTable = { "DoomRay", "EventHorizon", "RealityCannon", "RiftShredder", "VoidStar", "TeslaHand", "ZeroStar", "Neutralizer" };
             int loot = Main.rand.Next(lootTable.Length);
             player.QuickSpawnItem(mod.ItemType(lootTable[loot]));
             if (Main.rand.NextFloat() < 0.05f && AAWorld.RealityDropped == false)

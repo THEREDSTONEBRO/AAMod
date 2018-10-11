@@ -39,7 +39,7 @@ Increases your max number of minions by 2");
         {
 
             player.setBonus = "Your minions bathe your enemies in shadowflame \n" + "You Always have a small Imp servant by your side";
-
+            Projectile.NewProjectile(player.position, new Microsoft.Xna.Framework.Vector2(0, 0), ProjectileID.FlyingImp, 0, 0f, Main.myPlayer, 0f, 0f);
             player.GetModPlayer<AAPlayer>(mod).trueDemon = true;
             player.impMinion = true;
         }

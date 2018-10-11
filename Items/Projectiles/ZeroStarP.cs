@@ -16,7 +16,6 @@ namespace AAMod.Items.Projectiles
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Zero Star");
-            Main.projFrames[projectile.type] = 5;
             if (Main.netMode != 2)
             {
                 Texture2D[] glowMasks = new Texture2D[Main.glowMaskTexture.Length + 1];

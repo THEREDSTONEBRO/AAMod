@@ -28,7 +28,7 @@ namespace AAMod.Items.Dev
 			item.UseSound = SoundID.Item1;
 			item.autoReuse = true;
 			item.shoot = mod.ProjectileType("AmphibiousProjectileEX");
-            item.shootSpeed = 14f;
+            item.shootSpeed = 18f;
             item.expert = true;
 		}
         

@@ -42,13 +42,11 @@ namespace AAMod.Items.Boss.Zero
             item.height = 32;
             item.damage = 250;
             item.UseSound = SoundID.Item13;
-            item.shoot = mod.ProjectileType("DoomRay");
+            item.shoot = mod.ProjectileType("DoomRayP");
             item.value = Item.sellPrice(0, 50, 0, 0);
             item.noMelee = true;
-            item.noUseGraphic = true;
             item.magic = true;
             item.autoReuse = true;
-            item.noUseGraphic = false;
         }
 
         public override void ModifyTooltips(List<TooltipLine> list)

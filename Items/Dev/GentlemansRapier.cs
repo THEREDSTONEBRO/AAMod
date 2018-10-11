@@ -24,8 +24,8 @@ Left clicking swings the blade
 			item.melee = true;
 			item.width = 64;
 			item.height = 66;
-			item.useTime = 23;
-			item.useAnimation = 23;
+			item.useTime = 16;
+			item.useAnimation = 16;
 			item.useStyle = 1;
 			item.knockBack = 3;
 			item.value = 100000;
@@ -57,14 +57,10 @@ Left clicking swings the blade
             if (player.altFunctionUse == 2)
             {
                 item.useStyle = 3;
-                item.useTime = 20;
-                item.useAnimation = 20;
             }
             else
             {
                 item.useStyle = 1;
-                item.useTime = 23;
-                item.useAnimation = 23;
             }
             return base.CanUseItem(player);
 		}

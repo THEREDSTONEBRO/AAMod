@@ -11,7 +11,7 @@ namespace AAMod.Items.Dev
 		public override void SetStaticDefaults()
 		{
             DisplayName.SetDefault("Gentleman's Longblade");
-            Tooltip.SetDefault(@"Shoots dapper top hats
+            Tooltip.SetDefault(@"Shoots many dapper top hats
 Right clicking thrusts the blade forward
 Left clicking swings the blade
 Gentleman's Rapier EX");
@@ -23,8 +23,8 @@ Gentleman's Rapier EX");
 			item.melee = true;
 			item.width = 94;
 			item.height = 96;
-			item.useTime = 15;
-			item.useAnimation = 15;
+			item.useTime = 10;
+			item.useAnimation = 10;
 			item.useStyle = 1;
 			item.knockBack = 3;
 			item.value = 100000;
@@ -32,7 +32,7 @@ Gentleman's Rapier EX");
             item.shoot = mod.ProjectileType("TopHat");
             item.UseSound = SoundID.Item1;
 			item.autoReuse = true;
-            item.shootSpeed = 12f;
+            item.shootSpeed = 18f;
         }
 
         public override void ModifyTooltips(List<TooltipLine> list)
@@ -56,16 +56,25 @@ Gentleman's Rapier EX");
             if (player.altFunctionUse == 2)
             {
                 item.useStyle = 3;
-                item.useTime = 12;
-                item.useAnimation = 12;
             }
             else
             {
                 item.useStyle = 1;
-                item.useTime = 15;
-                item.useAnimation = 15;
             }
             return base.CanUseItem(player);
 		}
-	}
+
+        public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
+        {
+            float numberProjectiles = 3 + Main.rand.Next(3); // 3, 4, or 5 shots
+            float rotation = MathHelper.ToRadians(45);
+            position += Vector2.Normalize(new Vector2(speedX, speedY)) * 45f;
+            for (int i = 0; i < numberProjectiles; i++)
+            {
+                Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedBy(MathHelper.Lerp(-rotation, rotation, i / (numberProjectiles - 1))) * .2f; // Watch out for dividing by 0 if there is only 1 projectile.
+                Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockBack, player.whoAmI);
+            }
+            return false;
+        }
+    }
 }

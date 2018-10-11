@@ -14,9 +14,9 @@ namespace AAMod.Items.Projectiles
             projectile.aiStyle = 0;
             projectile.friendly = true;
             projectile.hostile = false;
-            projectile.magic = true;
+            projectile.ranged = true;
             projectile.extraUpdates = 100;
-            projectile.timeLeft = 400;
+            projectile.timeLeft = 700;
             projectile.penetrate = -1;
             projectile.tileCollide = false;
         }
@@ -25,6 +25,11 @@ namespace AAMod.Items.Projectiles
 		{
 		DisplayName.SetDefault("Antimatter");
 		}
+
+        public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
+        {
+            projectile.damage = (int)(projectile.damage * 1.2);
+        }
 
         public override void AI()
         {

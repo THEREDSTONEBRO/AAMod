@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using AAMod.NPCs;
+using AAMod.NPCs.Bosses.Zero;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
@@ -95,6 +96,7 @@ namespace AAMod
             ChairMinionEX = false;
             infinityOverload = false;
             tribalSet = false;
+            trueTribal = false;
             impSet = false;
             trueDemon = false;
             trueDeathly = false;
@@ -316,7 +318,7 @@ namespace AAMod
                 if (AAMod.InfinityHotKey.JustPressed && SnapCD == 0)
                 {
                     SnapCD = 72000;
-                    Main.npc.Where(x => x.active && !x.townNPC && x.type != NPCID.TargetDummy && !x.boss).ToList().ForEach(x =>
+                    Main.npc.Where(x => x.active && !x.townNPC && x.type != NPCID.TargetDummy && x.type != mod.NPCType<RiftShredder>() && x.type != mod.NPCType<Taser>() && x.type != mod.NPCType<RealityCannon>() && x.type != mod.NPCType<VoidStar>() && x.type != mod.NPCType<TeslaHand>() && !x.boss).ToList().ForEach(x =>
                     {
 
                         Main.NewText("Perfectly Balanced, as all things should be");
