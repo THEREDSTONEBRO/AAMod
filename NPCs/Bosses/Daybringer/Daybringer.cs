@@ -34,7 +34,7 @@ namespace AAMod.NPCs.Bosses.Daybringer
         public override void SetDefaults()
         {
             npc.lifeMax = 130000;
-            npc.damage = 70;
+            npc.defense = 100;
             npc.defense = 70;
             npc.knockBackResist = 0f;
             npc.width = 46;
@@ -69,6 +69,14 @@ namespace AAMod.NPCs.Bosses.Daybringer
             base.Init();
             head = true;
         }
+        public override void HitEffect(int hitDirection, double damage)
+        {
+            if (npc.life <= 0 && npc.type == mod.NPCType<DaybringerHead>())
+            {
+                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/DBGore1"), 1f);
+                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/DBGore2"), 1f);
+            }
+        }       
     }
 
     class DaybringerBody : DaybringerHead
@@ -108,6 +116,14 @@ namespace AAMod.NPCs.Bosses.Daybringer
             base.Init();
             body = true;
         }
+
+        public override void HitEffect(int hitDirection, double damage)
+        {
+            if (npc.life <= 0 && npc.type == mod.NPCType<DaybringerHead>())
+            {
+                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/DBGore3"), 1f);
+            }
+        }
     }
 
     class DaybringerTail : DaybringerHead
@@ -145,6 +161,13 @@ namespace AAMod.NPCs.Bosses.Daybringer
         {
             base.Init();
             tail = true;
+        }
+        public override void HitEffect(int hitDirection, double damage)
+        {
+            if (npc.life <= 0 && npc.type == mod.NPCType<DaybringerHead>())
+            {
+                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/DBGore4"), 1f);
+            }
         }
     }
     // I made this 2nd base class to limit code repetition.
@@ -658,7 +681,7 @@ namespace AAMod.NPCs.Bosses.Daybringer
             {
                 npc.scale = 2f;
                 speed = 20f;
-                npc.damage = 75;
+                npc.defense = 105;
                 if (Main.expertMode)
                 {
                     npc.defense = 68;
@@ -672,7 +695,7 @@ namespace AAMod.NPCs.Bosses.Daybringer
             {
                 npc.scale = 1.5f;
                 speed = 18.25f;
-                npc.damage = 70;
+                npc.defense = 100;
                 if (Main.expertMode)
                 {
                     npc.defense = 74;

@@ -151,7 +151,6 @@ namespace AAMod.NPCs.Bosses.Zero
 
         public override void AI()
         {
-
             /*if (npc.ai[3] != 6)
             {
                 if (npc.ai[3] != npc.localAI[0])
@@ -173,7 +172,6 @@ namespace AAMod.NPCs.Bosses.Zero
             {
                 npc.dontTakeDamage = false;
             }*/
-
             if ((NPC.CountNPCS(mod.NPCType<Searcher>()) < 5 && !Main.expertMode) || (NPC.CountNPCS(mod.NPCType<Searcher>()) < 10 && Main.expertMode))
             {
                 NPC.NewNPC((int)(npc.Center.X + Main.rand.Next(-10, 10)), (int)(npc.Center.Y + Main.rand.Next(-10, 10)), mod.NPCType<Searcher>());

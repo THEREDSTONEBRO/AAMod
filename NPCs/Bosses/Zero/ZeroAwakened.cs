@@ -25,9 +25,9 @@ namespace AAMod.NPCs.Bosses.Zero
         public override void SetDefaults()
         {
             npc.aiStyle = 0;  //5 is the flying AI
-            npc.lifeMax = 120000;   //boss life
+            npc.lifeMax = 240000;   //boss life
             npc.damage = 130;  //boss damage
-            npc.defense = 70;    //boss defense
+            npc.defense = 100;    //boss defense
             npc.knockBackResist = 0f;
             npc.width = 178;
             npc.height = 174;
@@ -122,6 +122,15 @@ namespace AAMod.NPCs.Bosses.Zero
         
         public override void AI()
         {
+
+            if (Main.player[npc.target].GetModPlayer<AAPlayer>().ZoneVoid == false)
+            {
+                npc.defense = 999999999;
+            }
+            else
+            {
+                npc.defense = 100;
+            }
             if (npc.target < 0 || npc.target == 255 || Main.player[npc.target].dead || !Main.player[npc.target].active)
             {
                 npc.TargetClosest(true);
