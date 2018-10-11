@@ -18,12 +18,12 @@ namespace AAMod.Items.Projectiles
             projectile.extraUpdates = 100;
             projectile.timeLeft = 600;
             projectile.penetrate = -1;
-            projectile.tileCollide = false;
+            projectile.tileCollide = true;
         }
 
 		public override void SetStaticDefaults()
 		{
-		DisplayName.SetDefault("Antimatter");
+		DisplayName.SetDefault("Death Beam");
 		}
 
         public override bool OnTileCollide(Vector2 oldVelocity)
@@ -32,11 +32,13 @@ namespace AAMod.Items.Projectiles
             {
                 projectile.position.X = projectile.position.X + projectile.velocity.X;
                 projectile.velocity.X = -oldVelocity.X;
+                projectile.damage = (int)(projectile.damage * 1.2);
             }
             if (projectile.velocity.Y != oldVelocity.Y)
             {
                 projectile.position.Y = projectile.position.Y + projectile.velocity.Y;
                 projectile.velocity.Y = -oldVelocity.Y;
+                projectile.damage = (int)(projectile.damage * 1.2);
             }
             return false; // return false because we are handling collision
         }
