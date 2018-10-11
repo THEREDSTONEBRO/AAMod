@@ -95,6 +95,7 @@ namespace AAMod
             ChairMinionEX = false;
             infinityOverload = false;
             tribalSet = false;
+            trueTribal = false;
             impSet = false;
             trueDemon = false;
             trueDeathly = false;
