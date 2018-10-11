@@ -300,12 +300,12 @@ namespace AAMod.NPCs.Bosses.Zero
                             if (Main.netMode != 1)
                             {
                                 float num380 = 9f;
-                                int num381 = 20;
-                                int num382 = 83;
+                                int num381 = npc.damage;
+                                int num382 = mod.ProjectileType<DeathLaser>();
                                 if (Main.expertMode)
                                 {
                                     num380 = 10.5f;
-                                    num381 = 19;
+                                    num381 = npc.damage;
                                 }
                                 num378 = (float)Math.Sqrt(num376 * num376 + num377 * num377);
                                 num378 = num380 / num378;
@@ -516,12 +516,12 @@ namespace AAMod.NPCs.Bosses.Zero
                         {
                             npc.localAI[1] = 0f;
                             float num394 = 10f;
-                            int num395 = 22;
-                            int num396 = 100;
+                            int num395 = npc.damage;
+                            int num396 = mod.ProjectileType<DeathLaser>();
                             if (Main.expertMode)
                             {
                                 num394 = 12.5f;
-                                num395 = 20;
+                                num395 = npc.damage;
                             }
                             num393 = (float)Math.Sqrt(num391 * num391 + num392 * num392);
                             num393 = num394 / num393;
@@ -618,11 +618,11 @@ namespace AAMod.NPCs.Bosses.Zero
                         {
                             npc.localAI[1] = 0f;
                             float num403 = 9f;
-                            int num404 = 18;
-                            int num405 = 100;
+                            int num404 = npc.damage;
+                            int num405 = mod.ProjectileType<DeathLaser>();
                             if (Main.expertMode)
                             {
-                                num404 = 17;
+                                num404 = npc.damage;
                             }
                             num402 = (float)Math.Sqrt(num400 * num400 + num401 * num401);
                             num402 = num403 / num402;
