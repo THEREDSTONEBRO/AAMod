@@ -16,7 +16,7 @@ namespace AAMod.Items.Armor.Valkyrie
 			DisplayName.SetDefault("Valkyrie Chestplate");
 			Tooltip.SetDefault(@"27% increased melee and throwing damage
 Enemies are more likely to target you
-Hard as ice, light as snow \n");
+Hard as ice, light as snow");
 		}
 
 		public override void SetDefaults()

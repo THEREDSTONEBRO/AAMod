@@ -33,8 +33,7 @@ Functions as a Hellforge, Hellstone Anvil, Alchemy Table, Demon Altar Tinkerer's
         {
             {
                 ModRecipe recipe = new ModRecipe(mod);
-                recipe.AddIngredient(ItemID.DemoniteBar, 30);
-                recipe.AddIngredient(ItemID.ShadowScale, 20);
+                recipe.AddIngredient(null, "CrimsonAltar", 1);
                 recipe.AddIngredient(ItemID.Hellforge, 1);
                 recipe.AddIngredient(ItemID.Bottle, 1);
                 recipe.AddIngredient(ItemID.TinkerersWorkshop, 1);
@@ -46,8 +45,7 @@ Functions as a Hellforge, Hellstone Anvil, Alchemy Table, Demon Altar Tinkerer's
             }
             {
                 ModRecipe recipe = new ModRecipe(mod);
-                recipe.AddIngredient(ItemID.CrimtaneBar, 30);
-                recipe.AddIngredient(ItemID.TissueSample, 20);
+                recipe.AddIngredient(null, "CorruptAltar", 1);
                 recipe.AddIngredient(ItemID.Hellforge, 1);
                 recipe.AddIngredient(ItemID.Bottle, 1);
                 recipe.AddIngredient(ItemID.TinkerersWorkshop, 1);
