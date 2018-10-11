@@ -24,10 +24,12 @@ namespace AAMod.Items.Projectiles
                 customGlowMask = (short)(glowMasks.Length - 1);
                 Main.glowMaskTexture = glowMasks;
             }
+            ProjectileID.Sets.Homing[projectile.type] = true;
         }
 
         public override void SetDefaults()
         {
+            aiType = 270;
             projectile.width = 30;
             projectile.height = 48;
             projectile.friendly = true;
@@ -40,7 +42,6 @@ namespace AAMod.Items.Projectiles
             projectile.friendly = true;
             projectile.hostile = false;
             projectile.glowMask = customGlowMask;
-            ProjectileID.Sets.Homing[projectile.type] = true;
         }
     }
 }
