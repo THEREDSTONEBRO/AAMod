@@ -525,6 +525,7 @@
     <Compile Include="Tiles\AbyssiumBarTile.cs" />
     <Compile Include="Tiles\AbyssiumOreTile.cs" />
     <Compile Include="Tiles\InfernoUBox.cs" />
+    <Compile Include="Tiles\MireUBox.cs" />
     <Compile Include="Tiles\N1Box.cs" />
     <Compile Include="Tiles\AkumataBox.cs" />
     <Compile Include="Tiles\AkumaBox.cs" />
@@ -1125,6 +1126,14 @@
     <Content Include="Items\Dev\Ryugen_Glow.png" />
     <Content Include="Items\Dev\Sax.png" />
     <Content Include="Items\Dev\SkrallStaff.png" />
+    <Content Include="Items\Dev\SuperSaucerBurstModeGreen.png" />
+    <Content Include="Items\Dev\SuperSaucerBurstModeRed.png" />
+    <Content Include="Items\Dev\SuperSaucerEXBurstModeGreen.png" />
+    <Content Include="Items\Dev\SuperSaucerEXBurstModeRed.png" />
+    <Content Include="Items\Dev\SuperSaucerEXSpewModeGreen.png" />
+    <Content Include="Items\Dev\SuperSaucerEXSpewModeRed.png" />
+    <Content Include="Items\Dev\SuperSaucerSpewModeGreen.png" />
+    <Content Include="Items\Dev\SuperSaucerSpewModeRed.png" />
     <Content Include="Items\Dev\TimeTeller.png" />
     <Content Include="Items\Dev\TitanAxe.png" />
     <Content Include="Items\Dev\Umbra.png" />
@@ -1330,7 +1339,9 @@
     <Content Include="Items\Projectiles\Void.png" />
     <Content Include="Items\Projectiles\VoidStarPF.png" />
     <Content Include="Items\Projectiles\VoidStarPF_Glow.png" />
+    <Content Include="Items\Projectiles\Void_Glow.png" />
     <Content Include="Items\Projectiles\ZeroStarP.png" />
+    <Content Include="Items\Projectiles\ZeroStarP_Glow.png" />
     <Content Include="Items\Ranged\Apollo.png" />
     <Content Include="Items\Ranged\ApollosWrath.png" />
     <Content Include="Items\Ranged\BoneBow.png" />
@@ -1633,6 +1644,8 @@
     <Content Include="Palletes\MegaPallet 2.png" />
     <Content Include="Palletes\MegaPallet.png" />
     <Content Include="Palletes\Mire Enemy.png" />
+    <Content Include="Palletes\Pantheon.png" />
+    <Content Include="Palletes\PantheonGigapallet.png" />
     <Content Include="Palletes\Schemes.png" />
     <Content Include="Palletes\Stones.png" />
     <Content Include="Palletes\Valkyrie.png" />
@@ -1884,6 +1897,6 @@
     </PreBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
-    <PostBuildEvent>"C:\Program Files (x86)\Steam\steamapps\common\Terraria\tModLoaderServer.exe" -build "$(ProjectDir)\" -eac  "$(TargetPath)"</PostBuildEvent>
+    <PostBuildEvent>"D:\SteamLibrary\steamapps\common\Terraria\tModLoaderServer.exe" -build "$(ProjectDir)\" -eac  "$(TargetPath)"</PostBuildEvent>
   </PropertyGroup>
 </Project>
