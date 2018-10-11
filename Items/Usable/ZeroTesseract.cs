@@ -58,7 +58,7 @@ UNSTABLE. C0NTAINS C0DE TO ACTIVATE THE BRINGER 0F DEATH");
         {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(null, "ApocalyptitePlate", 15);
-            recipe.AddIngredient(ItemID.LunarBar, 20);
+            recipe.AddIngredient(null, "DarkMatter", 20);
             recipe.AddTile(null, "QuantumFusionAccelerator");
             recipe.SetResult(this, 1);
             recipe.AddRecipe();
