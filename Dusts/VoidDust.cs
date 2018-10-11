@@ -34,7 +34,7 @@ namespace AAMod.Dusts
 
         public override Color? GetAlpha(Dust dust, Color lightColor)
         {
-            return new Color(100, 0, 0, 25);
+            return new Color(0, 0, 0, 25);
         }
     }
 }

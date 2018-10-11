@@ -1,24 +1,20 @@
-using Terraria;
-using System;
 using Terraria.ID;
-using System.Diagnostics;
-using Microsoft.Xna.Framework;
 using Terraria.ModLoader;
-using Microsoft.Xna.Framework.Graphics;
-using Terraria.Audio;
+using Terraria;
+using Microsoft.Xna.Framework;
 using System.Collections.Generic;
+using System.Linq;
+using Microsoft.Xna.Framework.Graphics;
 
-namespace AAMod.Items.Boss.Zero
+namespace AAMod.Items.Ranged
 {
-    public class AMR : ModItem
-    {
+	public class Neutralizer : ModItem
+	{
         public static short customGlowMask = 0;
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Anti-matter Rifle");
-            Tooltip.SetDefault(@"Fires an infinitely piercing laser that ignores tiles
-Gets stronger the more the laser pierces
-Doesn't require ammo");
+            DisplayName.SetDefault("Neutralizer");
+            Tooltip.SetDefault("Fires bouncing lasers that get more powerful as they bounce off walls");
             if (Main.netMode != 2)
             {
                 Texture2D[] glowMasks = new Texture2D[Main.glowMaskTexture.Length + 1];
@@ -26,32 +22,32 @@ Doesn't require ammo");
                 {
                     glowMasks[i] = Main.glowMaskTexture[i];
                 }
-                glowMasks[glowMasks.Length - 1] = mod.GetTexture("Items/Boss/Zero/" + GetType().Name + "_Glow");
+                glowMasks[glowMasks.Length - 1] = mod.GetTexture("Items/Ranged/" + GetType().Name + "_Glow");
                 customGlowMask = (short)(glowMasks.Length - 1);
                 Main.glowMaskTexture = glowMasks;
             }
+            
         }
 
         public override void SetDefaults()
-        {
-            item.glowMask = customGlowMask;
-            item.damage = 300;
-            item.noMelee = true;
-            item.ranged = true;
-            item.width = 74;
-            item.height = 24;
-            item.useTime = 26;
-            item.useAnimation = 26; 
-            item.useStyle = 5; 
+		{
+			item.damage = 220;
+			item.ranged = true;
+			item.width = 34;
+			item.height = 58;
+			item.useTime = 13;
+			item.useAnimation = 13;
+			item.useStyle = 5;
+			item.noMelee = true; //so the item's animation doesn't do damage
+			item.knockBack = 0;
+            item.value = Item.sellPrice(0, 50, 0, 0);
+			item.UseSound = SoundID.Item5;
+			item.autoReuse = false;
             item.shoot = mod.ProjectileType("Antimatter");
-            item.knockBack = 12;
-            item.value = Item.sellPrice(1, 0, 0, 0);
-            item.rare = 9;
-            item.UseSound = new LegacySoundStyle(2, 75, Terraria.Audio.SoundType.Sound);
-            item.autoReuse = true;
-            item.shootSpeed = 8f;
-            item.crit = 5; 
-        }
+			item.shootSpeed = 6f;
+            item.glowMask = customGlowMask;
+		}
+
         public override void ModifyTooltips(List<TooltipLine> list)
         {
             foreach (TooltipLine line2 in list)
@@ -62,9 +58,10 @@ Doesn't require ammo");
                 }
             }
         }
+
         public override Vector2? HoldoutOffset()
         {
-            return new Vector2(-1, 0);
+            return new Vector2(-3, 0);
         }
 
         public override void AddRecipes()
@@ -72,7 +69,7 @@ Doesn't require ammo");
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(null, "ApocalyptitePlate", 5);
             recipe.AddIngredient(null, "UnstableSingularity", 5);
-            recipe.AddIngredient(ItemID.SniperRifle);
+            recipe.AddIngredient(null, "ApollosWrath", 1);
             recipe.AddTile(null, "BinaryReassembler");
             recipe.SetResult(this);
             recipe.AddRecipe();

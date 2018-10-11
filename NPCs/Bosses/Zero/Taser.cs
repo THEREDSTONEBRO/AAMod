@@ -351,7 +351,7 @@ namespace AAMod.NPCs.Bosses.Zero
                     vector7.X += num21 * num23 - 16f;
                     vector7.Y += num22 * num23 - 6f;
                     int num24 = Dust.NewDust(new Vector2(vector7.X, vector7.Y), 30, 10, mod.DustType<Dusts.VoidDust>(), num21 * 0.02f, num22 * 0.02f, 0, default(Color), 2.5f);
-                    Main.dust[num24].noGravity = true;
+                    Main.dust[num24].noGravity = false;
                 }
             }
             return base.PreDraw(spriteBatch, drawColor);

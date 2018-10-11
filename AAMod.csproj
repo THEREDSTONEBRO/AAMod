@@ -112,6 +112,7 @@
     <Compile Include="Items\Armor\Doomsday\Zerokip\ZeroDiverMask.cs" />
     <Compile Include="Items\Armor\Doomsday\Zerokip\ZeroDiverBoots.cs" />
     <Compile Include="Items\Blocks\AkumataBox.cs" />
+    <Compile Include="Items\Boss\Zero\Neutralizer.cs" />
     <Compile Include="Items\Dev\AmphibianLongsword.cs" />
     <Compile Include="Items\Dev\AmphibianLongswordEX.cs" />
     <Compile Include="Items\Dev\AmphibianLongswordEXS.cs" />
@@ -136,6 +137,7 @@
     <Compile Include="Items\Dev\TitanAxe.cs" />
     <Compile Include="Items\Dev\UmbreonSP.cs" />
     <Compile Include="Items\Dev\UmbreonSPEX.cs" />
+    <Compile Include="Items\Projectiles\Neutralizer.cs" />
     <Compile Include="Items\Projectiles\EnderSickle.cs" />
     <Compile Include="Items\Projectiles\DragonBreathP.cs" />
     <Compile Include="Items\Projectiles\TopHat.cs" />
@@ -1270,6 +1272,7 @@
     <Content Include="Items\Projectiles\AmphibiousProjectileEXS_Glow.png" />
     <Content Include="Items\Projectiles\AmphibiousProjectileEX_Glow.png" />
     <Content Include="Items\Projectiles\AmphibiousProjectileS.png" />
+    <Content Include="Items\Projectiles\Neutralizer.png" />
     <Content Include="Items\Projectiles\Antimatter.png" />
     <Content Include="Items\Projectiles\APP.png" />
     <Content Include="Items\Projectiles\BigCrystal.png" />
