@@ -709,6 +709,8 @@
     <Content Include="Dusts\UmbreonSPDust.png" />
     <Content Include="Dusts\VoidDust.png" />
     <Content Include="Dusts\ZeroDust.png" />
+    <Content Include="Gore\CyberClawGore1.png" />
+    <Content Include="Gore\CyberClawGore2.png" />
     <Content Include="Gore\DragonClawGore1.png" />
     <Content Include="Gore\DragonClawGore2.png" />
     <Content Include="Gore\DragonClawGore3.png" />
@@ -1396,7 +1398,6 @@
     <Content Include="Items\Tools\YtriumAxe.png" />
     <Content Include="Items\Tools\YtriumPickaxe.png" />
     <Content Include="Items\Usable\BrokenCode.png" />
-    <Content Include="Items\Usable\BrokenCode_Glow.png" />
     <Content Include="Items\Usable\CalciumSkull.png" />
     <Content Include="Items\Usable\CuriousClaw.png" />
     <Content Include="Items\Usable\CyberneticClaw.png" />
