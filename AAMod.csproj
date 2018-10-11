@@ -112,32 +112,9 @@
     <Compile Include="Items\Armor\Doomsday\Zerokip\ZeroDiverMask.cs" />
     <Compile Include="Items\Armor\Doomsday\Zerokip\ZeroDiverBoots.cs" />
     <Compile Include="Items\Blocks\AkumataBox.cs" />
-    <Compile Include="Items\Boss\Zero\Neutralizer.cs" />
-    <Compile Include="Items\Dev\AmphibianLongsword.cs" />
-    <Compile Include="Items\Dev\AmphibianLongswordEX.cs" />
-    <Compile Include="Items\Dev\AmphibianLongswordEXS.cs" />
-    <Compile Include="Items\Dev\AmphibianLongswordS.cs" />
-    <Compile Include="Items\Dev\CatsEyeRifle.cs" />
-    <Compile Include="Items\Dev\CatsEyeRifleEX.cs" />
-    <Compile Include="Items\Dev\ChairMinion.cs" />
-    <Compile Include="Items\Dev\ChairMinionEX.cs" />
-    <Compile Include="Items\Dev\ChinStaff.cs" />
-    <Compile Include="Items\Dev\ChinStaffEX.cs" />
-    <Compile Include="Items\Dev\DuckstepGun.cs" />
-    <Compile Include="Items\Dev\DuckstepGunEX.cs" />
-    <Compile Include="Items\Dev\EnderStaff.cs" />
     <Compile Include="Items\Dev\EnderStaffEX.cs" />
     <Compile Include="Items\Dev\GentlemansLongblade.cs" />
     <Compile Include="Items\Dev\GentlemansRapier.cs" />
-    <Compile Include="Items\Dev\HallamDevWeapon.cs" />
-    <Compile Include="Items\Dev\Ryugen.cs" />
-    <Compile Include="Items\Dev\Sax.cs" />
-    <Compile Include="Items\Dev\SkrallStaff.cs" />
-    <Compile Include="Items\Dev\TimeTeller.cs" />
-    <Compile Include="Items\Dev\TitanAxe.cs" />
-    <Compile Include="Items\Dev\UmbreonSP.cs" />
-    <Compile Include="Items\Dev\UmbreonSPEX.cs" />
-    <Compile Include="Items\Projectiles\Neutralizer.cs" />
     <Compile Include="Items\Projectiles\EnderSickle.cs" />
     <Compile Include="Items\Projectiles\DragonBreathP.cs" />
     <Compile Include="Items\Projectiles\TopHat.cs" />
@@ -303,6 +280,27 @@
     <Compile Include="Items\Boss\Zero\VoidStar.cs" />
     <Compile Include="Items\Boss\Zero\ZeroBag.cs" />
     <Compile Include="Items\Boss\Zero\ZeroStar.cs" />
+    <Compile Include="Items\Dev\AmphibianLongsword.cs" />
+    <Compile Include="Items\Dev\AmphibianLongswordEX.cs" />
+    <Compile Include="Items\Dev\AmphibianLongswordEXS.cs" />
+    <Compile Include="Items\Dev\AmphibianLongswordS.cs" />
+    <Compile Include="Items\Dev\CatsEyeRifle.cs" />
+    <Compile Include="Items\Dev\CatsEyeRifleEX.cs" />
+    <Compile Include="Items\Dev\ChairMinion.cs" />
+    <Compile Include="Items\Dev\ChairMinionEX.cs" />
+    <Compile Include="Items\Dev\ChinStaff.cs" />
+    <Compile Include="Items\Dev\ChinStaffEX.cs" />
+    <Compile Include="Items\Dev\DuckstepGun.cs" />
+    <Compile Include="Items\Dev\DuckstepGunEX.cs" />
+    <Compile Include="Items\Dev\EnderStaff.cs" />
+    <Compile Include="Items\Dev\HallamDevWeapon.cs" />
+    <Compile Include="Items\Dev\Ryugen.cs" />
+    <Compile Include="Items\Dev\Sax.cs" />
+    <Compile Include="Items\Dev\SkrallStaff.cs" />
+    <Compile Include="Items\Dev\TimeTeller.cs" />
+    <Compile Include="Items\Dev\TitanAxe.cs" />
+    <Compile Include="Items\Dev\UmbreonSP.cs" />
+    <Compile Include="Items\Dev\UmbreonSPEX.cs" />
     <Compile Include="Items\Magic\DragonStaff.cs" />
     <Compile Include="Items\Magic\GelWand.cs" />
     <Compile Include="Items\Magic\MagicFlower.cs" />
@@ -527,6 +525,7 @@
     <Compile Include="Tiles\AbyssiumBarTile.cs" />
     <Compile Include="Tiles\AbyssiumOreTile.cs" />
     <Compile Include="Tiles\InfernoUBox.cs" />
+    <Compile Include="Tiles\MireUBox.cs" />
     <Compile Include="Tiles\N1Box.cs" />
     <Compile Include="Tiles\AkumataBox.cs" />
     <Compile Include="Tiles\AkumaBox.cs" />
@@ -1104,7 +1103,6 @@
     <Content Include="Items\Dev\CatsEyeRifle.png" />
     <Content Include="Items\Dev\CatsEyeRifleEX.png" />
     <Content Include="Items\Dev\CatsEyeRifleEX_Glow.png" />
-    <Content Include="Items\Dev\CatsEyeRifle_Glow.png" />
     <Content Include="Items\Dev\ChairMinion.png" />
     <Content Include="Items\Dev\ChairMinionEX.png" />
     <Content Include="Items\Dev\ChinStaff.png" />
@@ -1272,7 +1270,6 @@
     <Content Include="Items\Projectiles\AmphibiousProjectileEXS_Glow.png" />
     <Content Include="Items\Projectiles\AmphibiousProjectileEX_Glow.png" />
     <Content Include="Items\Projectiles\AmphibiousProjectileS.png" />
-    <Content Include="Items\Projectiles\Neutralizer.png" />
     <Content Include="Items\Projectiles\Antimatter.png" />
     <Content Include="Items\Projectiles\APP.png" />
     <Content Include="Items\Projectiles\BigCrystal.png" />
@@ -1342,12 +1339,15 @@
     <Content Include="Items\Projectiles\Void.png" />
     <Content Include="Items\Projectiles\VoidStarPF.png" />
     <Content Include="Items\Projectiles\VoidStarPF_Glow.png" />
+    <Content Include="Items\Projectiles\Void_Glow.png" />
     <Content Include="Items\Projectiles\ZeroStarP.png" />
+    <Content Include="Items\Projectiles\ZeroStarP_Glow.png" />
     <Content Include="Items\Ranged\Apollo.png" />
     <Content Include="Items\Ranged\ApollosWrath.png" />
     <Content Include="Items\Ranged\BoneBow.png" />
     <Content Include="Items\Ranged\Bubbleshot.png" />
     <Content Include="Items\Ranged\Bunnyzooka.png" />
+    <Content Include="Items\Dev\CatsEyeRifle_Glow.png" />
     <Content Include="Items\Ranged\Bunnyzooka_Glow.png" />
     <Content Include="Items\Ranged\CoralBow.png" />
     <Content Include="Items\Ranged\DeathlyLongbow.png" />
@@ -1644,6 +1644,8 @@
     <Content Include="Palletes\MegaPallet 2.png" />
     <Content Include="Palletes\MegaPallet.png" />
     <Content Include="Palletes\Mire Enemy.png" />
+    <Content Include="Palletes\Pantheon.png" />
+    <Content Include="Palletes\PantheonGigapallet.png" />
     <Content Include="Palletes\Schemes.png" />
     <Content Include="Palletes\Stones.png" />
     <Content Include="Palletes\Valkyrie.png" />
@@ -1895,6 +1897,6 @@
     </PreBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
-    <PostBuildEvent>"C:\Program Files (x86)\Steam\steamapps\common\Terraria\tModLoaderServer.exe" -build "$(ProjectDir)\" -eac  "$(TargetPath)"</PostBuildEvent>
+    <PostBuildEvent>"D:\SteamLibrary\steamapps\common\Terraria\tModLoaderServer.exe" -build "$(ProjectDir)\" -eac  "$(TargetPath)"</PostBuildEvent>
   </PropertyGroup>
 </Project>
