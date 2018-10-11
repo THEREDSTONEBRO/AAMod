@@ -35,7 +35,7 @@ namespace AAMod.Items.Boss.Equinox
             }
             if (Main.rand.Next(2) == 0)
             {
-                int choice = Main.rand.Next(13);
+                int choice = Main.rand.Next(14);
                 {
                     if (choice == 0)
                     {
@@ -105,6 +105,10 @@ namespace AAMod.Items.Boss.Equinox
                     if (choice == 12)
                     {
                         player.QuickSpawnItem(mod.ItemType("DuckstepGun"));
+                    }
+                    if (choice == 13)
+                    {
+                        player.QuickSpawnItem(mod.ItemType("GentlemansRapier"));
                     }
                 }
             }
