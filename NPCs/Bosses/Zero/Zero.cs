@@ -67,7 +67,7 @@ namespace AAMod.NPCs.Bosses.Zero
 
         public override void HitEffect(int hitDirection, double damage)
         {
-            if (npc.life <= npc.lifeMax && npc.type == mod.NPCType<Zero>() && NPC.AnyNPCs(mod.NPCType<VoidStar>()) && NPC.AnyNPCs(mod.NPCType<Taser>()) && NPC.AnyNPCs(mod.NPCType<RealityCannon>()) && NPC.AnyNPCs(mod.NPCType<RiftShredder>()))
+            if (npc.life <= npc.lifeMax && npc.type == mod.NPCType<Zero>() && (NPC.AnyNPCs(mod.NPCType<VoidStar>()) || NPC.AnyNPCs(mod.NPCType<Taser>()) || NPC.AnyNPCs(mod.NPCType<RealityCannon>()) || NPC.AnyNPCs(mod.NPCType<RiftShredder>())))
             {
                 hitDirection = 0;
                 damage = 0.0;

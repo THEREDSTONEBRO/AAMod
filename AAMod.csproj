@@ -525,6 +525,7 @@
     <Compile Include="Tiles\AbyssiumBarTile.cs" />
     <Compile Include="Tiles\AbyssiumOreTile.cs" />
     <Compile Include="Tiles\InfernoUBox.cs" />
+    <Compile Include="Tiles\MireUBox.cs" />
     <Compile Include="Tiles\N1Box.cs" />
     <Compile Include="Tiles\AkumataBox.cs" />
     <Compile Include="Tiles\AkumaBox.cs" />
@@ -1322,7 +1323,9 @@
     <Content Include="Items\Projectiles\Void.png" />
     <Content Include="Items\Projectiles\VoidStarPF.png" />
     <Content Include="Items\Projectiles\VoidStarPF_Glow.png" />
+    <Content Include="Items\Projectiles\Void_Glow.png" />
     <Content Include="Items\Projectiles\ZeroStarP.png" />
+    <Content Include="Items\Projectiles\ZeroStarP_Glow.png" />
     <Content Include="Items\Ranged\Apollo.png" />
     <Content Include="Items\Ranged\ApollosWrath.png" />
     <Content Include="Items\Ranged\BoneBow.png" />
@@ -1864,6 +1867,8 @@
   <ItemGroup>
     <Folder Include="bin\Release\" />
     <Folder Include="Items\Boss\Akumata\" />
+    <Folder Include="Items\Mounts\" />
+    <Folder Include="Items\Pets\" />
     <Folder Include="NPCs\Bosses\Hydra\" />
     <Folder Include="obj\Debug\TempPE\" />
     <Folder Include="obj\NPCs\" />
@@ -1877,6 +1882,6 @@
     </PreBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
-    <PostBuildEvent>"C:\Program Files (x86)\Steam\steamapps\common\Terraria\tModLoaderServer.exe" -build "$(ProjectDir)\" -eac  "$(TargetPath)"</PostBuildEvent>
+    <PostBuildEvent>"D:\SteamLibrary\steamapps\common\Terraria\tModLoaderServer.exe" -build "$(ProjectDir)\" -eac  "$(TargetPath)"</PostBuildEvent>
   </PropertyGroup>
 </Project>

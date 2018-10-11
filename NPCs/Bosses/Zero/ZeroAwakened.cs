@@ -333,6 +333,7 @@ namespace AAMod.NPCs.Bosses.Zero
                     float num385 = Main.player[npc.target].position.Y + Main.player[npc.target].height / 2 - vector37.Y;
                     float num386 = (float)Math.Sqrt(num384 * num384 + num385 * num385);
                     num386 = num383 / num386;
+                    num386 *= 2;
                     npc.velocity.X = num384 * num386;
                     npc.velocity.Y = num385 * num386;
                     npc.ai[1] = 2f;
@@ -357,7 +358,7 @@ namespace AAMod.NPCs.Bosses.Zero
                     {
                         npc.rotation = (float)Math.Atan2(npc.velocity.Y, npc.velocity.X) - 1.57f;
                     }
-                    if (npc.ai[2] >= 70f)
+                    if (npc.ai[2] >= 80f)
                     {
                         npc.ai[3] += 1f;
                         npc.ai[2] = 0f;
@@ -373,15 +374,6 @@ namespace AAMod.NPCs.Bosses.Zero
                             npc.ai[1] = 1f;
                         }
                     }
-                }
-                if (npc.life < npc.lifeMax * 0.4)
-                {
-                    npc.ai[0] = 1f;
-                    npc.ai[1] = 0f;
-                    npc.ai[2] = 0f;
-                    npc.ai[3] = 0f;
-                    npc.netUpdate = true;
-                    return;
                 }
             }
             else if (npc.ai[0] == 1f || npc.ai[0] == 2f)
@@ -523,13 +515,13 @@ namespace AAMod.NPCs.Bosses.Zero
                         if (npc.localAI[1] > 180f && Collision.CanHit(npc.position, npc.width, npc.height, Main.player[npc.target].position, Main.player[npc.target].width, Main.player[npc.target].height))
                         {
                             npc.localAI[1] = 0f;
-                            float num394 = 8.5f;
-                            int num395 = 25;
+                            float num394 = 10f;
+                            int num395 = 22;
                             int num396 = 100;
                             if (Main.expertMode)
                             {
-                                num394 = 10f;
-                                num395 = 23;
+                                num394 = 12.5f;
+                                num395 = 20;
                             }
                             num393 = (float)Math.Sqrt(num391 * num391 + num392 * num392);
                             num393 = num394 / num393;
