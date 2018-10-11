@@ -40,7 +40,7 @@ namespace AAMod.Items.Armor.Demon
 
             player.setBonus = @"Your minions set enemies ablaze
 You Always have a small Imp servant by your side";
-
+            Projectile.NewProjectile(player.position, new Microsoft.Xna.Framework.Vector2(0, 0), ProjectileID.FlyingImp, 0, 0f, Main.myPlayer, 0f, 0f);
             player.GetModPlayer<AAPlayer>(mod).impSet = true;
             player.impMinion = true;
         }

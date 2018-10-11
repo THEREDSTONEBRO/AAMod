@@ -27,7 +27,7 @@ namespace AAMod.NPCs.Bosses.Zero
         }
         public override void AI()
         {
-            if (++projectile.frameCounter >= 3)
+            if (++projectile.frameCounter >= 10)
             {
                 projectile.frameCounter = 0;
                 if (++projectile.frame >= 29)

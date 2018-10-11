@@ -38,6 +38,7 @@ The jungle gives you protection, causing deadly spores to spawn around you";
             player.sporeSac = true;
             player.manaCost *= 0.6f;
             player.manaFlower = true;
+            player.SporeSac();
         }
 
         public override void UpdateEquip(Player player)
