@@ -496,6 +496,7 @@
     <Compile Include="NPCs\Bosses\Nightcrawler\Nightcrawler.cs" />
     <Compile Include="NPCs\Bosses\Pantheon\Mercury.cs" />
     <Compile Include="NPCs\Bosses\Retriever\Retriever.cs" />
+    <Compile Include="NPCs\Bosses\Zero\DeathLaser.cs" />
     <Compile Include="NPCs\Bosses\Zero\RealityCannon.cs" />
     <Compile Include="NPCs\Bosses\Zero\RiftShredder.cs" />
     <Compile Include="NPCs\Bosses\Zero\Taser.cs" />
@@ -1573,6 +1574,7 @@
     <Content Include="NPCs\Bosses\Unused\MrBonesRevenge.png" />
     <Content Include="NPCs\Bosses\Unused\Soul of Cthulhu.png" />
     <Content Include="NPCs\Bosses\Zero\DarkShock.png" />
+    <Content Include="NPCs\Bosses\Zero\DeathLaser.png" />
     <Content Include="NPCs\Bosses\Zero\RealityCannon.png" />
     <Content Include="NPCs\Bosses\Zero\RealityCannon_Glow.png" />
     <Content Include="NPCs\Bosses\Zero\RiftShredder.png" />
