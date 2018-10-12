@@ -7,15 +7,15 @@ using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AAMod.NPCs.Bosses.Broodmother
+namespace AAMod.NPCs.Bosses.Raider
 {
 
     [AutoloadBossHead]
-    public class Broodmother : ModNPC
+    public class Raider : ModNPC
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("The Broodmother");
+            DisplayName.SetDefault("The Raider Ultima");
             Main.npcFrameCount[npc.type] = 6;
 
         }
@@ -28,15 +28,15 @@ namespace AAMod.NPCs.Bosses.Broodmother
             npc.noGravity = true;
             npc.noTileCollide = true;
             npc.chaseable = true;
-            npc.damage = 35;
-            music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/BroodTheme");
-            npc.defense = 20;
+            npc.damage = 70;
+            music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/Boss6");
+            npc.defense = 60;
             npc.boss = true;
             animationType = NPCID.Mothron;
             npc.netAlways = true;
             npc.friendly = false;
-            npc.lifeMax = 8000;
-            npc.value = 20000;
+            npc.lifeMax = 30000;
+            npc.value = 100000;
             npc.HitSound = new LegacySoundStyle(3, 6, Terraria.Audio.SoundType.Sound);
             npc.DeathSound = new LegacySoundStyle(4, 8, Terraria.Audio.SoundType.Sound);
             bossBag = mod.ItemType("BroodBag");
