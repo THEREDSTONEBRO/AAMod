@@ -26,7 +26,7 @@ namespace AAMod.NPCs.Bosses.Zero
         {
             npc.aiStyle = 0;  //5 is the flying AI
             npc.lifeMax = 240000;   //boss life
-            npc.damage = 130;  //boss damage
+            npc.damage = 70;  //boss damage
             npc.defense = 100;    //boss defense
             npc.knockBackResist = 0f;
             npc.width = 178;
