@@ -62,7 +62,7 @@ namespace AAMod.Items.Boss.Equinox
                         player.QuickSpawnItem(mod.ItemType("GlitchesHat"));
                         player.QuickSpawnItem(mod.ItemType("GlitchesBreastplate"));
                         player.QuickSpawnItem(mod.ItemType("GlitchesGreaves"));
-                        player.QuickSpawnItem(mod.ItemType("BinaryBlade"));
+                        player.QuickSpawnItem(mod.ItemType("UmbreonSP"));
                     }
                     if (choice == 4)
                     {

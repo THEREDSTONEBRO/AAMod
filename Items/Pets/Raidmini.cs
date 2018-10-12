@@ -5,15 +5,14 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Pets
 {
-	public class BroodEgg : ModItem
-	{
+	public class Raidmini : ModProjectile
+    {
         public static short customGlowMask = 0;
         public override void SetStaticDefaults()
 		{
-			// DisplayName and Tooltip are automatically set from the .lang files, but below is how it is done normally.
-			DisplayName.SetDefault("Scorched Egg");
-
-			Tooltip.SetDefault("What will hatch from this egg?");
+			DisplayName.SetDefault("Broodmini"); // Automatic from .lang files
+			Main.projFrames[projectile.type] = 3;
+			Main.projPet[projectile.type] = true;
             if (Main.netMode != 2)
             {
                 Texture2D[] glowMasks = new Texture2D[Main.glowMaskTexture.Length + 1];
@@ -29,17 +28,31 @@ namespace AAMod.Items.Pets
 
 		public override void SetDefaults()
 		{
-			item.CloneDefaults(ItemID.ZephyrFish);
-			item.shoot = mod.ProjectileType("Broodmini");
-            item.glowMask = customGlowMask;
-            item.buffType = mod.BuffType("Broodmini");
+			projectile.CloneDefaults(ProjectileID.DD2PetDragon);
+			aiType = ProjectileID.DD2PetDragon;
+            projectile.width = 66;
+            projectile.height = 56;
+            projectile.glowMask = customGlowMask;
+        }
+
+		public override bool PreAI()
+		{
+			Player player = Main.player[projectile.owner];
+			player.petFlagDD2Dragon = false; // Relic from aiType
+			return true;
 		}
 
-		public override void UseStyle(Player player)
+		public override void AI()
 		{
-			if (player.whoAmI == Main.myPlayer && player.itemTime == 0)
+			Player player = Main.player[projectile.owner];
+			AAPlayer modPlayer = player.GetModPlayer<AAPlayer>(mod);
+			if (player.dead)
 			{
-				player.AddBuff(item.buffType, 3600, true);
+				modPlayer.Raidmini = false;
+			}
+			if (modPlayer.Raidmini)
+			{
+				projectile.timeLeft = 2;
 			}
 		}
 	}

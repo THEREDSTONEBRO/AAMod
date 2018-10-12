@@ -27,6 +27,7 @@ namespace AAMod.Items.Armor.Kindled
         {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(null, "IncineriteBar", 20);
+            recipe.AddIngredient(null, "BroodScale", 15);
             recipe.AddTile(TileID.Anvils);
             recipe.SetResult(this);
             recipe.AddRecipe();

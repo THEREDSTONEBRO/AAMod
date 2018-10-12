@@ -30,7 +30,8 @@ namespace AAMod.Items.Blocks
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(null, "Incinerite", 25);
+            recipe.AddIngredient(null, "Incinerite", 15);
+            recipe.AddIngredient(null, "BroodScale", 5);
             recipe.AddTile(TileID.DemonAltar);
             recipe.SetResult(this);
             recipe.AddRecipe();

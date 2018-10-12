@@ -50,6 +50,7 @@ Enemies are more likely to target you";
         {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(null, "IncineriteBar", 15);
+            recipe.AddIngredient(null, "BroodScale", 10);
             recipe.AddTile(TileID.Anvils);
             recipe.SetResult(this);
             recipe.AddRecipe();

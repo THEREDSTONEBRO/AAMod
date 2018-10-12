@@ -5,15 +5,15 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Pets
 {
-	public class BroodEgg : ModItem
+	public class RaidEgg : ModItem
 	{
         public static short customGlowMask = 0;
         public override void SetStaticDefaults()
 		{
 			// DisplayName and Tooltip are automatically set from the .lang files, but below is how it is done normally.
-			DisplayName.SetDefault("Scorched Egg");
+			DisplayName.SetDefault("Cybernetic Egg");
 
-			Tooltip.SetDefault("What will hatch from this egg?");
+			Tooltip.SetDefault("What will hatch from this...wait haven't we done this already?");
             if (Main.netMode != 2)
             {
                 Texture2D[] glowMasks = new Texture2D[Main.glowMaskTexture.Length + 1];
@@ -30,9 +30,9 @@ namespace AAMod.Items.Pets
 		public override void SetDefaults()
 		{
 			item.CloneDefaults(ItemID.ZephyrFish);
-			item.shoot = mod.ProjectileType("Broodmini");
+			item.shoot = mod.ProjectileType("Raidmini");
             item.glowMask = customGlowMask;
-            item.buffType = mod.BuffType("Broodmini");
+            item.buffType = mod.BuffType("Raidmini");
 		}
 
 		public override void UseStyle(Player player)

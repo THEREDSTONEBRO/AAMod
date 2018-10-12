@@ -12,6 +12,7 @@ namespace AAMod.Tiles
             Main.tileSolid[Type] = true;
 			Main.tileMergeDirt[Type] = true;
             Main.tileSpelunker[Type] = true;
+            Main.tileMerge[Type][mod.TileType("DepthstoneTile")] = true;
             Main.tileBlockLight[Type] = true;
             //true for block to emit light
             soundType = 21;

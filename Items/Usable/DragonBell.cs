@@ -1,43 +1,44 @@
+using Microsoft.Xna.Framework;
+using System.Collections.Generic;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using AAMod.NPCs.Bosses.Daybringer;
-using AAMod.NPCs.Bosses.Nightcrawler;
 
 namespace AAMod.Items.Usable
 {
     //imported from my tAPI mod because I'm lazy
-    public class EquinoxWorm : ModItem
+    public class DragonBell : ModItem
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("EquinoxWorm");
-            Tooltip.SetDefault(@"Brings forth the serpents of the celestial heavans
-Not Consumable");
+            DisplayName.SetDefault("Ancient Bell");
+            Tooltip.SetDefault(@"An ornately crafted bell
+Summons the Broodmother in the Inferno");
         }
 
         public override void SetDefaults()
         {
-            item.width = 18;
-            item.height = 28;
+            item.width = 34;
+            item.height = 38;
             item.maxStack = 20;
             item.rare = 2;
             item.value = Item.sellPrice(0, 0, 0, 0);
             item.useAnimation = 45;
             item.useTime = 45;
             item.useStyle = 4;
+            item.consumable = true;
         }
 
         // We use the CanUseItem hook to prevent a player from using this item while the boss is present in the world.
         public override bool CanUseItem(Player player)
         {
-            return NPC.downedMoonlord && !NPC.AnyNPCs(mod.NPCType<NightcrawlerHead>()) && !NPC.AnyNPCs(mod.NPCType<DaybringerHead>());
+            AAPlayer modPlayer = player.GetModPlayer<AAPlayer>(mod);
+            return !NPC.AnyNPCs(mod.NPCType("Broodmother")) && modPlayer.ZoneInferno;
         }
 
         public override bool UseItem(Player player)
         {
-            NPC.SpawnOnPlayer(player.whoAmI, mod.NPCType<NightcrawlerHead>());
-            NPC.SpawnOnPlayer(player.whoAmI, mod.NPCType<DaybringerHead>());
+            NPC.SpawnOnPlayer(player.whoAmI, mod.NPCType("Broodmother"));
             Main.PlaySound(SoundID.Roar, player.position, 0);
             return true;
         }
@@ -45,10 +46,10 @@ Not Consumable");
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.MechanicalWorm, 2);
-            recipe.AddIngredient(ItemID.FragmentSolar, 5);
-            recipe.AddIngredient(ItemID.FragmentStardust, 5);
-            recipe.AddTile(TileID.LunarCraftingStation);
+            recipe.AddIngredient(null, "Torchstone", 5);
+            recipe.AddIngredient(null, "Incinerite", 5);
+            recipe.AddIngredient(ItemID.Ruby, 1);
+            recipe.AddTile(TileID.DemonAltar);
             recipe.SetResult(this, 1);
             recipe.AddRecipe();
         }

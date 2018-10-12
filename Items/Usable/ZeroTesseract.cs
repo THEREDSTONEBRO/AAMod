@@ -20,13 +20,11 @@ UNSTABLE. C0NTAINS C0DE TO ACTIVATE THE BRINGER 0F DEATH");
         {
             item.width = 38;
             item.height = 38;
-            item.maxStack = 20;
             item.rare = 11;
             item.value = Item.sellPrice(0, 0, 0, 0);
             item.useAnimation = 45;
             item.useTime = 45;
             item.useStyle = 4;
-            item.consumable = true;
         }
 
         public override void ModifyTooltips(List<TooltipLine> list)
