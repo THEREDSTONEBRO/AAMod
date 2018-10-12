@@ -6,7 +6,7 @@ using Terraria.Graphics;
 using Terraria.Graphics.Effects;
 using Terraria.Utilities;
 
-namespace AAMod.Backgrounds.Inferno
+namespace AAMod.Backgrounds
 {
     public class InfernoSky : CustomSky
     {

@@ -1,16 +1,13 @@
 using System;
 using Terraria;
 using Terraria.Graphics.Effects;
-using Terraria.Graphics.Shaders;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.Localization;
 using Terraria.UI;
-using AAMod;
 using AAMod.Backgrounds;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
-using AAMod.Backgrounds.Inferno;
 using AAMod.UI;
 
 namespace AAMod

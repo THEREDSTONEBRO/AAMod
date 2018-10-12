@@ -83,6 +83,9 @@ namespace AAMod
 
         //buffs
 
+        //pets
+        public bool Broodmini = false;
+
         public override void ResetEffects()
         {
             clawsOfChaos = false;
@@ -119,6 +122,7 @@ namespace AAMod
             Soul = false;
             Space = false;
             TrueInfinityGauntlet = false;
+            Broodmini = false;
         }
 
         public override void UpdateBiomes()
