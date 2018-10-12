@@ -18,7 +18,7 @@ namespace AAMod.Backgrounds.Inferno
 
         public override void OnLoad()
         {
-            PlanetTexture = TextureManager.Load("Backgrounds/Inferno/InfernoSun");
+            PlanetTexture = TextureManager.Load("Backgrounds/InfernoSun");
         }
 
         public override void Update(GameTime gameTime)

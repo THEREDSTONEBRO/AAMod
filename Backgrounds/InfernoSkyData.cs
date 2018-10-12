@@ -2,20 +2,20 @@
 using Terraria.Graphics.Shaders;
 using Terraria.ModLoader;
 
-namespace AAMod.Backgrounds.Mire
+namespace AAMod.Backgrounds
 {
-    public class MireSkyData : ScreenShaderData
+    public class InfernoSkyData : ScreenShaderData
     {
         private int DataIndex;
 
-        public MireSkyData(string passName) : base(passName)
+        public InfernoSkyData(string passName) : base(passName)
         {
         }
 
-        private void UpdateMireSky()
+        private void UpdateInfernoSky()
         {
             AAPlayer modPlayer = Main.player[Main.myPlayer].GetModPlayer<AAPlayer>();
-            if (AAWorld.mireTiles < 100)
+            if (AAWorld.infernoTiles < 100)
             {
                 return;
             }
@@ -24,7 +24,7 @@ namespace AAMod.Backgrounds.Mire
 
         public override void Apply()
         {
-            UpdateMireSky();
+            UpdateInfernoSky();
             base.Apply();
         }
     }

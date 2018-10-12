@@ -2,20 +2,20 @@
 using Terraria.Graphics.Shaders;
 using Terraria.ModLoader;
 
-namespace AAMod.Backgrounds.Inferno
+namespace AAMod.Backgrounds
 {
-    public class InfernoSkyData : ScreenShaderData
+    public class VoidSkyData : ScreenShaderData
     {
         private int DataIndex;
 
-        public InfernoSkyData(string passName) : base(passName)
+        public VoidSkyData(string passName) : base(passName)
         {
         }
 
-        private void UpdateInfernoSky()
+        private void UpdateVoidSky()
         {
             AAPlayer modPlayer = Main.player[Main.myPlayer].GetModPlayer<AAPlayer>();
-            if (AAWorld.infernoTiles < 100)
+            if (AAWorld.voidTiles < 100)
             {
                 return;
             }
@@ -24,7 +24,7 @@ namespace AAMod.Backgrounds.Inferno
 
         public override void Apply()
         {
-            UpdateInfernoSky();
+            UpdateVoidSky();
             base.Apply();
         }
     }

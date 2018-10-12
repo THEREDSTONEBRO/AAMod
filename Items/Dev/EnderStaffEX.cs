@@ -11,10 +11,9 @@ namespace AAMod.Items.Dev
 	{
 		public override void SetStaticDefaults()
 		{
-            DisplayName.SetDefault("Conflagrate Staff");
+            DisplayName.SetDefault("Conflagrate Scythe");
             Tooltip.SetDefault(@"Summons a spinning construct that shreds through enemies
-I thought the sky was purple
--Ender");
+Conflagrate Staff EX");
         }
 
 		public override void SetDefaults()
@@ -30,15 +29,13 @@ I thought the sky was purple
 			item.noMelee = true;
 			item.knockBack = 3;
 			item.value = Item.buyPrice(0, 20, 0, 0);
-			item.rare = 8;
+            item.shoot = mod.ProjectileType("EnderMinionEX");
+            item.buffType = mod.BuffType("EnderMinionBuffEX");
+            item.rare = 8;
             item.expert = true;
 			item.UseSound = SoundID.Item44;
 			item.shootSpeed = 7f;	//The buff added to player after used the item
             item.buffTime = 18000;
-		}
-        public override bool AltFunctionUse(Player player)
-		{
-			return true;
 		}
 
         public override void AddRecipes()
@@ -52,26 +49,23 @@ I thought the sky was purple
         }
 
 
+        public override bool AltFunctionUse(Player player)
+        {
+            return true;
+        }
+
+        public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
+        {
+            return player.altFunctionUse != 2;
+        }
+
         public override bool UseItem(Player player)
-		{
+        {
             if (player.altFunctionUse == 2)
             {
-                Item.staff[item.type] = false;
-                item.useTime = 13;
-                item.useAnimation = 13;
-                item.shoot = mod.ProjectileType("EnderSickle");
-                item.noMelee = false;
+                player.MinionNPCTargetAim();
             }
-            else
-            {
-                Item.staff[item.type] = true;
-                item.useTime = 16;
-                item.useAnimation = 16;
-                item.shoot = mod.ProjectileType("EnderMinionEX");
-                item.buffType = mod.BuffType("EnderMinionBuffEX");
-                item.noMelee = true;
-            }
-            return base.CanUseItem(player);
+            return base.UseItem(player);
         }
     }
 }

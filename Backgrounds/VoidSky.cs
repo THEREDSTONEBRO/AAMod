@@ -6,7 +6,7 @@ using Terraria.Graphics;
 using Terraria.Graphics.Effects;
 using Terraria.Utilities;
 
-namespace AAMod.Backgrounds.Void
+namespace AAMod.Backgrounds
 {
     public class VoidSky : CustomSky
     {
@@ -24,9 +24,9 @@ namespace AAMod.Backgrounds.Void
 
         public override void OnLoad()
         {
-            PlanetTexture = TextureManager.Load("Backgrounds/Void/VoidBH");
-            boltTexture = TextureManager.Load("Backgrounds/Void/VoidBolt");
-            flashTexture = TextureManager.Load("Backgrounds/Void/VoidFlash");
+            PlanetTexture = TextureManager.Load("Backgrounds/VoidBH");
+            boltTexture = TextureManager.Load("Backgrounds/VoidBolt");
+            flashTexture = TextureManager.Load("Backgrounds/VoidFlash");
         }
 
         public override void Update(GameTime gameTime)

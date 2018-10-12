@@ -14,7 +14,7 @@ namespace AAMod.Items.Accessories
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Infinity Stone");
+            DisplayName.SetDefault("Mind Stone");
             Tooltip.SetDefault(
 @"Gives you infinite mana
 'It's simple Calculus'");

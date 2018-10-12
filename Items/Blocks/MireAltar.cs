@@ -19,10 +19,10 @@ namespace AAMod.Items.Blocks
 			item.useTime = 10;
 			item.autoReuse = true;
 			item.consumable = true;
-            item.createTile = mod.TileType("ChaosAltars");
+            item.createTile = mod.TileType("ChaosAltar");
             item.placeStyle = 0;
-            item.width = 46;
-			item.height = 34;
+            item.width = 28;
+			item.height = 24;
 			item.rare = 3;
 			item.value = 1000;
 			item.accessory = false;
@@ -30,7 +30,7 @@ namespace AAMod.Items.Blocks
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(null, "Abyssium", 30);
+            recipe.AddIngredient(null, "Abyssium", 25);
             recipe.AddTile(TileID.DemonAltar);
             recipe.SetResult(this);
             recipe.AddRecipe();

@@ -1,6 +1,7 @@
 using Microsoft.Xna.Framework;
 using System.Collections.Generic;
 using Terraria;
+using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -41,8 +42,8 @@ namespace AAMod.Items.Dev
 			item.knockBack = 4;
 			item.value = 1000000;
             item.expert = true;
-			item.UseSound = SoundID.Item15;
-			item.autoReuse = true;
+			item.UseSound = new LegacySoundStyle(29, 11, Terraria.Audio.SoundType.Sound);
+            item.autoReuse = true;
 			item.shoot = 10; //idk why but all the guns in the vanilla source have this
 			item.shootSpeed = 15f;
             item.shoot = mod.ProjectileType("Duck");

@@ -15,6 +15,7 @@ namespace AAMod.Items.Blocks
             item.useAnimation = 15;
             item.useTime = 10;
             item.useStyle = 1;
+            item.rare = 2;
             item.consumable = true;
             item.createTile = mod.TileType("TorchstoneTile"); //put your CustomBlock Tile name
         }

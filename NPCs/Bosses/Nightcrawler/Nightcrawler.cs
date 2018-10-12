@@ -23,7 +23,7 @@ namespace AAMod.NPCs.Bosses.Nightcrawler
         {
             npc.lifeMax = 130000;
             npc.damage = 70;
-            npc.defense = 70;
+            npc.defense = 100;
             npc.knockBackResist = 0f;
             npc.width = 66;
             npc.height = 62;
@@ -43,7 +43,7 @@ namespace AAMod.NPCs.Bosses.Nightcrawler
         public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
         {
             npc.lifeMax = (int)(npc.lifeMax / Main.expertLife * 1.4f * bossLifeScale);
-            npc.defense = 74;
+            npc.defense = 104;
         }
 
         public override void PostDraw(SpriteBatch spriteBatch, Color drawColor)
@@ -70,6 +70,15 @@ namespace AAMod.NPCs.Bosses.Nightcrawler
         {
             scale = 1.5f;
             return null;
+        }
+
+        public override void HitEffect(int hitDirection, double damage)
+        {
+            if (npc.life <= 0 && npc.type == mod.NPCType<DaybringerHead>())
+            {
+                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/NCGore1"), 1f);
+                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/NCGore2"), 1f);
+            }
         }
     }
 
@@ -109,6 +118,14 @@ namespace AAMod.NPCs.Bosses.Nightcrawler
             base.Init();
             body = true;
         }
+
+        public override void HitEffect(int hitDirection, double damage)
+        {
+            if (npc.life <= 0 && npc.type == mod.NPCType<DaybringerHead>())
+            {
+                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/NCGore3"), 1f);
+            }
+        }
     }
 
     class NightcrawlerTail : NightcrawlerHead
@@ -133,6 +150,14 @@ namespace AAMod.NPCs.Bosses.Nightcrawler
         {
             base.Init();
             tail = true;
+        }
+
+        public override void HitEffect(int hitDirection, double damage)
+        {
+            if (npc.life <= 0 && npc.type == mod.NPCType<DaybringerHead>())
+            {
+                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/NCGore4"), 1f);
+            }
         }
     }
     // I made this 2nd base class to limit code repetition.
@@ -662,11 +687,11 @@ namespace AAMod.NPCs.Bosses.Nightcrawler
                 npc.damage = 70;
                 if (Main.expertMode)
                 {
-                    npc.defense = 74;
+                    npc.defense = 104;
                 }
                 else
                 {
-                    npc.defense = 70;
+                    npc.defense = 100;
                 }
             }
             if (Main.netMode != 1)

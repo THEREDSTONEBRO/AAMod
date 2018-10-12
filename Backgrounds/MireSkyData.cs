@@ -2,20 +2,20 @@
 using Terraria.Graphics.Shaders;
 using Terraria.ModLoader;
 
-namespace AAMod.Backgrounds.Void
+namespace AAMod.Backgrounds
 {
-    public class VoidSkyData : ScreenShaderData
+    public class MireSkyData : ScreenShaderData
     {
         private int DataIndex;
 
-        public VoidSkyData(string passName) : base(passName)
+        public MireSkyData(string passName) : base(passName)
         {
         }
 
-        private void UpdateVoidSky()
+        private void UpdateMireSky()
         {
             AAPlayer modPlayer = Main.player[Main.myPlayer].GetModPlayer<AAPlayer>();
-            if (AAWorld.voidTiles < 100)
+            if (AAWorld.mireTiles < 100)
             {
                 return;
             }
@@ -24,7 +24,7 @@ namespace AAMod.Backgrounds.Void
 
         public override void Apply()
         {
-            UpdateVoidSky();
+            UpdateMireSky();
             base.Apply();
         }
     }
