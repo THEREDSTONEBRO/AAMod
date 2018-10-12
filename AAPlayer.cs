@@ -17,7 +17,8 @@ namespace AAMod
 {
     public class AAPlayer : ModPlayer
     {
-        //Acheivement bools
+        //Achievments
+        public static bool Chairlol;
         //Minions
         public bool enderMinion = false;
         public bool enderMinionEX = false;
@@ -75,7 +76,7 @@ namespace AAMod
         public bool Time;
         public bool Soul;
         public bool Space;
-        public int SnapCD;
+        public int SnapCD = 18000;
         public bool death;
         //debuffs
         public bool infinityOverload = false;
@@ -317,7 +318,7 @@ namespace AAMod
             {
                 if (AAMod.InfinityHotKey.JustPressed && SnapCD == 0)
                 {
-                    SnapCD = 72000;
+                    SnapCD = 18000;
                     Main.npc.Where(x => x.active && !x.townNPC && x.type != NPCID.TargetDummy && x.type != mod.NPCType<RiftShredder>() && x.type != mod.NPCType<Taser>() && x.type != mod.NPCType<RealityCannon>() && x.type != mod.NPCType<VoidStar>() && x.type != mod.NPCType<TeslaHand>() && !x.boss).ToList().ForEach(x =>
                     {
 

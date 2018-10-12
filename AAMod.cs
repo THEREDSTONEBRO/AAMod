@@ -81,6 +81,7 @@ namespace AAMod
             }
             if (AchievementLibs != null)
             {
+                AchievementLibs.Call("AddAchievementWithoutReward", this, "Chair Completionist", "No-hit Zero and Zero Awakened by only using Chairs", "AAMod/Achievments/ChairA", (Func<bool>)(() => AAPlayer.Chairlol));
                 AchievementLibs.Call("AddAchievementWithoutReward", this, "Claws of Catastrophe", "Defeat the rampaging hands of discord, the Grips of Chaos", "AAMod/Achievments/GripsA", (Func<bool>)(() => AAWorld.downedGrips));
                 //AchievementLibs.Call("AddAchievementWithoutReward", this, "Abyssal Wrath", "Defeat the 3 headed monstrosity, the Hydra", "AAMod/Achievments/HydraA", (Func<bool>)(() => AAWorld.downedHydra));
                 //AchievementLibs.Call("AddAchievementWithoutReward", this, "A Mother's Rage", "Defeat the flaming dragoness, the Broodmother", "AAMod/Achievments/BroodA", (Func<bool>)(() => AAWorld.downedBrood));

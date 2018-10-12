@@ -58,7 +58,7 @@ namespace AAMod.Items.Projectiles
 
         public override void AI()
         {
-            projectile.rotation = (float)Math.Atan2(projectile.velocity.Y, projectile.velocity.X) + 1.57f;
+            projectile.rotation = ((float)Math.Atan2(projectile.velocity.Y, projectile.velocity.X) + 1.57f) + 30f;
             for (int i = 0; i < 200; i++)
             {
                 NPC target = Main.npc[i];

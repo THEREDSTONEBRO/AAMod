@@ -15,7 +15,7 @@ namespace AAMod.Items.Usable
 
             item.width = 16;
             item.height = 28;
-            item.rare = 1;
+            item.rare = 0;
             item.value = 50000;
         }
 
@@ -44,16 +44,12 @@ namespace AAMod.Items.Usable
                 //{
                 for (int i = 0; i < 200; ++i)
                 {
-                    if (Main.npc[i].type == NPCID.GoblinTinkerer && NPC.downedMoonlord)
+                    if (Main.npc[i].type == NPCID.GoblinTinkerer)
                     {
                         int variable = Player.FindClosest(item.position, item.width, item.height);
                         Player player = Main.player[Player.FindClosest(item.position, item.width, item.height)];
-                        Item.NewItem((int)item.position.X, (int)item.position.Y, player.width, player.height, mod.ItemType("SoulStone"), 1, false, item.prefix);
+                        player.QuickSpawnItem(mod.ItemType("SoulStone"), 1);
                         Main.npc[i].StrikeNPCNoInteraction(9999, 10f, -Main.npc[i].direction, false, false, false);
-                        item.active = false;
-                        item.type = 0;
-                        //item.name = ""; 
-                        item.stack = 0;
                         Main.NewText("The soul stone materializes in your hand", 180, 120, 0);
                     }
                 }

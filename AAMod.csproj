@@ -112,6 +112,7 @@
     <Compile Include="Items\Armor\Doomsday\Zerokip\ZeroDiverMask.cs" />
     <Compile Include="Items\Armor\Doomsday\Zerokip\ZeroDiverBoots.cs" />
     <Compile Include="Items\Blocks\AkumataBox.cs" />
+    <Compile Include="Items\Boss\Zero\Neutralizer.cs" />
     <Compile Include="Items\Dev\EnderStaffEX.cs" />
     <Compile Include="Items\Dev\GentlemansLongblade.cs" />
     <Compile Include="Items\Dev\GentlemansRapier.cs" />
@@ -634,6 +635,8 @@
     <Content Include="Achievment\AkumaANot.png" />
     <Content Include="Achievment\BroodAchievement.png" />
     <Content Include="Achievment\BroodAchievementNot.png" />
+    <Content Include="Achievment\ChairA.png" />
+    <Content Include="Achievment\ChairANot.png" />
     <Content Include="Achievment\EquinoxA.png" />
     <Content Include="Achievment\EquinoxANot.png" />
     <Content Include="Achievment\GripsA.png" />
@@ -1186,6 +1189,7 @@
     <Content Include="Items\Melee\AbyssalTwilight.png" />
     <Content Include="Items\Melee\Amnesia.png" />
     <Content Include="Items\Melee\AncientPoker.png" />
+    <Content Include="Items\Melee\Apocalypse.png" />
     <Content Include="Items\Melee\BackScratcher.png" />
     <Content Include="Items\Melee\BaneOfTheBunny.png" />
     <Content Include="Items\Melee\BlazingDawn.png" />
