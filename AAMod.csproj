@@ -491,6 +491,7 @@
     <Compile Include="Items\Blocks\Doomstone.cs" />
     <Compile Include="NPCs\AAModGlobalNPC.cs" />
     <Compile Include="NPCs\Bosses\Akumata\Akumata.cs" />
+    <Compile Include="NPCs\Bosses\Broodmother\Broodmother.cs" />
     <Compile Include="NPCs\Bosses\Daybringer\Daybringer.cs" />
     <Compile Include="NPCs\Bosses\Daybringer\Sunbeam.cs" />
     <Compile Include="NPCs\Bosses\Daybringer\SunbeamScatter.cs" />
@@ -1550,7 +1551,12 @@
     <Content Include="NPCs\Bosses\Akuma\AkumaBody2.png" />
     <Content Include="NPCs\Bosses\Akuma\AkumaHead.png" />
     <Content Include="NPCs\Bosses\Akuma\AkumaTail.png" />
+    <Content Include="NPCs\Bosses\Broodmother\broodmini.png" />
     <Content Include="NPCs\Bosses\Broodmother\Broodmother.png" />
+    <Content Include="NPCs\Bosses\Broodmother\BroodmotherBody.png" />
+    <Content Include="NPCs\Bosses\Broodmother\BroodWingBack.png" />
+    <Content Include="NPCs\Bosses\Broodmother\BroodWingFront.png" />
+    <Content Include="NPCs\Bosses\Broodmother\FullBroodmother2.png" />
     <Content Include="NPCs\Bosses\Daybringer\Daybringer.png" />
     <Content Include="NPCs\Bosses\Daybringer\Daybringer_Glow.png" />
     <Content Include="NPCs\Bosses\Daybringer\Daybringer_Head_Boss.png" />
