@@ -11,7 +11,7 @@ namespace AAMod.Items.Dev
 		public override void SetStaticDefaults()
 		{
             DisplayName.SetDefault("Gentleman's Longblade");
-            Tooltip.SetDefault(@"Shoots many dapper top hats
+            Tooltip.SetDefault(@"Shoots many spooky dapper top hats
 Right clicking thrusts the blade forward
 Left clicking swings the blade
 Gentleman's Rapier EX");

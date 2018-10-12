@@ -16,7 +16,7 @@ namespace AAMod.Items.Projectiles
             projectile.hostile = false;
             projectile.ranged = true;
             projectile.extraUpdates = 100;
-            projectile.timeLeft = 600;
+            projectile.timeLeft = 800;
             projectile.penetrate = -1;
             projectile.tileCollide = true;
         }

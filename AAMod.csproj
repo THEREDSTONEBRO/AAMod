@@ -118,6 +118,7 @@
     <Compile Include="Items\Dev\GentlemansRapier.cs" />
     <Compile Include="Items\Projectiles\EnderSickle.cs" />
     <Compile Include="Items\Projectiles\DragonBreathP.cs" />
+    <Compile Include="Items\Projectiles\Neutralizer.cs" />
     <Compile Include="Items\Projectiles\TopHat.cs" />
     <Compile Include="Items\Summoning\Minions\EnderMinionEX.cs" />
     <Compile Include="Items\Walls\DoomstoneBrickWall.cs" />
@@ -1109,6 +1110,8 @@
     <Content Include="Items\Dev\CatsEyeRifleEX_Glow.png" />
     <Content Include="Items\Dev\ChairMinion.png" />
     <Content Include="Items\Dev\ChairMinionEX.png" />
+    <Content Include="Items\Dev\chili_projectile.png" />
+    <Content Include="Items\Dev\Chili_Sauce.png" />
     <Content Include="Items\Dev\ChinStaff.png" />
     <Content Include="Items\Dev\ChinStaffEX.png" />
     <Content Include="Items\Dev\CrabGuardian.png" />
@@ -1145,6 +1148,8 @@
     <Content Include="Items\Dev\UmbreonSPEX.png" />
     <Content Include="Items\Dev\UmbreonSPEX_Glow.png" />
     <Content Include="Items\Dev\UmbreonSP_Glow.png" />
+    <Content Include="Items\Dev\Wasabi.png" />
+    <Content Include="Items\Dev\wasabi_projectile.png" />
     <Content Include="Items\Hooks\DragonsGrip.png" />
     <Content Include="Items\Magic\AncientArcanum.png" />
     <Content Include="Items\Magic\BogBomb.png" />
@@ -1312,6 +1317,7 @@
     <Content Include="Items\Projectiles\JungleReaperP.png" />
     <Content Include="Items\Projectiles\ManaShot.png" />
     <Content Include="Items\Projectiles\MireProj.png" />
+    <Content Include="Items\Projectiles\Neutralizer.png" />
     <Content Include="Items\Projectiles\Number1.png" />
     <Content Include="Items\Projectiles\OrangeSolution.png" />
     <Content Include="Items\Projectiles\OrderSolution.png" />

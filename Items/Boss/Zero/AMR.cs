@@ -35,7 +35,7 @@ Doesn't require ammo");
         public override void SetDefaults()
         {
             item.glowMask = customGlowMask;
-            item.damage = 300;
+            item.damage = 380;
             item.noMelee = true;
             item.ranged = true;
             item.width = 74;

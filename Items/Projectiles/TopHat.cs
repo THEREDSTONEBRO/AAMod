@@ -19,7 +19,7 @@ namespace AAMod.Items.Projectiles
             Main.projFrames[projectile.type] = 4;           //this is projectile frames
             projectile.hostile = false;
             projectile.ranged = true;                        //this make the projectile do magic damage
-            projectile.tileCollide = true;                 //this make that the projectile does not go thru walls
+            projectile.tileCollide = false;                 //this make that the projectile does not go thru walls
             projectile.ignoreWater = true;
         }
 

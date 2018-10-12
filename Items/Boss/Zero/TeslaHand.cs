@@ -39,8 +39,8 @@ namespace AAMod.Items.Boss.Zero
             item.channel = true;
             item.autoReuse = true;
             item.thrown = true;
-            item.useAnimation = 13;
-            item.useTime = 13;
+            item.useAnimation = 9;
+            item.useTime = 9;
             item.useStyle = 1;
             item.knockBack = 2f;
             item.UseSound = SoundID.Item116;

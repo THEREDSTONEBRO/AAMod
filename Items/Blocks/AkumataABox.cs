@@ -8,7 +8,7 @@ namespace AAMod.Items.Blocks
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Akuma Awakened Music Box");
+			DisplayName.SetDefault("Akumata Awakened Music Box");
 		}
 
 		public override void SetDefaults()
@@ -19,7 +19,7 @@ namespace AAMod.Items.Blocks
 			item.useTime = 10;
 			item.autoReuse = true;
 			item.consumable = true;
-			item.createTile = mod.TileType("AkumaBox");
+			item.createTile = mod.TileType("AkumataABox");
             item.width = 72;
 			item.height = 36;
 			item.rare = 4;

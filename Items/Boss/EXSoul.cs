@@ -15,9 +15,9 @@ namespace AAMod.Items.Boss
             DisplayName.SetDefault("EX Soul");
             Tooltip.SetDefault("Essence of ancient, arcane magic");
             // ticksperframe, frameCount
-            Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(4, 4));
+            Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(4, 16));
             ItemID.Sets.ItemNoGravity[item.type] = true;
-            /*if (Main.netMode != 2)
+            if (Main.netMode != 2)
             {
                 Microsoft.Xna.Framework.Graphics.Texture2D[] glowMasks = new Microsoft.Xna.Framework.Graphics.Texture2D[Main.glowMaskTexture.Length + 1];
                 for (int i = 0; i < Main.glowMaskTexture.Length; i++)
@@ -27,7 +27,7 @@ namespace AAMod.Items.Boss
                 glowMasks[glowMasks.Length - 1] = mod.GetTexture("Items/Boss/" + GetType().Name + "_Glow");
                 customGlowMask = (short)(glowMasks.Length - 1);
                 Main.glowMaskTexture = glowMasks;
-            }*/
+            }
 
         }
 
@@ -42,14 +42,14 @@ namespace AAMod.Items.Boss
             item.value = 1000000;
             item.rare = 11;
             item.expert = true;
-            //item.glowMask = customGlowMask;
+            item.glowMask = customGlowMask;
             item.alpha = 100;
         }
         
-        public override void PostUpdate()
+        /*public override void PostUpdate()
         {
             item.color = new Color(Main.DiscoR, Main.DiscoG, Main.DiscoB);
-        }
+        }*/
         /*public static Color GetItemLight(ref Color currentColor, ref float scale, int type, bool outInTheWorld = false)
         {
             currentColor.R = (byte)Main.DiscoR;

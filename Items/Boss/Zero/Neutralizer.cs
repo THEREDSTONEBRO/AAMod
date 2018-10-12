@@ -32,7 +32,7 @@ namespace AAMod.Items.Boss.Zero
 
         public override void SetDefaults()
 		{
-			item.damage = 220;
+			item.damage = 320;
 			item.ranged = true;
 			item.width = 34;
 			item.height = 58;
@@ -45,7 +45,7 @@ namespace AAMod.Items.Boss.Zero
             item.UseSound = new LegacySoundStyle(2, 75, Terraria.Audio.SoundType.Sound);
             item.autoReuse = true;
             item.shoot = mod.ProjectileType("Neutralizer");
-			item.shootSpeed = 6f;
+			item.shootSpeed = 8f;
             item.glowMask = customGlowMask;
 		}
 
