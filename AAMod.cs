@@ -7,14 +7,11 @@ using Terraria.ModLoader;
 using Terraria.Localization;
 using Terraria.UI;
 using AAMod;
-using AAMod.Backgrounds.Void;
 using AAMod.Backgrounds;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 using AAMod.Backgrounds.Inferno;
-using AAMod.Backgrounds.Mire;
 using AAMod.UI;
-using System.IO;
 
 namespace AAMod
 {
@@ -130,12 +127,12 @@ namespace AAMod
             if (!Main.dedServ)
             {
 
-                PremultiplyTexture(GetTexture("Backgrounds/Void/VoidBH"));
-                PremultiplyTexture(GetTexture("Backgrounds/Mire/MireMoon"));
-                PremultiplyTexture(GetTexture("Backgrounds/Inferno/InfernoSun"));
-                PremultiplyTexture(GetTexture("Backgrounds/Inferno/InfernoSky"));
-                PremultiplyTexture(GetTexture("Backgrounds/Mire/MireSky"));
-                PremultiplyTexture(GetTexture("Backgrounds/Void/VoidSky"));
+                PremultiplyTexture(GetTexture("Backgrounds/VoidBH"));
+                PremultiplyTexture(GetTexture("Backgrounds/MireMoon"));
+                PremultiplyTexture(GetTexture("Backgrounds/InfernoSun"));
+                PremultiplyTexture(GetTexture("Backgrounds/InfernoSky"));
+                PremultiplyTexture(GetTexture("Backgrounds/MireSky"));
+                PremultiplyTexture(GetTexture("Backgrounds/VoidSky"));
 
                 AddEquipTexture(null, EquipType.Legs, "N1_Legs", "AAMod/Items/Vanity/N1/N1_Legs");
 
@@ -156,13 +153,13 @@ namespace AAMod
 
                 Filters.Scene["AAMod:MireSky"] = new Filter(new MireSkyData("FilterMiniTower").UseColor(0f, 0.20f, 1f).UseOpacity(0.3f), EffectPriority.VeryHigh);
                 SkyManager.Instance["AAMod:MireSky"] = new MireSky();
-                MireSky.PlanetTexture = GetTexture("Backgrounds/Mire/MireMoon");
+                MireSky.PlanetTexture = GetTexture("Backgrounds/MireMoon");
                 Filters.Scene["AAMod:VoidSky"] = new Filter(new VoidSkyData("FilterMiniTower").UseColor(0.15f, 0.1f, 0.1f).UseOpacity(0.3f), EffectPriority.VeryHigh);
                 SkyManager.Instance["AAMod:VoidSky"] = new VoidSky();
-                VoidSky.PlanetTexture = GetTexture("Backgrounds/Void/VoidBH");
+                VoidSky.PlanetTexture = GetTexture("Backgrounds/VoidBH");
                 Filters.Scene["AAMod:InfernoSky"] = new Filter(new InfernoSkyData("FilterMiniTower").UseColor(1f, 0.20f, 0f).UseOpacity(0.6f), EffectPriority.VeryHigh);
                 SkyManager.Instance["AAMod:InfernoSky"] = new InfernoSky();
-                InfernoSky.PlanetTexture = GetTexture("Backgrounds/Inferno/InfernoSun");
+                InfernoSky.PlanetTexture = GetTexture("Backgrounds/InfernoSun");
 
                 TerratoolUI = new TerratoolUI();
                 UserInterface = new UserInterface();
