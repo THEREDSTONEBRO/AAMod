@@ -37,9 +37,9 @@ namespace AAMod.NPCs.Bosses.Raider
             npc.friendly = false;
             npc.lifeMax = 30000;
             npc.value = 100000;
-            npc.HitSound = new LegacySoundStyle(3, 6, Terraria.Audio.SoundType.Sound);
-            npc.DeathSound = new LegacySoundStyle(4, 8, Terraria.Audio.SoundType.Sound);
-            bossBag = mod.ItemType("BroodBag");
+            npc.HitSound = new LegacySoundStyle(3, 4, Terraria.Audio.SoundType.Sound);
+            npc.DeathSound = new LegacySoundStyle(4, 14, Terraria.Audio.SoundType.Sound);
+            bossBag = mod.ItemType("RaiderBag");
         }
 
         public override bool? DrawHealthBar(byte hbPosition, ref float scale, ref Vector2 position)
@@ -52,7 +52,7 @@ namespace AAMod.NPCs.Bosses.Raider
         {
             if (Main.rand.Next(10) == 0)
             {
-                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("BroodmotherTrophy"));
+                //Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("RaiderTrophy"));
             }
             if (Main.expertMode)
             {
@@ -66,10 +66,10 @@ namespace AAMod.NPCs.Bosses.Raider
                 }
                 if (Main.rand.Next(10) == 0)
                 {
-                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("BroodEgg"));
+                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("RaiderEgg"));
                 }
-                npc.DropLoot(mod.ItemType("Incinerite"), 75, 100);
-                npc.DropLoot(mod.ItemType("BroodScale"), 50, 75);
+                npc.DropLoot(mod.ItemType("FulguriteBar"), 40, 40);
+               
             }
         }
 
@@ -89,8 +89,8 @@ namespace AAMod.NPCs.Bosses.Raider
 
         public override void BossLoot(ref string name, ref int potionType)
         {
-            potionType = ItemID.HealingPotion;   //boss drops
-            AAWorld.downedBrood = true;
+            potionType = ItemID.GreaterHealingPotion;   //boss drops
+            AAWorld.downedRaider = true;
         }
         public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
         {
@@ -125,7 +125,7 @@ namespace AAMod.NPCs.Bosses.Raider
             npc.noGravity = true;
             npc.knockBackResist = 0.2f * Main.expertKnockBack;
             npc.damage = npc.defDamage;
-            if (Main.player[npc.target].GetModPlayer<AAPlayer>().ZoneInferno == false)
+            if (Main.DayTime == true)
             {
                 npc.ai[0] = -1f;
             }
