@@ -8,12 +8,15 @@ using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
 using AAMod;
+using AAMod.Items.Dev;
 
 namespace AAMod.NPCs.Bosses.Zero
 {
     [AutoloadBossHead]
     public class Zero : ModNPC
     {
+        public bool chair1 = true;
+
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Zero");
@@ -97,6 +100,13 @@ namespace AAMod.NPCs.Bosses.Zero
                     NPC.NewNPC((int)spawnAt.X, (int)spawnAt.Y, mod.NPCType("ZeroAwakened"));
                 }
             }
+            foreach (Projectile proj in Main.projectile)
+            {
+                if (damage != 0 || (proj.type != mod.ProjectileType<ChairMinion>() && proj.damage == 0 && damage == 0))
+                {
+                    chair1 = false;
+                }
+            }
         }
 
         public override void NPCLoot()
@@ -109,7 +119,7 @@ namespace AAMod.NPCs.Bosses.Zero
             {
                 npc.DropLoot(mod.ItemType("ApocalyptitePlate"), 20, 30);
                 npc.DropLoot(mod.ItemType("UnstableSingularity"), 25, 35);
-                string[] lootTable = { "RiftShredder", "EventHorizon", "VoidStar", "RealityCannon", "TeslaHand", "ZeroStar", "Neutralizer" };
+                string[] lootTable = { "DoomRay", "RiftShredder", "EventHorizon", "VoidStar", "RealityCannon", "TeslaHand", "ZeroStar", "Neutralizer" };
                 int loot = Main.rand.Next(lootTable.Length);
                 npc.DropLoot(mod.ItemType(lootTable[loot]));
                 npc.DropLoot(Items.Vanity.Mask.ZeroMask.type, 1f / 7);
@@ -151,6 +161,7 @@ namespace AAMod.NPCs.Bosses.Zero
 
         public override void AI()
         {
+
             /*if (npc.ai[3] != 6)
             {
                 if (npc.ai[3] != npc.localAI[0])
@@ -172,6 +183,14 @@ namespace AAMod.NPCs.Bosses.Zero
             {
                 npc.dontTakeDamage = false;
             }*/
+
+            Mod mod1 = ModLoader.GetMod("HEROsMod");
+            Mod mod2 = ModLoader.GetMod("CheatSheet");
+            if (Main.player[npc.target].statLife != Main.player[npc.target].statLifeMax || mod1 != null || mod2 != null)
+            {
+                chair1 = false;
+            }
+
             if ((NPC.CountNPCS(mod.NPCType<Searcher>()) < 5 && !Main.expertMode) || (NPC.CountNPCS(mod.NPCType<Searcher>()) < 10 && Main.expertMode))
             {
                 NPC.NewNPC((int)(npc.Center.X + Main.rand.Next(-10, 10)), (int)(npc.Center.Y + Main.rand.Next(-10, 10)), mod.NPCType<Searcher>());
@@ -179,8 +198,8 @@ namespace AAMod.NPCs.Bosses.Zero
             npc.damage = npc.defDamage;
             npc.defense = npc.defDefense;
             bool expert = Main.expertMode;
-            if (npc.ai[0] < 300f) npc.ai[0]++;
-            if (npc.ai[0] == 300.0 && Main.netMode != 1)
+            if (npc.ai[0] < 480) npc.ai[0]++;
+            if (npc.ai[0] == 480.0 && Main.netMode != 1)
             {
                 npc.TargetClosest(true);
                 npc.ai[0]++;

@@ -11,13 +11,15 @@ namespace AAMod.Items.Boss.Zero
     public class BrokenCode : ModItem
     {
         public static short customGlowMask = 0;
-        public int rodCD;
+        public int rodCD = 0;
+        public bool on = true;
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Broken Code");
             Tooltip.SetDefault(@"Allows you to glitch with a 5 second cooldown
 Grapple to Glitch
-While cooldown is occurring, your invincibility frames and speed are increased
+While cooldown is occurring, your speed is increased and your invincible for half the time
+You don't look so good
 01001111
 01100010
 01101100
@@ -92,20 +94,46 @@ While cooldown is occurring, your invincibility frames and speed are increased
                         player.Teleport(vector32, 1, 0);
                         NetMessage.SendData(65, -1, -1, null, 0, player.whoAmI, vector32.X, vector32.Y, 1, 0, 0);
                         Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Sounds/Glitch"));
-                        rodCD = 180;
+                        rodCD = 300;
                     }
                 }
             }
-            if (rodCD != 0)
-            {
-                rodCD--;
-            }
-
             if (rodCD > 0)
             {
-                player.longInvince = true;
-                player.panic = true;
-                player.armorEffectDrawShadowLokis = true;
+                rodCD--;
+                if (rodCD > 150)
+                {
+                    player.immuneNoBlink = true;
+                }
+                else
+                {
+                    player.immuneNoBlink = false;
+                }
+                if (on)
+                {
+                    on = false;
+                    player.moveSpeed = player.moveSpeed + 3f;
+                    player.headPosition.Y -= 20f;
+                    player.headPosition.X += 15f;
+                    player.bodyPosition.Y += 37f;
+                    player.bodyPosition.X -= 23f;
+                    player.legPosition.Y += 20f;
+                    player.legPosition.X -= 12f;
+                }
+            }
+            else
+            {
+                if (!on)
+                {
+                    on = true;
+                    player.moveSpeed = player.moveSpeed - 3f;
+                    player.headPosition.Y += 20f;
+                    player.headPosition.X -= 15f;
+                    player.bodyPosition.Y -= 37f;
+                    player.bodyPosition.X += 23f;
+                    player.legPosition.Y -= 20f;
+                    player.legPosition.X += 12f;
+                }
             }
         }
 

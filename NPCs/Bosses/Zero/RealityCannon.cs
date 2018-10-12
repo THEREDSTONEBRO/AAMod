@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using AAMod.Items.Dev;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
@@ -63,6 +64,13 @@ namespace AAMod.NPCs.Bosses.Zero
                 Main.npc[ind].netUpdate = true;
                 Main.npc[(int)npc.ai[1]].ai[3]++;
                 Main.npc[(int)npc.ai[1]].netUpdate = true;
+            }
+            foreach (Projectile proj in Main.projectile)
+            {
+                if (damage != 0 || (proj.type != mod.ProjectileType<ChairMinion>() && proj.damage == 0 && damage == 0))
+                {
+                    mod.GetNPC<Zero>().chair1 = false;
+                }
             }
         }
 

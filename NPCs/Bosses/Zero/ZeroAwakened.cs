@@ -7,13 +7,14 @@ using Terraria.Audio;
 using Terraria.Graphics.Shaders;
 using Terraria.ID;
 using Terraria.ModLoader;
+using AAMod.Items.Dev;
 
 namespace AAMod.NPCs.Bosses.Zero
 {
     [AutoloadBossHead]
     public class ZeroAwakened : ModNPC
     {
-
+        public bool chair2 = false;
         public static int type;
         public override void SetStaticDefaults()
         {
@@ -25,9 +26,9 @@ namespace AAMod.NPCs.Bosses.Zero
         public override void SetDefaults()
         {
             npc.aiStyle = 0;  //5 is the flying AI
-            npc.lifeMax = 240000;   //boss life
-            npc.damage = 70;  //boss damage
-            npc.defense = 100;    //boss defense
+            npc.lifeMax = 120000;   //boss life
+            npc.damage = 130;  //boss damage
+            npc.defense = 70;    //boss defense
             npc.knockBackResist = 0f;
             npc.width = 178;
             npc.height = 174;
@@ -72,7 +73,10 @@ namespace AAMod.NPCs.Bosses.Zero
             potionType = ItemID.GreaterHealingPotion;   //boss drops
             AAWorld.downedZero = true;
             Projectile.NewProjectile((new Vector2(npc.position.X, npc.position.Y)), (new Vector2(0f, 0f)), mod.ProjectileType("ZeroDeath1"), 0, 0);
-            
+            if (chair2)
+            {
+                AAPlayer.Chairlol = true;
+            }
         }
 
         public override bool? DrawHealthBar(byte hbPosition, ref float scale, ref Vector2 position)
@@ -90,6 +94,13 @@ namespace AAMod.NPCs.Bosses.Zero
                     Player player = Main.player[npc.target];
                     Vector2 tele = new Vector2(player.Center.X + (Main.rand.Next(-20, 21) * 16), player.Center.Y + (Main.rand.Next(-20, 21) * 16));
                     npc.Center = tele;
+                }
+            }
+            foreach (Projectile proj in Main.projectile)
+            {
+                if (damage != 0 || (proj.type != mod.ProjectileType<ChairMinion>() && proj.damage == 0 && damage == 0))
+                {
+                    chair2 = false;
                 }
             }
         }
@@ -122,14 +133,15 @@ namespace AAMod.NPCs.Bosses.Zero
         
         public override void AI()
         {
-
-            if (Main.player[npc.target].GetModPlayer<AAPlayer>().ZoneVoid == false)
+            if (mod.GetNPC<Zero>().chair1)
             {
-                npc.defense = 999999999;
+                chair2 = true;
             }
-            else
+            Mod mod1 = ModLoader.GetMod("HEROsMod");
+            Mod mod2 = ModLoader.GetMod("CheatSheet");
+            if (Main.player[npc.target].statLife != Main.player[npc.target].statLifeMax || mod1 != null || mod2 != null)
             {
-                npc.defense = 100;
+                chair2 = false;
             }
             if (npc.target < 0 || npc.target == 255 || Main.player[npc.target].dead || !Main.player[npc.target].active)
             {

@@ -16,6 +16,7 @@ namespace AAMod
 {
     public class AAWorld : ModWorld
     {
+        //tile ints
         public static int mireTiles = 0;
         public static int infernoTiles = 0;
         public static int voidTiles = 0;
@@ -545,6 +546,10 @@ namespace AAMod
                         if (type == TileID.Cloud || type == TileID.RainCloud || type == TileID.Sunplate)
                         {
                             j++;
+                            if (!Main.tile[l, m].active())
+                            {
+                                j++;
+                            }
                         }
                     }
                 }
