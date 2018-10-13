@@ -133,6 +133,7 @@
     <Compile Include="Items\Projectiles\TopHat.cs" />
     <Compile Include="Items\Summoning\Minions\EnderMinionEX.cs" />
     <Compile Include="Items\Usable\DragonBell.cs" />
+    <Compile Include="Items\Usable\ZeroRune.cs" />
     <Compile Include="Items\Walls\DoomstoneBrickWall.cs" />
     <Compile Include="Items\Walls\DoomsdayWall.cs" />
     <Compile Include="Items\Blocks\DoomsdayPlating.cs" />
@@ -532,6 +533,7 @@
     <Compile Include="NPCs\Enemies\Other\DragonClaw.cs" />
     <Compile Include="NPCs\Enemies\Other\ElderDragon.cs" />
     <Compile Include="NPCs\Enemies\Other\HydraClaw.cs" />
+    <Compile Include="NPCs\Enemies\Void\Null.cs" />
     <Compile Include="NPCs\Enemies\Void\Searcher.cs" />
     <Compile Include="NPCs\TownNPCs\Samurai.cs" />
     <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
@@ -1486,7 +1488,7 @@
     <Content Include="Items\Usable\OrderSolution.png" />
     <Content Include="Items\Usable\StoneOrb.png" />
     <Content Include="Items\Usable\StoneTesseract.png" />
-    <Content Include="Items\Usable\untitled.png" />
+    <Content Include="Items\Usable\ZeroRune.png" />
     <Content Include="Items\Usable\ZeroTesseract.png" />
     <Content Include="Items\Vanity\Alphakip\AquamancerWings.png" />
     <Content Include="Items\Vanity\Alphakip\AquamancerWings_Wings.png" />
