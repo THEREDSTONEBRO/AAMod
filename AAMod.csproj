@@ -132,6 +132,7 @@
     <Compile Include="Items\Projectiles\Neutralizer.cs" />
     <Compile Include="Items\Projectiles\TopHat.cs" />
     <Compile Include="Items\Summoning\Minions\EnderMinionEX.cs" />
+    <Compile Include="Items\Usable\CyberneticBell.cs" />
     <Compile Include="Items\Usable\DragonBell.cs" />
     <Compile Include="Items\Usable\ZeroRune.cs" />
     <Compile Include="Items\Walls\DoomstoneBrickWall.cs" />
@@ -1456,6 +1457,7 @@
     <Content Include="Items\Usable\BrokenCode.png" />
     <Content Include="Items\Usable\CalciumSkull.png" />
     <Content Include="Items\Usable\CuriousClaw.png" />
+    <Content Include="Items\Usable\CyberneticBell.png" />
     <Content Include="Items\Usable\CyberneticClaw.png" />
     <Content Include="Items\Usable\DesertCrate.png" />
     <Content Include="Items\Usable\DoomstopperKey.png" />
