@@ -6,16 +6,16 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AAMod.NPCs.Bosses.Broodmother
+namespace AAMod.NPCs.Bosses.Raider
 {
     [AutoloadBossHead]
-    public class BroodEgg : ModNPC
+    public class RaidEgg : ModNPC
     {
         private Player player;
         private float speed;
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Dragon Egg");
+            DisplayName.SetDefault("Raider Egg");
 
         }
         public override void SetDefaults()
@@ -33,7 +33,7 @@ namespace AAMod.NPCs.Bosses.Broodmother
             npc.npcSlots = 0f;
         }
 
-        public override void PostDraw(SpriteBatch spriteBatch, Color drawColor)
+        /*public override void PostDraw(SpriteBatch spriteBatch, Color drawColor)
         {
             {
                 SpriteEffects spriteEffects = SpriteEffects.None;
@@ -45,7 +45,7 @@ namespace AAMod.NPCs.Bosses.Broodmother
                 npc.frame, Color.White, npc.rotation,
                 new Vector2(npc.width * 0.5f, npc.height * 0.5f), 1f, spriteEffects, 0f);
             }
-        }
+        }*/
 
 
         public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
@@ -81,7 +81,7 @@ namespace AAMod.NPCs.Bosses.Broodmother
             npc.ai[0] += 1f;
             if (npc.ai[0] >= num1326)
             {
-                npc.Transform(mod.NPCType("Broodmini"));
+                npc.Transform(mod.NPCType("Raidmini"));
             }
             if (Main.netMode != 1 && npc.velocity.Y == 0f && (double)Math.Abs(npc.velocity.X) < 0.2 && (double)npc.ai[0] >= (double)num1326 * 0.75)
             {

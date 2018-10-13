@@ -66,10 +66,10 @@ namespace AAMod.NPCs.Bosses.Raider
                 }
                 if (Main.rand.Next(10) == 0)
                 {
-                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("RaiderEgg"));
+                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("RaidEgg"));
                 }
-                npc.DropLoot(mod.ItemType("FulguriteBar"), 40, 40);
-               
+                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("FulguriteBar"), Main.rand.Next(30, 64));
+
             }
         }
 
@@ -118,6 +118,18 @@ namespace AAMod.NPCs.Bosses.Raider
             }
         }
 
+        public override void ModifyHitPlayer(Player target, ref int damage, ref bool crit)
+        {
+            if (Main.rand.Next(2) == 0 || (Main.expertMode && Main.rand.Next(0) == 0))       //Chances for it to inflict the debuff
+            {
+                target.AddBuff(BuffID.Electrified, Main.rand.Next(100, 180));       //Main.rand.Next part is the length of the buff, so 8.3 seconds to 16.6 seconds
+            }
+            /*if (Main.rand.Next(9) == 0 || (Main.expertMode && Main.rand.Next(7) == 0))
+            {
+                target.AddBuff(BuffID.Poisoned, Main.rand.Next(250, 500));                 //there is no need for this, unless it inflicts a different debuff
+            }*/
+        }
+
         public override void AI()
         {
             int num1305 = 7;
@@ -125,7 +137,7 @@ namespace AAMod.NPCs.Bosses.Raider
             npc.noGravity = true;
             npc.knockBackResist = 0.2f * Main.expertKnockBack;
             npc.damage = npc.defDamage;
-            if (Main.DayTime == true)
+            if (Main.dayTime == true)
             {
                 npc.ai[0] = -1f;
             }
@@ -238,7 +250,7 @@ namespace AAMod.NPCs.Bosses.Raider
                         {
                             npc.ai[0] = 3f;
                         }
-                        else if (num1307 == 2 && NPC.CountNPCS(mod.NPCType("BroodEgg")) + NPC.CountNPCS(mod.NPCType("Broodmini")) < num1305)
+                        else if (num1307 == 2 && NPC.CountNPCS(mod.NPCType("RaidEgg")) + NPC.CountNPCS(mod.NPCType("Raidmini")) < num1305)
                         {
                             npc.ai[0] = 4f;
                         }
@@ -552,7 +564,7 @@ namespace AAMod.NPCs.Bosses.Raider
                                 npc.ai[3] += 1f;
                                 if (npc.ai[3] == (float)num1325)
                                 {
-                                    NPC.NewNPC(num1321 * 16 + 8, num1322 * 16, mod.NPCType("Broodmini"), npc.whoAmI, 0f, 0f, 0f, 0f, 255);
+                                    NPC.NewNPC(num1321 * 16 + 8, num1322 * 16, mod.NPCType("Raidmini"), npc.whoAmI, 0f, 0f, 0f, 0f, 255);
                                 }
                                 else if (npc.ai[3] == (float)(num1325 * 2))
                                 {
@@ -560,7 +572,7 @@ namespace AAMod.NPCs.Bosses.Raider
                                     npc.ai[1] = 0f;
                                     npc.ai[2] = 0f;
                                     npc.ai[3] = 0f;
-                                    if (NPC.CountNPCS(mod.NPCType("BroodEgg")) + NPC.CountNPCS(mod.NPCType("Broodmini")) < num1305 && Main.rand.Next(3) != 0)
+                                    if (NPC.CountNPCS(mod.NPCType("RaidEgg")) + NPC.CountNPCS(mod.NPCType("Raidmini")) < num1305 && Main.rand.Next(3) != 0)
                                     {
                                         npc.ai[0] = 4f;
                                     }

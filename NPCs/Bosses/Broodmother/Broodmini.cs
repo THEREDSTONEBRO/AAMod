@@ -71,7 +71,19 @@ namespace AAMod.NPCs.Bosses.Broodmother
         {
             npc.lifeMax = (int)(npc.lifeMax * 0.3f * bossLifeScale);
         }
-        
+
+        public override void ModifyHitPlayer(Player target, ref int damage, ref bool crit)
+        {
+            if (Main.rand.Next(2) == 0 || (Main.expertMode && Main.rand.Next(0) == 0))       //Chances for it to inflict the debuff
+            {
+                target.AddBuff(BuffID.OnFire, Main.rand.Next(60, 120));       //Main.rand.Next part is the length of the buff, so 8.3 seconds to 16.6 seconds
+            }
+            /*if (Main.rand.Next(9) == 0 || (Main.expertMode && Main.rand.Next(7) == 0))
+            {
+                target.AddBuff(BuffID.Poisoned, Main.rand.Next(250, 500));                 //there is no need for this, unless it inflicts a different debuff
+            }*/
+        }
+
         public override void AI()
         {
             npc.noTileCollide = false;

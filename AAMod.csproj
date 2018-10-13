@@ -500,9 +500,9 @@
     <Compile Include="Items\Blocks\Doomstone.cs" />
     <Compile Include="NPCs\AAModGlobalNPC.cs" />
     <Compile Include="NPCs\Bosses\Akumata\Akumata.cs" />
+    <Compile Include="NPCs\Bosses\Broodmother\BroodEgg.cs" />
     <Compile Include="NPCs\Bosses\Broodmother\Broodmini.cs" />
     <Compile Include="NPCs\Bosses\Broodmother\Broodmother.cs" />
-    <Compile Include="NPCs\Bosses\Broodmother\BroodEgg.cs" />
     <Compile Include="NPCs\Bosses\Daybringer\Daybringer.cs" />
     <Compile Include="NPCs\Bosses\Daybringer\Sunbeam.cs" />
     <Compile Include="NPCs\Bosses\Daybringer\SunbeamScatter.cs" />
@@ -512,6 +512,9 @@
     <Compile Include="NPCs\Bosses\Nightcrawler\MoonrayScatter.cs" />
     <Compile Include="NPCs\Bosses\Nightcrawler\Nightcrawler.cs" />
     <Compile Include="NPCs\Bosses\Pantheon\Mercury.cs" />
+    <Compile Include="NPCs\Bosses\Raider\RaidEgg.cs" />
+    <Compile Include="NPCs\Bosses\Raider\Raider.cs" />
+    <Compile Include="NPCs\Bosses\Raider\Raidmini.cs" />
     <Compile Include="NPCs\Bosses\Retriever\Retriever.cs" />
     <Compile Include="NPCs\Bosses\Zero\DeathLaser.cs" />
     <Compile Include="NPCs\Bosses\Zero\RealityCannon.cs" />
@@ -1567,9 +1570,14 @@
     <Content Include="NPCs\Bosses\Akuma\AkumaBody2.png" />
     <Content Include="NPCs\Bosses\Akuma\AkumaHead.png" />
     <Content Include="NPCs\Bosses\Akuma\AkumaTail.png" />
+    <Content Include="NPCs\Bosses\Broodmother\BroodEgg.png" />
+    <Content Include="NPCs\Bosses\Broodmother\BroodEgg_Glow.png" />
+    <Content Include="NPCs\Bosses\Broodmother\BroodEgg_Head_Boss.png" />
     <Content Include="NPCs\Bosses\Broodmother\broodmini.png" />
     <Content Include="NPCs\Bosses\Broodmother\Broodmother.png" />
+    <Content Include="NPCs\Bosses\Broodmother\Broodmother1.png" />
     <Content Include="NPCs\Bosses\Broodmother\BroodmotherBody.png" />
+    <Content Include="NPCs\Bosses\Broodmother\Broodmother_Head_Boss.png" />
     <Content Include="NPCs\Bosses\Broodmother\BroodWingBack.png" />
     <Content Include="NPCs\Bosses\Broodmother\BroodWingFront.png" />
     <Content Include="NPCs\Bosses\Broodmother\FullBroodmother2.png" />
@@ -1597,6 +1605,8 @@
     <Content Include="NPCs\Bosses\Nightcrawler\Nightcrawler_Glow.png" />
     <Content Include="NPCs\Bosses\Nightcrawler\Nightcrawler_Head_Boss.png" />
     <Content Include="NPCs\Bosses\Pantheon\Earth.png" />
+    <Content Include="NPCs\Bosses\Pantheon\Juno.gif" />
+    <Content Include="NPCs\Bosses\Pantheon\Juno.png" />
     <Content Include="NPCs\Bosses\Pantheon\Jupiter.png" />
     <Content Include="NPCs\Bosses\Pantheon\Mars.png" />
     <Content Include="NPCs\Bosses\Pantheon\Mercury.png" />
@@ -1605,6 +1615,11 @@
     <Content Include="NPCs\Bosses\Pantheon\Saturn.png" />
     <Content Include="NPCs\Bosses\Pantheon\Uranus.png" />
     <Content Include="NPCs\Bosses\Pantheon\Venus.png" />
+    <Content Include="NPCs\Bosses\Raider\RaidEgg.png" />
+    <Content Include="NPCs\Bosses\Raider\RaidEgg_Head_Boss.png" />
+    <Content Include="NPCs\Bosses\Raider\Raider.png" />
+    <Content Include="NPCs\Bosses\Raider\Raider_Head_Boss.png" />
+    <Content Include="NPCs\Bosses\Raider\Raidmini.png" />
     <Content Include="NPCs\Bosses\Retriever\Retriever.png" />
     <Content Include="NPCs\Bosses\Retriever\Retriever_Glow.png" />
     <Content Include="NPCs\Bosses\Retriever\Retriever_Head_Boss.png" />

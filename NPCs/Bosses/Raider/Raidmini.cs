@@ -9,13 +9,13 @@ using Terraria.ModLoader;
 
 namespace AAMod.NPCs.Bosses.Broodmother
 {
-    public class Broodmini : ModNPC
+    public class Raidmini : ModNPC
     {
         private Player player;
         private float speed;
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Broodmini");
+            DisplayName.SetDefault("Raidmini");
             Main.npcFrameCount[npc.type] = 3;
         }
         public override void SetDefaults()
@@ -26,8 +26,8 @@ namespace AAMod.NPCs.Bosses.Broodmother
             npc.damage = 30;
             npc.defense = 9;
             npc.lifeMax = 250;
-            npc.HitSound = new LegacySoundStyle(3, 43, Terraria.Audio.SoundType.Sound);
-            npc.DeathSound = new LegacySoundStyle(4, 8, Terraria.Audio.SoundType.Sound);
+            npc.HitSound = new LegacySoundStyle(3, 4, Terraria.Audio.SoundType.Sound);
+            npc.DeathSound = new LegacySoundStyle(4, 14, Terraria.Audio.SoundType.Sound);
             npc.knockBackResist = 0.3f;
             npc.value = 0f;
             npc.npcSlots = 0.1f;
@@ -60,6 +60,18 @@ namespace AAMod.NPCs.Bosses.Broodmother
             }
         }
 
+        public override void ModifyHitPlayer(Player target, ref int damage, ref bool crit)
+        {
+            if (Main.rand.Next(2) == 0 || (Main.expertMode && Main.rand.Next(0) == 0))       //Chances for it to inflict the debuff
+            {
+                target.AddBuff(BuffID.Electrified, Main.rand.Next(100, 180));       //Main.rand.Next part is the length of the buff, so 8.3 seconds to 16.6 seconds
+            }
+            /*if (Main.rand.Next(9) == 0 || (Main.expertMode && Main.rand.Next(7) == 0))
+            {
+                target.AddBuff(BuffID.Poisoned, Main.rand.Next(250, 500));                 //there is no need for this, unless it inflicts a different debuff
+            }*/
+        }
+
         public override void NPCLoot()
         {
                 npc.DropLoot(mod.ItemType("Incinerite"), 5, 6);
@@ -78,7 +90,7 @@ namespace AAMod.NPCs.Bosses.Broodmother
             npc.knockBackResist = 0.4f * Main.knockBackMultiplier;
             npc.noGravity = true;
             npc.rotation = (npc.rotation * 9f + npc.velocity.X * 0.1f) / 10f;
-            if (Main.player[npc.target].GetModPlayer<AAPlayer>().ZoneInferno == false)
+            if (Main.dayTime == true)
             {
                 if (npc.timeLeft > 5)
                 {
