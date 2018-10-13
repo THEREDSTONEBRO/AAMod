@@ -30,12 +30,12 @@ namespace AAMod.NPCs.Bosses.Broodmother
             npc.chaseable = true;
             npc.damage = 35;
             music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/BroodTheme");
-            npc.defense = 20;
+            npc.defense = 10;
             npc.boss = true;
             animationType = NPCID.Mothron;
             npc.netAlways = true;
             npc.friendly = false;
-            npc.lifeMax = 8000;
+            npc.lifeMax = 6000;
             npc.value = 20000;
             npc.HitSound = new LegacySoundStyle(3, 6, Terraria.Audio.SoundType.Sound);
             npc.DeathSound = new LegacySoundStyle(4, 8, Terraria.Audio.SoundType.Sound);
