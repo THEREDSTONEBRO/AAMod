@@ -7,7 +7,7 @@ using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AAMod.NPCs.Bosses.Broodmother
+namespace AAMod.NPCs.Bosses.Raider
 {
     public class Raidmini : ModNPC
     {
@@ -70,12 +70,6 @@ namespace AAMod.NPCs.Bosses.Broodmother
             {
                 target.AddBuff(BuffID.Poisoned, Main.rand.Next(250, 500));                 //there is no need for this, unless it inflicts a different debuff
             }*/
-        }
-
-        public override void NPCLoot()
-        {
-                npc.DropLoot(mod.ItemType("Incinerite"), 5, 6);
-                npc.DropLoot(mod.ItemType("BroodScale"), 2, 4);
         }
 
 

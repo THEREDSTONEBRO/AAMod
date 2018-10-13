@@ -75,7 +75,7 @@ namespace AAMod.Items.Boss.Retriever
                     }
                 }
             }
-            player.QuickSpawnItem(mod.ItemType("Fulgurite"), Main.rand.Next(40, 76));
+            player.QuickSpawnItem(mod.ItemType("FulguriteBar"), Main.rand.Next(40, 76));
             player.QuickSpawnItem(mod.ItemType("StormClaw"));
 		}
 	}

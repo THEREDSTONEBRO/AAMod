@@ -79,7 +79,7 @@ namespace AAMod.Items.Boss.Raider
                     }
                 }
             }
-            player.QuickSpawnItem(mod.ItemType("Fulgurite"), Main.rand.Next(40, 76));
+            player.QuickSpawnItem(mod.ItemType("FulguriteBar"), Main.rand.Next(40, 76));
             player.QuickSpawnItem(mod.ItemType("HoloCape"));
         }
 	}
