@@ -113,6 +113,7 @@
     <Compile Include="Items\Armor\Doomsday\Zerokip\ZeroDiverJacket.cs" />
     <Compile Include="Items\Armor\Doomsday\Zerokip\ZeroDiverMask.cs" />
     <Compile Include="Items\Armor\Doomsday\Zerokip\ZeroDiverBoots.cs" />
+    <Compile Include="Items\Blocks\Equibox.cs" />
     <Compile Include="Items\Blocks\AkumataABox.cs" />
     <Compile Include="Items\Blocks\AkumataBox.cs" />
     <Compile Include="Items\Blocks\Boss6Box.cs" />
@@ -559,6 +560,11 @@
     <Compile Include="Tiles\AATrophy.cs" />
     <Compile Include="Tiles\AbyssiumBarTile.cs" />
     <Compile Include="Tiles\AbyssiumOreTile.cs" />
+    <Compile Include="Tiles\AkumataABox.cs" />
+    <Compile Include="Tiles\Boss6Box.cs" />
+    <Compile Include="Tiles\BroodBox - Copy.cs" />
+    <Compile Include="Tiles\GripsBox.cs" />
+    <Compile Include="Tiles\EvilAltar.cs" />
     <Compile Include="Tiles\InfernoUBox.cs" />
     <Compile Include="Tiles\MireUBox.cs" />
     <Compile Include="Tiles\N1Box.cs" />
@@ -1425,6 +1431,7 @@
     <Content Include="Items\Ranged\TerraArrow.png" />
     <Content Include="Items\Ranged\TerraArrow_Glow.png" />
     <Content Include="Items\Ranged\TerraBallista.png" />
+    <Content Include="Items\Ranged\TerraBallistaGlow.png" />
     <Content Include="Items\Ranged\TerraBallista_A.png" />
     <Content Include="Items\Ranged\TheReaper.png" />
     <Content Include="Items\Ranged\TheReaper_Glow.png" />
@@ -1800,6 +1807,7 @@
     <Content Include="Tiles\DynaskullOre.png" />
     <Content Include="Tiles\EventideAbyssiumBarTile.png" />
     <Content Include="Tiles\EventideBrick.png" />
+    <Content Include="Tiles\EvilAltar.png" />
     <Content Include="Tiles\FulguriteOre.png" />
     <Content Include="Tiles\FulguriteOre_glow.png" />
     <Content Include="Tiles\HallowedAnvil.png" />

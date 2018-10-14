@@ -9,8 +9,21 @@ namespace AAMod.Items.Usable
     //imported from my tAPI mod because I'm lazy
     public class EquinoxWorm : ModItem
     {
+        public static short customGlowMask = 0;
         public override void SetStaticDefaults()
         {
+            if (Main.netMode != 2)
+            {
+                Microsoft.Xna.Framework.Graphics.Texture2D[] glowMasks = new Microsoft.Xna.Framework.Graphics.Texture2D[Main.glowMaskTexture.Length + 1];
+                for (int i = 0; i < Main.glowMaskTexture.Length; i++)
+                {
+                    glowMasks[i] = Main.glowMaskTexture[i];
+                }
+                glowMasks[glowMasks.Length - 1] = mod.GetTexture("Items/Usable/" + GetType().Name + "_Glow");
+                customGlowMask = (short)(glowMasks.Length - 1);
+                Main.glowMaskTexture = glowMasks;
+            }
+            item.glowMask = customGlowMask;
             DisplayName.SetDefault("EquinoxWorm");
             Tooltip.SetDefault(@"Brings forth the serpents of the celestial heavans
 Not Consumable");
@@ -20,7 +33,6 @@ Not Consumable");
         {
             item.width = 18;
             item.height = 28;
-            item.maxStack = 20;
             item.rare = 2;
             item.value = Item.sellPrice(0, 0, 0, 0);
             item.useAnimation = 45;
