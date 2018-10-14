@@ -25,6 +25,8 @@ namespace AAMod.NPCs.Bosses.Broodmother
             npc.aiStyle = 0;
             npc.damage = 0;
             npc.defense = 30;
+            npc.lavaImmune = true;
+            npc.buffImmune[BuffID.OnFire] = true;
             npc.lifeMax = 50;
             npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = SoundID.NPCDeath1;

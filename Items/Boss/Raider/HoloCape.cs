@@ -16,7 +16,7 @@ namespace AAMod.Items.Boss.Raider
         {
             DisplayName.SetDefault("Holographic Cloak");
             Tooltip.SetDefault(
-@"30% Increased Damage Resistance");
+@"20% Increased Damage Resistance");
         }
         public override void SetDefaults()
         {
@@ -26,12 +26,12 @@ namespace AAMod.Items.Boss.Raider
             item.rare = 2;
             item.accessory = true;
             item.expert = true;
-            item.defense = 9;
+            item.defense = 6;
         }
 
         public override void UpdateEquip(Player player)
         {
-            player.endurance *= 1.3f;
+            player.endurance *= 1.2f;
         }
     }
     

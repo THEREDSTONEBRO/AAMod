@@ -31,6 +31,7 @@ namespace AAMod.NPCs.Bosses.Raider
             npc.damage = 70;
             music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/Boss6");
             npc.defense = 60;
+            npc.lavaImmune = true;
             npc.boss = true;
             animationType = NPCID.Mothron;
             npc.netAlways = true;

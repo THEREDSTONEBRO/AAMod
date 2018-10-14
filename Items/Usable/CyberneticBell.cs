@@ -34,7 +34,7 @@ Can only be used at night");
         public override bool CanUseItem(Player player)
         {
             AAPlayer modPlayer = player.GetModPlayer<AAPlayer>(mod);
-            return !NPC.AnyNPCs(mod.NPCType("Raider")) && modPlayer.ZoneInferno;
+            return !NPC.AnyNPCs(mod.NPCType("Raider")) && !Main.dayTime;
         }
 
         public override bool UseItem(Player player)

@@ -32,6 +32,8 @@ namespace AAMod.NPCs.Bosses.Broodmother
             music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/BroodTheme");
             npc.defense = 10;
             npc.boss = true;
+            npc.lavaImmune = true;
+            npc.buffImmune[BuffID.OnFire] = true;
             animationType = NPCID.Mothron;
             npc.netAlways = true;
             npc.friendly = false;

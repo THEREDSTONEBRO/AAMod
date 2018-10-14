@@ -26,6 +26,8 @@ namespace AAMod.NPCs.Bosses.Broodmother
             npc.damage = 30;
             npc.defense = 9;
             npc.lifeMax = 250;
+            npc.lavaImmune = true;
+            npc.buffImmune[BuffID.OnFire] = true;
             npc.HitSound = new LegacySoundStyle(3, 43, Terraria.Audio.SoundType.Sound);
             npc.DeathSound = new LegacySoundStyle(4, 8, Terraria.Audio.SoundType.Sound);
             npc.knockBackResist = 0.3f;

@@ -115,7 +115,10 @@
     <Compile Include="Items\Armor\Doomsday\Zerokip\ZeroDiverBoots.cs" />
     <Compile Include="Items\Blocks\AkumataABox.cs" />
     <Compile Include="Items\Blocks\AkumataBox.cs" />
+    <Compile Include="Items\Blocks\Boss6Box.cs" />
+    <Compile Include="Items\Blocks\GripsBox.cs" />
     <Compile Include="Items\Blocks\CorruptAltar.cs" />
+    <Compile Include="Items\Blocks\CrimsonAltar.cs" />
     <Compile Include="Items\Boss\Broodmother\BroodBag.cs" />
     <Compile Include="Items\Boss\Broodmother\BroodScale.cs" />
     <Compile Include="Items\Boss\Broodmother\DragonCape.cs" />
@@ -1008,10 +1011,13 @@
     <Content Include="Items\Blocks\BinaryReassembler.png" />
     <Content Include="Items\Blocks\Bogwood.png" />
     <Content Include="Items\Blocks\BogwoodChest.png" />
+    <Content Include="Items\Blocks\Boss6Box.png" />
     <Content Include="Items\Blocks\BroodBox.png" />
     <Content Include="Items\Blocks\BroodmotherTrophy.png" />
     <Content Include="Items\Blocks\BunnyBongo.png" />
     <Content Include="Items\Blocks\ChaosCrucible.png" />
+    <Content Include="Items\Blocks\CorruptAltar.png" />
+    <Content Include="Items\Blocks\CrimsonAltar.png" />
     <Content Include="Items\Blocks\DarkmatterOre.png" />
     <Content Include="Items\Blocks\Darkmud.png" />
     <Content Include="Items\Blocks\Depthstone.png" />
@@ -1080,6 +1086,7 @@
     <Content Include="Items\Boss\Broodmother\BroodScale.png" />
     <Content Include="Items\Boss\Broodmother\DragonCape.png" />
     <Content Include="Items\Boss\Broodmother\DragonCape_Back.png" />
+    <Content Include="Items\Boss\Broodmother\DragonCape_Front.png" />
     <Content Include="Items\Boss\Equinox\DarkVoid.png" />
     <Content Include="Items\Boss\Equinox\DarkVoid_HandsOn.png" />
     <Content Include="Items\Boss\Equinox\DBBag.png" />
@@ -1212,11 +1219,13 @@
     <Content Include="Items\Materials\DeepAbyssium.png" />
     <Content Include="Items\Materials\DevilSilk.png" />
     <Content Include="Items\Materials\DragonClaw.png" />
+    <Content Include="Items\Materials\DragonFire.png" />
     <Content Include="Items\Materials\Dragonfruit.png" />
     <Content Include="Items\Materials\DragonSpirit.png" />
     <Content Include="Items\Materials\EventideAbyssium.png" />
     <Content Include="Items\Materials\FulguriteBar.png" />
     <Content Include="Items\Materials\HydraClaw.png" />
+    <Content Include="Items\Materials\HydraToxin.png" />
     <Content Include="Items\Materials\IncineriteBar.png" />
     <Content Include="Items\Materials\Jaw.png" />
     <Content Include="Items\Materials\PlanteraPetal.png" />
@@ -1953,6 +1962,7 @@
     <Folder Include="bin\Release\" />
     <Folder Include="Items\Boss\Akumata\" />
     <Folder Include="NPCs\Bosses\Hydra\" />
+    <Folder Include="NPCs\Bosses\Orthrus\" />
     <Folder Include="obj\Debug\TempPE\" />
     <Folder Include="obj\NPCs\" />
   </ItemGroup>

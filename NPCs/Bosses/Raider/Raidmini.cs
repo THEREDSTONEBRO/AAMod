@@ -24,6 +24,7 @@ namespace AAMod.NPCs.Bosses.Raider
             npc.height = 56;
             npc.aiStyle = 0;
             npc.damage = 30;
+            npc.lavaImmune = true;
             npc.defense = 9;
             npc.lifeMax = 250;
             npc.HitSound = new LegacySoundStyle(3, 4, Terraria.Audio.SoundType.Sound);

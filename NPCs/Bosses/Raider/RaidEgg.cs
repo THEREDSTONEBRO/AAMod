@@ -25,6 +25,7 @@ namespace AAMod.NPCs.Bosses.Raider
             npc.aiStyle = 0;
             npc.damage = 0;
             npc.defense = 30;
+            npc.lavaImmune = true;
             npc.lifeMax = 50;
             npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = SoundID.NPCDeath1;
