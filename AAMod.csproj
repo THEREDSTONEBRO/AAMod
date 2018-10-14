@@ -74,6 +74,7 @@
     <Compile Include="Backgrounds\MireSkyData.cs" />
     <Compile Include="Backgrounds\MireSurfaceBgStyle.cs" />
     <Compile Include="Backgrounds\MireUgBgStyle.cs" />
+    <Compile Include="Backgrounds\SnowSky.cs" />
     <Compile Include="Backgrounds\VoidSky.cs" />
     <Compile Include="Backgrounds\VoidSkyData.cs" />
     <Compile Include="Backgrounds\VoidSurfaceBgStyle.cs" />
@@ -112,6 +113,7 @@
     <Compile Include="Items\Armor\Doomsday\Zerokip\ZeroDiverJacket.cs" />
     <Compile Include="Items\Armor\Doomsday\Zerokip\ZeroDiverMask.cs" />
     <Compile Include="Items\Armor\Doomsday\Zerokip\ZeroDiverBoots.cs" />
+    <Compile Include="Items\Blocks\AkumataABox.cs" />
     <Compile Include="Items\Blocks\AkumataBox.cs" />
     <Compile Include="Items\Blocks\CorruptAltar.cs" />
     <Compile Include="Items\Boss\Broodmother\BroodBag.cs" />
@@ -132,6 +134,11 @@
     <Compile Include="Items\Projectiles\Neutralizer.cs" />
     <Compile Include="Items\Projectiles\TopHat.cs" />
     <Compile Include="Items\Summoning\Minions\EnderMinionEX.cs" />
+    <Compile Include="Items\Usable\InfernoCrate.cs" />
+    <Compile Include="Items\Usable\MireCrate.cs" />
+    <Compile Include="Items\Usable\HellCrate.cs" />
+    <Compile Include="Items\Usable\DesertCrate.cs" />
+    <Compile Include="Items\Usable\IceCrate.cs" />
     <Compile Include="Items\Usable\CyberneticBell.cs" />
     <Compile Include="Items\Usable\DragonBell.cs" />
     <Compile Include="Items\Usable\ZeroRune.cs" />
@@ -545,6 +552,7 @@
     <Compile Include="Sounds\Sounds\ZeroDeath.cs" />
     <Compile Include="Sounds\Sounds\Zerohit.cs" />
     <Compile Include="Sounds\Sounds\Zerohit2.cs" />
+    <Compile Include="Tiles\AACrate.cs" />
     <Compile Include="Tiles\AATrophy.cs" />
     <Compile Include="Tiles\AbyssiumBarTile.cs" />
     <Compile Include="Tiles\AbyssiumOreTile.cs" />
@@ -994,6 +1002,7 @@
     <Content Include="Items\Armor\Valkyrie\ValkyrieHelm_Head_Glow.png" />
     <Content Include="Items\Blocks\Abyssium.png" />
     <Content Include="Items\Blocks\AkumaBox.png" />
+    <Content Include="Items\Blocks\AkumataABox.png" />
     <Content Include="Items\Blocks\AkumataBox.png" />
     <Content Include="Items\Blocks\Apocalyptite.png" />
     <Content Include="Items\Blocks\BinaryReassembler.png" />

@@ -125,6 +125,7 @@ namespace AAMod
             if (!Main.dedServ)
             {
 
+                PremultiplyTexture(GetTexture("Backgrounds/Aurora"));
                 PremultiplyTexture(GetTexture("Backgrounds/VoidBH"));
                 PremultiplyTexture(GetTexture("Backgrounds/MireMoon"));
                 PremultiplyTexture(GetTexture("Backgrounds/InfernoSun"));
@@ -159,6 +160,7 @@ namespace AAMod
                 Filters.Scene["AAMod:InfernoSky"] = new Filter(new InfernoSkyData("FilterMiniTower").UseColor(1f, 0.20f, 0f).UseOpacity(0.6f), EffectPriority.VeryHigh);
                 SkyManager.Instance["AAMod:InfernoSky"] = new InfernoSky();
                 InfernoSky.PlanetTexture = GetTexture("Backgrounds/InfernoSun");
+                SnowSky.PlanetTexture = GetTexture("Backgrounds/Aurora");
 
                 TerratoolUI = new TerratoolUI();
                 UserInterface = new UserInterface();
