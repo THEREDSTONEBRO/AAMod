@@ -3,6 +3,7 @@ using Terraria;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 using Terraria.DataStructures;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace AAMod.Tiles
 {

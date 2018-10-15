@@ -562,7 +562,6 @@
     <Compile Include="Tiles\AbyssiumOreTile.cs" />
     <Compile Include="Tiles\AkumataABox.cs" />
     <Compile Include="Tiles\Boss6Box.cs" />
-    <Compile Include="Tiles\BroodBox - Copy.cs" />
     <Compile Include="Tiles\GripsBox.cs" />
     <Compile Include="Tiles\EvilAltar.cs" />
     <Compile Include="Tiles\InfernoUBox.cs" />
@@ -1420,6 +1419,7 @@
     <Content Include="Items\Ranged\DragonFlamebow.png" />
     <Content Include="Items\Ranged\DragonFlamebow_glow.png" />
     <Content Include="Items\Ranged\DragonsMaw.png" />
+    <Content Include="Items\Ranged\DragonsMaw_Glow.png" />
     <Content Include="Items\Ranged\Flare_Minigun.png" />
     <Content Include="Items\Ranged\FulguriteTazerblaster.png" />
     <Content Include="Items\Ranged\FulguriteTazerblaster_Glow.png" />

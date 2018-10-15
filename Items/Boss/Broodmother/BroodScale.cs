@@ -1,6 +1,7 @@
 using Microsoft.Xna.Framework;
 using System.Collections.Generic;
 using Terraria.ID;
+using Terraria;
 using Terraria.ModLoader;
 
 namespace AAMod.Items.Boss.Broodmother

@@ -48,12 +48,6 @@ namespace AAMod.Items.Blocks
                 }
             }
         }
-
-        public override void SetStaticDefaults()
-        {
-            DisplayName.SetDefault("Apocalyptite");
-            Tooltip.SetDefault("");
-        }
         
     }
 }

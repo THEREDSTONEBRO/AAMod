@@ -44,23 +44,10 @@ namespace AAMod.Items.Projectiles   //The directory for your .cs and .png; Examp
                 }
             }*/
         }
-
-        public static short customGlowMask = 0;
+        
         public override void SetStaticDefaults()
         {
-            if (Main.netMode != 2)
-            {
-                Microsoft.Xna.Framework.Graphics.Texture2D[] glowMasks = new Microsoft.Xna.Framework.Graphics.Texture2D[Main.glowMaskTexture.Length + 1];
-                for (int i = 0; i < Main.glowMaskTexture.Length; i++)
-                {
-                    glowMasks[i] = Main.glowMaskTexture[i];
-                }
-                glowMasks[glowMasks.Length - 1] = mod.GetTexture("Items/Projectiles/" + GetType().Name + "_Glow");
-                customGlowMask = (short)(glowMasks.Length - 1);
-                Main.glowMaskTexture = glowMasks;
-            }
-            projectile.glowMask = customGlowMask;
-            DisplayName.SetDefault("TimeTeller");
+            DisplayName.SetDefault("Time Teller");
         }
                 //dust = Main.dust[Terraria.Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, 15, 0f, 0f, 46, new Color(255, 75, 0), 1.381579f)];
 
