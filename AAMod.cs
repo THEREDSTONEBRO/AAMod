@@ -16,7 +16,6 @@ namespace AAMod
     {
         public static ModHotKey InfinityHotKey;
         internal static AAMod instance;
-        internal bool BaseLoaded;
         internal UserInterface UserInterface;
         internal TerratoolUI TerratoolUI;
         public static Texture2D ZeroArmTex;
@@ -72,29 +71,21 @@ namespace AAMod
             }
             if (AchievementLibs != null)
             {
-                AchievementLibs.Call("AddAchievementWithoutReward", this, "Chair Completionist", "No-hit Zero and Zero Awakened by only using Chairs", "AAMod/Achievments/ChairA", (Func<bool>)(() => AAPlayer.Chairlol));
-                AchievementLibs.Call("AddAchievementWithoutReward", this, "Claws of Catastrophe", "Defeat the rampaging hands of discord, the Grips of Chaos", "AAMod/Achievments/GripsA", (Func<bool>)(() => AAWorld.downedGrips));
-                //AchievementLibs.Call("AddAchievementWithoutReward", this, "Abyssal Wrath", "Defeat the 3 headed monstrosity, the Hydra", "AAMod/Achievments/HydraA", (Func<bool>)(() => AAWorld.downedHydra));
-                AchievementLibs.Call("AddAchievementWithoutReward", this, "A Mother's Rage", "Defeat the flaming dragoness, the Broodmother", "AAMod/Achievments/BroodA", (Func<bool>)(() => AAWorld.downedBrood));
-                AchievementLibs.Call("AddAchievementWithoutReward", this, "Storming Seige", "Defeat any of the robotic replicas known as the Storm Bosses", "AAMod/Achievments/StormA", (Func<bool>)(() => AAWorld.downedStormAny));
-                //AchievementLibs.Call("AddAchievementWithoutReward", this, "Thunderous Victory", "Defeat all of the Storm Bosses, causing Fulgurite to spawn in your world", "AAMod/Achievments/StormA", (Func<bool>)(() => AAWorld.downedStormAll));
-                AchievementLibs.Call("AddAchievementWithoutReward", this, "Epitome of Equinox", "Defeat the Equinox worms, the Daybringer and the Nightcrawler", "AAMod/Achievments/EquinoxA", (Func<bool>)(() => AAWorld.downedEquinox));
-                //AchievementLibs.Call("AddAchievementWithoutReward", this, "Trial by Fire", "Defeat the draconian sun serpent himself, Akuma", "AAMod/Achievments/AkumaA", (Func<bool>)(() => AAWorld.downedAkuma));
-                //AchievementLibs.Call("AddAchievementWithoutReward", this, "True Blazing Fury", "Defeat Akuma's true, radiant Awakened form", "AAMod/Achievments/AkumaAA", (Func<bool>)(() => AAWorld.downedAkumaA));
-                //AchievementLibs.Call("AddAchievementWithoutReward", this, "Crecent of Madness", "Defeat the dread moon hydra himself, Yamata", "AAMod/Achievments/YamataA", (Func<bool>)(() => AAWorld.downedYamata));
-                //AchievementLibs.Call("AddAchievementWithoutReward", this, "True Abyssal Wrath", "Defeat Yamata's true, deathly Awakened form", "AAMod/Achievments/YamataAA", (Func<bool>)(() => AAWorld.downedYamataA));
-                AchievementLibs.Call("AddAchievementWithoutReward", this, "Clockwork Catastrophe", "Destroy the dark doomsday automaton, Zero", "AAMod/Achievments/ZeroA", (Func<bool>)(() => AAWorld.downedZero));
-                AchievementLibs.Call("AddAchievementWithoutReward", this, "Doomsday Arrives", "Defeat Zero's true, dark Awakened form", "AAMod/Achievments/ZeroAA", (Func<bool>)(() => AAWorld.downedZeroA));
-                //AchievementLibs.Call("AddAchievementWithoutReward", this, "Unyielding Discord", "Defeat the Discordian Drake Akumata", "AAMod/Achievments/AkumataA", (Func<bool>)(() => AAWorld.downedAkumata));
-                //AchievementLibs.Call("AddAchievementWithoutReward", this, "Master of Unity", "Defeat Akumata's true, chaotic Awakened form", "AAMod/Achievments/AkumataAA", (Func<bool>)(() => AAWorld.downedAkumata));
-            }
-            try
-            {
-                BaseLoaded = ModLoader.GetMod("BaseMod") != null;
-            }
-            catch (Exception e)
-            {
-                ErrorLogger.Log("AAMod PostSetupContent Error: " + e.StackTrace + e.Message);
+                AchievementLibs.Call("AddAchievementWithoutReward", this, "Chair Completionist", "No-hit Zero and Zero Awakened by only using Chairs", "Achievement/ChairA", (Func<bool>)(() => AAPlayer.Chairlol));
+                AchievementLibs.Call("AddAchievementWithoutReward", this, "Claws of Catastrophe", "Defeat the rampaging hands of discord, the Grips of Chaos", "Achievement/GripsA", (Func<bool>)(() => AAWorld.downedGrips));
+                //AchievementLibs.Call("AddAchievementWithoutReward", this, "Abyssal Wrath", "Defeat the 3 headed monstrosity, the Hydra", "Achievement/HydraA", (Func<bool>)(() => AAWorld.downedHydra));
+                AchievementLibs.Call("AddAchievementWithoutReward", this, "A Mother's Rage", "Defeat the flaming dragoness, the Broodmother", "Achievement/BroodA", (Func<bool>)(() => AAWorld.downedBrood));
+                AchievementLibs.Call("AddAchievementWithoutReward", this, "Storming Seige", "Defeat any of the robotic replicas known as the Storm Bosses", "Achievement/StormA", (Func<bool>)(() => AAWorld.downedStormAny));
+                //AchievementLibs.Call("AddAchievementWithoutReward", this, "Thunderous Victory", "Defeat all of the Storm Bosses, causing Fulgurite to spawn in your world", "Achievement/StormA", (Func<bool>)(() => AAWorld.downedStormAll));
+                AchievementLibs.Call("AddAchievementWithoutReward", this, "Epitome of Equinox", "Defeat the Equinox worms, the Daybringer and the Nightcrawler", "Achievement/EquinoxA", (Func<bool>)(() => AAWorld.downedEquinox));
+                //AchievementLibs.Call("AddAchievementWithoutReward", this, "Trial by Fire", "Defeat the draconian sun serpent himself, Akuma", "Achievement/AkumaA", (Func<bool>)(() => AAWorld.downedAkuma));
+                //AchievementLibs.Call("AddAchievementWithoutReward", this, "True Blazing Fury", "Defeat Akuma's true, radiant Awakened form", "Achievement/AkumaAA", (Func<bool>)(() => AAWorld.downedAkumaA));
+                //AchievementLibs.Call("AddAchievementWithoutReward", this, "Crecent of Madness", "Defeat the dread moon hydra himself, Yamata", "Achievement/YamataA", (Func<bool>)(() => AAWorld.downedYamata));
+                //AchievementLibs.Call("AddAchievementWithoutReward", this, "True Abyssal Wrath", "Defeat Yamata's true, deathly Awakened form", "Achievement/YamataAA", (Func<bool>)(() => AAWorld.downedYamataA));
+                AchievementLibs.Call("AddAchievementWithoutReward", this, "Clockwork Catastrophe", "Destroy the dark doomsday automaton, Zero", "Achievement/ZeroA", (Func<bool>)(() => AAWorld.downedZero));
+                AchievementLibs.Call("AddAchievementWithoutReward", this, "Doomsday Arrives", "Defeat Zero's true, dark Awakened form", "Achievement/ZeroAA", (Func<bool>)(() => AAWorld.downedZeroA));
+                //AchievementLibs.Call("AddAchievementWithoutReward", this, "Unyielding Discord", "Defeat the Discordian Drake Akumata", "Achievement/AkumataA", (Func<bool>)(() => AAWorld.downedAkumata));
+                //AchievementLibs.Call("AddAchievementWithoutReward", this, "Master of Unity", "Defeat Akumata's true, chaotic Awakened form", "Achievement/AkumataAA", (Func<bool>)(() => AAWorld.downedAkumata));
             }
         }
 
@@ -141,7 +132,7 @@ namespace AAMod
                 AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/InfernoUnderground"), ItemType("InfernoUBox"), TileType("InfernoUBox"));
                 AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/MireUnderground"), ItemType("MireUBox"), TileType("MireUBox"));
                 AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Boss6"), ItemType("Boss6Box"), TileType("Boss6Box"));
-                //AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Equinox"), ItemType("EquiBox"), TileType("EquiBox"));
+                AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Equinox"), ItemType("EquiBox"), TileType("EquiBox"));
                 AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Void"), ItemType("VoidBox"), TileType("VoidBox"));
                 AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Zero"), ItemType("ZeroBox"), TileType("ZeroBox"));
                 AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Zero2"), ItemType("Zero2Box"), TileType("Zero2Box"));
@@ -279,18 +270,20 @@ namespace AAMod
         {
             RecipeFinder finder = new RecipeFinder();
             {
-                finder = new RecipeFinder();
-                finder.AddIngredient(ItemID.BloodButcherer, 1);
-                finder.AddIngredient(ItemID.FieryGreatsword, 1);
-                finder.AddIngredient(ItemID.BladeofGrass, 1);
-                finder.AddIngredient(ItemID.Muramasa, 1);
-                finder.AddTile(TileID.DemonAltar);
-                finder.SetResult(ItemID.NightsEdge, 1);
-                Recipe recipe2 = finder.FindExactRecipe();
-                if (recipe2 != null)
-                {
-                    RecipeEditor editor = new RecipeEditor(recipe2);
-                    editor.DeleteRecipe();
+                { 
+                    finder = new RecipeFinder();
+                    finder.AddIngredient(ItemID.BloodButcherer, 1);
+                    finder.AddIngredient(ItemID.FieryGreatsword, 1);
+                    finder.AddIngredient(ItemID.BladeofGrass, 1);
+                    finder.AddIngredient(ItemID.Muramasa, 1);
+                    finder.AddTile(TileID.DemonAltar);
+                    finder.SetResult(ItemID.NightsEdge, 1);
+                    Recipe recipe2 = finder.FindExactRecipe();
+                    if (recipe2 != null)
+                    {
+                        RecipeEditor editor = new RecipeEditor(recipe2);
+                        editor.DeleteRecipe();
+                    }
                 }
             }
             {
