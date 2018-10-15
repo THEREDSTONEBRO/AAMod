@@ -75,7 +75,13 @@ namespace AAMod.NPCs.Bosses.Zero
             {
                 hitDirection = 0;
                 damage = 0.0;
-                npc.life = npc.lifeMax;
+                npc.dontTakeDamage = true;
+                npc.chaseable = false;
+            }
+            else
+            {
+                npc.dontTakeDamage = false;
+                npc.chaseable = false;
             }
             if (npc.life <= 0 && npc.type == mod.NPCType<Zero>())
             {
