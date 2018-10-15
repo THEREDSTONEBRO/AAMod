@@ -1814,6 +1814,7 @@
     <Content Include="NPCs\Bosses\Zero\VoidStar_Glow.png" />
     <Content Include="NPCs\Bosses\Zero\Zero.png" />
     <Content Include="NPCs\Bosses\Zero\Zero1.png" />
+    <Content Include="NPCs\Bosses\Zero\Zero2.png" />
     <Content Include="NPCs\Bosses\Zero\ZeroArm.png" />
     <Content Include="NPCs\Bosses\Zero\ZeroArm1.png" />
     <Content Include="NPCs\Bosses\Zero\ZeroAwakened.png" />

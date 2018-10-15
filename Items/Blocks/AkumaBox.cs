@@ -1,6 +1,8 @@
 using Terraria.ModLoader;
 using Terraria;
 using Terraria.ID;
+using System.Collections.Generic;
+using Microsoft.Xna.Framework;
 
 namespace AAMod.Items.Blocks
 {
@@ -11,7 +13,18 @@ namespace AAMod.Items.Blocks
 			DisplayName.SetDefault("Akuma Music Box");
 		}
 
-		public override void SetDefaults()
+        public override void ModifyTooltips(List<TooltipLine> list)
+        {
+            foreach (TooltipLine line2 in list)
+            {
+                if (line2.mod == "Terraria" && line2.Name == "ItemName")
+                {
+                    line2.overrideColor = new Color(180, 41, 32);
+                }
+            }
+        }
+
+        public override void SetDefaults()
 		{
 			item.useStyle = 1;
 			item.useTurn = true;
