@@ -9,29 +9,41 @@ namespace AAMod.Items.Usable
     //imported from my tAPI mod because I'm lazy
     public class EquinoxWorm : ModItem
     {
+        public static short customGlowMask = 0;
         public override void SetStaticDefaults()
         {
+            if (Main.netMode != 2)
+            {
+                Microsoft.Xna.Framework.Graphics.Texture2D[] glowMasks = new Microsoft.Xna.Framework.Graphics.Texture2D[Main.glowMaskTexture.Length + 1];
+                for (int i = 0; i < Main.glowMaskTexture.Length; i++)
+                {
+                    glowMasks[i] = Main.glowMaskTexture[i];
+                }
+                glowMasks[glowMasks.Length - 1] = mod.GetTexture("Items/Usable/" + GetType().Name + "_Glow");
+                customGlowMask = (short)(glowMasks.Length - 1);
+                Main.glowMaskTexture = glowMasks;
+            }
+            item.glowMask = customGlowMask;
             DisplayName.SetDefault("EquinoxWorm");
-            Tooltip.SetDefault(@"Brings forth the serpents of the celestial heavans");
+            Tooltip.SetDefault(@"Brings forth the serpents of the celestial heavans
+Not Consumable");
         }
 
         public override void SetDefaults()
         {
             item.width = 18;
             item.height = 28;
-            item.maxStack = 20;
             item.rare = 2;
             item.value = Item.sellPrice(0, 0, 0, 0);
             item.useAnimation = 45;
             item.useTime = 45;
             item.useStyle = 4;
-            item.consumable = true;
         }
 
         // We use the CanUseItem hook to prevent a player from using this item while the boss is present in the world.
         public override bool CanUseItem(Player player)
         {
-            return NPC.downedMoonlord && !NPC.AnyNPCs(mod.NPCType<NightcrawlerHead>()) && !NPC.AnyNPCs(mod.NPCType<DaybringerHead>());
+            return !NPC.AnyNPCs(mod.NPCType<NightcrawlerHead>()) && !NPC.AnyNPCs(mod.NPCType<DaybringerHead>());
         }
 
         public override bool UseItem(Player player)

@@ -85,6 +85,7 @@ namespace AAMod
 
         //pets
         public bool Broodmini = false;
+public bool Raidmini = false;
 
         public override void ResetEffects()
         {
@@ -123,6 +124,7 @@ namespace AAMod
             Space = false;
             TrueInfinityGauntlet = false;
             Broodmini = false;
+            Raidmini = false;
         }
 
         public override void UpdateBiomes()
@@ -140,6 +142,8 @@ namespace AAMod
             player.ManageSpecialBiomeVisuals("AAMod:MireSky", useMire);
             bool useVoid = ZoneVoid || VoidUnit;
             player.ManageSpecialBiomeVisuals("AAMod:VoidSky", useVoid);
+            //bool useSnow = player.ZoneSnow && NPC.downedMoonlord == true; //|| VoidUnit/;
+            //player.ManageSpecialBiomeVisuals("AAMod:SnowSky", useSnow);
         }
 
         public override bool CustomBiomesMatch(Player other)

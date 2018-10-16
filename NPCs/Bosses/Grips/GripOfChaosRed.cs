@@ -15,7 +15,7 @@ namespace AAMod.NPCs.Bosses.Grips
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Grip of Chaos");
-            Main.npcFrameCount[npc.type] = 5;    //boss frame/animation 
+            Main.npcFrameCount[npc.type] = 4;    //boss frame/animation 
 
         }
         public override void SetDefaults()
@@ -25,8 +25,8 @@ namespace AAMod.NPCs.Bosses.Grips
             npc.damage = 20;  //boss damage
             npc.defense = 12;    //boss defense
             npc.knockBackResist = 0f;
-            npc.width = 68;
-            npc.height = 48;
+            npc.width = 66;
+            npc.height = 60;
             npc.friendly = false;
             animationType = NPCID.DemonEye;   //this boss will behavior like the DemonEye
             npc.value = Item.buyPrice(0, 4, 50, 0);

@@ -85,7 +85,7 @@ namespace AAMod.Items.Projectiles
         public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
         {
             Vector2 mountedCenter = Main.player[projectile.owner].MountedCenter;
-            Microsoft.Xna.Framework.Color color25 = Lighting.GetColor((int)(projectile.position.X + projectile.width * 0.5) / 16, (int)((projectile.position.Y + projectile.height * 0.5) / 16.0));
+            Color color25 = Lighting.GetColor((int)(projectile.position.X + projectile.width * 0.5) / 16, (int)((projectile.position.Y + projectile.height * 0.5) / 16.0));
             if (projectile.hide && !ProjectileID.Sets.DontAttachHideToAlpha[projectile.type])
             {
                 color25 = Lighting.GetColor((int)mountedCenter.X / 16, (int)(mountedCenter.Y / 16f));
@@ -126,7 +126,7 @@ namespace AAMod.Items.Projectiles
             Vector2 value30 = vector31;
             vector31 = projectile.Center.Floor();
             vector31 += value28 * projectile.scale * 24f;
-            rectangle8 = new Microsoft.Xna.Framework.Rectangle(0, 40, texture2D22.Width, 20); //46 and 18
+            rectangle8 = new Rectangle(0, 40, texture2D22.Width, 20); //46 and 18
             int num232 = 18;
             if (flag24)
             {

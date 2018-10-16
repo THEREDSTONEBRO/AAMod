@@ -13,7 +13,6 @@ namespace AAMod.Tiles
             Main.tileLighted[Type] = true;
             drop = mod.ItemType("Razewood");   //put your CustomBlock name
             AddMapEntry(new Color(20f, 20f, 20f));
-            minPick = 65;
             dustType = mod.DustType("RazewoodDust");
         }
     }

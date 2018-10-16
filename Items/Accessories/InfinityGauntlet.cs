@@ -9,6 +9,30 @@ namespace AAMod.Items.Accessories
     [AutoloadEquip(EquipType.HandsOn, EquipType.Wings)]
     public class InfinityGauntlet : ModItem
     {
+            public static short customGlowMask = 0;
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("Infinity Gauntlet");
+            Tooltip.SetDefault(
+@"Pressing the G key allows you to snap your fingers, wiping out half of the enemies on your screen
+The snap has a 20 minute cooldown
+All effects of the infinity stones
+'Perfectly Balanced, as all things should be'");
+            if (Main.netMode != 2)
+            {
+                Microsoft.Xna.Framework.Graphics.Texture2D[] glowMasks = new Microsoft.Xna.Framework.Graphics.Texture2D[Main.glowMaskTexture.Length + 1];
+                for (int i = 0; i < Main.glowMaskTexture.Length; i++)
+                {
+                    glowMasks[i] = Main.glowMaskTexture[i];
+                }
+                glowMasks[glowMasks.Length - 1] = mod.GetTexture("Items/Accessories/" + GetType().Name + "_Glow");
+                customGlowMask = (short)(glowMasks.Length - 1);
+                Main.glowMaskTexture = glowMasks;
+            }
+
+
+        }
+
         public bool death;
         public int rodCD;
         public override void SetDefaults()
@@ -20,6 +44,7 @@ namespace AAMod.Items.Accessories
             item.expert = true;
             item.accessory = true;
             item.defense = 12;
+            item.glowMask = customGlowMask;
         }
 
         public override void UpdateEquip(Player player)
@@ -43,15 +68,7 @@ namespace AAMod.Items.Accessories
             player.lavaMax += 420;
         }
 
-        public override void SetStaticDefaults()
-        {
-            DisplayName.SetDefault("Infinity Gauntlet");
-            Tooltip.SetDefault(
-@"Pressing the G key allows you to snap your fingers, wiping out half of the enemies on your screen
-The snap has a 20 minute cooldown
-All effects of the infinity stones
-'Perfectly Balanced, as all things should be'");
-        }
+        
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {

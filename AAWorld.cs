@@ -49,11 +49,14 @@ namespace AAMod
         public static bool downedNC;
         public static bool downedEquinox;
         public static bool downedAkuma;
+        public static bool downedAkumaA;
         public static bool downedYamata;
+        public static bool downedYamataA;
         public static bool zeroUS;
         public static bool downedZero;
         public static bool downedZeroA;
         public static bool downedAkumata;
+        public static bool downedAkumataA;
         //Stones
         public static bool RealityDropped;
 
@@ -62,7 +65,6 @@ namespace AAMod
         public override void Initialize()
         {
             //Bosses
-            downedGrips = false;
             downedGripRed = false;
             downedGripBlue = false;
             downedGrips = downedGripRed && downedGripBlue;
@@ -75,11 +77,14 @@ namespace AAMod
             downedNC = false;
             downedEquinox = downedDB && downedNC;
             downedAkuma = false;
+            downedAkumaA = false;
             downedYamata = false;
+            downedYamataA = false;
             zeroUS = false;
             downedZero = false;
             downedZeroA = false;
             downedAkumata = false;
+            downedAkumataA = false;
             //World Changes
             ChaosOres = downedGrips;
             Dynaskull = NPC.downedBoss3;
@@ -131,6 +136,7 @@ namespace AAMod
             if (NPC.downedMoonlord) downed.Add("MoonLord");
             if (downedNC) downed.Add("NC");
             if (downedDB) downed.Add("DB");
+            if (downedEquinox) downed.Add("Equinox");
             if (downedAkuma) downed.Add("Akuma");
             if (downedYamata) downed.Add("Yamata");
             if (zeroUS) downed.Add("0U");
@@ -142,7 +148,7 @@ namespace AAMod
                 {"downed", downed}
             };
         }
-        
+
         public override void NetSend(BinaryWriter writer)
         {
             BitsByte flags = new BitsByte();
@@ -157,21 +163,25 @@ namespace AAMod
             writer.Write(flags);
 
             BitsByte flags2 = new BitsByte();
-            flags[0] = downedRaider;
-            flags[1] = NPC.downedMechBossAny;
-            flags[2] = NPC.downedPlantBoss;
-            flags[3] = NPC.downedMoonlord;
+            flags2[0] = downedRaider;
+            flags2[1] = NPC.downedMechBossAny;
+            flags2[2] = NPC.downedPlantBoss;
+            flags2[3] = NPC.downedMoonlord;
             flags2[4] = downedDB;
             flags2[5] = downedNC;
-            flags2[6] = downedAkuma;
-            flags2[7] = downedYamata;
+            flags2[6] = downedNC;
+            flags2[7] = downedAkuma;
             writer.Write(flags2);
 
             BitsByte flags3 = new BitsByte();
-            flags2[0] = zeroUS;
-            flags2[1] = downedZero;
-            flags2[2] = downedZeroA;
-            flags2[3] = downedAkumata;
+            flags3[0] = downedAkumaA;
+            flags3[1] = downedYamata;
+            flags3[2] = downedYamataA;
+            flags3[3] = zeroUS;
+            flags3[4] = downedZero;
+            flags3[5] = downedZeroA;
+            flags3[6] = downedAkumata;
+            flags3[7] = downedAkumataA;
             writer.Write(flags3);
         }
 
@@ -412,11 +422,8 @@ namespace AAMod
                     Main.NewText("Chaos reigns in your world", Color.Indigo.R, Color.Indigo.G, Color.Indigo.B);
                     for (int k = 0; k < (int)(Main.maxTilesX * Main.maxTilesY * 6E-05); k++)
                     {
-                        WorldGen.OreRunner(WorldGen.genRand.Next(0, Main.maxTilesX), WorldGen.genRand.Next((int)Main.rockLayer, Main.maxTilesY - 200), WorldGen.genRand.Next(7, 9), WorldGen.genRand.Next(10, 11), (ushort)mod.TileType("IncineriteOreTile"));
-                    }
-                    for (int k = 0; k < (int)(Main.maxTilesX * Main.maxTilesY * 6E-05); k++)
-                    {
                         WorldGen.OreRunner(WorldGen.genRand.Next(0, Main.maxTilesX), WorldGen.genRand.Next((int)Main.rockLayer, Main.maxTilesY - 200), WorldGen.genRand.Next(7, 9), WorldGen.genRand.Next(10, 11), (ushort)mod.TileType("AbyssiumOreTile"));
+                        WorldGen.OreRunner(WorldGen.genRand.Next(0, Main.maxTilesX), WorldGen.genRand.Next((int)Main.rockLayer, Main.maxTilesY - 200), WorldGen.genRand.Next(7, 9), WorldGen.genRand.Next(10, 11), (ushort)mod.TileType("IncineriteOreTile"));
                     }
                 }
             }

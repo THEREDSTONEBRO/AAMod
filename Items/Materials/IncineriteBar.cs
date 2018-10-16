@@ -7,8 +7,21 @@ namespace AAMod.Items.Materials
 {
     public class IncineriteBar : ModItem
     {
+        public static short customGlowMask = 0;
         public override void SetStaticDefaults()
         {
+            if (Main.netMode != 2)
+            {
+                Microsoft.Xna.Framework.Graphics.Texture2D[] glowMasks = new Microsoft.Xna.Framework.Graphics.Texture2D[Main.glowMaskTexture.Length + 1];
+                for (int i = 0; i < Main.glowMaskTexture.Length; i++)
+                {
+                    glowMasks[i] = Main.glowMaskTexture[i];
+                }
+                glowMasks[glowMasks.Length - 1] = mod.GetTexture("Items/Materials/" + GetType().Name + "_Glow");
+                customGlowMask = (short)(glowMasks.Length - 1);
+                Main.glowMaskTexture = glowMasks;
+            }
+            item.glowMask = customGlowMask;
             DisplayName.SetDefault("Incinerite Bar");
             Tooltip.SetDefault("Careful. It's hot.");
         }

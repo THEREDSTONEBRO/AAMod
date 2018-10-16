@@ -42,7 +42,7 @@ Despite the name, it's not actually made of flesh");
 			item.UseSound = SoundID.Item1;
 			item.autoReuse = false;
 			item.shoot = mod.ProjectileType("TrueFleshClaymoreShot");
-            item.shootSpeed = 6f;
+            item.shootSpeed = 12f;
 		}
 
 		public override void AddRecipes()

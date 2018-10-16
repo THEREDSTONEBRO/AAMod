@@ -1,4 +1,4 @@
-using Terraria.ID;
+using Terraria;
 using Microsoft.Xna.Framework;
 using System.Collections.Generic;
 using Terraria.ModLoader;
@@ -7,10 +7,22 @@ namespace AAMod.Items.Blocks
 {
     public class BinaryReassembler : ModItem
     {
+        public static short customGlowMask = 0;
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Binary Fragmentation Reassembler");
             Tooltip.SetDefault("Reality has never been so easy to manipulate");
+            if (Main.netMode != 2)
+            {
+                Microsoft.Xna.Framework.Graphics.Texture2D[] glowMasks = new Microsoft.Xna.Framework.Graphics.Texture2D[Main.glowMaskTexture.Length + 1];
+                for (int i = 0; i < Main.glowMaskTexture.Length; i++)
+                {
+                    glowMasks[i] = Main.glowMaskTexture[i];
+                }
+                glowMasks[glowMasks.Length - 1] = mod.GetTexture("Items/Blocks/" + GetType().Name + "_Glow");
+                customGlowMask = (short)(glowMasks.Length - 1);
+                Main.glowMaskTexture = glowMasks;
+            }
         }
 
         public override void SetDefaults()
@@ -27,6 +39,7 @@ namespace AAMod.Items.Blocks
             item.consumable = true;
             item.value = 1000000;
             item.createTile = mod.TileType("BinaryReassembler");
+            item.glowMask = customGlowMask;
         }
         public override void ModifyTooltips(List<TooltipLine> list)
     {

@@ -35,15 +35,7 @@ namespace AAMod.Items.Tools
             {
                 ModRecipe recipe = new ModRecipe(mod);
                 recipe.AddIngredient(null, "Incinerite", 12);
-                recipe.AddIngredient(ItemID.TissueSample, 6);
-                recipe.AddTile(TileID.Anvils);
-                recipe.SetResult(this);
-                recipe.AddRecipe();
-            }
-            {
-                ModRecipe recipe = new ModRecipe(mod);
-                recipe.AddIngredient(null, "Incinerite", 12);
-                recipe.AddIngredient(ItemID.ShadowScale, 6);
+                recipe.AddIngredient(null, "BroodScale", 6);
                 recipe.AddTile(TileID.Anvils);
                 recipe.SetResult(this);
                 recipe.AddRecipe();

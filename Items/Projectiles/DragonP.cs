@@ -31,10 +31,10 @@ namespace AAMod.Items.Projectiles
                 Main.dust[num469].velocity *= 2f;
             }
         }
-
+        
         public override void SetStaticDefaults()
-    {
-      DisplayName.SetDefault("DragonP");
+        {
+            DisplayName.SetDefault("DragonP");
     }
 
     }

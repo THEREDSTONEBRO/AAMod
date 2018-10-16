@@ -39,7 +39,7 @@ namespace AAMod.NPCs.Enemies.Inferno
             if (!(player.ZoneTowerSolar || player.ZoneTowerVortex || player.ZoneTowerNebula || player.ZoneTowerStardust) && ((!Main.pumpkinMoon && !Main.snowMoon) || spawnInfo.spawnTileY > Main.worldSurface || Main.dayTime) && (!Main.eclipse || spawnInfo.spawnTileY > Main.worldSurface || !Main.dayTime) && (SpawnCondition.GoblinArmy.Chance == 0))
             {
                 int[] TileArray2 = { mod.TileType("InfernoGrassTile"), mod.TileType("TorchstoneTile") };
-                return TileArray2.Contains(Main.tile[spawnInfo.spawnTileX, spawnInfo.spawnTileY].type) ? 6.09f : 0f;
+                return TileArray2.Contains(Main.tile[spawnInfo.spawnTileX, spawnInfo.spawnTileY].type) ? 1f : 0f;
             }
             return 0f;
         }
@@ -51,7 +51,7 @@ namespace AAMod.NPCs.Enemies.Inferno
             {
                 spriteEffects = SpriteEffects.FlipHorizontally;
             }
-            spriteBatch.Draw(mod.GetTexture("NPCs/Bosses/Zero/InfernalSlime_Glow"), new Vector2(npc.Center.X - Main.screenPosition.X, npc.Center.Y - Main.screenPosition.Y),
+            spriteBatch.Draw(mod.GetTexture("NPCs/Enemies/Inferno/InfernalSlime_Glow"), new Vector2(npc.Center.X - Main.screenPosition.X, npc.Center.Y - Main.screenPosition.Y),
             npc.frame, Color.White, npc.rotation,
             new Vector2(npc.width * 0.5f, npc.height * 0.5f), 1f, spriteEffects, 0f);
         }

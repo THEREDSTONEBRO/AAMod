@@ -9,8 +9,21 @@ namespace AAMod.Items.Usable
     //imported from my tAPI mod because I'm lazy
     public class ZeroTesseract : ModItem
     {
+        public static short customGlowMask = 0;
         public override void SetStaticDefaults()
         {
+            if (Main.netMode != 2)
+            {
+                Microsoft.Xna.Framework.Graphics.Texture2D[] glowMasks = new Microsoft.Xna.Framework.Graphics.Texture2D[Main.glowMaskTexture.Length + 1];
+                for (int i = 0; i < Main.glowMaskTexture.Length; i++)
+                {
+                    glowMasks[i] = Main.glowMaskTexture[i];
+                }
+                glowMasks[glowMasks.Length - 1] = mod.GetTexture("Items/Usable/" + GetType().Name + "_Glow");
+                customGlowMask = (short)(glowMasks.Length - 1);
+                Main.glowMaskTexture = glowMasks;
+            }
+            item.glowMask = customGlowMask;
             DisplayName.SetDefault("ERROR:NULL");
             Tooltip.SetDefault(@"DESCRIPTI0NHERE
 UNSTABLE. C0NTAINS C0DE TO ACTIVATE THE BRINGER 0F DEATH");
@@ -20,13 +33,11 @@ UNSTABLE. C0NTAINS C0DE TO ACTIVATE THE BRINGER 0F DEATH");
         {
             item.width = 38;
             item.height = 38;
-            item.maxStack = 20;
             item.rare = 11;
             item.value = Item.sellPrice(0, 0, 0, 0);
             item.useAnimation = 45;
             item.useTime = 45;
             item.useStyle = 4;
-            item.consumable = true;
         }
 
         public override void ModifyTooltips(List<TooltipLine> list)
@@ -44,13 +55,13 @@ UNSTABLE. C0NTAINS C0DE TO ACTIVATE THE BRINGER 0F DEATH");
         public override bool CanUseItem(Player player)
         {
             AAPlayer modPlayer = player.GetModPlayer<AAPlayer>(mod);
-            return modPlayer.ZoneVoid && !NPC.AnyNPCs(mod.NPCType("Zero")) && !NPC.AnyNPCs(mod.NPCType("ZeroAwakened")) && modPlayer.ZoneVoid;
+            return modPlayer.ZoneVoid && !NPC.AnyNPCs(mod.NPCType("Zero")) && !NPC.AnyNPCs(mod.NPCType("ZeroAwakened"));
         }
 
         public override bool UseItem(Player player)
         {
             NPC.SpawnOnPlayer(player.whoAmI, mod.NPCType("Zero"));
-            Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Sounds/ZeroDeath"));
+            Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Sounds/Glitch"));
             return true;
         }
 

@@ -5,9 +5,22 @@ namespace AAMod.Items.Boss.Retriever
 {
 	public class RetrieverBag : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Treasure Bag");
+        public static short customGlowMask = 0;
+        public override void SetStaticDefaults()
+        {
+            if (Main.netMode != 2)
+            {
+                Microsoft.Xna.Framework.Graphics.Texture2D[] glowMasks = new Microsoft.Xna.Framework.Graphics.Texture2D[Main.glowMaskTexture.Length + 1];
+                for (int i = 0; i < Main.glowMaskTexture.Length; i++)
+                {
+                    glowMasks[i] = Main.glowMaskTexture[i];
+                }
+                glowMasks[glowMasks.Length - 1] = mod.GetTexture("Items/Boss/Retriever/" + GetType().Name + "_Glow");
+                customGlowMask = (short)(glowMasks.Length - 1);
+                Main.glowMaskTexture = glowMasks;
+            }
+            item.glowMask = customGlowMask;
+            DisplayName.SetDefault("Treasure Bag");
 			Tooltip.SetDefault("{$CommonItemTooltip.RightClickToOpen}");
 		}
 
@@ -75,7 +88,7 @@ namespace AAMod.Items.Boss.Retriever
                     }
                 }
             }
-            player.QuickSpawnItem(mod.ItemType("Fulgurite"), Main.rand.Next(40, 76));
+            player.QuickSpawnItem(mod.ItemType("FulguriteBar"), Main.rand.Next(40, 76));
             player.QuickSpawnItem(mod.ItemType("StormClaw"));
 		}
 	}

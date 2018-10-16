@@ -17,8 +17,21 @@ namespace AAMod.Items.Boss.Retriever
             item.accessory = true;
             item.defense = 6;
         }
+        public static short customGlowMask = 0;
         public override void SetStaticDefaults()
         {
+            if (Main.netMode != 2)
+            {
+                Microsoft.Xna.Framework.Graphics.Texture2D[] glowMasks = new Microsoft.Xna.Framework.Graphics.Texture2D[Main.glowMaskTexture.Length + 1];
+                for (int i = 0; i < Main.glowMaskTexture.Length; i++)
+                {
+                    glowMasks[i] = Main.glowMaskTexture[i];
+                }
+                glowMasks[glowMasks.Length - 1] = mod.GetTexture("Items/Boss/Retriever/" + GetType().Name + "_Glow");
+                customGlowMask = (short)(glowMasks.Length - 1);
+                Main.glowMaskTexture = glowMasks;
+            }
+            item.glowMask = customGlowMask;
             DisplayName.SetDefault("Storm Riot Shield");
             Tooltip.SetDefault(
 @"For every hit you land on an enemy, 45 true damage (damage unassigned to any class) is dealt

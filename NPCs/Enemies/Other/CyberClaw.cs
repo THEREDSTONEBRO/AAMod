@@ -30,7 +30,14 @@ namespace AAMod.NPCs.Enemies.Other
         }
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
-            return SpawnCondition.OverworldNightMonster.Chance * 0.12f;
+            if (Main.hardMode)
+            {
+                return SpawnCondition.OverworldNightMonster.Chance * 0.12f;
+            }
+            else
+            {
+                return SpawnCondition.OverworldNightMonster.Chance * 0f;
+            }
         }
         public override void HitEffect(int hitDirection, double damage)
         {
@@ -41,10 +48,6 @@ namespace AAMod.NPCs.Enemies.Other
                 Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/CyberClawGore3"), 1f);
                 Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/CyberClawGore4"), 1f);
             }
-        }
-        public override void ModifyHitPlayer(Player target, ref int damage, ref bool crit)
-        {
-            target.AddBuff(BuffID.OnFire, 180);
         }
         public override void NPCLoot()
         {

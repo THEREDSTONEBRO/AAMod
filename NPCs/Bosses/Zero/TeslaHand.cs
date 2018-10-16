@@ -21,7 +21,7 @@ namespace AAMod.NPCs.Bosses.Zero
             
             npc.width = 40;
             npc.height = 48;
-            npc.damage = 90;
+            npc.damage = 130;
             npc.defense = 40;
             npc.lifeMax = 1;
             npc.HitSound = SoundID.NPCHit4;
@@ -36,7 +36,7 @@ namespace AAMod.NPCs.Bosses.Zero
             npc.buffImmune[24] = true;
             npc.netAlways = true;
             npc.dontTakeDamage = true;
-
+            npc.chaseable = false;
         }
 
         public override void ScaleExpertStats(int numPlayers, float bossLifeScale)

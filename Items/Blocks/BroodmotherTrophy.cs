@@ -1,12 +1,28 @@
+using Terraria;
 using Terraria.ModLoader;
 
 namespace AAMod.Items.Blocks
 {
 	public class BroodmotherTrophy : ModItem
 	{
-		public override void SetStaticDefaults()
+
+        public static short customGlowMask = 0;
+        public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Broodmother Trophy");
+            if (Main.netMode != 2)
+            {
+                Microsoft.Xna.Framework.Graphics.Texture2D[] glowMasks = new Microsoft.Xna.Framework.Graphics.Texture2D[Main.glowMaskTexture.Length + 1];
+                for (int i = 0; i < Main.glowMaskTexture.Length; i++)
+                {
+                    glowMasks[i] = Main.glowMaskTexture[i];
+                }
+                glowMasks[glowMasks.Length - 1] = mod.GetTexture("Items/Blocks/" + GetType().Name + "_Glow");
+                customGlowMask = (short)(glowMasks.Length - 1);
+                Main.glowMaskTexture = glowMasks;
+            }
+            DisplayName.SetDefault("Broodmother Trophy");
+            DisplayName.SetDefault("Broodmother Music Box");
+            
 		}
 
 		public override void SetDefaults()
@@ -25,6 +41,7 @@ namespace AAMod.Items.Blocks
 			item.rare = 1;
 			item.createTile = mod.TileType("AATrophy");
 			item.placeStyle = 2;
+            item.glowMask = customGlowMask;
 		}
 	}
 }

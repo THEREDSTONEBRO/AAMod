@@ -29,9 +29,8 @@ namespace AAMod.Items.Blocks
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.MusicBox);
+            recipe.AddIngredient(null, "MireBox");
             recipe.AddIngredient(null, "Depthstone", 30);
-            recipe.AddIngredient(null, "Abyssium", 5);
             recipe.AddTile(TileID.Sawmill);
             recipe.SetResult(this);
             recipe.AddRecipe();
