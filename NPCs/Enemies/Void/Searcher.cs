@@ -39,16 +39,13 @@ namespace AAMod.NPCs.Enemies.Void
             Player player = spawnInfo.player;
             if (!(player.ZoneTowerSolar || player.ZoneTowerVortex || player.ZoneTowerNebula || player.ZoneTowerStardust) && ((!Main.pumpkinMoon && !Main.snowMoon) || spawnInfo.spawnTileY > Main.worldSurface || Main.dayTime) && (!Main.eclipse || spawnInfo.spawnTileY > Main.worldSurface || !Main.dayTime) && (SpawnCondition.GoblinArmy.Chance == 0))
             {
-<<<<<<< HEAD
                 if (player.GetModPlayer<AAPlayer>().ZoneVoid)
                 {
-                    int[] TileArray2 = { mod.TileType("Voidstone") };
-                    return TileArray2.Contains(Main.tile[spawnInfo.spawnTileX, spawnInfo.spawnTileY].type) && NPC.downedMoonlord ? 6.09f : 3.21f;
+                    int[] TileArray1 = { mod.TileType("Voidstone") };
+                    return TileArray1.Contains(Main.tile[spawnInfo.spawnTileX, spawnInfo.spawnTileY].type) && NPC.downedMoonlord ? 6.09f : 3.21f;
                 }
-=======
                 int[] TileArray2 = { mod.TileType("Doomstone"), mod.TileType("Apocalyptite"), mod.TileType("DoomstoneBrick") };
                 return TileArray2.Contains(Main.tile[spawnInfo.spawnTileX, spawnInfo.spawnTileY].type) && NPC.downedMoonlord ? 6.09f : 0f;
->>>>>>> 8cc59ea40aa623a462b884866fcb266f36dbce73
             }
             return 0f;
         }

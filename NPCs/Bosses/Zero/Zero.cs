@@ -71,16 +71,9 @@ namespace AAMod.NPCs.Bosses.Zero
 
         public override void HitEffect(int hitDirection, double damage)
         {
-            if (npc.life <= npc.lifeMax && npc.type == mod.NPCType<Zero>() && (NPC.AnyNPCs(mod.NPCType<VoidStar>()) || NPC.AnyNPCs(mod.NPCType<Taser>()) || NPC.AnyNPCs(mod.NPCType<RealityCannon>()) || NPC.AnyNPCs(mod.NPCType<RiftShredder>())))
+            if (npc.type == mod.NPCType<Zero>() && (NPC.AnyNPCs(mod.NPCType<VoidStar>()) || NPC.AnyNPCs(mod.NPCType<Taser>()) || NPC.AnyNPCs(mod.NPCType<RealityCannon>()) || NPC.AnyNPCs(mod.NPCType<RiftShredder>())))
             {
-                hitDirection = 0;
-                damage = 0.0;
                 npc.dontTakeDamage = true;
-                npc.chaseable = false;
-            }
-            else
-            {
-                npc.dontTakeDamage = false;
                 npc.chaseable = false;
             }
             if (npc.life <= 0 && npc.type == mod.NPCType<Zero>())
@@ -167,7 +160,11 @@ namespace AAMod.NPCs.Bosses.Zero
 
         public override void AI()
         {
-
+            if (npc.type == mod.NPCType<Zero>() && (!NPC.AnyNPCs(mod.NPCType<VoidStar>()) && !NPC.AnyNPCs(mod.NPCType<Taser>()) && !NPC.AnyNPCs(mod.NPCType<RealityCannon>()) && !NPC.AnyNPCs(mod.NPCType<RiftShredder>())))
+            {
+                npc.dontTakeDamage = false;
+                npc.chaseable = true;
+            }
             /*if (npc.ai[3] != 6)
             {
                 if (npc.ai[3] != npc.localAI[0])
