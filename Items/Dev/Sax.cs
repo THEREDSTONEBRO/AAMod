@@ -26,7 +26,7 @@ namespace AAMod.Items.Dev
 			item.useStyle = 5;
 			item.noMelee = true; //so the item's animation doesn't do damage
 			item.knockBack = 5;
-			item.value = 10000000;
+			item.value = 1000000;
 			item.rare = 11;
             item.expert = true;
 			item.autoReuse = true;

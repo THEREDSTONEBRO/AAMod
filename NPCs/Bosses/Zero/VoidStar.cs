@@ -68,7 +68,7 @@ namespace AAMod.NPCs.Bosses.Zero
             }
             foreach (Projectile proj in Main.projectile)
             {
-                if (damage != 0 || (proj.type != mod.ProjectileType<ChairMinion>() && proj.damage == 0 && damage == 0))
+                if (damage != 0 || (proj.type != mod.ProjectileType<ChairMinion>() && proj.damage == 0 && damage == 0) || (proj.type != mod.ProjectileType<ChairMinionEX>() && proj.damage == 0 && damage == 0))
                 {
                     mod.GetNPC<Zero>().chair1 = false;
                 }

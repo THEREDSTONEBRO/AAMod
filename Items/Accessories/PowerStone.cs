@@ -58,11 +58,11 @@ Enemies attacked are given the Infinity Overload Debuff
 
         public override void UpdateEquip(Player player)
         {
-            player.meleeDamage += 2;
-            player.rangedDamage += 2;
-            player.magicDamage += 2;
-            player.thrownDamage += 2;
-            player.minionDamage += 2;
+            player.meleeDamage *= 2;
+            player.rangedDamage *= 2;
+            player.magicDamage *= 2;
+            player.thrownDamage *= 2;
+            player.minionDamage *= 2;
         }
 		public override void UpdateAccessory(Player player, bool hideVisual)
         {
