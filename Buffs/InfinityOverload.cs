@@ -21,10 +21,5 @@ namespace AAMod.Buffs
 		{
 			player.GetModPlayer<AAPlayer>(mod).infinityOverload = true;
 		}
-
-		public override void Update(NPC npc, ref int buffIndex)
-		{
-			npc.GetGlobalNPC<AAModGlobalNPC>(mod).infinityOverload = true;
-		}
 	}
 }
