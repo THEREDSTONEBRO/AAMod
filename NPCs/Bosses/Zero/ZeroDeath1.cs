@@ -40,7 +40,7 @@ namespace AAMod.NPCs.Bosses.Zero
         }
         public override void Kill(int timeLeft)
         {
-            Projectile.NewProjectile((new Vector2(projectile.position.X + 200f, projectile.position.Y + 178f)), (new Vector2(0f, 0f)), mod.ProjectileType("ZeroDeath2"), 0, 0);
+            Projectile.NewProjectile((new Vector2(projectile.position.X, projectile.position.Y)), (new Vector2(0f, 0f)), mod.ProjectileType("ZeroDeath2"), 0, 0);
         }
     }
 }

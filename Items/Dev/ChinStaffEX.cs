@@ -67,5 +67,15 @@ namespace AAMod.Items.Dev
 			}
 			return base.UseItem(player);
 		}
+
+        public override void AddRecipes()
+        {
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(null, "ChinStaff");
+            recipe.AddIngredient(null, "EXSoul");
+            recipe.AddTile(null, "QuantumFusionAccelerator");
+            recipe.SetResult(this);
+            recipe.AddRecipe();
+        }
     }
 }

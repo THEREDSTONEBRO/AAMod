@@ -11,7 +11,7 @@ namespace AAMod.Items.Projectiles
     {
     	public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Moonray");
+			DisplayName.SetDefault("Reality Laser");
 		}
     	
         public override void SetDefaults()
