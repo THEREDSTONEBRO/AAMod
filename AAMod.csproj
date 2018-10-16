@@ -575,6 +575,7 @@
     <Compile Include="Tiles\BogwoodSapling.cs" />
     <Compile Include="Tiles\BogwoodTile.cs" />
     <Compile Include="Tiles\BogwoodTree.cs" />
+    <Compile Include="Tiles\Equibox.cs" />
     <Compile Include="Tiles\Boss6Box.cs" />
     <Compile Include="Tiles\BroodBox.cs" />
     <Compile Include="Tiles\ChaosAltar.cs" />
@@ -1077,8 +1078,8 @@
     <Content Include="Items\Blocks\Doomstone_Glow.png" />
     <Content Include="Items\Blocks\DynaskullOre.png" />
     <Content Include="Items\Blocks\DynaskullOre_Glow.png" />
-    <Content Include="Items\Blocks\EquiBox.png" />
-    <Content Include="Items\Blocks\EquiBox_Glow.png" />
+    <Content Include="Items\Blocks\Equibox.png" />
+    <Content Include="Items\Blocks\Equibox_Glow.png" />
     <Content Include="Items\Blocks\FestiveWood.png" />
     <Content Include="Items\Blocks\FulguriteShard.png" />
     <Content Include="Items\Blocks\FulguriteShard_Glow.png" />
@@ -1960,8 +1961,8 @@
     <Content Include="Tiles\DragonRosePlanterBox.png" />
     <Content Include="Tiles\DynaskullOre.png" />
     <Content Include="Tiles\DynaskullOre_Glow.png" />
-    <Content Include="Tiles\EquiBox.png" />
-    <Content Include="Tiles\EquiBox_Glow.png" />
+    <Content Include="Tiles\Equibox.png" />
+    <Content Include="Tiles\Equibox_Glow.png" />
     <Content Include="Tiles\EventideAbyssiumBarTile.png" />
     <Content Include="Tiles\EventideBrick.png" />
     <Content Include="Tiles\EvilAltar.png" />

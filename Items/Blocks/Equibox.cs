@@ -4,7 +4,7 @@ using Terraria.ID;
 
 namespace AAMod.Items.Blocks
 {
-	public class EquiBox : ModItem
+	public class Equibox : ModItem
 	{
         public static short customGlowMask = 0;
 		public override void SetStaticDefaults()
