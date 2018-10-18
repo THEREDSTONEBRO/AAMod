@@ -15,7 +15,7 @@ namespace AAMod.Items.Accessories
             DisplayName.SetDefault("Infinity Gauntlet");
             Tooltip.SetDefault(
 @"Pressing the G key allows you to snap your fingers, wiping out half of the enemies on your screen
-The snap has a 20 minute cooldown
+The snap has a 5 minute cooldown
 All effects of the infinity stones
 'Perfectly Balanced, as all things should be'");
             if (Main.netMode != 2)

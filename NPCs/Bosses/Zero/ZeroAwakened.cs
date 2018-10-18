@@ -144,6 +144,7 @@ namespace AAMod.NPCs.Bosses.Zero
             if (mod.GetNPC<Zero>().chair1)
             {
                 chair2 = true;
+                mod.GetNPC<Zero>().chair1 = false;
             }
             Mod mod1 = ModLoader.GetMod("HEROsMod");
             Mod mod2 = ModLoader.GetMod("CheatSheet");

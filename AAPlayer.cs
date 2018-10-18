@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using AAMod.Buffs;
+using AAMod.Items.Projectiles;
 using AAMod.NPCs;
 using AAMod.NPCs.Bosses.Zero;
 using Microsoft.Xna.Framework;
@@ -62,6 +64,7 @@ namespace AAMod
         public bool yamataSet;
         public bool zeroSet;
         public bool valkyrieSet;
+        public bool FogRemover;
         // Accessory bools.
         public bool clawsOfChaos;
         public bool demonGauntlet;
@@ -85,10 +88,11 @@ namespace AAMod
 
         //pets
         public bool Broodmini = false;
-public bool Raidmini = false;
+        public bool Raidmini = false;
 
         public override void ResetEffects()
         {
+            FogRemover = false;
             clawsOfChaos = false;
             demonGauntlet = false;
             valkyrieSet = false;
@@ -202,6 +206,44 @@ public bool Raidmini = false;
                             player.ApplyDamageToNPC(target, 30, 0, 0, false); // target , damage, knockback, direction, crit
                         }
 
+                    }
+                }
+            }
+        }
+
+        public override void PreUpdate()
+        {
+            if ((Mind || Power || Reality || Soul || Space || Time) && (!dwarvenGauntlet && !InfinityGauntlet && !TrueInfinityGauntlet))
+            {
+                player.AddBuff(mod.BuffType<InfinityOverload>(), 180);
+            }
+            if (player.GetModPlayer<AAPlayer>().ZoneVoid || player.GetModPlayer<AAPlayer>().ZoneInferno)
+            {
+                if (Main.raining)
+                {
+                    Main.rainTime = 0;
+                    Main.raining = false;
+                    Main.maxRaining = 0f;
+                }
+            }
+            if (player.GetModPlayer<AAPlayer>().ZoneMire)
+            {
+                if (Main.raining)
+                {
+                    if (Main.rand.Next(5) == 0)
+                    {
+                        Main.rainTime++;
+                    }
+                }
+                else
+                {
+                    if (FogRemover)
+                    {
+                        Projectile.NewProjectile(player.Center, player.velocity, mod.ProjectileType<Fog>(), 0, 0, Main.myPlayer, 0);
+                    }
+                    else
+                    {
+                        Projectile.NewProjectile(player.Center, player.velocity, mod.ProjectileType<Fog>(), 0, 0, Main.myPlayer, 1);
                     }
                 }
             }
@@ -384,13 +426,9 @@ public bool Raidmini = false;
                     target.AddBuff(BuffID.Ichor, 180);
                 }
             }
-            if (Power && Main.rand.Next(2) == 0)
-            {
-                target.AddBuff(mod.BuffType("InfinityOverload"), 1000);
-            }
             if (Time && Main.rand.Next(2) == 0)
             {
-                for (int i = 0; i < 200; i++)
+                for (int i = 0; i < 255; i++)
                 {
 
                     target.AddBuff(BuffID.Chilled, 1200);
@@ -503,12 +541,6 @@ public bool Raidmini = false;
 
         public override void ModifyHitNPCWithProj(Projectile proj, NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
         {
-
-            if (Power && proj.melee && Main.rand.Next(2) == 0)
-            {
-                target.AddBuff(mod.BuffType("InfinityOverload"), 1000);
-            }
-
             if (zeroSet && proj.melee && Main.rand.Next(2) == 0)
             {
                 target.AddBuff(BuffID.WitheredArmor, 1000);
@@ -517,26 +549,6 @@ public bool Raidmini = false;
             if (zeroSet && proj.ranged && Main.rand.Next(2) == 0)
             {
                 target.AddBuff(BuffID.WitheredArmor, 1000);
-            }
-
-            if (Power && proj.ranged && Main.rand.Next(2) == 0)
-            {
-                target.AddBuff(mod.BuffType("InfinityOverload"), 1000);
-            }
-
-            if (Power && proj.magic && Main.rand.Next(2) == 0)
-            {
-                target.AddBuff(mod.BuffType("InfinityOverload"), 1000);
-            }
-
-            if (Power && proj.minion && Main.rand.Next(2) == 0)
-            {
-                target.AddBuff(mod.BuffType("InfinityOverload"), 1000);
-            }
-
-            if (Power && proj.thrown && Main.rand.Next(2) == 0)
-            {
-                target.AddBuff(mod.BuffType("InfinityOverload"), 1000);
             }
 
             if (Time && proj.melee && Main.rand.Next(2) == 0)

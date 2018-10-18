@@ -429,7 +429,6 @@ namespace AAMod
 
         public override void PostUpdate()
         {
-
             if (downedGrips == true)
             {
                 if (ChaosOres == false)

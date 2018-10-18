@@ -17,8 +17,7 @@ namespace AAMod.Items.Accessories
         {
             DisplayName.SetDefault("Power Stone");
             Tooltip.SetDefault(
-@"Doubles your attack power
-Enemies attacked are given the Infinity Overload Debuff
+@"Multiplies your attack power by 2.25
 'Fun isn’t something one considers when balancing the universe'");
 
             Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(4, 8));
@@ -58,11 +57,11 @@ Enemies attacked are given the Infinity Overload Debuff
 
         public override void UpdateEquip(Player player)
         {
-            player.meleeDamage *= 2;
-            player.rangedDamage *= 2;
-            player.magicDamage *= 2;
-            player.thrownDamage *= 2;
-            player.minionDamage *= 2;
+            player.meleeDamage *= 2.25f;
+            player.rangedDamage *= 2.25f;
+            player.magicDamage *= 2.25f;
+            player.thrownDamage *= 2.25f;
+            player.minionDamage *= 2.25f;
         }
 		public override void UpdateAccessory(Player player, bool hideVisual)
         {
