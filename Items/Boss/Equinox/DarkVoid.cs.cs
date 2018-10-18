@@ -61,7 +61,7 @@ namespace AAMod.Items.Boss.Equinox
 
 		public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            player.AddBuff(BuffID.Wrath, 2);
+            player.AddBuff(BuffID.NightOwl, 2);
         }
 
     }

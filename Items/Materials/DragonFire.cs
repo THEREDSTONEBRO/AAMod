@@ -18,6 +18,7 @@ namespace AAMod.Items.Materials
             item.height = 16;
             item.maxStack = 99;
             item.rare = 3;
+            item.alpha = 40;
         }
     }
 }

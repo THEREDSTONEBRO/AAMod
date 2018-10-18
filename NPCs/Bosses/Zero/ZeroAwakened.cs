@@ -113,7 +113,7 @@ namespace AAMod.NPCs.Bosses.Zero
                 spriteEffects = SpriteEffects.FlipHorizontally;
             }
             spriteBatch.Draw(mod.GetTexture("NPCs/Bosses/Zero/ZeroAwakened_Glow"), new Vector2(npc.Center.X - Main.screenPosition.X, npc.Center.Y - Main.screenPosition.Y),
-            npc.frame, Color.White, npc.rotation,
+            npc.frame, Color.Red, npc.rotation,
             new Vector2(npc.width * 0.5f, npc.height * 0.5f), 1f, spriteEffects, 0f);
         }
 

@@ -35,6 +35,7 @@ namespace AAMod
         public static bool Evil;
         //Boss Bools
         public static bool Ancients;
+        public static bool downedMonarch;
         public static bool downedBrood;
         public static bool downedHydra;
         public static bool downedGripRed;
@@ -65,6 +66,7 @@ namespace AAMod
         public override void Initialize()
         {
             //Bosses
+            downedMonarch = false;
             downedGripRed = false;
             downedGripBlue = false;
             downedGrips = downedGripRed && downedGripBlue;
@@ -122,6 +124,7 @@ namespace AAMod
         public override TagCompound Save()
         {
             var downed = new List<string>();
+            if (downedMonarch) downed.Add("Monarch");
             if (downedGripRed) downed.Add("GripRed");
             if (downedGripBlue) downed.Add("GripBlue");
             if (downedGrips) downed.Add("Grips");
@@ -169,7 +172,7 @@ namespace AAMod
             flags2[3] = NPC.downedMoonlord;
             flags2[4] = downedDB;
             flags2[5] = downedNC;
-            flags2[6] = downedNC;
+            flags2[6] = downedEquinox;
             flags2[7] = downedAkuma;
             writer.Write(flags2);
 
@@ -183,6 +186,11 @@ namespace AAMod
             flags3[6] = downedAkumata;
             flags3[7] = downedAkumataA;
             writer.Write(flags3);
+
+
+            BitsByte flags4 = new BitsByte();
+            flags3[0] = downedMonarch;
+            writer.Write(flags4);
         }
 
         public override void NetReceive(BinaryReader reader)
@@ -198,26 +206,33 @@ namespace AAMod
             downedOrthrus = flags[7];
 
             BitsByte flags2 = reader.ReadByte();
-            downedRaider = flags[0];
-            NPC.downedMechBossAny = flags[1];
-            NPC.downedPlantBoss = flags[2];
-            NPC.downedMoonlord = flags[3];
+            downedRaider = flags2[0];
+            NPC.downedMechBossAny = flags2[1];
+            NPC.downedPlantBoss = flags2[2];
+            NPC.downedMoonlord = flags2[3];
             downedDB = flags2[4];
             downedNC = flags2[5];
-            downedAkuma = flags2[6];
-            downedYamata = flags2[7];
+            downedEquinox = flags2[6];
+            downedAkuma = flags2[7];
 
             BitsByte flags3 = reader.ReadByte();
-            zeroUS = flags2[0];
-            downedZero = flags2[1];
-            downedZeroA = flags2[2];
-            downedAkumata = flags2[3];
+            downedAkuma = flags3[1];
+            downedYamata = flags3[2];
+            downedYamataA = flags3[3];
+            zeroUS = flags3[4];
+            downedZero = flags3[5];
+            downedZeroA = flags3[6];
+            downedAkumata = flags3[7];
+            
+            BitsByte flags4 = reader.ReadByte();
+            downedMonarch = flags4[1];
         }
 
         public override void Load(TagCompound tag)
         {
             var downed = tag.GetList<string>("downed");
             //bosses
+            downedMonarch = downed.Contains("Monarch");
             downedGripRed = downed.Contains("GripRed");
             downedGripBlue = downed.Contains("GripBlue");
             downedGrips = downed.Contains("Grips");
@@ -230,6 +245,7 @@ namespace AAMod
             NPC.downedMoonlord = downed.Contains("MoonLord");
             downedDB = downed.Contains("DB");
             downedNC = downed.Contains("NC");
+            downedEquinox = downed.Contains("Equinox");
             downedAkuma = downed.Contains("Akuma");
             downedYamata = downed.Contains("Yamata");
             zeroUS = downed.Contains("0U");

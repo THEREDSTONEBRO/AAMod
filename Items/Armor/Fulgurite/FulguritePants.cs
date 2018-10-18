@@ -10,7 +10,7 @@ namespace AAMod.Items.Armor.Fulgurite
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("FulguritePants");
+			DisplayName.SetDefault("Fulgurite Pants");
             Tooltip.SetDefault(@"40% Increased throwing critical chance
 12% increased movement speed");
 
