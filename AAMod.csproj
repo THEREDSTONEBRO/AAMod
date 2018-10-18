@@ -166,6 +166,7 @@
     <Compile Include="Items\Pets\Broodmini.cs" />
     <Compile Include="Items\Pets\RaidEgg.cs" />
     <Compile Include="Items\Pets\Raidmini.cs" />
+    <Compile Include="Items\Projectiles\Fog.cs" />
     <Compile Include="Items\Projectiles\SauceProjectile.cs" />
     <Compile Include="Items\Projectiles\EnderSickle.cs" />
     <Compile Include="Items\Projectiles\DragonBreathP.cs" />
@@ -690,8 +691,8 @@
     <Content Include="Achievement\AkumaANot.png" />
     <Content Include="Achievement\BroodAchievement.png" />
     <Content Include="Achievement\BroodAchievementNot.png" />
-    <Content Include="Achievement\ChairA.png" />
-    <Content Include="Achievement\ChairANot.png" />
+    <Content Include="Achievement\ChairAchievement.png" />
+    <Content Include="Achievement\ChairAchievementNot.png" />
     <Content Include="Achievement\EquinoxA.png" />
     <Content Include="Achievement\EquinoxANot.png" />
     <Content Include="Achievement\GripsA.png" />
@@ -1454,7 +1455,6 @@
     <Content Include="Items\Projectiles\DragonBreathP.png" />
     <Content Include="Items\Projectiles\DragonBreathP_Glow.png" />
     <Content Include="Items\Projectiles\DragonP.png" />
-    <Content Include="Items\Projectiles\DragonsMaw_Glow.png" />
     <Content Include="Items\Projectiles\DragonSP.png" />
     <Content Include="Items\Projectiles\Duck.png" />
     <Content Include="Items\Projectiles\DuckEX.png" />

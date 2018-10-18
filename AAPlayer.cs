@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using AAMod.Buffs;
+using AAMod.Items.Projectiles;
 using AAMod.NPCs;
 using AAMod.NPCs.Bosses.Zero;
 using Microsoft.Xna.Framework;
@@ -63,6 +64,7 @@ namespace AAMod
         public bool yamataSet;
         public bool zeroSet;
         public bool valkyrieSet;
+        public bool FogRemover;
         // Accessory bools.
         public bool clawsOfChaos;
         public bool demonGauntlet;
@@ -86,10 +88,11 @@ namespace AAMod
 
         //pets
         public bool Broodmini = false;
-public bool Raidmini = false;
+        public bool Raidmini = false;
 
         public override void ResetEffects()
         {
+            FogRemover = false;
             clawsOfChaos = false;
             demonGauntlet = false;
             valkyrieSet = false;
@@ -213,6 +216,36 @@ public bool Raidmini = false;
             if ((Mind || Power || Reality || Soul || Space || Time) && (!dwarvenGauntlet && !InfinityGauntlet && !TrueInfinityGauntlet))
             {
                 player.AddBuff(mod.BuffType<InfinityOverload>(), 180);
+            }
+            if (player.GetModPlayer<AAPlayer>().ZoneVoid || player.GetModPlayer<AAPlayer>().ZoneInferno)
+            {
+                if (Main.raining)
+                {
+                    Main.rainTime = 0;
+                    Main.raining = false;
+                    Main.maxRaining = 0f;
+                }
+            }
+            if (player.GetModPlayer<AAPlayer>().ZoneMire)
+            {
+                if (Main.raining)
+                {
+                    if (Main.rand.Next(5) == 0)
+                    {
+                        Main.rainTime++;
+                    }
+                }
+                else
+                {
+                    if (FogRemover)
+                    {
+                        Projectile.NewProjectile(player.Center, player.velocity, mod.ProjectileType<Fog>(), 0, 0, Main.myPlayer, 0);
+                    }
+                    else
+                    {
+                        Projectile.NewProjectile(player.Center, player.velocity, mod.ProjectileType<Fog>(), 0, 0, Main.myPlayer, 1);
+                    }
+                }
             }
         }
 

@@ -1,7 +1,5 @@
 using Terraria;
 using Terraria.ModLoader;
-using AAMod.Items.Accessories;
-using AAMod.NPCs;
 
 namespace AAMod.Buffs
 {
