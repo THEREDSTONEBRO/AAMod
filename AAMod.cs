@@ -131,7 +131,7 @@ namespace AAMod
                 PremultiplyTexture(GetTexture("Backgrounds/InfernoSky"));
                 PremultiplyTexture(GetTexture("Backgrounds/MireSky"));
                 PremultiplyTexture(GetTexture("Backgrounds/VoidSky"));
-                PremultiplyTexture(GetTexture("Backgrounds/Fog"));
+                //PremultiplyTexture(GetTexture("Backgrounds/Fog"));
 
                 AddEquipTexture(null, EquipType.Legs, "N1_Legs", "AAMod/Items/Vanity/N1/N1_Legs");
 

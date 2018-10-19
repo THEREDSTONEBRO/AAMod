@@ -3,7 +3,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AAMod.Items.Projectiles
+/*namespace AAMod.Items.Projectiles
 {
     public class Fog : ModProjectile
     {
@@ -15,4 +15,4 @@ namespace AAMod.Items.Projectiles
             }
         }
     }
-}
+}*/

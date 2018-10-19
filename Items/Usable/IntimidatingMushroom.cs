@@ -1,15 +1,31 @@
+using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace AAMod.Items.Usable
 {
-    public class WoodWithFungi : ModItem
+    public class IntimidatingMushroom : ModItem
     {
+        public static short customGlowMask = 0;
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Mossy Wood");
-            Tooltip.SetDefault("Summons the Mushroom Monarch");
+
+            if (Main.netMode != 2)
+            {
+                Texture2D[] glowMasks = new Texture2D[Main.glowMaskTexture.Length + 1];
+                for (int i = 0; i < Main.glowMaskTexture.Length; i++)
+                {
+                    glowMasks[i] = Main.glowMaskTexture[i];
+                }
+                glowMasks[glowMasks.Length - 1] = mod.GetTexture("Items/Usable/" + GetType().Name + "_Glow");
+                customGlowMask = (short)(glowMasks.Length - 1);
+                Main.glowMaskTexture = glowMasks;
+            }
+            item.glowMask = customGlowMask;
+            DisplayName.SetDefault("Intimidating Looking Mushroom");
+            Tooltip.SetDefault(@"Summons the Mushroom Monarch
+Can only be used during the day");
         }
 
         public override void SetDefaults()
@@ -37,7 +53,6 @@ namespace AAMod.Items.Usable
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.Wood, 10);
             recipe.AddIngredient(ItemID.Mushroom, 15);
             recipe.AddTile(TileID.WorkBenches);
             recipe.SetResult(this);

@@ -60,7 +60,7 @@ UNSTABLE. C0NTAINS C0DE TO ACTIVATE THE BRINGER 0F DEATH");
 
         public override bool UseItem(Player player)
         {
-            NPC.SpawnOnPlayer(player.whoAmI, mod.NPCType("Zero"));
+            NPC.NewNPC((int)player.position.X + Main.rand.Next(-1200, 1200), (int)player.position.Y + Main.rand.Next(-1100, -350), mod.NPCType("Zero"));
             Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Sounds/Glitch"));
             return true;
         }

@@ -92,7 +92,7 @@ namespace AAMod
 
         public override void ResetEffects()
         {
-            FogRemover = false;
+            //FogRemover = false;
             clawsOfChaos = false;
             demonGauntlet = false;
             valkyrieSet = false;
@@ -226,7 +226,7 @@ namespace AAMod
                     Main.maxRaining = 0f;
                 }
             }
-            if (player.GetModPlayer<AAPlayer>().ZoneMire)
+            /*if (player.GetModPlayer<AAPlayer>().ZoneMire)
             {
                 if (Main.raining)
                 {
@@ -246,7 +246,7 @@ namespace AAMod
                         Projectile.NewProjectile(player.Center, player.velocity, mod.ProjectileType<Fog>(), 0, 0, Main.myPlayer, 1);
                     }
                 }
-            }
+            }*/
         }
 
         public override void GetWeaponKnockback(Item item, ref float knockback)

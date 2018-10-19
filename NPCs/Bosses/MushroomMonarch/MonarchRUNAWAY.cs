@@ -12,16 +12,17 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Mushroom Monarch");
-            Main.projFrames[projectile.type] = 16;
+            Main.projFrames[projectile.type] = 4;
         }
         public override void SetDefaults()
         {
+            projectile.damage = 24;
             projectile.width = 74;
             projectile.height = 80;
             projectile.penetrate = -1;
-            projectile.hostile = false;
+            projectile.hostile = true;
             projectile.friendly = false;
-            projectile.tileCollide = true;
+            projectile.tileCollide = false;
             projectile.ignoreWater = true;
             projectile.timeLeft = 900;
         }
@@ -36,7 +37,7 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
                 }
             }
             projectile.velocity.X *= 0.00f;
-            projectile.velocity.Y -= 1.00f;
+            projectile.velocity.Y -= .3f;
         }
     }
 }

@@ -116,9 +116,15 @@
     <Compile Include="Items\Armor\Doomsday\Zerokip\ZeroDiverJacket.cs" />
     <Compile Include="Items\Armor\Doomsday\Zerokip\ZeroDiverMask.cs" />
     <Compile Include="Items\Armor\Doomsday\Zerokip\ZeroDiverBoots.cs" />
+    <Compile Include="Items\Armor\Heartstone\HeartstoneChestguard.cs" />
+    <Compile Include="Items\Armor\Heartstone\HeartstoneHelmet.cs" />
+    <Compile Include="Items\Armor\Heartstone\HeartstoneLeggings.cs" />
     <Compile Include="Items\Armor\Mushium\MushiumHat.cs" />
     <Compile Include="Items\Armor\Mushium\MushiumPants.cs" />
     <Compile Include="Items\Armor\Mushium\MushiumShirt.cs" />
+    <Compile Include="Items\Armor\Starcloud\StarcloudChainmail.cs" />
+    <Compile Include="Items\Armor\Starcloud\StarcloudHeadgear.cs" />
+    <Compile Include="Items\Armor\Starcloud\StarcloudLeggings.cs" />
     <Compile Include="Items\Blocks\AkumataABox.cs" />
     <Compile Include="Items\Blocks\AkumataBox.cs" />
     <Compile Include="Items\Blocks\Boss6Box.cs" />
@@ -174,6 +180,7 @@
     <Compile Include="Items\Pets\Broodmini.cs" />
     <Compile Include="Items\Pets\RaidEgg.cs" />
     <Compile Include="Items\Pets\Raidmini.cs" />
+    <Compile Include="Items\Projectiles\Fog.cs" />
     <Compile Include="Items\Projectiles\SauceProjectile.cs" />
     <Compile Include="Items\Projectiles\EnderSickle.cs" />
     <Compile Include="Items\Projectiles\DragonBreathP.cs" />
@@ -194,6 +201,7 @@
     <Compile Include="Items\Usable\InfernoCrate.cs" />
     <Compile Include="Items\Usable\InfernoInsignia.cs" />
     <Compile Include="Items\Usable\InterestingClaw.cs" />
+    <Compile Include="Items\Usable\IntimidatingMushroom.cs" />
     <Compile Include="Items\Usable\LivingBogleafWand.cs" />
     <Compile Include="Items\Usable\LivingBogwoodWand.cs" />
     <Compile Include="Items\Usable\LivingRazeleafWand.cs" />
@@ -614,6 +622,7 @@
     <Compile Include="Tiles\DynaskullOre.cs" />
     <Compile Include="Tiles\Equibox.cs" />
     <Compile Include="Tiles\EventideAbyssiumBarTile.cs" />
+    <Compile Include="Tiles\EverleafRoots.cs" />
     <Compile Include="Tiles\EvilAltar.cs" />
     <Compile Include="Tiles\FulguriteOre.cs" />
     <Compile Include="Tiles\GripsBox.cs" />
@@ -639,6 +648,7 @@
     <Compile Include="Tiles\MireGrassTile.cs" />
     <Compile Include="Tiles\MireUBox.cs" />
     <Compile Include="Tiles\MoonAltar.cs" />
+    <Compile Include="Tiles\MushiumBar.cs" />
     <Compile Include="Tiles\N1Box.cs" />
     <Compile Include="Tiles\OroborosBathtub.cs" />
     <Compile Include="Tiles\OroborosBed.cs" />
@@ -666,17 +676,19 @@
     <Compile Include="Tiles\ScorchedDynastyWood.cs" />
     <Compile Include="Tiles\ScorchedShingles.cs" />
     <Compile Include="Tiles\SunAltar.cs" />
+    <Compile Include="Tiles\TechneciumOreTile.cs" />
     <Compile Include="Tiles\TerraCore.CS" />
     <Compile Include="Tiles\TorchstoneTile.cs" />
     <Compile Include="Tiles\TruePaladinsSmeltery.cs" />
     <Compile Include="Tiles\VoidBox.cs" />
     <Compile Include="Tiles\VoidUnit.cs" />
     <Compile Include="Tiles\YamataBox.cs" />
+    <Compile Include="Tiles\YtriumOreTile.cs" />
     <Compile Include="Tiles\Zero2Box.cs" />
     <Compile Include="Tiles\ZeroBox.cs" />
     <Compile Include="UI\TerratoolUI.cs" />
-    <Compile Include="Walls\DoomsdayWall.cs" />
     <Compile Include="Walls\DepthstoneWall.cs" />
+    <Compile Include="Walls\DoomsdayWall.cs" />
     <Compile Include="Walls\DoomstoneBrickWall.cs" />
     <Compile Include="Walls\InfernoGrassWall.cs" />
     <Compile Include="Walls\LivingBogleafWall.cs" />
@@ -959,6 +971,14 @@
     <Content Include="Items\Armor\Fulgurite\FulguritePants_Legs.png" />
     <Content Include="Items\Armor\Fulgurite\FulguriteVisor.png" />
     <Content Include="Items\Armor\Fulgurite\FulguriteVisor_Head.png" />
+    <Content Include="Items\Armor\Heartstone\HeartstoneChestguard.png" />
+    <Content Include="Items\Armor\Heartstone\HeartstoneChestguard_Arms.png" />
+    <Content Include="Items\Armor\Heartstone\HeartstoneChestguard_Body.png" />
+    <Content Include="Items\Armor\Heartstone\HeartstoneChestguard_FemaleBody.png" />
+    <Content Include="Items\Armor\Heartstone\HeartstoneHelmet.png" />
+    <Content Include="Items\Armor\Heartstone\HeartstoneHelmet_Head.png" />
+    <Content Include="Items\Armor\Heartstone\HeartstoneLeggings.png" />
+    <Content Include="Items\Armor\Heartstone\HeartstoneLeggings_Legs.png" />
     <Content Include="Items\Armor\Imp\ImpBoots.png" />
     <Content Include="Items\Armor\Imp\ImpBoots_Legs.png" />
     <Content Include="Items\Armor\Imp\ImpGarb.png" />
@@ -1027,6 +1047,14 @@
     <Content Include="Items\Armor\Radium\RadiumPlatemail_Arms.png" />
     <Content Include="Items\Armor\Radium\RadiumPlatemail_Body.png" />
     <Content Include="Items\Armor\Radium\RadiumPlatemail_Female.png" />
+    <Content Include="Items\Armor\Starcloud\StarcloudChainmail.png" />
+    <Content Include="Items\Armor\Starcloud\StarcloudChainmail_Arms.png" />
+    <Content Include="Items\Armor\Starcloud\StarcloudChainmail_Body.png" />
+    <Content Include="Items\Armor\Starcloud\StarcloudChainmail_FemaleBody.png" />
+    <Content Include="Items\Armor\Starcloud\StarcloudHeadgear.png" />
+    <Content Include="Items\Armor\Starcloud\StarcloudHeadgear_Head.png" />
+    <Content Include="Items\Armor\Starcloud\StarcloudLeggings.png" />
+    <Content Include="Items\Armor\Starcloud\StarcloudLeggings_Legs.png" />
     <Content Include="Items\Armor\Tribal\TribalCloak.png" />
     <Content Include="Items\Armor\Tribal\TribalCloak_Arms.png" />
     <Content Include="Items\Armor\Tribal\TribalCloak_Body.png" />
@@ -1660,6 +1688,8 @@
     <Content Include="Items\Usable\InfernoKey.png" />
     <Content Include="Items\Usable\InfernoKey_Glow.png" />
     <Content Include="Items\Usable\InterestingClaw.png" />
+    <Content Include="Items\Usable\IntimidatingMushroom.png" />
+    <Content Include="Items\Usable\IntimidatingMushroom_Glow.png" />
     <Content Include="Items\Usable\KeyOfSmite.png" />
     <Content Include="Items\Usable\KeyOfSpite.png" />
     <Content Include="Items\Usable\LivingBogleafWand.png" />
@@ -1810,6 +1840,7 @@
     <Content Include="NPCs\Bosses\Grips\GripOfChaosRedPunch.png" />
     <Content Include="NPCs\Bosses\Grips\GripOfChaosRed_Head_Boss.png" />
     <Content Include="NPCs\Bosses\Icegrim\TheIcegrim.png" />
+    <Content Include="NPCs\Bosses\MushroomMonarch\LaterLosers.gif" />
     <Content Include="NPCs\Bosses\MushroomMonarch\MonarchRUNAWAY.gif" />
     <Content Include="NPCs\Bosses\MushroomMonarch\MonarchRUNAWAY.png" />
     <Content Include="NPCs\Bosses\MushroomMonarch\MushroomMonarch.png" />
@@ -1900,6 +1931,8 @@
     <Content Include="NPCs\Enemies\Void\Null.gif" />
     <Content Include="NPCs\Enemies\Void\Null.png" />
     <Content Include="NPCs\Enemies\Void\Searcher.png" />
+    <Content Include="NPCs\Minibosses\Huo.png" />
+    <Content Include="NPCs\Minibosses\Shin%27en.png" />
     <Content Include="NPCs\TownNPCs\Samurai.png" />
     <Content Include="NPCs\TownNPCs\Samurai_1.png" />
     <Content Include="NPCs\TownNPCs\Samurai_Head.png" />
@@ -2009,6 +2042,7 @@
     <Content Include="Tiles\Equibox_Glow.png" />
     <Content Include="Tiles\EventideAbyssiumBarTile.png" />
     <Content Include="Tiles\EventideBrick.png" />
+    <Content Include="Tiles\EverleafRoots.png" />
     <Content Include="Tiles\EvilAltar.png" />
     <Content Include="Tiles\FulguriteOre.png" />
     <Content Include="Tiles\FulguriteOre_glow.png" />
@@ -2056,6 +2090,7 @@
     <Content Include="Tiles\MireVines.png" />
     <Content Include="Tiles\MoonAltar.png" />
     <Content Include="Tiles\MoonAltar_Glow.png" />
+    <Content Include="Tiles\MushiumBar.png" />
     <Content Include="Tiles\N1Box.png" />
     <Content Include="Tiles\OroborosBathtub.png" />
     <Content Include="Tiles\OroborosBathtub_Glow.png" />
@@ -2112,6 +2147,7 @@
     <Content Include="Tiles\ScorchedShingles.png" />
     <Content Include="Tiles\SunAltar.png" />
     <Content Include="Tiles\SunAltar_Glow.png" />
+    <Content Include="Tiles\TechneciumOreTile.png" />
     <Content Include="Tiles\TerraCore.png" />
     <Content Include="Tiles\TerraCore_Glow.png" />
     <Content Include="Tiles\TorchstoneTile.png" />
@@ -2122,6 +2158,7 @@
     <Content Include="Tiles\VoidUnit.png" />
     <Content Include="Tiles\VoidUnit_Glow.png" />
     <Content Include="Tiles\YamataBox.png" />
+    <Content Include="Tiles\YtriumOreTile.png" />
     <Content Include="Tiles\ZerO.png" />
     <Content Include="Tiles\Zero2Box.png" />
     <Content Include="Tiles\Zero2Box_Glow.png" />
@@ -2185,9 +2222,11 @@
   <ItemGroup>
     <Folder Include="bin\Release\" />
     <Folder Include="Items\Boss\Akumata\" />
+    <Folder Include="Items\Boss\Slimes\" />
     <Folder Include="Items\Mounts\" />
     <Folder Include="NPCs\Bosses\Decay\" />
     <Folder Include="NPCs\Bosses\Hydra\" />
+    <Folder Include="NPCs\Bosses\Orthrus\" />
     <Folder Include="NPCs\Bosses\SoC\" />
     <Folder Include="NPCs\Bosses\Zero\Zero2\" />
     <Folder Include="obj\Debug\TempPE\" />
