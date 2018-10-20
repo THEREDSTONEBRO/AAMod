@@ -6,7 +6,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AAMod.NPCs.Bosses.Icegrim
+namespace AAMod.NPCs.Minibosses
 {
     public class TheIcegrim : ModNPC
     {
