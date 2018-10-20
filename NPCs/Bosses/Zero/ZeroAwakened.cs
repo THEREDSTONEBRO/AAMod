@@ -42,20 +42,14 @@ namespace AAMod.NPCs.Bosses.Zero
             npc.noTileCollide = true;
             npc.HitSound = mod.GetLegacySoundSlot(Terraria.ModLoader.SoundType.Custom, "Sounds/Sounds/Zerohit");
             npc.DeathSound = mod.GetLegacySoundSlot(Terraria.ModLoader.SoundType.Custom, "Sounds/Sounds/ZeroDeath");
-            if (npc.life <= npc.lifeMax/5)
-            {
-                music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/RayOfHope");
-            }
-            else
-            {
-                music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/Zero2");
-            }
-            
+            music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/Zero2");
             npc.buffImmune[BuffID.Poisoned] = true;
             npc.buffImmune[BuffID.Ichor] = true;
             npc.netAlways = true;
             bossBag = mod.ItemType("ZeroBag");
         }
+
+        
 
         public override void NPCLoot()
         {

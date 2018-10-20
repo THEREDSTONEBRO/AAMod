@@ -6,6 +6,7 @@ using Terraria.ModLoader;
 using Terraria.Localization;
 using Terraria.UI;
 using AAMod.Backgrounds;
+using AAMod.NPCs.Bosses.Zero;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 using AAMod.UI;

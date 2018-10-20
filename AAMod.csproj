@@ -553,7 +553,7 @@
     <Compile Include="NPCs\Bosses\Daybringer\SunbeamScatter.cs" />
     <Compile Include="NPCs\Bosses\Grips\GripOfChaosBlue.cs" />
     <Compile Include="NPCs\Bosses\Grips\GripOfChaosRed.cs" />
-    <Compile Include="NPCs\Bosses\Icegrim\TheIcegrim.cs" />
+    <Compile Include="NPCs\Minibosses\TheIcegrim.cs" />
     <Compile Include="NPCs\Bosses\MushroomMonarch\MonarchRUNAWAY.cs" />
     <Compile Include="NPCs\Bosses\MushroomMonarch\MushroomMonarch.cs" />
     <Compile Include="NPCs\Bosses\Nightcrawler\Moonray.cs" />
@@ -1839,9 +1839,7 @@
     <Content Include="NPCs\Bosses\Grips\GripOfChaosRed.png" />
     <Content Include="NPCs\Bosses\Grips\GripOfChaosRedPunch.png" />
     <Content Include="NPCs\Bosses\Grips\GripOfChaosRed_Head_Boss.png" />
-    <Content Include="NPCs\Bosses\Icegrim\TheIcegrim.png" />
-    <Content Include="NPCs\Bosses\MushroomMonarch\LaterLosers.gif" />
-    <Content Include="NPCs\Bosses\MushroomMonarch\MonarchRUNAWAY.gif" />
+    <Content Include="NPCs\Minibosses\TheIcegrim.png" />
     <Content Include="NPCs\Bosses\MushroomMonarch\MonarchRUNAWAY.png" />
     <Content Include="NPCs\Bosses\MushroomMonarch\MushroomMonarch.png" />
     <Content Include="NPCs\Bosses\Nightcrawler\Moonray.png" />
@@ -2227,7 +2225,6 @@
     <Folder Include="NPCs\Bosses\Decay\" />
     <Folder Include="NPCs\Bosses\Hydra\" />
     <Folder Include="NPCs\Bosses\Orthrus\" />
-    <Folder Include="NPCs\Bosses\SoC\" />
     <Folder Include="NPCs\Bosses\Zero\Zero2\" />
     <Folder Include="obj\Debug\TempPE\" />
     <Folder Include="obj\NPCs\" />

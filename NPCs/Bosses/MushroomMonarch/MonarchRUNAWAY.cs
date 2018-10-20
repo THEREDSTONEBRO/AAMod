@@ -33,11 +33,11 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
                 projectile.frameCounter = 0;
                 if (++projectile.frame >= 4)
                 {
-                    projectile.frame = 3;
+                    projectile.frame = 1;
                 }
             }
             projectile.velocity.X *= 0.00f;
-            projectile.velocity.Y -= .3f;
+            projectile.velocity.Y -= .1f;
         }
     }
 }
