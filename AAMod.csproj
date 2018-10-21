@@ -75,6 +75,7 @@
     <Compile Include="Backgrounds\MireSurfaceBgStyle.cs" />
     <Compile Include="Backgrounds\MireUgBgStyle.cs" />
     <Compile Include="Backgrounds\MushroomSurfaceBgStyle.cs" />
+    <Compile Include="Backgrounds\MushroomUgBgStyle.cs" />
     <Compile Include="Backgrounds\SnowSky.cs" />
     <Compile Include="Backgrounds\VoidSky.cs" />
     <Compile Include="Backgrounds\VoidSkyData.cs" />
@@ -841,6 +842,13 @@
     <Content Include="Backgrounds\MireSky.png" />
     <Content Include="Backgrounds\MireUnderground.png" />
     <Content Include="Backgrounds\MireUnderground1.png" />
+    <Content Include="Backgrounds\MushroomBG1.png" />
+    <Content Include="Backgrounds\MushroomBG2.png" />
+    <Content Include="Backgrounds\MushroomBG3.png" />
+    <Content Include="Backgrounds\MushroomUG1.png" />
+    <Content Include="Backgrounds\MushroomUG2.png" />
+    <Content Include="Backgrounds\MushroomUG3.png" />
+    <Content Include="Backgrounds\MushroomUG4.png" />
     <Content Include="Backgrounds\VoidBG.png" />
     <Content Include="Backgrounds\VoidBH.png" />
     <Content Include="Backgrounds\VoidBolt.png" />
@@ -2121,6 +2129,7 @@
     <Content Include="NPCs\Minibosses\Huo.png" />
     <Content Include="NPCs\Minibosses\Shin%27en.png" />
     <Content Include="NPCs\TownNPCs\Mushman.png" />
+    <Content Include="NPCs\TownNPCs\Mushman_Head.png" />
     <Content Include="NPCs\TownNPCs\Samurai.png" />
     <Content Include="NPCs\TownNPCs\Samurai_1.png" />
     <Content Include="NPCs\TownNPCs\Samurai_Head.png" />

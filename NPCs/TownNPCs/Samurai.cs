@@ -1,16 +1,12 @@
-using System.Linq;
 using Terraria;
-using System;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.Utilities;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 
 namespace AAMod.NPCs.TownNPCs
 {
-	[AutoloadHead]
+    [AutoloadHead]
 	public class Samurai : ModNPC
 	{
 		public override string Texture
@@ -37,8 +33,6 @@ namespace AAMod.NPCs.TownNPCs
 
 		public override void SetStaticDefaults()
 		{
-			// DisplayName automatically assigned from .lang files, but the commented line below is the normal approach.
-			// DisplayName.SetDefault("Example Person");
 			Main.npcFrameCount[npc.type] = 26;
 			NPCID.Sets.ExtraFramesCount[npc.type] = 10;
 			NPCID.Sets.AttackFrameCount[npc.type] = 5;

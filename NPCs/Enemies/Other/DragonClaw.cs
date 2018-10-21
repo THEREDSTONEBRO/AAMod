@@ -25,7 +25,7 @@ namespace AAMod.NPCs.Enemies.Other
             npc.knockBackResist = 0.6f;
             npc.aiStyle = 2;
             aiType = NPCID.DemonEye;  //npc behavior
-            animationType = NPCID.DemonEye;
+            animationType = NPCID.CrimsonAxe;
         }
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {

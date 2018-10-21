@@ -37,6 +37,7 @@ namespace AAMod.NPCs.Bosses.Zero
             }
             projectile.velocity.X *= 0.00f;
             projectile.velocity.Y += 0.00f;
+            Main.NewText("SENDING...", Color.Red.R, Color.Red.G, Color.Red.B);
         }
         public override void Kill(int timeLeft)
         {

@@ -1,16 +1,12 @@
-using System.Linq;
 using Terraria;
-using System;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.Utilities;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 
 namespace AAMod.NPCs.TownNPCs
 {
-	[AutoloadHead]
+    [AutoloadHead]
 	public class Mushman : ModNPC
 	{
         public override string Texture
@@ -29,14 +25,30 @@ namespace AAMod.NPCs.TownNPCs
 
 		public override void SetStaticDefaults()
 		{
-            // DisplayName automatically assigned from .lang files, but the commented line below is the normal approach.
-            // DisplayName.SetDefault("Example Person");
-            npc.CloneDefaults(NPCID.Truffle);
-		}
+            Main.npcFrameCount[npc.type] = 23;
+            NPCID.Sets.ExtraFramesCount[npc.type] = 7;
+            NPCID.Sets.AttackFrameCount[npc.type] = 3;
+            NPCID.Sets.DangerDetectRange[npc.type] = 700;
+            NPCID.Sets.AttackType[npc.type] = 0;
+            NPCID.Sets.AttackTime[npc.type] = 40;
+            NPCID.Sets.AttackAverageChance[npc.type] = 20;
+            NPCID.Sets.HatOffsetY[npc.type] = 4;
+        }
 
 		public override void SetDefaults()
 		{
-            npc.CloneDefaults(NPCID.Truffle);
+            npc.townNPC = true;
+            npc.friendly = true;
+            npc.width = 18;
+            npc.height = 56;
+            npc.aiStyle = 7;
+            npc.damage = 40;
+            npc.defense = 38;
+            npc.lifeMax = 600;
+            npc.HitSound = SoundID.NPCHit1;
+            npc.DeathSound = SoundID.NPCDeath1;
+            npc.knockBackResist = 2f;
+            animationType = NPCID.Truffle;
         }
         
 

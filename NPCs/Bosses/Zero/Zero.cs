@@ -97,6 +97,11 @@ namespace AAMod.NPCs.Bosses.Zero
                 if (Main.expertMode)
                 {
                     NPC.NewNPC((int)spawnAt.X, (int)spawnAt.Y, mod.NPCType("ZeroAwakened"));
+                    Main.NewText("INITIATING D00MSDAY PR0T0C0L. TARGET L0CKED. ENGAGING.", Color.Red.R, Color.Red.G, Color.Red.B);
+                }
+                if (Main.expertMode == false)
+                {
+                    Main.NewText("D00MSDAY PR0T0CALL MALFUNCTI0N. INSUFFICIENT MEMORY.", Color.Red.R, Color.Red.G, Color.Red.B);
                 }
             }
             foreach (Projectile proj in Main.projectile)
@@ -173,7 +178,7 @@ namespace AAMod.NPCs.Bosses.Zero
                 chair1 = false;
             }
 
-            if ((NPC.CountNPCS(mod.NPCType<Searcher>()) < 5 && !Main.expertMode) || (NPC.CountNPCS(mod.NPCType<Searcher>()) < 10 && Main.expertMode))
+            if ((NPC.CountNPCS(mod.NPCType<SearcherZero>()) < 5 && !Main.expertMode) || (NPC.CountNPCS(mod.NPCType<SearcherZero>()) < 10 && Main.expertMode))
             {
                 NPC.NewNPC((int)(npc.Center.X + Main.rand.Next(-10, 10)), (int)(npc.Center.Y + Main.rand.Next(-10, 10)), mod.NPCType<SearcherZero>());
             }

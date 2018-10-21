@@ -14,6 +14,7 @@ namespace AAMod.NPCs.Bosses.Zero
     [AutoloadBossHead]
     public class ZeroAwakened : ModNPC
     {
+        public int timer;
         public bool chair2 = false;
         public static int type;
         public override void SetStaticDefaults()
@@ -104,6 +105,14 @@ namespace AAMod.NPCs.Bosses.Zero
                 {
                     chair2 = false;
                 }
+            }
+            if (npc.life <= 0 && Main.expertMode && npc.type == mod.NPCType<ZeroAwakened>())
+            {
+                Main.NewText("MISSI0N FAILED. SENDING DISTRESS SIGNAL TO HOME BASE", Color.Red.R, Color.Red.G, Color.Red.B);
+            }
+            if (npc.life <= 0 && Main.expertMode && npc.type == mod.NPCType<ZeroAwakened>())
+            {
+                Main.NewText("CHEATER ALERT CHEATER ALERT", Color.Red.R, Color.Red.G, Color.Red.B);
             }
         }
 
@@ -221,6 +230,7 @@ namespace AAMod.NPCs.Bosses.Zero
             }
             if (dead2)
             {
+                Main.NewText("TARGET NEUTRALIZED. RETREATING.", Color.Red.R, Color.Red.G, Color.Red.B);
                 npc.velocity.Y = npc.velocity.Y - 0.04f;
                 if (npc.timeLeft > 10)
                 {
