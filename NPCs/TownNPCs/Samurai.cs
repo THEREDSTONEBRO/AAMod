@@ -11,7 +11,7 @@ using Microsoft.Xna.Framework.Graphics;
 namespace AAMod.NPCs.TownNPCs
 {
 	[AutoloadHead]
-	public class ExamplePerson : ModNPC
+	public class Samurai : ModNPC
 	{
 		public override string Texture
 		{

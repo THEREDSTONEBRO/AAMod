@@ -17,7 +17,7 @@ namespace AAMod.Items.Blocks
             item.useStyle = 1;
             item.rare = 2;
             item.consumable = true;
-            item.createTile = mod.TileType("TorchstoneTile"); //put your CustomBlock Tile name
+            item.createTile = mod.TileType("Torchstone"); //put your CustomBlock Tile name
         }
 
         public override void SetStaticDefaults()

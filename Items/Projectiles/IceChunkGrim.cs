@@ -24,13 +24,12 @@ namespace AAMod.Items.Projectiles
 			{
 				Dust dust;
 				Vector2 position = projectile.position;
-				dust = Main.dust[Dust.NewDust(position, 30, 30, 230, 0f, 0f, 0, new Color(255,255,255), 2.105263f)];
+				dust = Main.dust[Dust.NewDust(position, 30, 30, 230, 0f, 0f, 0, new Color(255,255,255), 1.381579f)];
 				dust.noGravity = true;
-				dust.fadeIn = 1.342105f;
 			}
 		}
 
-        /*public override void Kill(int timeleft)
+        public override void Kill(int timeleft)
         {
             for (int num468 = 0; num468 < 20; num468++)
             {
@@ -42,7 +41,7 @@ namespace AAMod.Items.Projectiles
                     -projectile.velocity.Y * 0.2f, 0, new Color(255, 255, 255), 2.105263f);
                 Main.dust[num469].velocity *= 2f;
             }
-        }*/
+        }
 
         public override void SetStaticDefaults()
 		{

@@ -18,7 +18,7 @@ namespace AAMod.Items.Blocks
             item.useTime = 10;
             item.useStyle = 1;
             item.consumable = true;
-            item.createTile = mod.TileType("TechneciumOreTile"); //put your CustomBlock Tile name
+            item.createTile = mod.TileType("TechneciumOre"); //put your CustomBlock Tile name
         }
 
     public override void SetStaticDefaults()

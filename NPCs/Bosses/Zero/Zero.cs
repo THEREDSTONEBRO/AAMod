@@ -122,7 +122,7 @@ namespace AAMod.NPCs.Bosses.Zero
                 int loot = Main.rand.Next(lootTable.Length);
                 npc.DropLoot(mod.ItemType(lootTable[loot]));
                 npc.DropLoot(Items.Vanity.Mask.ZeroMask.type, 1f / 7);
-                npc.DropLoot(Items.Blocks.ZeroTrophy.type, 1f / 10);
+                npc.DropLoot(Items.Boss.Zero.ZeroTrophy.type, 1f / 10);
                 if (Main.rand.NextFloat() < 0.05f && AAWorld.RealityDropped == false)
                 {
                     Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("RealityStone"));
@@ -165,27 +165,6 @@ namespace AAMod.NPCs.Bosses.Zero
                 npc.dontTakeDamage = false;
                 npc.chaseable = true;
             }
-            /*if (npc.ai[3] != 6)
-            {
-                if (npc.ai[3] != npc.localAI[0])
-                {
-                    npc.localAI[0] = npc.ai[3];
-                    for (int i = 0; i < 200; i++)
-                    {
-                        NPC npc2 = Main.npc[i];
-                        if (npc2.type == mod.NPCType("TeslaHand") && npc2.active)
-                        {
-                            npc2.ai[2] = 0f;
-                            npc2.ai[3] = 0f;
-                        }
-                    }
-                }
-                npc.dontTakeDamage = true;
-            }
-            else
-            {
-                npc.dontTakeDamage = false;
-            }*/
 
             Mod mod1 = ModLoader.GetMod("HEROsMod");
             Mod mod2 = ModLoader.GetMod("CheatSheet");
@@ -196,7 +175,7 @@ namespace AAMod.NPCs.Bosses.Zero
 
             if ((NPC.CountNPCS(mod.NPCType<Searcher>()) < 5 && !Main.expertMode) || (NPC.CountNPCS(mod.NPCType<Searcher>()) < 10 && Main.expertMode))
             {
-                NPC.NewNPC((int)(npc.Center.X + Main.rand.Next(-10, 10)), (int)(npc.Center.Y + Main.rand.Next(-10, 10)), mod.NPCType<Searcher>());
+                NPC.NewNPC((int)(npc.Center.X + Main.rand.Next(-10, 10)), (int)(npc.Center.Y + Main.rand.Next(-10, 10)), mod.NPCType<SearcherZero>());
             }
             npc.damage = npc.defDamage;
             npc.defense = npc.defDefense;
@@ -233,7 +212,7 @@ namespace AAMod.NPCs.Bosses.Zero
             if (Main.player[npc.target].dead || Math.Abs(npc.position.X - Main.player[npc.target].position.X) > 6000f || Math.Abs(npc.position.Y - Main.player[npc.target].position.Y) > 6000f)
             {
                 npc.TargetClosest(true);
-                if (Main.player[npc.target].dead /*|| Math.Abs(npc.position.X - Main.player[npc.target].position.X) > 6000f || Math.Abs(npc.position.Y - Main.player[npc.target].position.Y) > 6000f*/)
+                if (Main.player[npc.target].dead)
                 {
                     npc.ai[1] = 3f;
                 }

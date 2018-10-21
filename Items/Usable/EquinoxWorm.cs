@@ -24,7 +24,7 @@ namespace AAMod.Items.Usable
                 Main.glowMaskTexture = glowMasks;
             }
             item.glowMask = customGlowMask;
-            DisplayName.SetDefault("EquinoxWorm");
+            DisplayName.SetDefault("Equinox Worm");
             Tooltip.SetDefault(@"Brings forth the serpents of the celestial heavans
 Not Consumable");
         }

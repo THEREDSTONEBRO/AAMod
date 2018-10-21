@@ -30,6 +30,7 @@ namespace AAMod
         public bool ZoneMire = false;
         public bool ZoneInferno = false;
         public bool ZoneVoid = false;
+        public bool ZoneMush = false;
         public bool ZoneRisingSunPagoda = false;
         public bool ZoneRisingMoonLake = false;
         public bool VoidUnit = false;
@@ -135,6 +136,7 @@ namespace AAMod
         {
             ZoneMire = (AAWorld.mireTiles > 100);
             ZoneInferno = (AAWorld.infernoTiles > 100);
+            ZoneMush = (AAWorld.mushTiles > 100);
             ZoneVoid = (AAWorld.voidTiles > 20);
         }
 
@@ -153,7 +155,7 @@ namespace AAMod
         public override bool CustomBiomesMatch(Player other)
         {
             AAPlayer modOther = other.GetModPlayer<AAPlayer>(mod);
-            return (ZoneMire == modOther.ZoneMire && ZoneInferno == modOther.ZoneInferno && ZoneVoid == modOther.ZoneVoid);
+            return (ZoneMire == modOther.ZoneMire && ZoneInferno == modOther.ZoneInferno && ZoneVoid == modOther.ZoneVoid && ZoneMush == modOther.ZoneMush);
         }
 
         public override void CopyCustomBiomesTo(Player other)
@@ -162,6 +164,7 @@ namespace AAMod
             modOther.ZoneInferno = ZoneInferno;
             modOther.ZoneMire = ZoneMire;
             modOther.ZoneVoid = ZoneVoid;
+            modOther.ZoneMush = ZoneMush;
         }
 
         public override void SendCustomBiomes(BinaryWriter writer)
@@ -173,6 +176,8 @@ namespace AAMod
                 flags |= 2;
             if (ZoneVoid)
                 flags |= 3;
+            if (ZoneMush)
+                flags |= 4;
             writer.Write(flags);
         }
 
@@ -182,6 +187,7 @@ namespace AAMod
             ZoneInferno = ((flags & 1) == 1);
             ZoneMire = ((flags & 2) == 2);
             ZoneVoid = ((flags & 3) == 3);
+            ZoneMush = ((flags & 4) == 4);
         }
 
         public override void OnHitByNPC(NPC npc, int damage, bool crit)

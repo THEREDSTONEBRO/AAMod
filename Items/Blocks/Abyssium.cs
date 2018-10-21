@@ -17,7 +17,7 @@ namespace AAMod.Items.Blocks
             item.useStyle = 1;
             item.rare = 1;
             item.consumable = true;
-            item.createTile = mod.TileType("AbyssiumOreTile"); //put your CustomBlock Tile name
+            item.createTile = mod.TileType("AbyssiumOre"); //put your CustomBlock Tile name
         }
 
         public override void SetStaticDefaults()

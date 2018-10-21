@@ -41,7 +41,7 @@ namespace AAMod.Tiles
                 TileID.DemonAltar,
                 TileID.Chairs,
                 TileID.Anvils,
-                mod.TileType("HellstoneAnvilTile"),
+                mod.TileType("HellstoneAnvil"),
                 mod.TileType("HallowedAnvil"),
                 mod.TileType("HallowedForge"),
                 mod.TileType("QuantumFusionAccelerator"),

@@ -24,7 +24,7 @@ namespace AAMod.Items.Materials
             item.rare = 11;
             item.useStyle = 1;
             item.consumable = true;
-            item.createTile = mod.TileType("DaybreakIncineriteBarTile");
+            item.createTile = mod.TileType("DaybreakIncineriteBar");
         }
         public override void AddRecipes()
         {                                                   //How to craft this item

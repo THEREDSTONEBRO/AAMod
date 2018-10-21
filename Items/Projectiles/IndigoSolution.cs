@@ -108,7 +108,7 @@ namespace AAMod.Items.Projectiles
 
                         if (type == 1)
                         {
-                            Main.tile[k, l].type = (ushort)mod.TileType("DepthstoneTile");
+                            Main.tile[k, l].type = (ushort)mod.TileType("Depthstone");
                             WorldGen.SquareTileFrame(k, l, true);
                             NetMessage.SendTileSquare(-1, k, l, 1);
                         }
@@ -120,7 +120,7 @@ namespace AAMod.Items.Projectiles
                         }
                         else if (type == 60)
                         {
-                            Main.tile[k, l].type = (ushort)mod.TileType("MireGrassTile");
+                            Main.tile[k, l].type = (ushort)mod.TileType("MireGrass");
                             WorldGen.SquareTileFrame(k, l, true);
                             NetMessage.SendTileSquare(-1, k, l, 1);
                         }

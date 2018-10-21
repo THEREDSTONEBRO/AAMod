@@ -13,9 +13,9 @@ namespace AAMod.NPCs.Minibosses
         public override void SetDefaults()
         {
             npc.aiStyle = 5;  //5 is the flying AI
-            npc.lifeMax = 8000;   //boss life
-            npc.damage = 35;  //boss damage
-            npc.defense = 20;    //boss defense
+            npc.lifeMax = 2000;   //boss life
+            npc.damage = 15;  //boss damage
+            npc.defense = 10;    //boss defense
             npc.knockBackResist = 0f;
             npc.width = 80;
             npc.height = 64;
