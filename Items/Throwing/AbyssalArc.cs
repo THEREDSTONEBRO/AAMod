@@ -11,7 +11,7 @@ namespace AAMod.Items.Throwing
 		public override void SetDefaults()
 		{
 
-            item.damage = 130;            
+            item.damage = 60;            
             item.thrown = true;
             item.width = 30;
             item.height = 30;
@@ -28,11 +28,11 @@ namespace AAMod.Items.Throwing
 			item.autoReuse = true;
 		}
 
-    public override void SetStaticDefaults()
-    {
-      DisplayName.SetDefault("AbyssalArc");
-      Tooltip.SetDefault("");
-    }
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("Abyssal Arc");
+            Tooltip.SetDefault("");
+        }
 
         public override bool CanUseItem(Player player)       //this make that you can shoot only 1 boomerang at once
         {

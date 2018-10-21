@@ -10,14 +10,14 @@ namespace AAMod.Items.Tools
         public override void SetDefaults()
         {
 
-            item.damage = 38;
+            item.damage = 9;
             item.melee = true;
             item.width = 38;
             item.height = 38;
 
             item.useTime = 8;
             item.useAnimation = 12;
-            item.pick = 255;    //pickaxe power
+            item.pick = 110;    //pickaxe power
             item.useStyle = 1;
             item.knockBack = 1;
             item.value = 10;

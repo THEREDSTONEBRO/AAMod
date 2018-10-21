@@ -84,7 +84,7 @@ namespace AAMod.Items.Projectiles
                             }
                         if (type == 2 && Main.tile[x, y].active())
                         {
-                            Main.tile[x, y].type = (ushort)mod.TileType("InfernoGrassTile");
+                            Main.tile[x, y].type = (ushort)mod.TileType("InfernoGrass");
                             WorldGen.SquareTileFrame(x, y, true);
                             NetMessage.SendTileSquare(-1, x, y, 1);
                         }

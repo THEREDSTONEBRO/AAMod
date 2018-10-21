@@ -11,7 +11,7 @@ namespace AAMod.Items.Magic        //We need this to basically indicate the fold
         public override void SetDefaults()
         {
 
-            item.damage = 39;   //The damage stat for the Weapon.                      
+            item.damage = 33;   //The damage stat for the Weapon.                      
             item.magic = true;   //This defines if it does magic damage and if its effected by magic increasing Armor/Accessories.
             item.width = 24;      //The size of the width of the hitbox in pixels.
             item.height = 28;      //The size of the height of the hitbox in pixels.
@@ -52,6 +52,7 @@ namespace AAMod.Items.Magic        //We need this to basically indicate the fold
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(ItemID.PixieDust, 18);   //you need 1 DirtBlock
 			recipe.AddIngredient(ItemID.CrystalShard, 16);
+            recipe.AddIngredient(ItemID.CrystalStorm, 1);
             recipe.AddTile(TileID.WorkBenches);   //at work bench
             recipe.SetResult(this);
             recipe.AddRecipe();

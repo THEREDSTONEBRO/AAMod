@@ -16,7 +16,7 @@ namespace AAMod.Items.Blocks
             item.useTime = 10;
             item.useStyle = 1;
             item.consumable = true;
-            item.createTile = mod.TileType("InfernoGrassTile"); //put your CustomBlock Tile name
+            item.createTile = mod.TileType("InfernoGrass"); //put your CustomBlock Tile name
         }
 
         public override void SetStaticDefaults()

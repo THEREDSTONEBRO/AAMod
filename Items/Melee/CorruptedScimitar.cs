@@ -13,12 +13,12 @@ namespace AAMod.Items.Melee   //where is located
         public override void SetDefaults()
         {
 
-            item.damage = 84;            //Sword damage
+            item.damage = 54;            //Sword damage
             item.melee = true;            //if it's melee
             item.width = 46;              //Sword width
             item.height = 100;             //Sword height
-            item.useTime = 9;          //how fast 
-            item.useAnimation = 9;     
+            item.useTime = 19;          //how fast 
+            item.useAnimation = 19;     
             item.useStyle = 1;        //Style is how this item is used, 1 is the style of the sword
             item.knockBack = 3;      //Sword knockback
             item.value = 19;        

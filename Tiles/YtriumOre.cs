@@ -13,15 +13,15 @@ namespace AAMod.Tiles
             Main.tileBlockLight[Type] = false;  //true for block to emit light
             Main.tileLighted[Type] = true;
             drop = mod.ItemType("YtriumOre");   //put your CustomBlock name
-            AddMapEntry(new Color(200, 200, 200));
-			minPick = 230;
+            AddMapEntry(new Color(160, 150, 0));
+			minPick = 100;
         }
       
         public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)   //light colors
         {
             r = 0.5f;
             g = 0.5f;
-            b = 0.5f;
+            b = 0f;
         }
     }
 }

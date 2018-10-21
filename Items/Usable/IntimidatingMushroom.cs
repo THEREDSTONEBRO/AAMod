@@ -44,7 +44,7 @@ Can only be used during the day");
 
         public override bool UseItem(Player player)
         {
-            NPC.NewNPC((int)player.position.X + Main.rand.Next(-800, 800), (int)player.position.Y + Main.rand.Next(-1000, -250), mod.NPCType("MushroomMonarch"));
+            NPC.NewNPC((int)player.position.X + Main.rand.Next(-400, 400), (int)player.position.Y + Main.rand.Next(-600, -250), mod.NPCType("MushroomMonarch"));
             NetMessage.SendData(23, -1, -1, null, mod.NPCType("MushroomMonarch"), 0f, 0f, 0f, 0);
             Main.PlaySound(15, (int)player.position.X, (int)player.position.Y, 0);
             return true;

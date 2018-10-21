@@ -21,8 +21,9 @@ namespace AAMod.Items.Potions
 			item.height = 38;
 			item.useTurn = true;
 			item.maxStack = 50;
-			item.healLife = 500;
-			item.useAnimation = 17;
+			item.healLife = 600;
+            item.healMana = 600;
+            item.useAnimation = 17;
 			item.useTime = 17;
 			item.useStyle = 2;
 			item.UseSound = SoundID.Item3;

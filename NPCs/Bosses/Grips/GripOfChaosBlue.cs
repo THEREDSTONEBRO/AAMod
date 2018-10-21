@@ -21,7 +21,7 @@ namespace AAMod.NPCs.Bosses.Grips
         public override void SetDefaults()
         {
             npc.aiStyle = 5;  //5 is the flying AI
-            npc.lifeMax = 1200;   //boss life
+            npc.lifeMax = 1400;   //boss life
             npc.damage = 25;  //boss damage
             npc.defense = 10;    //boss defense
             npc.knockBackResist = 0f;

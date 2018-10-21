@@ -16,8 +16,8 @@ namespace AAMod.Items.Magic
             item.width = 24;
             item.height = 28;
 
-            item.useTime = 5;
-            item.useAnimation = 5;
+            item.useTime = 20;
+            item.useAnimation = 20;
             item.useStyle = 5;        //this is how the item is holded
             item.noMelee = true;
             item.knockBack = 2;
@@ -25,7 +25,7 @@ namespace AAMod.Items.Magic
             item.rare = 6;
             item.mana = 2;             //mana use
             item.UseSound = SoundID.Item21;            //this is the sound when you use the item
-            item.autoReuse = true;
+            item.autoReuse = false;
             item.shoot = mod.ProjectileType ("CrystalP");  //this make the item shoot your projectile
             item.shootSpeed = 15f;    //projectile speed when shoot
         }   
@@ -41,7 +41,7 @@ namespace AAMod.Items.Magic
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(null, "StarcloudBar", 15);   //you need 10 Wood
 			recipe.AddIngredient(ItemID.Book, 1);
-            recipe.AddTile(TileID.WorkBenches);   //at work bench
+            recipe.AddTile(TileID.Bookcases);   //at work bench
             recipe.SetResult(this);  
             recipe.AddRecipe();
         }

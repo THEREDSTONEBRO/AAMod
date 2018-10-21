@@ -40,7 +40,8 @@ namespace AAMod.Items.Melee   //where is located
         {
             ModRecipe recipe = new ModRecipe(mod);      
             recipe.AddIngredient(ItemID.SoulofNight, 10);
-			recipe.AddIngredient(ItemID.DemoniteBar, 10);
+            recipe.AddIngredient(ItemID.SoulofMight, 10);
+            recipe.AddIngredient(ItemID.DemoniteBar, 10);
             recipe.AddIngredient(ItemID.RottenChunk, 8);			//you need 1 DirtBlock
             recipe.AddTile(TileID.DemonAltar);   //at work bench
             recipe.SetResult(this);

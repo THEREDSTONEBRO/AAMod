@@ -22,15 +22,16 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
 
         public override void SetDefaults()
         {
-            npc.aiStyle = NPCID.ArmoredSkeleton;  //5 is the flying AI
+            npc.CloneDefaults(NPCID.ArmoredSkeleton);
             npc.lifeMax = 1000;   //boss life
             npc.damage = 24;  //boss damage
             npc.defense = 12;    //boss defense
-            npc.knockBackResist = 0f;
+            npc.knockBackResist = 0f;   //this boss will behavior like the DemonEye  //boss frame/animation 
+            npc.value = Item.buyPrice(0, 0, 75, 45);
+            animationType = NPCID.ArmoredSkeleton;
+            npc.aiStyle = 3;
             npc.width = 74;
             npc.height = 108;
-            animationType = NPCID.ArmoredSkeleton;   //this boss will behavior like the DemonEye  //boss frame/animation 
-            npc.value = Item.buyPrice(0, 0, 75, 45);
             npc.npcSlots = 1f;
             npc.boss = true;
             npc.lavaImmune = true;

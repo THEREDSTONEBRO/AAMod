@@ -300,7 +300,26 @@ namespace AAMod
             int shiniesIndex = tasks.FindIndex(genpass => genpass.Name.Equals("Guide"));
             if (shiniesIndex == -1)
             {
-                return;
+                tasks.Insert(shiniesIndex + 1, new PassLegacy("Generating AA Ores", delegate (GenerationProgress progress)
+                {
+                    
+                    for (int k = 0; k < (int)(Main.maxTilesX * Main.maxTilesY * 6E-05); k++)
+                    {
+                        int x = Main.maxTilesX;
+                        int y = Main.maxTilesY;
+                        int tilesX = WorldGen.genRand.Next(0, x);
+                        int tilesY = WorldGen.genRand.Next((int)(y * .3f), (int)(y * .75f));
+                        if (Main.tile[tilesX, tilesY].type == 59)
+                        {
+                            WorldGen.OreRunner(WorldGen.genRand.Next(0, Main.maxTilesX), WorldGen.genRand.Next((int)Main.rockLayer, Main.maxTilesY - 200), WorldGen.genRand.Next(5, 6), WorldGen.genRand.Next(10, 11), (ushort)mod.TileType("EverleafRoot"));
+                            WorldGen.OreRunner(WorldGen.genRand.Next(0, Main.maxTilesX), WorldGen.genRand.Next((int)Main.rockLayer, Main.maxTilesY - 200), WorldGen.genRand.Next(5, 6), WorldGen.genRand.Next(10, 11), (ushort)mod.TileType("AbyssiumOre"));
+                        }
+                        if (Main.tile[tilesX, tilesY].type == 1)
+                        {
+                            WorldGen.OreRunner(WorldGen.genRand.Next(0, Main.maxTilesX), WorldGen.genRand.Next((int)Main.rockLayer, Main.maxTilesY - 200), WorldGen.genRand.Next(5, 6), WorldGen.genRand.Next(10, 11), (ushort)mod.TileType("IncineriteOre"));
+                        }
+                    }
+                }));
             }
             tasks.Insert(shiniesIndex + 1, new PassLegacy("000000000", VoidIslands));
             tasks.Insert(shiniesIndex + 1, new PassLegacy("Making Shrooms", Mush));
@@ -459,21 +478,10 @@ namespace AAMod
                 WorldGen.KillTile(X, i);
         }
 
+        
         public override void PostUpdate()
         {
-            if (downedGrips == true)
-            {
-                if (ChaosOres == false)
-                {
-                    ChaosOres = true;
-                    Main.NewText("Chaos reigns in your world", Color.Indigo.R, Color.Indigo.G, Color.Indigo.B);
-                    for (int k = 0; k < (int)(Main.maxTilesX * Main.maxTilesY * 6E-05); k++)
-                    {
-                        WorldGen.OreRunner(WorldGen.genRand.Next(0, Main.maxTilesX), WorldGen.genRand.Next((int)Main.rockLayer, Main.maxTilesY - 200), WorldGen.genRand.Next(5, 6), WorldGen.genRand.Next(10, 11), (ushort)mod.TileType("AbyssiumOre"));
-                        WorldGen.OreRunner(WorldGen.genRand.Next(0, Main.maxTilesX), WorldGen.genRand.Next((int)Main.rockLayer, Main.maxTilesY - 200), WorldGen.genRand.Next(5, 6), WorldGen.genRand.Next(10, 11), (ushort)mod.TileType("IncineriteOre"));
-                    }
-                }
-            }
+            
 
             if (downedDB == true)
             {
@@ -535,9 +543,16 @@ namespace AAMod
                 {
                     HallowedOre = true;
                     Main.NewText("The Caverns shine with the light of the radiant sun for a brief moment", Color.Yellow.R, Color.Yellow.G, Color.Yellow.B);
-                    for (int k = 0; k < (int)(Main.maxTilesX * Main.maxTilesY * 6E-05); k++)
+                    int x = Main.maxTilesX;
+                    int y = Main.maxTilesY;
+                    int tilesX = WorldGen.genRand.Next(0, x);
+                    int tilesY = WorldGen.genRand.Next(0, y);
+                    if (Main.tile[tilesX, tilesY].type == 118)
                     {
-                        WorldGen.OreRunner(WorldGen.genRand.Next(0, Main.maxTilesX), WorldGen.genRand.Next((int)Main.rockLayer, Main.maxTilesY - 200), WorldGen.genRand.Next(10, 11), WorldGen.genRand.Next(10, 11), (ushort)mod.TileType("HallowedOreTile"));
+                        for (int k = 0; k < (int)(Main.maxTilesX * Main.maxTilesY * 6E-05); k++)
+                        {
+                            WorldGen.OreRunner(WorldGen.genRand.Next(0, Main.maxTilesX), WorldGen.genRand.Next((int)Main.rockLayer, Main.maxTilesY - 200), WorldGen.genRand.Next(10, 11), WorldGen.genRand.Next(10, 11), (ushort)mod.TileType("HallowedOreTile"));
+                        }
                     }
                 }
             }
@@ -547,9 +562,16 @@ namespace AAMod
                 {
                     Dynaskull = true;
                     Main.NewText("Bones of the ancient past burst with energy", Color.DarkOrange.R, Color.DarkOrange.G, Color.DarkOrange.B);
-                    for (int k = 0; k < (int)(Main.maxTilesX * Main.maxTilesY * 6E-05); k++)
+                    int x = Main.maxTilesX;
+                    int y = Main.maxTilesY;
+                    int tilesX = WorldGen.genRand.Next(0, x);
+                    int tilesY = WorldGen.genRand.Next(0, y);
+                    if (Main.tile[tilesX, tilesY].type == 54)
                     {
-                        WorldGen.OreRunner(WorldGen.genRand.Next(0, Main.maxTilesX), WorldGen.genRand.Next((int)Main.rockLayer, Main.maxTilesY - 200), WorldGen.genRand.Next(7, 9), WorldGen.genRand.Next(10, 11), (ushort)mod.TileType("DynaskullOre"));
+                        for (int k = 0; k < (int)(Main.maxTilesX * Main.maxTilesY * 6E-05); k++)
+                        {
+                            WorldGen.OreRunner(WorldGen.genRand.Next(0, Main.maxTilesX), WorldGen.genRand.Next((int)Main.rockLayer, Main.maxTilesY - 200), WorldGen.genRand.Next(7, 9), WorldGen.genRand.Next(10, 11), (ushort)mod.TileType("DynaskullOre"));
+                        }
                     }
                 }
             }
@@ -712,7 +734,7 @@ namespace AAMod
                                 Framing.GetTileSafely(x, y).active(true);
                                 if (!Main.tile[x, y - 1].active() || !Main.tile[x, y + 1].active() || !Main.tile[x - 1, y].active() || !Main.tile[x + 1, y].active())
                                 {
-                                    Framing.GetTileSafely(x, y).type = (ushort)(mod.TileType("InfernoGrassTile"));
+                                    Framing.GetTileSafely(x, y).type = (ushort)(mod.TileType("InfernoGrass"));
                                     Framing.GetTileSafely(x, y).active(true);
                                 }
                             }

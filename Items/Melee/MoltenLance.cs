@@ -11,7 +11,7 @@ namespace AAMod.Items.Melee
         public override void SetDefaults()
         {
 
-            item.damage = 40;
+            item.damage = 30;
             item.melee = true;
             item.width = 112;
             item.height = 112;
@@ -36,11 +36,11 @@ namespace AAMod.Items.Melee
 			return player.ownedProjectileCounts[item.shoot] < 1; // This is to ensure the spear doesn't bug out when using autoReuse = true
 		}
 
-    public override void SetStaticDefaults()
-    {
-      DisplayName.SetDefault("Molten Lance");
-      Tooltip.SetDefault("Makes instant barbeque shishkebabs!");
-    }
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("Molten Lance");
+            Tooltip.SetDefault("Makes instant barbeque shishkebabs!");
+        }
 
         public override void AddRecipes()  //How to craft this item
         {
