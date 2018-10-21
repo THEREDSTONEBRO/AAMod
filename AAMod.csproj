@@ -79,6 +79,7 @@
     <Compile Include="Backgrounds\VoidSkyData.cs" />
     <Compile Include="Backgrounds\VoidSurfaceBgStyle.cs" />
     <Compile Include="Buffs\Broodmini.cs" />
+    <Compile Include="Buffs\Clueless.cs" />
     <Compile Include="Buffs\ChairMinionBuff.cs" />
     <Compile Include="Buffs\ChairMinionBuffEX.cs" />
     <Compile Include="Buffs\EnderMinionBuff.cs" />
@@ -166,6 +167,7 @@
     <Compile Include="Items\Pets\Broodmini.cs" />
     <Compile Include="Items\Pets\RaidEgg.cs" />
     <Compile Include="Items\Pets\Raidmini.cs" />
+    <Compile Include="Items\Projectiles\Fogless.cs" />
     <Compile Include="Items\Projectiles\Fog.cs" />
     <Compile Include="Items\Projectiles\SauceProjectile.cs" />
     <Compile Include="Items\Projectiles\EnderSickle.cs" />
@@ -741,6 +743,7 @@
     <Content Include="Buffs\broodmini.png" />
     <Content Include="Buffs\ChairMinionBuff.png" />
     <Content Include="Buffs\ChairMinionBuffEX.png" />
+    <Content Include="Buffs\Clueless.png" />
     <Content Include="Buffs\DragonFire.png" />
     <Content Include="Buffs\EnderMinionBuff.png" />
     <Content Include="Buffs\EnderMinionBuffEX.png" />
@@ -1466,6 +1469,8 @@
     <Content Include="Items\Projectiles\EtheralLazerEX.png" />
     <Content Include="Items\Projectiles\EventHorizon.png" />
     <Content Include="Items\Projectiles\EventHorizon_Glow.png" />
+    <Content Include="Items\Projectiles\Fog.png" />
+    <Content Include="Items\Projectiles\Fogless.png" />
     <Content Include="Items\Projectiles\FulguritePhasesaber.png" />
     <Content Include="Items\Projectiles\HydraSpear.png" />
     <Content Include="Items\Projectiles\HydraTuneller.png" />
@@ -1655,7 +1660,6 @@
     <Content Include="Items\Usable\OrderSolution.png" />
     <Content Include="Items\Usable\StoneOrb.png" />
     <Content Include="Items\Usable\StoneTesseract.png" />
-    <Content Include="Items\Usable\untitled.png" />
     <Content Include="Items\Usable\ZeroRune.png" />
     <Content Include="Items\Usable\ZeroRune_Glow.png" />
     <Content Include="Items\Usable\ZeroTesseract.png" />
@@ -1869,7 +1873,6 @@
     <Content Include="NPCs\Enemies\Other\HydraClaw.png" />
     <Content Include="NPCs\Enemies\Other\Steve.png" />
     <Content Include="NPCs\Enemies\Void\MiniProbe.gif" />
-    <Content Include="NPCs\Enemies\Void\Null.gif" />
     <Content Include="NPCs\Enemies\Void\Null.png" />
     <Content Include="NPCs\Enemies\Void\Searcher.png" />
     <Content Include="NPCs\TownNPCs\Samurai.png" />
@@ -2164,6 +2167,7 @@
     <Folder Include="NPCs\Bosses\Zero\Zero2\" />
     <Folder Include="obj\Debug\TempPE\" />
     <Folder Include="obj\NPCs\" />
+    <Folder Include="projectile\" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
