@@ -37,7 +37,7 @@ namespace AAMod.Items.Materials
             item.rare = 2;
             item.useStyle = 1;
             item.consumable = true;
-            item.createTile = mod.TileType("IncineriteBarTile");
+            item.createTile = mod.TileType("IncineriteBar");
         }
 
 		public override void AddRecipes()

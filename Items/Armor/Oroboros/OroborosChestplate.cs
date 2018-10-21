@@ -19,7 +19,7 @@ namespace AAMod.Items.Armor.Oroboros
             item.height = 20;
             item.value = 2000;
             item.rare = 2;
-            item.defense = 5;
+            item.defense = 4;
         }
 
         public override void AddRecipes()

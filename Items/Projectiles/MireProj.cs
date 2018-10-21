@@ -98,7 +98,7 @@ namespace AAMod.Items.Projectiles
 
                         if (type == 2 && Main.tile[x, y].active())
                         {
-                            Main.tile[x, y].type = (ushort)mod.TileType("DepthstoneTile");
+                            Main.tile[x, y].type = (ushort)mod.TileType("Depthstone");
                             WorldGen.SquareTileFrame(x, y, true);
                             NetMessage.SendTileSquare(-1, x, y, 1);
                         }

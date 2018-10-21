@@ -118,7 +118,7 @@ namespace AAMod.Items.Projectiles
                             NetMessage.SendTileSquare(-1, k, l, 1);
                         }
 
-                        if (type == (ushort)mod.TileType("DepthstoneTile"))
+                        if (type == (ushort)mod.TileType("Depthstone"))
                         {
                             Main.tile[k, l].type = 1;
                             WorldGen.SquareTileFrame(k, l, true);
@@ -155,7 +155,7 @@ namespace AAMod.Items.Projectiles
                             WorldGen.SquareTileFrame(k, l, true);
                             NetMessage.SendTileSquare(-1, k, l, 1);
                         }
-                        else if (type == (ushort)mod.WallType("TorchstoneTile"))
+                        else if (type == (ushort)mod.WallType("Torchstone"))
                         {
                             Main.tile[k, l].type = 1;
                             WorldGen.SquareTileFrame(k, l, true);

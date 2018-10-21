@@ -11,8 +11,7 @@ namespace AAMod.Items.Melee
         public static short customGlowMask = 0;
         public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Blazing Dawn");
-			Tooltip.SetDefault("The Radiant Dawn calls");
+			
             if (Main.netMode != 2)
             {
                 Texture2D[] glowMasks = new Texture2D[Main.glowMaskTexture.Length + 1];
@@ -24,6 +23,9 @@ namespace AAMod.Items.Melee
                 customGlowMask = (short)(glowMasks.Length - 1);
                 Main.glowMaskTexture = glowMasks;
             }
+            item.glowMask = customGlowMask;
+            DisplayName.SetDefault("Blazing Dawn");
+            Tooltip.SetDefault("The Radiant Dawn calls");
         }
 		public override void SetDefaults()
 		{
@@ -49,7 +51,6 @@ namespace AAMod.Items.Melee
                 Dust dust;
                 dust = Main.dust[Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, 15, 0f, 0f, 46, new Color(255, 75, 0), 1.381579f)];
                 dust.noGravity = true;
-                dust.fadeIn = 1.184211f;
             }
         }
 

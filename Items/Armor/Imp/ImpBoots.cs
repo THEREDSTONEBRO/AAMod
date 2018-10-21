@@ -33,7 +33,7 @@ namespace AAMod.Items.Armor.Imp
             {
                 ModRecipe recipe = new ModRecipe(mod);
                 recipe.AddIngredient(null, "DevilSilk", 5);
-                recipe.AddTile(null, "HellstoneAnvilTile");
+                recipe.AddTile(null, "HellstoneAnvil");
                 recipe.SetResult(this);
                 recipe.AddRecipe();
             }

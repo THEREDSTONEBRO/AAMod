@@ -90,7 +90,7 @@ namespace AAMod.Items.Projectiles
                         }
                         else if (type == 1)
                         {
-                            Main.tile[x, y].type = (ushort)mod.TileType("TorchstoneTile");
+                            Main.tile[x, y].type = (ushort)mod.TileType("Torchstone");
                             WorldGen.SquareTileFrame(x, y, true);
                             NetMessage.SendTileSquare(-1, x, y, 1);
                         }

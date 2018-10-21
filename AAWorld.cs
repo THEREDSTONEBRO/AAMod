@@ -20,6 +20,7 @@ namespace AAMod
         public static int mireTiles = 0;
         public static int infernoTiles = 0;
         public static int voidTiles = 0;
+        public static int mushTiles = 0;
         //Worldgen
         public static bool Luminite;
         public static bool DarkMatter;
@@ -35,6 +36,7 @@ namespace AAMod
         public static bool Evil;
         //Boss Bools
         public static bool Ancients;
+        public static bool downedMonarch;
         public static bool downedBrood;
         public static bool downedHydra;
         public static bool downedGripRed;
@@ -48,6 +50,8 @@ namespace AAMod
         public static bool downedDB;
         public static bool downedNC;
         public static bool downedEquinox;
+        public static bool downedAncient;
+        public static bool downedSAncient;
         public static bool downedAkuma;
         public static bool downedAkumaA;
         public static bool downedYamata;
@@ -65,6 +69,7 @@ namespace AAMod
         public override void Initialize()
         {
             //Bosses
+            downedMonarch = false;
             downedGripRed = false;
             downedGripBlue = false;
             downedGrips = downedGripRed && downedGripBlue;
@@ -76,6 +81,16 @@ namespace AAMod
             downedDB = false;
             downedNC = false;
             downedEquinox = downedDB && downedNC;
+            if (Main.expertMode == false)
+            { 
+                downedAncient = downedAkuma || downedYamata || downedZero;
+                downedSAncient = downedAkumata;
+            }
+            if (Main.expertMode == true)
+            {
+                downedAncient = downedAkumaA || downedYamataA || downedZeroA;
+                downedSAncient = downedAkumataA;
+            }
             downedAkuma = false;
             downedAkumaA = false;
             downedYamata = false;
@@ -122,6 +137,7 @@ namespace AAMod
         public override TagCompound Save()
         {
             var downed = new List<string>();
+            if (downedMonarch) downed.Add("Monarch");
             if (downedGripRed) downed.Add("GripRed");
             if (downedGripBlue) downed.Add("GripBlue");
             if (downedGrips) downed.Add("Grips");
@@ -137,6 +153,8 @@ namespace AAMod
             if (downedNC) downed.Add("NC");
             if (downedDB) downed.Add("DB");
             if (downedEquinox) downed.Add("Equinox");
+            if (downedAncient) downed.Add("A");
+            if (downedSAncient) downed.Add("SA");
             if (downedAkuma) downed.Add("Akuma");
             if (downedYamata) downed.Add("Yamata");
             if (zeroUS) downed.Add("0U");
@@ -169,7 +187,7 @@ namespace AAMod
             flags2[3] = NPC.downedMoonlord;
             flags2[4] = downedDB;
             flags2[5] = downedNC;
-            flags2[6] = downedNC;
+            flags2[6] = downedEquinox;
             flags2[7] = downedAkuma;
             writer.Write(flags2);
 
@@ -183,6 +201,13 @@ namespace AAMod
             flags3[6] = downedAkumata;
             flags3[7] = downedAkumataA;
             writer.Write(flags3);
+
+
+            BitsByte flags4 = new BitsByte();
+            flags4[0] = downedMonarch;
+            flags4[1] = downedAncient;
+            flags4[2] = downedSAncient;
+            writer.Write(flags4);
         }
 
         public override void NetReceive(BinaryReader reader)
@@ -198,26 +223,35 @@ namespace AAMod
             downedOrthrus = flags[7];
 
             BitsByte flags2 = reader.ReadByte();
-            downedRaider = flags[0];
-            NPC.downedMechBossAny = flags[1];
-            NPC.downedPlantBoss = flags[2];
-            NPC.downedMoonlord = flags[3];
+            downedRaider = flags2[0];
+            NPC.downedMechBossAny = flags2[1];
+            NPC.downedPlantBoss = flags2[2];
+            NPC.downedMoonlord = flags2[3];
             downedDB = flags2[4];
             downedNC = flags2[5];
-            downedAkuma = flags2[6];
-            downedYamata = flags2[7];
+            downedEquinox = flags2[6];
+            downedAkuma = flags2[7];
 
             BitsByte flags3 = reader.ReadByte();
-            zeroUS = flags2[0];
-            downedZero = flags2[1];
-            downedZeroA = flags2[2];
-            downedAkumata = flags2[3];
+            downedAkuma = flags3[1];
+            downedYamata = flags3[2];
+            downedYamataA = flags3[3];
+            zeroUS = flags3[4];
+            downedZero = flags3[5];
+            downedZeroA = flags3[6];
+            downedAkumata = flags3[7];
+            
+            BitsByte flags4 = reader.ReadByte();
+            downedMonarch = flags4[0];
+            downedAncient = flags4[1];
+            downedSAncient = flags4[2];
         }
 
         public override void Load(TagCompound tag)
         {
             var downed = tag.GetList<string>("downed");
             //bosses
+            downedMonarch = downed.Contains("Monarch");
             downedGripRed = downed.Contains("GripRed");
             downedGripBlue = downed.Contains("GripBlue");
             downedGrips = downed.Contains("Grips");
@@ -230,6 +264,9 @@ namespace AAMod
             NPC.downedMoonlord = downed.Contains("MoonLord");
             downedDB = downed.Contains("DB");
             downedNC = downed.Contains("NC");
+            downedEquinox = downed.Contains("Equinox");
+            downedAncient = downed.Contains("A");
+            downedSAncient = downed.Contains("SA");
             downedAkuma = downed.Contains("Akuma");
             downedYamata = downed.Contains("Yamata");
             zeroUS = downed.Contains("0U");
@@ -266,6 +303,17 @@ namespace AAMod
                 return;
             }
             tasks.Insert(shiniesIndex + 1, new PassLegacy("000000000", VoidIslands));
+            tasks.Insert(shiniesIndex + 1, new PassLegacy("Making Shrooms", Mush));
+        }
+
+        public void Mush(GenerationProgress progress)
+        {
+            for (int k = 0; k < (int)((double)(WorldGen.worldSurface * Main.maxTilesY) * 1E-05); k++)
+            {
+                int X = WorldGen.genRand.Next((Main.maxTilesX / 2) - 150, Main.maxTilesX / 2 + 150);
+                int Y = WorldGen.genRand.Next((int)WorldGen.worldSurface);
+                WorldGen.OreRunner(X, Y, WorldGen.genRand.Next(1, 2), WorldGen.genRand.Next(1, 2), (ushort)mod.TileType("Mycelium"));
+            }
         }
 
         public void VoidIslands(GenerationProgress progress) //method line
@@ -421,8 +469,8 @@ namespace AAMod
                     Main.NewText("Chaos reigns in your world", Color.Indigo.R, Color.Indigo.G, Color.Indigo.B);
                     for (int k = 0; k < (int)(Main.maxTilesX * Main.maxTilesY * 6E-05); k++)
                     {
-                        WorldGen.OreRunner(WorldGen.genRand.Next(0, Main.maxTilesX), WorldGen.genRand.Next((int)Main.rockLayer, Main.maxTilesY - 200), WorldGen.genRand.Next(7, 9), WorldGen.genRand.Next(10, 11), (ushort)mod.TileType("AbyssiumOreTile"));
-                        WorldGen.OreRunner(WorldGen.genRand.Next(0, Main.maxTilesX), WorldGen.genRand.Next((int)Main.rockLayer, Main.maxTilesY - 200), WorldGen.genRand.Next(7, 9), WorldGen.genRand.Next(10, 11), (ushort)mod.TileType("IncineriteOreTile"));
+                        WorldGen.OreRunner(WorldGen.genRand.Next(0, Main.maxTilesX), WorldGen.genRand.Next((int)Main.rockLayer, Main.maxTilesY - 200), WorldGen.genRand.Next(5, 6), WorldGen.genRand.Next(10, 11), (ushort)mod.TileType("AbyssiumOre"));
+                        WorldGen.OreRunner(WorldGen.genRand.Next(0, Main.maxTilesX), WorldGen.genRand.Next((int)Main.rockLayer, Main.maxTilesY - 200), WorldGen.genRand.Next(5, 6), WorldGen.genRand.Next(10, 11), (ushort)mod.TileType("IncineriteOre"));
                     }
                 }
             }
@@ -459,6 +507,15 @@ namespace AAMod
                 }
             }
 
+            if (downedEquinox == true)
+            {
+                if (Ancients == false)
+                {
+                    Ancients = true;
+                    Main.NewText("The Ancients have Awakened", Color.ForestGreen.R, Color.ForestGreen.G, Color.ForestGreen.B);
+                }
+            }
+
             if (NPC.downedMoonlord == true)
             {
                 if (Luminite == false)
@@ -470,13 +527,6 @@ namespace AAMod
                         WorldGen.OreRunner(WorldGen.genRand.Next(0, Main.maxTilesX), WorldGen.genRand.Next((int)Main.rockLayer, Main.maxTilesY - 200), WorldGen.genRand.Next(5, 9), WorldGen.genRand.Next(6, 10), (ushort)mod.TileType("LuminiteOre"));
                     }
                 }
-                
-                if (Ancients == false)
-                {
-                    Ancients = true;
-                    Main.NewText("The Ancients have Awakened", Color.ForestGreen.R, Color.ForestGreen.G, Color.ForestGreen.B);
-                }
-
                 
             }
             if (NPC.downedMechBossAny == true)
@@ -527,9 +577,10 @@ namespace AAMod
 
         public override void TileCountsAvailable(int[] tileCounts)
         {
-            mireTiles = tileCounts[mod.TileType("MireGrassTile")]+ tileCounts[mod.TileType("DepthstoneTile")];
-            infernoTiles = tileCounts[mod.TileType("InfernoGrassTile")]+ tileCounts[mod.TileType("TorchstoneTile")];
+            mireTiles = tileCounts[mod.TileType("MireGrass")]+ tileCounts[mod.TileType("Depthstone")];
+            infernoTiles = tileCounts[mod.TileType("InfernoGrass")]+ tileCounts[mod.TileType("Torchstone")];
             voidTiles = tileCounts[mod.TileType("Doomstone")] + tileCounts[mod.TileType("Apocalyptite")];
+            mushTiles = tileCounts[mod.TileType("Mycelium")];
         }
 
         private void AAWorldGen(GenerationProgress progress)
@@ -605,7 +656,7 @@ namespace AAMod
                         {
                             if (Main.tile[h, e] != null && (Main.tile[h, e].type == TileID.Stone || Main.tile[h, e].type == TileID.HardenedSand || Main.tile[h, e].type == TileID.CrimsonSandstone || Main.tile[h, e].type == TileID.CrimsonHardenedSand || Main.tile[h, e].type == TileID.Sandstone || Main.tile[h, e].type == TileID.CorruptSandstone || Main.tile[h, e].type == TileID.CorruptHardenedSand || Main.tile[h, e].type == TileID.Crimstone || Main.tile[h, e].type == TileID.Ebonstone))
                             {
-                                Framing.GetTileSafely(h, e).type = (ushort)(mod.TileType("DepthstoneTile"));
+                                Framing.GetTileSafely(h, e).type = (ushort)(mod.TileType("Depthstone"));
                                 Framing.GetTileSafely(h, e).active(true);
                             }
                             if (Main.tile[h, e] != null && (Main.tile[h, e].type == TileID.Sand || Main.tile[h, e].type == TileID.Dirt || Main.tile[h, e].type == TileID.Grass || Main.tile[h, e].type == TileID.FleshGrass || Main.tile[h, e].type == TileID.CorruptGrass || Main.tile[h, e].type == TileID.Mud || Main.tile[h, e].type == TileID.JungleGrass || Main.tile[h, e].type == TileID.Crimsand || Main.tile[h, e].type == TileID.Ebonsand))
@@ -614,13 +665,13 @@ namespace AAMod
                                 Framing.GetTileSafely(h, e).active(true);
                                 if (!Main.tile[h, e - 1].active() || !Main.tile[h, e + 1].active() || !Main.tile[h - 1, e].active() || !Main.tile[h + 1, e].active())
                                 {
-                                    Framing.GetTileSafely(h, e).type = (ushort)(mod.TileType("MireGrassTile"));
+                                    Framing.GetTileSafely(h, e).type = (ushort)(mod.TileType("MireGrass"));
                                     Framing.GetTileSafely(h, e).active(true);
                                 }
                             }
                             if (Main.tile[h, e] != null && (Main.tile[h, e].type == TileID.Tin || Main.tile[h, e].type == TileID.Copper || Main.tile[h, e].type == TileID.Iron || Main.tile[h, e].type == TileID.Lead || Main.tile[h, e].type == TileID.Silver || Main.tile[h, e].type == TileID.Tungsten || Main.tile[h, e].type == TileID.Gold || Main.tile[h, e].type == TileID.Platinum || Main.tile[h, e].type == TileID.Amethyst || Main.tile[h, e].type == TileID.Topaz || Main.tile[h, e].type == TileID.Sapphire || Main.tile[h, e].type == TileID.Emerald || Main.tile[h, e].type == TileID.Ruby || Main.tile[h, e].type == TileID.Diamond))
                             {
-                                Framing.GetTileSafely(h, e).type = (ushort)(mod.TileType("AbyssiumOreTile"));
+                                Framing.GetTileSafely(h, e).type = (ushort)(mod.TileType("AbyssiumOre"));
                                 Framing.GetTileSafely(h, e).active(true);
                             }
                         }
@@ -652,7 +703,7 @@ namespace AAMod
                         {
                             if (Main.tile[x, y] != null && (Main.tile[x, y].type == TileID.Stone || Main.tile[x, y].type == TileID.HardenedSand || Main.tile[x, y].type == TileID.CrimsonSandstone || Main.tile[x, y].type == TileID.CrimsonHardenedSand || Main.tile[x, y].type == TileID.Sandstone || Main.tile[x, y].type == TileID.CorruptSandstone || Main.tile[x, y].type == TileID.CorruptHardenedSand || Main.tile[x, y].type == TileID.Crimstone || Main.tile[x, y].type == TileID.Ebonstone))
                             {
-                                Framing.GetTileSafely(x, y).type = (ushort)(mod.TileType("TorchstoneTile"));
+                                Framing.GetTileSafely(x, y).type = (ushort)(mod.TileType("Torchstone"));
                                 Framing.GetTileSafely(x, y).active(true);
                             }
                             if (Main.tile[x, y] != null && (Main.tile[x, y].type == TileID.Sand || Main.tile[x, y].type == TileID.Dirt || Main.tile[x, y].type == TileID.Grass || Main.tile[x, y].type == TileID.FleshGrass || Main.tile[x, y].type == TileID.CorruptGrass || Main.tile[x, y].type == TileID.Mud || Main.tile[x, y].type == TileID.JungleGrass || Main.tile[x, y].type == TileID.Crimsand || Main.tile[x, y].type == TileID.Ebonsand))
@@ -667,7 +718,7 @@ namespace AAMod
                             }
                             if (Main.tile[x, y] != null && (Main.tile[x, y].type == TileID.Tin || Main.tile[x, y].type == TileID.Copper || Main.tile[x, y].type == TileID.Iron || Main.tile[x, y].type == TileID.Lead || Main.tile[x, y].type == TileID.Silver || Main.tile[x, y].type == TileID.Tungsten || Main.tile[x, y].type == TileID.Gold || Main.tile[x, y].type == TileID.Platinum || Main.tile[x, y].type == TileID.Amethyst || Main.tile[x, y].type == TileID.Topaz || Main.tile[x, y].type == TileID.Sapphire || Main.tile[x, y].type == TileID.Emerald || Main.tile[x, y].type == TileID.Ruby || Main.tile[x, y].type == TileID.Diamond))
                             {
-                                Framing.GetTileSafely(x, y).type = (ushort)(mod.TileType("IncineriteOreTile"));
+                                Framing.GetTileSafely(x, y).type = (ushort)(mod.TileType("IncineriteOre"));
                                 Framing.GetTileSafely(x, y).active(true);
                             }
                         }
@@ -791,7 +842,7 @@ namespace AAMod
                         switch (swampShape[y, x])
                         {
                             case 1:
-                                tile.type = (ushort)(mod.TileType<DepthstoneTile>());
+                                tile.type = (ushort)(mod.TileType<Depthstone>());
                                 tile.active(true);
                                 break;
                             case 2:
@@ -800,14 +851,14 @@ namespace AAMod
                             case 3:
                                 if (Main.rand.Next(2) == 0)
                                 {
-                                    tile.type = (ushort)(mod.TileType<DepthstoneTile>());
+                                    tile.type = (ushort)(mod.TileType<Depthstone>());
                                     tile.active(true);
                                 }
                                 break;
                             case 4:
                                 if (Main.rand.Next(2) == 0)
                                 {
-                                    tile.type = (ushort)(mod.TileType<DepthstoneTile>());
+                                    tile.type = (ushort)(mod.TileType<Depthstone>());
                                     tile.active(true);
                                 }
                                 else
@@ -931,7 +982,7 @@ namespace AAMod
                         switch (volcanoShape[y, x])
                         {
                             case 1:
-                                tile.type = (ushort)(mod.TileType<TorchstoneTile>());
+                                tile.type = (ushort)(mod.TileType<Tiles.Torchstone>());
                                 tile.active(true);
                                 break;
                             case 2:
@@ -940,14 +991,14 @@ namespace AAMod
                             case 3:
                                 if (Main.rand.Next(2) == 0)
                                 {
-                                    tile.type = (ushort)(mod.TileType<TorchstoneTile>());
+                                    tile.type = (ushort)(mod.TileType<Tiles.Torchstone>());
                                     tile.active(true);
                                 }
                                 break;
                             case 4:
                                 if (Main.rand.Next(2) == 0)
                                 {
-                                    tile.type = (ushort)(mod.TileType<TorchstoneTile>());
+                                    tile.type = (ushort)(mod.TileType<Tiles.Torchstone>());
                                     tile.active(true);
                                 }
                                 else

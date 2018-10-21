@@ -14,6 +14,7 @@ namespace AAMod.NPCs.Bosses.Zero
     [AutoloadBossHead]
     public class ZeroAwakened : ModNPC
     {
+        public int timer;
         public bool chair2 = false;
         public static int type;
         public override void SetStaticDefaults()
@@ -49,6 +50,8 @@ namespace AAMod.NPCs.Bosses.Zero
             bossBag = mod.ItemType("ZeroBag");
         }
 
+        
+
         public override void NPCLoot()
         {
             if (Main.expertMode)
@@ -57,7 +60,7 @@ namespace AAMod.NPCs.Bosses.Zero
                 return;
             }
             npc.DropLoot(Items.Vanity.Mask.ZeroMask.type, 1f / 7);
-            npc.DropLoot(Items.Blocks.ZeroTrophy.type, 1f / 10);
+            npc.DropLoot(Items.Boss.Zero.ZeroTrophy.type, 1f / 10);
             if (Main.rand.NextFloat() < 0.1f)
             {
                 Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("EXSoul"));
@@ -105,6 +108,14 @@ namespace AAMod.NPCs.Bosses.Zero
                     chair2 = false;
                 }
             }
+            if (npc.life <= 0 && Main.expertMode && npc.type == mod.NPCType<ZeroAwakened>())
+            {
+                Main.NewText("MISSI0N FAILED. SENDING DISTRESS SIGNAL TO HOME BASE", Color.Red.R, Color.Red.G, Color.Red.B);
+            }
+            if (npc.life <= 0 && Main.expertMode && npc.type == mod.NPCType<ZeroAwakened>())
+            {
+                Main.NewText("CHEATER ALERT CHEATER ALERT", Color.Red.R, Color.Red.G, Color.Red.B);
+            }
         }
 
         public override void PostDraw(SpriteBatch spriteBatch, Color drawColor)
@@ -115,7 +126,7 @@ namespace AAMod.NPCs.Bosses.Zero
                 spriteEffects = SpriteEffects.FlipHorizontally;
             }
             spriteBatch.Draw(mod.GetTexture("NPCs/Bosses/Zero/ZeroAwakened_Glow"), new Vector2(npc.Center.X - Main.screenPosition.X, npc.Center.Y - Main.screenPosition.Y),
-            npc.frame, Color.White, npc.rotation,
+            npc.frame, Color.Red, npc.rotation,
             new Vector2(npc.width * 0.5f, npc.height * 0.5f), 1f, spriteEffects, 0f);
         }
 
@@ -221,6 +232,7 @@ namespace AAMod.NPCs.Bosses.Zero
             }
             if (dead2)
             {
+                Main.NewText("TARGET NEUTRALIZED. RETREATING.", Color.Red.R, Color.Red.G, Color.Red.B);
                 npc.velocity.Y = npc.velocity.Y - 0.04f;
                 if (npc.timeLeft > 10)
                 {

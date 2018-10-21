@@ -6,6 +6,7 @@ using Terraria.ModLoader;
 using Terraria.Localization;
 using Terraria.UI;
 using AAMod.Backgrounds;
+using AAMod.NPCs.Bosses.Zero;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 using AAMod.UI;
@@ -208,7 +209,37 @@ namespace AAMod
                 ItemType("RadiantArcanum"),
                 ItemType("QuantumFusionAccelerator"),
             });
-            RecipeGroup.RegisterGroup("AAMod:AstralStations", group2);
+            RecipeGroup.RegisterGroup("AAMod:AstralStations", group3);
+            
+            RecipeGroup group4 = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + "AncientMaterials", new int[]
+            {
+                ItemType("UnstableSingularity"),
+                ItemType("CrucibleScale"),
+                ItemType("DreadScale"),
+                //ItemType("IceFragment"),
+                //ItemType("SandsOfTime"),
+                //ItemType("GreedCoin"),
+                //ItemType("GoddessFeather"),
+                //ItemType("Liferoot"),
+                //ItemType("ValorFragment"),
+                //ItemType("ShadowSilk"),
+                //ItemType("CarnalEssense"),
+                //ItemType("OceanRift"),
+                //ItemType("HallowPrism"),
+                //ItemType("EldritchEvil"),
+                //ItemType("FuryShard"),
+            });
+            RecipeGroup.RegisterGroup("AAMod:AncientMaterials", group4);
+
+            RecipeGroup group5 = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + "SuperAncientMaterials", new int[]
+            {
+                ItemType("ChaosSoul"),
+                //ItemType("UnifiedShroomite"),
+                //ItemType("InfinitySingularity"),
+                //ItemType("LostPhantom"),
+                //ItemType("RealityRift"),
+            });
+            RecipeGroup.RegisterGroup("AAMod:SuperAncientMaterials", group5);
 
             if (RecipeGroup.recipeGroupIDs.ContainsKey("Wood"))
             {
@@ -241,6 +272,13 @@ namespace AAMod
                 }
 
             }
+            /*if (NPC.AnyNPCs(NPCType<ZeroAwakened>())
+            {
+                if ()
+                { 
+                    music = GetSoundSlot(SoundType.Music, "Sounds/Music/Zero2");
+                }
+            }*/
             AAPlayer Ancients = player.GetModPlayer<AAPlayer>();
             if (Ancients.ZoneInferno)
             {
@@ -254,6 +292,10 @@ namespace AAMod
                     priority = MusicPriority.BiomeHigh;
                     music = GetSoundSlot(SoundType.Music, "Sounds/Music/InfernoSurface");
                 }
+            }
+            if (Ancients.ZoneMush)
+            {
+                    music = MusicID.Mushrooms;
             }
             if (Ancients.ZoneMire)
             {
@@ -312,7 +354,7 @@ namespace AAMod
                 ModRecipe recipe = new ModRecipe(this);
                 recipe.AddIngredient(null, "DevilSilk", 5);
                 recipe.AddIngredient(ItemID.Hay, 5);
-                recipe.AddTile(null, "HellstoneAnvilTile");
+                recipe.AddTile(null, "HellstoneAnvil");
                 recipe.SetResult(ItemID.GuideVoodooDoll, 1);
                 recipe.AddRecipe();
             }
