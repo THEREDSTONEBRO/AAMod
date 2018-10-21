@@ -32,12 +32,14 @@ namespace AAMod.NPCs.Bosses.Zero
                 projectile.frameCounter = 0;
                 if (++projectile.frame >= 8)
                 {
+                   projectile.frame = 7;
+Main.NewText("SENDING...", Color.Red.R, Color.Red.G, Color.Red.B);
                    
                 }
             }
             projectile.velocity.X *= 0.00f;
             projectile.velocity.Y += 0.00f;
-            Main.NewText("SENDING...", Color.Red.R, Color.Red.G, Color.Red.B);
+           
         }
         public override void Kill(int timeLeft)
         {
