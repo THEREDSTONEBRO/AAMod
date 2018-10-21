@@ -42,12 +42,11 @@ namespace AAMod.Items.Usable
             {
                 //if (Main.netMode != 1)
                 //{
-                for (int i = 0; i < 200; ++i)
+                for (int i = 0; i < 255; ++i)
                 {
                     if (Main.npc[i].type == NPCID.GoblinTinkerer)
                     {
-                        int variable = Player.FindClosest(item.position, item.width, item.height);
-                        Player player = Main.player[Player.FindClosest(item.position, item.width, item.height)];
+                        Player player = Main.player[Main.myPlayer];
                         player.QuickSpawnItem(mod.ItemType("SoulStone"), 1);
                         Main.npc[i].StrikeNPCNoInteraction(9999, 10f, -Main.npc[i].direction, false, false, false);
                         Main.NewText("The soul stone materializes in your hand", 180, 120, 0);

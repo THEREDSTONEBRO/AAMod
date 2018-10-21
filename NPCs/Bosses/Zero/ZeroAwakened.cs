@@ -90,12 +90,14 @@ namespace AAMod.NPCs.Bosses.Zero
 
         public override void HitEffect(int hitDirection, double damage)
         {
-            if (damage > 20)
+            if (damage > 30)
             {
                 if (Main.rand.Next(0,10) == 0)
                 {
+                    int Xint = (Main.rand.Next(0, 2) == 0) ? Main.rand.Next(-30, -9) : Main.rand.Next(10, 31);
+                    int Yint = (Main.rand.Next(0, 2) == 0) ? Main.rand.Next(-30, -9) : Main.rand.Next(10, 31);
                     Player player = Main.player[npc.target];
-                    Vector2 tele = new Vector2(player.Center.X + (Main.rand.Next(-20, 21) * 16), player.Center.Y + (Main.rand.Next(-20, 21) * 16));
+                    Vector2 tele = new Vector2(player.Center.X + Xint, player.Center.Y + Yint);
                     npc.Center = tele;
                 }
             }
