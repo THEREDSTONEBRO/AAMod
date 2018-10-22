@@ -24,7 +24,6 @@ namespace AAMod.Items.Boss.Grips
 			item.value = 2000;
 			item.rare = 1;
 			item.createTile = mod.TileType("GripBlueTrophy");
-			item.placeStyle = 1;
 		}
 	}
 }

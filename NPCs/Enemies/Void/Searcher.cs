@@ -16,12 +16,12 @@ namespace AAMod.NPCs.Enemies.Void
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Searcher");
-            Main.npcFrameCount[npc.type] = 5;
+            Main.npcFrameCount[npc.type] = 1;
         }
 		
 		public override void SetDefaults()
 		{
-            npc.CloneDefaults(NPCID.Probe);
+            npc.CloneDefaults(NPCID.CursedSkull);
             npc.aiStyle = 5;
 			npc.width = 30;
 			npc.height = 30;

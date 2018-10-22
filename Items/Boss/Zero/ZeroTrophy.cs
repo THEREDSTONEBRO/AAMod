@@ -40,7 +40,6 @@ namespace AAMod.Items.Boss.Zero
 			item.value = 2000;
 			item.rare = 1;
 			item.createTile = mod.TileType("ZeroTrophy");
-			item.placeStyle = 4;
 		}
 	}
 }
