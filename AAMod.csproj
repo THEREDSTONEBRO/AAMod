@@ -538,6 +538,7 @@
     <Compile Include="Items\Projectiles\Toxin.cs" />
     <Compile Include="Items\Projectiles\TrueAbyssalTwilightShot.cs" />
     <Compile Include="Items\Projectiles\TrueBlazingDawnShot.cs" />
+    <Compile Include="Items\Projectiles\TerraShotEX.cs" />
     <Compile Include="Items\Projectiles\TrueCopperShot.cs" />
     <Compile Include="Items\Projectiles\TrueFleshClaymoreShot.cs" />
     <Compile Include="Items\Projectiles\TrueManaShot.cs" />
