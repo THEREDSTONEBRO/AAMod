@@ -5,6 +5,7 @@ using Microsoft.Xna.Framework;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.Xna.Framework.Graphics;
+using System;
 
 namespace AAMod.Items.Ranged
 {
@@ -58,14 +59,22 @@ namespace AAMod.Items.Ranged
             player.statLife += (damage / 8);
             player.HealEffect(damage / 8);
         }
+
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
-            if (type == ProjectileID.BoneArrow)
+            float spread = 45f * 0.0174f;
+            float baseSpeed = (float)Math.Sqrt(speedX * speedX + speedY * speedY);
+            double startAngle = Math.Atan2(speedX, speedY) - .1d;
+            double deltaAngle = spread / 6f;
+            double offsetAngle;
+            for (int i = 0; i < 3; i++)
             {
-                type = mod.ProjectileType("ReaperArrow");
+                offsetAngle = startAngle + deltaAngle * i;
+                Projectile.NewProjectile(position.X, position.Y, speedX, speedY, mod.ProjectileType("ReaperArrow"), damage, knockBack, player.whoAmI, 0f, 0f);
             }
-            return true;
+            return false;
         }
+
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);

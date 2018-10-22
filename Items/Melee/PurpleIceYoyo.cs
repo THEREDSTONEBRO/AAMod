@@ -14,7 +14,7 @@ namespace AAMod.Items.Melee
         {
             item.CloneDefaults(ItemID.Terrarian);
 
-            item.damage = 17;                            
+            item.damage = 10;                            
             item.value = 3;
             item.rare = 0;
             item.knockBack = 2;

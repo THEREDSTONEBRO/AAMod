@@ -30,6 +30,7 @@ namespace AAMod
         public bool ZoneMire = false;
         public bool ZoneInferno = false;
         public bool ZoneVoid = false;
+        public bool ZoneMush = false;
         public bool ZoneRisingSunPagoda = false;
         public bool ZoneRisingMoonLake = false;
         public bool VoidUnit = false;
@@ -64,7 +65,7 @@ namespace AAMod
         public bool yamataSet;
         public bool zeroSet;
         public bool valkyrieSet;
-        public bool FogRemover;
+        public bool Blackend;
         // Accessory bools.
         public bool clawsOfChaos;
         public bool demonGauntlet;
@@ -81,6 +82,7 @@ namespace AAMod
         public bool Space;
         public int SnapCD = 18000;
         public bool death;
+        public bool FogRemover;
         //debuffs
         public bool infinityOverload = false;
 
@@ -129,12 +131,14 @@ namespace AAMod
             TrueInfinityGauntlet = false;
             Broodmini = false;
             Raidmini = false;
+            Blackend = false;
         }
 
         public override void UpdateBiomes()
         {
             ZoneMire = (AAWorld.mireTiles > 100);
             ZoneInferno = (AAWorld.infernoTiles > 100);
+            ZoneMush = (AAWorld.mushTiles > 100);
             ZoneVoid = (AAWorld.voidTiles > 20);
         }
 
@@ -153,7 +157,7 @@ namespace AAMod
         public override bool CustomBiomesMatch(Player other)
         {
             AAPlayer modOther = other.GetModPlayer<AAPlayer>(mod);
-            return (ZoneMire == modOther.ZoneMire && ZoneInferno == modOther.ZoneInferno && ZoneVoid == modOther.ZoneVoid);
+            return (ZoneMire == modOther.ZoneMire && ZoneInferno == modOther.ZoneInferno && ZoneVoid == modOther.ZoneVoid && ZoneMush == modOther.ZoneMush);
         }
 
         public override void CopyCustomBiomesTo(Player other)
@@ -162,6 +166,7 @@ namespace AAMod
             modOther.ZoneInferno = ZoneInferno;
             modOther.ZoneMire = ZoneMire;
             modOther.ZoneVoid = ZoneVoid;
+            modOther.ZoneMush = ZoneMush;
         }
 
         public override void SendCustomBiomes(BinaryWriter writer)
@@ -173,6 +178,8 @@ namespace AAMod
                 flags |= 2;
             if (ZoneVoid)
                 flags |= 3;
+            if (ZoneMush)
+                flags |= 4;
             writer.Write(flags);
         }
 
@@ -182,6 +189,7 @@ namespace AAMod
             ZoneInferno = ((flags & 1) == 1);
             ZoneMire = ((flags & 2) == 2);
             ZoneVoid = ((flags & 3) == 3);
+            ZoneMush = ((flags & 4) == 4);
         }
 
         public override void OnHitByNPC(NPC npc, int damage, bool crit)
@@ -210,7 +218,6 @@ namespace AAMod
                 }
             }
         }
-
         public override void PreUpdate()
         {
             if ((Mind || Power || Reality || Soul || Space || Time) && (!dwarvenGauntlet && !InfinityGauntlet && !TrueInfinityGauntlet))
@@ -235,15 +242,21 @@ namespace AAMod
                         Main.rainTime++;
                     }
                 }
-                else
+                if (Main.dayTime)
                 {
-                    if (FogRemover)
+                    if (!FogRemover)
                     {
-                        Projectile.NewProjectile(player.Center, player.velocity, mod.ProjectileType<Fog>(), 0, 0, Main.myPlayer, 0);
+                        if (!mod.GetProjectile<Fog>().projectile.active && !mod.GetProjectile<Fog>().projectile.hide)
+                        {
+                            Projectile.NewProjectile(player.Center, new Vector2(0, 0), mod.ProjectileType<Fog>(), 0, 0, Main.myPlayer);
+                        }
                     }
                     else
                     {
-                        Projectile.NewProjectile(player.Center, player.velocity, mod.ProjectileType<Fog>(), 0, 0, Main.myPlayer, 1);
+                        if (!mod.GetProjectile<Fogless>().projectile.active && !mod.GetProjectile<Fogless>().projectile.hide)
+                        {
+                            Projectile.NewProjectile(player.Center, new Vector2(0, 0), mod.ProjectileType<Fogless>(), 0, 0, Main.myPlayer);
+                        }
                     }
                 }
             }*/
@@ -686,6 +699,30 @@ namespace AAMod
                 return mod.GetTexture("Map/VoidMap");
             }
             return null;
+        }
+
+        public override void ModifyDrawInfo(ref PlayerDrawInfo drawInfo)
+        {
+            if (Blackend)
+            {
+                drawInfo.upperArmorColor = Color.Black;
+                drawInfo.middleArmorColor = Color.Black;
+                drawInfo.lowerArmorColor = Color.Black;
+                drawInfo.hairColor = Color.Black;
+                drawInfo.eyeWhiteColor = Color.Black;
+                drawInfo.eyeColor = Color.Black;
+                drawInfo.faceColor = Color.Black;
+                drawInfo.bodyColor = Color.Black;
+                drawInfo.legColor = Color.Black;
+                drawInfo.shirtColor = Color.Black;
+                drawInfo.underShirtColor = Color.Black;
+                drawInfo.pantsColor = Color.Black;
+                drawInfo.shoeColor = Color.Black;
+                drawInfo.headGlowMaskColor = Color.Black;
+                drawInfo.bodyGlowMaskColor = Color.Black;
+                drawInfo.armGlowMaskColor = Color.Black;
+                drawInfo.legGlowMaskColor = Color.Black;
+            }
         }
     }
 }

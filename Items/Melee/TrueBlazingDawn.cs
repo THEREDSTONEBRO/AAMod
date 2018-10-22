@@ -41,7 +41,7 @@ namespace AAMod.Items.Melee
 			item.UseSound = SoundID.Item20;
 			item.autoReuse = false;
 			item.shoot = mod.ProjectileType("TrueBlazingDawnShot");
-            item.shootSpeed = 8f;
+            item.shootSpeed = 12f;
 		}
 		
 		public override void MeleeEffects(Player player, Rectangle hitbox)

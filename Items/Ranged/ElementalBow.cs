@@ -35,7 +35,7 @@ namespace AAMod.Items.Ranged
 
     public override void SetStaticDefaults()
     {
-      DisplayName.SetDefault("ElementalBow");
+      DisplayName.SetDefault("Bonechill Arc");
       Tooltip.SetDefault("Transforms Wooden arrows into Frostburn Arrows");
     }
 
@@ -49,6 +49,7 @@ namespace AAMod.Items.Ranged
             ModRecipe recipe = new ModRecipe(mod);
 			recipe.AddIngredient(ItemID.Bone, 30);
 			recipe.AddIngredient(ItemID.CobaltBar, 5);
+            recipe.AddIngredient(ItemID.FrostCore, 1);
             recipe.SetResult(this);
             recipe.AddRecipe();
         }

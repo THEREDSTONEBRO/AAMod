@@ -13,7 +13,7 @@ namespace AAMod.Items.Throwing
         public override void SetDefaults()
         {
 
-            item.damage = 320;           //this is the item damage
+            item.damage = 120;           //this is the item damage
             item.thrown = true;             //this make the item do throwing damage
             item.noMelee = true;
             item.width = 20;

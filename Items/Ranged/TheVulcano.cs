@@ -13,14 +13,14 @@ namespace AAMod.Items.Ranged
         public override void SetDefaults()
         {
 
-            item.damage = 40;
+            item.damage = 44;
             item.noMelee = true;
 
             item.ranged = true;
             item.width = 58;
             item.height = 24;
-            item.useTime = 35;
-            item.useAnimation = 35;
+            item.useTime = 30;
+            item.useAnimation = 30;
             item.useStyle = 5;
             item.shoot = 85;
             item.knockBack = 0;

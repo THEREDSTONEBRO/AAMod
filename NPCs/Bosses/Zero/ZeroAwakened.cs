@@ -14,6 +14,7 @@ namespace AAMod.NPCs.Bosses.Zero
     [AutoloadBossHead]
     public class ZeroAwakened : ModNPC
     {
+        public int timer;
         public bool chair2 = false;
         public static int type;
         public override void SetStaticDefaults()
@@ -59,7 +60,7 @@ namespace AAMod.NPCs.Bosses.Zero
                 return;
             }
             npc.DropLoot(Items.Vanity.Mask.ZeroMask.type, 1f / 7);
-            npc.DropLoot(Items.Blocks.ZeroTrophy.type, 1f / 10);
+            npc.DropLoot(Items.Boss.Zero.ZeroTrophy.type, 1f / 10);
             if (Main.rand.NextFloat() < 0.1f)
             {
                 Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("EXSoul"));
@@ -89,12 +90,14 @@ namespace AAMod.NPCs.Bosses.Zero
 
         public override void HitEffect(int hitDirection, double damage)
         {
-            if (damage > 20)
+            if (damage > 30)
             {
                 if (Main.rand.Next(0,10) == 0)
                 {
+                    int Xint = (Main.rand.Next(0, 2) == 0) ? Main.rand.Next(-30, -9) : Main.rand.Next(10, 31);
+                    int Yint = (Main.rand.Next(0, 2) == 0) ? Main.rand.Next(-30, -9) : Main.rand.Next(10, 31);
                     Player player = Main.player[npc.target];
-                    Vector2 tele = new Vector2(player.Center.X + (Main.rand.Next(-20, 21) * 16), player.Center.Y + (Main.rand.Next(-20, 21) * 16));
+                    Vector2 tele = new Vector2(player.Center.X + Xint, player.Center.Y + Yint);
                     npc.Center = tele;
                 }
             }
@@ -104,6 +107,14 @@ namespace AAMod.NPCs.Bosses.Zero
                 {
                     chair2 = false;
                 }
+            }
+            if (npc.life <= 0 && Main.expertMode && npc.type == mod.NPCType<ZeroAwakened>())
+            {
+                Main.NewText("MISSI0N FAILED. SENDING DISTRESS SIGNAL TO HOME BASE", Color.Red.R, Color.Red.G, Color.Red.B);
+            }
+            if (npc.life <= 0 && !Main.expertMode && npc.type == mod.NPCType<ZeroAwakened>())
+            {
+                Main.NewText("CHEATER ALERT CHEATER ALERT", Color.Red.R, Color.Red.G, Color.Red.B);
             }
         }
 
@@ -221,6 +232,7 @@ namespace AAMod.NPCs.Bosses.Zero
             }
             if (dead2)
             {
+                Main.NewText("TARGET NEUTRALIZED. RETREATING.", Color.Red.R, Color.Red.G, Color.Red.B);
                 npc.velocity.Y = npc.velocity.Y - 0.04f;
                 if (npc.timeLeft > 10)
                 {

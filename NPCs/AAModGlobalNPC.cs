@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using AAMod.Buffs;
 using AAMod.NPCs.Enemies.Void;
 using Microsoft.Xna.Framework;
@@ -152,6 +153,8 @@ namespace AAMod.NPCs
 		{
 		}
 
+        
+
         public override void EditSpawnPool(IDictionary<int, float> pool, NPCSpawnInfo spawnInfo)
         {
             if(spawnInfo.player.GetModPlayer<AAPlayer>().ZoneVoid) //modded npc's need to be removed manually
@@ -284,6 +287,47 @@ namespace AAMod.NPCs
                 }
             }
             return true;
+        }
+        
+    }
+    public class Harpy : GlobalNPC
+    {
+
+        public float SpawnChance(NPCSpawnInfo spawnInfo)
+        {
+            Player player = spawnInfo.player;
+            if (!(player.ZoneTowerSolar || player.ZoneTowerVortex || player.ZoneTowerNebula || player.ZoneTowerStardust) && ((!Main.pumpkinMoon && !Main.snowMoon) || spawnInfo.spawnTileY > Main.worldSurface || Main.dayTime) && (!Main.eclipse || spawnInfo.spawnTileY > Main.worldSurface || !Main.dayTime) && (SpawnCondition.GoblinArmy.Chance == 0))
+            {
+                int[] TileArray2 = { mod.TileType("Doomstone"), mod.TileType("Apocalyptite"), mod.TileType("DoomstoneBrick") };
+                return TileArray2.Contains(Main.tile[spawnInfo.spawnTileX, spawnInfo.spawnTileY].type) ? 0f : 0f;
+            }
+            return 0f;
+        }
+    }
+    public class Wyvern : GlobalNPC
+    {
+        public float SpawnChance(NPCSpawnInfo spawnInfo)
+        {
+            Player player = spawnInfo.player;
+            if (!(player.ZoneTowerSolar || player.ZoneTowerVortex || player.ZoneTowerNebula || player.ZoneTowerStardust) && ((!Main.pumpkinMoon && !Main.snowMoon) || spawnInfo.spawnTileY > Main.worldSurface || Main.dayTime) && (!Main.eclipse || spawnInfo.spawnTileY > Main.worldSurface || !Main.dayTime) && (SpawnCondition.GoblinArmy.Chance == 0))
+            {
+                int[] TileArray2 = { mod.TileType("Doomstone"), mod.TileType("Apocalyptite"), mod.TileType("DoomstoneBrick") };
+                return TileArray2.Contains(Main.tile[spawnInfo.spawnTileX, spawnInfo.spawnTileY].type) ? 0f : 0f;
+            }
+            return 0f;
+        }
+    }
+    public class MartianProbe : GlobalNPC
+    {
+        public float SpawnChance(NPCSpawnInfo spawnInfo)
+        {
+            Player player = spawnInfo.player;
+            if (!(player.ZoneTowerSolar || player.ZoneTowerVortex || player.ZoneTowerNebula || player.ZoneTowerStardust) && ((!Main.pumpkinMoon && !Main.snowMoon) || spawnInfo.spawnTileY > Main.worldSurface || Main.dayTime) && (!Main.eclipse || spawnInfo.spawnTileY > Main.worldSurface || !Main.dayTime) && (SpawnCondition.GoblinArmy.Chance == 0))
+            {
+                int[] TileArray2 = { mod.TileType("Doomstone"), mod.TileType("Apocalyptite"), mod.TileType("DoomstoneBrick") };
+                return TileArray2.Contains(Main.tile[spawnInfo.spawnTileX, spawnInfo.spawnTileY].type) ? 0f : 0f;
+            }
+            return 0f;
         }
     }
 }

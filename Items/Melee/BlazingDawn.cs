@@ -51,7 +51,6 @@ namespace AAMod.Items.Melee
                 Dust dust;
                 dust = Main.dust[Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, 15, 0f, 0f, 46, new Color(255, 75, 0), 1.381579f)];
                 dust.noGravity = true;
-                dust.fadeIn = 1.184211f;
             }
         }
 

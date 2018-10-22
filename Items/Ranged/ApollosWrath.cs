@@ -13,7 +13,7 @@ namespace AAMod.Items.Ranged
         public override void SetDefaults()
         {
 
-            item.damage = 140;
+            item.damage = 78;
             item.noMelee = true;
 
 
@@ -49,9 +49,9 @@ namespace AAMod.Items.Ranged
             }
             item.glowMask = customGlowMask;
             DisplayName.SetDefault("Apollo's Wrath");
-      Tooltip.SetDefault(@"Shoots Shadow beams
+            Tooltip.SetDefault(@"Shoots Shadow beams
 Doesn't use Ammo");
-    }
+        }
 
         public override void AddRecipes()
         {

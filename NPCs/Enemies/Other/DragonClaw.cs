@@ -9,10 +9,12 @@ namespace AAMod.NPCs.Enemies.Other
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Dragon Claw");
-            Main.npcFrameCount[npc.type] = 2;
+            Main.npcFrameCount[npc.type] = 5;
         }
         public override void SetDefaults()
         {
+            aiType = NPCID.DemonEye;
+            animationType = NPCID.CrimsonAxe;
             npc.width = 28;
             npc.height = 24;
             npc.friendly = false;
@@ -24,8 +26,6 @@ namespace AAMod.NPCs.Enemies.Other
             npc.value = 0f;
             npc.knockBackResist = 0.6f;
             npc.aiStyle = 2;
-            aiType = NPCID.DemonEye;  //npc behavior
-            animationType = NPCID.DemonEye;
         }
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {

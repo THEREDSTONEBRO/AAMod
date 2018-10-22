@@ -14,7 +14,7 @@ namespace AAMod.Items.Melee   //where is located
         {
 			item.CloneDefaults(ItemID.SolarEruption);
 
-            item.damage = 82;            //Sword damage
+            item.damage = 52;            //Sword damage
             item.melee = true;            //if it's melee
             item.width = 56;              //Sword width
             item.height = 56;             //Sword height

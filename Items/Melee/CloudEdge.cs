@@ -13,7 +13,7 @@ namespace AAMod.Items.Melee   //where is located
         public override void SetDefaults()
         {
 
-            item.damage = 29;            //Sword damage
+            item.damage = 20;            //Sword damage
             item.melee = true;            //if it's melee
             item.width = 32;              //Sword width
             item.height = 32;             //Sword height

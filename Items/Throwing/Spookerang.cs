@@ -13,9 +13,9 @@ namespace AAMod.Items.Throwing
         public override void SetDefaults()
         {
 			item.useTime = 25;
-            item.CloneDefaults(ItemID.LightDisc);
+            item.CloneDefaults(ItemID.PossessedHatchet);
 
-            item.damage = 70;                            
+            item.damage = 140;                            
             item.value = 20;
             item.rare = 3;
             item.knockBack = 2;
@@ -29,8 +29,8 @@ namespace AAMod.Items.Throwing
 
     public override void SetStaticDefaults()
     {
-      DisplayName.SetDefault("Spookerang");
-      Tooltip.SetDefault("");
+      DisplayName.SetDefault("Spooky Sawblade");
+      Tooltip.SetDefault("A posessed chakram than homes in on enemies because it's possessed by a spooky ghost");
     }
 
 

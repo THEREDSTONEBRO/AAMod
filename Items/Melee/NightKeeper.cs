@@ -13,7 +13,7 @@ namespace AAMod.Items.Melee   //where is located
         public override void SetDefaults()
         {
 
-            item.damage = 34;            //Sword damage
+            item.damage = 44;            //Sword damage
             item.melee = true;            //if it's melee
             item.width = 54;              //Sword width
             item.height = 54;             //Sword height
@@ -38,7 +38,9 @@ namespace AAMod.Items.Melee   //where is located
         {
             ModRecipe recipe = new ModRecipe(mod);      
             recipe.AddIngredient(ItemID.LightsBane, 1);
-			recipe.AddIngredient(ItemID.DemoniteBar, 14);			//you need 1 DirtBlock
+			recipe.AddIngredient(ItemID.DemoniteBar, 7);			//you need 1 DirtBlock
+            recipe.AddIngredient(null, "ExilesKatana", 1);
+            recipe.AddIngredient(null, "Abyssium", 7);
             recipe.AddTile(TileID.DemonAltar);   //at work bench
             recipe.SetResult(this);
             recipe.AddRecipe();

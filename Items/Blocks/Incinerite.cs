@@ -18,7 +18,7 @@ namespace AAMod.Items.Blocks
             item.useStyle = 1;
             item.rare = 1;
             item.consumable = true;
-            item.createTile = mod.TileType("IncineriteOreTile"); //put your CustomBlock Tile name
+            item.createTile = mod.TileType("IncineriteOre"); //put your CustomBlock Tile name
         }
 
         public static short customGlowMask = 0;

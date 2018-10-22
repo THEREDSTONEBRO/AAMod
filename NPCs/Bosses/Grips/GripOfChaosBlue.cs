@@ -21,7 +21,7 @@ namespace AAMod.NPCs.Bosses.Grips
         public override void SetDefaults()
         {
             npc.aiStyle = 5;  //5 is the flying AI
-            npc.lifeMax = 1700;   //boss life
+            npc.lifeMax = 1400;   //boss life
             npc.damage = 25;  //boss damage
             npc.defense = 10;    //boss defense
             npc.knockBackResist = 0f;
@@ -119,7 +119,7 @@ namespace AAMod.NPCs.Bosses.Grips
                 npc.TargetClosest(true);
             }
             npc.netUpdate = true;
-            if (Main.rand.Next(450) == 0) // The lower the value, the higher chance of a grippy boi spawning
+            if (Main.rand.Next(700) == 0) // The lower the value, the higher chance of a grippy boi spawning
             {
                 NPC.NewNPC((int)npc.position.X + 70, (int)npc.position.Y + 70, mod.NPCType("HydraClaw")); //Change name AAAAAAAAAAAAAAAAAAAA
             }

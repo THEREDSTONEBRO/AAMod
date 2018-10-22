@@ -36,7 +36,7 @@ namespace AAMod.Items.Blocks
                 Main.glowMaskTexture = glowMasks;
             }
             item.glowMask = customGlowMask;
-            DisplayName.SetDefault("Dynaskull Ore");
+            DisplayName.SetDefault("Dynaskull Fossil");
             Tooltip.SetDefault("The energy of millions of years pulsates through this ancient fossil");
         }
     }

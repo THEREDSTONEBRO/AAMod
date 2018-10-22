@@ -16,8 +16,8 @@ namespace AAMod.Items.Magic        //We need this to basically indicate the fold
             item.width = 24;      //The size of the width of the hitbox in pixels.
             item.height = 28;      //The size of the height of the hitbox in pixels.
 
-            item.useTime = 7;     //How fast the Weapon is used.
-            item.useAnimation = 7;    //How long the Weapon is used for.
+            item.useTime = 14;     //How fast the Weapon is used.
+            item.useAnimation = 14;    //How long the Weapon is used for.
             item.useStyle = 5;         //The way your Weapon will be used, 5 is the Holding Out Used for: Guns, Spellbooks, Drills, Chainsaws, Flails, Spears for example
             item.noMelee = true;     //Setting to True allows the weapon sprite to stop doing damage, so only the projectile does the damge
             item.knockBack = 1;
@@ -40,7 +40,7 @@ namespace AAMod.Items.Magic        //We need this to basically indicate the fold
         //--------------------------------------------------Shotgun style: Multiple Projectiles, Random spread ---------------------------------------------------------
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
-              int numberProjectiles = 4 + Main.rand.Next(5); //This defines how many projectiles to shot. 4 + Main.rand.Next(2)= 4 or 5 shots
+              int numberProjectiles = 3; //This defines how many projectiles to shot. 4 + Main.rand.Next(2)= 4 or 5 shots
               for (int i = 0; i < numberProjectiles; i++)
               {
                   Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(30)); // This defines the projectiles random spread . 30 degree spread.
@@ -53,7 +53,7 @@ namespace AAMod.Items.Magic        //We need this to basically indicate the fold
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(null, "Everleaf", 6);
 			recipe.AddIngredient(null, "BookOfSacrifice", 1);
-            recipe.AddTile(TileID.WorkBenches);   //at work bench
+            recipe.AddTile(TileID.Bookcases);   //at work bench
             recipe.SetResult(this);
             recipe.AddRecipe();
         }

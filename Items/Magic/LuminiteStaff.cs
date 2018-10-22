@@ -11,7 +11,7 @@ namespace AAMod.Items.Magic       ///We need this to basically indicate the fold
  
         public override void SetDefaults()
         {
-            item.damage = 290;  //The damage stat for the Weapon.
+            item.damage = 210;  //The damage stat for the Weapon.
             item.mana = 40;      //this defines how many mana this weapon use
             item.width = 56;    //The size of the width of the hitbox in pixels.
             item.height = 56;     //The size of the height of the hitbox in pixels.

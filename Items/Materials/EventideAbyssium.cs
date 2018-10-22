@@ -24,7 +24,7 @@ namespace AAMod.Items.Materials
             item.rare = 11;
             item.useStyle = 1;
             item.consumable = true;
-            item.createTile = mod.TileType("EventideAbyssiumBarTile");
+            item.createTile = mod.TileType("EventideAbyssiumBar");
         }
         public override void AddRecipes()
         {                                                   //How to craft this item
