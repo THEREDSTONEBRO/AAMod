@@ -52,7 +52,7 @@ namespace AAMod.Backgrounds
             if (maxDepth >= 3.40282347E+38f && minDepth < 3.40282347E+38f)
             {
                 spriteBatch.Draw(Main.blackTileTexture, new Rectangle(0, 0, Main.screenWidth, Main.screenHeight), Color.Black * this.Intensity);
-                var planetPos = new Vector2(Main.screenWidth * .15f, Main.screenHeight * .15f);
+                var planetPos = new Vector2(Main.screenWidth / 2, Main.screenHeight / 2);
                 spriteBatch.Draw(PlanetTexture, planetPos, null, Color.White * 0.9f * this.Intensity, 0f, new Vector2(PlanetTexture.Width >> 1, PlanetTexture.Height >> 1), 1f, SpriteEffects.None, 1f);
             }
         }

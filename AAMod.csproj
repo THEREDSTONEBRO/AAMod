@@ -833,6 +833,7 @@
     <Content Include="Backgrounds\InfernoFG2.png" />
     <Content Include="Backgrounds\InfernoSky.png" />
     <Content Include="Backgrounds\InfernoSun.png" />
+    <Content Include="Backgrounds\InfernoSun1.png" />
     <Content Include="Backgrounds\InfernoUnderground.png" />
     <Content Include="Backgrounds\InfernoUnderground1.png" />
     <Content Include="Backgrounds\Mire1.png" />
