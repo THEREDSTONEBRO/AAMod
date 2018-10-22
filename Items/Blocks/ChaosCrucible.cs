@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework;
 using System.Collections.Generic;
 using Terraria.ModLoader;
 using Terraria;
+using System;
 
 namespace AAMod.Items.Blocks
 {
@@ -44,11 +45,14 @@ namespace AAMod.Items.Blocks
         }
         public override void ModifyTooltips(List<TooltipLine> list)
         {
+            float Eggroll = Math.Abs(Main.GameUpdateCount) / 5f;
+            float Pie = 1f * (float)Math.Sin(Eggroll);
+            Color color1 = Color.Lerp(Color.Red, Color.Blue, Pie);
             foreach (TooltipLine line2 in list)
             {
                 if (line2.mod == "Terraria" && line2.Name == "ItemName")
                 {
-                    line2.overrideColor = new Color(Main.DiscoR, 0, Main.DiscoB);
+                    line2.overrideColor = color1;
                 }
             }
         }

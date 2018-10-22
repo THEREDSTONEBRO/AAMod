@@ -19,8 +19,6 @@ namespace AAMod
 {
     public class AAPlayer : ModPlayer
     {
-        //Achievments
-        public static bool Chairlol;
         //Minions
         public bool enderMinion = false;
         public bool enderMinionEX = false;
@@ -233,7 +231,7 @@ namespace AAMod
                     Main.maxRaining = 0f;
                 }
             }
-            /*if (player.GetModPlayer<AAPlayer>().ZoneMire)
+            if (player.GetModPlayer<AAPlayer>().ZoneMire)
             {
                 if (Main.raining)
                 {
@@ -259,7 +257,7 @@ namespace AAMod
                         }
                     }
                 }
-            }*/
+            }
         }
 
         public override void GetWeaponKnockback(Item item, ref float knockback)

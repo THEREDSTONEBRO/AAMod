@@ -83,6 +83,7 @@
     <Compile Include="Buffs\Broodmini.cs" />
     <Compile Include="Buffs\ChairMinionBuff.cs" />
     <Compile Include="Buffs\ChairMinionBuffEX.cs" />
+    <Compile Include="Buffs\Clueless.cs" />
     <Compile Include="Buffs\EnderMinionBuff.cs" />
     <Compile Include="Buffs\EnderMinionBuffEX.cs" />
     <Compile Include="Buffs\DragonFire.cs" />
@@ -98,6 +99,7 @@
     <Compile Include="Dusts\DaybreakIncinerite.cs" />
     <Compile Include="Dusts\DeepAbyssiumDust.cs" />
     <Compile Include="Dusts\DoomDust.cs" />
+    <Compile Include="Dusts\EverleafDust.cs" />
     <Compile Include="Dusts\IncineriteDust.cs" />
     <Compile Include="Dusts\IndigoSolution.cs" />
     <Compile Include="Dusts\InfinityOverloadB.cs" />
@@ -212,7 +214,6 @@
     <Compile Include="Items\Blocks\BogwoodChest.cs" />
     <Compile Include="Items\Blocks\Boss6Box.cs" />
     <Compile Include="Items\Blocks\BroodBox.cs" />
-    <Compile Include="Items\Blocks\BroodmotherTrophy.cs" />
     <Compile Include="Items\Blocks\ChaosCrucible.cs" />
     <Compile Include="Items\Blocks\CorruptAltar.cs" />
     <Compile Include="Items\Blocks\CrimsonAltar.cs" />
@@ -226,8 +227,6 @@
     <Compile Include="Items\Blocks\Equibox.cs" />
     <Compile Include="Items\Blocks\FulguriteShard.cs" />
     <Compile Include="Items\Blocks\GripsBox.cs" />
-    <Compile Include="Items\Blocks\GripTrophyBlue.cs" />
-    <Compile Include="Items\Blocks\GripTrophyRed.cs" />
     <Compile Include="Items\Blocks\HallowedAnvil.cs" />
     <Compile Include="Items\Blocks\HallowedForge.cs" />
     <Compile Include="Items\Blocks\HallowedOre.cs" />
@@ -254,7 +253,6 @@
     <Compile Include="Items\Blocks\RadiantArcanum.cs" />
     <Compile Include="Items\Blocks\RadiumOre.cs" />
     <Compile Include="Items\Blocks\Razewood.cs" />
-    <Compile Include="Items\Blocks\RetrieverTrophy.cs" />
     <Compile Include="Items\Blocks\RottedDynastyWood.cs" />
     <Compile Include="Items\Blocks\RottedShingles.cs" />
     <Compile Include="Items\Blocks\RRBox.cs" />
@@ -271,7 +269,6 @@
     <Compile Include="Items\Blocks\YtriumOre.cs" />
     <Compile Include="Items\Blocks\Zero2Box.cs" />
     <Compile Include="Items\Blocks\ZeroBox.cs" />
-    <Compile Include="Items\Blocks\ZeroTrophy.cs" />
     <Compile Include="Items\Boss\Akumata\ChaosSoul.cs" />
     <Compile Include="Items\Boss\Akuma\CrucibleScale.cs" />
     <Compile Include="Items\Boss\Broodmother\BroodBag.cs" />
@@ -467,6 +464,7 @@
     <Compile Include="Items\Projectiles\AmphibiousProjectileEX.cs" />
     <Compile Include="Items\Projectiles\AmphibiousProjectileEXS.cs" />
     <Compile Include="Items\Projectiles\AmphibiousProjectileS.cs" />
+    <Compile Include="Items\Projectiles\Fogless.cs" />
     <Compile Include="Items\Projectiles\LuminiteMeteor.cs" />
     <Compile Include="Items\Projectiles\Antimatter.cs" />
     <Compile Include="Items\Projectiles\AntimonBoomerangP.cs" />
@@ -691,12 +689,14 @@
     <Compile Include="Sounds\Sounds\Zerohit.cs" />
     <Compile Include="Sounds\Sounds\Zerohit2.cs" />
     <Compile Include="Tiles\AACrate.cs" />
+    <Compile Include="Tiles\AbyssiumBar.cs" />
     <Compile Include="Tiles\AbyssiumOre.cs" />
     <Compile Include="Tiles\AkumaBox.cs" />
     <Compile Include="Tiles\AkumataABox.cs" />
     <Compile Include="Tiles\AkumataBox.cs" />
     <Compile Include="Tiles\Apocalyptite.cs" />
     <Compile Include="Tiles\BinaryReassembler.cs" />
+    <Compile Include="Tiles\Bogwood.cs" />
     <Compile Include="Tiles\BogwoodSapling.cs" />
     <Compile Include="Tiles\BogwoodTree.cs" />
     <Compile Include="Tiles\BogwoodF\BogwoodChair.cs" />
@@ -709,7 +709,6 @@
     <Compile Include="Tiles\Darkmatter.cs" />
     <Compile Include="Tiles\DarkmatterOre.cs" />
     <Compile Include="Tiles\DaybreakIncineriteBar.cs" />
-    <Compile Include="Tiles\DaybreakIncineriteBarTile.cs" />
     <Compile Include="Tiles\DeepAbyssium.cs" />
     <Compile Include="Tiles\Depthstone.cs" />
     <Compile Include="Tiles\DoomsdayPlating.cs" />
@@ -765,6 +764,7 @@
     <Compile Include="Tiles\RadiantIncinerite.cs" />
     <Compile Include="Tiles\RadiumBarTile.cs" />
     <Compile Include="Tiles\RadiumOre.cs" />
+    <Compile Include="Tiles\Razewood.cs" />
     <Compile Include="Tiles\RazewoodSapling.cs" />
     <Compile Include="Tiles\RazewoodTree.cs" />
     <Compile Include="Tiles\RottedDynastyWood.cs" />
@@ -773,6 +773,7 @@
     <Compile Include="Tiles\ScorchedDynastyWood.cs" />
     <Compile Include="Tiles\ScorchedShingles.cs" />
     <Compile Include="Tiles\SunAltar.cs" />
+    <Compile Include="Tiles\TechneciumOre.cs" />
     <Compile Include="Tiles\TerraCore.CS" />
     <Compile Include="Tiles\Torchstone.cs" />
     <Compile Include="Tiles\Trophy\BroodTrophy.cs" />
@@ -784,6 +785,7 @@
     <Compile Include="Tiles\VoidBox.cs" />
     <Compile Include="Tiles\VoidUnit.cs" />
     <Compile Include="Tiles\YamataBox.cs" />
+    <Compile Include="Tiles\YtriumOre.cs" />
     <Compile Include="Tiles\Zero2Box.cs" />
     <Compile Include="Tiles\ZeroBox.cs" />
     <Compile Include="UI\TerratoolUI.cs" />
@@ -809,22 +811,22 @@
     <Compile Include="Water\VoidWaterStyle.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Achievement\AkumaA.png" />
-    <Content Include="Achievement\AkumaANot.png" />
-    <Content Include="Achievement\BroodAchievement.png" />
-    <Content Include="Achievement\BroodAchievementNot.png" />
-    <Content Include="Achievement\ChairA.png" />
-    <Content Include="Achievement\ChairANot.png" />
-    <Content Include="Achievement\EquinoxA.png" />
-    <Content Include="Achievement\EquinoxANot.png" />
-    <Content Include="Achievement\GripsA.png" />
-    <Content Include="Achievement\GripsANot.png" />
-    <Content Include="Achievement\StormA.png" />
-    <Content Include="Achievement\StormANot.png" />
-    <Content Include="Achievement\ZeroAAchievment.png" />
-    <Content Include="Achievement\ZeroAAchievmentNot.png" />
-    <Content Include="Achievement\ZeroAchievment.png" />
-    <Content Include="Achievement\ZeroAchievmentNot.png" />
+    <Content Include="Achievements\AkumaA.png" />
+    <Content Include="Achievements\AkumaANot.png" />
+    <Content Include="Achievements\BroodAchievement.png" />
+    <Content Include="Achievements\BroodAchievementNot.png" />
+    <Content Include="Achievements\ChairAchievement.png" />
+    <Content Include="Achievements\ChairAchievementNot.png" />
+    <Content Include="Achievements\EquinoxA.png" />
+    <Content Include="Achievements\EquinoxANot.png" />
+    <Content Include="Achievements\GripsA.png" />
+    <Content Include="Achievements\GripsANot.png" />
+    <Content Include="Achievements\StormA.png" />
+    <Content Include="Achievements\StormANot.png" />
+    <Content Include="Achievements\ZeroAAchievment.png" />
+    <Content Include="Achievements\ZeroAAchievmentNot.png" />
+    <Content Include="Achievements\ZeroAchievment.png" />
+    <Content Include="Achievements\ZeroAchievmentNot.png" />
     <Content Include="Backgrounds\Aurora.png" />
     <Content Include="Backgrounds\InfernoBG1.png" />
     <Content Include="Backgrounds\InfernoCavern.png" />
@@ -833,6 +835,7 @@
     <Content Include="Backgrounds\InfernoFG2.png" />
     <Content Include="Backgrounds\InfernoSky.png" />
     <Content Include="Backgrounds\InfernoSun.png" />
+    <Content Include="Backgrounds\InfernoSun1.png" />
     <Content Include="Backgrounds\InfernoUnderground.png" />
     <Content Include="Backgrounds\InfernoUnderground1.png" />
     <Content Include="Backgrounds\Mire1.png" />
@@ -842,6 +845,7 @@
     <Content Include="Backgrounds\MireFG1.png" />
     <Content Include="Backgrounds\MireFG2.png" />
     <Content Include="Backgrounds\MireMoon.png" />
+    <Content Include="Backgrounds\MireMoon1.png" />
     <Content Include="Backgrounds\MireSky.png" />
     <Content Include="Backgrounds\MireUnderground.png" />
     <Content Include="Backgrounds\MireUnderground1.png" />
@@ -870,6 +874,7 @@
     <Content Include="Buffs\broodmini.png" />
     <Content Include="Buffs\ChairMinionBuff.png" />
     <Content Include="Buffs\ChairMinionBuffEX.png" />
+    <Content Include="Buffs\Clueless.png" />
     <Content Include="Buffs\DragonFire.png" />
     <Content Include="Buffs\EnderMinionBuff.png" />
     <Content Include="Buffs\EnderMinionBuffEX.png" />
@@ -887,6 +892,7 @@
     <Content Include="Dusts\DaybreakIncineriteDust.png" />
     <Content Include="Dusts\DeepAbyssiumDust.png" />
     <Content Include="Dusts\DoomDust.png" />
+    <Content Include="Dusts\EverleafDust.png" />
     <Content Include="Dusts\IncineriteDust.png" />
     <Content Include="Dusts\IndigoSolution.png" />
     <Content Include="Dusts\InfinityOverloadB.png" />
@@ -903,6 +909,13 @@
     <Content Include="Dusts\UmbreonSPDust.png" />
     <Content Include="Dusts\VoidDust.png" />
     <Content Include="Dusts\ZeroDust.png" />
+    <Content Include="Gores\BroodGore1.png" />
+    <Content Include="Gores\BroodGore2.png" />
+    <Content Include="Gores\BroodGore3.png" />
+    <Content Include="Gores\BroodGore4.png" />
+    <Content Include="Gores\BroodminiGore1.png" />
+    <Content Include="Gores\BroodminiGore2.png" />
+    <Content Include="Gores\BroodminiGore3.png" />
     <Content Include="Gores\CyberClawGore1.png" />
     <Content Include="Gores\CyberClawGore2.png" />
     <Content Include="Gores\CyberClawGore3.png" />
@@ -1219,8 +1232,6 @@
     <Content Include="Items\Blocks\Boss6Box.png" />
     <Content Include="Items\Blocks\BroodBox.png" />
     <Content Include="Items\Blocks\BroodBox_Glow.png" />
-    <Content Include="Items\Blocks\BroodmotherTrophy.png" />
-    <Content Include="Items\Blocks\BroodmotherTrophy_Glow.png" />
     <Content Include="Items\Blocks\BunnyBongo.png" />
     <Content Include="Items\Blocks\ChaosCrucible.png" />
     <Content Include="Items\Blocks\ChaosCrucible_Glow.png" />
@@ -1244,8 +1255,6 @@
     <Content Include="Items\Blocks\FulguriteShard.png" />
     <Content Include="Items\Blocks\FulguriteShard_Glow.png" />
     <Content Include="Items\Blocks\GripsBox.png" />
-    <Content Include="Items\Blocks\GripTrophyBlue.png" />
-    <Content Include="Items\Blocks\GripTrophyRed.png" />
     <Content Include="Items\Blocks\HallowedAnvil.png" />
     <Content Include="Items\Blocks\HallowedForge.png" />
     <Content Include="Items\Blocks\HallowedOre.png" />
@@ -1266,6 +1275,7 @@
     <Content Include="Items\Blocks\MireGrassBlock.png" />
     <Content Include="Items\Blocks\MireUBox.png" />
     <Content Include="Items\Blocks\MoonAltar.png" />
+    <Content Include="Items\Blocks\Mycelium.png" />
     <Content Include="Items\Blocks\N1Box.png" />
     <Content Include="Items\Blocks\OroborosChest.png" />
     <Content Include="Items\Blocks\OroborosChest_Glow.png" />
@@ -1277,7 +1287,6 @@
     <Content Include="Items\Blocks\RadiantArcanum_Glow.png" />
     <Content Include="Items\Blocks\RadiumOre.png" />
     <Content Include="Items\Blocks\Razewood.png" />
-    <Content Include="Items\Blocks\RetrieverTrophy.png" />
     <Content Include="Items\Blocks\RoHBox.png" />
     <Content Include="Items\Blocks\RottedDynastyWood.png" />
     <Content Include="Items\Blocks\RottedShingles.png" />
@@ -1300,8 +1309,6 @@
     <Content Include="Items\Blocks\Zero2Box_Glow.png" />
     <Content Include="Items\Blocks\ZeroBox.png" />
     <Content Include="Items\Blocks\ZeroBox_Glow.png" />
-    <Content Include="Items\Blocks\ZeroTrophy.png" />
-    <Content Include="Items\Blocks\ZeroTrophy_Glow.png" />
     <Content Include="Items\Boss\Akumata\ChaosSoul.png" />
     <Content Include="Items\Boss\Akumata\ChaosSoul_Glow.png" />
     <Content Include="Items\Boss\Akuma\CrucibleScale.png" />
@@ -1316,7 +1323,6 @@
     <Content Include="Items\Boss\Akuma\SunStaff.png" />
     <Content Include="Items\Boss\Akuma\SunStaff_Glow.png" />
     <Content Include="Items\Boss\Akuma\Sunstorm.png" />
-    <Content Include="Items\Boss\Akuma\SunStrike.png" />
     <Content Include="Items\Boss\Broodmother\BroodBag.png" />
     <Content Include="Items\Boss\Broodmother\BroodBag_Glow.png" />
     <Content Include="Items\Boss\Broodmother\BroodmotherTrophy.png" />
@@ -1348,6 +1354,9 @@
     <Content Include="Items\Boss\Grips\ClawOfChaos_HandsOn.gif" />
     <Content Include="Items\Boss\Grips\ClawOfChaos_HandsOn.png" />
     <Content Include="Items\Boss\Grips\GripBag.png" />
+    <Content Include="Items\Boss\Grips\GripTrophyBlue.png" />
+    <Content Include="Items\Boss\Grips\GripTrophyRed.png" />
+    <Content Include="Items\Boss\Grips\GripTrophyRed_Glow.png" />
     <Content Include="Items\Boss\Hydra\HydraBag.png" />
     <Content Include="Items\Boss\Hydra\HydraHide.png" />
     <Content Include="Items\Boss\Hydra\HydraPendant.png" />
@@ -1364,6 +1373,7 @@
     <Content Include="Items\Boss\Raider\RaiderBag_Glow.png" />
     <Content Include="Items\Boss\Retriever\RetrieverBag.png" />
     <Content Include="Items\Boss\Retriever\RetrieverBag_Glow.png" />
+    <Content Include="Items\Boss\Retriever\RetrieverTrophy.png" />
     <Content Include="Items\Boss\Retriever\StormClaw.png" />
     <Content Include="Items\Boss\Retriever\StormClaw_Glow.png" />
     <Content Include="Items\Boss\Retriever\StormClaw_HandsOn.png" />
@@ -1398,6 +1408,8 @@
     <Content Include="Items\Boss\Zero\ZeroBag_Glow.png" />
     <Content Include="Items\Boss\Zero\ZeroStar.png" />
     <Content Include="Items\Boss\Zero\ZeroStar_Glow.png" />
+    <Content Include="Items\Boss\Zero\ZeroTrophy.png" />
+    <Content Include="Items\Boss\Zero\ZeroTrophy_Glow.png" />
     <Content Include="Items\Boss\Zero\ZeroWings.png" />
     <Content Include="Items\Boss\Zero\ZeroWings_Wings.png" />
     <Content Include="Items\Boss\Zero\ZeroWings_Wings_Glow.png" />
@@ -1558,7 +1570,6 @@
     <Content Include="Items\Melee\Ectoblade.png" />
     <Content Include="Items\Melee\Ectoblade_Glow.png" />
     <Content Include="Items\Melee\EnchantedWarhammer.png" />
-    <Content Include="Items\Melee\EventHorizon.png" />
     <Content Include="Items\Melee\ExilesKatana.png" />
     <Content Include="Items\Melee\Exorcist.png" />
     <Content Include="Items\Melee\Firestorm.png" />
@@ -1641,6 +1652,8 @@
     <Content Include="Items\Projectiles\AmphibiousProjectileEXS_Glow.png" />
     <Content Include="Items\Projectiles\AmphibiousProjectileEX_Glow.png" />
     <Content Include="Items\Projectiles\AmphibiousProjectileS.png" />
+    <Content Include="Items\Projectiles\Fog.png" />
+    <Content Include="Items\Projectiles\Fogless.png" />
     <Content Include="Items\Projectiles\LuminiteMeteor.png" />
     <Content Include="Items\Projectiles\Antimatter.png" />
     <Content Include="Items\Projectiles\AntimonBoomerangP.png" />
@@ -1663,7 +1676,6 @@
     <Content Include="Items\Projectiles\DragonBreathP.png" />
     <Content Include="Items\Projectiles\DragonBreathP_Glow.png" />
     <Content Include="Items\Projectiles\DragonP.png" />
-    <Content Include="Items\Projectiles\DragonsMaw_Glow.png" />
     <Content Include="Items\Projectiles\DragonSP.png" />
     <Content Include="Items\Projectiles\Duck.png" />
     <Content Include="Items\Projectiles\DuckEX.png" />
@@ -1841,7 +1853,6 @@
     <Content Include="Items\Tools\DarkmatterPitchet_Glow.png" />
     <Content Include="Items\Tools\DepthDigger.png" />
     <Content Include="Items\Tools\DragonDigger.png" />
-    <Content Include="Items\Tools\Dragonpick.png" />
     <Content Include="Items\Tools\DragonPickaxe.png" />
     <Content Include="Items\Tools\HydraTuneller.png" />
     <Content Include="Items\Tools\OceanAxe.png" />
@@ -1898,7 +1909,6 @@
     <Content Include="Items\Usable\StoneOrb.png" />
     <Content Include="Items\Usable\StoneTesseract.png" />
     <Content Include="Items\Usable\SuspiciousLookingShell.png" />
-    <Content Include="Items\Usable\untitled.png" />
     <Content Include="Items\Usable\WoodWithFungi.png" />
     <Content Include="Items\Usable\ZeroRune.png" />
     <Content Include="Items\Usable\ZeroRune_Glow.png" />
@@ -1997,12 +2007,12 @@
     <Content Include="NPCs\Bosses\Akumata\AkumataRedTail.png" />
     <Content Include="NPCs\Bosses\Akumata\AkumataTail.Png" />
     <Content Include="NPCs\Bosses\Akumata\AkumataWingBack.png" />
-    <Content Include="NPCs\Bosses\Akuma\Akuma.png" />
     <Content Include="NPCs\Bosses\Akuma\AkumaAArms.png" />
+    <Content Include="NPCs\Bosses\Akuma\AkumaABody.png" />
     <Content Include="NPCs\Bosses\Akuma\AkumaAHead.png" />
     <Content Include="NPCs\Bosses\Akuma\AkumaArms.png" />
+    <Content Include="NPCs\Bosses\Akuma\AkumaATail.png" />
     <Content Include="NPCs\Bosses\Akuma\AkumaBody.png" />
-    <Content Include="NPCs\Bosses\Akuma\AkumaBody2.png" />
     <Content Include="NPCs\Bosses\Akuma\AkumaHead.png" />
     <Content Include="NPCs\Bosses\Akuma\AkumaTail.png" />
     <Content Include="NPCs\Bosses\Broodmother\BroodEgg.png" />
@@ -2031,9 +2041,13 @@
     <Content Include="NPCs\Bosses\Grips\GripOfChaosRed.png" />
     <Content Include="NPCs\Bosses\Grips\GripOfChaosRedPunch.png" />
     <Content Include="NPCs\Bosses\Grips\GripOfChaosRed_Head_Boss.png" />
+    <Content Include="NPCs\Bosses\MushroomMonarch\MushroomMonarch0.png" />
     <Content Include="NPCs\Bosses\MushroomMonarch\MushroomMonarchJump.png" />
+    <Content Include="NPCs\Bosses\MushroomMonarch\MushroomMonarch_Head_Boss.png" />
     <Content Include="NPCs\Bosses\Zero\SearcherZero.png" />
     <Content Include="NPCs\Bosses\Zero\SearcherZero_Glow.png" />
+    <Content Include="NPCs\Enemies\Void\Null_Glow.png" />
+    <Content Include="NPCs\Enemies\Void\Searcher_Glow.png" />
     <Content Include="NPCs\Minibosses\TheIcegrim.png" />
     <Content Include="NPCs\Bosses\MushroomMonarch\MonarchRUNAWAY.png" />
     <Content Include="NPCs\Bosses\MushroomMonarch\MushroomMonarch.png" />
@@ -2163,6 +2177,7 @@
     <Content Include="Sounds\Music\InfernoUnderground.mp3" />
     <Content Include="Sounds\Music\MireSurface.mp3" />
     <Content Include="Sounds\Music\MireUnderground.mp3" />
+    <Content Include="Sounds\Music\RayOfHope.mp3" />
     <Content Include="Sounds\Music\Void.mp3" />
     <Content Include="Sounds\Music\WeAreNumberOne.mp3" />
     <Content Include="Sounds\Music\Yamata.mp3" />
@@ -2173,6 +2188,7 @@
     <Content Include="Sounds\Sounds\Zerohit.wav" />
     <Content Include="Sounds\Sounds\Zerohit2.wav" />
     <Content Include="Tiles\AACrate.png" />
+    <Content Include="Tiles\AbyssiumBar.png" />
     <Content Include="Tiles\AbyssiumOre.png" />
     <Content Include="Tiles\AbyssiumOre_glow.png" />
     <Content Include="Tiles\AkumaBox.png" />
@@ -2185,6 +2201,7 @@
     <Content Include="Tiles\Apocalyptite_Old.png" />
     <Content Include="Tiles\BinaryReassembler.png" />
     <Content Include="Tiles\BinaryReassembler_Glow.png" />
+    <Content Include="Tiles\Bogwood.png" />
     <Content Include="Tiles\BogwoodBranches.png" />
     <Content Include="Tiles\BogwoodSapling.png" />
     <Content Include="Tiles\BogwoodTree.png" />
@@ -2213,10 +2230,9 @@
     <Content Include="Tiles\DarkmatterOre.png" />
     <Content Include="Tiles\Darkmud.png" />
     <Content Include="Tiles\DaybreakIncineriteBar.png" />
-    <Content Include="Tiles\DaybreakIncineriteBarTile.png" />
     <Content Include="Tiles\DecayedShinglesB.png" />
     <Content Include="Tiles\DeepAbyssium.png" />
-    <Content Include="Tiles\DepthstoneTile.png" />
+    <Content Include="Tiles\Depthstone.png" />
     <Content Include="Tiles\DiscordianOreTile.png" />
     <Content Include="Tiles\DoomsdayPlating.png" />
     <Content Include="Tiles\DoomsdayPlating_Glow.png" />
@@ -2268,16 +2284,22 @@
     <Content Include="Tiles\LivingRazewood.png" />
     <Content Include="Tiles\LuminiteOre.png" />
     <Content Include="Tiles\LuminiteOre_Glow.png" />
+    <Content Include="Tiles\ManaLantern.png" />
+    <Content Include="Tiles\ManaLantern_Glow.png" />
     <Content Include="Tiles\MireBox.png" />
     <Content Include="Tiles\MireBrambles.png" />
     <Content Include="Tiles\MireChest.png" />
     <Content Include="Tiles\MireChestLocked.png" />
     <Content Include="Tiles\MireChest_Highlight.png" />
+    <Content Include="Tiles\MireGrass.png" />
     <Content Include="Tiles\MireUBox.png" />
     <Content Include="Tiles\MireVines.png" />
     <Content Include="Tiles\MoonAltar.png" />
     <Content Include="Tiles\MoonAltar_Glow.png" />
     <Content Include="Tiles\MushiumBar.png" />
+    <Content Include="Tiles\MushroomTree.png" />
+    <Content Include="Tiles\MushroomTreeBranches.png" />
+    <Content Include="Tiles\MushroomTreeTop.png" />
     <Content Include="Tiles\Mycelium.png" />
     <Content Include="Tiles\N1Box.png" />
     <Content Include="Tiles\OroborosBathtub.png" />
@@ -2322,6 +2344,7 @@
     <Content Include="Tiles\RadiumOre.png" />
     <Content Include="Tiles\RadiumOre_Glow.png" />
     <Content Include="Tiles\Razethorns.png" />
+    <Content Include="Tiles\Razewood.png" />
     <Content Include="Tiles\RazewoodBranches.png" />
     <Content Include="Tiles\RazewoodSapling.png" />
     <Content Include="Tiles\RazewoodTree.png" />
@@ -2334,8 +2357,10 @@
     <Content Include="Tiles\ScorchedShingles.png" />
     <Content Include="Tiles\SunAltar.png" />
     <Content Include="Tiles\SunAltar_Glow.png" />
+    <Content Include="Tiles\TechneciumOre.png" />
     <Content Include="Tiles\TerraCore.png" />
     <Content Include="Tiles\TerraCore_Glow.png" />
+    <Content Include="Tiles\Torchstone.png" />
     <Content Include="Tiles\Trophy\BroodTrophy.png" />
     <Content Include="Tiles\Trophy\BroodTrophy_Glow.png" />
     <Content Include="Tiles\Trophy\GripBlueTrophy.png" />
@@ -2352,6 +2377,7 @@
     <Content Include="Tiles\VoidUnit.png" />
     <Content Include="Tiles\VoidUnit_Glow.png" />
     <Content Include="Tiles\YamataBox.png" />
+    <Content Include="Tiles\YtriumOre.png" />
     <Content Include="Tiles\ZerO.png" />
     <Content Include="Tiles\Zero2Box.png" />
     <Content Include="Tiles\Zero2Box_Glow.png" />
@@ -2419,9 +2445,11 @@
     <Folder Include="NPCs\Bosses\Decay\" />
     <Folder Include="NPCs\Bosses\Hydra\" />
     <Folder Include="NPCs\Bosses\Orthrus\" />
+    <Folder Include="NPCs\Bosses\SoC\" />
     <Folder Include="NPCs\Bosses\Zero\Zero2\" />
     <Folder Include="obj\Debug\TempPE\" />
     <Folder Include="obj\NPCs\" />
+    <Folder Include="projectile\" />
     <Folder Include="Tiles\Daybreak\" />
     <Folder Include="Tiles\Doomsday\" />
     <Folder Include="Tiles\Eventide\" />

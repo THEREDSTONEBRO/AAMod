@@ -35,6 +35,7 @@ namespace AAMod
         //Messages
         public static bool Evil;
         //Boss Bools
+        public static bool Chairlol;
         public static bool Ancients;
         public static bool downedMonarch;
         public static bool downedBrood;
@@ -69,6 +70,7 @@ namespace AAMod
         public override void Initialize()
         {
             //Bosses
+            Chairlol = false;
             downedMonarch = false;
             downedGripRed = false;
             downedGripBlue = false;
@@ -137,6 +139,7 @@ namespace AAMod
         public override TagCompound Save()
         {
             var downed = new List<string>();
+            if (Chairlol) downed.Add("lol");
             if (downedMonarch) downed.Add("Monarch");
             if (downedGripRed) downed.Add("GripRed");
             if (downedGripBlue) downed.Add("GripBlue");
@@ -207,6 +210,7 @@ namespace AAMod
             flags4[0] = downedMonarch;
             flags4[1] = downedAncient;
             flags4[2] = downedSAncient;
+            flags4[3] = Chairlol;
             writer.Write(flags4);
         }
 
@@ -245,12 +249,14 @@ namespace AAMod
             downedMonarch = flags4[0];
             downedAncient = flags4[1];
             downedSAncient = flags4[2];
+            Chairlol = flags4[3];
         }
 
         public override void Load(TagCompound tag)
         {
             var downed = tag.GetList<string>("downed");
             //bosses
+            Chairlol = downed.Contains("lol");
             downedMonarch = downed.Contains("Monarch");
             downedGripRed = downed.Contains("GripRed");
             downedGripBlue = downed.Contains("GripBlue");
