@@ -302,7 +302,6 @@ namespace AAMod
             {
                 tasks.Insert(shiniesIndex + 1, new PassLegacy("Generating AA Ores", delegate (GenerationProgress progress)
                 {
-                    
                     for (int k = 0; k < (int)(Main.maxTilesX * Main.maxTilesY * 6E-05); k++)
                     {
                         int x = Main.maxTilesX;
@@ -322,7 +321,6 @@ namespace AAMod
                 }));
             }
             tasks.Insert(shiniesIndex + 1, new PassLegacy("000000000", VoidIslands));
-            tasks.Insert(shiniesIndex + 1, new PassLegacy("Making Shrooms", Mush));
         }
 
         public void Mush(GenerationProgress progress)
