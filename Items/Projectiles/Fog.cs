@@ -5,7 +5,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ModLoader;
 
-/*namespace AAMod.Items.Projectiles
+namespace AAMod.Items.Projectiles
 {
     public class Fog : ModProjectile
     {
@@ -58,4 +58,4 @@ using Terraria.ModLoader;
             spriteBatch.Draw(mod.GetTexture("Items/Projectiles/Fog"), projectile.getRect(), null, Color.White, 0f, projectile.Center, SpriteEffects.None, 10);
         }
     }
-}*/
+}
