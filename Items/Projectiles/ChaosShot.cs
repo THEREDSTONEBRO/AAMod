@@ -24,14 +24,7 @@ namespace AAMod.Items.Projectiles
             {
                 Dust dust;
                 Vector2 position = projectile.position;
-                dust = Main.dust[Terraria.Dust.NewDust(position, 31, 30, 27, 0f, 0f, 124, new Color(84,0,255), 2.105263f)];
-                dust.noGravity = true;
-            }
-            if (Main.rand.NextFloat() < 1f)
-            {
-                Dust dust;
-                Vector2 position = projectile.position;
-                dust = Main.dust[Terraria.Dust.NewDust(position, 31, 30, 27, 0f, 0f, 0, new Color(255,50,0), 2.105263f)];
+                dust = Main.dust[Terraria.Dust.NewDust(position, 31, 30, 27, 0f, 0f, 107, new Color(Main.DiscoR, 0, Main.DiscoB), 3f)];
                 dust.noGravity = true;
             }
         }

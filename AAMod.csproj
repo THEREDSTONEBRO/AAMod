@@ -83,12 +83,14 @@
     <Compile Include="Buffs\Broodmini.cs" />
     <Compile Include="Buffs\ChairMinionBuff.cs" />
     <Compile Include="Buffs\ChairMinionBuffEX.cs" />
+    <Compile Include="Buffs\Clueless.cs" />
     <Compile Include="Buffs\EnderMinionBuff.cs" />
     <Compile Include="Buffs\EnderMinionBuffEX.cs" />
     <Compile Include="Buffs\DragonFire.cs" />
     <Compile Include="Buffs\HydraToxin.cs" />
     <Compile Include="Buffs\InfinityOverload.cs" />
     <Compile Include="Buffs\Raidmini.cs" />
+    <Compile Include="Buffs\Terrablaze.cs" />
     <Compile Include="Buffs\UnstableSoul.cs" />
     <Compile Include="Dusts\AbyssiumDust.cs" />
     <Compile Include="Dusts\BinaryDust.cs" />
@@ -467,6 +469,7 @@
     <Compile Include="Items\Projectiles\AmphibiousProjectileEX.cs" />
     <Compile Include="Items\Projectiles\AmphibiousProjectileEXS.cs" />
     <Compile Include="Items\Projectiles\AmphibiousProjectileS.cs" />
+    <Compile Include="Items\Projectiles\Fogless.cs" />
     <Compile Include="Items\Projectiles\LuminiteMeteor.cs" />
     <Compile Include="Items\Projectiles\Antimatter.cs" />
     <Compile Include="Items\Projectiles\AntimonBoomerangP.cs" />
@@ -872,12 +875,15 @@
     <Content Include="Buffs\broodmini.png" />
     <Content Include="Buffs\ChairMinionBuff.png" />
     <Content Include="Buffs\ChairMinionBuffEX.png" />
+    <Content Include="Buffs\Clueless.png" />
+    <Content Include="Buffs\DiscordInferno.png" />
     <Content Include="Buffs\DragonFire.png" />
     <Content Include="Buffs\EnderMinionBuff.png" />
     <Content Include="Buffs\EnderMinionBuffEX.png" />
     <Content Include="Buffs\HydraToxin.png" />
     <Content Include="Buffs\InfinityOverload.png" />
     <Content Include="Buffs\Raidmini.png" />
+    <Content Include="Buffs\Terrablaze.png" />
     <Content Include="Buffs\UnstableSoul.png" />
     <Content Include="build.txt" />
     <Content Include="description.txt" />
@@ -1643,6 +1649,8 @@
     <Content Include="Items\Projectiles\AmphibiousProjectileEXS_Glow.png" />
     <Content Include="Items\Projectiles\AmphibiousProjectileEX_Glow.png" />
     <Content Include="Items\Projectiles\AmphibiousProjectileS.png" />
+    <Content Include="Items\Projectiles\Fog.png" />
+    <Content Include="Items\Projectiles\Fogless.png" />
     <Content Include="Items\Projectiles\LuminiteMeteor.png" />
     <Content Include="Items\Projectiles\Antimatter.png" />
     <Content Include="Items\Projectiles\AntimonBoomerangP.png" />
@@ -1736,6 +1744,8 @@
     <Content Include="Items\Projectiles\TerraArrow.png" />
     <Content Include="Items\Projectiles\TerraRoseShot.png" />
     <Content Include="Items\Projectiles\TerraRoseShot_Glow.png" />
+    <Content Include="Items\Projectiles\TerraShotEX.png" />
+    <Content Include="Items\Projectiles\TerraShotEX_Glow.png" />
     <Content Include="Items\Projectiles\Teslashock.png" />
     <Content Include="Items\Projectiles\Teslashock_Glow.png" />
     <Content Include="Items\Projectiles\TFGWP.png" />

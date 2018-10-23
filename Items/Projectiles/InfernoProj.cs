@@ -76,13 +76,13 @@ namespace AAMod.Items.Projectiles
                         int type = Main.tile[x, y].type;
                         int wall = Main.tile[x, y].wall;
                         if (wall != 0)
-                            if (wall == 1)
-                            {
-                                Main.tile[x, y].wall = (ushort)mod.WallType("TorchstonestoneWall");
-                                WorldGen.SquareWallFrame(x, y, true);
-                                NetMessage.SendTileSquare(-1, x, y, 1);
-                            }
-                        if (type == 2 && Main.tile[x, y].active())
+                        if (wall == 1)
+                        {
+                            Main.tile[x, y].wall = (ushort)mod.WallType("TorchstonestoneWall");
+                            WorldGen.SquareWallFrame(x, y, true);
+                            NetMessage.SendTileSquare(-1, x, y, 1);
+                        }
+                        if (type == 2)
                         {
                             Main.tile[x, y].type = (ushort)mod.TileType("InfernoGrass");
                             WorldGen.SquareTileFrame(x, y, true);

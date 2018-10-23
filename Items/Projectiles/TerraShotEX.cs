@@ -79,7 +79,7 @@ namespace AAMod.Items.Projectiles
 	
 		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
-            target.AddBuff(BuffID.CursedInferno, 1000);
+            target.AddBuff(mod.BuffType("TerraBlaze"), 600);
         }
     }
 }

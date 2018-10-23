@@ -37,7 +37,7 @@ namespace AAMod.Items.Melee
 			item.width = 62;
 			item.height = 74;
 			item.shoot = mod.ProjectileType("TerraShotEX");
-			item.shootSpeed = 18f;
+			item.shootSpeed = 25f;
 			item.knockBack = 7f;
 			item.melee = true;
 			item.value = Item.sellPrice(0, 20, 0, 0);
@@ -48,7 +48,7 @@ namespace AAMod.Items.Melee
 
         public void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
-            target.AddBuff(BuffID.CursedInferno, 1000);
+            target.AddBuff(mod.BuffType("TerraBlaze"), 600);
         }
 
         public override void AddRecipes()
