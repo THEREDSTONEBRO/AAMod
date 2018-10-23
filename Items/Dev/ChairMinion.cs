@@ -1,5 +1,4 @@
 using System;
-using System.Reflection;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -205,15 +204,13 @@ namespace AAMod.Items.Dev
             {
                 modPlayer.ChairMinion = false;
             }
-            if (!modPlayer.ChairMinion)
-            {
-                projectile.timeLeft = 2;
-            }
         }
     }
     internal class CrabGuardian : ModNPC
     {
         private int soundTimer = 0;
+        private bool Cheating = false;
+        private bool highATK = false;
 
         public override string Texture { get { return "AAMod/Items/Dev/CrabGuardian"; } }
 
@@ -225,17 +222,32 @@ namespace AAMod.Items.Dev
 
         public override void SetDefaults()
         {
-            npc.lifeMax = 1;
-            npc.immortal = true;
+            npc.lifeMax = 999999;
             npc.scale = 3f;
-            npc.defense = 0;
+            npc.defense = 999999;
             npc.damage = 999999;
             npc.noGravity = true;
             npc.noTileCollide = true;
         }
 
+        public override void HitEffect(int hitDirection, double damage)
+        {
+            if (damage > 100)
+            {
+                highATK = true;
+            }
+        }
+
         public override void AI()
         {
+            Mod Mod1 = ModLoader.GetMod("CheatSheet");
+            Mod Mod2 = ModLoader.GetMod("HEROsMOD");
+            if ((Mod1 != null || Mod2 != null) && !Cheating)
+            {
+                Main.NewText("Cheat Mod Active!", Color.Red.R, Color.Red.G, Color.Red.B);
+                npc.immortal = true;
+                Cheating = true;
+            }
             if (soundTimer > 0)
             {
                 soundTimer--;
@@ -290,8 +302,10 @@ namespace AAMod.Items.Dev
 
         public override void NPCLoot()
         {
-            MethodInfo methodInfo = typeof(Main).GetMethod("QuitGame", BindingFlags.Instance | BindingFlags.NonPublic);
-            methodInfo.Invoke(Main.instance, null);
+            if (!AAWorld.Chairlol && !highATK)
+            {
+                AAWorld.Chairlol = true;
+            }
         }
     }
 }

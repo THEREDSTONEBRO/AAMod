@@ -19,8 +19,6 @@ namespace AAMod
 {
     public class AAPlayer : ModPlayer
     {
-        //Achievments
-        public static bool Chairlol;
         //Minions
         public bool enderMinion = false;
         public bool enderMinionEX = false;
@@ -85,6 +83,10 @@ namespace AAMod
         public bool FogRemover;
         //debuffs
         public bool infinityOverload = false;
+        public bool discordInferno = false;
+        public bool dragonFire = false;
+        public bool hydraToxin = false;
+        public bool terraBlaze = false;
 
         //buffs
 
@@ -106,6 +108,10 @@ namespace AAMod
             ChairMinion = false;
             ChairMinionEX = false;
             infinityOverload = false;
+            discordInferno = false;
+            dragonFire = false;
+            hydraToxin = false;
+            terraBlaze = false;
             tribalSet = false;
             trueTribal = false;
             impSet = false;
@@ -233,7 +239,7 @@ namespace AAMod
                     Main.maxRaining = 0f;
                 }
             }
-            /*if (player.GetModPlayer<AAPlayer>().ZoneMire)
+            if (player.GetModPlayer<AAPlayer>().ZoneMire)
             {
                 if (Main.raining)
                 {
@@ -259,7 +265,7 @@ namespace AAMod
                         }
                     }
                 }
-            }*/
+            }
         }
 
         public override void GetWeaponKnockback(Item item, ref float knockback)
@@ -469,6 +475,15 @@ namespace AAMod
                 player.lifeRegenTime = 0;
                 player.lifeRegen -= before;
             }
+            if (terraBlaze)
+            {
+                if (player.lifeRegen > 0)
+                {
+                    player.lifeRegen = 0;
+                }
+                player.lifeRegenTime = 0;
+                player.lifeRegen -= 16;
+            }
         }
 
         public override void UpdateDead()
@@ -548,6 +563,21 @@ namespace AAMod
                 r *= 0.8f;
                 g *= 0.5f;
                 b *= 0.1f;
+                fullBright = true;
+            }
+            if (terraBlaze)
+            {
+                if (Main.rand.Next(4) == 0 && drawInfo.shadow == 0f)
+                {
+                    int dust = Dust.NewDust(drawInfo.position - new Vector2(2f, 2f), player.width + 4, player.height + 4, 107, player.velocity.X * 0.4f, player.velocity.Y * 0.4f, 100, default(Color), 3f);
+                    Main.dust[dust].noGravity = true;
+                    Main.dust[dust].velocity *= 1.8f;
+                    Main.dust[dust].velocity.Y -= 0.5f;
+                    Main.playerDrawDust.Add(dust);
+                }
+                r *= 0.1f;
+                g *= 0.7f;
+                b *= 0.2f;
                 fullBright = true;
             }
         }

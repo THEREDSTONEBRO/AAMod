@@ -83,12 +83,14 @@
     <Compile Include="Buffs\Broodmini.cs" />
     <Compile Include="Buffs\ChairMinionBuff.cs" />
     <Compile Include="Buffs\ChairMinionBuffEX.cs" />
+    <Compile Include="Buffs\Clueless.cs" />
     <Compile Include="Buffs\EnderMinionBuff.cs" />
     <Compile Include="Buffs\EnderMinionBuffEX.cs" />
     <Compile Include="Buffs\DragonFire.cs" />
     <Compile Include="Buffs\HydraToxin.cs" />
     <Compile Include="Buffs\InfinityOverload.cs" />
     <Compile Include="Buffs\Raidmini.cs" />
+    <Compile Include="Buffs\Terrablaze.cs" />
     <Compile Include="Buffs\UnstableSoul.cs" />
     <Compile Include="Dusts\AbyssiumDust.cs" />
     <Compile Include="Dusts\BinaryDust.cs" />
@@ -212,7 +214,6 @@
     <Compile Include="Items\Blocks\BogwoodChest.cs" />
     <Compile Include="Items\Blocks\Boss6Box.cs" />
     <Compile Include="Items\Blocks\BroodBox.cs" />
-    <Compile Include="Items\Blocks\BroodmotherTrophy.cs" />
     <Compile Include="Items\Blocks\ChaosCrucible.cs" />
     <Compile Include="Items\Blocks\CorruptAltar.cs" />
     <Compile Include="Items\Blocks\CrimsonAltar.cs" />
@@ -226,8 +227,6 @@
     <Compile Include="Items\Blocks\Equibox.cs" />
     <Compile Include="Items\Blocks\FulguriteShard.cs" />
     <Compile Include="Items\Blocks\GripsBox.cs" />
-    <Compile Include="Items\Blocks\GripTrophyBlue.cs" />
-    <Compile Include="Items\Blocks\GripTrophyRed.cs" />
     <Compile Include="Items\Blocks\HallowedAnvil.cs" />
     <Compile Include="Items\Blocks\HallowedForge.cs" />
     <Compile Include="Items\Blocks\HallowedOre.cs" />
@@ -467,6 +466,7 @@
     <Compile Include="Items\Projectiles\AmphibiousProjectileEX.cs" />
     <Compile Include="Items\Projectiles\AmphibiousProjectileEXS.cs" />
     <Compile Include="Items\Projectiles\AmphibiousProjectileS.cs" />
+    <Compile Include="Items\Projectiles\Fogless.cs" />
     <Compile Include="Items\Projectiles\LuminiteMeteor.cs" />
     <Compile Include="Items\Projectiles\Antimatter.cs" />
     <Compile Include="Items\Projectiles\AntimonBoomerangP.cs" />
@@ -538,6 +538,7 @@
     <Compile Include="Items\Projectiles\Toxin.cs" />
     <Compile Include="Items\Projectiles\TrueAbyssalTwilightShot.cs" />
     <Compile Include="Items\Projectiles\TrueBlazingDawnShot.cs" />
+    <Compile Include="Items\Projectiles\TerraShotEX.cs" />
     <Compile Include="Items\Projectiles\TrueCopperShot.cs" />
     <Compile Include="Items\Projectiles\TrueFleshClaymoreShot.cs" />
     <Compile Include="Items\Projectiles\TrueManaShot.cs" />
@@ -809,6 +810,22 @@
     <Compile Include="Water\VoidWaterStyle.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Achievements\AkumaA.png" />
+    <Content Include="Achievements\AkumaANot.png" />
+    <Content Include="Achievements\BroodAchievement.png" />
+    <Content Include="Achievements\BroodAchievementNot.png" />
+    <Content Include="Achievements\ChairAchievement.png" />
+    <Content Include="Achievements\ChairAchievementNot.png" />
+    <Content Include="Achievements\EquinoxA.png" />
+    <Content Include="Achievements\EquinoxANot.png" />
+    <Content Include="Achievements\GripsA.png" />
+    <Content Include="Achievements\GripsANot.png" />
+    <Content Include="Achievements\StormA.png" />
+    <Content Include="Achievements\StormANot.png" />
+    <Content Include="Achievements\ZeroAAchievment.png" />
+    <Content Include="Achievements\ZeroAAchievmentNot.png" />
+    <Content Include="Achievements\ZeroAchievment.png" />
+    <Content Include="Achievements\ZeroAchievmentNot.png" />
     <Content Include="Achievement\AkumaA.png" />
     <Content Include="Achievement\AkumaANot.png" />
     <Content Include="Achievement\BroodAchievement.png" />
@@ -871,12 +888,15 @@
     <Content Include="Buffs\broodmini.png" />
     <Content Include="Buffs\ChairMinionBuff.png" />
     <Content Include="Buffs\ChairMinionBuffEX.png" />
+    <Content Include="Buffs\Clueless.png" />
+    <Content Include="Buffs\DiscordInferno.png" />
     <Content Include="Buffs\DragonFire.png" />
     <Content Include="Buffs\EnderMinionBuff.png" />
     <Content Include="Buffs\EnderMinionBuffEX.png" />
     <Content Include="Buffs\HydraToxin.png" />
     <Content Include="Buffs\InfinityOverload.png" />
     <Content Include="Buffs\Raidmini.png" />
+    <Content Include="Buffs\Terrablaze.png" />
     <Content Include="Buffs\UnstableSoul.png" />
     <Content Include="build.txt" />
     <Content Include="description.txt" />
@@ -1220,8 +1240,6 @@
     <Content Include="Items\Blocks\Boss6Box.png" />
     <Content Include="Items\Blocks\BroodBox.png" />
     <Content Include="Items\Blocks\BroodBox_Glow.png" />
-    <Content Include="Items\Blocks\BroodmotherTrophy.png" />
-    <Content Include="Items\Blocks\BroodmotherTrophy_Glow.png" />
     <Content Include="Items\Blocks\BunnyBongo.png" />
     <Content Include="Items\Blocks\ChaosCrucible.png" />
     <Content Include="Items\Blocks\ChaosCrucible_Glow.png" />
@@ -1245,8 +1263,6 @@
     <Content Include="Items\Blocks\FulguriteShard.png" />
     <Content Include="Items\Blocks\FulguriteShard_Glow.png" />
     <Content Include="Items\Blocks\GripsBox.png" />
-    <Content Include="Items\Blocks\GripTrophyBlue.png" />
-    <Content Include="Items\Blocks\GripTrophyRed.png" />
     <Content Include="Items\Blocks\HallowedAnvil.png" />
     <Content Include="Items\Blocks\HallowedForge.png" />
     <Content Include="Items\Blocks\HallowedOre.png" />
@@ -1559,7 +1575,6 @@
     <Content Include="Items\Melee\Ectoblade.png" />
     <Content Include="Items\Melee\Ectoblade_Glow.png" />
     <Content Include="Items\Melee\EnchantedWarhammer.png" />
-    <Content Include="Items\Melee\EventHorizon.png" />
     <Content Include="Items\Melee\ExilesKatana.png" />
     <Content Include="Items\Melee\Exorcist.png" />
     <Content Include="Items\Melee\Firestorm.png" />
@@ -1642,6 +1657,8 @@
     <Content Include="Items\Projectiles\AmphibiousProjectileEXS_Glow.png" />
     <Content Include="Items\Projectiles\AmphibiousProjectileEX_Glow.png" />
     <Content Include="Items\Projectiles\AmphibiousProjectileS.png" />
+    <Content Include="Items\Projectiles\Fog.png" />
+    <Content Include="Items\Projectiles\Fogless.png" />
     <Content Include="Items\Projectiles\LuminiteMeteor.png" />
     <Content Include="Items\Projectiles\Antimatter.png" />
     <Content Include="Items\Projectiles\AntimonBoomerangP.png" />
@@ -1735,6 +1752,8 @@
     <Content Include="Items\Projectiles\TerraArrow.png" />
     <Content Include="Items\Projectiles\TerraRoseShot.png" />
     <Content Include="Items\Projectiles\TerraRoseShot_Glow.png" />
+    <Content Include="Items\Projectiles\TerraShotEX.png" />
+    <Content Include="Items\Projectiles\TerraShotEX_Glow.png" />
     <Content Include="Items\Projectiles\Teslashock.png" />
     <Content Include="Items\Projectiles\Teslashock_Glow.png" />
     <Content Include="Items\Projectiles\TFGWP.png" />
