@@ -58,7 +58,6 @@ Despite the name, it's not actually made of flesh");
 
         public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)
         {
-           player.statLife += (damage / 20);
 	       player.HealEffect(damage / 20);
         }
     }

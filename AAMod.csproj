@@ -214,7 +214,6 @@
     <Compile Include="Items\Blocks\BogwoodChest.cs" />
     <Compile Include="Items\Blocks\Boss6Box.cs" />
     <Compile Include="Items\Blocks\BroodBox.cs" />
-    <Compile Include="Items\Blocks\BroodmotherTrophy.cs" />
     <Compile Include="Items\Blocks\ChaosCrucible.cs" />
     <Compile Include="Items\Blocks\CorruptAltar.cs" />
     <Compile Include="Items\Blocks\CrimsonAltar.cs" />
@@ -228,8 +227,6 @@
     <Compile Include="Items\Blocks\Equibox.cs" />
     <Compile Include="Items\Blocks\FulguriteShard.cs" />
     <Compile Include="Items\Blocks\GripsBox.cs" />
-    <Compile Include="Items\Blocks\GripTrophyBlue.cs" />
-    <Compile Include="Items\Blocks\GripTrophyRed.cs" />
     <Compile Include="Items\Blocks\HallowedAnvil.cs" />
     <Compile Include="Items\Blocks\HallowedForge.cs" />
     <Compile Include="Items\Blocks\HallowedOre.cs" />
@@ -813,6 +810,22 @@
     <Compile Include="Water\VoidWaterStyle.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Achievements\AkumaA.png" />
+    <Content Include="Achievements\AkumaANot.png" />
+    <Content Include="Achievements\BroodAchievement.png" />
+    <Content Include="Achievements\BroodAchievementNot.png" />
+    <Content Include="Achievements\ChairAchievement.png" />
+    <Content Include="Achievements\ChairAchievementNot.png" />
+    <Content Include="Achievements\EquinoxA.png" />
+    <Content Include="Achievements\EquinoxANot.png" />
+    <Content Include="Achievements\GripsA.png" />
+    <Content Include="Achievements\GripsANot.png" />
+    <Content Include="Achievements\StormA.png" />
+    <Content Include="Achievements\StormANot.png" />
+    <Content Include="Achievements\ZeroAAchievment.png" />
+    <Content Include="Achievements\ZeroAAchievmentNot.png" />
+    <Content Include="Achievements\ZeroAchievment.png" />
+    <Content Include="Achievements\ZeroAchievmentNot.png" />
     <Content Include="Achievement\AkumaA.png" />
     <Content Include="Achievement\AkumaANot.png" />
     <Content Include="Achievement\BroodAchievement.png" />
@@ -1227,8 +1240,6 @@
     <Content Include="Items\Blocks\Boss6Box.png" />
     <Content Include="Items\Blocks\BroodBox.png" />
     <Content Include="Items\Blocks\BroodBox_Glow.png" />
-    <Content Include="Items\Blocks\BroodmotherTrophy.png" />
-    <Content Include="Items\Blocks\BroodmotherTrophy_Glow.png" />
     <Content Include="Items\Blocks\BunnyBongo.png" />
     <Content Include="Items\Blocks\ChaosCrucible.png" />
     <Content Include="Items\Blocks\ChaosCrucible_Glow.png" />
@@ -1252,8 +1263,6 @@
     <Content Include="Items\Blocks\FulguriteShard.png" />
     <Content Include="Items\Blocks\FulguriteShard_Glow.png" />
     <Content Include="Items\Blocks\GripsBox.png" />
-    <Content Include="Items\Blocks\GripTrophyBlue.png" />
-    <Content Include="Items\Blocks\GripTrophyRed.png" />
     <Content Include="Items\Blocks\HallowedAnvil.png" />
     <Content Include="Items\Blocks\HallowedForge.png" />
     <Content Include="Items\Blocks\HallowedOre.png" />
@@ -1566,7 +1575,6 @@
     <Content Include="Items\Melee\Ectoblade.png" />
     <Content Include="Items\Melee\Ectoblade_Glow.png" />
     <Content Include="Items\Melee\EnchantedWarhammer.png" />
-    <Content Include="Items\Melee\EventHorizon.png" />
     <Content Include="Items\Melee\ExilesKatana.png" />
     <Content Include="Items\Melee\Exorcist.png" />
     <Content Include="Items\Melee\Firestorm.png" />
