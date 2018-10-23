@@ -66,6 +66,13 @@ namespace AAMod.NPCs.Bosses.Zero
                 Main.npc[(int)npc.ai[1]].ai[3]++;
                 Main.npc[(int)npc.ai[1]].netUpdate = true;
             }
+            foreach (Projectile proj in Main.projectile)
+            {
+                if (damage != 0 || (proj.type != mod.ProjectileType<ChairMinion>() && proj.damage == 0 && damage == 0) || (proj.type != mod.ProjectileType<ChairMinionEX>() && proj.damage == 0 && damage == 0))
+                {
+                    mod.GetNPC<Zero>().chair1 = false;
+                }
+            }
         }
 
         public override void AI()

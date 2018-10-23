@@ -15,6 +15,8 @@ namespace AAMod.NPCs.Bosses.Zero
     [AutoloadBossHead]
     public class Zero : ModNPC
     {
+        public bool chair1 = true;
+
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Zero");
@@ -102,6 +104,13 @@ namespace AAMod.NPCs.Bosses.Zero
                     Main.NewText("D00MSDAY PR0T0CALL MALFUNCTI0N. INSUFFICIENT MEMORY.", Color.Red.R, Color.Red.G, Color.Red.B);
                 }
             }
+            foreach (Projectile proj in Main.projectile)
+            {
+                if (damage != 0 || (proj.type != mod.ProjectileType<ChairMinion>() && proj.damage == 0 && damage == 0) || (proj.type != mod.ProjectileType<ChairMinionEX>() && proj.damage == 0 && damage == 0))
+                {
+                    chair1 = false;
+                }
+            }
         }
 
         public override void NPCLoot()
@@ -161,6 +170,14 @@ namespace AAMod.NPCs.Bosses.Zero
                 npc.dontTakeDamage = false;
                 npc.chaseable = true;
             }
+
+            Mod mod1 = ModLoader.GetMod("HEROsMod");
+            Mod mod2 = ModLoader.GetMod("CheatSheet");
+            if (Main.player[npc.target].statLife != Main.player[npc.target].statLifeMax || mod1 != null || mod2 != null)
+            {
+                chair1 = false;
+            }
+
             if ((NPC.CountNPCS(mod.NPCType<SearcherZero>()) < 5 && !Main.expertMode) || (NPC.CountNPCS(mod.NPCType<SearcherZero>()) < 10 && Main.expertMode))
             {
                 NPC.NewNPC((int)(npc.Center.X + Main.rand.Next(-10, 10)), (int)(npc.Center.Y + Main.rand.Next(-10, 10)), mod.NPCType<SearcherZero>());
