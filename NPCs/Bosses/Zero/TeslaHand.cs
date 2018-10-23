@@ -31,9 +31,10 @@ namespace AAMod.NPCs.Bosses.Zero
             npc.chaseable = false;
             npc.knockBackResist = 0.0f;
             animationType = NPCID.PrimeVice;
-            npc.buffImmune[20] = true;
             npc.lavaImmune = true;
+            npc.buffImmune[20] = true;
             npc.buffImmune[24] = true;
+            npc.buffImmune[39] = true;
             npc.netAlways = true;
             npc.dontTakeDamage = true;
             npc.chaseable = false;

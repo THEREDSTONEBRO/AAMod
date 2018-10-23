@@ -22,14 +22,14 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
 
         public override void SetDefaults()
         {
-            npc.CloneDefaults(NPCID.ArmoredSkeleton);
             npc.lifeMax = 1000;   //boss life
             npc.damage = 24;  //boss damage
             npc.defense = 12;    //boss defense
             npc.knockBackResist = 0f;   //this boss will behavior like the DemonEye  //boss frame/animation 
             npc.value = Item.buyPrice(0, 0, 75, 45);
-            animationType = NPCID.ArmoredSkeleton;
-            npc.aiStyle = 3;
+            aiType = NPCID.Unicorn;
+            animationType = NPCID.HellArmoredBonesSword;
+            npc.aiStyle = 26;
             npc.width = 74;
             npc.height = 108;
             npc.npcSlots = 1f;
@@ -49,7 +49,7 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
         {
             potionType = ItemID.Mushroom;   //boss drops
             AAWorld.downedMonarch = true;
-            Projectile.NewProjectile((new Vector2(npc.position.X, npc.position.Y)), (new Vector2(0f, 0f)), mod.ProjectileType("MonarchRUNAWAY"), 0, 0);
+            Projectile.NewProjectile(new Vector2(npc.position.X, npc.position.Y - 2), new Vector2(0f, 0f), mod.ProjectileType("MonarchRUNAWAY"), 0, 0);
             if (Main.expertMode == true)
             {
                 npc.DropBossBags();

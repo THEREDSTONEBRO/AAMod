@@ -47,6 +47,9 @@ namespace AAMod.NPCs.Bosses.Zero
             npc.friendly = false;
             animationType = NPCID.SkeletronPrime;
             npc.npcSlots = 1f;
+            npc.buffImmune[20] = true;
+            npc.buffImmune[24] = true;
+            npc.buffImmune[39] = true;
             npc.lavaImmune = true;
             npc.netAlways = true;
         }

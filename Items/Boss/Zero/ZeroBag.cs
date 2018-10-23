@@ -126,6 +126,7 @@ namespace AAMod.Items.Boss.Zero
                 }
             }
             player.QuickSpawnItem(mod.ItemType("UnstableSingularity"), Main.rand.Next(25, 36));
+            player.QuickSpawnItem(mod.ItemType("BrokenCode"));
             string[] lootTable = { "EventHorizon", "RealityCannon", "RiftShredder", "VoidStar", "TeslaHand", "ZeroStar", "Neutralizer" };
             int loot = Main.rand.Next(lootTable.Length);
             player.QuickSpawnItem(mod.ItemType(lootTable[loot]));

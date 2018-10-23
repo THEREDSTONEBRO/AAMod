@@ -116,6 +116,8 @@
     <Compile Include="Dusts\UmbreonSPDust.cs" />
     <Compile Include="Dusts\VoidDust.cs" />
     <Compile Include="Dusts\ZeroDust.cs" />
+    <Compile Include="Items\Accessories\OrnateBand.cs" />
+    <Compile Include="Items\Accessories\BotchedBand.cs" />
     <Compile Include="Items\Accessories\DemonGauntet.cs" />
     <Compile Include="Items\Accessories\DwarvenGauntlet.cs" />
     <Compile Include="Items\Accessories\InfinityGauntlet.cs" />
@@ -600,6 +602,8 @@
     <Compile Include="Items\Usable\InfernoInsignia.cs" />
     <Compile Include="Items\Usable\InterestingClaw.cs" />
     <Compile Include="Items\Usable\IntimidatingMushroom.cs" />
+    <Compile Include="Items\Usable\KeyOfSmite.cs" />
+    <Compile Include="Items\Usable\KeyOfSpite.cs" />
     <Compile Include="Items\Usable\LivingBogleafWand.cs" />
     <Compile Include="Items\Usable\LivingBogwoodWand.cs" />
     <Compile Include="Items\Usable\LivingRazeleafWand.cs" />
@@ -652,6 +656,9 @@
     <Compile Include="NPCs\Bosses\Grips\GripOfChaosBlue.cs" />
     <Compile Include="NPCs\Bosses\Grips\GripOfChaosRed.cs" />
     <Compile Include="NPCs\Bosses\Zero\SearcherZero.cs" />
+    <Compile Include="NPCs\Enemies\Inferno\InfernoMimic.cs" />
+    <Compile Include="NPCs\Enemies\Mire\MireMimic.cs" />
+    <Compile Include="NPCs\MimicSummon.cs" />
     <Compile Include="NPCs\Minibosses\TheIcegrim.cs" />
     <Compile Include="NPCs\Bosses\MushroomMonarch\MonarchRUNAWAY.cs" />
     <Compile Include="NPCs\Bosses\MushroomMonarch\MushroomMonarch.cs" />
@@ -1415,6 +1422,7 @@
     <Content Include="Items\Boss\Zero\ZeroBag_Glow.png" />
     <Content Include="Items\Boss\Zero\ZeroStar.png" />
     <Content Include="Items\Boss\Zero\ZeroStar_Glow.png" />
+    <Content Include="Items\Boss\Zero\ZeroTrophy.png" />
     <Content Include="Items\Boss\Zero\ZeroWings.png" />
     <Content Include="Items\Boss\Zero\ZeroWings_Wings.png" />
     <Content Include="Items\Boss\Zero\ZeroWings_Wings_Glow.png" />
@@ -1681,7 +1689,6 @@
     <Content Include="Items\Projectiles\DragonBreathP.png" />
     <Content Include="Items\Projectiles\DragonBreathP_Glow.png" />
     <Content Include="Items\Projectiles\DragonP.png" />
-    <Content Include="Items\Projectiles\DragonsMaw_Glow.png" />
     <Content Include="Items\Projectiles\DragonSP.png" />
     <Content Include="Items\Projectiles\Duck.png" />
     <Content Include="Items\Projectiles\DuckEX.png" />
@@ -2054,6 +2061,7 @@
     <Content Include="NPCs\Bosses\MushroomMonarch\MushroomMonarchJump.png" />
     <Content Include="NPCs\Bosses\Zero\SearcherZero.png" />
     <Content Include="NPCs\Bosses\Zero\SearcherZero_Glow.png" />
+    <Content Include="NPCs\Enemies\Inferno\InfernoMimic.png" />
     <Content Include="NPCs\Minibosses\TheIcegrim.png" />
     <Content Include="NPCs\Bosses\MushroomMonarch\MonarchRUNAWAY.png" />
     <Content Include="NPCs\Bosses\MushroomMonarch\MushroomMonarch.png" />
@@ -2134,7 +2142,6 @@
     <Content Include="NPCs\Enemies\Inferno\WyrmTail.png" />
     <Content Include="NPCs\Enemies\Mire\ChaoticTwilight.png" />
     <Content Include="NPCs\Enemies\Mire\MireMimic.png" />
-    <Content Include="NPCs\Enemies\Mire\MireMimic_1.png" />
     <Content Include="NPCs\Enemies\Other\CyberClaw.png" />
     <Content Include="NPCs\Enemies\Other\DragonClaw.png" />
     <Content Include="NPCs\Enemies\Other\ElderDragon.png" />

@@ -47,6 +47,9 @@ namespace AAMod.NPCs.Bosses.Zero
             npc.buffImmune[BuffID.Ichor] = true;
             npc.netAlways = true;
             bossBag = mod.ItemType("ZeroBag");
+            npc.buffImmune[20] = true;
+            npc.buffImmune[24] = true;
+            npc.buffImmune[39] = true;
         }
 
         
