@@ -5,7 +5,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AAMod.Items.projectiles.Akuma
+namespace AAMod.Items.Projectiles.Akuma
 {
     public class Daycrusher : ModProjectile
     {
@@ -126,7 +126,6 @@ namespace AAMod.Items.projectiles.Akuma
 		
 		public override void OnHitNPC (NPC target, int damage, float knockback, bool crit)
 		{
-			projectile.ai[0] = 1f;
             target.AddBuff(BuffID.Daybreak, 600);
         }
 		

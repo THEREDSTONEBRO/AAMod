@@ -135,7 +135,18 @@ namespace AAMod.NPCs.Bosses.Zero
             }
             return true;
         }
-        
+
+        public override bool StrikeNPC(ref double damage, int defense, ref float knockback, int hitDirection, ref bool crit)
+        {
+            if (damage > npc.lifeMax / 2)
+            {
+                Main.NewText("Y0UR CHEAT SHEET BUTCHER T00L WILL N0T SAVE Y0U HERE", Color.Red.R, Color.Red.G, Color.Red.B);
+                damage = 0;
+            }
+            return false;
+        }
+
+
         public override void AI()
         {
             if (npc.target < 0 || npc.target == 255 || Main.player[npc.target].dead || !Main.player[npc.target].active)
