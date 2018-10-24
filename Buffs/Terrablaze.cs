@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Buffs
 {
-    public class TerraBlaze : ModBuff
+    public class Terrablaze : ModBuff
 	{
 		public override void SetDefaults()
 		{

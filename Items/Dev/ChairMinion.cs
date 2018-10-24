@@ -234,6 +234,8 @@ namespace AAMod.Items.Dev
         {
             if (damage > 100)
             {
+                Main.NewText("What Weapon Is That?!", Color.Red.R, Color.Red.G, Color.Red.B);
+                npc.immortal = true;
                 highATK = true;
             }
         }
