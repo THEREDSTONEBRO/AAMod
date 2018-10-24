@@ -40,7 +40,11 @@ Can only be used during the day");
             item.useStyle = 4;
             item.consumable = true;
         }
-        
+
+        public override bool CanUseItem(Player player)
+        {
+            return !Main.dayTime && !NPC.AnyNPCs(mod.NPCType("MushroomMonarch"));
+        }
 
         public override bool UseItem(Player player)
         {

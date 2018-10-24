@@ -53,7 +53,8 @@ namespace AAMod.Tiles
                 TileID.Furnaces,
                 TileID.AdamantiteForge,
                 TileID.Autohammer,
-                TileID.ImbuingStation
+                TileID.ImbuingStation,
+                mod.TileType("BinaryReassembler")
             };
             animationFrameHeight = 54;
         }

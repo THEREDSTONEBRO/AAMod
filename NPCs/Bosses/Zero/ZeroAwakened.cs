@@ -47,6 +47,10 @@ namespace AAMod.NPCs.Bosses.Zero
             npc.buffImmune[BuffID.Ichor] = true;
             npc.netAlways = true;
             bossBag = mod.ItemType("ZeroBag");
+            for (int k = 0; k < npc.buffImmune.Length; k++)
+            {
+                npc.buffImmune[k] = true;
+            }
         }
 
         
@@ -55,19 +59,19 @@ namespace AAMod.NPCs.Bosses.Zero
         {
             if (Main.expertMode)
             {
+                npc.DropLoot(Items.Vanity.Mask.ZeroMask.type, 1f / 7);
+                npc.DropLoot(Items.Boss.Zero.ZeroTrophy.type, 1f / 10);
+                if (Main.rand.NextFloat() < 0.1f)
+                {
+                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("EXSoul"));
+                }
+                if (Main.rand.NextFloat() < 0.05f && AAWorld.RealityDropped == false)
+                {
+                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("RealityStone"));
+                    AAWorld.RealityDropped = true;
+                }
                 npc.DropBossBags();
                 return;
-            }
-            npc.DropLoot(Items.Vanity.Mask.ZeroMask.type, 1f / 7);
-            npc.DropLoot(Items.Boss.Zero.ZeroTrophy.type, 1f / 10);
-            if (Main.rand.NextFloat() < 0.1f)
-            {
-                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("EXSoul"));
-            }
-            if (Main.rand.NextFloat() < 0.05f && AAWorld.RealityDropped == false)
-            {
-                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("RealityStone"));
-                AAWorld.RealityDropped = true;
             }
         }
         public override void BossLoot(ref string name, ref int potionType)
@@ -96,13 +100,13 @@ namespace AAMod.NPCs.Bosses.Zero
                     npc.Center = tele;
                 }
             }
-            if (npc.life <= 0 && Main.expertMode && npc.type == mod.NPCType<ZeroAwakened>())
+            if (npc.life <= 0 && Main.expertMode && !AAWorld.downedZeroA && npc.type == mod.NPCType<ZeroAwakened>())
             {
                 Main.NewText("MISSI0N FAILED. SENDING DISTRESS SIGNAL TO HOME BASE", Color.Red.R, Color.Red.G, Color.Red.B);
             }
             if (npc.life <= 0 && !Main.expertMode && npc.type == mod.NPCType<ZeroAwakened>())
             {
-                Main.NewText("CHEATER ALERT CHEATER ALERT", Color.Red.R, Color.Red.G, Color.Red.B);
+                Main.NewText("CHEATER ALERT CHEATER ALERT. N0 DR0PS 4 U.", Color.Red.R, Color.Red.G, Color.Red.B);
             }
         }
 
@@ -131,7 +135,18 @@ namespace AAMod.NPCs.Bosses.Zero
             }
             return true;
         }
-        
+
+        public override bool StrikeNPC(ref double damage, int defense, ref float knockback, int hitDirection, ref bool crit)
+        {
+            if (damage > npc.lifeMax / 2)
+            {
+                Main.NewText("Y0UR CHEAT SHEET BUTCHER T00L WILL N0T SAVE Y0U HERE", Color.Red.R, Color.Red.G, Color.Red.B);
+                damage = 0;
+            }
+            return false;
+        }
+
+
         public override void AI()
         {
             if (npc.target < 0 || npc.target == 255 || Main.player[npc.target].dead || !Main.player[npc.target].active)

@@ -37,7 +37,7 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
                 }
             }
             projectile.velocity.X *= 0.00f;
-            projectile.velocity.Y -= .1f;
+            projectile.velocity.Y -= .5f;
         }
     }
 }

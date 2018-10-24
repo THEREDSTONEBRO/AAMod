@@ -74,10 +74,5 @@ namespace AAMod.Items.Boss.Zero
             dust = Terraria.Dust.NewDustDirect(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, mod.DustType<Dusts.VoidDust>(), 0f, 0f, 46, default(Color), 1.25f);
 			dust.noGravity = true;
         }
-		
-		public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)
-        {
-            target.AddBuff(BuffID.Daybreak, 400);
-        }
 	}
 }
