@@ -1,5 +1,4 @@
 using System;
-using System.IO;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
@@ -9,8 +8,10 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Projectiles.Akuma
 {
-    class FireProj : ModProjectile
+    public class FireProj : ModProjectile
     {
+        public int noTileHitCounter = 120;
+
         public override void SetStaticDefaults()
         {
             Main.projFrames[projectile.type] = 4;
@@ -18,18 +19,66 @@ namespace AAMod.Items.Projectiles.Akuma
 
         public override void SetDefaults()
         {
-            projectile.CloneDefaults(ProjectileID.StarWrath);
-            aiType = ProjectileID.StarWrath;
-            projectile.width = 92;
-            projectile.height = 62;
-            projectile.melee = true;
-            projectile.ignoreWater = true;
-            projectile.tileCollide = false;
-            projectile.alpha = 20;
-            projectile.penetrate = 1;
-            projectile.timeLeft = 400;
+            projectile.width = 62;
+            projectile.height = 92;
+            projectile.alpha = 150;
             projectile.friendly = true;
-            projectile.hostile = false;
+            projectile.melee = true;
+            projectile.tileCollide = false;
+            projectile.penetrate = 1;
+            projectile.timeLeft = 180;
+            projectile.ignoreWater = true;
+        }
+
+        public override void AI()
+        {
+            int randomToSubtract = Main.rand.Next(1, 4);
+            noTileHitCounter -= randomToSubtract;
+            if (noTileHitCounter == 0)
+            {
+                projectile.tileCollide = true;
+            }
+            if (projectile.soundDelay == 0)
+            {
+                projectile.soundDelay = 20 + Main.rand.Next(40);
+                if (Main.rand.Next(5) == 0)
+                {
+                    Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 20);
+                }
+            }
+            projectile.alpha -= 15;
+            int num58 = 150;
+            if (projectile.Center.Y >= projectile.ai[1])
+            {
+                num58 = 0;
+            }
+            if (projectile.alpha < num58)
+            {
+                projectile.alpha = num58;
+            }
+            projectile.localAI[0] += (Math.Abs(projectile.velocity.X) + Math.Abs(projectile.velocity.Y)) * 0.01f * (float)projectile.direction;
+            projectile.rotation = projectile.velocity.ToRotation() - 1.57079637f;
+            if (Main.rand.Next(12) == 0)
+            {
+                Vector2 value3 = Vector2.UnitX.RotatedByRandom(1.5707963705062866).RotatedBy((double)projectile.velocity.ToRotation(), default(Vector2));
+                int num59 = Dust.NewDust(projectile.position, projectile.width, projectile.height, mod.DustType<Dusts.AkumaADust>(), projectile.velocity.X * 0.5f, projectile.velocity.Y * 0.5f, 150, default(Color), 1.2f);
+                Main.dust[num59].velocity = value3 * 0.66f;
+                Main.dust[num59].position = projectile.Center + value3 * 12f;
+            }
+            if (projectile.ai[1] == 1f)
+            {
+                projectile.light = 0.9f;
+                if (Main.rand.Next(10) == 0)
+                {
+                    Dust.NewDust(projectile.position, projectile.width, projectile.height, mod.DustType<Dusts.AkumaADust>(), projectile.velocity.X * 0.5f, projectile.velocity.Y * 0.5f, 150, default(Color), 1.2f);
+                }
+                if (Main.rand.Next(20) == 0)
+                {
+                    Dust.NewDust(projectile.position, projectile.width, projectile.height, mod.DustType<Dusts.AkumaADust>(), projectile.velocity.X * 1.5f, projectile.velocity.Y * 1.5f, 150, default(Color), 2f);
+                    return;
+                }
+            }
+            Lighting.AddLight(projectile.Center, ((255 - projectile.alpha) * 0.75f) / 255f, ((255 - projectile.alpha) * 0.5f) / 255f, ((255 - projectile.alpha) * 0f) / 255f);
         }
 
         public override void Kill(int timeLeft)
@@ -53,6 +102,11 @@ namespace AAMod.Items.Projectiles.Akuma
             }
         }
 
+        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+        {
+            target.AddBuff(BuffID.Daybreak, 600);
+        }
+
         public override bool PreDraw(SpriteBatch sb, Color lightColor) //this is where the animation happens
         {
             projectile.frameCounter++; //increase the frameCounter by one
@@ -60,7 +114,7 @@ namespace AAMod.Items.Projectiles.Akuma
             {
                 projectile.frame++; //go to the next frame
                 projectile.frameCounter = 0; //reset the counter
-                if (projectile.frame > 5) //if past the last frame
+                if (projectile.frame > 4) //if past the last frame
                     projectile.frame = 1; //go back to the first frame
             }
             return true;

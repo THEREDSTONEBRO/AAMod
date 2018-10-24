@@ -52,7 +52,7 @@ namespace AAMod.Items.Projectiles.Akuma
                 projectile.velocity.Y = projectile.velocity.Y + 0.2f;
             }
             projectile.rotation += projectile.velocity.X * 0.1f;
-            int num199 = Dust.NewDust(projectile.position, projectile.width, projectile.height, mod.DustType<Dusts.AkumaDust>(), 0f, 0f, 100, default(Color), 1f);
+            int num199 = Dust.NewDust(projectile.position, projectile.width, projectile.height, mod.DustType<Dusts.AkumaADust>(), 0f, 0f, 100, default(Color), 1f);
             Dust expr_8976_cp_0 = Main.dust[num199];
             expr_8976_cp_0.position.X = expr_8976_cp_0.position.X - 2f;
             Dust expr_8994_cp_0 = Main.dust[num199];
@@ -63,7 +63,7 @@ namespace AAMod.Items.Projectiles.Akuma
             expr_89E7_cp_0.velocity.Y = expr_89E7_cp_0.velocity.Y - 2f;
             if (Main.rand.Next(2) == 0)
             {
-                int num200 = Dust.NewDust(projectile.position, projectile.width, projectile.height, mod.DustType<Dusts.AkumaDust>(), 0f, 0f, 100, default(Color), 1f);
+                int num200 = Dust.NewDust(projectile.position, projectile.width, projectile.height, mod.DustType<Dusts.AkumaADust>(), 0f, 0f, 100, default(Color), 1f);
                 Dust expr_8A4E_cp_0 = Main.dust[num200];
                 expr_8A4E_cp_0.position.X = expr_8A4E_cp_0.position.X - 2f;
                 Dust expr_8A6C_cp_0 = Main.dust[num200];

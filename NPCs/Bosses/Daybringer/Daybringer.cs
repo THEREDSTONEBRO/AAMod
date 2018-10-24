@@ -689,6 +689,10 @@ namespace AAMod.NPCs.Bosses.Daybringer
                 Main.dayRate = 1;
                 Main.fastForwardTime = false;
             }
+            if (Main.time == 0)
+            {
+                Main.NewText("The sun rises, and so does my power!", Color.Yellow.R, Color.Yellow.G, Color.Yellow.B);
+            }
             if (Main.dayTime && NPC.AnyNPCs(mod.NPCType<DaybringerHead>()))
             {
                 npc.scale = 2f;
