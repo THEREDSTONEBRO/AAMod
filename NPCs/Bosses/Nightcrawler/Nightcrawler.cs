@@ -38,6 +38,10 @@ namespace AAMod.NPCs.Bosses.Nightcrawler
             music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/Equinox");
             musicPriority = MusicPriority.BossHigh;
             bossBag = mod.ItemType("NCBag");
+            for (int k = 0; k < npc.buffImmune.Length; k++)
+            {
+                npc.buffImmune[k] = true;
+            }
         }
 
         public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
@@ -92,6 +96,10 @@ namespace AAMod.NPCs.Bosses.Nightcrawler
             npc.width = 54;
             npc.height = 48;
             npc.DeathSound = null;
+            for (int k = 0; k < npc.buffImmune.Length; k++)
+            {
+                npc.buffImmune[k] = true;
+            }
         }
         public override void PostDraw(SpriteBatch spriteBatch, Color drawColor)
         {
@@ -138,7 +146,12 @@ namespace AAMod.NPCs.Bosses.Nightcrawler
             npc.width = 26;
             npc.height = 38;
             npc.DeathSound = null;
+            for (int k = 0; k < npc.buffImmune.Length; k++)
+            {
+                npc.buffImmune[k] = true;
+            }
         }
+
 
         public override bool? DrawHealthBar(byte hbPosition, ref float scale, ref Vector2 position)
         {
@@ -665,6 +678,10 @@ namespace AAMod.NPCs.Bosses.Nightcrawler
             {
                 Main.dayRate = 1;
                 Main.fastForwardTime = false;
+            }
+            if (Main.time == 54000)
+            {
+                Main.NewText("Darkness falls, and soon you will too!", Color.DarkBlue.R, Color.DarkBlue.G, Color.DarkBlue.B);
             }
             if (!Main.dayTime && NPC.AnyNPCs(mod.NPCType<NightcrawlerHead>()))
             {

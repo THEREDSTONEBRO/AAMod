@@ -55,15 +55,18 @@ You don't look so good
             item.expert = true;
             item.accessory = true;
         }
-        
+
 
         public override void ModifyTooltips(List<TooltipLine> list)
         {
+            float Eggroll = Math.Abs(Main.GameUpdateCount) / 5f;
+            float Pie = 1f * (float)Math.Sin(Eggroll);
+            Color color1 = Color.Lerp(Color.DarkRed, Color.Black, Pie);
             foreach (TooltipLine line2 in list)
             {
                 if (line2.mod == "Terraria" && line2.Name == "ItemName")
                 {
-                    line2.overrideColor = new Color(Main.DiscoR, 10, 10);
+                    line2.overrideColor = color1;
                 }
             }
         }

@@ -49,6 +49,10 @@ namespace AAMod.NPCs.Bosses.Daybringer
             npc.DeathSound = null;
             music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/Equinox");
             musicPriority = MusicPriority.BossHigh;
+            for (int k = 0; k < npc.buffImmune.Length; k++)
+            {
+                npc.buffImmune[k] = true;
+            }
             bossBag = mod.ItemType("DBBag");
         }
 
@@ -89,6 +93,10 @@ namespace AAMod.NPCs.Bosses.Daybringer
             npc.width = 54;
             npc.height = 48;
             npc.DeathSound = null;
+            for (int k = 0; k < npc.buffImmune.Length; k++)
+            {
+                npc.buffImmune[k] = true;
+            }
         }
 
         public override void PostDraw(SpriteBatch spriteBatch, Color drawColor)
@@ -136,6 +144,10 @@ namespace AAMod.NPCs.Bosses.Daybringer
             npc.width = 34;
             npc.height = 52;
             npc.DeathSound = null;
+            for (int k = 0; k < npc.buffImmune.Length; k++)
+            {
+                npc.buffImmune[k] = true;
+            }
         }
         public override void PostDraw(SpriteBatch spriteBatch, Color drawColor)
         {
@@ -676,6 +688,10 @@ namespace AAMod.NPCs.Bosses.Daybringer
             {
                 Main.dayRate = 1;
                 Main.fastForwardTime = false;
+            }
+            if (Main.time == 0)
+            {
+                Main.NewText("The sun rises, and so does my power!", Color.Yellow.R, Color.Yellow.G, Color.Yellow.B);
             }
             if (Main.dayTime && NPC.AnyNPCs(mod.NPCType<DaybringerHead>()))
             {

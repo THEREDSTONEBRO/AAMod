@@ -60,7 +60,20 @@ UNSTABLE. C0NTAINS C0DE TO ACTIVATE THE BRINGER 0F DEATH");
 
         public override bool UseItem(Player player)
         {
-            Main.NewText("ZER0 UNIT ACTIVATED. ENGAGE D00MBRINGER PR0T0C0L.", Color.Red.R, Color.Red.G, Color.Red.B);
+            if (!AAWorld.downedZeroA)
+            {
+                Main.NewText("ZER0 UNIT ACTIVATED. ENGAGE D00MBRINGER PR0T0C0L.", Color.Red.R, Color.Red.G, Color.Red.B);
+            }
+            if (!Main.expertMode && AAWorld.downedZero)
+            {
+                Main.NewText("TARGET L0CKED. FAILURE T0 TERMINATE Y0U IS N0T A P0SSIBILITY THIS TIME, TERRARIAN.", Color.Red.R, Color.Red.G, Color.Red.B);
+            }
+            if (Main.expertMode && AAWorld.downedZeroA)
+            {
+                Main.NewText("TARGET L0CKED. FAILURE T0 TERMINATE Y0U IS N0T A P0SSIBILITY THIS TIME, TERRARIAN.", Color.Red.R, Color.Red.G, Color.Red.B);
+            }
+
+
             NPC.NewNPC((int)player.position.X + Main.rand.Next(-1200, 1200), (int)player.position.Y + Main.rand.Next(-1100, -350), mod.NPCType("Zero"));
             Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Sounds/Glitch"));
             return true;

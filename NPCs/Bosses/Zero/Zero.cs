@@ -47,6 +47,10 @@ namespace AAMod.NPCs.Bosses.Zero
             npc.friendly = false;
             animationType = NPCID.SkeletronPrime;
             npc.npcSlots = 1f;
+            for (int k = 0; k < npc.buffImmune.Length; k++)
+            {
+                npc.buffImmune[k] = true;
+            }
             npc.lavaImmune = true;
             npc.netAlways = true;
         }
@@ -97,9 +101,9 @@ namespace AAMod.NPCs.Bosses.Zero
                     NPC.NewNPC((int)spawnAt.X, (int)spawnAt.Y, mod.NPCType("ZeroAwakened"));
                     Main.NewText("INITIATING D00MSDAY PR0T0C0L. TARGET L0CKED. ENGAGING.", Color.Red.R, Color.Red.G, Color.Red.B);
                 }
-                if (Main.expertMode == false)
+                if (!Main.expertMode)
                 {
-                    Main.NewText("D00MSDAY PR0T0CALL MALFUNCTI0N. INSUFFICIENT MEMORY.", Color.Red.R, Color.Red.G, Color.Red.B);
+                    Main.NewText("D00MSDAY PR0T0CALL MALFUNCTI0N. EXPERT M0DE = FALSE.", Color.Red.R, Color.Red.G, Color.Red.B);
                 }
             }
         }

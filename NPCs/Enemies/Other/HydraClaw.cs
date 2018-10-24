@@ -14,7 +14,7 @@ namespace AAMod.NPCs.Enemies.Other
         public override void SetDefaults()
         {
             aiType = NPCID.DemonEye;  //npc behavior
-            animationType = NPCID.CrimsonAxe;
+            animationType = NPCID.DemonEye;
             npc.width = 28;
             npc.height = 24;
             npc.friendly = false;

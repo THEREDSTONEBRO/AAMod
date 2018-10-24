@@ -59,8 +59,8 @@ namespace AAMod
         public bool darkmatterSetMa;
         public bool darkmatterSetSu;
         public bool darkmatterSetTh;
-        public bool akumaSet;
-        public bool yamataSet;
+        public bool dracoSet;
+        public bool dreadSet;
         public bool zeroSet;
         public bool valkyrieSet;
         public bool Blackend;
@@ -119,6 +119,8 @@ namespace AAMod
             trueDeathly = false;
             DynaskullSet = false;
             zeroSet = false;
+            dracoSet = false;
+            dreadSet = false;
             darkmatterSetMe = false;
             darkmatterSetRa = false;
             darkmatterSetMa = false;
@@ -248,7 +250,7 @@ namespace AAMod
                         Main.rainTime++;
                     }
                 }
-                if (Main.dayTime)
+                /*if (Main.dayTime)
                 {
                     if (!FogRemover)
                     {
@@ -264,7 +266,7 @@ namespace AAMod
                             Projectile.NewProjectile(player.Center, new Vector2(0, 0), mod.ProjectileType<Fogless>(), 0, 0, Main.myPlayer);
                         }
                     }
-                }
+                }*/
             }
         }
 
@@ -458,6 +460,11 @@ namespace AAMod
             {
                 target.AddBuff(BuffID.WitheredArmor, 1000);
             }
+
+            if (dracoSet && Main.rand.Next(2) == 0)
+            {
+                target.AddBuff(BuffID.Daybreak, 600);
+            }
         }
 
         public override void UpdateBadLifeRegen()
@@ -592,6 +599,16 @@ namespace AAMod
             if (zeroSet && proj.ranged && Main.rand.Next(2) == 0)
             {
                 target.AddBuff(BuffID.WitheredArmor, 1000);
+            }
+
+            if (dracoSet && proj.melee && Main.rand.Next(2) == 0)
+            {
+                target.AddBuff(BuffID.WitheredArmor, 600);
+            }
+
+            if (dracoSet && proj.magic && Main.rand.Next(2) == 0)
+            {
+                target.AddBuff(BuffID.WitheredArmor, 600);
             }
 
             if (Time && proj.melee && Main.rand.Next(2) == 0)

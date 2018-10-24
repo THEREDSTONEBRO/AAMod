@@ -15,7 +15,7 @@ namespace AAMod.Items.Armor.Doomsday
 			DisplayName.SetDefault("Doomsday Assault Visor");
 			Tooltip.SetDefault(@"15% increased melee critical chance
 20% increased ranged critical chance
-8% increased damage resistance
+7% increased damage
 The power to destroy entire planets rests in this armor");
 
 		}
@@ -25,16 +25,19 @@ The power to destroy entire planets rests in this armor");
 			item.width = 18;
 			item.height = 18;
 			item.value = 3000000;
-			item.rare = 11;
-			item.defense = 30;
+			item.defense = 34;
 		}
 		
 		public override void UpdateEquip(Player player)
 		{
 			player.meleeCrit += 15;
-			player.rangedCrit += 25;
-			player.endurance *= 1.08f;
-		}
+			player.rangedCrit += 20;
+			player.meleeDamage *= 1.07f;
+            player.rangedDamage *= 1.07f;
+            player.magicDamage *= 1.07f;
+            player.minionDamage *= 1.07f;
+            player.thrownDamage *= 1.07f;
+        }
 
         public override void ModifyTooltips(List<TooltipLine> list)
         {
@@ -42,9 +45,6 @@ The power to destroy entire planets rests in this armor");
             {
                 if (line2.mod == "Terraria" && line2.Name == "ItemName")
                 {
-
-                    line2.overrideColor = new Color(100, 0, 10);
-
                     line2.overrideColor = new Color(120, 0, 30);
                 }
             }

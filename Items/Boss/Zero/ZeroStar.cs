@@ -12,7 +12,7 @@ namespace AAMod.Items.Boss.Zero
         public override void SetStaticDefaults()
 		{
             DisplayName.SetDefault("Zero Star");
-            Tooltip.SetDefault("Throws a spinning blade of doom");
+            Tooltip.SetDefault("A spinning blade of doom");
             if (Main.netMode != 2)
             {
                 Microsoft.Xna.Framework.Graphics.Texture2D[] glowMasks = new Microsoft.Xna.Framework.Graphics.Texture2D[Main.glowMaskTexture.Length + 1];

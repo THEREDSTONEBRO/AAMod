@@ -40,7 +40,11 @@ namespace AAMod.NPCs.Bosses.Zero
         }
         public override void Kill(int timeLeft)
         {
-            Main.NewText("DISTRESS SIGNAL RECIEVED.", Color.Red.R, Color.Red.G, Color.Red.B);
+            if (!AAWorld.downedZeroA && Main.expertMode)
+            {
+                Main.NewText("DISTRESS SIGNAL RECIEVED.", Color.Red.R, Color.Red.G, Color.Red.B);
+                AAWorld.downedZeroA = true;
+            }
         }
     }
 }

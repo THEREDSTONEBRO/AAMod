@@ -42,7 +42,10 @@ namespace AAMod.NPCs.Bosses.Zero
         }
         public override void Kill(int timeLeft)
         {
-            Main.NewText("SENDING...", Color.Red.R, Color.Red.G, Color.Red.B);
+            if (!AAWorld.downedZeroA && Main.expertMode)
+            {
+                Main.NewText("SENDING...", Color.Red.R, Color.Red.G, Color.Red.B);
+            }
             Projectile.NewProjectile((new Vector2(projectile.position.X, projectile.position.Y)), (new Vector2(0f, 0f)), mod.ProjectileType("ZeroDeath2"), 0, 0);
         }
     }

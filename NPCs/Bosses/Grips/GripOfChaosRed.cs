@@ -46,10 +46,10 @@ namespace AAMod.NPCs.Bosses.Grips
         {
             if (npc.life <= 0)          //this make so when the npc has 0 life(dead) he will spawn this
             {
-                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/GripOfChaosRedGore1"), 1f);
-                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/GripOfChaosRedGore2"), 1f);
-                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/GripOfChaosRedGore3"), 1f);
-                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/GripOfChaosRedGore4"), 1f);
+                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/InfernoGripGore1"), 1f);
+                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/InfernoGripGore2"), 1f);
+                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/InfernoGripGore3"), 1f);
+                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/InfernoGripGore4"), 1f);
             }
         }
 

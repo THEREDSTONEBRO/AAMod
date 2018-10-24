@@ -30,6 +30,7 @@ namespace AAMod.NPCs.Bosses.Zero
 			npc.chaseable = false;
 			npc.damage = 30;
 			npc.defense = 20;
+            npc.value = 0;
 			npc.lifeMax = 1000;
 			npc.HitSound = SoundID.NPCHit4;
 			npc.DeathSound = SoundID.NPCDeath14;

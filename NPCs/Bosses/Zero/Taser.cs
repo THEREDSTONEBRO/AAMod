@@ -32,6 +32,7 @@ namespace AAMod.NPCs.Bosses.Zero
             npc.knockBackResist = 0.0f;
             npc.buffImmune[20] = true;
             npc.buffImmune[24] = true;
+            npc.buffImmune[39] = true;
             npc.lavaImmune = true;
             npc.netAlways = true;
 
