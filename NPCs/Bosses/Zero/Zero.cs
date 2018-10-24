@@ -103,7 +103,7 @@ namespace AAMod.NPCs.Bosses.Zero
                 }
                 if (!Main.expertMode)
                 {
-                    Main.NewText("D00MSDAY PR0T0CALL MALFUNCTI0N. INSUFFICIENT P0WER.", Color.Red.R, Color.Red.G, Color.Red.B);
+                    Main.NewText("D00MSDAY PR0T0CALL MALFUNCTI0N. EXPERT M0DE = FALSE.", Color.Red.R, Color.Red.G, Color.Red.B);
                 }
             }
         }
