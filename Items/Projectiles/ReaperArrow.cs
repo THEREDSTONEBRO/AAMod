@@ -8,9 +8,23 @@ namespace AAMod.Items.Projectiles
 {
 	public class ReaperArrow : ModProjectile
 	{
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Reaper Arrows");     //The English name of the projectile
+        public static short customGlowMask = 0;
+        public override void SetStaticDefaults()
+        {
+            Main.projFrames[projectile.type] = 5;
+            if (Main.netMode != 2)
+            {
+                Texture2D[] glowMasks = new Texture2D[Main.glowMaskTexture.Length + 1];
+                for (int i = 0; i < Main.glowMaskTexture.Length; i++)
+                {
+                    glowMasks[i] = Main.glowMaskTexture[i];
+                }
+                glowMasks[glowMasks.Length - 1] = mod.GetTexture("Items/Projectiles/" + GetType().Name + "_Glow");
+                customGlowMask = (short)(glowMasks.Length - 1);
+                Main.glowMaskTexture = glowMasks;
+            }
+            projectile.glowMask = customGlowMask;
+            DisplayName.SetDefault("Reaper Arrow");     //The English name of the projectile
 			ProjectileID.Sets.TrailCacheLength[projectile.type] = 5;    //The length of old position to be recorded
 			ProjectileID.Sets.TrailingMode[projectile.type] = 0;        //The recording mode
 		}

@@ -101,9 +101,9 @@ namespace AAMod.NPCs.Bosses.Zero
                     NPC.NewNPC((int)spawnAt.X, (int)spawnAt.Y, mod.NPCType("ZeroAwakened"));
                     Main.NewText("INITIATING D00MSDAY PR0T0C0L. TARGET L0CKED. ENGAGING.", Color.Red.R, Color.Red.G, Color.Red.B);
                 }
-                if (Main.expertMode == false)
+                if (!Main.expertMode)
                 {
-                    Main.NewText("D00MSDAY PR0T0CALL MALFUNCTI0N. INSUFFICIENT MEMORY.", Color.Red.R, Color.Red.G, Color.Red.B);
+                    Main.NewText("D00MSDAY PR0T0CALL MALFUNCTI0N. INSUFFICIENT P0WER.", Color.Red.R, Color.Red.G, Color.Red.B);
                 }
             }
         }

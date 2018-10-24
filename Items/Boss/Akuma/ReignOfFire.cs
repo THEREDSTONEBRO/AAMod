@@ -36,8 +36,8 @@ namespace AAMod.Items.Boss.Akuma   //where is located
             item.melee = true;            //if it's melee
             item.width = 86;              //Sword width
             item.height = 86;             //Sword height
-            item.useTime = 13;          //how fast 
-            item.useAnimation = 13;     
+            item.useTime = 17;          //how fast 
+            item.useAnimation = 17;     
             item.useStyle = 1;        //Style is how this item is used, 1 is the style of the sword
             item.knockBack = 6.5f;      //Sword knockback
             item.value = 2000000;

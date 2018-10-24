@@ -59,19 +59,19 @@ namespace AAMod.NPCs.Bosses.Zero
         {
             if (Main.expertMode)
             {
+                npc.DropLoot(Items.Vanity.Mask.ZeroMask.type, 1f / 7);
+                npc.DropLoot(Items.Boss.Zero.ZeroTrophy.type, 1f / 10);
+                if (Main.rand.NextFloat() < 0.1f)
+                {
+                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("EXSoul"));
+                }
+                if (Main.rand.NextFloat() < 0.05f && AAWorld.RealityDropped == false)
+                {
+                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("RealityStone"));
+                    AAWorld.RealityDropped = true;
+                }
                 npc.DropBossBags();
                 return;
-            }
-            npc.DropLoot(Items.Vanity.Mask.ZeroMask.type, 1f / 7);
-            npc.DropLoot(Items.Boss.Zero.ZeroTrophy.type, 1f / 10);
-            if (Main.rand.NextFloat() < 0.1f)
-            {
-                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("EXSoul"));
-            }
-            if (Main.rand.NextFloat() < 0.05f && AAWorld.RealityDropped == false)
-            {
-                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("RealityStone"));
-                AAWorld.RealityDropped = true;
             }
         }
         public override void BossLoot(ref string name, ref int potionType)
@@ -100,13 +100,13 @@ namespace AAMod.NPCs.Bosses.Zero
                     npc.Center = tele;
                 }
             }
-            if (npc.life <= 0 && Main.expertMode && npc.type == mod.NPCType<ZeroAwakened>())
+            if (npc.life <= 0 && Main.expertMode && !AAWorld.downedZeroA && npc.type == mod.NPCType<ZeroAwakened>())
             {
                 Main.NewText("MISSI0N FAILED. SENDING DISTRESS SIGNAL TO HOME BASE", Color.Red.R, Color.Red.G, Color.Red.B);
             }
             if (npc.life <= 0 && !Main.expertMode && npc.type == mod.NPCType<ZeroAwakened>())
             {
-                Main.NewText("CHEATER ALERT CHEATER ALERT", Color.Red.R, Color.Red.G, Color.Red.B);
+                Main.NewText("CHEATER ALERT CHEATER ALERT. N0 DR0PS 4 U.", Color.Red.R, Color.Red.G, Color.Red.B);
             }
         }
 

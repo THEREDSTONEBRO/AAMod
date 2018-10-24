@@ -280,6 +280,8 @@
     <Compile Include="Items\Blocks\ZeroTrophy.cs" />
     <Compile Include="Items\Boss\Akumata\ChaosSoul.cs" />
     <Compile Include="Items\Boss\Akuma\CrucibleScale.cs" />
+    <Compile Include="Items\Boss\Akuma\DaybreakArrow.cs" />
+    <Compile Include="Items\Boss\Akuma\Daycrusher.cs" />
     <Compile Include="Items\Boss\Akuma\ReignOfFire.cs" />
     <Compile Include="Items\Boss\Broodmother\BroodBag.cs" />
     <Compile Include="Items\Boss\Broodmother\BroodmotherTrophy.cs" />
@@ -471,6 +473,8 @@
     <Compile Include="Items\Potions\GrandHealingPotion.cs" />
     <Compile Include="Items\Potions\TheBigOne.cs" />
     <Compile Include="Items\Projectiles\Akuma\AkumaFlare.cs" />
+    <Compile Include="Items\Projectiles\Akuma\DaybreakArrow.cs" />
+    <Compile Include="Items\Projectiles\Akuma\Daycrusher.cs" />
     <Compile Include="Items\Projectiles\Akuma\FireProj.cs" />
     <Compile Include="Items\Projectiles\Akuma\Solar.cs" />
     <Compile Include="Items\Projectiles\Akuma\SunSpear.cs" />
@@ -505,7 +509,6 @@
     <Compile Include="Items\Projectiles\HellBallP.cs" />
     <Compile Include="Items\Projectiles\HydraTuneller.cs" />
     <Compile Include="Items\Projectiles\IceChunk.cs" />
-    <Compile Include="Items\Projectiles\IceChunkGrim.cs" />
     <Compile Include="Items\Projectiles\IllumantBall.cs" />
     <Compile Include="Items\Projectiles\Incineration.cs" />
     <Compile Include="Items\Projectiles\IndigoSolution.cs" />
@@ -669,7 +672,6 @@
     <Compile Include="NPCs\Enemies\Inferno\InfernoMimic.cs" />
     <Compile Include="NPCs\Enemies\Mire\MireMimic.cs" />
     <Compile Include="NPCs\MimicSummon.cs" />
-    <Compile Include="NPCs\Minibosses\TheIcegrim.cs" />
     <Compile Include="NPCs\Bosses\MushroomMonarch\MonarchRUNAWAY.cs" />
     <Compile Include="NPCs\Bosses\MushroomMonarch\MushroomMonarch.cs" />
     <Compile Include="NPCs\Bosses\Nightcrawler\Moonray.cs" />
@@ -1339,16 +1341,27 @@
     <Content Include="Items\Boss\Akumata\ChaosSoul_Glow.png" />
     <Content Include="Items\Boss\Akuma\CrucibleScale.png" />
     <Content Include="Items\Boss\Akuma\Dawnstrike.png" />
-    <Content Include="Items\Boss\Akuma\DaybreakArrows.png" />
+    <Content Include="Items\Boss\Akuma\Dawnstrike_Glow.png" />
+    <Content Include="Items\Boss\Akuma\DaybreakArrow.png" />
+    <Content Include="Items\Boss\Akuma\DaybreakArrows_Glow.png" />
     <Content Include="Items\Boss\Akuma\Daycrusher.png" />
+    <Content Include="Items\Boss\Akuma\Daycrusher_Glow.png" />
     <Content Include="Items\Boss\Akuma\DragonSlasher.png" />
+    <Content Include="Items\Boss\Akuma\DragonSlasher_Glow.png" />
     <Content Include="Items\Boss\Akuma\LungStaff.png" />
-    <Content Include="Items\Boss\Akuma\ReignOfFire.png" />
+    <Content Include="Items\Boss\Akuma\LungStaff_Glow.png" />
     <Content Include="Items\Boss\Akuma\RadiantDawn.png" />
+    <Content Include="Items\Boss\Akuma\RadiantDawn_Glow.png" />
+    <Content Include="Items\Boss\Akuma\ReignOfFire.png" />
+    <Content Include="Items\Boss\Akuma\ReignOfFire_Glow.png" />
     <Content Include="Items\Boss\Akuma\Solar.png" />
+    <Content Include="Items\Boss\Akuma\Solar_Glow.png" />
     <Content Include="Items\Boss\Akuma\SunSpear.png" />
+    <Content Include="Items\Boss\Akuma\SunSpear_Glow.png" />
     <Content Include="Items\Boss\Akuma\SunStaff.png" />
+    <Content Include="Items\Boss\Akuma\SunStaff_Glow.png" />
     <Content Include="Items\Boss\Akuma\Sunstorm.png" />
+    <Content Include="Items\Boss\Akuma\SunStorm_Glow.png" />
     <Content Include="Items\Boss\Broodmother\BroodBag.png" />
     <Content Include="Items\Boss\Broodmother\BroodBag_Glow.png" />
     <Content Include="Items\Boss\Broodmother\BroodmotherTrophy.png" />
@@ -1669,6 +1682,7 @@
     <Content Include="Items\Potions\TheBigOne.png" />
     <Content Include="Items\Projectiles\Akumata\AkumataFire.png" />
     <Content Include="Items\Projectiles\Akuma\AkumaFlare.png" />
+    <Content Include="Items\Projectiles\Akuma\DaybreakArrow.png" />
     <Content Include="Items\Projectiles\Akuma\Daycrusher.png" />
     <Content Include="Items\Projectiles\Akuma\Daycrusher_Chain.png" />
     <Content Include="Items\Projectiles\Akuma\Daycrusher_Chain_Glow.png" />
@@ -1723,7 +1737,6 @@
     <Content Include="Items\Projectiles\HydraSpear.png" />
     <Content Include="Items\Projectiles\HydraTuneller.png" />
     <Content Include="Items\Projectiles\IceChunk.png" />
-    <Content Include="Items\Projectiles\IceChunkGrim.png" />
     <Content Include="Items\Projectiles\IllumantBall.png" />
     <Content Include="Items\Projectiles\IllumantBall_Chain.png" />
     <Content Include="Items\Projectiles\Incineration.png" />
@@ -2077,7 +2090,6 @@
     <Content Include="NPCs\Bosses\Zero\SearcherZero.png" />
     <Content Include="NPCs\Bosses\Zero\SearcherZero_Glow.png" />
     <Content Include="NPCs\Enemies\Inferno\InfernoMimic.png" />
-    <Content Include="NPCs\Minibosses\TheIcegrim.png" />
     <Content Include="NPCs\Bosses\MushroomMonarch\MonarchRUNAWAY.png" />
     <Content Include="NPCs\Bosses\MushroomMonarch\MushroomMonarch.png" />
     <Content Include="NPCs\Bosses\Nightcrawler\Moonray.png" />

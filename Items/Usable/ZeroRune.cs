@@ -59,7 +59,7 @@ namespace AAMod.Items.Usable
 
         public override bool UseItem(Player player)
         {
-
+            Main.NewText("D00MSDAY PR0T0CALL ACTIVATED MANUALLY. TERMINATI0N SYSTEMS AT FULL P0WER", Color.Red.R, Color.Red.G, Color.Red.B);
             NPC.NewNPC((int)player.position.X + Main.rand.Next(-1200, 1200), (int)player.position.Y + Main.rand.Next(-1100, -350), mod.NPCType("ZeroAwakened"));
             Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Sounds/ZeroDeath"));
             return true;
