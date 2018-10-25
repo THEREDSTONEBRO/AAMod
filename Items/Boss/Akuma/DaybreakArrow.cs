@@ -9,7 +9,8 @@ namespace AAMod.Items.Boss.Akuma
 		public override void SetStaticDefaults()
 		{
             DisplayName.SetDefault("Daybreak Arrow");
-			Tooltip.SetDefault("Scorches its target with the heat of the scorching sun");
+			Tooltip.SetDefault(@"Scorches its target with the heat of the scorching sun
+Inflicts Daybroken");
 		}
 
 		public override void SetDefaults()

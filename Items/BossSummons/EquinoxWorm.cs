@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 using AAMod.NPCs.Bosses.Daybringer;
 using AAMod.NPCs.Bosses.Nightcrawler;
 
-namespace AAMod.Items.Usable
+namespace AAMod.Items.BossSummons
 {
     //imported from my tAPI mod because I'm lazy
     public class EquinoxWorm : ModItem
@@ -19,7 +19,7 @@ namespace AAMod.Items.Usable
                 {
                     glowMasks[i] = Main.glowMaskTexture[i];
                 }
-                glowMasks[glowMasks.Length - 1] = mod.GetTexture("Items/Usable/" + GetType().Name + "_Glow");
+                glowMasks[glowMasks.Length - 1] = mod.GetTexture("Items/BossSummons/" + GetType().Name + "_Glow");
                 customGlowMask = (short)(glowMasks.Length - 1);
                 Main.glowMaskTexture = glowMasks;
             }

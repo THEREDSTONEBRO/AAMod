@@ -2,7 +2,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AAMod.Items.Usable
+namespace AAMod.Items.BossSummons
 {
 	//imported from my tAPI mod because I'm lazy
 	public class CyberneticClaw : ModItem
@@ -17,14 +17,14 @@ namespace AAMod.Items.Usable
                 {
                     glowMasks[i] = Main.glowMaskTexture[i];
                 }
-                glowMasks[glowMasks.Length - 1] = mod.GetTexture("Items/Usable/" + GetType().Name + "_Glow");
+                glowMasks[glowMasks.Length - 1] = mod.GetTexture("Items/BossSummons/" + GetType().Name + "_Glow");
                 customGlowMask = (short)(glowMasks.Length - 1);
                 Main.glowMaskTexture = glowMasks;
             }
             item.glowMask = customGlowMask;
             DisplayName.SetDefault("Cybernetic Claw");
             Tooltip.SetDefault(@"Summons the Retriever
-Only usable at night");
+Only BossSummons at night");
 		}
 
 		public override void SetDefaults()

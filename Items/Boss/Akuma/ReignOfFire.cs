@@ -14,7 +14,8 @@ namespace AAMod.Items.Boss.Akuma   //where is located
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Reign of Fire");
-            Tooltip.SetDefault("Rains fire and fury upon your foes");
+            Tooltip.SetDefault(@"Rains fire and fury upon your foes
+Inflicts Daybroken");
             if (Main.netMode != 2)
             {
                 Microsoft.Xna.Framework.Graphics.Texture2D[] glowMasks = new Microsoft.Xna.Framework.Graphics.Texture2D[Main.glowMaskTexture.Length + 1];
@@ -36,8 +37,8 @@ namespace AAMod.Items.Boss.Akuma   //where is located
             item.melee = true;            //if it's melee
             item.width = 86;              //Sword width
             item.height = 86;             //Sword height
-            item.useTime = 17;          //how fast 
-            item.useAnimation = 17;     
+            item.useTime = 21;          //how fast 
+            item.useAnimation = 21;     
             item.useStyle = 1;        //Style is how this item is used, 1 is the style of the sword
             item.knockBack = 6.5f;      //Sword knockback
             item.value = 2000000;
@@ -57,9 +58,11 @@ namespace AAMod.Items.Boss.Akuma   //where is located
             }
         }
 
-        public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
+        public override bool Shoot(Player player, ref Microsoft.Xna.Framework.Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
+            int i = Main.myPlayer;
             float num72 = item.shootSpeed;
+            player.itemTime = item.useTime;
             Vector2 vector2 = player.RotatedRelativePoint(player.MountedCenter, true);
             float num78 = (float)Main.mouseX + Main.screenPosition.X - vector2.X;
             float num79 = (float)Main.mouseY + Main.screenPosition.Y - vector2.Y;
@@ -81,13 +84,13 @@ namespace AAMod.Items.Boss.Akuma   //where is located
             }
             num78 *= num80;
             num79 *= num80;
-            int num112 = 3;
-            for (int num113 = 0; num113 < num112; num113++)
+            int num107 = 10;
+            for (int num108 = 0; num108 < num107; num108++)
             {
                 vector2 = new Vector2(player.position.X + (float)player.width * 0.5f + (float)(Main.rand.Next(201) * -(float)player.direction) + ((float)Main.mouseX + Main.screenPosition.X - player.position.X), player.MountedCenter.Y - 600f);
                 vector2.X = (vector2.X + player.Center.X) / 2f + (float)Main.rand.Next(-200, 201);
-                vector2.Y -= (float)(100 * num113);
-                num78 = (float)Main.mouseX + Main.screenPosition.X - vector2.X + (float)Main.rand.Next(-40, 41) * 0.03f;
+                vector2.Y -= (float)(100 * num108);
+                num78 = (float)Main.mouseX + Main.screenPosition.X - vector2.X;
                 num79 = (float)Main.mouseY + Main.screenPosition.Y - vector2.Y;
                 if (num79 < 0f)
                 {
@@ -101,9 +104,9 @@ namespace AAMod.Items.Boss.Akuma   //where is located
                 num80 = num72 / num80;
                 num78 *= num80;
                 num79 *= num80;
-                float num114 = num78;
-                float num115 = num79 + (float)Main.rand.Next(-40, 41) * 0.02f;
-                Projectile.NewProjectile(vector2.X, vector2.Y, num114 * 0.75f, num115 * 0.75f, type, damage, knockBack, player.whoAmI, 0f, 0.5f + (float)Main.rand.NextDouble() * 0.3f);
+                float speedX4 = num78 + (float)Main.rand.Next(-1000, 1001) * 0.02f;
+                float speedY5 = num79 + (float)Main.rand.Next(-1000, 1001) * 0.02f;
+                int projectile = Projectile.NewProjectile(vector2.X, vector2.Y, speedX4, speedY5, mod.ProjectileType("FireProj"), damage, knockBack, i, 0f, (float)Main.rand.Next(10));
             }
             return false;
         }
