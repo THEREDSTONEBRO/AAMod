@@ -22,7 +22,7 @@ namespace AAMod.Tiles
             TileObjectData.newTile.StyleWrapLimit = 111;
             TileObjectData.addTile(Type);
             dustType = mod.DustType("DarkmatterDust");
-            drop = mod.ItemType("Darkmatter");   //put your CustomBlock name
+            drop = mod.ItemType("DarkMatter");   //put your CustomBlock name
             AddMapEntry(new Color(0, 0, 255));
 			minPick = 0;
         }
