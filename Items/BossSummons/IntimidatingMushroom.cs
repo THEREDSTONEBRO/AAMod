@@ -43,7 +43,7 @@ Can only be used during the day");
 
         public override bool CanUseItem(Player player)
         {
-            return !Main.dayTime && !NPC.AnyNPCs(mod.NPCType("MushroomMonarch"));
+            return Main.dayTime && !NPC.AnyNPCs(mod.NPCType("MushroomMonarch"));
         }
 
         public override bool UseItem(Player player)

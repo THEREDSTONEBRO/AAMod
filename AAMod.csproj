@@ -971,13 +971,13 @@
     <Content Include="icon.png" />
     <Content Include="IMPORTANTREADME.txt" />
     <Content Include="Items\Accessories\BotchedBand.png" />
+    <Content Include="Items\Accessories\BotchedBand_HandsOn.png" />
     <Content Include="Items\Accessories\DemonGauntlet.png" />
     <Content Include="Items\Accessories\DemonGauntlet_Glow.png" />
     <Content Include="Items\Accessories\DemonGauntlet_HandsOff.png" />
     <Content Include="Items\Accessories\DemonGauntlet_HandsOn.png" />
     <Content Include="Items\Accessories\DwarvenGauntlet.png" />
     <Content Include="Items\Accessories\DwarvenGauntlet_HandsOn.png" />
-    <Content Include="Items\Accessories\FirestoneBand.png" />
     <Content Include="Items\Accessories\InfinityGauntlet.png" />
     <Content Include="Items\Accessories\InfinityGauntlet_Glow.png" />
     <Content Include="Items\Accessories\InfinityGauntlet_HandsOn.png" />
