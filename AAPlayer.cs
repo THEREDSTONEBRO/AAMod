@@ -4,7 +4,7 @@ using System.IO;
 using System.Linq;
 using AAMod.Buffs;
 using AAMod.Items.Projectiles;
-using AAMod.NPCs;
+using AAMod.Items.Dev;
 using AAMod.NPCs.Bosses.Zero;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -390,7 +390,7 @@ namespace AAMod
                 if (AAMod.InfinityHotKey.JustPressed && SnapCD == 0)
                 {
                     SnapCD = 18000;
-                    Main.npc.Where(x => x.active && !x.townNPC && x.type != NPCID.TargetDummy && x.type != mod.NPCType<RiftShredder>() && x.type != mod.NPCType<Taser>() && x.type != mod.NPCType<RealityCannon>() && x.type != mod.NPCType<VoidStar>() && x.type != mod.NPCType<TeslaHand>() && !x.boss).ToList().ForEach(x =>
+                    Main.npc.Where(x => x.active && !x.townNPC && x.type != NPCID.TargetDummy && x.type != mod.NPCType<CrabGuardian>() && x.type != mod.NPCType<RiftShredder>() && x.type != mod.NPCType<Taser>() && x.type != mod.NPCType<RealityCannon>() && x.type != mod.NPCType<VoidStar>() && x.type != mod.NPCType<TeslaHand>() && !x.boss).ToList().ForEach(x =>
                     {
 
                         Main.NewText("Perfectly Balanced, as all things should be");
