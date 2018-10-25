@@ -31,7 +31,7 @@ namespace AAMod.Items.Blocks
 			item.useTime = 10;
 			item.autoReuse = true;
 			item.consumable = true;
-			item.createTile = mod.TileType("EquiBox");
+			item.createTile = mod.TileType("Equibox");
             item.width = 72;
 			item.height = 36;
 			item.rare = 4;

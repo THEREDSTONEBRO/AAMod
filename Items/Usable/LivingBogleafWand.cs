@@ -17,7 +17,7 @@ namespace AAMod.Items.Usable
             item.useTime = 10;
             item.useStyle = 1;
             item.consumable = false;
-            item.createTile = mod.TileType("LivingBogleaf"); //put your CustomBlock Tile name
+            item.createTile = mod.TileType("LivingBogleaves"); //put your CustomBlock Tile name
             item.useAmmo = mod.ItemType("Bogwood");
         }
 

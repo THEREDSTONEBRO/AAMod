@@ -21,64 +21,45 @@ namespace AAMod.Items.Projectiles.Akuma
         {
             projectile.width = 62;
             projectile.height = 92;
-            projectile.alpha = 150;
             projectile.friendly = true;
-            projectile.melee = true;
             projectile.tileCollide = false;
-            projectile.penetrate = 1;
-            projectile.timeLeft = 180;
-            projectile.ignoreWater = true;
+            projectile.melee = true;
+            projectile.extraUpdates = 2;
         }
 
         public override void AI()
         {
-            int randomToSubtract = Main.rand.Next(1, 4);
-            noTileHitCounter -= randomToSubtract;
-            if (noTileHitCounter == 0)
+            if (projectile.position.Y > Main.player[projectile.owner].position.Y - 300f)
             {
                 projectile.tileCollide = true;
             }
-            if (projectile.soundDelay == 0)
+            if ((double)projectile.position.Y < Main.worldSurface * 16.0)
             {
-                projectile.soundDelay = 20 + Main.rand.Next(40);
-                if (Main.rand.Next(5) == 0)
-                {
-                    Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 20);
-                }
+                projectile.tileCollide = true;
             }
-            projectile.alpha -= 15;
-            int num58 = 150;
-            if (projectile.Center.Y >= projectile.ai[1])
+            projectile.scale = projectile.ai[1];
+            projectile.rotation += projectile.velocity.X;
+            Vector2 position = projectile.Center + Vector2.Normalize(projectile.velocity) * 10f;
+            /*Dust dust20 = Main.dust[Dust.NewDust(projectile.position, projectile.width, projectile.height, mod.DustType<Dusts.AkumaADust>(), 0f, 0f, 0, default(Color), 1f)];
+            dust20.position = position;
+            dust20.velocity = projectile.velocity.RotatedBy(1.5707963705062866, default(Vector2)) * 0.33f + projectile.velocity / 4f;
+            dust20.position += projectile.velocity.RotatedBy(1.5707963705062866, default(Vector2));
+            dust20.fadeIn = 0.5f;
+            dust20.noGravity = true;
+            dust20 = Main.dust[Dust.NewDust(projectile.position, projectile.width, projectile.height, mod.DustType<Dusts.AkumaADust>(), 0f, 0f, 0, default(Color), 1f)];
+            dust20.position = position;
+            dust20.velocity = projectile.velocity.RotatedBy(-1.5707963705062866, default(Vector2)) * 0.33f + projectile.velocity / 4f;
+            dust20.position += projectile.velocity.RotatedBy(-1.5707963705062866, default(Vector2));
+            dust20.fadeIn = 0.5f;
+            dust20.noGravity = true;*/
+            for (int num189 = 0; num189 < 1; num189++)
             {
-                num58 = 0;
+                int num190 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, mod.DustType<Dusts.AkumaADust>(), 0f, 0f, 0, default(Color), 1f);
+                Main.dust[num190].velocity *= 0.5f;
+                Main.dust[num190].scale *= 1.3f;
+                Main.dust[num190].fadeIn = 1f;
+                Main.dust[num190].noGravity = true;
             }
-            if (projectile.alpha < num58)
-            {
-                projectile.alpha = num58;
-            }
-            projectile.localAI[0] += (Math.Abs(projectile.velocity.X) + Math.Abs(projectile.velocity.Y)) * 0.01f * (float)projectile.direction;
-            projectile.rotation = projectile.velocity.ToRotation() - 1.57079637f;
-            if (Main.rand.Next(12) == 0)
-            {
-                Vector2 value3 = Vector2.UnitX.RotatedByRandom(1.5707963705062866).RotatedBy((double)projectile.velocity.ToRotation(), default(Vector2));
-                int num59 = Dust.NewDust(projectile.position, projectile.width, projectile.height, mod.DustType<Dusts.AkumaADust>(), projectile.velocity.X * 0.5f, projectile.velocity.Y * 0.5f, 150, default(Color), 1.2f);
-                Main.dust[num59].velocity = value3 * 0.66f;
-                Main.dust[num59].position = projectile.Center + value3 * 12f;
-            }
-            if (projectile.ai[1] == 1f)
-            {
-                projectile.light = 0.9f;
-                if (Main.rand.Next(10) == 0)
-                {
-                    Dust.NewDust(projectile.position, projectile.width, projectile.height, mod.DustType<Dusts.AkumaADust>(), projectile.velocity.X * 0.5f, projectile.velocity.Y * 0.5f, 150, default(Color), 1.2f);
-                }
-                if (Main.rand.Next(20) == 0)
-                {
-                    Dust.NewDust(projectile.position, projectile.width, projectile.height, mod.DustType<Dusts.AkumaADust>(), projectile.velocity.X * 1.5f, projectile.velocity.Y * 1.5f, 150, default(Color), 2f);
-                    return;
-                }
-            }
-            Lighting.AddLight(projectile.Center, ((255 - projectile.alpha) * 0.75f) / 255f, ((255 - projectile.alpha) * 0.5f) / 255f, ((255 - projectile.alpha) * 0f) / 255f);
         }
 
         public override void Kill(int timeLeft)
@@ -99,6 +80,16 @@ namespace AAMod.Items.Projectiles.Akuma
                     Main.projectile[Flame1].timeLeft = 120;
                     Main.projectile[Flame2].timeLeft = 120;
                 }
+            }
+            for (int num468 = 0; num468 < 20; num468++)
+            {
+                int num469 = Dust.NewDust(new Vector2(projectile.Center.X, projectile.Center.Y), projectile.width, projectile.height, mod.ProjectileType("AkumaFlare"), -projectile.velocity.X * 0.2f,
+                    -projectile.velocity.Y * 0.2f, 0, default(Color), 1f);
+                Main.dust[num469].noGravity = true;
+                Main.dust[num469].velocity *= 2f;
+                num469 = Dust.NewDust(new Vector2(projectile.Center.X, projectile.Center.Y), projectile.width, projectile.height, mod.ProjectileType("AkumaFlare"), -projectile.velocity.X * 0.2f,
+                    -projectile.velocity.Y * 0.2f, 0, default(Color), 1f);
+                Main.dust[num469].velocity *= 2f;
             }
         }
 

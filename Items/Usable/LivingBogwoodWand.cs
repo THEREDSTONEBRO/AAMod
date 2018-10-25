@@ -11,7 +11,6 @@ namespace AAMod.Items.Usable
 
             item.width = 32;
             item.height = 26;
-            item.maxStack = 1;
             item.useTurn = true;
             item.autoReuse = true;
             item.useAnimation = 15;

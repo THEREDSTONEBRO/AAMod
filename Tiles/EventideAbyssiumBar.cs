@@ -20,7 +20,7 @@ namespace AAMod.Tiles
             TileObjectData.newTile.StyleHorizontal = true;
             TileObjectData.newTile.StyleWrapLimit = 111;
             TileObjectData.addTile(Type);
-            drop = mod.ItemType("EventideAbyssiumBar");   //put your CustomBlock name
+            drop = mod.ItemType("EventideAbyssium");   //put your CustomBlock name
             AddMapEntry(new Color(0, 0, 255));
 			minPick = 0;
         }

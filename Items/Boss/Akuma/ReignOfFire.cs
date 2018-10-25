@@ -46,6 +46,7 @@ Inflicts Daybroken");
             item.autoReuse = true;   //if it's capable of autoswing.
             item.useTurn = true;
             item.glowMask = customGlowMask;
+            item.shootSpeed = 20f;
         }
 
         public override void MeleeEffects(Player player, Rectangle hitbox)
@@ -60,9 +61,7 @@ Inflicts Daybroken");
 
         public override bool Shoot(Player player, ref Microsoft.Xna.Framework.Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
-            int i = Main.myPlayer;
             float num72 = item.shootSpeed;
-            player.itemTime = item.useTime;
             Vector2 vector2 = player.RotatedRelativePoint(player.MountedCenter, true);
             float num78 = (float)Main.mouseX + Main.screenPosition.X - vector2.X;
             float num79 = (float)Main.mouseY + Main.screenPosition.Y - vector2.Y;
@@ -84,13 +83,13 @@ Inflicts Daybroken");
             }
             num78 *= num80;
             num79 *= num80;
-            int num107 = 10;
-            for (int num108 = 0; num108 < num107; num108++)
+            int num112 = 3;
+            for (int num113 = 0; num113 < num112; num113++)
             {
                 vector2 = new Vector2(player.position.X + (float)player.width * 0.5f + (float)(Main.rand.Next(201) * -(float)player.direction) + ((float)Main.mouseX + Main.screenPosition.X - player.position.X), player.MountedCenter.Y - 600f);
                 vector2.X = (vector2.X + player.Center.X) / 2f + (float)Main.rand.Next(-200, 201);
-                vector2.Y -= (float)(100 * num108);
-                num78 = (float)Main.mouseX + Main.screenPosition.X - vector2.X;
+                vector2.Y -= (float)(100 * num113);
+                num78 = (float)Main.mouseX + Main.screenPosition.X - vector2.X + (float)Main.rand.Next(-40, 41) * 0.03f;
                 num79 = (float)Main.mouseY + Main.screenPosition.Y - vector2.Y;
                 if (num79 < 0f)
                 {
@@ -104,9 +103,9 @@ Inflicts Daybroken");
                 num80 = num72 / num80;
                 num78 *= num80;
                 num79 *= num80;
-                float speedX4 = num78 + (float)Main.rand.Next(-1000, 1001) * 0.02f;
-                float speedY5 = num79 + (float)Main.rand.Next(-1000, 1001) * 0.02f;
-                int projectile = Projectile.NewProjectile(vector2.X, vector2.Y, speedX4, speedY5, mod.ProjectileType("FireProj"), damage, knockBack, i, 0f, (float)Main.rand.Next(10));
+                float num114 = num78;
+                float num115 = num79 + (float)Main.rand.Next(-40, 41) * 0.02f;
+                Projectile.NewProjectile(vector2.X, vector2.Y, num114 * 0.75f, num115 * 0.75f, type, damage, knockBack, player.whoAmI, 0f, 0.5f + (float)Main.rand.NextDouble() * 0.3f);
             }
             return false;
         }

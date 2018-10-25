@@ -28,8 +28,8 @@ namespace AAMod.Items.Melee
             item.glowMask = customGlowMask;
 			item.damage = 140;
 			item.melee = true;
-			item.width = 94;
-			item.height = 94;
+			item.width = 84;
+			item.height = 84;
 			item.useTime = 23;
 			item.useAnimation = 23;
 			item.useStyle = 1;

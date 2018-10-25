@@ -13,7 +13,7 @@ namespace AAMod.Items.Accessories
     public class SpaceStone : ModItem
     {
         public static short customGlowMask = 0;
-        public int rodCD;
+        public int StoneCD;
 
         public override void SetStaticDefaults()
         {
@@ -62,7 +62,7 @@ You are immune to the Chaos State Debuff
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            if (player.controlHook && rodCD == 0 && Main.myPlayer == player.whoAmI)
+            if (player.controlHook && StoneCD == 0 && Main.myPlayer == player.whoAmI)
             {
                 Vector2 vector32;
                 vector32.X = Main.mouseX + Main.screenPosition.X;
@@ -84,13 +84,13 @@ You are immune to the Chaos State Debuff
                         player.Teleport(vector32, 1, 0);
                         NetMessage.SendData(65, -1, -1, null, 0, player.whoAmI, vector32.X, vector32.Y, 1, 0, 0);
                         
-                        rodCD = 30;
+                        StoneCD = 30;
                     }
                 }
             }
-            if (rodCD != 0)
+            if (StoneCD != 0)
             {
-                rodCD--;
+                StoneCD--;
             }
         }
 

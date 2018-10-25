@@ -681,7 +681,7 @@ namespace AAMod.NPCs.Bosses.Nightcrawler
             }
             if (Main.time == 54000)
             {
-                Main.NewText("Darkness falls, and soon you will too!", Color.DarkBlue.R, Color.DarkBlue.G, Color.DarkBlue.B);
+                //Main.NewText("Darkness falls, and soon you will too!", Color.DarkBlue.R, Color.DarkBlue.G, Color.DarkBlue.B);
             }
             if (!Main.dayTime && NPC.AnyNPCs(mod.NPCType<NightcrawlerHead>()))
             {

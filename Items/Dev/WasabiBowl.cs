@@ -41,7 +41,7 @@ namespace AAMod.Items.Dev
         {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(ItemID.Gel, 1);
-            recipe.AddIngredient(ItemID.CursedFlames, 10);
+            recipe.AddIngredient(ItemID.CursedFlame, 10);
             recipe.AddIngredient(mod.ItemType<SauceContainer>(), 1);
             recipe.AddTile(TileID.MythrilAnvil); // (null, "ModTileID");
             recipe.SetResult(this, 50);
