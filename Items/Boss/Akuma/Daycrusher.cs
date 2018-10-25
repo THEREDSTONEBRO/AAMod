@@ -9,7 +9,8 @@ namespace AAmod.Items.Boss.Akuma
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Daycrusher");
-            Tooltip.SetDefault("'The mutilated carcass of a defeated foe..'");
+            Tooltip.SetDefault(@"Slams into foes with the force of a solar mass
+Inflicts Daybroken");
         }
 
         public override void SetDefaults()
@@ -24,7 +25,7 @@ namespace AAmod.Items.Boss.Akuma
             item.useAnimation = 40;
             item.useTime = 40;
             item.knockBack = 7.5F;
-            item.damage = 16;
+            item.damage = 240;
             item.scale = 2F;
             item.noUseGraphic = true;
             item.shoot = mod.ProjectileType("Daycrusher");

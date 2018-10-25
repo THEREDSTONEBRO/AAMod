@@ -2,7 +2,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AAMod.Items.Usable
+namespace AAMod.Items.BossSummons
 {
 	//imported from my tAPI mod because I'm lazy
 	public class InterestingClaw : ModItem
@@ -11,7 +11,7 @@ namespace AAMod.Items.Usable
 		{
             DisplayName.SetDefault("Interesting Looking Claw");
             Tooltip.SetDefault("It's oddly Clammy"
-                + "\nOnly usable at night");
+                + "\nOnly BossSummons at night");
 		}
 
 		public override void SetDefaults()

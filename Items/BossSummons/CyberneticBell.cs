@@ -4,7 +4,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AAMod.Items.Usable
+namespace AAMod.Items.BossSummons
 {
     //imported from my tAPI mod because I'm lazy
     public class CyberneticBell : ModItem
@@ -19,7 +19,7 @@ namespace AAMod.Items.Usable
                 {
                     glowMasks[i] = Main.glowMaskTexture[i];
                 }
-                glowMasks[glowMasks.Length - 1] = mod.GetTexture("Items/Usable/" + GetType().Name + "_Glow");
+                glowMasks[glowMasks.Length - 1] = mod.GetTexture("Items/BossSummons/" + GetType().Name + "_Glow");
                 customGlowMask = (short)(glowMasks.Length - 1);
                 Main.glowMaskTexture = glowMasks;
             }
@@ -53,7 +53,7 @@ Can only be used at night");
         public override bool UseItem(Player player)
         {
             NPC.SpawnOnPlayer(player.whoAmI, mod.NPCType("Raider"));
-            Main.PlaySound(SoundID.Roar, player.position, 0);
+            Main.PlaySound(new LegacySoundStyle(2, 35, Terraria.Audio.SoundType.Sound));
             return true;
         }
 
