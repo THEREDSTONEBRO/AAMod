@@ -250,7 +250,7 @@ namespace AAMod
                         Main.rainTime++;
                     }
                 }
-                /*if (Main.dayTime)
+                if (Main.dayTime)
                 {
                     if (!FogRemover)
                     {
@@ -266,7 +266,7 @@ namespace AAMod
                             Projectile.NewProjectile(player.Center, new Vector2(0, 0), mod.ProjectileType<Fogless>(), 0, 0, Main.myPlayer);
                         }
                     }
-                }*/
+                }
             }
         }
 

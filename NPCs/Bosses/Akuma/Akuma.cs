@@ -12,7 +12,7 @@ namespace AAMod.NPCs.Bosses.Akuma
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Nightcrawler");
+            DisplayName.SetDefault("Akuma");
         }
 
         public override void SetDefaults()
