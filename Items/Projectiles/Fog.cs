@@ -14,8 +14,8 @@ namespace AAMod.Items.Projectiles
             projectile.hide = false;
             projectile.timeLeft = 600;
             projectile.alpha = 0;
-            projectile.width = 2048;
-            projectile.height = 2048;
+            projectile.width = Main.screenWidth;
+            projectile.height = Main.screenHeight;
             projectile.penetrate = -1;
             projectile.tileCollide = false;
             projectile.ignoreWater = true;
