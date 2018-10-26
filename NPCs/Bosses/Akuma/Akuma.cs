@@ -2,6 +2,7 @@
 using Terraria;
 using Terraria.ModLoader;
 using Terraria.ID;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace AAMod.NPCs.Bosses.Akuma
 {
@@ -31,8 +32,8 @@ namespace AAMod.NPCs.Bosses.Akuma
             npc.noTileCollide = true;
             npc.behindTiles = false;
             npc.DeathSound = null;
-            //music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/Equinox");
-            //musicPriority = MusicPriority.BossHigh;
+            music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/Akuma");
+            musicPriority = MusicPriority.BossHigh;
             //bossBag = mod.ItemType("NCBag");
         }
 
@@ -42,7 +43,7 @@ namespace AAMod.NPCs.Bosses.Akuma
             npc.defense = 140;
         }
 
-        /*public override void PostDraw(SpriteBatch spriteBatch, Color drawColor)
+        public override void PostDraw(SpriteBatch spriteBatch, Color drawColor)
         {
             {
                 SpriteEffects spriteEffects = SpriteEffects.None;
@@ -50,11 +51,11 @@ namespace AAMod.NPCs.Bosses.Akuma
                 {
                     spriteEffects = SpriteEffects.FlipHorizontally;
                 }
-                spriteBatch.Draw(mod.GetTexture("NPCs/Bosses/Nightcrawler/Nightcrawler_Glow"), new Vector2(npc.Center.X - Main.screenPosition.X, npc.Center.Y - Main.screenPosition.Y),
+                spriteBatch.Draw(mod.GetTexture("NPCs/Bosses/Akuma/AkumaHead_Glow"), new Vector2(npc.Center.X - Main.screenPosition.X, npc.Center.Y - Main.screenPosition.Y),
                 npc.frame, Color.White, npc.rotation,
                 new Vector2(npc.width * 0.5f, npc.height * 0.5f), 1f, spriteEffects, 0f);
             }
-        }*/
+        }
 
         public override void Init()
         {
@@ -90,20 +91,6 @@ namespace AAMod.NPCs.Bosses.Akuma
             npc.DeathSound = null;
         }
 
-        /*public override void PostDraw(SpriteBatch spriteBatch, Color drawColor)
-        {
-            {
-                SpriteEffects spriteEffects = SpriteEffects.None;
-                if (npc.spriteDirection == 1)
-                {
-                    spriteEffects = SpriteEffects.FlipHorizontally;
-                }
-                spriteBatch.Draw(mod.GetTexture("NPCs/Bosses/Nightcrawler/NightcrawlerBody_Glow"), new Vector2(npc.Center.X - Main.screenPosition.X, npc.Center.Y - Main.screenPosition.Y),
-                npc.frame, Color.White, npc.rotation,
-                new Vector2(npc.width * 0.5f, npc.height * 0.5f), 1f, spriteEffects, 0f);
-            }
-        }*/
-
         public override bool? DrawHealthBar(byte hbPosition, ref float scale, ref Vector2 position)
         {
             scale = 0f;
@@ -127,19 +114,6 @@ namespace AAMod.NPCs.Bosses.Akuma
             npc.height = 112;
             npc.DeathSound = null;
         }
-        /*public override void PostDraw(SpriteBatch spriteBatch, Color drawColor)
-        {
-            {
-                SpriteEffects spriteEffects = SpriteEffects.None;
-                if (npc.spriteDirection == 1)
-                {
-                    spriteEffects = SpriteEffects.FlipHorizontally;
-                }
-                spriteBatch.Draw(mod.GetTexture("NPCs/Bosses/Nightcrawler/NightcrawlerBody_Glow"), new Vector2(npc.Center.X - Main.screenPosition.X, npc.Center.Y - Main.screenPosition.Y),
-                npc.frame, Color.White, npc.rotation,
-                new Vector2(npc.width * 0.5f, npc.height * 0.5f), 1f, spriteEffects, 0f);
-            }
-        }*/
 
         public override bool? DrawHealthBar(byte hbPosition, ref float scale, ref Vector2 position)
         {
@@ -690,9 +664,9 @@ namespace AAMod.NPCs.Bosses.Akuma
                 {
                     if (Main.rand.Next(7) == 0)
                     {
-                        Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("NightcrawlerMask"));
+                        Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("AkumaMask"));
                     }
-                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("DarkmatterOre"), Main.rand.Next(30, 75));
+                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("CrucibleScales"), Main.rand.Next(30, 75));
                 }
             }
             else
