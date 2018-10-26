@@ -46,6 +46,25 @@ Only Usable during the day");
 
         public override bool UseItem(Player player)
         {
+
+            if (!AAWorld.downedAkuma && !Main.expertMode)
+            {
+                Main.NewText("Heh, I hope you’re ready to feel the fury of the blazing sun kid.", Color.RedOrange.R, Color.RedOrange.G, Color.RedOrange.B);
+            }
+
+            if (!AAWorld.downedAkumaA && Main.expertMode)
+            {
+                Main.NewText("Heh, I hope you’re ready to feel the fury of the blazing sun kid.", Color.RedOrange.R, Color.RedOrange.G, Color.RedOrange.B);
+            }
+            if (!Main.expertMode && AAWorld.downedAkuma)
+            {
+                Main.NewText("Back for more, kid? Don’t you have better things to do? You already beat me once.  Alright, but I won’t go easy on you.", Color.RedOrange.R, Color.RedOrange.G, Color.RedOrange.B);
+            }
+            if (Main.expertMode && AAWorld.downedAkumaA)
+            {
+                Main.NewText("Back for more, kid? Don’t you have better things to do? You already beat me once.  Alright, but I won’t go easy on you.", Color.RedOrange.R, Color.RedOrange.G, Color.RedOrange.B);
+            }
+
             NPC.SpawnOnPlayer(player.whoAmI, mod.NPCType<AkumaHead>());
               Main.PlaySound(SoundID.Roar, player.position, 0);
             return true;
