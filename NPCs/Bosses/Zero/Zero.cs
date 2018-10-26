@@ -23,12 +23,33 @@ namespace AAMod.NPCs.Bosses.Zero
 
         public override void SetDefaults()
         {
+            if (!Main.expertMode && !AAWorld.downedZero)
+            {
+                npc.damage = 80;
+                npc.defense = 70;
+                npc.lifeMax = 200000;
+            }
+            if (!Main.expertMode && AAWorld.downedZero)
+            {
+                npc.damage = 90;
+                npc.defense = 80;
+                npc.lifeMax = 220000;
+            }
+            if (Main.expertMode && !AAWorld.downedZeroA)
+            {
+                npc.damage = 80;
+                npc.defense = 70;
+                npc.lifeMax = 200000;
+            }
+            if (Main.expertMode && AAWorld.downedZeroA)
+            {
+                npc.damage = 100;
+                npc.defense = 90;
+                npc.lifeMax = 240000;
+            }
             npc.width = 206;
             npc.height = 208;
             npc.aiStyle = -1;
-            npc.damage = 80;
-            npc.defense = 70;
-            npc.lifeMax = 200000;
             npc.HitSound = SoundID.NPCHit4;
             npc.DeathSound = SoundID.NPCHit4;
             npc.noGravity = true;

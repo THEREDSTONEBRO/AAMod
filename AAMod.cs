@@ -272,13 +272,6 @@ namespace AAMod
                 }
 
             }
-            /*if (NPC.AnyNPCs(NPCType<ZeroAwakened>())
-            {
-                if ()
-                { 
-                    music = GetSoundSlot(SoundType.Music, "Sounds/Music/Zero2");
-                }
-            }*/
             AAPlayer Ancients = player.GetModPlayer<AAPlayer>();
             if (Ancients.ZoneInferno)
             {

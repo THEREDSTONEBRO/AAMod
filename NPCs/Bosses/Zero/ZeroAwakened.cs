@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using AAMod;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -16,6 +16,8 @@ namespace AAMod.NPCs.Bosses.Zero
     {
         public int timer;
         public static int type;
+        private bool Panic = false;
+
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Zero Awakened");
@@ -26,9 +28,18 @@ namespace AAMod.NPCs.Bosses.Zero
         public override void SetDefaults()
         {
             npc.aiStyle = 0;  //5 is the flying AI
-            npc.lifeMax = 120000;   //boss life
-            npc.damage = 70;  //boss damage
-            npc.defense = 70;    //boss defense
+            if (!AAWorld.downedZeroA)
+            {
+                npc.lifeMax = 120000;   //boss life
+                npc.damage = 70;  //boss damage
+                npc.defense = 70;    //boss defense
+            }
+            if (AAWorld.downedZeroA)
+            {
+                npc.lifeMax = 150000;   //boss life
+                npc.damage = 100;  //boss damage
+                npc.defense = 100;    //boss defense
+            }
             npc.knockBackResist = 0f;
             npc.width = 178;
             npc.height = 174;
@@ -43,8 +54,6 @@ namespace AAMod.NPCs.Bosses.Zero
             npc.HitSound = mod.GetLegacySoundSlot(Terraria.ModLoader.SoundType.Custom, "Sounds/Sounds/Zerohit");
             npc.DeathSound = mod.GetLegacySoundSlot(Terraria.ModLoader.SoundType.Custom, "Sounds/Sounds/ZeroDeath");
             music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/Zero2");
-            npc.buffImmune[BuffID.Poisoned] = true;
-            npc.buffImmune[BuffID.Ichor] = true;
             npc.netAlways = true;
             bossBag = mod.ItemType("ZeroBag");
             for (int k = 0; k < npc.buffImmune.Length; k++)
@@ -53,7 +62,13 @@ namespace AAMod.NPCs.Bosses.Zero
             }
         }
 
-        
+        public void UpdateMusic(ref int music, ref MusicPriority priority)
+        {
+            if (npc.life <= npc.lifeMax / 5)
+            {
+                music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/RayOfHope");
+            }
+        }
 
         public override void NPCLoot()
         {
@@ -89,6 +104,16 @@ namespace AAMod.NPCs.Bosses.Zero
 
         public override void HitEffect(int hitDirection, double damage)
         {
+            if (npc.life <= npc.lifeMax / 5 && Panic == false && !AAWorld.downedZeroA == false && Main.expertMode)
+            {
+                Panic = true;
+                Main.NewText("WARNING. DRASTIC DAMAGE DETECTED, FAILURE IMMINENT. ENGAGE T0TAL 0FFENCE PR0T0C0L.", Color.Red.R, Color.Red.G, Color.Red.B);
+            }
+            if (npc.life <= npc.lifeMax / 5 && Panic == false && AAWorld.downedZeroA == false && Main.expertMode)
+            {
+                Panic = true;
+                Main.NewText("WARNING. DRASTIC DAMAGE DETECTED, FAILURE IMMINENT AGAIN. ENGAGE T0TAL 0FFENCE PR0T0C0L VΩ.", Color.Red.R, Color.Red.G, Color.Red.B);
+            }
             if (damage > 30)
             {
                 if (Main.rand.Next(0,10) == 0)
@@ -103,10 +128,18 @@ namespace AAMod.NPCs.Bosses.Zero
             if (npc.life <= 0 && Main.expertMode && !AAWorld.downedZeroA && npc.type == mod.NPCType<ZeroAwakened>())
             {
                 Main.NewText("MISSI0N FAILED. SENDING DISTRESS SIGNAL TO HOME BASE", Color.Red.R, Color.Red.G, Color.Red.B);
+
+                Panic = false;
+            }
+            if (npc.life <= 0 && Main.expertMode && AAWorld.downedZeroA && npc.type == mod.NPCType<ZeroAwakened>())
+            {
+                Main.NewText("TERRARIAN, Y0UR W0RLD IS ALREADY D00MED. THE INFINITY SLAYER IS ON IT’S WAY. CHANCE OF SUCCESS IN DEFEATING IT IS .00000000000001%.", Color.Red.R, Color.Red.G, Color.Red.B);
+                Panic = false;
             }
             if (npc.life <= 0 && !Main.expertMode && npc.type == mod.NPCType<ZeroAwakened>())
             {
                 Main.NewText("CHEATER ALERT CHEATER ALERT. N0 DR0PS 4 U.", Color.Red.R, Color.Red.G, Color.Red.B);
+                Panic = false;
             }
         }
 
@@ -224,7 +257,8 @@ namespace AAMod.NPCs.Bosses.Zero
             }
             if (dead2)
             {
-                Main.NewText("TARGET NEUTRALIZED. RETREATING.", Color.Red.R, Color.Red.G, Color.Red.B);
+                Main.NewText("TARGET NEUTRALIZED. RETURNING T0 0RBIT.", Color.Red.R, Color.Red.G, Color.Red.B);
+                Panic = false;
                 npc.velocity.Y = npc.velocity.Y - 0.04f;
                 if (npc.timeLeft > 10)
                 {
