@@ -650,30 +650,28 @@ namespace AAMod.NPCs.Bosses.Akuma
         {
             int bossAlive = mod.NPCType("AkumaHead");
             AAWorld.downedAkuma = true;
-            /*if (NPC.CountNPCS(bossAlive) < 1)
+            if (NPC.CountNPCS(bossAlive) < 1)
             {
-                if (Main.rand.Next(10) == 0)
-                {
-                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("AkumaTrophy"));
-                }
                 if (Main.expertMode)
                 {
-                    npc.DropBossBags();
+                    npc.DropLoot(mod.ItemType("ApocalyptitePlate"), 2, 4);
                 }
                 else
                 {
-                    if (Main.rand.Next(7) == 0)
-                    {
-                        Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("AkumaMask"));
-                    }
-                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("CrucibleScales"), Main.rand.Next(30, 75));
+                    npc.DropLoot(mod.ItemType("DaybreakIncinerite"), 20, 30);
+                    npc.DropLoot(mod.ItemType("CrucibleScale"), 25, 35);
+                    string[] lootTable = { "ReignOfFire", "DaybreakArrow", "Daycrusher", "VoidStar", "RealityCannon", "TeslaHand", "ZeroStar", "Neutralizer" };
+                    int loot = Main.rand.Next(lootTable.Length);
+                    npc.DropLoot(mod.ItemType(lootTable[loot]));
+                    //npc.DropLoot(Items.Vanity.Mask.AkumaMask.type, 1f / 7);
+                    npc.DropLoot(Items.Boss.Akuma.AkumaTrophy.type, 1f / 10);
                 }
             }
             else
             {
                 npc.value = 0f;
                 npc.boss = false;
-            }*/
+            }
         }
 
         public override bool? DrawHealthBar(byte hbPosition, ref float scale, ref Vector2 position)

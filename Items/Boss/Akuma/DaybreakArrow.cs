@@ -10,7 +10,8 @@ namespace AAMod.Items.Boss.Akuma
 		{
             DisplayName.SetDefault("Daybreak Arrow");
 			Tooltip.SetDefault(@"Scorches its target with the heat of the scorching sun
-Inflicts Daybroken");
+Inflicts Daybroken
+Non-consumable");
 		}
 
 		public override void SetDefaults()
@@ -19,13 +20,12 @@ Inflicts Daybroken");
 			item.ranged = true;
 			item.width = 14;
 			item.height = 40;
-			item.maxStack = 999;
-			item.consumable = true;             //You need to set the item consumable so that the ammo would automatically consumed
+			item.consumable = false;             //You need to set the item consumable so that the ammo would automatically consumed
 			item.knockBack = 7f;
 			item.value = 100;
 			item.rare = 6;
 			item.shoot = mod.ProjectileType("DaybreakArrow");   //The projectile shoot when your weapon using this ammo
-			item.shootSpeed = 1.5f;                  //The speed of the projectile
+			item.shootSpeed = 3f;                  //The speed of the projectile
 			item.ammo = AmmoID.Arrow;              //The ammo class this ammo belongs to.
 		}
         public override void AddRecipes()

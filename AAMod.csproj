@@ -292,6 +292,7 @@
     <Compile Include="Items\Boss\Akuma\DaybreakArrow.cs" />
     <Compile Include="Items\Boss\Akuma\Daycrusher.cs" />
     <Compile Include="Items\Boss\Akuma\ReignOfFire.cs" />
+    <Compile Include="Items\Boss\Akuma\AkumaTrophy.cs" />
     <Compile Include="Items\Boss\Broodmother\BroodBag.cs" />
     <Compile Include="Items\Boss\Broodmother\BroodmotherTrophy.cs" />
     <Compile Include="Items\Boss\Broodmother\BroodScale.cs" />
@@ -491,6 +492,7 @@
     <Compile Include="Items\Projectiles\AmphibiousProjectileEX.cs" />
     <Compile Include="Items\Projectiles\AmphibiousProjectileEXS.cs" />
     <Compile Include="Items\Projectiles\AmphibiousProjectileS.cs" />
+    <Compile Include="Items\Projectiles\Akuma\Dawnstrike.cs" />
     <Compile Include="Items\Projectiles\Fogless.cs" />
     <Compile Include="Items\Projectiles\LuminiteMeteor.cs" />
     <Compile Include="Items\Projectiles\Antimatter.cs" />
@@ -659,6 +661,7 @@
     <Compile Include="Items\Walls\DoomstoneBrickWall.cs" />
     <Compile Include="NPCs\AAModGlobalNPC.cs" />
     <Compile Include="NPCs\Bosses\Akumata\Akumata.cs" />
+    <Compile Include="NPCs\Bosses\Akuma\Akuma.cs" />
     <Compile Include="NPCs\Bosses\Broodmother\BroodEgg.cs" />
     <Compile Include="NPCs\Bosses\Broodmother\Broodmini.cs" />
     <Compile Include="NPCs\Bosses\Broodmother\Broodmother.cs" />
@@ -795,6 +798,7 @@
     <Compile Include="Tiles\SunAltar.cs" />
     <Compile Include="Tiles\TerraCore.CS" />
     <Compile Include="Tiles\Torchstone.cs" />
+    <Compile Include="Tiles\Trophy\AkumaTrophy.cs" />
     <Compile Include="Tiles\Trophy\BroodTrophy.cs" />
     <Compile Include="Tiles\Trophy\GripBlueTrophy.cs" />
     <Compile Include="Tiles\Trophy\GripRedTrophy.cs" />
@@ -1355,6 +1359,8 @@
     <Content Include="Items\BossSummons\ZeroTesseract_Glow.png" />
     <Content Include="Items\Boss\Akumata\ChaosSoul.png" />
     <Content Include="Items\Boss\Akumata\ChaosSoul_Glow.png" />
+    <Content Include="Items\Boss\Akuma\AkumaTrophy.png" />
+    <Content Include="Items\Boss\Akuma\AkumaTrophy_Glow.png" />
     <Content Include="Items\Boss\Akuma\CrucibleScale.png" />
     <Content Include="Items\Boss\Akuma\Dawnstrike.png" />
     <Content Include="Items\Boss\Akuma\Dawnstrike_Glow.png" />
@@ -1460,6 +1466,7 @@
     <Content Include="Items\Boss\Zero\ZeroStar.png" />
     <Content Include="Items\Boss\Zero\ZeroStar_Glow.png" />
     <Content Include="Items\Boss\Zero\ZeroTrophy.png" />
+    <Content Include="Items\Boss\Zero\ZeroTrophy_Glow.png" />
     <Content Include="Items\Boss\Zero\ZeroWings.png" />
     <Content Include="Items\Boss\Zero\ZeroWings_Wings.png" />
     <Content Include="Items\Boss\Zero\ZeroWings_Wings_Glow.png" />
@@ -2052,6 +2059,7 @@
     <Content Include="NPCs\Bosses\Akumata\AkumataTail.Png" />
     <Content Include="NPCs\Bosses\Akumata\AkumataWingBack.png" />
     <Content Include="NPCs\Bosses\Akuma\AFireProjHostile.png" />
+    <Content Include="NPCs\Bosses\Akuma\Akuma.png" />
     <Content Include="NPCs\Bosses\Akuma\AkumaAArms.png" />
     <Content Include="NPCs\Bosses\Akuma\AkumaABody.png" />
     <Content Include="NPCs\Bosses\Akuma\AkumaAHead.png" />
@@ -2394,6 +2402,8 @@
     <Content Include="Tiles\SunAltar_Glow.png" />
     <Content Include="Tiles\TerraCore.png" />
     <Content Include="Tiles\TerraCore_Glow.png" />
+    <Content Include="Tiles\Trophy\AkumaTrophy.png" />
+    <Content Include="Tiles\Trophy\AkumaTrophy_Glow.png" />
     <Content Include="Tiles\Trophy\BroodTrophy.png" />
     <Content Include="Tiles\Trophy\BroodTrophy_Glow.png" />
     <Content Include="Tiles\Trophy\GripBlueTrophy.png" />
