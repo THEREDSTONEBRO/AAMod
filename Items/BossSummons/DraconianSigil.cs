@@ -1,32 +1,18 @@
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using AAMod.NPCs.Bosses.Daybringer;
-using AAMod.NPCs.Bosses.Nightcrawler;
+using AAMod.NPCs.Bosses.Akuma;
 
 namespace AAMod.Items.BossSummons
 {
-    //imported from my tAPI mod because I'm lazy
-    public class EquinoxWorm : ModItem
+    public class DraconianSigil : ModItem
     {
-        public static short customGlowMask = 0;
         public override void SetStaticDefaults()
         {
-            if (Main.netMode != 2)
-            {
-                Microsoft.Xna.Framework.Graphics.Texture2D[] glowMasks = new Microsoft.Xna.Framework.Graphics.Texture2D[Main.glowMaskTexture.Length + 1];
-                for (int i = 0; i < Main.glowMaskTexture.Length; i++)
-                {
-                    glowMasks[i] = Main.glowMaskTexture[i];
-                }
-                glowMasks[glowMasks.Length - 1] = mod.GetTexture("Items/BossSummons/" + GetType().Name + "_Glow");
-                customGlowMask = (short)(glowMasks.Length - 1);
-                Main.glowMaskTexture = glowMasks;
-            }
-            item.glowMask = customGlowMask;
-            DisplayName.SetDefault("Equinox Worm");
-            Tooltip.SetDefault(@"Brings forth the serpents of the celestial heavans
-Not Consumable");
+            DisplayName.SetDefault("Draconian Sun Sigil");
+            Tooltip.SetDefault(@"An ornate tablet said to contain the radiant power of a thousand suns
+Summons Akuma
+Only Usable during the day");
         }
 
         public override void SetDefaults()
@@ -43,24 +29,22 @@ Not Consumable");
         // We use the CanUseItem hook to prevent a player from using this item while the boss is present in the world.
         public override bool CanUseItem(Player player)
         {
-            return !NPC.AnyNPCs(mod.NPCType<NightcrawlerHead>()) && !NPC.AnyNPCs(mod.NPCType<DaybringerHead>());
+            return !NPC.AnyNPCs(mod.NPCType<AlumaHead>()) /*&& !NPC.AnyNPCs(mod.NPCType<AkumaAHead>())*/;
         }
 
         public override bool UseItem(Player player)
         {
-            NPC.SpawnOnPlayer(player.whoAmI, mod.NPCType<NightcrawlerHead>());
-            NPC.SpawnOnPlayer(player.whoAmI, mod.NPCType<DaybringerHead>());
-            Main.PlaySound(SoundID.Roar, player.position, 0);
+            NPC.SpawnOnPlayer(player.whoAmI, mod.NPCType<AkumaHead>());
+              Main.PlaySound(SoundID.Roar, player.position, 0);
             return true;
         }
 
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.MechanicalWorm, 2);
-            recipe.AddIngredient(ItemID.FragmentSolar, 5);
-            recipe.AddIngredient(ItemID.FragmentStardust, 5);
-            recipe.AddTile(TileID.LunarCraftingStation);
+            recipe.AddIngredient(null, “Daybreak Incinerite”, 10);
+            recipe.AddIngredient(null, “RadiumBar”, 5);
+            recipe.AddTile(null, “QuantumFusionAccelerator”);
             recipe.SetResult(this, 1);
             recipe.AddRecipe();
         }
