@@ -10,7 +10,7 @@ namespace AAMod.NPCs.Enemies.Other
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Cyber Claw");
-            Main.npcFrameCount[npc.type] = 2;
+            Main.npcFrameCount[npc.type] = 5;
         }
         public override void SetDefaults()
         {

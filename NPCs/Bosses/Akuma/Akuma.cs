@@ -18,9 +18,38 @@ namespace AAMod.NPCs.Bosses.Akuma
 
         public override void SetDefaults()
         {
-            npc.lifeMax = 280000;
-            npc.damage = 100;
-            npc.defense = 120;
+            if (!Main.expertMode && !AAWorld.downedZero)
+            {
+                npc.damage = 80;
+                npc.defense = 100;
+                npc.lifeMax = 200000;
+            }
+            if (!Main.expertMode && AAWorld.downedZero)
+            {
+                npc.damage = 90;
+                npc.defense = 120;
+                npc.lifeMax = 220000;
+            }
+            if (Main.expertMode && !AAWorld.downedZeroA)
+            {
+                npc.damage = 80;
+                npc.defense = 100;
+                npc.lifeMax = 200000;
+            }
+            if (Main.expertMode && AAWorld.downedZeroA)
+            {
+                npc.damage = 100;
+                npc.defense = 130;
+                npc.lifeMax = 240000;
+            }
+            if (Main.expertMode)
+            {
+                npc.value = 0;
+            }
+            if (!Main.expertMode)
+            {
+                npc.value = 120000f;
+            }
             npc.knockBackResist = 0f;
             npc.width = 66;
             npc.height = 62;
@@ -69,14 +98,25 @@ namespace AAMod.NPCs.Bosses.Akuma
             return null;
         }
 
-        /*public override void HitEffect(int hitDirection, double damage)
+        public override void HitEffect(int hitDirection, double damage)
         {
-            if (npc.life <= 0 && npc.type == mod.NPCType<DaybringerHead>())
+            int dust1 = mod.DustType<Dusts.AkumaDust>();
+            int dust2 = mod.DustType<Dusts.AkumaDust>();
+            if (npc.life <= 0)
             {
-                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/NCGore1"), 1f);
-                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/NCGore2"), 1f);
+                Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, dust1, 0f, 0f, 0, default(Color), 1f);
+                Main.dust[dust1].velocity *= 0.5f;
+                Main.dust[dust1].scale *= 1.3f;
+                Main.dust[dust1].fadeIn = 1f;
+                Main.dust[dust1].noGravity = false;
+                Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, dust2, 0f, 0f, 0, default(Color), 1f);
+                Main.dust[dust2].velocity *= 0.5f;
+                Main.dust[dust2].scale *= 1.3f;
+                Main.dust[dust2].fadeIn = 1f;
+                Main.dust[dust2].noGravity = true;
+
             }
-        }*/
+        }
     }
 
     class AkumaArm : AkumaHead
@@ -101,6 +141,26 @@ namespace AAMod.NPCs.Bosses.Akuma
         {
             base.Init();
             arm = true;
+        }
+
+        public override void HitEffect(int hitDirection, double damage)
+        {
+            int dust1 = mod.DustType<Dusts.AkumaDust>();
+            int dust2 = mod.DustType<Dusts.AkumaDust>();
+            if (npc.life <= 0)
+            {
+                Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, dust1, 0f, 0f, 0, default(Color), 1f);
+                Main.dust[dust1].velocity *= 0.5f;
+                Main.dust[dust1].scale *= 1.3f;
+                Main.dust[dust1].fadeIn = 1f;
+                Main.dust[dust1].noGravity = false;
+                Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, dust2, 0f, 0f, 0, default(Color), 1f);
+                Main.dust[dust2].velocity *= 0.5f;
+                Main.dust[dust2].scale *= 1.3f;
+                Main.dust[dust2].fadeIn = 1f;
+                Main.dust[dust2].noGravity = true;
+
+            }
         }
     }
     class AkumaBody : AkumaHead
@@ -127,13 +187,25 @@ namespace AAMod.NPCs.Bosses.Akuma
             body = true;
         }
 
-        /*public override void HitEffect(int hitDirection, double damage)
+        public override void HitEffect(int hitDirection, double damage)
         {
-            if (npc.life <= 0 && npc.type == mod.NPCType<DaybringerHead>())
+            int dust1 = mod.DustType<Dusts.AkumaDust>();
+            int dust2 = mod.DustType<Dusts.AkumaDust>();
+            if (npc.life <= 0)
             {
-                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/NCGore3"), 1f);
+                Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, dust1, 0f, 0f, 0, default(Color), 1f);
+                Main.dust[dust1].velocity *= 0.5f;
+                Main.dust[dust1].scale *= 1.3f;
+                Main.dust[dust1].fadeIn = 1f;
+                Main.dust[dust1].noGravity = false;
+                Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, dust2, 0f, 0f, 0, default(Color), 1f);
+                Main.dust[dust2].velocity *= 0.5f;
+                Main.dust[dust2].scale *= 1.3f;
+                Main.dust[dust2].fadeIn = 1f;
+                Main.dust[dust2].noGravity = true;
+
             }
-        }*/
+        }
     }
 
     class AkumaTail : AkumaHead
@@ -160,13 +232,25 @@ namespace AAMod.NPCs.Bosses.Akuma
             tail = true;
         }
 
-        /*public override void HitEffect(int hitDirection, double damage)
+        public override void HitEffect(int hitDirection, double damage)
         {
-            if (npc.life <= 0 && npc.type == mod.NPCType<DaybringerHead>())
+            int dust1 = mod.DustType<Dusts.AkumaDust>();
+            int dust2 = mod.DustType<Dusts.AkumaDust>();
+            if (npc.life <= 0)
             {
-                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/NCGore4"), 1f);
+                Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, dust1, 0f, 0f, 0, default(Color), 1f);
+                Main.dust[dust1].velocity *= 0.5f;
+                Main.dust[dust1].scale *= 1.3f;
+                Main.dust[dust1].fadeIn = 1f;
+                Main.dust[dust1].noGravity = false;
+                Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, dust2, 0f, 0f, 0, default(Color), 1f);
+                Main.dust[dust2].velocity *= 0.5f;
+                Main.dust[dust2].scale *= 1.3f;
+                Main.dust[dust2].fadeIn = 1f;
+                Main.dust[dust2].noGravity = true;
+
             }
-        }*/
+        }
     }
     // I made this 2nd base class to limit code repetition.
     class Akuma : China
@@ -178,8 +262,23 @@ namespace AAMod.NPCs.Bosses.Akuma
             bodyType = mod.NPCType<AkumaBody>();
             headType = mod.NPCType<AkumaHead>();
             speed = 14f;
-            turnSpeed = 7.25f;
+            turnSpeed = 5.25f;
         }
+
+        public override void HitEffect(int hitDirection, double damage)
+        {
+            if (npc.life <= 0 && !Main.expertMode)
+            {
+                Main.NewText("Hmpf...you’re pretty good kid, but not good enough. Come back once you’ve gotten a bit better.", Color.OrangeRed.R, Color.OrangeRed.G, Color.OrangeRed.B);
+                
+            }
+            if (npc.life <= 0 && Main.expertMode)
+            {
+                Main.NewText("Heh...", Color.OrangeRed.R, Color.OrangeRed.G, Color.OrangeRed.B);
+                
+            }
+        }
+
     }
 
     public abstract class China : ModNPC
@@ -226,7 +325,24 @@ namespace AAMod.NPCs.Bosses.Akuma
             }
             if (Main.player[npc.target].dead && npc.timeLeft > 300)
             {
-                npc.timeLeft = 300;
+                if (Main.player[npc.target].dead || !Main.dayTime)
+                {
+                    npc.velocity.Y = npc.velocity.Y + 1f;
+                    if ((double)npc.position.Y > Main.worldSurface * 16.0)
+                    {
+                        npc.velocity.Y = npc.velocity.Y + 1f;
+                    }
+                    if ((double)npc.position.Y > Main.rockLayer * 16.0)
+                    {
+                        for (int num957 = 0; num957 < 200; num957++)
+                        {
+                            if (Main.npc[num957].aiStyle == npc.aiStyle)
+                            {
+                                Main.npc[num957].active = false;
+                            }
+                        }
+                    }
+                }
             }
             if (Main.netMode != 1)
             {
@@ -654,13 +770,13 @@ namespace AAMod.NPCs.Bosses.Akuma
             {
                 if (Main.expertMode)
                 {
-                    npc.DropLoot(mod.ItemType("ApocalyptitePlate"), 2, 4);
+                    Projectile.NewProjectile((new Vector2(npc.position.X, npc.position.Y)), (new Vector2(0f, 0f)), mod.ProjectileType("AkumaTransition"), 0, 0);
                 }
                 else
                 {
                     npc.DropLoot(mod.ItemType("DaybreakIncinerite"), 20, 30);
                     npc.DropLoot(mod.ItemType("CrucibleScale"), 25, 35);
-                    string[] lootTable = { "ReignOfFire", "DaybreakArrow", "Daycrusher", "VoidStar", "RealityCannon", "TeslaHand", "ZeroStar", "Neutralizer" };
+                    string[] lootTable = { "ReignOfFire", "DaybreakArrow", "Daycrusher", "Dawnstrike"};
                     int loot = Main.rand.Next(lootTable.Length);
                     npc.DropLoot(mod.ItemType(lootTable[loot]));
                     //npc.DropLoot(Items.Vanity.Mask.AkumaMask.type, 1f / 7);

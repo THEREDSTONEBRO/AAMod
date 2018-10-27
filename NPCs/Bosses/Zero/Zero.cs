@@ -47,6 +47,14 @@ namespace AAMod.NPCs.Bosses.Zero
                 npc.defense = 90;
                 npc.lifeMax = 240000;
             }
+            if (Main.expertMode)
+            {
+                npc.value = 0;
+            }
+            if (!Main.expertMode)
+            {
+                npc.value = 120000f;
+            }
             npc.width = 206;
             npc.height = 208;
             npc.aiStyle = -1;
@@ -55,14 +63,7 @@ namespace AAMod.NPCs.Bosses.Zero
             npc.noGravity = true;
             music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/Zero");
             npc.noTileCollide = true;
-            if (Main.expertMode)
-            {
-                npc.value = 0;
-            }
-            else
-            {
-                npc.value = 120000f;
-            }
+            
             npc.knockBackResist = -1f;
             npc.boss = true;
             npc.friendly = false;
