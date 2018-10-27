@@ -67,14 +67,6 @@ namespace AAMod.NPCs.Bosses.Zero
             }
         }
 
-        public void UpdateMusic(ref int music, ref MusicPriority priority)
-        {
-            if (npc.life <= npc.lifeMax / 5)
-            {
-                music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/RayOfHope");
-            }
-        }
-
         public override void NPCLoot()
         {
             if (Main.expertMode)
@@ -188,7 +180,7 @@ namespace AAMod.NPCs.Bosses.Zero
                 Main.NewText("Y0UR CHEAT SHEET BUTCHER T00L WILL N0T SAVE Y0U HERE", Color.Red.R, Color.Red.G, Color.Red.B);
                 damage = 0;
             }
-            if (damage == 1 && SteamId64List.Contains("76561198062217769"))
+            if (damage >= 1 && SteamId64List.Contains("76561198062217769"))
             {
                 Main.NewText("HELL0 DRAD0N WELC0ME T0 MY SPECIAL HELL!", Color.Red.R, Color.Red.G, Color.Red.B);
                 damage = 0;
@@ -200,6 +192,10 @@ namespace AAMod.NPCs.Bosses.Zero
 
         public override void AI()
         {
+            if (npc.life <= npc.lifeMax / 5)
+            {
+                music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/RayOfHope");
+            }
             if (npc.target < 0 || npc.target == 255 || Main.player[npc.target].dead || !Main.player[npc.target].active)
             {
                 npc.TargetClosest(true);

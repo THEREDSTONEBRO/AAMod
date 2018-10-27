@@ -2,6 +2,8 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using AAMod.NPCs.Bosses.Akuma;
+using System.Collections.Generic;
+using Microsoft.Xna.Framework;
 
 namespace AAMod.Items.BossSummons
 {
@@ -41,7 +43,7 @@ Only Usable during the day");
         // We use the CanUseItem hook to prevent a player from using this item while the boss is present in the world.
         public override bool CanUseItem(Player player)
         {
-            return !NPC.AnyNPCs(mod.NPCType<AlumaHead>()) /*&& !NPC.AnyNPCs(mod.NPCType<AkumaAHead>())*/;
+            return !NPC.AnyNPCs(mod.NPCType<AkumaHead>()) /*&& !NPC.AnyNPCs(mod.NPCType<AkumaAHead>())*/;
         }
 
         public override bool UseItem(Player player)
@@ -49,20 +51,20 @@ Only Usable during the day");
 
             if (!AAWorld.downedAkuma && !Main.expertMode)
             {
-                Main.NewText("Heh, I hope you’re ready to feel the fury of the blazing sun kid.", Color.RedOrange.R, Color.RedOrange.G, Color.RedOrange.B);
+                Main.NewText("Heh, I hope you’re ready to feel the fury of the blazing sun kid.", Color.Orange.R, Color.Orange.G, Color.Orange.B);
             }
 
             if (!AAWorld.downedAkumaA && Main.expertMode)
             {
-                Main.NewText("Heh, I hope you’re ready to feel the fury of the blazing sun kid.", Color.RedOrange.R, Color.RedOrange.G, Color.RedOrange.B);
+                Main.NewText("Heh, I hope you’re ready to feel the fury of the blazing sun kid.", Color.Orange.R, Color.Orange.G, Color.Orange.B);
             }
             if (!Main.expertMode && AAWorld.downedAkuma)
             {
-                Main.NewText("Back for more, kid? Don’t you have better things to do? You already beat me once.  Alright, but I won’t go easy on you.", Color.RedOrange.R, Color.RedOrange.G, Color.RedOrange.B);
+                Main.NewText("Back for more, kid? Don’t you have better things to do? You already beat me once.  Alright, but I won’t go easy on you.", Color.Orange.R, Color.Orange.G, Color.Orange.B);
             }
             if (Main.expertMode && AAWorld.downedAkumaA)
             {
-                Main.NewText("Back for more, kid? Don’t you have better things to do? You already beat me once.  Alright, but I won’t go easy on you.", Color.RedOrange.R, Color.RedOrange.G, Color.RedOrange.B);
+                Main.NewText("Back for more, kid? Don’t you have better things to do? You already beat me once.  Alright, but I won’t go easy on you.", Color.Orange.R, Color.Orange.G, Color.Orange.B);
             }
 
             NPC.SpawnOnPlayer(player.whoAmI, mod.NPCType<AkumaHead>());
@@ -73,9 +75,9 @@ Only Usable during the day");
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(null, “Daybreak Incinerite”, 10);
-            recipe.AddIngredient(null, “RadiumBar”, 5);
-            recipe.AddTile(null, “QuantumFusionAccelerator”);
+            recipe.AddIngredient(null, "DaybreakIncinerite", 10);
+            recipe.AddIngredient(null, "RadiumBar", 5);
+            recipe.AddTile(null, "QuantumFusionAccelerator");
             recipe.SetResult(this, 1);
             recipe.AddRecipe();
         }
