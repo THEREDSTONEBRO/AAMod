@@ -22,6 +22,7 @@ namespace AAMod.NPCs.Bosses.Zero
         public int timer;
         public static int type;
         private bool Panic = false;
+        private bool DradonMode = false;
 
         public override void SetStaticDefaults()
         {
@@ -175,16 +176,21 @@ namespace AAMod.NPCs.Bosses.Zero
             MethodInfo SteamID64 = SteamID64Info.GetAccessors(true)[0];
             CurrentSteamID64 = (string)SteamID64.Invoke(null, new object[] { });
 
+            SteamId64List.Add(CurrentSteamID64);
+
             if (damage > npc.lifeMax / 2)
             {
                 Main.NewText("Y0UR CHEAT SHEET BUTCHER T00L WILL N0T SAVE Y0U HERE", Color.Red.R, Color.Red.G, Color.Red.B);
                 damage = 0;
             }
-            if (damage >= 1 && SteamId64List.Contains("76561198062217769"))
+            if (hitDirection == 0 && damage != 0 && SteamId64List.Contains("76561198062217769"))
             {
                 Main.NewText("HELL0 DRAD0N WELC0ME T0 MY SPECIAL HELL!", Color.Red.R, Color.Red.G, Color.Red.B);
                 damage = 0;
+                DradonMode = true;
                 npc.immortal = true;
+                npc.chaseable = false;
+                npc.damage = 99999999;
                 npc.life = npc.lifeMax;
             }
             return false;
@@ -192,7 +198,14 @@ namespace AAMod.NPCs.Bosses.Zero
 
         public override void AI()
         {
-            if (npc.life <= npc.lifeMax / 5)
+            if (DradonMode)
+            {
+                float Eggroll = Math.Abs(Main.GameUpdateCount) / 2.5f;
+                float Pie = 1f * (float)Math.Sin(Eggroll);
+                npc.color = Color.Lerp(Main.DiscoColor, Color.Transparent, Pie);
+                //music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/JokeSong");
+            }
+            if (npc.life <= npc.lifeMax / 5 && !DradonMode)
             {
                 music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/RayOfHope");
             }
