@@ -303,10 +303,10 @@ namespace AAMod
 
         public override void ModifyWorldGenTasks(List<GenPass> tasks, ref float totalWeight)
         {
-            int shiniesIndex = tasks.FindIndex(genpass => genpass.Name.Equals("Guide"));
+            int shiniesIndex = tasks.FindIndex(genpass => genpass.Name.Equals("Corruption"));
             if (shiniesIndex == -1)
             {
-                tasks.Insert(shiniesIndex + 1, new PassLegacy("Generating AA Ores", delegate (GenerationProgress progress)
+                tasks.Insert(shiniesIndex + 3, new PassLegacy("Generating AA Ores", delegate (GenerationProgress progress)
                 {
                     for (int k = 0; k < (int)(Main.maxTilesX * Main.maxTilesY * 6E-05); k++)
                     {
@@ -326,7 +326,10 @@ namespace AAMod
                     }
                 }));
             }
-            tasks.Insert(shiniesIndex + 1, new PassLegacy("000000000", VoidIslands));
+            tasks.Insert(shiniesIndex + 4, new PassLegacy("Void Islands", delegate (GenerationProgress progress)
+            {
+                VoidIslands(progress);
+            }));
         }
 
         public void Mush(GenerationProgress progress)
@@ -393,7 +396,6 @@ namespace AAMod
                 position.Y -= 11;
                 VoidHouses(position.X, position.Y, (ushort)mod.TileType("DoomstoneBrick"), 10, 7);
             }
-            ErrorLogger.Log("8");
             progress.Set(0.9f);
             AAWorldGen(progress);
             progress.Set(1f);

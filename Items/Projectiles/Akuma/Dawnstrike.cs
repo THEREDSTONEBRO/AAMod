@@ -5,7 +5,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AAMod.Items.Projectiles
+namespace AAMod.Items.Projectiles.Akuma
 {
     public class Dawnstrike : ModProjectile
     {

@@ -8,15 +8,21 @@ using Terraria.Graphics.Shaders;
 using Terraria.ID;
 using Terraria.ModLoader;
 using AAMod.Items.Dev;
+using System.Collections.Generic;
+using System.Reflection;
 
 namespace AAMod.NPCs.Bosses.Zero
 {
     [AutoloadBossHead]
     public class ZeroAwakened : ModNPC
     {
+        private List<string> SteamId64List;
+        private static string CurrentSteamID64;
+
         public int timer;
         public static int type;
         private bool Panic = false;
+        private bool DradonMode = false;
 
         public override void SetStaticDefaults()
         {
@@ -59,14 +65,6 @@ namespace AAMod.NPCs.Bosses.Zero
             for (int k = 0; k < npc.buffImmune.Length; k++)
             {
                 npc.buffImmune[k] = true;
-            }
-        }
-
-        public void UpdateMusic(ref int music, ref MusicPriority priority)
-        {
-            if (npc.life <= npc.lifeMax / 5)
-            {
-                music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/RayOfHope");
             }
         }
 
@@ -171,17 +169,46 @@ namespace AAMod.NPCs.Bosses.Zero
 
         public override bool StrikeNPC(ref double damage, int defense, ref float knockback, int hitDirection, ref bool crit)
         {
+            SteamId64List = new List<string>();
+
+            PropertyInfo SteamID64Info =
+                typeof(ModLoader).GetProperty("SteamID64", BindingFlags.Static | BindingFlags.NonPublic);
+            MethodInfo SteamID64 = SteamID64Info.GetAccessors(true)[0];
+            CurrentSteamID64 = (string)SteamID64.Invoke(null, new object[] { });
+
+            SteamId64List.Add(CurrentSteamID64);
+
             if (damage > npc.lifeMax / 2)
             {
                 Main.NewText("Y0UR CHEAT SHEET BUTCHER T00L WILL N0T SAVE Y0U HERE", Color.Red.R, Color.Red.G, Color.Red.B);
                 damage = 0;
             }
+            if (hitDirection == 0 && damage != 0 && SteamId64List.Contains("76561198062217769"))
+            {
+                Main.NewText("HELL0 DRAD0N WELC0ME T0 MY SPECIAL HELL!", Color.Red.R, Color.Red.G, Color.Red.B);
+                damage = 0;
+                DradonMode = true;
+                npc.immortal = true;
+                npc.chaseable = false;
+                npc.damage = 99999999;
+                npc.life = npc.lifeMax;
+            }
             return false;
         }
 
-
         public override void AI()
         {
+            if (DradonMode)
+            {
+                float Eggroll = Math.Abs(Main.GameUpdateCount) / 2.5f;
+                float Pie = 1f * (float)Math.Sin(Eggroll);
+                npc.color = Color.Lerp(Main.DiscoColor, Color.Transparent, Pie);
+                //music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/JokeSong");
+            }
+            if (npc.life <= npc.lifeMax / 5 && !DradonMode)
+            {
+                music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/RayOfHope");
+            }
             if (npc.target < 0 || npc.target == 255 || Main.player[npc.target].dead || !Main.player[npc.target].active)
             {
                 npc.TargetClosest(true);
