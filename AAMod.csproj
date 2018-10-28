@@ -294,6 +294,7 @@
     <Compile Include="Items\Boss\Akuma\Daycrusher.cs" />
     <Compile Include="Items\Boss\Akuma\ReignOfFire.cs" />
     <Compile Include="Items\Boss\Akuma\AkumaTrophy.cs" />
+    <Compile Include="Items\Boss\Akuma\Dawnstrike.cs" />
     <Compile Include="Items\Boss\Broodmother\BroodBag.cs" />
     <Compile Include="Items\Boss\Broodmother\BroodmotherTrophy.cs" />
     <Compile Include="Items\Boss\Broodmother\BroodScale.cs" />
@@ -663,6 +664,8 @@
     <Compile Include="NPCs\AAModGlobalNPC.cs" />
     <Compile Include="NPCs\Bosses\Akumata\Akumata.cs" />
     <Compile Include="NPCs\Bosses\Akuma\Akuma.cs" />
+    <Compile Include="NPCs\Bosses\Akuma\AkumaA.cs" />
+    <Compile Include="NPCs\Bosses\Akuma\AkumaTransition.cs" />
     <Compile Include="NPCs\Bosses\Broodmother\BroodEgg.cs" />
     <Compile Include="NPCs\Bosses\Broodmother\Broodmini.cs" />
     <Compile Include="NPCs\Bosses\Broodmother\Broodmother.cs" />
@@ -2071,6 +2074,7 @@
     <Content Include="NPCs\Bosses\Akuma\AFireProjHostile.png" />
     <Content Include="NPCs\Bosses\Akuma\AFireProjHostile_Glow.png" />
     <Content Include="NPCs\Bosses\Akuma\Akuma.png" />
+    <Content Include="NPCs\Bosses\Akuma\AkumaA.png" />
     <Content Include="NPCs\Bosses\Akuma\AkumaAArms.png" />
     <Content Include="NPCs\Bosses\Akuma\AkumaAArms_Glow.png" />
     <Content Include="NPCs\Bosses\Akuma\AkumaABody.png" />
@@ -2084,6 +2088,7 @@
     <Content Include="NPCs\Bosses\Akuma\AkumaHead.png" />
     <Content Include="NPCs\Bosses\Akuma\AkumaHead_Glow.png" />
     <Content Include="NPCs\Bosses\Akuma\AkumaTail.png" />
+    <Content Include="NPCs\Bosses\Akuma\AkumaTransition.png" />
     <Content Include="NPCs\Bosses\Akuma\FireProjHostile.png" />
     <Content Include="NPCs\Bosses\Akuma\FireProjHostile_Glow.png" />
     <Content Include="NPCs\Bosses\Broodmother\BroodEgg.png" />
@@ -2115,6 +2120,7 @@
     <Content Include="NPCs\Bosses\MushroomMonarch\MushroomMonarch0.png" />
     <Content Include="NPCs\Bosses\MushroomMonarch\MushroomMonarchJump.png" />
     <Content Include="NPCs\Bosses\MushroomMonarch\MushroomMonarch_Head_Boss.png" />
+    <Content Include="NPCs\Bosses\Zero\MiniProbe.png" />
     <Content Include="NPCs\Bosses\Zero\SearcherZero.png" />
     <Content Include="NPCs\Bosses\Zero\SearcherZero_Glow.png" />
     <Content Include="NPCs\Enemies\Inferno\InfernoMimic.png" />
@@ -2510,6 +2516,7 @@
     <None Include="Palletes\Abbadon.gpl" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Achievement\" />
     <Folder Include="bin\Release\" />
     <Folder Include="Items\Mounts\" />
     <Folder Include="Items\Projectiles\Yamata\" />
@@ -2517,7 +2524,6 @@
     <Folder Include="NPCs\Bosses\Hydra\" />
     <Folder Include="NPCs\Bosses\Orthrus\" />
     <Folder Include="NPCs\Bosses\SoC\" />
-    <Folder Include="NPCs\Bosses\Zero\Zero2\" />
     <Folder Include="obj\Debug\TempPE\" />
     <Folder Include="obj\NPCs\" />
     <Folder Include="Tiles\Daybreak\" />

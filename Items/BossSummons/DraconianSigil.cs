@@ -53,7 +53,6 @@ Only Usable during the day");
             {
                 Main.NewText("Heh, I hope you’re ready to feel the fury of the blazing sun kid.", Color.Orange.R, Color.Orange.G, Color.Orange.B);
             }
-
             if (!AAWorld.downedAkumaA && Main.expertMode)
             {
                 Main.NewText("Heh, I hope you’re ready to feel the fury of the blazing sun kid.", Color.Orange.R, Color.Orange.G, Color.Orange.B);
@@ -67,12 +66,12 @@ Only Usable during the day");
                 Main.NewText("Back for more, kid? Don’t you have better things to do? You already beat me once.  Alright, but I won’t go easy on you.", Color.Orange.R, Color.Orange.G, Color.Orange.B);
             }
 
-            NPC.SpawnOnPlayer(player.whoAmI, mod.NPCType<AkumaHead>());
-              Main.PlaySound(SoundID.Roar, player.position, 0);
+            NPC.NewNPC((int)player.position.X + Main.rand.Next(-800, 800), (int)player.position.Y + Main.rand.Next(250, 1000), mod.NPCType<AkumaHead>());
+            Main.PlaySound(SoundID.Roar, player.position, 0);
             return true;
         }
 
-        public override void AddRecipes()
+        /*public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(null, "DaybreakIncinerite", 10);
@@ -80,6 +79,6 @@ Only Usable during the day");
             recipe.AddTile(null, "QuantumFusionAccelerator");
             recipe.SetResult(this, 1);
             recipe.AddRecipe();
-        }
+        }*/
     }
 }

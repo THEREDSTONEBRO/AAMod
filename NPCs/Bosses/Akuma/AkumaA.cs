@@ -7,49 +7,21 @@ using Microsoft.Xna.Framework.Graphics;
 namespace AAMod.NPCs.Bosses.Akuma
 {
     //[AutoloadBossHead]
-    class AkumaHead : Akuma
+    class AkumaAHead : AkumaA
     {
-        public override string Texture { get { return "AAMod/NPCs/Bosses/Akuma/AkumaHead"; } }
+        
+        public override string Texture { get { return "AAMod/NPCs/Bosses/Akuma/AkumaAHead"; } }
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Akuma");
+            DisplayName.SetDefault("Akuma Awakened");
         }
 
         public override void SetDefaults()
         {
-            if (!Main.expertMode && !AAWorld.downedZero)
-            {
-                npc.damage = 80;
-                npc.defense = 100;
-                npc.lifeMax = 200000;
-            }
-            if (!Main.expertMode && AAWorld.downedZero)
-            {
-                npc.damage = 90;
-                npc.defense = 120;
-                npc.lifeMax = 220000;
-            }
-            if (Main.expertMode && !AAWorld.downedZeroA)
-            {
-                npc.damage = 80;
-                npc.defense = 100;
-                npc.lifeMax = 200000;
-            }
-            if (Main.expertMode && AAWorld.downedZeroA)
-            {
-                npc.damage = 100;
-                npc.defense = 130;
-                npc.lifeMax = 240000;
-            }
-            if (Main.expertMode)
-            {
-                npc.value = 0;
-            }
-            if (!Main.expertMode)
-            {
-                npc.value = 120000f;
-            }
+            npc.lifeMax = 280000;
+            npc.damage = 100;
+            npc.defense = 120;
             npc.knockBackResist = 0f;
             npc.width = 66;
             npc.height = 62;
@@ -80,7 +52,7 @@ namespace AAMod.NPCs.Bosses.Akuma
                 {
                     spriteEffects = SpriteEffects.FlipHorizontally;
                 }
-                spriteBatch.Draw(mod.GetTexture("NPCs/Bosses/Akuma/AkumaHead_Glow"), new Vector2(npc.Center.X - Main.screenPosition.X, npc.Center.Y - Main.screenPosition.Y),
+                spriteBatch.Draw(mod.GetTexture("NPCs/Bosses/Akuma/AkumaAHead_Glow"), new Vector2(npc.Center.X - Main.screenPosition.X, npc.Center.Y - Main.screenPosition.Y),
                 npc.frame, Color.White, npc.rotation,
                 new Vector2(npc.width * 0.5f, npc.height * 0.5f), 1f, spriteEffects, 0f);
             }
@@ -100,8 +72,8 @@ namespace AAMod.NPCs.Bosses.Akuma
 
         public override void HitEffect(int hitDirection, double damage)
         {
-            int dust1 = mod.DustType<Dusts.AkumaDust>();
-            int dust2 = mod.DustType<Dusts.AkumaDust>();
+            int dust1 = mod.DustType<Dusts.AkumaADust>();
+            int dust2 = mod.DustType<Dusts.AkumaADust>();
             if (npc.life <= 0)
             {
                 Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, dust1, 0f, 0f, 0, default(Color), 1f);
@@ -119,9 +91,9 @@ namespace AAMod.NPCs.Bosses.Akuma
         }
     }
 
-    class AkumaArm : AkumaHead
+    class AkumaAArm : AkumaAHead
     {
-        public override string Texture { get { return "AAMod/NPCs/Bosses/Akuma/AkumaArms"; } }
+        public override string Texture { get { return "AAMod/NPCs/Bosses/Akuma/AkumaAArms"; } }
 
         public override void SetDefaults()
         {
@@ -142,30 +114,10 @@ namespace AAMod.NPCs.Bosses.Akuma
             base.Init();
             arm = true;
         }
-
-        public override void HitEffect(int hitDirection, double damage)
-        {
-            int dust1 = mod.DustType<Dusts.AkumaDust>();
-            int dust2 = mod.DustType<Dusts.AkumaDust>();
-            if (npc.life <= 0)
-            {
-                Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, dust1, 0f, 0f, 0, default(Color), 1f);
-                Main.dust[dust1].velocity *= 0.5f;
-                Main.dust[dust1].scale *= 1.3f;
-                Main.dust[dust1].fadeIn = 1f;
-                Main.dust[dust1].noGravity = false;
-                Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, dust2, 0f, 0f, 0, default(Color), 1f);
-                Main.dust[dust2].velocity *= 0.5f;
-                Main.dust[dust2].scale *= 1.3f;
-                Main.dust[dust2].fadeIn = 1f;
-                Main.dust[dust2].noGravity = true;
-
-            }
-        }
     }
-    class AkumaBody : AkumaHead
+    class AkumaABody : AkumaAHead
     {
-        public override string Texture { get { return "AAMod/NPCs/Bosses/Akuma/AkumaBody"; } }
+        public override string Texture { get { return "AAMod/NPCs/Bosses/Akuma/AkumaABody"; } }
 
         public override void SetDefaults()
         {
@@ -187,30 +139,18 @@ namespace AAMod.NPCs.Bosses.Akuma
             body = true;
         }
 
-        public override void HitEffect(int hitDirection, double damage)
+        /*public override void HitEffect(int hitDirection, double damage)
         {
-            int dust1 = mod.DustType<Dusts.AkumaDust>();
-            int dust2 = mod.DustType<Dusts.AkumaDust>();
-            if (npc.life <= 0)
+            if (npc.life <= 0 && npc.type == mod.NPCType<DaybringerHead>())
             {
-                Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, dust1, 0f, 0f, 0, default(Color), 1f);
-                Main.dust[dust1].velocity *= 0.5f;
-                Main.dust[dust1].scale *= 1.3f;
-                Main.dust[dust1].fadeIn = 1f;
-                Main.dust[dust1].noGravity = false;
-                Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, dust2, 0f, 0f, 0, default(Color), 1f);
-                Main.dust[dust2].velocity *= 0.5f;
-                Main.dust[dust2].scale *= 1.3f;
-                Main.dust[dust2].fadeIn = 1f;
-                Main.dust[dust2].noGravity = true;
-
+                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/NCGore3"), 1f);
             }
-        }
+        }*/
     }
 
-    class AkumaTail : AkumaHead
+    class AkumaATail : AkumaAHead
     {
-        public override string Texture { get { return "AAMod/NPCs/Bosses/Akuma/AkumaTail"; } }
+        public override string Texture { get { return "AAMod/NPCs/Bosses/Akuma/AkumaATail"; } }
 
         public override void SetDefaults()
         {
@@ -232,56 +172,61 @@ namespace AAMod.NPCs.Bosses.Akuma
             tail = true;
         }
 
-        public override void HitEffect(int hitDirection, double damage)
+        /*public override void HitEffect(int hitDirection, double damage)
         {
-            int dust1 = mod.DustType<Dusts.AkumaDust>();
-            int dust2 = mod.DustType<Dusts.AkumaDust>();
-            if (npc.life <= 0)
+            if (npc.life <= 0 && npc.type == mod.NPCType<DaybringerHead>())
             {
-                Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, dust1, 0f, 0f, 0, default(Color), 1f);
-                Main.dust[dust1].velocity *= 0.5f;
-                Main.dust[dust1].scale *= 1.3f;
-                Main.dust[dust1].fadeIn = 1f;
-                Main.dust[dust1].noGravity = false;
-                Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, dust2, 0f, 0f, 0, default(Color), 1f);
-                Main.dust[dust2].velocity *= 0.5f;
-                Main.dust[dust2].scale *= 1.3f;
-                Main.dust[dust2].fadeIn = 1f;
-                Main.dust[dust2].noGravity = true;
-
+                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/NCGore4"), 1f);
             }
-        }
+        }*/
     }
     // I made this 2nd base class to limit code repetition.
-    class Akuma : China
+    class AkumaA : ChinaA
     {
+
+        private bool Panic = false;
         public override void Init()
         {
-            tailType = mod.NPCType<AkumaTail>();
-            armType = mod.NPCType<AkumaArm>();
-            bodyType = mod.NPCType<AkumaBody>();
-            headType = mod.NPCType<AkumaHead>();
+            tailType = mod.NPCType<AkumaATail>();
+            armType = mod.NPCType<AkumaAArm>();
+            bodyType = mod.NPCType<AkumaABody>();
+            headType = mod.NPCType<AkumaAHead>();
             speed = 14f;
-            turnSpeed = 5.25f;
+            turnSpeed = 7.25f;
         }
 
         public override void HitEffect(int hitDirection, double damage)
         {
+            if (npc.life <= npc.lifeMax / 5 && Panic == false && !AAWorld.downedAkumaA == false && Main.expertMode)
+            {
+                Panic = true;
+                Main.NewText("Wha—?! How have you lasted this long?! Grrrrrr…! I refuse to be bested by you! Have at it!", Color.DeepSkyBlue.R, Color.DeepSkyBlue.G, Color.DeepSkyBlue.B);
+            }
+            if (npc.life <= npc.lifeMax / 5 && Panic == false && AAWorld.downedAkumaA == false && Main.expertMode)
+            {
+                Panic = true;
+                Main.NewText("Still got it, do ya? I like that about you, kid..!", Color.DeepSkyBlue.R, Color.DeepSkyBlue.G, Color.DeepSkyBlue.B);
+            }
+            if (npc.life <= 0 && Main.expertMode && !AAWorld.downedAkumaA)
+            {
+                Main.NewText("Gah..! How could this happen?! Even in my full form?! Fine, take your reward. You earned it.", Color.DeepSkyBlue.R, Color.DeepSkyBlue.G, Color.DeepSkyBlue.B);
+
+                Panic = false;
+            }
+            if (npc.life <= 0 && Main.expertMode && AAWorld.downedAkumaA)
+            {
+                Main.NewText("Snuffed out again. You have my respect, kid. Here.", Color.DeepSkyBlue.R, Color.DeepSkyBlue.G, Color.DeepSkyBlue.B);
+                Panic = false;
+            }
             if (npc.life <= 0 && !Main.expertMode)
             {
-                Main.NewText("Hmpf...you’re pretty good kid, but not good enough. Come back once you’ve gotten a bit better.", Color.OrangeRed.R, Color.OrangeRed.G, Color.OrangeRed.B);
-                
-            }
-            if (npc.life <= 0 && Main.expertMode)
-            {
-                Main.NewText("Heh...", Color.OrangeRed.R, Color.OrangeRed.G, Color.OrangeRed.B);
-                
+                Main.NewText("Nice hacks, kid. Now come back and fight me like a real man in expert mode. Then I’ll give you your prize.", Color.DeepSkyBlue.R, Color.DeepSkyBlue.G, Color.DeepSkyBlue.B);
+                Panic = false;
             }
         }
-
     }
 
-    public abstract class China : ModNPC
+    public abstract class ChinaA : ModNPC
     {
         /* ai[0] = follower
 		 * ai[1] = following
@@ -306,6 +251,10 @@ namespace AAMod.NPCs.Bosses.Akuma
 
         public override void AI()
         {
+            if (npc.life <= npc.lifeMax / 5)
+            {
+                music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/RayOfHope");
+            }
             if (npc.localAI[1] == 0f)
             {
                 npc.localAI[1] = 1f;
@@ -323,23 +272,20 @@ namespace AAMod.NPCs.Bosses.Akuma
             {
                 npc.TargetClosest(true);
             }
-            if (Main.player[npc.target].dead && npc.timeLeft > 300)
+            if (Main.player[npc.target].dead || !Main.dayTime)
             {
-                if (Main.player[npc.target].dead || !Main.dayTime)
+                npc.velocity.Y = npc.velocity.Y + 1f;
+                if ((double)npc.position.Y > Main.worldSurface * 16.0)
                 {
                     npc.velocity.Y = npc.velocity.Y + 1f;
-                    if ((double)npc.position.Y > Main.worldSurface * 16.0)
+                }
+                if ((double)npc.position.Y > Main.rockLayer * 16.0)
+                {
+                    for (int num957 = 0; num957 < 200; num957++)
                     {
-                        npc.velocity.Y = npc.velocity.Y + 1f;
-                    }
-                    if ((double)npc.position.Y > Main.rockLayer * 16.0)
-                    {
-                        for (int num957 = 0; num957 < 200; num957++)
+                        if (Main.npc[num957].aiStyle == npc.aiStyle)
                         {
-                            if (Main.npc[num957].aiStyle == npc.aiStyle)
-                            {
-                                Main.npc[num957].active = false;
-                            }
+                            Main.npc[num957].active = false;
                         }
                     }
                 }
@@ -380,7 +326,7 @@ namespace AAMod.NPCs.Bosses.Akuma
                     Main.npc[(int)npc.ai[0]].ai[2] = npc.ai[2] - 1;
                     npc.netUpdate = true;
                 }
-                if (!NPC.AnyNPCs(mod.NPCType<AkumaHead>()) && (body || tail || arm))
+                if (!NPC.AnyNPCs(mod.NPCType<AkumaAHead>()) && (body || tail || arm))
                 {
                     npc.life = 0;
                     npc.HitEffect(0, 10.0);
@@ -764,23 +710,18 @@ namespace AAMod.NPCs.Bosses.Akuma
 
         public override void NPCLoot()
         {
-            int bossAlive = mod.NPCType("AkumaHead");
-            AAWorld.downedAkuma = true;
+            int bossAlive = mod.NPCType("AkumaAHead");
+            AAWorld.downedAkumaA = true;
             if (NPC.CountNPCS(bossAlive) < 1)
             {
                 if (Main.expertMode)
                 {
-                    Projectile.NewProjectile((new Vector2(npc.position.X, npc.position.Y)), (new Vector2(0f, 0f)), mod.ProjectileType("AkumaTransition"), 0, 0);
+                    npc.DropBossBags();
+                    npc.DropLoot(Items.Boss.Akuma.AkumaTrophy.type, 1f / 10);
                 }
                 else
                 {
-                    npc.DropLoot(mod.ItemType("DaybreakIncinerite"), 20, 30);
-                    npc.DropLoot(mod.ItemType("CrucibleScale"), 25, 35);
-                    string[] lootTable = { "ReignOfFire", "DaybreakArrow", "Daycrusher", "Dawnstrike"};
-                    int loot = Main.rand.Next(lootTable.Length);
-                    npc.DropLoot(mod.ItemType(lootTable[loot]));
-                    //npc.DropLoot(Items.Vanity.Mask.AkumaMask.type, 1f / 7);
-                    npc.DropLoot(Items.Boss.Akuma.AkumaTrophy.type, 1f / 10);
+
                 }
             }
             else
