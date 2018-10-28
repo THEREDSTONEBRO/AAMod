@@ -57,7 +57,7 @@ namespace AAMod
                     bossChecklist.Call("AddBossWithInfo", "Zero", 16f, (Func<bool>)(() => AAWorld.downedZero), "Use a [i:" + ItemType("ZeroTesseract") + "] in the Void");
                 }
                 
-                //bossChecklist.Call("AddBossWithInfo", "Akumata", 100f, (Func<bool>)(() => AAWorld.downedAkumata), "Use a [i:" + ItemType("ChaosSigil"));
+                //bossChecklist.Call("AddBossWithInfo", "Shen", 100f, (Func<bool>)(() => AAWorld.downedShen), "Use a [i:" + ItemType("ChaosSigil"));
                 
                 //SlimeKing = 1f;
                 //EyeOfCthulhu = 2f;
@@ -89,8 +89,8 @@ namespace AAMod
                 //AchievementLibs.Call("AddAchievementWithoutReward", this, "True Abyssal Wrath", "Defeat Yamata's true, deathly Awakened form", "Achievements/YamataAA", (Func<bool>)(() => AAWorld.downedAkuma));
                 AchievementLibs.Call("AddAchievementWithoutReward", this, "Clockwork Catastrophe", "Destroy the dark doomsday automaton, Zero", "Achievements/Zero", (Func<bool>)(() => AAWorld.downedZero));
                 AchievementLibs.Call("AddAchievementWithoutReward", this, "Doomsday Arrives", "Defeat Zero's true, dark Awakened form", "Achievements/ZeroA", (Func<bool>)(() => AAWorld.downedZeroA));
-                //AchievementLibs.Call("AddAchievementWithoutReward", this, "Unyielding Discord", "Defeat the Discordian Drake Akumata", "Achievements/AkumataA", (Func<bool>)(() => AAWorld.downedZeroA));
-                //AchievementLibs.Call("AddAchievementWithoutReward", this, "Master of Unity", "Defeat Akumata's true, chaotic Awakened form", "Achievements/AkumataAA", (Func<bool>)(() => AAWorld.downedZeroA));
+                //AchievementLibs.Call("AddAchievementWithoutReward", this, "Unyielding Discord", "Defeat the Discordian Drake, Shen Doragon", "Achievements/ShenA", (Func<bool>)(() => AAWorld.downedZeroA));
+                //AchievementLibs.Call("AddAchievementWithoutReward", this, "Master of Unity", "Defeat Shen Doragon's true, chaotic Awakened form", "Achievements/ShenAA", (Func<bool>)(() => AAWorld.downedZeroA));
             }
             try
             {
@@ -150,8 +150,8 @@ namespace AAMod
                 AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Zero2"), ItemType("Zero2Box"), TileType("Zero2Box"));
                 AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Akuma"), ItemType("AkumaBox"), TileType("AkumaBox"));
                 AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Yamata"), ItemType("YamataBox"), TileType("YamataBox"));
-                AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Akumata"), ItemType("AkumataBox"), TileType("AkumataBox"));
-                AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/AkumataA"), ItemType("AkumataABox"), TileType("AkumataABox"));
+                AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Shen"), ItemType("ShenBox"), TileType("ShenBox"));
+                AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/ShenA"), ItemType("ShenABox"), TileType("ShenABox"));
 
                 Filters.Scene["AAMod:MireSky"] = new Filter(new MireSkyData("FilterMiniTower").UseColor(0f, 0.20f, 1f).UseOpacity(0.3f), EffectPriority.High);
                 SkyManager.Instance["AAMod:MireSky"] = new MireSky();

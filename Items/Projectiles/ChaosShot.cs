@@ -24,21 +24,21 @@ namespace AAMod.Items.Projectiles
             {
                 Dust dust;
                 Vector2 position = projectile.position;
-                dust = Main.dust[Dust.NewDust(position, 0, 0, mod.DustType<Dusts.UmbreonSPDust>(), 4.736842f, 0f, 46, new Color(Main.DiscoR, 0, Main.DiscoB), 1.184211f)];
+                dust = Main.dust[Dust.NewDust(position, 0, 0, mod.DustType<Dusts.UmbreonSPDust>(), 4.736842f, 0f, 46, new Color(Main.DiscoR, 0, Main.DiscoB), 1f)];
                 dust.noGravity = false;
             }
             if (Main.rand.NextFloat() < 1f)
             {
                 Dust dust;
                 Vector2 position = projectile.position;
-                dust = Main.dust[Dust.NewDust(position, 0, 0, mod.DustType<Dusts.UmbreonSPDust>(), 4.736842f, 0f, 46, new Color(Main.DiscoR, 0, Main.DiscoB), 1.184211f)];
+                dust = Main.dust[Dust.NewDust(position, 0, 0, mod.DustType<Dusts.UmbreonSPDust>(), 4.736842f, 0f, 46, new Color(Main.DiscoR, 0, Main.DiscoB), 1f)];
                 dust.noGravity = false;
             }
             if (Main.rand.NextFloat() < 1f)
             {
                 Dust dust;
                 Vector2 position = projectile.position;
-                dust = Main.dust[Dust.NewDust(position, 0, 0, mod.DustType<Dusts.UmbreonSPDust>(), 4.736842f, 0f, 46, new Color(Main.DiscoR, 0, Main.DiscoB), 1.184211f)];
+                dust = Main.dust[Dust.NewDust(position, 0, 0, mod.DustType<Dusts.UmbreonSPDust>(), 4.736842f, 0f, 46, new Color(Main.DiscoR, 0, Main.DiscoB), 1f)];
                 dust.noGravity = false;
             }
         }

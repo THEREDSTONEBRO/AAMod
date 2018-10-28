@@ -9,7 +9,25 @@ namespace AAMod.Items.Projectiles.Akuma   //The directory for your .cs and .png;
 {
     public class Solar : ModProjectile   //make sure the sprite file is named like the class name (CustomYoyoProjectile)
     {
- 
+
+        public static short customGlowMask = 0;
+        public override void SetStaticDefaults()
+        {
+            if (Main.netMode != 2)
+            {
+                Microsoft.Xna.Framework.Graphics.Texture2D[] glowMasks = new Microsoft.Xna.Framework.Graphics.Texture2D[Main.glowMaskTexture.Length + 1];
+                for (int i = 0; i < Main.glowMaskTexture.Length; i++)
+                {
+                    glowMasks[i] = Main.glowMaskTexture[i];
+                }
+                glowMasks[glowMasks.Length - 1] = mod.GetTexture("Items/Boss/Akuma/" + GetType().Name + "_Glow");
+                customGlowMask = (short)(glowMasks.Length - 1);
+                Main.glowMaskTexture = glowMasks;
+            }
+            projectile.glowMask = customGlowMask;
+            DisplayName.SetDefault("Solar");
+        }
+
         public override void SetDefaults()
         {
             projectile.extraUpdates = 0;
@@ -25,16 +43,28 @@ namespace AAMod.Items.Projectiles.Akuma   //The directory for your .cs and .png;
             ProjectileID.Sets.YoyosLifeTimeMultiplier[projectile.type] = 30f;
             // YoyosMaximumRange is the maximum distance the yoyo sleep away from the player.
             // Vanilla values range from 130f(Wood) to 400f(Terrarian), and defaults to 200f
-            ProjectileID.Sets.YoyosMaximumRange[projectile.type] = 600f;
+            ProjectileID.Sets.YoyosMaximumRange[projectile.type] = 400f;
             // YoyosTopSpeed is top speed of the yoyo projectile.
             // Vanilla values range from 9f(Wood) to 17.5f(Terrarian), and defaults to 10f
-            ProjectileID.Sets.YoyosTopSpeed[projectile.type] = 20f;
+            ProjectileID.Sets.YoyosTopSpeed[projectile.type] = 18f;
         }
-        
-        public override void SetStaticDefaults()
+
+        public override void AI()
         {
-            DisplayName.SetDefault("Solar");
+            if (Main.rand.NextFloat() < 1f)
+            {
+                Dust dust1;
+                Dust dust2;
+                Vector2 position = projectile.position;
+                dust1 = Main.dust[Dust.NewDust(position, 0, 0, mod.DustType<Dusts.AkumaDust>(), 4.736842f, 0f, 46, default(Color), 1f)];
+                dust2 = Main.dust[Dust.NewDust(position, 0, 0, mod.DustType<Dusts.AkumaADust>(), 4.736842f, 0f, 46, default(Color), 1f)];
+                dust1.noGravity = true;
+                dust2.noGravity = true;
+            }
         }
+
+
+        
                 //dust = Main.dust[Terraria.Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, 15, 0f, 0f, 46, new Color(255, 75, 0), 1.381579f)];
 
     }

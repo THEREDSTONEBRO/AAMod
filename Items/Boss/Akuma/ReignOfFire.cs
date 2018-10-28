@@ -11,11 +11,9 @@ namespace AAMod.Items.Boss.Akuma   //where is located
 {
     public class ReignOfFire : ModItem
     {
+        public static short customGlowMask = 0;
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Reign of Fire");
-            Tooltip.SetDefault(@"Rains fire and fury upon your foes
-Inflicts Daybroken");
             if (Main.netMode != 2)
             {
                 Microsoft.Xna.Framework.Graphics.Texture2D[] glowMasks = new Microsoft.Xna.Framework.Graphics.Texture2D[Main.glowMaskTexture.Length + 1];
@@ -27,9 +25,14 @@ Inflicts Daybroken");
                 customGlowMask = (short)(glowMasks.Length - 1);
                 Main.glowMaskTexture = glowMasks;
             }
+            item.glowMask = customGlowMask;
+            DisplayName.SetDefault("Reign of Fire");
+            Tooltip.SetDefault(@"Rains fire and fury upon your foes
+Inflicts Daybroken");
+            
         }
 
-        public static short customGlowMask = 0;
+        
         public override void SetDefaults()
         {
             item.shoot = mod.ProjectileType("FireProj");
@@ -45,7 +48,6 @@ Inflicts Daybroken");
             item.UseSound = SoundID.Item1;       //1 is the sound of the sword
             item.autoReuse = true;   //if it's capable of autoswing.
             item.useTurn = true;
-            item.glowMask = customGlowMask;
             item.shootSpeed = 20f;
         }
 
@@ -135,7 +137,6 @@ Inflicts Daybroken");
             recipe.AddTile(null, "BinaryReassembler");
             recipe.SetResult(this);
             recipe.AddRecipe();
-
         }
     }
 }

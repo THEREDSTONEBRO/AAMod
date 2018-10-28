@@ -1,13 +1,28 @@
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Microsoft.Xna.Framework;
+using System.Collections.Generic;
 
 namespace AAMod.Items.Boss.Akuma
 {
 	public class DaybreakArrow : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
+        public static short customGlowMask = 0;
+        public override void SetStaticDefaults()
+        {
+            if (Main.netMode != 2)
+            {
+                Microsoft.Xna.Framework.Graphics.Texture2D[] glowMasks = new Microsoft.Xna.Framework.Graphics.Texture2D[Main.glowMaskTexture.Length + 1];
+                for (int i = 0; i < Main.glowMaskTexture.Length; i++)
+                {
+                    glowMasks[i] = Main.glowMaskTexture[i];
+                }
+                glowMasks[glowMasks.Length - 1] = mod.GetTexture("Items/Boss/Akuma/" + GetType().Name + "_Glow");
+                customGlowMask = (short)(glowMasks.Length - 1);
+                Main.glowMaskTexture = glowMasks;
+            }
+            item.glowMask = customGlowMask;
             DisplayName.SetDefault("Daybreak Arrow");
 			Tooltip.SetDefault(@"Scorches its target with the heat of the scorching sun
 Inflicts Daybroken
@@ -16,7 +31,7 @@ Non-consumable");
 
 		public override void SetDefaults()
 		{
-			item.damage = 16;
+			item.damage = 23;
 			item.ranged = true;
 			item.width = 14;
 			item.height = 40;
@@ -28,13 +43,26 @@ Non-consumable");
 			item.shootSpeed = 3f;                  //The speed of the projectile
 			item.ammo = AmmoID.Arrow;              //The ammo class this ammo belongs to.
 		}
+
+        public override void ModifyTooltips(List<TooltipLine> list)
+        {
+            foreach (TooltipLine line2 in list)
+            {
+                if (line2.mod == "Terraria" && line2.Name == "ItemName")
+                {
+                    line2.overrideColor = new Color(180, 41, 32);
+                }
+            }
+        }
+
         public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(ItemID.MoonlordArrow, 100);
+			recipe.AddIngredient(ItemID.MoonlordArrow, 999);
             recipe.AddIngredient(null, "DaybreakIncinerite", 1);
-			recipe.AddTile(null, "BinaryReassembler");
-			recipe.SetResult(this, 100);
+            recipe.AddIngredient(null, "CrucibleScale", 1);
+            recipe.AddTile(null, "BinaryReassembler");
+			recipe.SetResult(this, 1);
 			recipe.AddRecipe();
 		}
 	}

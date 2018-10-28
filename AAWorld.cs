@@ -60,8 +60,8 @@ namespace AAMod
         public static bool zeroUS;
         public static bool downedZero;
         public static bool downedZeroA;
-        public static bool downedAkumata;
-        public static bool downedAkumataA;
+        public static bool downedShen;
+        public static bool downedShenA;
         //Stones
         public static bool RealityDropped;
 
@@ -86,12 +86,12 @@ namespace AAMod
             if (Main.expertMode == false)
             { 
                 downedAncient = downedAkuma || downedYamata || downedZero;
-                downedSAncient = downedAkumata;
+                downedSAncient = downedShen;
             }
             if (Main.expertMode == true)
             {
                 downedAncient = downedAkumaA || downedYamataA || downedZeroA;
-                downedSAncient = downedAkumataA;
+                downedSAncient = downedShenA;
             }
             downedAkuma = false;
             downedAkumaA = false;
@@ -100,8 +100,8 @@ namespace AAMod
             zeroUS = false;
             downedZero = false;
             downedZeroA = false;
-            downedAkumata = false;
-            downedAkumataA = false;
+            downedShen = false;
+            downedShenA = false;
             //World Changes
             ChaosOres = downedGrips;
             Dynaskull = NPC.downedBoss3;
@@ -163,7 +163,7 @@ namespace AAMod
             if (zeroUS) downed.Add("0U");
             if (downedZero) downed.Add("0");
             if (downedZeroA) downed.Add("0A");
-            if (downedAkumata) downed.Add("Akumata");
+            if (downedShen) downed.Add("Shen");
 
             return new TagCompound {
                 {"downed", downed}
@@ -201,8 +201,8 @@ namespace AAMod
             flags3[3] = zeroUS;
             flags3[4] = downedZero;
             flags3[5] = downedZeroA;
-            flags3[6] = downedAkumata;
-            flags3[7] = downedAkumataA;
+            flags3[6] = downedShen;
+            flags3[7] = downedShenA;
             writer.Write(flags3);
 
 
@@ -243,7 +243,7 @@ namespace AAMod
             zeroUS = flags3[4];
             downedZero = flags3[5];
             downedZeroA = flags3[6];
-            downedAkumata = flags3[7];
+            downedShen = flags3[7];
             
             BitsByte flags4 = reader.ReadByte();
             downedMonarch = flags4[0];
@@ -278,7 +278,7 @@ namespace AAMod
             zeroUS = downed.Contains("0U");
             downedZero = downed.Contains("0");
             downedZeroA = downed.Contains("0A");
-            downedAkumata = downed.Contains("Akumata");
+            downedShen = downed.Contains("Shen");
             //World Changes
             downedGrips = downedGripRed && downedGripBlue;
             ChaosOres = downedGrips;

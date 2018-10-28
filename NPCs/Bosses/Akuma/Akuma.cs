@@ -776,7 +776,7 @@ namespace AAMod.NPCs.Bosses.Akuma
                 {
                     npc.DropLoot(mod.ItemType("DaybreakIncinerite"), 20, 30);
                     npc.DropLoot(mod.ItemType("CrucibleScale"), 25, 35);
-                    string[] lootTable = { "ReignOfFire", "DaybreakArrow", "Daycrusher", "Dawnstrike"};
+                    string[] lootTable = { "Solar", "SunSpear", "ReignOfFire", "DaybreakArrow", "Daycrusher", "Dawnstrike"};
                     int loot = Main.rand.Next(lootTable.Length);
                     npc.DropLoot(mod.ItemType(lootTable[loot]));
                     //npc.DropLoot(Items.Vanity.Mask.AkumaMask.type, 1f / 7);

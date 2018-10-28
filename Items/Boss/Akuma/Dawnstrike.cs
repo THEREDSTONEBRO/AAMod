@@ -4,6 +4,7 @@ using Terraria.ID;
 using System.Diagnostics;
 using Microsoft.Xna.Framework;
 using Terraria.ModLoader;
+using System.Collections.Generic;
 
 namespace AAMod.Items.Boss.Akuma
 {
@@ -41,13 +42,24 @@ namespace AAMod.Items.Boss.Akuma
             item.useStyle = 5;
             item.shoot = mod.ProjectileType("Dawnstrike");
             item.knockBack = 0;
-            item.value = 10;
+            item.value = Item.buyPrice( 1, 0, 0, 0);
             item.rare = 0;
             item.UseSound = SoundID.Item34;
             item.autoReuse = true;
             item.shootSpeed = 14f;
             item.glowMask = customGlowMask;
 
+        }
+
+        public override void ModifyTooltips(List<TooltipLine> list)
+        {
+            foreach (TooltipLine line2 in list)
+            {
+                if (line2.mod == "Terraria" && line2.Name == "ItemName")
+                {
+                    line2.overrideColor = new Color(180, 41, 32);
+                }
+            }
         }
 
         public override void AddRecipes()  //How to craft this sword

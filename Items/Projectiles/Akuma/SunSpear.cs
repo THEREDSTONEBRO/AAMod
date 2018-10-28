@@ -9,10 +9,29 @@ namespace AAMod.Items.Projectiles.Akuma
 {
     public class SunSpear : ModProjectile
     {
+
+        public static short customGlowMask = 0;
+        public override void SetStaticDefaults()
+        {
+            if (Main.netMode != 2)
+            {
+                Microsoft.Xna.Framework.Graphics.Texture2D[] glowMasks = new Microsoft.Xna.Framework.Graphics.Texture2D[Main.glowMaskTexture.Length + 1];
+                for (int i = 0; i < Main.glowMaskTexture.Length; i++)
+                {
+                    glowMasks[i] = Main.glowMaskTexture[i];
+                }
+                glowMasks[glowMasks.Length - 1] = mod.GetTexture("Items/Boss/Akuma/" + GetType().Name + "_Glow");
+                customGlowMask = (short)(glowMasks.Length - 1);
+                Main.glowMaskTexture = glowMasks;
+            }
+            projectile.glowMask = customGlowMask;
+            DisplayName.SetDefault("Sun Partisan");
+        }
+
         public override void SetDefaults()
         {
-            projectile.width = 20;
-            projectile.height = 20;
+            projectile.width = 22;
+            projectile.height = 22;
             projectile.scale = 1.1f;
             projectile.aiStyle = 19;
             projectile.friendly = true;
@@ -25,10 +44,7 @@ namespace AAMod.Items.Projectiles.Akuma
             projectile.hide = true;
         }
 
-        public override void SetStaticDefaults()
-        {
-            DisplayName.SetDefault("Sun Partisan");
-        }
+        
 
         public float MovementFactor // Change this value to alter how fast the spear moves
         {
@@ -36,6 +52,11 @@ namespace AAMod.Items.Projectiles.Akuma
             set { projectile.ai[0] = value; }
         }
 
+
+        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+        {
+            target.AddBuff(BuffID.Daybreak, 600);
+        }
 
         public override void AI()
         {
@@ -66,6 +87,15 @@ namespace AAMod.Items.Projectiles.Akuma
                     MovementFactor += 2.1f;
                 }
             }
+            if (Main.player[projectile.owner].itemAnimation < Main.player[projectile.owner].itemAnimationMax / 3)
+            {
+                projectile.ai[0] -= 2.4f;
+                if (projectile.localAI[0] == 0f && Main.myPlayer == projectile.owner)
+                {
+                    projectile.localAI[0] = 1f;
+                    Projectile.NewProjectile(projectile.Center.X + projectile.velocity.X * projectile.ai[0], projectile.Center.Y + projectile.velocity.Y * projectile.ai[0], projectile.velocity.X * 1.4f, projectile.velocity.Y * 1.4f, mod.ProjectileType("SunSpearShot"), (int)((double)projectile.damage * 0.85f), projectile.knockBack * 0.85f, projectile.owner, 0f, 0f);
+                }
+            }
             // Change the spear position based off of the velocity and the movementFactor
             projectile.position += projectile.velocity * MovementFactor;
             // When we reach the end of the animation, we can kill the spear projectile
@@ -80,6 +110,16 @@ namespace AAMod.Items.Projectiles.Akuma
             if (projectile.spriteDirection == -1)
             {
                 projectile.rotation -= MathHelper.ToRadians(90f);
+            }
+            if (Main.rand.NextFloat() < 1f)
+            {
+                Dust dust1;
+                Dust dust2;
+                Vector2 position = projectile.position;
+                dust1 = Main.dust[Dust.NewDust(position, 0, 0, mod.DustType<Dusts.AkumaDust>(), 4.736842f, 0f, 46, default(Color), 1f)];
+                dust2 = Main.dust[Dust.NewDust(position, 0, 0, mod.DustType<Dusts.AkumaADust>(), 4.736842f, 0f, 46, default(Color), 1f)];
+                dust1.noGravity = true;
+                dust2.noGravity = true;
             }
         }
     }
