@@ -203,7 +203,7 @@ namespace AAMod.NPCs.Bosses.Zero
                 float Eggroll = Math.Abs(Main.GameUpdateCount) / 2.5f;
                 float Pie = 1f * (float)Math.Sin(Eggroll);
                 npc.color = Color.Lerp(Main.DiscoColor, Color.Transparent, Pie);
-                //music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/JokeSong");
+                music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/DradonMode");
             }
             if (npc.life <= npc.lifeMax / 5 && !DradonMode)
             {
