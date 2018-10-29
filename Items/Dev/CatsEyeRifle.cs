@@ -36,22 +36,22 @@ Doesn't require ammo
         public override void SetDefaults()
         {
             item.glowMask = customGlowMask;
-            item.damage = 530; //This is the amount of damage the item does
-            item.noMelee = true; //This makes sure the bow doesn't do melee damage
-            item.ranged = true; //This causes your bow to do ranged damage
-            item.width = 72; //Hitbox width
-            item.height = 22; //Hitbox height
-            item.useTime = 30; //How long it takes to use the weapon. If this is shorter than the useAnimation it will fire twice in one click.
-            item.useAnimation = 30;  //The animations time length
-            item.useStyle = 5; //The style in which the item gets used. 5 for bows.
-            item.shoot = ProjectileID.BlackBolt;
-            item.knockBack = 12; //The amount of knockback the item has
+            item.damage = 530;
+            item.noMelee = true;
+            item.ranged = true; 
+            item.width = 72; 
+            item.height = 22;
+            item.useTime = 30; 
+            item.useAnimation = 30; 
+            item.useStyle = 5;
+            item.shoot = mod.ProjectileType("CatsEye");
+            item.knockBack = 12;
             item.value = Item.sellPrice(1, 0, 0, 0);
-            item.rare = 9; //The item's name color
+            item.rare = 9; 
             item.UseSound = new LegacySoundStyle(2, 40, Terraria.Audio.SoundType.Sound);
-            item.autoReuse = true; //if the Bow autoreuses or not
-            item.shootSpeed = 40f; //The arrows speed when shot
-            item.crit = 0; //Crit chance
+            item.autoReuse = true; 
+            item.shootSpeed = 40f;
+            item.crit = 0;
         }
         public override void ModifyTooltips(List<TooltipLine> list)
         {

@@ -15,9 +15,7 @@ namespace AAMod.Items.Melee   //where is located
         public static short customGlowMask = 0;
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("The Lolkat");
-            Tooltip.SetDefault(@"WHAT DOES IT MEAN?!?!?!111!!11
-Meowmere EX");
+            
             if (Main.netMode != 2)
             {
                 Texture2D[] glowMasks = new Texture2D[Main.glowMaskTexture.Length + 1];
@@ -29,6 +27,11 @@ Meowmere EX");
                 customGlowMask = (short)(glowMasks.Length - 1);
                 Main.glowMaskTexture = glowMasks;
             }
+            item.glowMask = customGlowMask;
+
+            DisplayName.SetDefault("The Lolkat");
+            Tooltip.SetDefault(@"WHAT DOES IT MEAN?!?!?!111!!11
+Meowmere EX");
         }
 
         public override void SetDefaults()
@@ -50,7 +53,6 @@ Meowmere EX");
             item.expert = true;
 			item.shoot = 502;
 			item.shootSpeed = 12f;
-            item.glowMask = customGlowMask;
         }
 
         public override bool Shoot(Player player, ref Microsoft.Xna.Framework.Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)

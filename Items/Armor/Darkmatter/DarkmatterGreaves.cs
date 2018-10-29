@@ -34,6 +34,7 @@ Dark, yet still barely visible");
         {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(null, "DarkMatter", 27);
+            recipe.AddIngredient(null, "DarkEnergy", 15);
             recipe.AddTile(null, "QuantumFusionAccelerator");
             recipe.SetResult(this);
             recipe.AddRecipe();

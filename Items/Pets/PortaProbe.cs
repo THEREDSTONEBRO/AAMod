@@ -17,7 +17,7 @@ namespace AAMod.Items.Pets
 
 		public override void SetDefaults()
 		{
-			item.CloneDefaults(ItemID.TikiTotem);
+			item.CloneDefaults(ItemID.ShadowOrb);
 			item.shoot = mod.ProjectileType("MiniProbe");
             item.buffType = mod.BuffType("MiniProbe");
 		}
@@ -26,10 +26,14 @@ namespace AAMod.Items.Pets
 		{
 			if (player.whoAmI == Main.myPlayer && player.itemTime == 0)
 			{
-				player.AddBuff(item.buffType, 3600, true);
-                player.AddBuff(BuffID.Hunter, 2);
-                player.AddBuff(BuffID.Spelunker, 2);
+				player.AddBuff(item.buffType, 90000, true);
             }
 		}
-	}
+
+        public override void UpdateAccessory(Player player, bool hideVisual)
+        {
+            player.AddBuff(BuffID.Spelunker, 2);
+            player.AddBuff(BuffID.Spelunker, 2);
+        }
+    }
 }

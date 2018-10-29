@@ -125,7 +125,7 @@ namespace AAMod.Items.Boss.Equinox
                     }
                 }
             }
-            player.QuickSpawnItem(mod.ItemType("RadiumOre"), Main.rand.Next(30, 40));
+            player.QuickSpawnItem(mod.ItemType("Stardust"), Main.rand.Next(35, 45));
             player.QuickSpawnItem(mod.ItemType("RadiantStar"));
         }
 	}

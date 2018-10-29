@@ -48,6 +48,7 @@ Being hit causes stars from the heavans to fall around you and increases your mo
         {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(null, "RadiumBar", 25);
+            recipe.AddIngredient(null, "Stardust", 10);
             recipe.AddTile(null, "QuantumFusionAccelerator");
             recipe.SetResult(this);
             recipe.AddRecipe();

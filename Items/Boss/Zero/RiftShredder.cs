@@ -62,7 +62,7 @@ namespace AAMod.Items.Boss.Zero
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(null, "ApocalyptitePlate", 5);
             recipe.AddIngredient(null, "UnstableSingularity", 5);
-            recipe.AddIngredient(ItemID.StarWrath);
+            recipe.AddIngredient(null, "BreakingDawn");
             recipe.AddTile(null, "BinaryReassembler");
             recipe.SetResult(this);
             recipe.AddRecipe();

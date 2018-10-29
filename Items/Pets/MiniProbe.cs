@@ -28,17 +28,17 @@ namespace AAMod.Items.Pets
 
 		public override void SetDefaults()
 		{
-			projectile.CloneDefaults(ProjectileID.TikiSpirit);
-            aiType = ProjectileID.TikiSpirit;
-            projectile.width = 66;
-            projectile.height = 56;
+			projectile.CloneDefaults(ProjectileID.ZephyrFish);
+            aiType = ProjectileID.ZephyrFish;
+            projectile.width = 14;
+            projectile.height = 14;
             projectile.glowMask = customGlowMask;
         }
 
 		public override bool PreAI()
 		{
 			Player player = Main.player[projectile.owner];
-			player.tiki = false; // Relic from aiType
+			player.zephyrfish = false; // Relic from aiType
 			return true;
 		}
 

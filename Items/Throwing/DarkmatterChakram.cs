@@ -10,13 +10,9 @@ namespace AAMod.Items.Throwing
 	public class DarkmatterChakram : ModItem
 	{
 
-        public class DMC : ModProjectile
-        {
-
             public static short customGlowMask = 0;
             public override void SetStaticDefaults()
             {
-                Main.projFrames[projectile.type] = 5;
                 if (Main.netMode != 2)
                 {
                     Texture2D[] glowMasks = new Texture2D[Main.glowMaskTexture.Length + 1];
@@ -29,10 +25,9 @@ namespace AAMod.Items.Throwing
                     Main.glowMaskTexture = glowMasks;
                 }
 
-                projectile.glowMask = customGlowMask;
+                item.glowMask = customGlowMask;
                 DisplayName.SetDefault("Darkmatter Spinblade");
             }
-        }
         public override void SetDefaults()
 		{
             item.damage = 170;            

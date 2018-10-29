@@ -38,7 +38,8 @@ namespace AAMod.Items.Armor.Radium
 		{
 			ModRecipe recipe = new ModRecipe(mod);
 			recipe.AddIngredient(null, "RadiumBar", 30);
-			recipe.AddTile(null, "QuantumFusionAccelerator");
+            recipe.AddIngredient(null, "Stardust", 20);
+            recipe.AddTile(null, "QuantumFusionAccelerator");
 			recipe.SetResult(this);
 			recipe.AddRecipe();
 		}

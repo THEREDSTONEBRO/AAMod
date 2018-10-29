@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Tools
 {
-    public class OceanPick : ModItem
+    public class OceanAxe : ModItem
     {
         public override void SetDefaults()
         {

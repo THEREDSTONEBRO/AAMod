@@ -16,6 +16,7 @@ namespace AAMod.Items.Throwing
             item.width = 20;
             item.height = 20;
 			item.useTime = 8;
+            item.maxStack = 999;
 			item.useAnimation = 8;
             item.noUseGraphic = true;
             item.useStyle = 1;

@@ -43,7 +43,7 @@ Cat's Eye Rifle EX");
             item.useTime = 20; 
             item.useAnimation = 20;  
             item.useStyle = 5; 
-            item.shoot = ProjectileID.BlackBolt;
+            item.shoot = mod.ProjectileType("CatsEye");
             item.knockBack = 12; 
             item.value = Item.sellPrice(1, 0, 0, 0);
             item.autoReuse = true; 

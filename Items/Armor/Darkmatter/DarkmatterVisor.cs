@@ -51,6 +51,7 @@ Your ranged ammunition electrocute enemies";
         {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(null, "DarkMatter", 25);
+            recipe.AddIngredient(null, "DarkEnergy", 10);
             recipe.AddTile(null, "QuantumFusionAccelerator");
             recipe.SetResult(this);
             recipe.AddRecipe();

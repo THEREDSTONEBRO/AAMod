@@ -38,9 +38,9 @@ namespace AAMod.Items.Projectiles.Akuma
                 projectile.tileCollide = true;
             }
             projectile.scale = projectile.ai[1];
-            projectile.rotation = projectile.velocity.ToRotation();
+            projectile.rotation = projectile.velocity.ToRotation() - 1.57079637f;
             Vector2 position = projectile.Center + Vector2.Normalize(projectile.velocity) * 10f;
-            /*Dust dust20 = Main.dust[Dust.NewDust(projectile.position, projectile.width, projectile.height, mod.DustType<Dusts.AkumaADust>(), 0f, 0f, 0, default(Color), 1f)];
+            Dust dust20 = Main.dust[Dust.NewDust(projectile.position, projectile.width, projectile.height, mod.DustType<Dusts.AkumaADust>(), 0f, 0f, 0, default(Color), 1f)];
             dust20.position = position;
             dust20.velocity = projectile.velocity.RotatedBy(1.5707963705062866, default(Vector2)) * 0.33f + projectile.velocity / 4f;
             dust20.position += projectile.velocity.RotatedBy(1.5707963705062866, default(Vector2));
@@ -51,7 +51,7 @@ namespace AAMod.Items.Projectiles.Akuma
             dust20.velocity = projectile.velocity.RotatedBy(-1.5707963705062866, default(Vector2)) * 0.33f + projectile.velocity / 4f;
             dust20.position += projectile.velocity.RotatedBy(-1.5707963705062866, default(Vector2));
             dust20.fadeIn = 0.5f;
-            dust20.noGravity = true;*/
+            dust20.noGravity = true;
             for (int num189 = 0; num189 < 1; num189++)
             {
                 int num190 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, mod.DustType<Dusts.AkumaADust>(), 0f, 0f, 0, default(Color), 1f);

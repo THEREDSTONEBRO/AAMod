@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Projectiles
 {
-    public class TerrArrow : ModProjectile
+    public class TerraArrow : ModProjectile
     {
         public override void SetDefaults()
         {

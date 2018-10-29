@@ -11,7 +11,7 @@ namespace AAMod.Items.Projectiles
     {
         public override void SetDefaults()
         {
-            projectile.CloneDefaults(ProjectileID.LightDisc);
+            projectile.CloneDefaults(ProjectileID.PossessedHatchet);
             projectile.penetrate = 6;  
             projectile.width = 32;
             projectile.height = 32;

@@ -32,7 +32,7 @@ namespace AAMod.Items.Projectiles
             projectile.width = 48;
             projectile.height = 30;
             projectile.friendly = true;
-            projectile.magic = true;
+            projectile.melee = true;
             projectile.ignoreWater = true;
             projectile.tileCollide = true;
             projectile.alpha = 0;
