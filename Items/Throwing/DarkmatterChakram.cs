@@ -24,7 +24,7 @@ namespace AAMod.Items.Throwing
                     {
                         glowMasks[i] = Main.glowMaskTexture[i];
                     }
-                    glowMasks[glowMasks.Length - 1] = mod.GetTexture("Items/Projectiles/" + GetType().Name + "_Glow");
+                    glowMasks[glowMasks.Length - 1] = mod.GetTexture("Items/Throwing/" + GetType().Name + "_Glow");
                     customGlowMask = (short)(glowMasks.Length - 1);
                     Main.glowMaskTexture = glowMasks;
                 }
@@ -35,7 +35,7 @@ namespace AAMod.Items.Throwing
         }
         public override void SetDefaults()
 		{
-            item.damage = 60;            
+            item.damage = 170;            
             item.thrown = true;
             item.width = 30;
             item.height = 30;
@@ -44,7 +44,7 @@ namespace AAMod.Items.Throwing
             item.noUseGraphic = true;
             item.useStyle = 1;
 			item.knockBack = 0;
-			item.value = 8;
+			item.value = 100000;
 			item.rare = 6;
 			item.shootSpeed = 15f;
 			item.shoot = mod.ProjectileType ("DMC");
@@ -68,10 +68,10 @@ namespace AAMod.Items.Throwing
         public override void AddRecipes()
         {
                 ModRecipe recipe = new ModRecipe(mod);
-				recipe.AddIngredient(null, "DarkMatter", 12);
-				recipe.AddTile(TileID.MythrilAnvil);
-                recipe.SetResult(this);
-                recipe.AddRecipe();
+				recipe.AddIngredient(null, "DarkMatter", 15);
+            recipe.AddTile(null, "QuantumFusionAccelerator");
+            recipe.SetResult(this);
+            recipe.AddRecipe();
 		}
     }
 }

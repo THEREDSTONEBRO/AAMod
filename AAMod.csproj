@@ -80,6 +80,7 @@
     <Compile Include="Backgrounds\VoidSky.cs" />
     <Compile Include="Backgrounds\VoidSkyData.cs" />
     <Compile Include="Backgrounds\VoidSurfaceBgStyle.cs" />
+    <Compile Include="Buffs\MiniProbe.cs" />
     <Compile Include="Buffs\Broodmini.cs" />
     <Compile Include="Buffs\ChairMinionBuff.cs" />
     <Compile Include="Buffs\ChairMinionBuffEX.cs" />
@@ -484,7 +485,9 @@
     <Compile Include="Items\Melee\Xiphos.cs" />
     <Compile Include="Items\Melee\YtriumSword.cs" />
     <Compile Include="Items\Pets\BroodEgg.cs" />
+    <Compile Include="Items\Pets\MiniProbe.cs" />
     <Compile Include="Items\Pets\Broodmini.cs" />
+    <Compile Include="Items\Pets\PortaProbe.cs" />
     <Compile Include="Items\Pets\RaidEgg.cs" />
     <Compile Include="Items\Pets\Raidmini.cs" />
     <Compile Include="Items\Potions\GrandManaPotion.cs" />
@@ -502,6 +505,7 @@
     <Compile Include="Items\Projectiles\AmphibiousProjectileEXS.cs" />
     <Compile Include="Items\Projectiles\AmphibiousProjectileS.cs" />
     <Compile Include="Items\Projectiles\Akuma\Dawnstrike.cs" />
+    <Compile Include="Items\Projectiles\DMK.cs" />
     <Compile Include="Items\Projectiles\Fogless.cs" />
     <Compile Include="Items\Projectiles\LuminiteMeteor.cs" />
     <Compile Include="Items\Projectiles\AntimonBoomerangP.cs" />
@@ -575,6 +579,7 @@
     <Compile Include="Items\Projectiles\Void.cs" />
     <Compile Include="Items\Projectiles\YtriumBoomerangP.cs" />
     <Compile Include="Items\Projectiles\Zero\Antimatter.cs" />
+    <Compile Include="Items\Projectiles\DMC.cs" />
     <Compile Include="Items\Projectiles\Zero\Vortex.cs" />
     <Compile Include="Items\Projectiles\Zero\ZeroArrow.cs" />
     <Compile Include="Items\Projectiles\Zero\DoomRayP.cs" />
@@ -606,6 +611,7 @@
     <Compile Include="Items\Summoning\Minions\EnderMinionEX.cs" />
     <Compile Include="Items\Summoning\Minions\Minion2.cs" />
     <Compile Include="Items\Throwing\AbyssalArc.cs" />
+    <Compile Include="Items\Throwing\DarkmatterChakram.cs" />
     <Compile Include="Items\Throwing\HellBall.cs" />
     <Compile Include="Items\Throwing\LunaticJavelin.cs" />
     <Compile Include="Items\Throwing\Spookerang.cs" />
@@ -916,6 +922,7 @@
     <Content Include="Buffs\EnderMinionBuffEX.png" />
     <Content Include="Buffs\HydraToxin.png" />
     <Content Include="Buffs\InfinityOverload.png" />
+    <Content Include="Buffs\MiniProbe.png" />
     <Content Include="Buffs\Raidmini.png" />
     <Content Include="Buffs\Terrablaze.png" />
     <Content Include="Buffs\UnstableSoul.png" />
@@ -1722,6 +1729,9 @@
     <Content Include="Items\Pets\BroodEgg_Glow.png" />
     <Content Include="Items\Pets\Broodmini.png" />
     <Content Include="Items\Pets\Broodmini_Glow.png" />
+    <Content Include="Items\Pets\MiniProbe.png" />
+    <Content Include="Items\Pets\MiniProbe_Glow.png" />
+    <Content Include="Items\Pets\PortaProbe.png" />
     <Content Include="Items\Pets\RaidEgg.png" />
     <Content Include="Items\Pets\RaidEgg_Glow.png" />
     <Content Include="Items\Pets\Raidmini.png" />
@@ -1752,6 +1762,8 @@
     <Content Include="Items\Projectiles\AmphibiousProjectileEX_Glow.png" />
     <Content Include="Items\Projectiles\AmphibiousProjectileS.png" />
     <Content Include="Items\Projectiles\Akuma\FireProj.png" />
+    <Content Include="Items\Projectiles\DMC.png" />
+    <Content Include="Items\Projectiles\DMC_Glow.png" />
     <Content Include="Items\Projectiles\Fog.png" />
     <Content Include="Items\Projectiles\Fogless.png" />
     <Content Include="Items\Projectiles\LuminiteMeteor.png" />
@@ -1917,6 +1929,10 @@
     <Content Include="Items\Ranged\TheVulcano_Glow.png" />
     <Content Include="Items\Ranged\TrueDeathlyLongbow.png" />
     <Content Include="Items\Ranged\TrueDeathlyLongbow_Glow.png" />
+    <Content Include="Items\ReforgeSouls\Godly.png" />
+    <Content Include="Items\ReforgeSouls\Legendary.png" />
+    <Content Include="Items\ReforgeSouls\Mythical.png" />
+    <Content Include="Items\ReforgeSouls\Unreal.png" />
     <Content Include="Items\Summoning\AntimonStaff.png" />
     <Content Include="Items\Summoning\DemonStaff.png" />
     <Content Include="Items\Summoning\DemonStaff_Glow.png" />
@@ -1927,8 +1943,8 @@
     <Content Include="Items\Summoning\Minions\EnderMinionEX.png" />
     <Content Include="Items\Summoning\WyrmStaff.png" />
     <Content Include="Items\Summoning\WyrmStaff_GLOW.png" />
-    <Content Include="Items\Throwing\AbbadonBoomerang.png" />
-    <Content Include="Items\Throwing\AbbadonBoomerang_Glow.png" />
+    <Content Include="Items\Throwing\DarkmatterChakram.png" />
+    <Content Include="Items\Throwing\DarkmatterChakram_Glow.png" />
     <Content Include="Items\Throwing\AbbadonKunai.png" />
     <Content Include="Items\Throwing\AbbadonKunai_Glow.png" />
     <Content Include="Items\Throwing\AbyssalArc.png" />

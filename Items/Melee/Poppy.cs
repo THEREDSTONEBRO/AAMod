@@ -35,14 +35,14 @@ namespace AAMod.Items.Melee   //where is located
             item.melee = true;            //if it's melee
             item.width = 44;              //Sword width
             item.height = 44;             //Sword height
-            item.useTime = 23;          //how fast 
-            item.useAnimation = 23;     
+            item.useTime = 27;          //how fast 
+            item.useAnimation = 27;     
             item.useStyle = 1;        //Style is how this item is used, 1 is the style of the sword
             item.knockBack = 4;      //Sword knockback
             item.value = 50000;        
             item.rare = 4;
             item.UseSound = SoundID.Item1;       //1 is the sound of the sword
-            item.autoReuse = true;   //if it's capable of autoswing.
+            item.autoReuse = false;   //if it's capable of autoswing.
             item.useTurn = true; 
 			item.shoot =  121;
 			item.shootSpeed = 16f;
