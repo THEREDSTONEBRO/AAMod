@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
+﻿using System.IO;
 using System.Linq;
 using AAMod.Buffs;
 using AAMod.Items.Projectiles;
@@ -11,7 +9,6 @@ using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.GameInput;
-using Terraria.Graphics.Effects;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -771,6 +768,11 @@ namespace AAMod
                 drawInfo.bodyGlowMaskColor = Color.Black;
                 drawInfo.armGlowMaskColor = Color.Black;
                 drawInfo.legGlowMaskColor = Color.Black;
+            }
+            if (BrokenCode)
+            {
+                drawInfo.legColor = Color.Transparent;
+                drawInfo.legGlowMaskColor = Color.Transparent;
             }
         }
     }

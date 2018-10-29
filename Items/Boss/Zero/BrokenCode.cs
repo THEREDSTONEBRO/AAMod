@@ -122,6 +122,7 @@ You don't look so good
                     player.bodyPosition.X -= 23f;
                     player.legPosition.Y += 20f;
                     player.legPosition.X -= 12f;
+                    player.GetModPlayer<AAPlayer>().BrokenCode = true;
                 }
             }
             else
@@ -136,6 +137,7 @@ You don't look so good
                     player.bodyPosition.X += 23f;
                     player.legPosition.Y -= 20f;
                     player.legPosition.X += 12f;
+                    player.GetModPlayer<AAPlayer>().BrokenCode = false;
                 }
             }
         }
