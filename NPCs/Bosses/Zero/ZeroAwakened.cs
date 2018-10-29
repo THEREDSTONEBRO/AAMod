@@ -185,7 +185,7 @@ namespace AAMod.NPCs.Bosses.Zero
             }
             if (hitDirection == 0 && damage != 0 && SteamId64List.Contains("76561198062217769"))
             {
-                Main.NewText("HELL0 DRAD0N WELC0ME T0 Y0UR OWN SPECIAL HELL!", Color.Red.R, Color.Red.G, Color.Red.B);
+                Main.NewText("HELL0 DRAD0N WELC0ME T0 Y0UR 0WN SPECIAL HELL!", Color.Red.R, Color.Red.G, Color.Red.B);
                 damage = 0;
                 DradonMode = true;
                 npc.immortal = true;
