@@ -27,7 +27,8 @@ namespace AAMod.NPCs.Enemies.Inferno
             npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = SoundID.NPCDeath1;
             npc.value = 60f;
-			npc.knockBackResist = 0.5f;
+            npc.lavaImmune = true;
+            npc.knockBackResist = 0.5f;
 			npc.aiStyle = 3;
 			aiType = NPCID.BlueSlime;
 			animationType = NPCID.BlueSlime;
@@ -39,7 +40,7 @@ namespace AAMod.NPCs.Enemies.Inferno
             if (!(player.ZoneTowerSolar || player.ZoneTowerVortex || player.ZoneTowerNebula || player.ZoneTowerStardust) && ((!Main.pumpkinMoon && !Main.snowMoon) || spawnInfo.spawnTileY > Main.worldSurface || Main.dayTime) && (!Main.eclipse || spawnInfo.spawnTileY > Main.worldSurface || !Main.dayTime) && (SpawnCondition.GoblinArmy.Chance == 0))
             {
                 int[] TileArray2 = { mod.TileType("InfernoGrass"), mod.TileType("Torchstone") };
-                return TileArray2.Contains(Main.tile[spawnInfo.spawnTileX, spawnInfo.spawnTileY].type) ? 1f : 0f;
+                return TileArray2.Contains(Main.tile[spawnInfo.spawnTileX, spawnInfo.spawnTileY].type) ? 2.5f : 0f;
             }
             return 0f;
         }

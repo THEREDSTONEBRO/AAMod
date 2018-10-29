@@ -30,7 +30,7 @@ namespace AAMod.NPCs.Enemies.Other
         }
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
-            if (Main.hardMode)
+            if (AAWorld.downedRetriever)
             {
                 return SpawnCondition.OverworldNightMonster.Chance * 0.12f;
             }

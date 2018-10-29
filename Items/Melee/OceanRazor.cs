@@ -39,7 +39,7 @@ namespace AAMod.Items.Melee
 		
 		public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)
         {
-            target.AddBuff(BuffID.Wet, 30 * 60);
+            target.AddBuff(BuffID.Wet, 300);
         }
 	}
 }

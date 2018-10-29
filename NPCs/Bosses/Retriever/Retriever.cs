@@ -25,7 +25,7 @@ namespace AAMod.NPCs.Bosses.Retriever
             npc.aiStyle = 5;  //5 is the flying AI
             npc.lifeMax = 70000;   //boss life
             npc.damage = 80;  //boss damage
-            npc.defense = 72;    //boss defense
+            npc.defense = 32;    //boss defense
             npc.knockBackResist = 0f;
             npc.width = 92;
             npc.height = 54;
@@ -143,6 +143,7 @@ namespace AAMod.NPCs.Bosses.Retriever
         {
             if (switchMove)             //If the switchMove is on, all of this happens, if its off, all of this doesnt happen
             {
+                npc.spriteDirection = 1;
                 if (Main.expertMode)
                 {
                     speed = 60f; // Increased movement speed in expert mode (The Keeper only thing, change if you wish)

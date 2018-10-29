@@ -51,8 +51,8 @@ namespace AAMod.NPCs.Bosses.Akuma
                 npc.value = 120000f;
             }
             npc.knockBackResist = 0f;
-            npc.width = 66;
-            npc.height = 62;
+            npc.width = 144;
+            npc.height = 112;
             npc.value = Item.buyPrice(0, 55, 0, 0);
             npc.boss = true;
             npc.aiStyle = -1;
