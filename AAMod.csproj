@@ -289,7 +289,6 @@
     <Compile Include="Items\BossSummons\IntimidatingMushroom.cs" />
     <Compile Include="Items\BossSummons\ZeroRune.cs" />
     <Compile Include="Items\BossSummons\ZeroTesseract.cs" />
-    <Compile Include="Items\Boss\Akumata\ChaosSoul.cs" />
     <Compile Include="Items\Boss\Akuma\CrucibleScale.cs" />
     <Compile Include="Items\Boss\Akuma\DaybreakArrow.cs" />
     <Compile Include="Items\Boss\Akuma\Daycrusher.cs" />
@@ -497,7 +496,6 @@
     <Compile Include="Items\Projectiles\AmphibiousProjectileS.cs" />
     <Compile Include="Items\Projectiles\Akuma\Dawnstrike.cs" />
     <Compile Include="Items\Projectiles\DMK.cs" />
-    <Compile Include="Items\Projectiles\Fogless.cs" />
     <Compile Include="Items\Projectiles\LuminiteMeteor.cs" />
     <Compile Include="Items\Projectiles\AntimonBoomerangP.cs" />
     <Compile Include="Items\Projectiles\APP.cs" />
@@ -518,7 +516,6 @@
     <Compile Include="Items\Projectiles\Duck.cs" />
     <Compile Include="Items\Projectiles\ElecticitySpellP.cs" />
     <Compile Include="Items\Projectiles\EnderSickle.cs" />
-    <Compile Include="Items\Projectiles\Fog.cs" />
     <Compile Include="Items\Projectiles\GSP.cs" />
     <Compile Include="Items\Projectiles\HellBallP.cs" />
     <Compile Include="Items\Projectiles\HydraTuneller.cs" />
@@ -1367,8 +1364,6 @@
     <Content Include="Items\BossSummons\ZeroRune_Glow.png" />
     <Content Include="Items\BossSummons\ZeroTesseract.png" />
     <Content Include="Items\BossSummons\ZeroTesseract_Glow.png" />
-    <Content Include="Items\Boss\Akumata\ChaosSoul.png" />
-    <Content Include="Items\Boss\Akumata\ChaosSoul_Glow.png" />
     <Content Include="Items\Boss\Akuma\AkumaTrophy.png" />
     <Content Include="Items\Boss\Akuma\AkumaTrophy_Glow.png" />
     <Content Include="Items\Boss\Akuma\CrucibleScale.png" />

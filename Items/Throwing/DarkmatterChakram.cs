@@ -1,4 +1,5 @@
 using System;
+using AAMod.Items.Projectiles;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
@@ -9,29 +10,23 @@ namespace AAMod.Items.Throwing
 {
 	public class DarkmatterChakram : ModItem
 	{
-
-        public class DMC : ModProjectile
+        public static short customGlowMask = 0;
+        public override void SetStaticDefaults()
         {
-
-            public static short customGlowMask = 0;
-            public override void SetStaticDefaults()
+            if (Main.netMode != 2)
             {
-                Main.projFrames[projectile.type] = 5;
-                if (Main.netMode != 2)
+                Texture2D[] glowMasks = new Texture2D[Main.glowMaskTexture.Length + 1];
+                for (int i = 0; i < Main.glowMaskTexture.Length; i++)
                 {
-                    Texture2D[] glowMasks = new Texture2D[Main.glowMaskTexture.Length + 1];
-                    for (int i = 0; i < Main.glowMaskTexture.Length; i++)
-                    {
-                        glowMasks[i] = Main.glowMaskTexture[i];
-                    }
-                    glowMasks[glowMasks.Length - 1] = mod.GetTexture("Items/Throwing/" + GetType().Name + "_Glow");
-                    customGlowMask = (short)(glowMasks.Length - 1);
-                    Main.glowMaskTexture = glowMasks;
+                    glowMasks[i] = Main.glowMaskTexture[i];
                 }
-
-                projectile.glowMask = customGlowMask;
-                DisplayName.SetDefault("Darkmatter Spinblade");
+                glowMasks[glowMasks.Length - 1] = mod.GetTexture("Items/Throwing/" + GetType().Name + "_Glow");
+                customGlowMask = (short)(glowMasks.Length - 1);
+                Main.glowMaskTexture = glowMasks;
             }
+
+            item.glowMask = customGlowMask;
+            DisplayName.SetDefault("Darkmatter Spinblade");
         }
         public override void SetDefaults()
 		{

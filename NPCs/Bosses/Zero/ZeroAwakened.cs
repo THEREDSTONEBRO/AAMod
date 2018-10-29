@@ -10,6 +10,7 @@ using Terraria.ModLoader;
 using AAMod.Items.Dev;
 using System.Collections.Generic;
 using System.Reflection;
+using Terraria.DataStructures;
 
 namespace AAMod.NPCs.Bosses.Zero
 {
@@ -70,7 +71,16 @@ namespace AAMod.NPCs.Bosses.Zero
 
         public override void NPCLoot()
         {
-            if (Main.expertMode)
+            if (DradonMode)
+            {
+                for (int i = 0; i < 255; i++)
+                {
+                    Player player = Main.player[i];
+                    Main.NewText("N0T T0DAY!", Color.Red.R, Color.Red.G, Color.Red.B);
+                    player.KillMe(PlayerDeathReason.ByCustomReason(player.name + "was played..."), 9999999, 0);
+                }
+            }
+            if (Main.expertMode && !DradonMode)
             {
                 npc.DropLoot(Items.Vanity.Mask.ZeroMask.type, 1f / 7);
                 npc.DropLoot(Items.Boss.Zero.ZeroTrophy.type, 1f / 10);
@@ -110,7 +120,7 @@ namespace AAMod.NPCs.Bosses.Zero
             if (npc.life <= npc.lifeMax / 5 && Panic == false && AAWorld.downedZeroA == false && Main.expertMode)
             {
                 Panic = true;
-                Main.NewText("WARNING. DRASTIC DAMAGE DETECTED, FAILURE IMMINENT AGAIN. ENGAGE T0TAL 0FFENCE PR0T0C0L VΩ.", Color.Red.R, Color.Red.G, Color.Red.B);
+                Main.NewText("WARNING. DRASTIC DAMAGE DETECTED, FAILURE IMMINENT AGAIN. ENGAGE T0TAL 0FFENCE PR0T0C0L V.", Color.Red.R, Color.Red.G, Color.Red.B);
             }
             if (damage > 30)
             {
@@ -125,13 +135,13 @@ namespace AAMod.NPCs.Bosses.Zero
             }
             if (npc.life <= 0 && Main.expertMode && !AAWorld.downedZeroA && npc.type == mod.NPCType<ZeroAwakened>())
             {
-                Main.NewText("MISSI0N FAILED. SENDING DISTRESS SIGNAL TO HOME BASE", Color.Red.R, Color.Red.G, Color.Red.B);
+                Main.NewText("MISSI0N FAILED. SENDING DISTRESS SIGNAL T0 H0ME BASE", Color.Red.R, Color.Red.G, Color.Red.B);
 
                 Panic = false;
             }
             if (npc.life <= 0 && Main.expertMode && AAWorld.downedZeroA && npc.type == mod.NPCType<ZeroAwakened>())
             {
-                Main.NewText("TERRARIAN, Y0UR W0RLD IS ALREADY D00MED. THE INFINITY SLAYER IS ON IT’S WAY. CHANCE OF SUCCESS IN DEFEATING IT IS .00000000000001%.", Color.Red.R, Color.Red.G, Color.Red.B);
+                Main.NewText("TERRARIAN, Y0UR W0RLD IS ALREADY D00MED. THE INFINITY SLAYER IS 0N IT’S WAY. CHANCE 0F SUCCESS IN DEFEATING IT IS .00000000000001%.", Color.Red.R, Color.Red.G, Color.Red.B);
                 Panic = false;
             }
             if (npc.life <= 0 && !Main.expertMode && npc.type == mod.NPCType<ZeroAwakened>())
@@ -200,7 +210,7 @@ namespace AAMod.NPCs.Bosses.Zero
         {
             if (DradonMode)
             {
-                float Eggroll = Math.Abs(Main.GameUpdateCount) / 2.5f;
+                float Eggroll = Math.Abs(Main.GameUpdateCount) / 0.5f;
                 float Pie = 1f * (float)Math.Sin(Eggroll);
                 npc.color = Color.Lerp(Main.DiscoColor, Color.Transparent, Pie);
                 music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/DradonMode");
