@@ -39,7 +39,7 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
             npc.noTileCollide = false;
             npc.buffImmune[46] = true;
             npc.buffImmune[47] = true;
-            music = MusicID.Boss1;
+            music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/Monarch");
             npc.netAlways = true;
             bossBag = mod.ItemType("MonarchBag");
 

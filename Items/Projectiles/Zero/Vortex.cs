@@ -46,7 +46,7 @@ namespace AAMod.Items.Projectiles.Zero   //The directory for your .cs and .png; 
             ProjectileID.Sets.YoyosMaximumRange[projectile.type] = 400f;
             // YoyosTopSpeed is top speed of the yoyo projectile.
             // Vanilla values range from 9f(Wood) to 17.5f(Terrarian), and defaults to 10f
-            ProjectileID.Sets.YoyosTopSpeed[projectile.type] = 18f;
+            ProjectileID.Sets.YoyosTopSpeed[projectile.type] = 17f;
         }
 
         public override void AI()

@@ -25,6 +25,8 @@ namespace AAMod.Items.Projectiles
                 customGlowMask = (short)(glowMasks.Length - 1);
                 Main.glowMaskTexture = glowMasks;
             }
+
+            projectile.glowMask = customGlowMask;
         }
 
         public override void SetDefaults()
@@ -40,7 +42,6 @@ namespace AAMod.Items.Projectiles
             projectile.timeLeft = 900;
             projectile.friendly = true;
             projectile.hostile = false;
-            projectile.glowMask = customGlowMask;
         }
 
         public override bool PreDraw(SpriteBatch sb, Color lightColor) //this is where the animation happens
