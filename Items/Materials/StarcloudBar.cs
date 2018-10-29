@@ -28,7 +28,7 @@ namespace AAMod.Items.Materials
         {                                                   //How to craft this item
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddRecipeGroup("AAMod:Gold");            //example of how to craft with a modded item
-            recipe.AddIngredient(ItemID.FallenStar, 1);
+            recipe.AddIngredient(ItemID.ManaCrystal, 1);
 			recipe.AddIngredient(ItemID.Cloud, 5);
             recipe.AddTile(TileID.Furnaces);
             recipe.SetResult(this);

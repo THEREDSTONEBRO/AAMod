@@ -116,6 +116,17 @@ namespace AAMod.NPCs.Bosses.Akuma
                 Main.dust[dust2].noGravity = true;
 
             }
+            if (npc.life <= 0 && !Main.expertMode)
+            {
+                Main.NewText("Hmpf...you’re pretty good kid, but not good enough. Come back once you’ve gotten a bit better.", Color.OrangeRed.R, Color.OrangeRed.G, Color.OrangeRed.B);
+
+            }
+            if (npc.life <= 0 && Main.expertMode)
+            {
+                Main.NewText("Heh...", Color.OrangeRed.R, Color.OrangeRed.G, Color.OrangeRed.B);
+
+            }
+
         }
     }
 
@@ -265,19 +276,7 @@ namespace AAMod.NPCs.Bosses.Akuma
             turnSpeed = 5.25f;
         }
 
-        public override void HitEffect(int hitDirection, double damage)
-        {
-            if (npc.life <= 0 && !Main.expertMode)
-            {
-                Main.NewText("Hmpf...you’re pretty good kid, but not good enough. Come back once you’ve gotten a bit better.", Color.OrangeRed.R, Color.OrangeRed.G, Color.OrangeRed.B);
-                
-            }
-            if (npc.life <= 0 && Main.expertMode)
-            {
-                Main.NewText("Heh...", Color.OrangeRed.R, Color.OrangeRed.G, Color.OrangeRed.B);
-                
-            }
-        }
+        
 
     }
 

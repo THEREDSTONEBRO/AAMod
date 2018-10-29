@@ -17,8 +17,8 @@ namespace AAMod.Items.Melee   //where is located
             item.melee = true;            //if it's melee
             item.width = 58;              //Sword width
             item.height = 60;             //Sword height
-            item.useTime = 23;          //how fast 
-            item.useAnimation = 23;     
+            item.useTime = 26;          //how fast 
+            item.useAnimation = 26;     
             item.useStyle = 1;        //Style is how this item is used, 1 is the style of the sword
             item.knockBack = 5;      //Sword knockback
             item.value = 3000;        

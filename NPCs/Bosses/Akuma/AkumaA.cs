@@ -9,7 +9,7 @@ namespace AAMod.NPCs.Bosses.Akuma
     //[AutoloadBossHead]
     class AkumaAHead : AkumaA
     {
-        
+        private bool Panic = false;
         public override string Texture { get { return "AAMod/NPCs/Bosses/Akuma/AkumaAHead"; } }
 
         public override void SetStaticDefaults()
@@ -87,6 +87,32 @@ namespace AAMod.NPCs.Bosses.Akuma
                 Main.dust[dust2].fadeIn = 1f;
                 Main.dust[dust2].noGravity = true;
 
+            }
+            if (npc.life <= npc.lifeMax / 5 && Panic == false && !AAWorld.downedAkumaA == false && Main.expertMode)
+            {
+                Panic = true;
+                Main.NewText("Wha—?! How have you lasted this long?! Grrrrrr…! I refuse to be bested by you! Have at it!", Color.DeepSkyBlue.R, Color.DeepSkyBlue.G, Color.DeepSkyBlue.B);
+            }
+            if (npc.life <= npc.lifeMax / 5 && Panic == false && AAWorld.downedAkumaA == false && Main.expertMode)
+            {
+                Panic = true;
+                Main.NewText("Still got it, do ya? I like that about you, kid..!", Color.DeepSkyBlue.R, Color.DeepSkyBlue.G, Color.DeepSkyBlue.B);
+            }
+            if (npc.life <= 0 && Main.expertMode && !AAWorld.downedAkumaA)
+            {
+                Main.NewText("Gah..! How could this happen?! Even in my full form?! Fine, take your reward. You earned it.", Color.DeepSkyBlue.R, Color.DeepSkyBlue.G, Color.DeepSkyBlue.B);
+
+                Panic = false;
+            }
+            if (npc.life <= 0 && Main.expertMode && AAWorld.downedAkumaA)
+            {
+                Main.NewText("Snuffed out again. You have my respect, kid. Here.", Color.DeepSkyBlue.R, Color.DeepSkyBlue.G, Color.DeepSkyBlue.B);
+                Panic = false;
+            }
+            if (npc.life <= 0 && !Main.expertMode)
+            {
+                Main.NewText("Nice hacks, kid. Now come back and fight me like a real man in expert mode. Then I’ll give you your prize.", Color.DeepSkyBlue.R, Color.DeepSkyBlue.G, Color.DeepSkyBlue.B);
+                Panic = false;
             }
         }
     }
@@ -184,7 +210,7 @@ namespace AAMod.NPCs.Bosses.Akuma
     class AkumaA : ChinaA
     {
 
-        private bool Panic = false;
+        
         public override void Init()
         {
             tailType = mod.NPCType<AkumaATail>();
@@ -195,35 +221,7 @@ namespace AAMod.NPCs.Bosses.Akuma
             turnSpeed = 7.25f;
         }
 
-        public override void HitEffect(int hitDirection, double damage)
-        {
-            if (npc.life <= npc.lifeMax / 5 && Panic == false && !AAWorld.downedAkumaA == false && Main.expertMode)
-            {
-                Panic = true;
-                Main.NewText("Wha—?! How have you lasted this long?! Grrrrrr…! I refuse to be bested by you! Have at it!", Color.DeepSkyBlue.R, Color.DeepSkyBlue.G, Color.DeepSkyBlue.B);
-            }
-            if (npc.life <= npc.lifeMax / 5 && Panic == false && AAWorld.downedAkumaA == false && Main.expertMode)
-            {
-                Panic = true;
-                Main.NewText("Still got it, do ya? I like that about you, kid..!", Color.DeepSkyBlue.R, Color.DeepSkyBlue.G, Color.DeepSkyBlue.B);
-            }
-            if (npc.life <= 0 && Main.expertMode && !AAWorld.downedAkumaA)
-            {
-                Main.NewText("Gah..! How could this happen?! Even in my full form?! Fine, take your reward. You earned it.", Color.DeepSkyBlue.R, Color.DeepSkyBlue.G, Color.DeepSkyBlue.B);
-
-                Panic = false;
-            }
-            if (npc.life <= 0 && Main.expertMode && AAWorld.downedAkumaA)
-            {
-                Main.NewText("Snuffed out again. You have my respect, kid. Here.", Color.DeepSkyBlue.R, Color.DeepSkyBlue.G, Color.DeepSkyBlue.B);
-                Panic = false;
-            }
-            if (npc.life <= 0 && !Main.expertMode)
-            {
-                Main.NewText("Nice hacks, kid. Now come back and fight me like a real man in expert mode. Then I’ll give you your prize.", Color.DeepSkyBlue.R, Color.DeepSkyBlue.G, Color.DeepSkyBlue.B);
-                Panic = false;
-            }
-        }
+        
     }
 
     public abstract class ChinaA : ModNPC
@@ -721,7 +719,7 @@ namespace AAMod.NPCs.Bosses.Akuma
                 }
                 else
                 {
-
+                    npc.DropLoot(0);
                 }
             }
             else

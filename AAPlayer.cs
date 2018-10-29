@@ -93,6 +93,7 @@ namespace AAMod
         //pets
         public bool Broodmini = false;
         public bool Raidmini = false;
+        public bool MiniProbe = false;
 
         public override void ResetEffects()
         {
@@ -139,6 +140,7 @@ namespace AAMod
             TrueInfinityGauntlet = false;
             Broodmini = false;
             Raidmini = false;
+            MiniProbe = false;
             Blackend = false;
         }
 
