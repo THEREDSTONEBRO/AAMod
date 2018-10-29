@@ -59,7 +59,7 @@ You don't look so good
 
         public override void ModifyTooltips(List<TooltipLine> list)
         {
-            float Eggroll = Math.Abs(Main.GameUpdateCount) / 5f;
+            float Eggroll = Math.Abs(Main.GameUpdateCount) / 0.5f;
             float Pie = 1f * (float)Math.Sin(Eggroll);
             Color color1 = Color.Lerp(Color.DarkRed, Color.Black, Pie);
             foreach (TooltipLine line2 in list)
@@ -122,6 +122,7 @@ You don't look so good
                     player.bodyPosition.X -= 23f;
                     player.legPosition.Y += 20f;
                     player.legPosition.X -= 12f;
+                    player.GetModPlayer<AAPlayer>().BrokenCode = true;
                 }
             }
             else
@@ -136,6 +137,7 @@ You don't look so good
                     player.bodyPosition.X += 23f;
                     player.legPosition.Y -= 20f;
                     player.legPosition.X += 12f;
+                    player.GetModPlayer<AAPlayer>().BrokenCode = false;
                 }
             }
         }

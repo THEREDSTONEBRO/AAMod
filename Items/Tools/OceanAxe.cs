@@ -30,7 +30,7 @@ namespace AAMod.Items.Tools
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Coral Axe");
-            Tooltip.SetDefault("Because Blue Pickaxe was a boring name");
+            Tooltip.SetDefault("the axe made from the Ocean");
         }
 
         public override void AddRecipes()  //How to craft this item

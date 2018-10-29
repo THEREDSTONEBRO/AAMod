@@ -10,7 +10,7 @@ namespace AAMod.Items.Tools
         public override void SetDefaults()
         {
 
-            item.damage = 12;
+            item.damage = 7;
             item.melee = true;
             item.width = 40;
             item.height = 40;
@@ -27,11 +27,11 @@ namespace AAMod.Items.Tools
             item.useTurn = true;
         }
 
-    public override void SetStaticDefaults()
-    {
-      DisplayName.SetDefault("Coral Pickaxe");
-      Tooltip.SetDefault("Because Blue Pickaxe was a boring name");
-    }
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("Coral Pickaxe");
+            Tooltip.SetDefault("Because Blue Pickaxe was a boring name");
+        }
 
         public override void AddRecipes()  //How to craft this item
         {

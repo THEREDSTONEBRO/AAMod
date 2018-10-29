@@ -24,9 +24,9 @@ namespace AAMod.Items.BossSummons
                 Main.glowMaskTexture = glowMasks;
             }
             item.glowMask = customGlowMask;
-            DisplayName.SetDefault("ERROR:NULL");
+            DisplayName.SetDefault("ERR0R:NULL");
             Tooltip.SetDefault(@"DESCRIPTI0NHERE
-UNSTABLE. C0NTAINS C0DE TO ACTIVATE THE BRINGER 0F DEATH");
+UNSTABLE. C0NTAINS C0DE T0 ACTIVATE THE BRINGER 0F DEATH");
         }
 
         public override void SetDefaults()

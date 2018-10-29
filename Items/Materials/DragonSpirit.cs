@@ -31,20 +31,7 @@ namespace AAMod.Items.Materials
             item.rare = 7;
         }
 
-        // The following 2 methods are purely to show off these 2 hooks. Don't use them in your own code.
-        public override void GrabRange(Player player, ref int grabRange)
-        {
-            grabRange *= 3;
-        }
-
-        public override bool GrabStyle(Player player)
-        {
-            Vector2 vectorItemToPlayer = player.Center - item.Center;
-            Vector2 movement = -vectorItemToPlayer.SafeNormalize(default(Vector2)) * 0.1f;
-            item.velocity = item.velocity + movement;
-            item.velocity = Collision.TileCollision(item.position, item.velocity, item.width, item.height);
-            return true;
-        }
+        //>:(
 
         public override void PostUpdate()
         {
