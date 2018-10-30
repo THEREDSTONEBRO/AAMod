@@ -1748,6 +1748,7 @@
     <Content Include="Items\Projectiles\AmphibiousProjectileS.png" />
     <Content Include="Items\Projectiles\Akuma\FireProj.png" />
     <Content Include="Items\Projectiles\CatsEye.png" />
+    <Content Include="Items\Projectiles\CatsEye_Glow.png" />
     <Content Include="Items\Projectiles\DecayScythe.png" />
     <Content Include="Items\Projectiles\DMC.png" />
     <Content Include="Items\Projectiles\DMC_Glow.png" />

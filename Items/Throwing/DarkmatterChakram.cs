@@ -8,15 +8,8 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Throwing
 {
-	public class DarkmatterChakram : ModItem
-	{
-<<<<<<< HEAD
-
-            public static short customGlowMask = 0;
-            public override void SetStaticDefaults()
-            {
-                if (Main.netMode != 2)
-=======
+    public class DarkmatterChakram : ModItem
+    {
         public static short customGlowMask = 0;
         public override void SetStaticDefaults()
         {
@@ -24,16 +17,9 @@ namespace AAMod.Items.Throwing
             {
                 Texture2D[] glowMasks = new Texture2D[Main.glowMaskTexture.Length + 1];
                 for (int i = 0; i < Main.glowMaskTexture.Length; i++)
->>>>>>> 5409ab86ce8001ba2f07e18bf7f9306fb5be1dd1
                 {
                     glowMasks[i] = Main.glowMaskTexture[i];
                 }
-<<<<<<< HEAD
-
-                item.glowMask = customGlowMask;
-                DisplayName.SetDefault("Darkmatter Spinblade");
-            }
-=======
                 glowMasks[glowMasks.Length - 1] = mod.GetTexture("Items/Throwing/" + GetType().Name + "_Glow");
                 customGlowMask = (short)(glowMasks.Length - 1);
                 Main.glowMaskTexture = glowMasks;
@@ -42,27 +28,26 @@ namespace AAMod.Items.Throwing
             item.glowMask = customGlowMask;
             DisplayName.SetDefault("Darkmatter Spinblade");
         }
->>>>>>> 5409ab86ce8001ba2f07e18bf7f9306fb5be1dd1
         public override void SetDefaults()
-		{
-            item.damage = 170;            
+        {
+            item.damage = 170;
             item.thrown = true;
             item.width = 30;
             item.height = 30;
-			item.useTime = 16;
-			item.useAnimation = 16;
+            item.useTime = 16;
+            item.useAnimation = 16;
             item.noUseGraphic = true;
             item.useStyle = 1;
-			item.knockBack = 0;
-			item.value = 100000;
-			item.rare = 6;
-			item.shootSpeed = 15f;
-			item.shoot = mod.ProjectileType ("DMC");
-			item.UseSound = SoundID.Item1;
-			item.autoReuse = true;
-		}
+            item.knockBack = 0;
+            item.value = 100000;
+            item.rare = 6;
+            item.shootSpeed = 15f;
+            item.shoot = mod.ProjectileType("DMC");
+            item.UseSound = SoundID.Item1;
+            item.autoReuse = true;
+        }
 
-        
+
 
         public override bool CanUseItem(Player player)       //this make that you can shoot only 1 boomerang at once
         {
@@ -77,11 +62,11 @@ namespace AAMod.Items.Throwing
         }
         public override void AddRecipes()
         {
-                ModRecipe recipe = new ModRecipe(mod);
-				recipe.AddIngredient(null, "DarkMatter", 15);
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(null, "DarkMatter", 15);
             recipe.AddTile(null, "QuantumFusionAccelerator");
             recipe.SetResult(this);
             recipe.AddRecipe();
-		}
+        }
     }
 }

@@ -50,7 +50,7 @@ Doesn't require ammo
             item.rare = 9; 
             item.UseSound = new LegacySoundStyle(2, 40, Terraria.Audio.SoundType.Sound);
             item.autoReuse = true; 
-            item.shootSpeed = 40f;
+            item.shootSpeed = 20f;
             item.crit = 0;
         }
         public override void ModifyTooltips(List<TooltipLine> list)
