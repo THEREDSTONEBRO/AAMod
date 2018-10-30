@@ -678,6 +678,10 @@
     <Compile Include="NPCs\Bosses\Daybringer\SunbeamScatter.cs" />
     <Compile Include="NPCs\Bosses\Grips\GripOfChaosBlue.cs" />
     <Compile Include="NPCs\Bosses\Grips\GripOfChaosRed.cs" />
+    <Compile Include="NPCs\Bosses\Shen\DiscordianBreath.cs" />
+    <Compile Include="NPCs\Bosses\Shen\DiscordianInferno.cs" />
+    <Compile Include="NPCs\Bosses\Shen\ShenFirebomb.cs" />
+    <Compile Include="NPCs\Bosses\Shen\ShenDoragon.cs" />
     <Compile Include="NPCs\Bosses\Zero\SearcherZero.cs" />
     <Compile Include="NPCs\Enemies\Inferno\InfernoMimic.cs" />
     <Compile Include="NPCs\Enemies\Mire\MireMimic.cs" />
@@ -1378,7 +1382,6 @@
     <Content Include="Items\Boss\Akumata\ChaosSoul.png" />
     <Content Include="Items\Boss\Akumata\ChaosSoul_Glow.png" />
     <Content Include="Items\Boss\Akuma\AkumaTrophy.png" />
-    <Content Include="Items\Boss\Akuma\AkumaTrophy_Glow.png" />
     <Content Include="Items\Boss\Akuma\CrucibleScale.png" />
     <Content Include="Items\Boss\Akuma\Dawnstrike.png" />
     <Content Include="Items\Boss\Akuma\Dawnstrike_Glow.png" />
@@ -1822,6 +1825,7 @@
     <Content Include="Items\Projectiles\SauceProjectile.png" />
     <Content Include="Items\Projectiles\SauceRed.png" />
     <Content Include="Items\Projectiles\SauceYellow.png" />
+    <Content Include="Items\Projectiles\Shen\ShenFire.png" />
     <Content Include="Items\Projectiles\SpookerangP.png" />
     <Content Include="Items\Projectiles\Squirt.png" />
     <Content Include="Items\Projectiles\Taserblast.png" />
@@ -2076,6 +2080,13 @@
     <Content Include="Map\InfernoMap.png" />
     <Content Include="Map\MireMap.png" />
     <Content Include="Map\VoidMap.png" />
+    <Content Include="NPCs\Bosses\Shen\DiscordianBreath.png" />
+    <Content Include="NPCs\Bosses\Shen\DiscordianInferno.png" />
+    <Content Include="NPCs\Bosses\Shen\DoragonWingsB.png" />
+    <Content Include="NPCs\Bosses\Shen\DoragonWingsF.png" />
+    <Content Include="NPCs\Bosses\Shen\ShenBlueWingB.png" />
+    <Content Include="NPCs\Bosses\Shen\ShenBlueWingF.png" />
+    <Content Include="NPCs\Bosses\Shen\ShenDoragon %281%29.png" />
     <Content Include="NPCs\Bosses\Shen\ShenDoragon.png" />
     <Content Include="NPCs\Bosses\Akuma\AFireProjHostile.png" />
     <Content Include="NPCs\Bosses\Akuma\AFireProjHostile_Glow.png" />
@@ -2126,6 +2137,12 @@
     <Content Include="NPCs\Bosses\MushroomMonarch\MushroomMonarch0.png" />
     <Content Include="NPCs\Bosses\MushroomMonarch\MushroomMonarchJump.png" />
     <Content Include="NPCs\Bosses\MushroomMonarch\MushroomMonarch_Head_Boss.png" />
+    <Content Include="NPCs\Bosses\Shen\ShenDoragonMaiin.png" />
+    <Content Include="NPCs\Bosses\Shen\ShenFirebomb.png" />
+    <Content Include="NPCs\Bosses\Shen\ShenRedWingB.png" />
+    <Content Include="NPCs\Bosses\Shen\ShenRedWingF.png" />
+    <Content Include="NPCs\Bosses\Shen\ShenWingB.png" />
+    <Content Include="NPCs\Bosses\Shen\ShenWingF.png" />
     <Content Include="NPCs\Bosses\Yamata\Yamata.png" />
     <Content Include="NPCs\Bosses\Yamata\YamataA.png" />
     <Content Include="NPCs\Bosses\Zero\MiniProbe.png" />
@@ -2249,6 +2266,9 @@
     <Content Include="Palletes\Yamata &amp; Akuma.png" />
     <Content Include="Palletes\Yamata.png" />
     <Content Include="Sounds\Music\Akuma.mp3" />
+    <Content Include="Sounds\Music\DradonMode.mp3" />
+    <Content Include="Sounds\Music\End.mp3" />
+    <Content Include="Sounds\Music\Monarch.mp3" />
     <Content Include="Sounds\Music\Shen.mp3" />
     <Content Include="Sounds\Music\ShenA.mp3" />
     <Content Include="Sounds\Music\Boss6.mp3" />
