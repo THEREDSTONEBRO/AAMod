@@ -30,9 +30,10 @@ namespace AAMod.Items.Usable
         }
 
         public override bool CanRightClick()
-		{
-			return true;
-		}
+	{
+		return true;
+	}
+	
         public override void RightClick(Player player)
         {
             if (Main.rand.Next(6) == 0)
