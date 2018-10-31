@@ -31,6 +31,7 @@ namespace AAMod
         public bool VoidUnit = false;
         public bool SunAltar = false;
         public bool MoonAltar = false;
+        private int VoidGrav;
         // Armor bools.
         public bool steelSet;
         public bool leatherSet;
@@ -77,6 +78,7 @@ namespace AAMod
         public bool Space;
         public int SnapCD = 18000;
         public bool death;
+        public bool AshRemover;
         public bool FogRemover;
         //debuffs
         public bool infinityOverload = false;
@@ -94,7 +96,8 @@ namespace AAMod
 
         public override void ResetEffects()
         {
-            //FogRemover = false;
+            AshRemover = false;
+            FogRemover = false;
             clawsOfChaos = false;
             demonGauntlet = false;
             valkyrieSet = false;
@@ -249,23 +252,57 @@ namespace AAMod
                         Main.rainTime++;
                     }
                 }
-                /*if (Main.dayTime)
+                if (Main.dayTime)
                 {
                     if (!FogRemover)
                     {
-                        if (!mod.GetProjectile<Fog>().projectile.active && !mod.GetProjectile<Fog>().projectile.hide)
-                        {
-                            Projectile.NewProjectile(player.Center, new Vector2(0, 0), mod.ProjectileType<Fog>(), 0, 0, Main.myPlayer);
-                        }
+                        player.AddBuff(mod.BuffType<Clueless>(), 5);
+                    }
+                }
+            }
+            if (player.GetModPlayer<AAPlayer>().ZoneVoid)
+            {
+                if (!BrokenCode)
+                {
+                    if (Main.rand.Next(3600) == 0)
+                    {
+                        VoidGrav = Main.rand.Next(5);
+                    }
+                    if (VoidGrav == 0)
+                    {
+                        player.gravity = 0.1f;
+                    }
+                    else if (VoidGrav == 1)
+                    {
+                        player.gravity = 0.5f;
+                    }
+                    else if (VoidGrav == 2)
+                    {
+                        player.gravity = 1f;
+                    }
+                    else if (VoidGrav == 3)
+                    {
+                        player.gravity = 5f;
                     }
                     else
                     {
-                        if (!mod.GetProjectile<Fogless>().projectile.active && !mod.GetProjectile<Fogless>().projectile.hide)
-                        {
-                            Projectile.NewProjectile(player.Center, new Vector2(0, 0), mod.ProjectileType<Fogless>(), 0, 0, Main.myPlayer);
-                        }
+                        player.gravity = 10f;
                     }
-                }*/
+                }
+                else
+                {
+                    player.gravity = 1f;
+                }
+            }
+            if(player.GetModPlayer<AAPlayer>().ZoneInferno)
+            {
+                if (!Main.dayTime)
+                {
+                    if (!AshRemover)
+                    {
+                        player.AddBuff(mod.BuffType<BurningAsh>(), 5);
+                    }
+                }
             }
         }
 
@@ -489,6 +526,25 @@ namespace AAMod
                 }
                 player.lifeRegenTime = 0;
                 player.lifeRegen -= 16;
+            }
+            if (dragonFire)
+            {
+                player.magicDamage -= 10;
+                player.minionDamage -= 10;
+                player.meleeDamage -= 10;
+                player.thrownDamage -= 10;
+                player.rangedDamage -= 10;
+            }
+            if (hydraToxin)
+            {
+                foreach (Tile tile in Main.tile)
+                {
+                    if (tile.collisionType == player.whoAmI)
+                    {
+                        player.velocity.X = (player.velocity.X / 16) * 15;
+                        player.velocity.Y = (player.velocity.Y / 16) * 15;
+                    }
+                }
             }
         }
 
@@ -768,11 +824,6 @@ namespace AAMod
                 drawInfo.bodyGlowMaskColor = Color.Black;
                 drawInfo.armGlowMaskColor = Color.Black;
                 drawInfo.legGlowMaskColor = Color.Black;
-            }
-            if (BrokenCode)
-            {
-                drawInfo.legColor = Color.Transparent;
-                drawInfo.legGlowMaskColor = Color.Transparent;
             }
         }
     }

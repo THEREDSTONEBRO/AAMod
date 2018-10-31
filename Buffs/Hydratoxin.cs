@@ -1,3 +1,4 @@
+using AAMod.NPCs;
 using Terraria;
 using Terraria.ModLoader;
 
@@ -17,25 +18,12 @@ namespace AAMod.Buffs
 
 		public override void Update(Player player, ref int buffIndex)
 		{
-            foreach (Tile tile in Main.tile)
-            {
-                if (tile.collisionType == player.whoAmI)
-                {
-                    player.moveSpeed = (player.moveSpeed / 16) * 15;
-                }
-            }
+            player.GetModPlayer<AAPlayer>(mod).hydraToxin = true;
         }
 
 		public override void Update(NPC npc, ref int buffIndex)
 		{
-            foreach (Tile tile in Main.tile)
-            {
-                if (tile.collisionType == npc.whoAmI)
-                {
-                    npc.velocity.X = (npc.velocity.X / 16) * 15;
-                    npc.velocity.Y = (npc.velocity.Y / 16) * 15;
-                }
-            }
-		}
+            npc.GetGlobalNPC<AAModGlobalNPC>(mod).Hydratoxin = true;
+        }
 	}
 }

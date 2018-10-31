@@ -16,7 +16,11 @@ namespace AAMod.Buffs
 
 		public override void Update(Player player, ref int buffIndex)
 		{
-            player.buffTime[buffIndex] = 1800;
+            if (player.GetModPlayer<AAPlayer>(mod).ZoneMire)
+            {
+                player.buffTime[buffIndex] = 5;
+            }
+            player.GetModPlayer<AAPlayer>(mod).Blackend = true;
 		}
 	}
 }

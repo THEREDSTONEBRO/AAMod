@@ -77,7 +77,7 @@ namespace AAMod.NPCs.Bosses.Zero
                 {
                     Player player = Main.player[i];
                     Main.NewText("N0T T0DAY!", Color.Red.R, Color.Red.G, Color.Red.B);
-                    player.KillMe(PlayerDeathReason.ByCustomReason(player.name + "was played..."), 9999999, 0);
+                    player.KillMe(PlayerDeathReason.ByCustomReason(player.name + " was played..."), 9999999, 0);
                 }
             }
             if (Main.expertMode && !DradonMode)

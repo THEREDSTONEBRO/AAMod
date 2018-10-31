@@ -23,8 +23,8 @@ namespace AAMod.NPCs.Bosses.Akuma
             npc.damage = 100;
             npc.defense = 120;
             npc.knockBackResist = 0f;
-            npc.width = 66;
-            npc.height = 62;
+            npc.width = 144;
+            npc.height = 112;
             npc.value = Item.buyPrice(0, 55, 0, 0);
             npc.boss = true;
             npc.aiStyle = -1;
@@ -251,7 +251,7 @@ namespace AAMod.NPCs.Bosses.Akuma
         {
             if (npc.life <= npc.lifeMax / 5)
             {
-                music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/RayOfHope");
+                music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/RayOfHope");
             }
             if (npc.localAI[1] == 0f)
             {
@@ -290,9 +290,9 @@ namespace AAMod.NPCs.Bosses.Akuma
             }
             if (Main.netMode != 1)
             {
-                if (!tail && npc.ai[0] == 0f)
+                if (!tail)
                 {
-                    if (head && !tail)
+                    if ((head && !tail) || (body && !tail) || (arm && !tail))
                     {
                         npc.ai[3] = npc.whoAmI;
                         npc.realLife = npc.whoAmI;

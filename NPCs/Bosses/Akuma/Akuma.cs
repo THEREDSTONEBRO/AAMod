@@ -18,25 +18,25 @@ namespace AAMod.NPCs.Bosses.Akuma
 
         public override void SetDefaults()
         {
-            if (!Main.expertMode && !AAWorld.downedZero)
+            if (!Main.expertMode && !AAWorld.downedAkuma)
             {
                 npc.damage = 80;
                 npc.defense = 100;
                 npc.lifeMax = 200000;
             }
-            if (!Main.expertMode && AAWorld.downedZero)
+            if (!Main.expertMode && AAWorld.downedAkuma)
             {
                 npc.damage = 90;
                 npc.defense = 120;
                 npc.lifeMax = 220000;
             }
-            if (Main.expertMode && !AAWorld.downedZeroA)
+            if (Main.expertMode && !AAWorld.downedAkumaA)
             {
                 npc.damage = 80;
                 npc.defense = 100;
                 npc.lifeMax = 200000;
             }
-            if (Main.expertMode && AAWorld.downedZeroA)
+            if (Main.expertMode && AAWorld.downedAkumaA)
             {
                 npc.damage = 100;
                 npc.defense = 130;
@@ -102,7 +102,7 @@ namespace AAMod.NPCs.Bosses.Akuma
         {
             int dust1 = mod.DustType<Dusts.AkumaDust>();
             int dust2 = mod.DustType<Dusts.AkumaDust>();
-            if (npc.life <= 0)
+            if (npc.life <= 0 && !Main.expertMode)
             {
                 Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, dust1, 0f, 0f, 0, default(Color), 1f);
                 Main.dust[dust1].velocity *= 0.5f;
@@ -119,12 +119,11 @@ namespace AAMod.NPCs.Bosses.Akuma
             if (npc.life <= 0 && !Main.expertMode)
             {
                 Main.NewText("Hmpf...you’re pretty good kid, but not good enough. Come back once you’ve gotten a bit better.", Color.OrangeRed.R, Color.OrangeRed.G, Color.OrangeRed.B);
-
             }
             if (npc.life <= 0 && Main.expertMode)
             {
                 Main.NewText("Heh...", Color.OrangeRed.R, Color.OrangeRed.G, Color.OrangeRed.B);
-
+                Projectile.NewProjectile((new Vector2(npc.position.X, npc.position.Y)), (new Vector2(0f, 0f)), mod.ProjectileType("AkumaTransition"), 0, 0);
             }
 
         }
@@ -298,7 +297,7 @@ namespace AAMod.NPCs.Bosses.Akuma
         public int armType;
         public int tailType;
         public bool flies = true;
-        public bool directional = true;
+        public bool directional = false;
         public float speed;
         public float turnSpeed;
         public bool Initiated = false;
@@ -345,9 +344,9 @@ namespace AAMod.NPCs.Bosses.Akuma
             }
             if (Main.netMode != 1)
             {
-                if (!tail && npc.ai[0] == 0f)
+                if (!tail)
                 {
-                    if (head && !tail)
+                    if ((head && !tail) || (body && !tail) || (arm && !tail))
                     {
                         npc.ai[3] = npc.whoAmI;
                         npc.realLife = npc.whoAmI;
@@ -767,11 +766,7 @@ namespace AAMod.NPCs.Bosses.Akuma
             AAWorld.downedAkuma = true;
             if (NPC.CountNPCS(bossAlive) < 1)
             {
-                if (Main.expertMode)
-                {
-                    Projectile.NewProjectile((new Vector2(npc.position.X, npc.position.Y)), (new Vector2(0f, 0f)), mod.ProjectileType("AkumaTransition"), 0, 0);
-                }
-                else
+                if (!Main.expertMode)
                 {
                     npc.DropLoot(mod.ItemType("DaybreakIncinerite"), 20, 30);
                     npc.DropLoot(mod.ItemType("CrucibleScale"), 25, 35);

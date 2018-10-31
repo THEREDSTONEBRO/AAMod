@@ -10,13 +10,6 @@ namespace AAMod.Items.Throwing
 {
 	public class DarkmatterChakram : ModItem
 	{
-<<<<<<< HEAD
-
-            public static short customGlowMask = 0;
-            public override void SetStaticDefaults()
-            {
-                if (Main.netMode != 2)
-=======
         public static short customGlowMask = 0;
         public override void SetStaticDefaults()
         {
@@ -24,25 +17,13 @@ namespace AAMod.Items.Throwing
             {
                 Texture2D[] glowMasks = new Texture2D[Main.glowMaskTexture.Length + 1];
                 for (int i = 0; i < Main.glowMaskTexture.Length; i++)
->>>>>>> 5409ab86ce8001ba2f07e18bf7f9306fb5be1dd1
                 {
                     glowMasks[i] = Main.glowMaskTexture[i];
                 }
-<<<<<<< HEAD
-
                 item.glowMask = customGlowMask;
                 DisplayName.SetDefault("Darkmatter Spinblade");
             }
-=======
-                glowMasks[glowMasks.Length - 1] = mod.GetTexture("Items/Throwing/" + GetType().Name + "_Glow");
-                customGlowMask = (short)(glowMasks.Length - 1);
-                Main.glowMaskTexture = glowMasks;
-            }
-
-            item.glowMask = customGlowMask;
-            DisplayName.SetDefault("Darkmatter Spinblade");
         }
->>>>>>> 5409ab86ce8001ba2f07e18bf7f9306fb5be1dd1
         public override void SetDefaults()
 		{
             item.damage = 170;            

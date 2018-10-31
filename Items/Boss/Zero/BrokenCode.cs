@@ -13,11 +13,13 @@ namespace AAMod.Items.Boss.Zero
         public static short customGlowMask = 0;
         public int CodeCD = 0;
         public bool on = true;
+
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Broken Code");
             Tooltip.SetDefault(@"Allows you to glitch with a 5 second cooldown
 Grapple to Glitch
+Removes The Void's Gravity Effect
 While cooldown is occurring, your speed is increased and your invincible for half the time
 You don't look so good
 01001111
@@ -122,7 +124,6 @@ You don't look so good
                     player.bodyPosition.X -= 23f;
                     player.legPosition.Y += 20f;
                     player.legPosition.X -= 12f;
-                    player.GetModPlayer<AAPlayer>().BrokenCode = true;
                 }
             }
             else
@@ -137,9 +138,9 @@ You don't look so good
                     player.bodyPosition.X += 23f;
                     player.legPosition.Y -= 20f;
                     player.legPosition.X += 12f;
-                    player.GetModPlayer<AAPlayer>().BrokenCode = false;
                 }
             }
+            player.GetModPlayer<AAPlayer>(mod).BrokenCode = true;
         }
 
         public override void PostUpdate()

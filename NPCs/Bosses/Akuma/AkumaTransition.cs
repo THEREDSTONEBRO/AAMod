@@ -32,6 +32,10 @@ namespace AAMod.NPCs.Bosses.Akuma
             {
                 Main.NewText("You know, kid...fanning the flames doesn't put them out...", Color.OrangeRed.R, Color.OrangeRed.G, Color.OrangeRed.B);
             }
+            if (timer == 600)
+            {
+                projectile.Kill();
+            }
         }
         
         public override void Kill(int timeLeft)
