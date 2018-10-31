@@ -374,6 +374,8 @@
     <Compile Include="Items\Dev\UmbreonSP.cs" />
     <Compile Include="Items\Dev\UmbreonSPEX.cs" />
     <Compile Include="Items\Dev\WasabiBowl.cs" />
+    <Compile Include="Items\Magic\DragonsBreath.cs" />
+    <Compile Include="Items\Magic\z.cs" />
     <Compile Include="Items\Magic\Gong.cs" />
     <Compile Include="Items\Magic\TrueGong.cs" />
     <Compile Include="Items\Magic\YtriumStaff.cs" />
@@ -394,6 +396,7 @@
     <Compile Include="Items\Materials\ApocalyptitePlate.cs" />
     <Compile Include="Items\Materials\BookOfSacrifice.cs" />
     <Compile Include="Items\Materials\DarkEnergy.cs" />
+    <Compile Include="Items\Materials\DragonScale.cs" />
     <Compile Include="Items\Materials\Stardust.cs" />
     <Compile Include="Items\Materials\DarkMatter.cs" />
     <Compile Include="Items\Materials\DaybreakIncinerite.cs" />
@@ -684,6 +687,7 @@
     <Compile Include="NPCs\Bosses\Shen\ShenDoragon.cs" />
     <Compile Include="NPCs\Bosses\Zero\SearcherZero.cs" />
     <Compile Include="NPCs\Enemies\Inferno\InfernoMimic.cs" />
+    <Compile Include="NPCs\Enemies\Inferno\InfernoSalamander.cs" />
     <Compile Include="NPCs\Enemies\Mire\MireMimic.cs" />
     <Compile Include="NPCs\MimicSummon.cs" />
     <Compile Include="NPCs\Bosses\MushroomMonarch\MonarchRUNAWAY.cs" />
@@ -1595,6 +1599,7 @@
     <Content Include="Items\Materials\DragonClaw.png" />
     <Content Include="Items\Materials\DragonFire.png" />
     <Content Include="Items\Materials\Dragonfruit.png" />
+    <Content Include="Items\Materials\DragonScale.png" />
     <Content Include="Items\Materials\DragonSpirit.png" />
     <Content Include="Items\Materials\EventideAbyssium.png" />
     <Content Include="Items\Materials\Everleaf.png" />
