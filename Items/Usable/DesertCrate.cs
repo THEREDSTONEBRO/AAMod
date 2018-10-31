@@ -29,6 +29,11 @@ namespace AAMod.Items.Usable
             item.placeStyle = 2;
         }
 
+        public override bool CanRightClick()
+	{
+		return true;
+	}
+	
         public override void RightClick(Player player)
         {
             if (Main.rand.Next(6) == 0)
