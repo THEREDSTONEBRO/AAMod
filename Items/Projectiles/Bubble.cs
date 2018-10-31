@@ -19,8 +19,10 @@ namespace AAMod.Items.Projectiles
         }
         public override void AI()
         {
-            int dustIndex = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, mod.DustType("MireBubbleDust"), 0f, 0f, 100, default(Color), 1.5f);
-            Main.dust[dustIndex].noGravity = true;
+            Dust dust1;
+            Vector2 position = projectile.position;
+            dust1 = Main.dust[Dust.NewDust(position, 0, 0, mod.DustType<Dusts.MireBubbleDust>(), 4.736842f, 0f, 46, default(Color), 1f)];
+            dust1.noGravity = true;
         }
     }
 }

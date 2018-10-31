@@ -68,6 +68,7 @@ namespace AAMod.Items.Dev
             recipe.SetResult(this);
             recipe.AddRecipe();
         }
+        
 
         // What if I wanted this gun to have a 38% chance not to consume ammo?
         /*public override bool ConsumeAmmo(Player player)

@@ -596,6 +596,7 @@
     <Compile Include="Items\Ranged\DragonsMaw.cs" />
     <Compile Include="Items\Ranged\FulguriteTazerblaster.cs" />
     <Compile Include="Items\Ranged\HydraTrishot.cs" />
+    <Compile Include="Items\Ranged\Railjaw.cs" />
     <Compile Include="Items\Ranged\ReaperArrow.cs" />
     <Compile Include="Items\Ranged\TheSquirter.cs" />
     <Compile Include="Items\Ranged\TheVulcano.cs" />
@@ -1735,7 +1736,6 @@
     <Content Include="Items\Potions\GrandHealingPotion.png" />
     <Content Include="Items\Potions\GrandManaPotion.png" />
     <Content Include="Items\Potions\TheBigOne.png" />
-    <Content Include="Items\Projectiles\Akumata\AkumataFire.png" />
     <Content Include="Items\Projectiles\Akuma\AkumaFlare.png" />
     <Content Include="Items\Projectiles\Akuma\Dawnstrike.png" />
     <Content Include="Items\Projectiles\Akuma\DaybreakArrow.png" />
