@@ -75,8 +75,8 @@ namespace AAMod.Items.Projectiles
                 float num485 = num473 - vector35.Y;
                 float num486 = (float)Math.Sqrt((double)(num484 * num484 + num485 * num485));
                 num486 = num483 / num486;
-                num484 *= num486;
-                num485 *= num486;
+                num484 *= projectile.velocity.X;
+                num485 *= projectile.velocity.Y;
                 projectile.velocity.X = (projectile.velocity.X) / 21f;
                 projectile.velocity.Y = (projectile.velocity.Y) / 21f;
                 if (projectile.ai[1] == 0f && projectile.type == 44)

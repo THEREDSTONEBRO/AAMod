@@ -47,7 +47,7 @@ Cat's Eye Rifle EX");
             item.knockBack = 12; 
             item.value = Item.sellPrice(1, 0, 0, 0);
             item.autoReuse = true; 
-            item.shootSpeed = 50f; 
+            item.shootSpeed = 25f; 
             item.crit = 5;
             item.expert = true;
         }
