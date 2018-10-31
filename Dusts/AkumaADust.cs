@@ -9,12 +9,24 @@ namespace AAMod.Dusts
         public override void OnSpawn(Dust dust)
         {
             dust.velocity.Y = Main.rand.Next(-10, 6) * 0.1f;
-            dust.velocity.X *= 0.3f;
+            dust.velocity.X *= 2f;
             dust.scale *= 1.3f;
+            dust.noGravity = true;
+        }
+
+        public override bool Update(Dust dust)
+        {
+            bool flag5 = WorldGen.SolidTile(Framing.GetTileSafely((int)dust.position.X / 16, (int)dust.position.Y / 16));
+            if (flag5)
+            {
+                dust.noLight = true;
+            }
+            return true;
         }
 
         public override bool MidUpdate(Dust dust)
         {
+            dust.rotation += dust.velocity.X / 3f;
             if (!dust.noGravity)
             {
                 dust.velocity.Y += 0.05f;

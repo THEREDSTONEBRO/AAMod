@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.Audio;
@@ -48,7 +49,16 @@ namespace AAMod.Items.Boss.Akuma      //We need this to basically indicate the f
             item.glowMask = customGlowMask;
         }
 
-        
+        public override void ModifyTooltips(List<TooltipLine> list)
+        {
+            foreach (TooltipLine line2 in list)
+            {
+                if (line2.mod == "Terraria" && line2.Name == "ItemName")
+                {
+                    line2.overrideColor = new Color(180, 41, 32);
+                }
+            }
+        }
 
 
         //--------------------------------------------------Shotgun style: Multiple Projectiles, Random spread ---------------------------------------------------------

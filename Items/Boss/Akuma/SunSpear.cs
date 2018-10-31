@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -49,7 +50,20 @@ Inflicts daybroken");
             item.shoot = mod.ProjectileType("SunSpear");  //put your Spear projectile name
             item.shootSpeed = 7f;
         }
-		public override bool CanUseItem(Player player)
+
+        public override void ModifyTooltips(List<TooltipLine> list)
+        {
+            foreach (TooltipLine line2 in list)
+            {
+                if (line2.mod == "Terraria" && line2.Name == "ItemName")
+                {
+                    line2.overrideColor = new Color(180, 41, 32);
+                }
+            }
+        }
+
+
+        public override bool CanUseItem(Player player)
 		{
 			return player.ownedProjectileCounts[item.shoot] < 1; // This is to ensure the spear doesn't bug out when using autoReuse = true
 		}

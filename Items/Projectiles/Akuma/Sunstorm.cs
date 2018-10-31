@@ -11,18 +11,39 @@ namespace AAMod.Items.Projectiles.Akuma
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Sunstorm");
+
+            Main.projFrames[projectile.type] = 7;
         }
         public override void SetDefaults()
         {
             projectile.width = 10;
             projectile.height = 10;
-            projectile.aiStyle = 1;
+            projectile.aiStyle = 0;
             projectile.friendly = true;
             projectile.magic = true;
             projectile.tileCollide = false;
             projectile.extraUpdates = 5;
             projectile.penetrate = -1;
             projectile.usesLocalNPCImmunity = true;
+            projectile.localNPCHitCooldown = 7;
+        }
+
+
+        private void HandleMovement(Vector2 wetVelocity, out int overrideWidth, out int overrideHeight)
+        {
+            bool flag = false;
+            overrideWidth = -1;
+            overrideHeight = -1;
+            bool? flag3 = ProjectileID.Sets.ForcePlateDetection[projectile.type];
+            bool flag4 = flag3.HasValue && !flag3.Value;
+            bool flag5 = flag3.HasValue && flag3.Value;
+            if (flag)
+            {
+                projectile.ai[0] = 0f;
+                projectile.ai[1] = -1f;
+                projectile.netUpdate = true;
+            }
+
         }
 
         public override void AI()
@@ -100,6 +121,42 @@ namespace AAMod.Items.Projectiles.Akuma
                     projectile.netUpdate = true;
                     return;
                 }
+            }
+        }
+
+        public override void Kill(int timeLeft)
+        {
+            bool flag = WorldGen.SolidTile(Framing.GetTileSafely((int)projectile.position.X / 16, (int)projectile.position.Y / 16));
+
+            for (int num58 = 0; num58 < 4; num58++)
+            {
+                Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, mod.DustType<Dusts.AkumaADust>(), 0f, 0f, 100, default(Color), 1.5f);
+            }
+            for (int num59 = 0; num59 < 4; num59++)
+            {
+                int num60 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, mod.DustType<Dusts.AkumaADust>(), 0f, 0f, 0, default(Color), 2.5f);
+                Main.dust[num60].noGravity = true;
+                Main.dust[num60].velocity *= 3f;
+                if (flag)
+                {
+                    Main.dust[num60].noLight = true;
+                }
+                num60 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, mod.DustType<Dusts.AkumaADust>(), 0f, 0f, 100, default(Color), 1.5f);
+                Main.dust[num60].velocity *= 2f;
+                Main.dust[num60].noGravity = true;
+                if (flag)
+                {
+                    Main.dust[num60].noLight = true;
+                }
+            }
+            for (int num61 = 0; num61 < 1; num61++)
+            {
+                int num62 = Gore.NewGore(projectile.position + new Vector2((float)(projectile.width * Main.rand.Next(100)) / 100f, (float)(projectile.height * Main.rand.Next(100)) / 100f) - Vector2.One * 10f, default(Vector2), Main.rand.Next(61, 64), 1f);
+                Main.gore[num62].velocity *= 0.3f;
+                Gore expr_2525_cp_0 = Main.gore[num62];
+                expr_2525_cp_0.velocity.X = expr_2525_cp_0.velocity.X + (float)Main.rand.Next(-10, 11) * 0.05f;
+                Gore expr_2553_cp_0 = Main.gore[num62];
+                expr_2553_cp_0.velocity.Y = expr_2553_cp_0.velocity.Y + (float)Main.rand.Next(-10, 11) * 0.05f;
             }
         }
     }
