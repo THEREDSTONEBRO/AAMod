@@ -14,6 +14,8 @@ namespace AAMod.NPCs
         public bool TimeFrozen = false;
         public bool infinityOverload = false;
         public bool terraBlaze = false;
+        public bool Dragonfire = false;
+        public bool Hydratoxin = false;
 
         public override bool InstancePerEntity
 		{
@@ -67,6 +69,21 @@ namespace AAMod.NPCs
                 if (damage < 2)
                 {
                     damage = 2;
+                }
+            }
+            if (Dragonfire)
+            {
+                npc.damage -= 10;
+            }
+            if (Hydratoxin)
+            {
+                foreach (Tile tile in Main.tile)
+                {
+                    if (tile.collisionType == npc.whoAmI)
+                    {
+                        npc.velocity.X = (npc.velocity.X / 16) * 15;
+                        npc.velocity.Y = (npc.velocity.Y / 16) * 15;
+                    }
                 }
             }
         }
@@ -270,7 +287,7 @@ namespace AAMod.NPCs
 
         public override void EditSpawnPool(IDictionary<int, float> pool, NPCSpawnInfo spawnInfo)
         {
-            if(spawnInfo.player.GetModPlayer<AAPlayer>().ZoneVoid) //modded npc's need to be removed manually
+            if(spawnInfo.player.GetModPlayer<AAPlayer>().ZoneVoid)
             {
                 if (pool.ContainsKey(NPCID.Harpy))
                 {
@@ -289,15 +306,15 @@ namespace AAMod.NPCs
             {
                 if (!pool.ContainsKey(NPCID.Harpy))
                 {
-                    pool.Add(NPCID.Harpy, 600); //please change 600 to spawnrate
+                    pool.Add(NPCID.Harpy, SpawnCondition.Sky.Chance);
                 }
                 if (!pool.ContainsKey(NPCID.MartianProbe) && NPC.downedGolemBoss)
                 {
-                    pool.Add(NPCID.MartianProbe, 600); //please change 600 to spawnrate
+                    pool.Add(NPCID.MartianProbe, SpawnCondition.MartianProbe.Chance);
                 }
                 if (!pool.ContainsKey(NPCID.WyvernHead) && Main.hardMode)
                 {
-                    pool.Add(NPCID.WyvernHead, 600); //please change 600 to spawnrate
+                    pool.Add(NPCID.WyvernHead, SpawnCondition.Sky.Chance);
                 }
             }
         }
@@ -400,47 +417,6 @@ namespace AAMod.NPCs
                 }
             }
             return true;
-        }
-        
-    }
-    public class Harpy : GlobalNPC
-    {
-
-        public float SpawnChance(NPCSpawnInfo spawnInfo)
-        {
-            Player player = spawnInfo.player;
-            if (!(player.ZoneTowerSolar || player.ZoneTowerVortex || player.ZoneTowerNebula || player.ZoneTowerStardust) && ((!Main.pumpkinMoon && !Main.snowMoon) || spawnInfo.spawnTileY > Main.worldSurface || Main.dayTime) && (!Main.eclipse || spawnInfo.spawnTileY > Main.worldSurface || !Main.dayTime) && (SpawnCondition.GoblinArmy.Chance == 0))
-            {
-                int[] TileArray2 = { mod.TileType("Doomstone"), mod.TileType("Apocalyptite"), mod.TileType("DoomstoneBrick") };
-                return TileArray2.Contains(Main.tile[spawnInfo.spawnTileX, spawnInfo.spawnTileY].type) ? 0f : 0f;
-            }
-            return 0f;
-        }
-    }
-    public class Wyvern : GlobalNPC
-    {
-        public float SpawnChance(NPCSpawnInfo spawnInfo)
-        {
-            Player player = spawnInfo.player;
-            if (!(player.ZoneTowerSolar || player.ZoneTowerVortex || player.ZoneTowerNebula || player.ZoneTowerStardust) && ((!Main.pumpkinMoon && !Main.snowMoon) || spawnInfo.spawnTileY > Main.worldSurface || Main.dayTime) && (!Main.eclipse || spawnInfo.spawnTileY > Main.worldSurface || !Main.dayTime) && (SpawnCondition.GoblinArmy.Chance == 0))
-            {
-                int[] TileArray2 = { mod.TileType("Doomstone"), mod.TileType("Apocalyptite"), mod.TileType("DoomstoneBrick") };
-                return TileArray2.Contains(Main.tile[spawnInfo.spawnTileX, spawnInfo.spawnTileY].type) ? 0f : 0f;
-            }
-            return 0f;
-        }
-    }
-    public class MartianProbe : GlobalNPC
-    {
-        public float SpawnChance(NPCSpawnInfo spawnInfo)
-        {
-            Player player = spawnInfo.player;
-            if (!(player.ZoneTowerSolar || player.ZoneTowerVortex || player.ZoneTowerNebula || player.ZoneTowerStardust) && ((!Main.pumpkinMoon && !Main.snowMoon) || spawnInfo.spawnTileY > Main.worldSurface || Main.dayTime) && (!Main.eclipse || spawnInfo.spawnTileY > Main.worldSurface || !Main.dayTime) && (SpawnCondition.GoblinArmy.Chance == 0))
-            {
-                int[] TileArray2 = { mod.TileType("Doomstone"), mod.TileType("Apocalyptite"), mod.TileType("DoomstoneBrick") };
-                return TileArray2.Contains(Main.tile[spawnInfo.spawnTileX, spawnInfo.spawnTileY].type) ? 0f : 0f;
-            }
-            return 0f;
-        }
+        }   
     }
 }

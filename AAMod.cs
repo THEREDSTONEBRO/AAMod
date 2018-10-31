@@ -10,6 +10,7 @@ using AAMod.NPCs.Bosses.Zero;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 using AAMod.UI;
+using Terraria.Graphics.Shaders;
 
 namespace AAMod
 {

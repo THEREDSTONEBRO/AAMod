@@ -1,3 +1,4 @@
+using AAMod.NPCs;
 using Terraria;
 using Terraria.ModLoader;
 
@@ -17,16 +18,12 @@ namespace AAMod.Buffs
 
 		public override void Update(Player player, ref int buffIndex)
 		{
-            player.magicDamage -= 10;
-            player.meleeDamage -= 10;
-            player.thrownDamage -= 10;
-            player.minionDamage -= 10;
-            player.rangedDamage -= 10;
+            player.GetModPlayer<AAPlayer>(mod).dragonFire = true;
         }
 
 		public override void Update(NPC npc, ref int buffIndex)
 		{
-            npc.damage -= 10;
-		}
+            npc.GetGlobalNPC<AAModGlobalNPC>(mod).Dragonfire = true;
+        }
 	}
 }

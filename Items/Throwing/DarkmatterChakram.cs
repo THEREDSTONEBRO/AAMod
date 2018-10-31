@@ -8,8 +8,8 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Throwing
 {
-    public class DarkmatterChakram : ModItem
-    {
+	public class DarkmatterChakram : ModItem
+	{
         public static short customGlowMask = 0;
         public override void SetStaticDefaults()
         {
@@ -20,34 +20,30 @@ namespace AAMod.Items.Throwing
                 {
                     glowMasks[i] = Main.glowMaskTexture[i];
                 }
-                glowMasks[glowMasks.Length - 1] = mod.GetTexture("Items/Throwing/" + GetType().Name + "_Glow");
-                customGlowMask = (short)(glowMasks.Length - 1);
-                Main.glowMaskTexture = glowMasks;
+                item.glowMask = customGlowMask;
+                DisplayName.SetDefault("Darkmatter Spinblade");
             }
-
-            item.glowMask = customGlowMask;
-            DisplayName.SetDefault("Darkmatter Spinblade");
         }
         public override void SetDefaults()
-        {
-            item.damage = 170;
+		{
+            item.damage = 170;            
             item.thrown = true;
             item.width = 30;
             item.height = 30;
-            item.useTime = 16;
-            item.useAnimation = 16;
+			item.useTime = 16;
+			item.useAnimation = 16;
             item.noUseGraphic = true;
             item.useStyle = 1;
-            item.knockBack = 0;
-            item.value = 100000;
-            item.rare = 6;
-            item.shootSpeed = 15f;
-            item.shoot = mod.ProjectileType("DMC");
-            item.UseSound = SoundID.Item1;
-            item.autoReuse = true;
-        }
+			item.knockBack = 0;
+			item.value = 100000;
+			item.rare = 6;
+			item.shootSpeed = 15f;
+			item.shoot = mod.ProjectileType ("DMC");
+			item.UseSound = SoundID.Item1;
+			item.autoReuse = true;
+		}
 
-
+        
 
         public override bool CanUseItem(Player player)       //this make that you can shoot only 1 boomerang at once
         {
@@ -62,11 +58,11 @@ namespace AAMod.Items.Throwing
         }
         public override void AddRecipes()
         {
-            ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(null, "DarkMatter", 15);
+                ModRecipe recipe = new ModRecipe(mod);
+				recipe.AddIngredient(null, "DarkMatter", 15);
             recipe.AddTile(null, "QuantumFusionAccelerator");
             recipe.SetResult(this);
             recipe.AddRecipe();
-        }
+		}
     }
 }
