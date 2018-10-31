@@ -45,7 +45,7 @@ namespace AAMod.Tiles
 		{
 			Player player = Main.LocalPlayer;
 			Tile tile = Main.tile[i, j];
-			int spawnX = i - tile.frameX / 18;
+			int spawnX = i - (tile.frameX / 18);
 			int spawnY = j + 2;
 			spawnX += tile.frameX >= 72 ? 5 : 2;
 			if (tile.frameY % 38 != 0)
@@ -73,7 +73,7 @@ namespace AAMod.Tiles
                 zero = Vector2.Zero;
             }
             int height = tile.frameY == 36 ? 18 : 16;
-            Main.spriteBatch.Draw(mod.GetTexture("Tiles/OroborosBed_Glow"), new Vector2(i * 16 - (int)Main.screenPosition.X, j * 16 - (int)Main.screenPosition.Y) + zero, new Rectangle(tile.frameX, tile.frameY, 16, height), Color.Red, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
+            Main.spriteBatch.Draw(mod.GetTexture("Tiles/OroborosBed_Glow"), new Vector2((i * 16) - (int)Main.screenPosition.X, (j * 16) - (int)Main.screenPosition.Y) + zero, new Rectangle(tile.frameX, tile.frameY, 16, height), Color.Red, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
         }
         public override void MouseOver(int i, int j)
 		{

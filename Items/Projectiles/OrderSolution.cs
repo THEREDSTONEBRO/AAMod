@@ -30,7 +30,7 @@ namespace AAMod.Items.Projectiles
             int dustType = mod.DustType("OrderSolution");
             if (projectile.owner == Main.myPlayer)
 			{
-				Convert((int)(projectile.position.X + projectile.width / 2) / 16, (int)(projectile.position.Y + projectile.height / 2) / 16, 2);
+				Convert((int)(projectile.position.X + (projectile.width / 2)) / 16, (int)(projectile.position.Y + (projectile.height / 2)) / 16, 2);
 			}
 			if (projectile.timeLeft > 133)
 			{
@@ -80,7 +80,7 @@ namespace AAMod.Items.Projectiles
 			{
 				for (int l = j - size; l <= j + size; l++)
 				{
-					if (WorldGen.InWorld(k, l, 1) && Math.Abs(k - i) + Math.Abs(l - j) < Math.Sqrt(size * size + size * size))
+					if (WorldGen.InWorld(k, l, 1) && Math.Abs(k - i) + Math.Abs(l - j) < Math.Sqrt((size * size) + (size * size)))
 					{
 						int type = Main.tile[k, l].type;
 						int wall = Main.tile[k, l].wall;

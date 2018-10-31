@@ -186,7 +186,7 @@ namespace AAMod.Items.Projectiles
             {
                 Vector2 vector42 = projectile.velocity * (float)num588 / 6f;
                 int num589 = 6;
-                int num590 = Dust.NewDust(projectile.position + Vector2.One * 6f, projectile.width - num589 * 2, projectile.height - num589 * 2, 4, 0f, 0f, num587, newColor, 1.2f);
+                int num590 = Dust.NewDust(projectile.position + (Vector2.One * 6f), projectile.width - (num589 * 2), projectile.height - (num589 * 2), 4, 0f, 0f, num587, newColor, 1.2f);
                 Main.dust[num590].noGravity = true;
                 Main.dust[num590].velocity *= 0.3f;
                 Main.dust[num590].velocity += projectile.velocity * 0.5f;
@@ -200,7 +200,7 @@ namespace AAMod.Items.Projectiles
             if (Main.rand.Next(4) == 0)
             {
                 int num591 = 6;
-                int num592 = Dust.NewDust(projectile.position + Vector2.One * 6f, projectile.width - num591 * 2, projectile.height - num591 * 2, 4, 0f, 0f, num587, newColor, 1.2f);
+                int num592 = Dust.NewDust(projectile.position + (Vector2.One * 6f), projectile.width - (num591 * 2), projectile.height - (num591 * 2), 4, 0f, 0f, num587, newColor, 1.2f);
                 Main.dust[num592].velocity *= 0.5f;
                 Main.dust[num592].velocity += projectile.velocity * 0.5f;
                 return;
@@ -267,7 +267,7 @@ namespace AAMod.Items.Projectiles
             {
                 Vector2 vector42 = projectile.velocity * (float)num588 / 6f;
                 int num589 = 6;
-                int num590 = Dust.NewDust(projectile.position + Vector2.One * 6f, projectile.width - num589 * 2, projectile.height - num589 * 2, 4, 0f, 0f, num587, newColor, 1.2f);
+                int num590 = Dust.NewDust(projectile.position + (Vector2.One * 6f), projectile.width - (num589 * 2), projectile.height - (num589 * 2), 4, 0f, 0f, num587, newColor, 1.2f);
                 Main.dust[num590].noGravity = true;
                 Main.dust[num590].velocity *= 0.3f;
                 Main.dust[num590].velocity += projectile.velocity * 0.5f;
@@ -281,7 +281,7 @@ namespace AAMod.Items.Projectiles
             if (Main.rand.Next(4) == 0)
             {
                 int num591 = 6;
-                int num592 = Dust.NewDust(projectile.position + Vector2.One * 6f, projectile.width - num591 * 2, projectile.height - num591 * 2, 4, 0f, 0f, num587, newColor, 1.2f);
+                int num592 = Dust.NewDust(projectile.position + (Vector2.One * 6f), projectile.width - (num591 * 2), projectile.height - (num591 * 2), 4, 0f, 0f, num587, newColor, 1.2f);
                 Main.dust[num592].velocity *= 0.5f;
                 Main.dust[num592].velocity += projectile.velocity * 0.5f;
                 return;
@@ -348,7 +348,7 @@ namespace AAMod.Items.Projectiles
             {
                 Vector2 vector42 = projectile.velocity * (float)num588 / 6f;
                 int num589 = 6;
-                int num590 = Dust.NewDust(projectile.position + Vector2.One * 6f, projectile.width - num589 * 2, projectile.height - num589 * 2, 4, 0f, 0f, num587, newColor, 1.2f);
+                int num590 = Dust.NewDust(projectile.position + (Vector2.One * 6f), projectile.width - (num589 * 2), projectile.height - (num589 * 2), 4, 0f, 0f, num587, newColor, 1.2f);
                 Main.dust[num590].noGravity = true;
                 Main.dust[num590].velocity *= 0.3f;
                 Main.dust[num590].velocity += projectile.velocity * 0.5f;
@@ -362,7 +362,7 @@ namespace AAMod.Items.Projectiles
             if (Main.rand.Next(4) == 0)
             {
                 int num591 = 6;
-                int num592 = Dust.NewDust(projectile.position + Vector2.One * 6f, projectile.width - num591 * 2, projectile.height - num591 * 2, 4, 0f, 0f, num587, newColor, 1.2f);
+                int num592 = Dust.NewDust(projectile.position + (Vector2.One * 6f), projectile.width - (num591 * 2), projectile.height - (num591 * 2), 4, 0f, 0f, num587, newColor, 1.2f);
                 Main.dust[num592].velocity *= 0.5f;
                 Main.dust[num592].velocity += projectile.velocity * 0.5f;
                 return;
@@ -437,7 +437,7 @@ namespace AAMod.Items.Projectiles
             {
                 Vector2 vector42 = projectile.velocity * (float)num588 / 6f;
                 int num589 = 6;
-                int num590 = Dust.NewDust(projectile.position + Vector2.One * 6f, projectile.width - num589 * 2, projectile.height - num589 * 2, 4, 0f, 0f, num587, newColor, 1.2f);
+                int num590 = Dust.NewDust(projectile.position + (Vector2.One * 6f), projectile.width - (num589 * 2), projectile.height - (num589 * 2), 4, 0f, 0f, num587, newColor, 1.2f);
                 Main.dust[num590].noGravity = true;
                 Main.dust[num590].velocity *= 0.3f;
                 Main.dust[num590].velocity += projectile.velocity * 0.5f;
@@ -451,7 +451,7 @@ namespace AAMod.Items.Projectiles
             if (Main.rand.Next(4) == 0)
             {
                 int num591 = 6;
-                int num592 = Dust.NewDust(projectile.position + Vector2.One * 6f, projectile.width - num591 * 2, projectile.height - num591 * 2, 4, 0f, 0f, num587, newColor, 1.2f);
+                int num592 = Dust.NewDust(projectile.position + (Vector2.One * 6f), projectile.width - (num591 * 2), projectile.height - (num591 * 2), 4, 0f, 0f, num587, newColor, 1.2f);
                 Main.dust[num592].velocity *= 0.5f;
                 Main.dust[num592].velocity += projectile.velocity * 0.5f;
                 return;
@@ -643,7 +643,7 @@ namespace AAMod.Items.Projectiles
             {
                 Vector2 vector42 = projectile.velocity * (float)num588 / 6f;
                 int num589 = 6;
-                int num590 = Dust.NewDust(projectile.position + Vector2.One * 6f, projectile.width - num589 * 2, projectile.height - num589 * 2, 4, 0f, 0f, num587, newColor, 1.2f);
+                int num590 = Dust.NewDust(projectile.position + (Vector2.One * 6f), projectile.width - (num589 * 2), projectile.height - (num589 * 2), 4, 0f, 0f, num587, newColor, 1.2f);
                 Main.dust[num590].scale = 5f;
                 Main.dust[num590].noGravity = true;
                 Main.dust[num590].velocity *= 0.3f;
@@ -658,7 +658,7 @@ namespace AAMod.Items.Projectiles
             if (Main.rand.Next(4) == 0)
             {
                 int num591 = 6;
-                int num592 = Dust.NewDust(projectile.position + Vector2.One * 6f, projectile.width - num591 * 2, projectile.height - num591 * 2, 4, 0f, 0f, num587, newColor, 1.2f);
+                int num592 = Dust.NewDust(projectile.position + (Vector2.One * 6f), projectile.width - (num591 * 2), projectile.height - (num591 * 2), 4, 0f, 0f, num587, newColor, 1.2f);
                 Main.dust[num592].scale = 5f;
                 Main.dust[num592].velocity *= 0.5f;
                 Main.dust[num592].velocity += projectile.velocity * 0.5f;
@@ -727,7 +727,7 @@ namespace AAMod.Items.Projectiles
             {
                 Vector2 vector42 = projectile.velocity * (float)num588 / 6f;
                 int num589 = 6;
-                int num590 = Dust.NewDust(projectile.position + Vector2.One * 6f, projectile.width - num589 * 2, projectile.height - num589 * 2, 4, 0f, 0f, num587, newColor, 1.2f);
+                int num590 = Dust.NewDust(projectile.position + (Vector2.One * 6f), projectile.width - (num589 * 2), projectile.height - (num589 * 2), 4, 0f, 0f, num587, newColor, 1.2f);
                 Main.dust[num590].scale = 5f;
                 Main.dust[num590].noGravity = true;
                 Main.dust[num590].velocity *= 0.3f;
@@ -742,7 +742,7 @@ namespace AAMod.Items.Projectiles
             if (Main.rand.Next(4) == 0)
             {
                 int num591 = 6;
-                int num592 = Dust.NewDust(projectile.position + Vector2.One * 6f, projectile.width - num591 * 2, projectile.height - num591 * 2, 4, 0f, 0f, num587, newColor, 1.2f);
+                int num592 = Dust.NewDust(projectile.position + (Vector2.One * 6f), projectile.width - (num591 * 2), projectile.height - (num591 * 2), 4, 0f, 0f, num587, newColor, 1.2f);
                 Main.dust[num592].scale = 5f;
                 Main.dust[num592].velocity *= 0.5f;
                 Main.dust[num592].velocity += projectile.velocity * 0.5f;
@@ -811,7 +811,7 @@ namespace AAMod.Items.Projectiles
             {
                 Vector2 vector42 = projectile.velocity * (float)num588 / 6f;
                 int num589 = 6;
-                int num590 = Dust.NewDust(projectile.position + Vector2.One * 6f, projectile.width - num589 * 2, projectile.height - num589 * 2, 4, 0f, 0f, num587, newColor, 1.2f);
+                int num590 = Dust.NewDust(projectile.position + (Vector2.One * 6f), projectile.width - (num589 * 2), projectile.height - (num589 * 2), 4, 0f, 0f, num587, newColor, 1.2f);
                 Main.dust[num590].scale = 5f;
                 Main.dust[num590].noGravity = true;
                 Main.dust[num590].velocity *= 0.3f;
@@ -826,7 +826,7 @@ namespace AAMod.Items.Projectiles
             if (Main.rand.Next(4) == 0)
             {
                 int num591 = 6;
-                int num592 = Dust.NewDust(projectile.position + Vector2.One * 6f, projectile.width - num591 * 2, projectile.height - num591 * 2, 4, 0f, 0f, num587, newColor, 1.2f);
+                int num592 = Dust.NewDust(projectile.position + (Vector2.One * 6f), projectile.width - (num591 * 2), projectile.height - (num591 * 2), 4, 0f, 0f, num587, newColor, 1.2f);
                 Main.dust[num592].scale = 5f;
                 Main.dust[num592].velocity *= 0.5f;
                 Main.dust[num592].velocity += projectile.velocity * 0.5f;
@@ -903,7 +903,7 @@ namespace AAMod.Items.Projectiles
             {
                 Vector2 vector42 = projectile.velocity * (float)num588 / 6f;
                 int num589 = 6;
-                int num590 = Dust.NewDust(projectile.position + Vector2.One * 6f, projectile.width - num589 * 2, projectile.height - num589 * 2, 4, 0f, 0f, num587, newColor, 1.2f);
+                int num590 = Dust.NewDust(projectile.position + (Vector2.One * 6f), projectile.width - (num589 * 2), projectile.height - (num589 * 2), 4, 0f, 0f, num587, newColor, 1.2f);
                 Main.dust[num590].scale = 5f;
                 Main.dust[num590].noGravity = true;
                 Main.dust[num590].velocity *= 0.3f;
@@ -918,7 +918,7 @@ namespace AAMod.Items.Projectiles
             if (Main.rand.Next(4) == 0)
             {
                 int num591 = 6;
-                int num592 = Dust.NewDust(projectile.position + Vector2.One * 6f, projectile.width - num591 * 2, projectile.height - num591 * 2, 4, 0f, 0f, num587, newColor, 1.2f);
+                int num592 = Dust.NewDust(projectile.position + (Vector2.One * 6f), projectile.width - (num591 * 2), projectile.height - (num591 * 2), 4, 0f, 0f, num587, newColor, 1.2f);
                 Main.dust[num592].scale = 5f;
                 Main.dust[num592].velocity *= 0.5f;
                 Main.dust[num592].velocity += projectile.velocity * 0.5f;

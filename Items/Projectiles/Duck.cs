@@ -34,7 +34,7 @@ namespace AAMod.Items.Projectiles
         public override Color? GetAlpha(Color lightColor)
         {
             //return Color.White;
-            return new Color(100, 200, 0, 0) * (1f - projectile.alpha / 255f);
+            return new Color(100, 200, 0, 0) * (1f - (projectile.alpha / 255f));
         }
     }
 }

@@ -16,7 +16,7 @@ namespace AAMod.Water
 
 		public override bool Update(Gore gore)
 		{
-			if (gore.position.Y < Main.worldSurface * 16.0 + 8.0)
+			if (gore.position.Y < (Main.worldSurface * 16.0) + 8.0)
 			{
 				gore.alpha = 0;
 			}
@@ -128,7 +128,7 @@ namespace AAMod.Water
 				if (Main.tile[tileX, tileY] != null && Main.tile[tileX, tileY].liquid > 0)
 				{
 					gore.velocity *= 0f;
-					gore.position.Y = tileY * 16 - Main.tile[tileX, tileY].liquid / 16;
+					gore.position.Y = (tileY * 16) - (Main.tile[tileX, tileY].liquid / 16);
 				}
 			}
 

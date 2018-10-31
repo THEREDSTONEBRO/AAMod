@@ -60,9 +60,9 @@ namespace AAMod.Items.Projectiles        //We need this to basically indicate th
                 NPC target = Main.npc[i];
  
                 //Getting the shooting trajectory
-                float shootToX = target.position.X + (float)target.width * 0.5f - projectile.Center.X;
-                float shootToY = target.position.Y + (float)target.height * 0.5f - projectile.Center.Y;
-                float distance = (float)System.Math.Sqrt((double)(shootToX * shootToX + shootToY * shootToY));
+                float shootToX = target.position.X + ((float)target.width * 0.5f) - projectile.Center.X;
+                float shootToY = target.position.Y + ((float)target.height * 0.5f) - projectile.Center.Y;
+                float distance = (float)System.Math.Sqrt((double)((shootToX * shootToX) + (shootToY * shootToY)));
  
                 //If the distance between the projectile and the live target is active
                 if (distance < 800f && !target.friendly && target.active)  //distance < 520 this is the projectile1 distance from the target if the tarhet is in that range the this projectile1 will shot the projectile2

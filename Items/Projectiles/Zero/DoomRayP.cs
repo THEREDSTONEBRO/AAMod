@@ -57,7 +57,7 @@ namespace AAMod.Items.Projectiles.Zero
 			for (float i = transDist; i <= Distance; i += step)
 			{
 				Color c = Color.White;
-				origin = start + i * unit;
+				origin = start + (i * unit);
 				spriteBatch.Draw(texture, origin - Main.screenPosition,
 					new Rectangle(0, 26, 28, 26), i < transDist ? Color.Transparent : c, r,
 					new Vector2(28 * .5f, 26 * .5f), scale, 0, 0);
@@ -65,12 +65,12 @@ namespace AAMod.Items.Projectiles.Zero
 			#endregion
 
 			#region Draw laser tail
-			spriteBatch.Draw(texture, start + unit * (transDist - step) - Main.screenPosition,
+			spriteBatch.Draw(texture, start + (unit * (transDist - step)) - Main.screenPosition,
 				new Rectangle(0, 0, 28, 26), Color.DarkRed, r, new Vector2(28 * .5f, 26 * .5f), scale, 0, 0);
 			#endregion
 
 			#region Draw laser head
-			spriteBatch.Draw(texture, start + (Distance + step) * unit - Main.screenPosition,
+			spriteBatch.Draw(texture, start + ((Distance + step) * unit) - Main.screenPosition,
 				new Rectangle(0, 52, 28, 26), Color.DarkRed, r, new Vector2(28 * .5f, 26 * .5f), scale, 0, 0);
 			#endregion
 		}
@@ -83,7 +83,7 @@ namespace AAMod.Items.Projectiles.Zero
 				Vector2 unit = projectile.velocity;
 				float point = 0f;
 				return Collision.CheckAABBvLineCollision(targetHitbox.TopLeft(), targetHitbox.Size(), player.Center,
-					player.Center + unit * Distance, 22, ref point);
+					player.Center + (unit * Distance), 22, ref point);
 			}
 			return false;
 		}
@@ -107,7 +107,7 @@ namespace AAMod.Items.Projectiles.Zero
 				projectile.direction = Main.MouseWorld.X > player.position.X ? 1 : -1;
 				projectile.netUpdate = true;
 			}
-			projectile.position = player.Center + projectile.velocity * MoveDistance;
+			projectile.position = player.Center + (projectile.velocity * MoveDistance);
 			projectile.timeLeft = 2;
 			int dir = projectile.direction;
 			player.ChangeDir(dir);
@@ -143,10 +143,10 @@ namespace AAMod.Items.Projectiles.Zero
 				Vector2 spawnPos = projectile.Center + dustVelocity;
 				for (int k = 0; k < chargeFact + 1; k++)
 				{
-					Vector2 spawn = spawnPos + ((float)Main.rand.NextDouble() * 6.28f).ToRotationVector2() * (12f - (chargeFact * 2));
+					Vector2 spawn = spawnPos + (((float)Main.rand.NextDouble() * 6.28f).ToRotationVector2() * (12f - (chargeFact * 2)));
 					Dust dust = Main.dust[Dust.NewDust(pos, 20, 20, 226, projectile.velocity.X / 2f,
 						projectile.velocity.Y / 2f, 0, default(Color), 1f)];
-					dust.velocity = Vector2.Normalize(spawnPos - spawn) * 1.5f * (10f - chargeFact * 2f) / 10f;
+					dust.velocity = Vector2.Normalize(spawnPos - spawn) * 1.5f * (10f - (chargeFact * 2f)) / 10f;
 					dust.noGravity = true;
 					dust.scale = Main.rand.Next(10, 20) * 0.05f;
 				}
@@ -160,7 +160,7 @@ namespace AAMod.Items.Projectiles.Zero
 			unit *= -1;
 			for (Distance = MoveDistance; Distance <= 2200f; Distance += 5f)
 			{
-				start = player.Center + projectile.velocity * Distance;
+				start = player.Center + (projectile.velocity * Distance);
 				if (!Collision.CanHit(player.Center, 1, 1, start, 1, 1))
 				{
 					Distance -= 5f;
@@ -168,12 +168,12 @@ namespace AAMod.Items.Projectiles.Zero
 				}
 			}
 
-			Vector2 dustPos = player.Center + projectile.velocity * Distance;
+			Vector2 dustPos = player.Center + (projectile.velocity * Distance);
 			//Imported dust code from source because I'm lazy
 			for (int i = 0; i < 2; ++i)
 			{
-				float num1 = projectile.velocity.ToRotation() + (Main.rand.Next(2) == 1 ? -1.0f : 1.0f) * 1.57f;
-				float num2 = (float)(Main.rand.NextDouble() * 0.8f + 1.0f);
+				float num1 = projectile.velocity.ToRotation() + ((Main.rand.Next(2) == 1 ? -1.0f : 1.0f) * 1.57f);
+				float num2 = (float)((Main.rand.NextDouble() * 0.8f) + 1.0f);
 				Vector2 dustVel = new Vector2((float)Math.Cos(num1) * num2, (float)Math.Sin(num1) * num2);
 				Dust dust = Main.dust[Dust.NewDust(dustPos, 0, 0, 226, dustVel.X, dustVel.Y, 0, new Color(), 1f)];
 				dust.noGravity = true;
@@ -190,21 +190,21 @@ namespace AAMod.Items.Projectiles.Zero
 				Vector2 offset = projectile.velocity.RotatedBy(1.57f, new Vector2()) * ((float)Main.rand.NextDouble() - 0.5f) *
 								 projectile.width;
 				Dust dust = Main.dust[
-					Dust.NewDust(dustPos + offset - Vector2.One * 4f, 8, 8, 31, 0.0f, 0.0f, 100, new Color(), 1.5f)];
+					Dust.NewDust(dustPos + offset - (Vector2.One * 4f), 8, 8, 31, 0.0f, 0.0f, 100, new Color(), 1.5f)];
 				dust.velocity = dust.velocity * 0.5f;
 				dust.velocity.Y = -Math.Abs(dust.velocity.Y);
 
 				unit = dustPos - Main.player[projectile.owner].Center;
 				unit.Normalize();
 				dust = Main.dust[
-					Dust.NewDust(Main.player[projectile.owner].Center + 55 * unit, 8, 8, 31, 0.0f, 0.0f, 100, new Color(), 1.5f)];
+					Dust.NewDust(Main.player[projectile.owner].Center + (55 * unit), 8, 8, 31, 0.0f, 0.0f, 100, new Color(), 1.5f)];
 				dust.velocity = dust.velocity * 0.5f;
 				dust.velocity.Y = -Math.Abs(dust.velocity.Y);
 			}
 			#endregion
             
 			DelegateMethods.v3_1 = new Vector3(0.8f, 0.8f, 1f);
-			Utils.PlotTileLine(projectile.Center, projectile.Center + projectile.velocity * (Distance - MoveDistance), 26,
+			Utils.PlotTileLine(projectile.Center, projectile.Center + (projectile.velocity * (Distance - MoveDistance)), 26,
 				DelegateMethods.CastLight);
 		}
 
@@ -217,7 +217,7 @@ namespace AAMod.Items.Projectiles.Zero
 		{
 			DelegateMethods.tilecut_0 = TileCuttingContext.AttackProjectile;
 			Vector2 unit = projectile.velocity;
-			Utils.PlotTileLine(projectile.Center, projectile.Center + unit * Distance, (projectile.width + 16) * projectile.scale, DelegateMethods.CutTiles);
+			Utils.PlotTileLine(projectile.Center, projectile.Center + (unit * Distance), (projectile.width + 16) * projectile.scale, DelegateMethods.CutTiles);
 		}
 	}
 }

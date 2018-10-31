@@ -46,15 +46,15 @@ namespace AAMod.Items.Projectiles
             if (flag17)
             {
                 float num483 = 20f;
-                Vector2 vector35 = new Vector2(projectile.position.X + (float)projectile.width * 0.5f, projectile.position.Y + (float)projectile.height * 0.5f);
+                Vector2 vector35 = new Vector2(projectile.position.X + ((float)projectile.width * 0.5f), projectile.position.Y + ((float)projectile.height * 0.5f));
                 float num484 = num472 - vector35.X;
                 float num485 = num473 - vector35.Y;
-                float num486 = (float)Math.Sqrt((double)(num484 * num484 + num485 * num485));
+                float num486 = (float)Math.Sqrt((double)((num484 * num484) + (num485 * num485)));
                 num486 = num483 / num486;
                 num484 *= num486;
                 num485 *= num486;
-                projectile.velocity.X = (projectile.velocity.X * 20f + num484) / 21f;
-                projectile.velocity.Y = (projectile.velocity.Y * 20f + num485) / 21f;
+                projectile.velocity.X = ((projectile.velocity.X * 20f) + num484) / 21f;
+                projectile.velocity.Y = ((projectile.velocity.Y * 20f) + num485) / 21f;
                 return;
             }
             Lighting.AddLight(projectile.Center, ((255 - projectile.alpha) * 0f) / 255f, ((255 - projectile.alpha) * 0.8f) / 255f, ((255 - projectile.alpha) * 0f) / 255f);

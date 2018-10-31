@@ -50,7 +50,7 @@ namespace AAMod.Items.Projectiles.Akuma
 
 				if (projectile.alpha == 0)
 				{
-					if (projectile.position.X + projectile.width / 2 > Main.player[projectile.owner].position.X + Main.player[projectile.owner].width / 2)
+					if (projectile.position.X + (projectile.width / 2) > Main.player[projectile.owner].position.X + (Main.player[projectile.owner].width / 2))
 					{
 						Main.player[projectile.owner].ChangeDir(1);
 					}
@@ -59,10 +59,10 @@ namespace AAMod.Items.Projectiles.Akuma
 						Main.player[projectile.owner].ChangeDir(-1);
 					}
 				}
-				Vector2 vector14 = new Vector2(projectile.position.X + projectile.width * 0.5f, projectile.position.Y + projectile.height * 0.5f);
-				float num166 = Main.player[projectile.owner].position.X + Main.player[projectile.owner].width / 2 - vector14.X;
-				float num167 = Main.player[projectile.owner].position.Y + Main.player[projectile.owner].height / 2 - vector14.Y;
-				float num168 = (float)Math.Sqrt(num166 * num166 + num167 * num167);
+				Vector2 vector14 = new Vector2(projectile.position.X + (projectile.width * 0.5f), projectile.position.Y + (projectile.height * 0.5f));
+				float num166 = Main.player[projectile.owner].position.X + (Main.player[projectile.owner].width / 2) - vector14.X;
+				float num167 = Main.player[projectile.owner].position.Y + (Main.player[projectile.owner].height / 2) - vector14.Y;
+				float num168 = (float)Math.Sqrt((num166 * num166) + (num167 * num167));
 				if (projectile.ai[0] == 0f)
 				{
 					if (num168 > 700f)

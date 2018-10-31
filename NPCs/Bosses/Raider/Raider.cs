@@ -165,7 +165,7 @@ namespace AAMod.NPCs.Bosses.Raider
             if (npc.ai[0] == -1f)
             {
                 Vector2 value50 = new Vector2(0f, -8f);
-                npc.velocity = (npc.velocity * 9f + value50) / 10f;
+                npc.velocity = ((npc.velocity * 9f) + value50) / 10f;
                 npc.noTileCollide = true;
                 npc.dontTakeDamage = true;
                 return;
@@ -182,7 +182,7 @@ namespace AAMod.NPCs.Bosses.Raider
                     npc.direction = -1;
                 }
                 npc.spriteDirection = npc.direction;
-                npc.rotation = (npc.rotation * 9f + npc.velocity.X * 0.1f) / 10f;
+                npc.rotation = ((npc.rotation * 9f) + (npc.velocity.X * 0.1f)) / 10f;
                 if (npc.collideX)
                 {
                     npc.velocity.X = npc.velocity.X * (-npc.oldVelocity.X * 0.5f);
@@ -222,7 +222,7 @@ namespace AAMod.NPCs.Bosses.Raider
                     float num1306 = 30f;
                     value51.Normalize();
                     value51 *= scaleFactor15;
-                    npc.velocity = (npc.velocity * (num1306 - 1f) + value51) / num1306;
+                    npc.velocity = ((npc.velocity * (num1306 - 1f)) + value51) / num1306;
                 }
                 else if (npc.velocity.Length() > 2f)
                 {
@@ -283,7 +283,7 @@ namespace AAMod.NPCs.Bosses.Raider
                         npc.direction = 1;
                     }
                     npc.spriteDirection = npc.direction;
-                    npc.rotation = (npc.rotation * 9f + npc.velocity.X * 0.08f) / 10f;
+                    npc.rotation = ((npc.rotation * 9f) + (npc.velocity.X * 0.08f)) / 10f;
                     Vector2 value52 = Main.player[npc.target].Center - npc.Center;
                     if (value52.Length() < 300f && !Collision.SolidCollision(npc.position, npc.width, npc.height))
                     {
@@ -292,11 +292,11 @@ namespace AAMod.NPCs.Bosses.Raider
                         npc.ai[2] = 0f;
                         npc.ai[3] = 0f;
                     }
-                    float scaleFactor16 = 7f + value52.Length() / 100f;
+                    float scaleFactor16 = 7f + (value52.Length() / 100f);
                     float num1308 = 25f;
                     value52.Normalize();
                     value52 *= scaleFactor16;
-                    npc.velocity = (npc.velocity * (num1308 - 1f) + value52) / num1308;
+                    npc.velocity = ((npc.velocity * (num1308 - 1f)) + value52) / num1308;
                     return;
                 }
                 if (npc.ai[0] == 2f)
@@ -320,7 +320,7 @@ namespace AAMod.NPCs.Bosses.Raider
                         npc.direction = 1;
                     }
                     npc.spriteDirection = npc.direction;
-                    npc.rotation = (npc.rotation * 4f + npc.velocity.X * 0.1f) / 5f;
+                    npc.rotation = ((npc.rotation * 4f) + (npc.velocity.X * 0.1f)) / 5f;
                     if (npc.collideX)
                     {
                         npc.velocity.X = npc.velocity.X * (-npc.oldVelocity.X * 0.5f);
@@ -352,11 +352,11 @@ namespace AAMod.NPCs.Bosses.Raider
                     {
                         npc.ai[2] += 0.0166666675f;
                     }
-                    float scaleFactor17 = 4f + npc.ai[2] + value53.Length() / 120f;
+                    float scaleFactor17 = 4f + npc.ai[2] + (value53.Length() / 120f);
                     float num1309 = 20f;
                     value53.Normalize();
                     value53 *= scaleFactor17;
-                    npc.velocity = (npc.velocity * (num1309 - 1f) + value53) / num1309;
+                    npc.velocity = ((npc.velocity * (num1309 - 1f)) + value53) / num1309;
                     npc.ai[1] += 1f;
                     if (npc.ai[1] > 240f || !Collision.CanHit(npc.Center, 1, 1, Main.player[npc.target].Center, 1, 1))
                     {
@@ -382,7 +382,7 @@ namespace AAMod.NPCs.Bosses.Raider
                             npc.direction = 1;
                         }
                         npc.spriteDirection = npc.direction;
-                        npc.rotation = (npc.rotation * 4f + npc.velocity.X * 0.07f) / 5f;
+                        npc.rotation = ((npc.rotation * 4f) + (npc.velocity.X * 0.07f)) / 5f;
                         Vector2 value54 = Main.player[npc.target].Center - npc.Center;
                         value54.Y -= 12f;
                         if (npc.Center.X > Main.player[npc.target].Center.X)
@@ -403,21 +403,21 @@ namespace AAMod.NPCs.Bosses.Raider
                         float num1310 = 4f;
                         value54.Normalize();
                         value54 *= scaleFactor18;
-                        npc.velocity = (npc.velocity * (num1310 - 1f) + value54) / num1310;
+                        npc.velocity = ((npc.velocity * (num1310 - 1f)) + value54) / num1310;
                         return;
                     }
                     if (npc.ai[0] == 3.1f)
                     {
                         npc.knockBackResist = 0f;
                         npc.noTileCollide = true;
-                        npc.rotation = (npc.rotation * 4f + npc.velocity.X * 0.07f) / 5f;
+                        npc.rotation = ((npc.rotation * 4f) + (npc.velocity.X * 0.07f)) / 5f;
                         Vector2 vector206 = Main.player[npc.target].Center - npc.Center;
                         vector206.Y -= 12f;
                         float scaleFactor19 = 16f;
                         float num1311 = 8f;
                         vector206.Normalize();
                         vector206 *= scaleFactor19;
-                        npc.velocity = (npc.velocity * (num1311 - 1f) + vector206) / num1311;
+                        npc.velocity = ((npc.velocity * (num1311 - 1f)) + vector206) / num1311;
                         if (npc.velocity.X < 0f)
                         {
                             npc.direction = -1;
@@ -473,7 +473,7 @@ namespace AAMod.NPCs.Bosses.Raider
                                     npc.ai[3] = 0f;
                                 }
                             }
-                            npc.rotation = (npc.rotation * 4f + npc.velocity.X * 0.07f) / 5f;
+                            npc.rotation = ((npc.rotation * 4f) + (npc.velocity.X * 0.07f)) / 5f;
                             return;
                         }
                         if (npc.ai[0] == 4f)
@@ -488,8 +488,8 @@ namespace AAMod.NPCs.Bosses.Raider
                                 {
                                     int num1313 = (int)Main.player[npc.target].Center.X / 16;
                                     int num1314 = (int)Main.player[npc.target].Center.Y / 16;
-                                    int num1315 = 30 + num1312 / 50;
-                                    int num1316 = 20 + num1312 / 75;
+                                    int num1315 = 30 + (num1312 / 50);
+                                    int num1316 = 20 + (num1312 / 75);
                                     num1313 += Main.rand.Next(-num1315, num1315 + 1);
                                     num1314 += Main.rand.Next(-num1316, num1316 + 1);
                                     if (!WorldGen.SolidTile(num1313, num1314))
@@ -498,7 +498,7 @@ namespace AAMod.NPCs.Bosses.Raider
                                         {
                                             num1314++;
                                         }
-                                        if ((new Vector2((float)(num1313 * 16 + 8), (float)(num1314 * 16 + 8)) - Main.player[npc.target].Center).Length() < 600f)
+                                        if ((new Vector2((float)((num1313 * 16) + 8), (float)((num1314 * 16) + 8)) - Main.player[npc.target].Center).Length() < 600f)
                                         {
                                             npc.ai[0] = 4.1f;
                                             npc.ai[1] = (float)num1313;
@@ -522,15 +522,15 @@ namespace AAMod.NPCs.Bosses.Raider
                                 npc.direction = 1;
                             }
                             npc.spriteDirection = npc.direction;
-                            npc.rotation = (npc.rotation * 9f + npc.velocity.X * 0.1f) / 10f;
+                            npc.rotation = ((npc.rotation * 9f) + (npc.velocity.X * 0.1f)) / 10f;
                             npc.noTileCollide = true;
                             int num1317 = (int)npc.ai[1];
                             int num1318 = (int)npc.ai[2];
-                            float x2 = (float)(num1317 * 16 + 8);
-                            float y2 = (float)(num1318 * 16 - 20);
+                            float x2 = (float)((num1317 * 16) + 8);
+                            float y2 = (float)((num1318 * 16) - 20);
                             Vector2 vector207 = new Vector2(x2, y2);
                             vector207 -= npc.Center;
-                            float num1319 = 6f + vector207.Length() / 150f;
+                            float num1319 = 6f + (vector207.Length() / 150f);
                             if (num1319 > 10f)
                             {
                                 num1319 = 10f;
@@ -542,18 +542,18 @@ namespace AAMod.NPCs.Bosses.Raider
                             }
                             vector207.Normalize();
                             vector207 *= num1319;
-                            npc.velocity = (npc.velocity * (num1320 - 1f) + vector207) / num1320;
+                            npc.velocity = ((npc.velocity * (num1320 - 1f)) + vector207) / num1320;
                             return;
                         }
                         if (npc.ai[0] == 4.2f)
                         {
-                            npc.rotation = (npc.rotation * 9f + npc.velocity.X * 0.1f) / 10f;
+                            npc.rotation = ((npc.rotation * 9f) + (npc.velocity.X * 0.1f)) / 10f;
                             npc.knockBackResist = 0f;
                             npc.noTileCollide = true;
                             int num1321 = (int)npc.ai[1];
                             int num1322 = (int)npc.ai[2];
-                            float x3 = (float)(num1321 * 16 + 8);
-                            float y3 = (float)(num1322 * 16 - 20);
+                            float x3 = (float)((num1321 * 16) + 8);
+                            float y3 = (float)((num1322 * 16) - 20);
                             Vector2 vector208 = new Vector2(x3, y3);
                             vector208 -= npc.Center;
                             float num1323 = 4f;
@@ -568,7 +568,7 @@ namespace AAMod.NPCs.Bosses.Raider
                                 npc.ai[3] += 1f;
                                 if (npc.ai[3] == (float)num1325)
                                 {
-                                    NPC.NewNPC(num1321 * 16 + 8, num1322 * 16, mod.NPCType("Raidmini"), npc.whoAmI, 0f, 0f, 0f, 0f, 255);
+                                    NPC.NewNPC((num1321 * 16) + 8, num1322 * 16, mod.NPCType("Raidmini"), npc.whoAmI, 0f, 0f, 0f, 0f, 255);
                                 }
                                 else if (npc.ai[3] == (float)(num1325 * 2))
                                 {
@@ -591,7 +591,7 @@ namespace AAMod.NPCs.Bosses.Raider
                                 vector208.Normalize();
                                 vector208 *= num1323;
                             }
-                            npc.velocity = (npc.velocity * (num1324 - 1f) + vector208) / num1324;
+                            npc.velocity = ((npc.velocity * (num1324 - 1f)) + vector208) / num1324;
                             return;
                         }
                     }

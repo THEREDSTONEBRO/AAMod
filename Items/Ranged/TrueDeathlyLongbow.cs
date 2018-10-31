@@ -63,13 +63,13 @@ namespace AAMod.Items.Ranged
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
             float spread = 45f * 0.0174f;
-            float baseSpeed = (float)Math.Sqrt(speedX * speedX + speedY * speedY);
+            float baseSpeed = (float)Math.Sqrt((speedX * speedX) + (speedY * speedY));
             double startAngle = Math.Atan2(speedX, speedY) - .1d;
             double deltaAngle = spread / 6f;
             double offsetAngle;
             for (int i = 0; i < 3; i++)
             {
-                offsetAngle = startAngle + deltaAngle * i;
+                offsetAngle = startAngle + (deltaAngle * i);
                 Projectile.NewProjectile(position.X, position.Y, speedX, speedY, mod.ProjectileType("ReaperArrow"), damage, knockBack, player.whoAmI, 0f, 0f);
             }
             return false;

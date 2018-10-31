@@ -107,7 +107,7 @@ namespace AAMod.Items.Dev
                 if (direction.Length() != 0f)
                 {
                     direction.Normalize();
-                    projectile.velocity = (projectile.velocity * 40f + direction * 6f) / (40f + 1);
+                    projectile.velocity = ((projectile.velocity * 40f) + (direction * 6f)) / (40f + 1);
                 }
             }
             else
@@ -133,7 +133,7 @@ namespace AAMod.Items.Dev
                         num++;
                     }
                 }
-                direction.X -= (float)((10 + num * 40) * player.direction);
+                direction.X -= (float)((10 + (num * 40)) * player.direction);
                 direction.Y -= 70f;
                 float distanceTo = direction.Length();
                 if (distanceTo > 200f && speed < 9f)
@@ -154,7 +154,7 @@ namespace AAMod.Items.Dev
                     direction.Normalize();
                     direction *= speed;
                     float temp = 40f / 2f;
-                    projectile.velocity = (projectile.velocity * temp + direction) / (temp + 1);
+                    projectile.velocity = ((projectile.velocity * temp) + direction) / (temp + 1);
                 }
                 else
                 {

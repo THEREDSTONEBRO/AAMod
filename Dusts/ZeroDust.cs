@@ -19,7 +19,7 @@ namespace AAMod.Dusts
 
 		public override bool Update(Dust dust)
 		{
-			float light = 1 - dust.alpha / 255f;
+			float light = 1 - (dust.alpha / 255f);
 			Lighting.AddLight((int)(dust.position.X / 16f), (int)(dust.position.Y / 16f), light * 0.5f, light * 0.1f, light * 0.1f);
 			dust.alpha += 2;
 			if (dust.alpha >= 255)

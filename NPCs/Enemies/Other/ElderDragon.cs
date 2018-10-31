@@ -213,7 +213,7 @@ namespace AAMod.NPCs.Enemies.Other
                 Vector2 center = npc.Center;
                 Vector2 center2 = targetData.Center;
                 Vector2 vector = center2 - center;
-                Vector2 vector2 = vector - Vector2.UnitY * scaleFactor;
+                Vector2 vector2 = vector - (Vector2.UnitY * scaleFactor);
                 float num18 = vector.Length();
                 vector = Vector2.Normalize(vector) * scaleFactor4;
                 vector2 = Vector2.Normalize(vector2) * scaleFactor4;
@@ -223,11 +223,11 @@ namespace AAMod.NPCs.Enemies.Other
                     flag6 = true;
                 }
                 float num19 = 8f;
-                flag6 = (flag6 && vector.ToRotation() > 3.14159274f / num19 && vector.ToRotation() < 3.14159274f - 3.14159274f / num19);
+                flag6 = (flag6 && vector.ToRotation() > 3.14159274f / num19 && vector.ToRotation() < 3.14159274f - (3.14159274f / num19));
                 if (num18 > num3 || !flag6)
                 {
-                    npc.velocity.X = (npc.velocity.X * (num4 - 1f) + vector2.X) / num4;
-                    npc.velocity.Y = (npc.velocity.Y * (num4 - 1f) + vector2.Y) / num4;
+                    npc.velocity.X = ((npc.velocity.X * (num4 - 1f)) + vector2.X) / num4;
+                    npc.velocity.Y = ((npc.velocity.Y * (num4 - 1f)) + vector2.Y) / num4;
                     if (!flag6)
                     {
                         npc.ai[3] += 1f;
@@ -268,7 +268,7 @@ namespace AAMod.NPCs.Enemies.Other
                     npc.ai[0] = 2f;
                     npc.ai[1] = 0f;
                     npc.netUpdate = true;
-                    Vector2 velocity = new Vector2(npc.ai[2], npc.ai[3]) + new Vector2((float)Main.rand.Next(-num6, num6 + 1), (float)Main.rand.Next(-num6, num6 + 1)) * 0.04f;
+                    Vector2 velocity = new Vector2(npc.ai[2], npc.ai[3]) + (new Vector2((float)Main.rand.Next(-num6, num6 + 1), (float)Main.rand.Next(-num6, num6 + 1)) * 0.04f);
                     velocity.Normalize();
                     velocity *= scaleFactor3;
                     npc.velocity = velocity;
@@ -308,7 +308,7 @@ namespace AAMod.NPCs.Enemies.Other
                     {
                         vec = new Vector2((float)npc.direction, 0f);
                     }
-                    npc.velocity = (npc.velocity * (num9 - 1f) + vec * (npc.velocity.Length() + num10)) / num9;
+                    npc.velocity = ((npc.velocity * (num9 - 1f)) + (vec * (npc.velocity.Length() + num10))) / num9;
                 }
                 if (flag2 && Collision.SolidCollision(npc.position, npc.width, npc.height))
                 {
@@ -370,16 +370,16 @@ namespace AAMod.NPCs.Enemies.Other
                     for (int k = 0; k < 4; k++)
                     {
                         int num21 = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, 31, 0f, 0f, 100, default(Color), 1.5f);
-                        Main.dust[num21].position = npc.Center + Vector2.UnitY.RotatedByRandom(3.1415927410125732) * (float)Main.rand.NextDouble() * (float)npc.width / 2f;
+                        Main.dust[num21].position = npc.Center + (Vector2.UnitY.RotatedByRandom(3.1415927410125732) * (float)Main.rand.NextDouble() * (float)npc.width / 2f);
                     }
                     for (int l = 0; l < 20; l++)
                     {
                         int num22 = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, 6, 0f, 0f, 200, default(Color), 3.7f);
-                        Main.dust[num22].position = npc.Center + Vector2.UnitY.RotatedByRandom(3.1415927410125732) * (float)Main.rand.NextDouble() * (float)npc.width / 2f;
+                        Main.dust[num22].position = npc.Center + (Vector2.UnitY.RotatedByRandom(3.1415927410125732) * (float)Main.rand.NextDouble() * (float)npc.width / 2f);
                         Main.dust[num22].noGravity = true;
                         Main.dust[num22].velocity *= 3f;
                         num22 = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, 6, 0f, 0f, 100, default(Color), 1.5f);
-                        Main.dust[num22].position = npc.Center + Vector2.UnitY.RotatedByRandom(3.1415927410125732) * (float)Main.rand.NextDouble() * (float)npc.width / 4f;
+                        Main.dust[num22].position = npc.Center + (Vector2.UnitY.RotatedByRandom(3.1415927410125732) * (float)Main.rand.NextDouble() * (float)npc.width / 4f);
                         Main.dust[num22].velocity *= 2f;
                         Main.dust[num22].noGravity = true;
                         Main.dust[num22].fadeIn = 2.5f;
@@ -387,26 +387,26 @@ namespace AAMod.NPCs.Enemies.Other
                     for (int m = 0; m < 6; m++)
                     {
                         int num23 = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, 6, 0f, 0f, 0, default(Color), 2.7f);
-                        Main.dust[num23].position = npc.Center + Vector2.UnitX.RotatedByRandom(3.1415927410125732).RotatedBy((double)npc.velocity.ToRotation(), default(Vector2)) * (float)npc.width / 2f;
+                        Main.dust[num23].position = npc.Center + (Vector2.UnitX.RotatedByRandom(3.1415927410125732).RotatedBy((double)npc.velocity.ToRotation(), default(Vector2)) * (float)npc.width / 2f);
                         Main.dust[num23].noGravity = true;
                         Main.dust[num23].velocity *= 3f;
                     }
                     for (int n = 0; n < 12; n++)
                     {
                         int num24 = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, 31, 0f, 0f, 0, default(Color), 1.5f);
-                        Main.dust[num24].position = npc.Center + Vector2.UnitX.RotatedByRandom(3.1415927410125732).RotatedBy((double)npc.velocity.ToRotation(), default(Vector2)) * (float)npc.width / 2f;
+                        Main.dust[num24].position = npc.Center + (Vector2.UnitX.RotatedByRandom(3.1415927410125732).RotatedBy((double)npc.velocity.ToRotation(), default(Vector2)) * (float)npc.width / 2f);
                         Main.dust[num24].noGravity = true;
                         Main.dust[num24].velocity *= 3f;
                     }
                     for (int num25 = 0; num25 < 5; num25++)
                     {
-                        int num26 = Gore.NewGore(npc.position + new Vector2((float)(npc.width * Main.rand.Next(100)) / 100f, (float)(npc.height * Main.rand.Next(100)) / 100f) - Vector2.One * 10f, default(Vector2), Main.rand.Next(61, 64), 1f);
-                        Main.gore[num26].position = npc.Center + Vector2.UnitY.RotatedByRandom(3.1415927410125732) * (float)Main.rand.NextDouble() * (float)npc.width / 2f;
+                        int num26 = Gore.NewGore(npc.position + new Vector2((float)(npc.width * Main.rand.Next(100)) / 100f, (float)(npc.height * Main.rand.Next(100)) / 100f) - (Vector2.One * 10f), default(Vector2), Main.rand.Next(61, 64), 1f);
+                        Main.gore[num26].position = npc.Center + (Vector2.UnitY.RotatedByRandom(3.1415927410125732) * (float)Main.rand.NextDouble() * (float)npc.width / 2f);
                         Main.gore[num26].velocity *= 0.3f;
                         Gore expr_128A_cp_0 = Main.gore[num26];
-                        expr_128A_cp_0.velocity.X = expr_128A_cp_0.velocity.X + (float)Main.rand.Next(-10, 11) * 0.05f;
+                        expr_128A_cp_0.velocity.X = expr_128A_cp_0.velocity.X + ((float)Main.rand.Next(-10, 11) * 0.05f);
                         Gore expr_12B8_cp_0 = Main.gore[num26];
-                        expr_12B8_cp_0.velocity.Y = expr_12B8_cp_0.velocity.Y + (float)Main.rand.Next(-10, 11) * 0.05f;
+                        expr_12B8_cp_0.velocity.Y = expr_12B8_cp_0.velocity.Y + ((float)Main.rand.Next(-10, 11) * 0.05f);
                     }
                 }
                 npc.ai[1] += 1f;

@@ -336,7 +336,7 @@ namespace AAMod
         {
             for (int k = 0; k < (int)((double)(WorldGen.worldSurface * Main.maxTilesY) * 1E-05); k++)
             {
-                int X = WorldGen.genRand.Next((Main.maxTilesX / 2) - 150, Main.maxTilesX / 2 + 150);
+                int X = WorldGen.genRand.Next((Main.maxTilesX / 2) - 150, (Main.maxTilesX / 2) + 150);
                 int Y = WorldGen.genRand.Next((int)WorldGen.worldSurface);
                 WorldGen.OreRunner(X, Y, WorldGen.genRand.Next(1, 2), WorldGen.genRand.Next(1, 2), (ushort)mod.TileType("Mycelium"));
             }

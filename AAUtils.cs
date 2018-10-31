@@ -144,7 +144,7 @@ namespace AAMod
                 texture,
                 new Vector2
                 (
-                    item.position.X - Main.screenPosition.X + item.width / 2,
+                    item.position.X - Main.screenPosition.X + (item.width / 2),
                     item.position.Y - Main.screenPosition.Y + item.height - (texture.Height / 2) + 2f
                 ),
                 new Rectangle(0, 0, texture.Width, texture.Height),

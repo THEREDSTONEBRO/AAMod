@@ -56,7 +56,7 @@ Inflicts Daybroken");
             item.noUseGraphic = true;
             item.shoot = mod.ProjectileType("Daycrusher");
             item.shootSpeed = 20F;
-            item.UseSound = SoundID.Item1;
+            item.UseSound = SoundID.Item21;
             item.melee = true;
         }
 

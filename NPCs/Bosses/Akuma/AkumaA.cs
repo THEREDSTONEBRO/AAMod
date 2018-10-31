@@ -303,20 +303,20 @@ namespace AAMod.NPCs.Bosses.Akuma
                         }
                         if (npc.ai[2] == 7 || npc.ai[2] == 5 || npc.ai[2] == 3 || npc.ai[2] == 1)
                         {
-                            npc.ai[0] = NPC.NewNPC((int)(npc.position.X + npc.width / 2), (int)(npc.position.Y + npc.height), bodyType, npc.whoAmI);
+                            npc.ai[0] = NPC.NewNPC((int)(npc.position.X + (npc.width / 2)), (int)(npc.position.Y + npc.height), bodyType, npc.whoAmI);
                         }
                         else if (npc.ai[2] == 6 || npc.ai[2] == 4 || npc.ai[2] == 2)
                         {
-                            npc.ai[0] = NPC.NewNPC((int)(npc.position.X + npc.width / 2), (int)(npc.position.Y + npc.height), armType, npc.whoAmI);
+                            npc.ai[0] = NPC.NewNPC((int)(npc.position.X + (npc.width / 2)), (int)(npc.position.Y + npc.height), armType, npc.whoAmI);
                         }
                     }
                     else if (npc.ai[2] != 0)
                     {
-                        npc.ai[0] = NPC.NewNPC((int)(npc.position.X + npc.width / 2), (int)(npc.position.Y + npc.height), npc.type, npc.whoAmI);
+                        npc.ai[0] = NPC.NewNPC((int)(npc.position.X + (npc.width / 2)), (int)(npc.position.Y + npc.height), npc.type, npc.whoAmI);
                     }
                     if (npc.ai[2] == 0)
                     {
-                        npc.ai[0] = NPC.NewNPC((int)(npc.position.X + npc.width / 2), (int)(npc.position.Y + npc.height), tailType, npc.whoAmI);
+                        npc.ai[0] = NPC.NewNPC((int)(npc.position.X + (npc.width / 2)), (int)(npc.position.Y + npc.height), tailType, npc.whoAmI);
                     }
                     Main.npc[(int)npc.ai[0]].ai[3] = npc.ai[3];
                     Main.npc[(int)npc.ai[0]].realLife = npc.realLife;
@@ -418,29 +418,29 @@ namespace AAMod.NPCs.Bosses.Akuma
             }
             float num188 = speed;
             float num189 = turnSpeed;
-            Vector2 vector18 = new Vector2(npc.position.X + npc.width * 0.5f, npc.position.Y + npc.height * 0.5f);
-            float num191 = Main.player[npc.target].position.X + Main.player[npc.target].width / 2;
-            float num192 = Main.player[npc.target].position.Y + Main.player[npc.target].height / 2;
+            Vector2 vector18 = new Vector2(npc.position.X + (npc.width * 0.5f), npc.position.Y + (npc.height * 0.5f));
+            float num191 = Main.player[npc.target].position.X + (Main.player[npc.target].width / 2);
+            float num192 = Main.player[npc.target].position.Y + (Main.player[npc.target].height / 2);
             num191 = (int)(num191 / 16f) * 16;
             num192 = (int)(num192 / 16f) * 16;
             vector18.X = (int)(vector18.X / 16f) * 16;
             vector18.Y = (int)(vector18.Y / 16f) * 16;
             num191 -= vector18.X;
             num192 -= vector18.Y;
-            float num193 = (float)System.Math.Sqrt(num191 * num191 + num192 * num192);
+            float num193 = (float)System.Math.Sqrt((num191 * num191) + (num192 * num192));
             if (npc.ai[1] > 0f && npc.ai[1] < Main.npc.Length)
             {
                 try
                 {
-                    vector18 = new Vector2(npc.position.X + npc.width * 0.5f, npc.position.Y + npc.height * 0.5f);
-                    num191 = Main.npc[(int)npc.ai[1]].position.X + Main.npc[(int)npc.ai[1]].width / 2 - vector18.X;
-                    num192 = Main.npc[(int)npc.ai[1]].position.Y + Main.npc[(int)npc.ai[1]].height / 2 - vector18.Y;
+                    vector18 = new Vector2(npc.position.X + (npc.width * 0.5f), npc.position.Y + (npc.height * 0.5f));
+                    num191 = Main.npc[(int)npc.ai[1]].position.X + (Main.npc[(int)npc.ai[1]].width / 2) - vector18.X;
+                    num192 = Main.npc[(int)npc.ai[1]].position.Y + (Main.npc[(int)npc.ai[1]].height / 2) - vector18.Y;
                 }
                 catch
                 {
                 }
                 npc.rotation = (float)System.Math.Atan2(num192, num191) + 1.57f;
-                num193 = (float)System.Math.Sqrt(num191 * num191 + num192 * num192);
+                num193 = (float)System.Math.Sqrt((num191 * num191) + (num192 * num192));
                 int num194 = npc.width;
                 num193 = (num193 - num194) / num193;
                 num191 *= num193;
@@ -474,11 +474,11 @@ namespace AAMod.NPCs.Bosses.Akuma
                     {
                         if (npc.velocity.X < 0f)
                         {
-                            npc.velocity.X = npc.velocity.X - num189 * 1.1f;
+                            npc.velocity.X = npc.velocity.X - (num189 * 1.1f);
                         }
                         else
                         {
-                            npc.velocity.X = npc.velocity.X + num189 * 1.1f;
+                            npc.velocity.X = npc.velocity.X + (num189 * 1.1f);
                         }
                     }
                     else if (npc.velocity.Y == num188)
@@ -496,11 +496,11 @@ namespace AAMod.NPCs.Bosses.Akuma
                     {
                         if (npc.velocity.X < 0f)
                         {
-                            npc.velocity.X = npc.velocity.X + num189 * 0.9f;
+                            npc.velocity.X = npc.velocity.X + (num189 * 0.9f);
                         }
                         else
                         {
-                            npc.velocity.X = npc.velocity.X - num189 * 0.9f;
+                            npc.velocity.X = npc.velocity.X - (num189 * 0.9f);
                         }
                     }
                 }
@@ -520,7 +520,7 @@ namespace AAMod.NPCs.Bosses.Akuma
                         npc.soundDelay = (int)num195;
                         Main.PlaySound(SoundID.Roar, npc.position, 1);
                     }
-                    num193 = (float)System.Math.Sqrt(num191 * num191 + num192 * num192);
+                    num193 = (float)System.Math.Sqrt((num191 * num191) + (num192 * num192));
                     float num196 = System.Math.Abs(num191);
                     float num197 = System.Math.Abs(num192);
                     float num198 = num188 / num193;
@@ -590,22 +590,22 @@ namespace AAMod.NPCs.Bosses.Akuma
                             {
                                 if (npc.velocity.Y > 0f)
                                 {
-                                    npc.velocity.Y = npc.velocity.Y + num189 * 2f;
+                                    npc.velocity.Y = npc.velocity.Y + (num189 * 2f);
                                 }
                                 else
                                 {
-                                    npc.velocity.Y = npc.velocity.Y - num189 * 2f;
+                                    npc.velocity.Y = npc.velocity.Y - (num189 * 2f);
                                 }
                             }
                             if (System.Math.Abs(num191) < num188 * 0.2 && ((npc.velocity.Y > 0f && num192 < 0f) || (npc.velocity.Y < 0f && num192 > 0f)))
                             {
                                 if (npc.velocity.X > 0f)
                                 {
-                                    npc.velocity.X = npc.velocity.X + num189 * 2f;
+                                    npc.velocity.X = npc.velocity.X + (num189 * 2f);
                                 }
                                 else
                                 {
-                                    npc.velocity.X = npc.velocity.X - num189 * 2f;
+                                    npc.velocity.X = npc.velocity.X - (num189 * 2f);
                                 }
                             }
                         }
@@ -615,11 +615,11 @@ namespace AAMod.NPCs.Bosses.Akuma
                             {
                                 if (npc.velocity.X < num191)
                                 {
-                                    npc.velocity.X = npc.velocity.X + num189 * 1.1f;
+                                    npc.velocity.X = npc.velocity.X + (num189 * 1.1f);
                                 }
                                 else if (npc.velocity.X > num191)
                                 {
-                                    npc.velocity.X = npc.velocity.X - num189 * 1.1f;
+                                    npc.velocity.X = npc.velocity.X - (num189 * 1.1f);
                                 }
                                 if (System.Math.Abs(npc.velocity.X) + System.Math.Abs(npc.velocity.Y) < num188 * 0.5)
                                 {
@@ -637,11 +637,11 @@ namespace AAMod.NPCs.Bosses.Akuma
                             {
                                 if (npc.velocity.Y < num192)
                                 {
-                                    npc.velocity.Y = npc.velocity.Y + num189 * 1.1f;
+                                    npc.velocity.Y = npc.velocity.Y + (num189 * 1.1f);
                                 }
                                 else if (npc.velocity.Y > num192)
                                 {
-                                    npc.velocity.Y = npc.velocity.Y - num189 * 1.1f;
+                                    npc.velocity.Y = npc.velocity.Y - (num189 * 1.1f);
                                 }
                                 if (System.Math.Abs(npc.velocity.X) + System.Math.Abs(npc.velocity.Y) < num188 * 0.5)
                                 {

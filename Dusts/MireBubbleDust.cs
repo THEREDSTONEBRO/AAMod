@@ -17,7 +17,8 @@ namespace AAMod.Dusts
 
 		public override bool Update(Dust dust)
 		{
-			dust.rotation += dust.velocity.X / 3f;
+            dust.velocity.Y -= 0.05f;
+            dust.rotation += dust.velocity.X / 3f;
 			dust.position += dust.velocity;
 			int oldAlpha = dust.alpha;
 			dust.alpha = (int)(dust.alpha * 1.2);

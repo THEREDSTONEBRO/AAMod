@@ -91,7 +91,7 @@ namespace AAMod.NPCs.Bosses.Broodmother
             npc.noTileCollide = false;
             npc.knockBackResist = 0.4f * Main.knockBackMultiplier;
             npc.noGravity = true;
-            npc.rotation = (npc.rotation * 9f + npc.velocity.X * 0.1f) / 10f;
+            npc.rotation = ((npc.rotation * 9f) + (npc.velocity.X * 0.1f)) / 10f;
             if (Main.player[npc.target].GetModPlayer<AAPlayer>().ZoneInferno == false)
             {
                 if (npc.timeLeft > 5)
@@ -143,7 +143,7 @@ namespace AAMod.NPCs.Bosses.Broodmother
             if (npc.ai[0] == -1f)
             {
                 Vector2 value56 = new Vector2(0f, -8f);
-                npc.velocity = (npc.velocity * 9f + value56) / 10f;
+                npc.velocity = ((npc.velocity * 9f) + value56) / 10f;
                 npc.noTileCollide = true;
                 npc.dontTakeDamage = true;
                 return;
@@ -186,11 +186,11 @@ namespace AAMod.NPCs.Bosses.Broodmother
                 }
                 else if (value57.Length() > 200f)
                 {
-                    float scaleFactor20 = 5.5f + value57.Length() / 100f + npc.ai[1] / 15f;
+                    float scaleFactor20 = 5.5f + (value57.Length() / 100f) + (npc.ai[1] / 15f);
                     float num1329 = 40f;
                     value57.Normalize();
                     value57 *= scaleFactor20;
-                    npc.velocity = (npc.velocity * (num1329 - 1f) + value57) / num1329;
+                    npc.velocity = ((npc.velocity * (num1329 - 1f)) + value57) / num1329;
                 }
                 else if (npc.velocity.Length() > 2f)
                 {
@@ -229,7 +229,7 @@ namespace AAMod.NPCs.Bosses.Broodmother
                         npc.direction = 1;
                     }
                     npc.spriteDirection = npc.direction;
-                    npc.rotation = (npc.rotation * 9f + npc.velocity.X * 0.08f) / 10f;
+                    npc.rotation = ((npc.rotation * 9f) + (npc.velocity.X * 0.08f)) / 10f;
                     Vector2 value58 = Main.player[npc.target].Center - npc.Center;
                     if (value58.Length() < 300f && !Collision.SolidCollision(npc.position, npc.width, npc.height))
                     {
@@ -239,11 +239,11 @@ namespace AAMod.NPCs.Bosses.Broodmother
                         npc.ai[3] = 0f;
                     }
                     npc.ai[2] += 0.0166666675f;
-                    float scaleFactor21 = 5.5f + npc.ai[2] + value58.Length() / 150f;
+                    float scaleFactor21 = 5.5f + npc.ai[2] + (value58.Length() / 150f);
                     float num1330 = 35f;
                     value58.Normalize();
                     value58 *= scaleFactor21;
-                    npc.velocity = (npc.velocity * (num1330 - 1f) + value58) / num1330;
+                    npc.velocity = ((npc.velocity * (num1330 - 1f)) + value58) / num1330;
                     return;
                 }
                 if (npc.ai[0] == 2f)
@@ -257,7 +257,7 @@ namespace AAMod.NPCs.Bosses.Broodmother
                         npc.direction = 1;
                     }
                     npc.spriteDirection = npc.direction;
-                    npc.rotation = (npc.rotation * 7f + npc.velocity.X * 0.1f) / 8f;
+                    npc.rotation = ((npc.rotation * 7f) + (npc.velocity.X * 0.1f)) / 8f;
                     npc.knockBackResist = 0f;
                     npc.noTileCollide = true;
                     Vector2 vector211 = Main.player[npc.target].Center - npc.Center;
@@ -266,7 +266,7 @@ namespace AAMod.NPCs.Bosses.Broodmother
                     float num1331 = 8f;
                     vector211.Normalize();
                     vector211 *= scaleFactor22;
-                    npc.velocity = (npc.velocity * (num1331 - 1f) + vector211) / num1331;
+                    npc.velocity = ((npc.velocity * (num1331 - 1f)) + vector211) / num1331;
                     if (npc.velocity.X < 0f)
                     {
                         npc.direction = -1;

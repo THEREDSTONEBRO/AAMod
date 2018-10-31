@@ -70,10 +70,10 @@ namespace AAMod.Items.Projectiles
             if (flag17)
             {
                 float num483 = 20f;
-                Vector2 vector35 = new Vector2(projectile.position.X + (float)projectile.width * 0.5f, projectile.position.Y + (float)projectile.height * 0.5f);
+                Vector2 vector35 = new Vector2(projectile.position.X + ((float)projectile.width * 0.5f), projectile.position.Y + ((float)projectile.height * 0.5f));
                 float num484 = num472 - vector35.X;
                 float num485 = num473 - vector35.Y;
-                float num486 = (float)Math.Sqrt((double)(num484 * num484 + num485 * num485));
+                float num486 = (float)Math.Sqrt((double)((num484 * num484) + (num485 * num485)));
                 num486 = num483 / num486;
                 num484 *= projectile.velocity.X;
                 num485 *= projectile.velocity.Y;

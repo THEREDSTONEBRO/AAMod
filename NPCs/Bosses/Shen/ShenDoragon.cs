@@ -278,7 +278,7 @@ namespace AAMod.NPCs.Bosses.Shen
                     num2 = 1.5f;
                     if (Math.Abs(targetData.Center.X - npc.Center.X) > 550f && Math.Abs(npc.velocity.X) < 20f)
                     {
-                        npc.velocity.X = npc.velocity.X + (float)Math.Sign(npc.velocity.X) * 0.5f;
+                        npc.velocity.X = npc.velocity.X + ((float)Math.Sign(npc.velocity.X) * 0.5f);
                     }
                 }
                 if (npc.ai[1] >= num13)
@@ -320,8 +320,8 @@ namespace AAMod.NPCs.Bosses.Shen
                 }
                 else
                 {
-                    npc.position.X = npc.position.X + npc.DirectionTo(targetData.Center).X * 7f;
-                    npc.position.Y = npc.position.Y + npc.DirectionTo(targetData.Center + new Vector2(0f, -400f)).Y * 6f;
+                    npc.position.X = npc.position.X + (npc.DirectionTo(targetData.Center).X * 7f);
+                    npc.position.Y = npc.position.Y + (npc.DirectionTo(targetData.Center + new Vector2(0f, -400f)).Y * 6f);
                     if (npc.ai[1] <= num19 - num18)
                     {
                         num2 = 1.5f;
@@ -418,7 +418,7 @@ namespace AAMod.NPCs.Bosses.Shen
                         {
                             for (int m = 0; m < 1; m++)
                             {
-                                Vector2 vector4 = npc.Center + (6.28318548f * Main.rand.NextFloat()).ToRotationVector2() * new Vector2(2f, 1f) * 300f * (0.6f + Main.rand.NextFloat() * 0.4f);
+                                Vector2 vector4 = npc.Center + ((6.28318548f * Main.rand.NextFloat()).ToRotationVector2() * new Vector2(2f, 1f) * 300f * (0.6f + (Main.rand.NextFloat() * 0.4f)));
                                 if (Vector2.Distance(vector4, targetData.Center) > 100f)
                                 {
                                     Point point2 = vector4.ToPoint();

@@ -86,7 +86,7 @@ namespace AAMod.NPCs
 					NetMessage.SendTileSquare(-1, x, y, 3);
 				}
 				int npcToSpawn = mod.NPCType("InfernoMimic");
-				int npcIndex = NPC.NewNPC(x * 16 + 16, y * 16 + 32, npcToSpawn, 0, 0f, 0f, 0f, 0f, 255);
+				int npcIndex = NPC.NewNPC((x * 16) + 16, (y * 16) + 32, npcToSpawn, 0, 0f, 0f, 0f, 0f, 255);
 				Main.npc[npcIndex].whoAmI = npcIndex;
 				NetMessage.SendData(23, -1, -1, null, npcIndex, 0f, 0f, 0f, 0, 0, 0);
 				Main.npc[npcIndex].BigMimicSpawnSmoke();
@@ -178,7 +178,7 @@ namespace AAMod.NPCs
                     NetMessage.SendTileSquare(-1, x, y, 3);
                 }
                 int npcToSpawn = mod.NPCType("MireMimic");
-                int npcIndex = NPC.NewNPC(x * 16 + 16, y * 16 + 32, npcToSpawn, 0, 0f, 0f, 0f, 0f, 255);
+                int npcIndex = NPC.NewNPC((x * 16) + 16, (y * 16) + 32, npcToSpawn, 0, 0f, 0f, 0f, 0f, 255);
                 Main.npc[npcIndex].whoAmI = npcIndex;
                 NetMessage.SendData(23, -1, -1, null, npcIndex, 0f, 0f, 0f, 0, 0, 0);
                 Main.npc[npcIndex].BigMimicSpawnSmoke();

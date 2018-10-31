@@ -39,16 +39,16 @@ namespace AAMod.Items.Projectiles.Akuma
             }
             projectile.scale = projectile.ai[1];
             projectile.rotation = projectile.velocity.ToRotation() - 1.57079637f;
-            Vector2 position = projectile.Center + Vector2.Normalize(projectile.velocity) * 10f;
+            Vector2 position = projectile.Center + (Vector2.Normalize(projectile.velocity) * 10f);
             Dust dust20 = Main.dust[Dust.NewDust(projectile.position, projectile.width, projectile.height, mod.DustType<Dusts.AkumaADust>(), 0f, 0f, 0, default(Color), 1f)];
             dust20.position = position;
-            dust20.velocity = projectile.velocity.RotatedBy(1.5707963705062866, default(Vector2)) * 0.33f + projectile.velocity / 4f;
+            dust20.velocity = (projectile.velocity.RotatedBy(1.5707963705062866, default(Vector2)) * 0.33f) + (projectile.velocity / 4f);
             dust20.position += projectile.velocity.RotatedBy(1.5707963705062866, default(Vector2));
             dust20.fadeIn = 0.5f;
             dust20.noGravity = true;
             dust20 = Main.dust[Dust.NewDust(projectile.position, projectile.width, projectile.height, mod.DustType<Dusts.AkumaADust>(), 0f, 0f, 0, default(Color), 1f)];
             dust20.position = position;
-            dust20.velocity = projectile.velocity.RotatedBy(-1.5707963705062866, default(Vector2)) * 0.33f + projectile.velocity / 4f;
+            dust20.velocity = (projectile.velocity.RotatedBy(-1.5707963705062866, default(Vector2)) * 0.33f) + (projectile.velocity / 4f);
             dust20.position += projectile.velocity.RotatedBy(-1.5707963705062866, default(Vector2));
             dust20.fadeIn = 0.5f;
             dust20.noGravity = true;
@@ -66,7 +66,7 @@ namespace AAMod.Items.Projectiles.Akuma
         {
             Main.PlaySound(new LegacySoundStyle(2, 124, Terraria.Audio.SoundType.Sound));
             float spread = 45f * 0.0174f;
-            double startAngle = Math.Atan2(projectile.velocity.X, projectile.velocity.Y) - spread / 2;
+            double startAngle = Math.Atan2(projectile.velocity.X, projectile.velocity.Y) - (spread / 2);
             double deltaAngle = spread / 8f;
             double offsetAngle;
             int i;
@@ -74,7 +74,7 @@ namespace AAMod.Items.Projectiles.Akuma
             {
                 for (i = 0; i < 4; i++)
                 {
-                    offsetAngle = (startAngle + deltaAngle * (i + i * i) / 2f) + 32f * i;
+                    offsetAngle = (startAngle + (deltaAngle * (i + (i * i)) / 2f)) + (32f * i);
                     int Flame1 = Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, (float)(Math.Sin(offsetAngle) * 5f), (float)(Math.Cos(offsetAngle) * 5f), mod.ProjectileType("AkumaFlare"), 230, 1.25f, projectile.whoAmI, 0f, 0f);
                     int Flame2 = Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, (float)(-Math.Sin(offsetAngle) * 5f), (float)(-Math.Cos(offsetAngle) * 5f), mod.ProjectileType("AkumaFlare"), 230, 1.25f, projectile.whoAmI, 0f, 0f);
                     Main.projectile[Flame1].timeLeft = 120;

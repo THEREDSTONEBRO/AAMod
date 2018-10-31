@@ -10,7 +10,7 @@ namespace AAMod.Dusts
         {
             dust.velocity.Y = Main.rand.Next(-10, 6) * 0.1f;
             dust.velocity.X *= 0.3f;
-            dust.scale *= 1.2f;
+            dust.scale *= 1.3f;
         }
 
         public override bool MidUpdate(Dust dust)

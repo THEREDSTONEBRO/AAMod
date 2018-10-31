@@ -111,12 +111,12 @@ namespace AAMod.NPCs.Bosses.Zero
                 Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/ZeroGore3"), 1f);
                 Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/ZeroGore3"), 1f);
                 Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/ZeroGore3"), 1f);
-                npc.position.X = npc.position.X + npc.width / 2;
-                npc.position.Y = npc.position.Y + npc.height / 2;
+                npc.position.X = npc.position.X + (npc.width / 2);
+                npc.position.Y = npc.position.Y + (npc.height / 2);
                 npc.width = 100;
                 npc.height = 100;
-                npc.position.X = npc.position.X - npc.width / 2;
-                npc.position.Y = npc.position.Y - npc.height / 2;
+                npc.position.X = npc.position.X - (npc.width / 2);
+                npc.position.Y = npc.position.Y - (npc.height / 2);
                 Vector2 spawnAt = npc.Center + new Vector2(0f, npc.height / 2f);
                 if (Main.expertMode)
                 {
@@ -199,23 +199,23 @@ namespace AAMod.NPCs.Bosses.Zero
             {
                 npc.TargetClosest(true);
                 npc.ai[0]++;
-                int index1 = NPC.NewNPC((int)(npc.position.X + (double)(npc.width / 2)), (int)npc.position.Y + npc.height / 2, mod.NPCType("VoidStar"), npc.whoAmI, 0.0f, 0.0f, 0.0f, 0.0f, byte.MaxValue);
+                int index1 = NPC.NewNPC((int)(npc.position.X + (double)(npc.width / 2)), (int)npc.position.Y + (npc.height / 2), mod.NPCType("VoidStar"), npc.whoAmI, 0.0f, 0.0f, 0.0f, 0.0f, byte.MaxValue);
                 Main.npc[index1].ai[0] = -1f;
                 Main.npc[index1].ai[1] = npc.whoAmI;
                 Main.npc[index1].target = npc.target;
                 Main.npc[index1].netUpdate = true;
-                int index2 = NPC.NewNPC((int)(npc.position.X + (double)(npc.width / 2)), (int)npc.position.Y + npc.height / 2, mod.NPCType("RiftShredder"), npc.whoAmI, 0.0f, 0.0f, 0.0f, 0.0f, byte.MaxValue);
+                int index2 = NPC.NewNPC((int)(npc.position.X + (double)(npc.width / 2)), (int)npc.position.Y + (npc.height / 2), mod.NPCType("RiftShredder"), npc.whoAmI, 0.0f, 0.0f, 0.0f, 0.0f, byte.MaxValue);
                 Main.npc[index2].ai[0] = 1f;
                 Main.npc[index2].ai[1] = npc.whoAmI;
                 Main.npc[index2].target = npc.target;
                 Main.npc[index2].netUpdate = true;
-                int index3 = NPC.NewNPC((int)(npc.position.X + (double)(npc.width / 2)), (int)npc.position.Y + npc.height / 2, mod.NPCType("Taser"), npc.whoAmI, 0.0f, 0.0f, 0.0f, 0.0f, byte.MaxValue);
+                int index3 = NPC.NewNPC((int)(npc.position.X + (double)(npc.width / 2)), (int)npc.position.Y + (npc.height / 2), mod.NPCType("Taser"), npc.whoAmI, 0.0f, 0.0f, 0.0f, 0.0f, byte.MaxValue);
                 Main.npc[index3].ai[0] = -1f;
                 Main.npc[index3].ai[1] = npc.whoAmI;
                 Main.npc[index3].target = npc.target;
                 Main.npc[index3].ai[3] = 150f;
                 Main.npc[index3].netUpdate = true;
-                int index4 = NPC.NewNPC((int)(npc.position.X + (double)(npc.width / 2)), (int)npc.position.Y + npc.height / 2, mod.NPCType("RealityCannon"), npc.whoAmI, 0.0f, 0.0f, 0.0f, 0.0f, byte.MaxValue);
+                int index4 = NPC.NewNPC((int)(npc.position.X + (double)(npc.width / 2)), (int)npc.position.Y + (npc.height / 2), mod.NPCType("RealityCannon"), npc.whoAmI, 0.0f, 0.0f, 0.0f, 0.0f, byte.MaxValue);
                 Main.npc[index4].ai[0] = 1f;
                 Main.npc[index4].ai[1] = npc.whoAmI;
                 Main.npc[index4].target = npc.target;
@@ -317,10 +317,10 @@ namespace AAMod.NPCs.Bosses.Zero
                         npc.ai[1] = 0f;
                     }
                     npc.rotation += (float)npc.direction * 0.7f;
-                    Vector2 vector44 = new Vector2(npc.position.X + (float)npc.width * 0.5f, npc.position.Y + (float)npc.height * 0.5f);
+                    Vector2 vector44 = new Vector2(npc.position.X + ((float)npc.width * 0.5f), npc.position.Y + ((float)npc.height * 0.5f));
                     float num441 = Main.player[npc.target].position.X + (float)(Main.player[npc.target].width / 2) - vector44.X;
                     float num442 = Main.player[npc.target].position.Y + (float)(Main.player[npc.target].height / 2) - vector44.Y;
-                    float num443 = (float)Math.Sqrt((double)(num441 * num441 + num442 * num442));
+                    float num443 = (float)Math.Sqrt((double)((num441 * num441) + (num442 * num442)));
                     num443 = 2f / num443;
                     npc.velocity.X = num441 * num443;
                     npc.velocity.Y = num442 * num443;
@@ -331,10 +331,10 @@ namespace AAMod.NPCs.Bosses.Zero
                     npc.damage = 1000;
                     npc.defense = 9999;
                     npc.rotation += (float)npc.direction * 0.7f;
-                    Vector2 vector45 = new Vector2(npc.position.X + (float)npc.width * 0.5f, npc.position.Y + (float)npc.height * 0.5f);
+                    Vector2 vector45 = new Vector2(npc.position.X + ((float)npc.width * 0.5f), npc.position.Y + ((float)npc.height * 0.5f));
                     float num444 = Main.player[npc.target].position.X + (float)(Main.player[npc.target].width / 2) - vector45.X;
                     float num445 = Main.player[npc.target].position.Y + (float)(Main.player[npc.target].height / 2) - vector45.Y;
-                    float num446 = (float)Math.Sqrt((double)(num444 * num444 + num445 * num445));
+                    float num446 = (float)Math.Sqrt((double)((num444 * num444) + (num445 * num445)));
                     float num447 = 10f;
                     num447 += num446 / 100f;
                     if (num447 < 8f)

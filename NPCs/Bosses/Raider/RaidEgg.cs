@@ -86,13 +86,13 @@ namespace AAMod.NPCs.Bosses.Raider
             }
             if (Main.netMode != 1 && npc.velocity.Y == 0f && (double)Math.Abs(npc.velocity.X) < 0.2 && (double)npc.ai[0] >= (double)num1326 * 0.75)
             {
-                float num1327 = npc.ai[0] - (float)num1326 * 0.75f;
+                float num1327 = npc.ai[0] - ((float)num1326 * 0.75f);
                 num1327 /= (float)num1326 * 0.25f;
                 if ((float)Main.rand.Next(-10, 120) < num1327 * 100f)
                 {
-                    npc.velocity.Y = npc.velocity.Y - Main.rand.Next(20, 40) * 0.025f;
-                    npc.velocity.X = npc.velocity.X + Main.rand.Next(-20, 20) * 0.025f;
-                    npc.velocity *= 1f + num1327 * 2f;
+                    npc.velocity.Y = npc.velocity.Y - (Main.rand.Next(20, 40) * 0.025f);
+                    npc.velocity.X = npc.velocity.X + (Main.rand.Next(-20, 20) * 0.025f);
+                    npc.velocity *= 1f + (num1327 * 2f);
                     npc.netUpdate = true;
                     return;
                 }

@@ -107,7 +107,7 @@ namespace AAMod.Items.Dev
                 if (direction.Length() != 0f)
                 {
                     direction.Normalize();
-                    projectile.velocity = (projectile.velocity * 40f + direction * 6f) / (40f + 1);
+                    projectile.velocity = ((projectile.velocity * 40f) + (direction * 6f)) / (40f + 1);
                 }
             }
             else
@@ -133,7 +133,7 @@ namespace AAMod.Items.Dev
                         num++;
                     }
                 }
-                direction.X -= (float)((10 + num * 40) * player.direction);
+                direction.X -= (float)((10 + (num * 40)) * player.direction);
                 direction.Y -= 70f;
                 float distanceTo = direction.Length();
                 if (distanceTo > 200f && speed < 9f)
@@ -154,7 +154,7 @@ namespace AAMod.Items.Dev
                     direction.Normalize();
                     direction *= speed;
                     float temp = 40f / 2f;
-                    projectile.velocity = (projectile.velocity * temp + direction) / (temp + 1);
+                    projectile.velocity = ((projectile.velocity * temp) + direction) / (temp + 1);
                 }
                 else
                 {
@@ -275,10 +275,10 @@ namespace AAMod.Items.Dev
             if (npc.ai[1] == 2f)
             {
                 npc.rotation += (float)npc.direction * 0.3f;
-                Vector2 vector18 = new Vector2(npc.position.X + (float)npc.width * 0.5f, npc.position.Y + (float)npc.height * 0.5f);
+                Vector2 vector18 = new Vector2(npc.position.X + ((float)npc.width * 0.5f), npc.position.Y + ((float)npc.height * 0.5f));
                 float num174 = Main.player[npc.target].position.X + (float)(Main.player[npc.target].width / 2) - vector18.X;
                 float num175 = Main.player[npc.target].position.Y + (float)(Main.player[npc.target].height / 2) - vector18.Y;
-                float num176 = (float)Math.Sqrt((double)(num174 * num174 + num175 * num175));
+                float num176 = (float)Math.Sqrt((double)((num174 * num174) + (num175 * num175)));
                 num176 = 8f / num176;
                 npc.velocity.X = num174 * num176;
                 npc.velocity.Y = num175 * num176;

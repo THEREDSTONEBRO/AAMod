@@ -90,7 +90,7 @@ You don't look so good
                     vector32.Y = Main.screenPosition.Y + Main.screenHeight - Main.mouseY;
                 }
                 vector32.X -= player.width / 2;
-                if (vector32.X > 50f && vector32.X < Main.maxTilesX * 16 - 50 && vector32.Y > 50f && vector32.Y < Main.maxTilesY * 16 - 50)
+                if (vector32.X > 50f && vector32.X < (Main.maxTilesX * 16) - 50 && vector32.Y > 50f && vector32.Y < (Main.maxTilesY * 16) - 50)
                 {
                     int num246 = (int)(vector32.X / 16f);
                     int num247 = (int)(vector32.Y / 16f);

@@ -38,7 +38,7 @@ Inflicts daybroken");
             item.useTime = 17;
             item.useAnimation = 17;
             item.knockBack = 4.7f;
-            item.UseSound = SoundID.Item1;
+            item.UseSound = SoundID.Item21;
             item.noMelee = true;
             item.noUseGraphic = true;
             item.useTurn = true;

@@ -36,7 +36,7 @@ namespace AAMod.NPCs.Bosses.Nightcrawler
 				Vector2 vector11 = Main.player[num103].Center - projectile.Center;
 				vector11.Normalize();
 				vector11 *= scaleFactor2;
-				projectile.velocity = (projectile.velocity * 24f + vector11) / 25f;
+				projectile.velocity = ((projectile.velocity * 24f) + vector11) / 25f;
 				projectile.velocity.Normalize();
 				projectile.velocity *= scaleFactor2;
 			}

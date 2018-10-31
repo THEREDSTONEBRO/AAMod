@@ -160,7 +160,7 @@ namespace AAMod.NPCs.Bosses.Retriever
                     move *= speed / magnitude;
                 }
                 float turnResistance = 15f; // The larget the number the slower the npc will turn.
-                move = (npc.velocity * turnResistance + move) / (turnResistance + 1f);
+                move = ((npc.velocity * turnResistance) + move) / (turnResistance + 1f);
                 magnitude = Magnitude(move);
                 if (magnitude > speed)
                 {
@@ -193,7 +193,7 @@ namespace AAMod.NPCs.Bosses.Retriever
         }
         private float Magnitude(Vector2 mag)
         {
-            return (float)Math.Sqrt(mag.X * mag.X + mag.Y * mag.Y);      //No idea, leave this
+            return (float)Math.Sqrt((mag.X * mag.X) + (mag.Y * mag.Y));      //No idea, leave this
         }
         public override void ModifyHitPlayer(Player target, ref int damage, ref bool crit)
         {

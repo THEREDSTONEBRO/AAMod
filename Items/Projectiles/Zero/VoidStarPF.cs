@@ -66,13 +66,13 @@ namespace AAMod.Items.Projectiles.Zero
                         if (Main.rand.Next(2) == 0)
                         {
                             Vector2 vector124 = Vector2.UnitY.RotatedByRandom(6.2831854820251465);
-                            Dust dust27 = Main.dust[Dust.NewDust(projectile.Center - vector124 * 30f, 0, 0, Utils.SelectRandom<int>(Main.rand, new int[]
+                            Dust dust27 = Main.dust[Dust.NewDust(projectile.Center - (vector124 * 30f), 0, 0, Utils.SelectRandom<int>(Main.rand, new int[]
                             {
                                                                                                                     86,
                                                                                                                     90
                             }), 0f, 0f, 0, new Color(120, 0, 30), 1f)];
                             dust27.noGravity = true;
-                            dust27.position = projectile.Center - vector124 * (float)Main.rand.Next(10, 21);
+                            dust27.position = projectile.Center - (vector124 * (float)Main.rand.Next(10, 21));
                             dust27.velocity = vector124.RotatedBy(1.5707963705062866, default(Vector2)) * 6f;
                             dust27.scale = 0.5f + Main.rand.NextFloat();
                             dust27.fadeIn = 0.5f;
@@ -81,9 +81,9 @@ namespace AAMod.Items.Projectiles.Zero
                         else
                         {
                             Vector2 vector125 = Vector2.UnitY.RotatedByRandom(6.2831854820251465);
-                            Dust dust28 = Main.dust[Dust.NewDust(projectile.Center - vector125 * 30f, 0, 0, 240, 0f, 0f, 0, new Color(120, 0, 30), 1f)];
+                            Dust dust28 = Main.dust[Dust.NewDust(projectile.Center - (vector125 * 30f), 0, 0, 240, 0f, 0f, 0, new Color(120, 0, 30), 1f)];
                             dust28.noGravity = true;
-                            dust28.position = projectile.Center - vector125 * 30f;
+                            dust28.position = projectile.Center - (vector125 * 30f);
                             dust28.velocity = vector125.RotatedBy(-1.5707963705062866, default(Vector2)) * 3f;
                             dust28.scale = 0.5f + Main.rand.NextFloat();
                             dust28.fadeIn = 0.5f;
@@ -115,17 +115,17 @@ namespace AAMod.Items.Projectiles.Zero
                         if (Main.rand.Next(2) == 0)
                         {
                             Vector2 vector126 = Vector2.UnitY.RotatedByRandom(6.2831854820251465);
-                            Dust dust29 = Main.dust[Dust.NewDust(projectile.Center - vector126 * 30f, 0, 0, 86, 0f, 0f, 0, new Color(120, 0, 30), 1f)];
+                            Dust dust29 = Main.dust[Dust.NewDust(projectile.Center - (vector126 * 30f), 0, 0, 86, 0f, 0f, 0, new Color(120, 0, 30), 1f)];
                             dust29.noGravity = true;
-                            dust29.position = projectile.Center - vector126 * (float)Main.rand.Next(10, 21);
+                            dust29.position = projectile.Center - (vector126 * (float)Main.rand.Next(10, 21));
                             dust29.velocity = vector126.RotatedBy(1.5707963705062866, default(Vector2)) * 6f;
                             dust29.scale = 0.9f + Main.rand.NextFloat();
                             dust29.fadeIn = 0.5f;
                             dust29.customData = this;
                             vector126 = Vector2.UnitY.RotatedByRandom(6.2831854820251465);
-                            dust29 = Main.dust[Dust.NewDust(projectile.Center - vector126 * 30f, 0, 0, 90, 0f, 0f, 0, new Color(120, 0, 30), 1f)];
+                            dust29 = Main.dust[Dust.NewDust(projectile.Center - (vector126 * 30f), 0, 0, 90, 0f, 0f, 0, new Color(120, 0, 30), 1f)];
                             dust29.noGravity = true;
-                            dust29.position = projectile.Center - vector126 * (float)Main.rand.Next(10, 21);
+                            dust29.position = projectile.Center - (vector126 * (float)Main.rand.Next(10, 21));
                             dust29.velocity = vector126.RotatedBy(1.5707963705062866, default(Vector2)) * 6f;
                             dust29.scale = 0.9f + Main.rand.NextFloat();
                             dust29.fadeIn = 0.5f;
@@ -135,9 +135,9 @@ namespace AAMod.Items.Projectiles.Zero
                         else
                         {
                             Vector2 vector127 = Vector2.UnitY.RotatedByRandom(6.2831854820251465);
-                            Dust dust30 = Main.dust[Dust.NewDust(projectile.Center - vector127 * 30f, 0, 0, 240, 0f, 0f, 0, new Color(120, 0, 30), 1f)];
+                            Dust dust30 = Main.dust[Dust.NewDust(projectile.Center - (vector127 * 30f), 0, 0, 240, 0f, 0f, 0, new Color(120, 0, 30), 1f)];
                             dust30.noGravity = true;
-                            dust30.position = projectile.Center - vector127 * (float)Main.rand.Next(20, 31);
+                            dust30.position = projectile.Center - (vector127 * (float)Main.rand.Next(20, 31));
                             dust30.velocity = vector127.RotatedBy(-1.5707963705062866, default(Vector2)) * 5f;
                             dust30.scale = 0.9f + Main.rand.NextFloat();
                             dust30.fadeIn = 0.5f;
@@ -196,15 +196,15 @@ namespace AAMod.Items.Projectiles.Zero
                     {
                         float num1008 = 4f;
                         int num1009 = 8;
-                        Vector2 vector130 = new Vector2(projectile.position.X + (float)projectile.width * 0.5f, projectile.position.Y + (float)projectile.height * 0.5f);
+                        Vector2 vector130 = new Vector2(projectile.position.X + ((float)projectile.width * 0.5f), projectile.position.Y + ((float)projectile.height * 0.5f));
                         float num1010 = vector129.X - vector130.X;
                         float num1011 = vector129.Y - vector130.Y;
-                        float num1012 = (float)Math.Sqrt((double)(num1010 * num1010 + num1011 * num1011));
+                        float num1012 = (float)Math.Sqrt((double)((num1010 * num1010) + (num1011 * num1011)));
                         num1012 = num1008 / num1012;
                         num1010 *= num1012;
                         num1011 *= num1012;
-                        projectile.velocity.X = (projectile.velocity.X * (float)(num1009 - 1) + num1010) / (float)num1009;
-                        projectile.velocity.Y = (projectile.velocity.Y * (float)(num1009 - 1) + num1011) / (float)num1009;
+                        projectile.velocity.X = ((projectile.velocity.X * (float)(num1009 - 1)) + num1010) / (float)num1009;
+                        projectile.velocity.Y = ((projectile.velocity.Y * (float)(num1009 - 1)) + num1011) / (float)num1009;
                     }
                 }
                 if (projectile.alpha < 150)

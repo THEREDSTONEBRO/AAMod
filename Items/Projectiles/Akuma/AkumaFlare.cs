@@ -68,7 +68,7 @@ namespace AAMod.Items.Projectiles.Akuma
                 expr_8A4E_cp_0.position.X = expr_8A4E_cp_0.position.X - 2f;
                 Dust expr_8A6C_cp_0 = Main.dust[num200];
                 expr_8A6C_cp_0.position.Y = expr_8A6C_cp_0.position.Y + 2f;
-                Main.dust[num200].scale += 0.3f + (float)Main.rand.Next(50) * 0.01f;
+                Main.dust[num200].scale += 0.3f + ((float)Main.rand.Next(50) * 0.01f);
                 Main.dust[num200].noGravity = true;
                 Main.dust[num200].velocity *= 0.1f;
             }

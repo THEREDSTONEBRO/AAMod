@@ -44,7 +44,7 @@ namespace AAMod.Items.Boss.Akuma
             item.knockBack = 0;
             item.value = Item.buyPrice( 1, 0, 0, 0);
             item.rare = 0;
-            item.UseSound = SoundID.Item34;
+            item.UseSound = SoundID.Item21;
             item.autoReuse = true;
             item.shootSpeed = 14f;
             item.glowMask = customGlowMask;

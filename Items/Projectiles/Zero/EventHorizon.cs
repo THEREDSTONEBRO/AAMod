@@ -60,7 +60,7 @@ namespace AAMod.Items.Projectiles.Zero
             {
                 num32 *= -1f;
             }
-            Vector2 vector17 = (num32 * (projectile.ai[0] / 30f * 6.28318548f - 1.57079637f)).ToRotationVector2();
+            Vector2 vector17 = (num32 * ((projectile.ai[0] / 30f * 6.28318548f) - 1.57079637f)).ToRotationVector2();
             vector17.Y *= (float)Math.Sin(projectile.ai[1]);
             if (projectile.ai[1] <= 0f)
             {
@@ -76,7 +76,7 @@ namespace AAMod.Items.Projectiles.Zero
             {
                 projectile.Kill();
             }
-            projectile.position = player.RotatedRelativePoint(player.MountedCenter, true) - projectile.Size / 2f;
+            projectile.position = player.RotatedRelativePoint(player.MountedCenter, true) - (projectile.Size / 2f);
             projectile.rotation = projectile.velocity.ToRotation() + num;
             projectile.spriteDirection = projectile.direction;
             projectile.timeLeft = 2;
@@ -101,13 +101,13 @@ namespace AAMod.Items.Projectiles.Zero
         public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
         {
             Vector2 mountedCenter = Main.player[projectile.owner].MountedCenter;
-            Color color25 = Lighting.GetColor((int)(projectile.position.X + projectile.width * 0.5) / 16, (int)((projectile.position.Y + projectile.height * 0.5) / 16.0));
+            Color color25 = Lighting.GetColor((int)(projectile.position.X + (projectile.width * 0.5)) / 16, (int)((projectile.position.Y + (projectile.height * 0.5)) / 16.0));
             if (projectile.hide && !ProjectileID.Sets.DontAttachHideToAlpha[projectile.type])
             {
                 color25 = Lighting.GetColor((int)mountedCenter.X / 16, (int)(mountedCenter.Y / 16f));
             }
             Vector2 projPos = projectile.position;
-            projPos = new Vector2(projectile.width, projectile.height) / 2f + Vector2.UnitY * projectile.gfxOffY - Main.screenPosition; //fuck it
+            projPos = (new Vector2(projectile.width, projectile.height) / 2f) + (Vector2.UnitY * projectile.gfxOffY) - Main.screenPosition; //fuck it
             Texture2D texture2D22 = Main.projectileTexture[projectile.type];
             Microsoft.Xna.Framework.Color alpha3 = projectile.GetAlpha(color25);
             if (projectile.velocity == Vector2.Zero)
@@ -120,7 +120,7 @@ namespace AAMod.Items.Projectiles.Zero
             Microsoft.Xna.Framework.Rectangle rectangle8 = new Microsoft.Xna.Framework.Rectangle(0, 0, texture2D22.Width, 36); //2 and 40
             Vector2 value29 = new Vector2(0f, Main.player[projectile.owner].gfxOffY);
             float rotation24 = projectile.rotation + 3.14159274f;
-            Main.spriteBatch.Draw(texture2D22, projectile.Center.Floor() - Main.screenPosition + value29, new Microsoft.Xna.Framework.Rectangle?(rectangle8), alpha3, rotation24, rectangle8.Size() / 2f - Vector2.UnitY * 4f, projectile.scale, SpriteEffects.None, 0f);
+            Main.spriteBatch.Draw(texture2D22, projectile.Center.Floor() - Main.screenPosition + value29, new Microsoft.Xna.Framework.Rectangle?(rectangle8), alpha3, rotation24, (rectangle8.Size() / 2f) - (Vector2.UnitY * 4f), projectile.scale, SpriteEffects.None, 0f);
             num230 -= 40f * projectile.scale;
             Vector2 vector31 = projectile.Center.Floor();
             vector31 += value28 * projectile.scale * 24f;
@@ -176,7 +176,7 @@ namespace AAMod.Items.Projectiles.Zero
         {
             DelegateMethods.tilecut_0 = TileCuttingContext.AttackProjectile;
             Vector2 unit = projectile.velocity;
-            Utils.PlotTileLine(projectile.Center, projectile.Center + unit * projectile.localAI[1], projectile.width * projectile.scale, new Utils.PerLinePoint(DelegateMethods.CutTiles));
+            Utils.PlotTileLine(projectile.Center, projectile.Center + (unit * projectile.localAI[1]), projectile.width * projectile.scale, new Utils.PerLinePoint(DelegateMethods.CutTiles));
         }
 
         public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox)
