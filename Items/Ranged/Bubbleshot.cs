@@ -26,7 +26,7 @@ namespace AAMod.Items.Ranged
 			item.rare = 5;
 			item.UseSound = SoundID.Item85;
 			item.autoReuse = true;
-			item.shoot = mod.ProjectileType("Bubbles");
+			item.shoot = mod.ProjectileType("Bubble");
 			item.shootSpeed = 4f;
 		}
         public override Vector2? HoldoutOffset()
