@@ -113,6 +113,7 @@
     <Compile Include="Dusts\InfinityOverloadP.cs" />
     <Compile Include="Dusts\InfinityOverloadR.cs" />
     <Compile Include="Dusts\InfinityOverloadY.cs" />
+    <Compile Include="Dusts\MireBubbleDust.cs" />
     <Compile Include="Dusts\OrangeSolution.cs" />
     <Compile Include="Dusts\OrderSolution.cs" />
     <Compile Include="Dusts\RadiantIncinerite.cs" />
@@ -375,7 +376,6 @@
     <Compile Include="Items\Dev\UmbreonSPEX.cs" />
     <Compile Include="Items\Dev\WasabiBowl.cs" />
     <Compile Include="Items\Magic\DragonsBreath.cs" />
-    <Compile Include="Items\Magic\z.cs" />
     <Compile Include="Items\Magic\Gong.cs" />
     <Compile Include="Items\Magic\TrueGong.cs" />
     <Compile Include="Items\Magic\YtriumStaff.cs" />
@@ -498,9 +498,11 @@
     <Compile Include="Items\Projectiles\Akuma\Solar.cs" />
     <Compile Include="Items\Projectiles\Akuma\SunSpear.cs" />
     <Compile Include="Items\Projectiles\Akuma\SunSpearShot.cs" />
+    <Compile Include="Items\Projectiles\Bubble.cs" />
     <Compile Include="Items\Projectiles\CatsEye.cs" />
     <Compile Include="Items\Projectiles\AmphibiousProjectile.cs" />
     <Compile Include="Items\Projectiles\AmphibiousProjectileEX.cs" />
+    <Compile Include="Items\Projectiles\DarkmatterJackhammerPro.cs" />
     <Compile Include="Items\Projectiles\DecayScytheProj.cs" />
     <Compile Include="Items\Projectiles\AmphibiousProjectileEXS.cs" />
     <Compile Include="Items\Projectiles\AmphibiousProjectileS.cs" />
@@ -587,6 +589,7 @@
     <Compile Include="Items\Ranged\Apollo.cs" />
     <Compile Include="Items\Ranged\ApollosWrath.cs" />
     <Compile Include="Items\Ranged\BoneBow.cs" />
+    <Compile Include="Items\Ranged\Bubbleshot.cs" />
     <Compile Include="Items\Ranged\CrystalBow.cs" />
     <Compile Include="Items\Ranged\DeathlyLongbow.cs" />
     <Compile Include="Items\Ranged\DragonArrow.cs" />
