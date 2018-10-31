@@ -1,7 +1,7 @@
 using Terraria;
 using Terraria.ModLoader;
 
-namespace AAMod.Items.Boss.Broodmother
+namespace AAMod.Items.Boss.Raider
 {
 	public class RaiderTrophy : ModItem
 	{
