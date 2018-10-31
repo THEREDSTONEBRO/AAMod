@@ -9,8 +9,8 @@ namespace AAMod.Dusts
 		public override void OnSpawn(Dust dust)
 		{
 			dust.alpha = 1;
-			dust.scale = .8f;
-			dust.velocity *= 0f;
+			dust.scale = 1.2f;
+			dust.velocity *= 0.4f;
 			dust.noGravity = true;
 			dust.noLight = true;
 		}
