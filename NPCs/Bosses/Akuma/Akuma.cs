@@ -14,6 +14,8 @@ namespace AAMod.NPCs.Bosses.Akuma
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Akuma");
+
+            Main.npcFrameCount[npc.type] = 3;
         }
 
         public override void SetDefaults()
@@ -56,6 +58,7 @@ namespace AAMod.NPCs.Bosses.Akuma
             npc.value = Item.buyPrice(0, 55, 0, 0);
             npc.boss = true;
             npc.aiStyle = -1;
+            animationType = NPCID.CultistDragonHead;
             npc.lavaImmune = true;
             npc.noGravity = true;
             npc.noTileCollide = true;
@@ -100,32 +103,24 @@ namespace AAMod.NPCs.Bosses.Akuma
 
         public override void HitEffect(int hitDirection, double damage)
         {
-            int dust1 = mod.DustType<Dusts.AkumaDust>();
-            int dust2 = mod.DustType<Dusts.AkumaDust>();
-            if (npc.life <= 0 && !Main.expertMode)
-            {
-                Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, dust1, 0f, 0f, 0, default(Color), 1f);
-                Main.dust[dust1].velocity *= 0.5f;
-                Main.dust[dust1].scale *= 1.3f;
-                Main.dust[dust1].fadeIn = 1f;
-                Main.dust[dust1].noGravity = false;
-                Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, dust2, 0f, 0f, 0, default(Color), 1f);
-                Main.dust[dust2].velocity *= 0.5f;
-                Main.dust[dust2].scale *= 1.3f;
-                Main.dust[dust2].fadeIn = 1f;
-                Main.dust[dust2].noGravity = true;
+            
+                int dust1 = mod.DustType<Dusts.AkumaDust>();
+                int dust2 = mod.DustType<Dusts.AkumaDust>();
+                if (npc.life <= 0 && !Main.expertMode)
+                {
+                    Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, dust1, 0f, 0f, 0, default(Color), 1f);
+                    Main.dust[dust1].velocity *= 0.5f;
+                    Main.dust[dust1].scale *= 1.3f;
+                    Main.dust[dust1].fadeIn = 1f;
+                    Main.dust[dust1].noGravity = false;
+                    Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, dust2, 0f, 0f, 0, default(Color), 1f);
+                    Main.dust[dust2].velocity *= 0.5f;
+                    Main.dust[dust2].scale *= 1.3f;
+                    Main.dust[dust2].fadeIn = 1f;
+                    Main.dust[dust2].noGravity = true;
 
-            }
-            if (npc.life <= 0 && !Main.expertMode)
-            {
-                Main.NewText("Hmpf...you’re pretty good kid, but not good enough. Come back once you’ve gotten a bit better.", Color.OrangeRed.R, Color.OrangeRed.G, Color.OrangeRed.B);
-            }
-            if (npc.life <= 0 && Main.expertMode)
-            {
-                Main.NewText("Heh...", Color.OrangeRed.R, Color.OrangeRed.G, Color.OrangeRed.B);
-                Projectile.NewProjectile((new Vector2(npc.position.X, npc.position.Y)), (new Vector2(0f, 0f)), mod.ProjectileType("AkumaTransition"), 0, 0);
-            }
-
+                }
+                
         }
     }
 
@@ -775,6 +770,12 @@ namespace AAMod.NPCs.Bosses.Akuma
                     npc.DropLoot(mod.ItemType(lootTable[loot]));
                     //npc.DropLoot(Items.Vanity.Mask.AkumaMask.type, 1f / 7);
                     npc.DropLoot(Items.Boss.Akuma.AkumaTrophy.type, 1f / 10);
+                    Main.NewText("Hmpf...you’re pretty good kid, but not good enough. Come back once you’ve gotten a bit better.", Color.OrangeRed.R, Color.OrangeRed.G, Color.OrangeRed.B);
+                }
+                if (Main.expertMode)
+                {
+                    Main.NewText("Heh...", Color.OrangeRed.R, Color.OrangeRed.G, Color.OrangeRed.B);
+                    Projectile.NewProjectile((new Vector2(npc.position.X, npc.position.Y)), (new Vector2(0f, 0f)), mod.ProjectileType("AkumaTransition"), 0, 0);
                 }
             }
             else
