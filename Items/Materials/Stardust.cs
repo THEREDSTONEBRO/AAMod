@@ -22,7 +22,7 @@ namespace AAMod.Items.Materials
                 Main.glowMaskTexture = glowMasks;
             }
             item.glowMask = customGlowMask;
-            Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(1, 3));
+            Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(5, 3));
             ItemID.Sets.ItemIconPulse[item.type] = true;
             ItemID.Sets.ItemNoGravity[item.type] = true;
             DisplayName.SetDefault("Stardust");

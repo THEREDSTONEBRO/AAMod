@@ -43,7 +43,7 @@ Only Usable during the day");
         // We use the CanUseItem hook to prevent a player from using this item while the boss is present in the world.
         public override bool CanUseItem(Player player)
         {
-            return !NPC.AnyNPCs(mod.NPCType<AkumaHead>()) /*&& !NPC.AnyNPCs(mod.NPCType<AkumaAHead>())*/;
+            return !NPC.AnyNPCs(mod.NPCType("AkumaHead")) && Main.dayTime /*&& !NPC.AnyNPCs(mod.NPCType<AkumaAHead>())*/;
         }
 
         public override bool UseItem(Player player)
