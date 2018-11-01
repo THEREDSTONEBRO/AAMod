@@ -117,7 +117,7 @@ You don't look so good
                 if (on)
                 {
                     on = false;
-                    player.moveSpeed = player.moveSpeed + 3f;
+                    player.moveSpeed = player.moveSpeed + 5f;
                     player.headPosition.Y -= 20f;
                     player.headPosition.X += 15f;
                     player.bodyPosition.Y += 37f;
@@ -131,7 +131,7 @@ You don't look so good
                 if (!on)
                 {
                     on = true;
-                    player.moveSpeed = player.moveSpeed - 3f;
+                    player.moveSpeed = player.moveSpeed - 5f;
                     player.headPosition.Y += 20f;
                     player.headPosition.X -= 15f;
                     player.bodyPosition.Y -= 37f;
@@ -140,7 +140,14 @@ You don't look so good
                     player.legPosition.X += 12f;
                 }
             }
-            player.GetModPlayer<AAPlayer>(mod).BrokenCode = true;
+            if (item.accessory)
+            {
+                player.GetModPlayer<AAPlayer>(mod).BrokenCode = true;
+            }
+            else
+            {
+                player.GetModPlayer<AAPlayer>(mod).BrokenCode = false;
+            }
         }
 
         public override void PostUpdate()

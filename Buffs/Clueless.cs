@@ -16,7 +16,7 @@ namespace AAMod.Buffs
 
 		public override void Update(Player player, ref int buffIndex)
 		{
-            if (player.GetModPlayer<AAPlayer>(mod).ZoneMire)
+            if (player.GetModPlayer<AAPlayer>(mod).ZoneMire && Main.dayTime)
             {
                 player.buffTime[buffIndex] = 5;
             }

@@ -80,6 +80,7 @@
     <Compile Include="Backgrounds\VoidSky.cs" />
     <Compile Include="Backgrounds\VoidSkyData.cs" />
     <Compile Include="Backgrounds\VoidSurfaceBgStyle.cs" />
+    <Compile Include="Buffs\BurningAsh.cs" />
     <Compile Include="Buffs\MiniProbe.cs" />
     <Compile Include="Buffs\Broodmini.cs" />
     <Compile Include="Buffs\ChairMinionBuff.cs" />
@@ -121,8 +122,14 @@
     <Compile Include="Dusts\RazewoodDust.cs" />
     <Compile Include="Dusts\StarDust.cs" />
     <Compile Include="Dusts\UmbreonSPDust.cs" />
+    <Compile Include="Dusts\AshRain.cs" />
     <Compile Include="Dusts\VoidDust.cs" />
     <Compile Include="Dusts\ZeroDust.cs" />
+    <Compile Include="Items\Accessories\AshProofVest0.cs" />
+    <Compile Include="Items\Accessories\AshProofVest2.cs" />
+    <Compile Include="Items\Accessories\AshProofVest3.cs" />
+    <Compile Include="Items\Accessories\AshProofVest1.cs" />
+    <Compile Include="Items\Accessories\Lantern.cs" />
     <Compile Include="Items\Accessories\OrnateBand.cs" />
     <Compile Include="Items\Accessories\BotchedBand.cs" />
     <Compile Include="Items\Accessories\DemonGauntet.cs" />
@@ -292,9 +299,8 @@
     <Compile Include="Items\BossSummons\IntimidatingMushroom.cs" />
     <Compile Include="Items\BossSummons\ZeroRune.cs" />
     <Compile Include="Items\BossSummons\ZeroTesseract.cs" />
-    <Compile Include="Items\Boss\Akumata\ChaosSoul.cs" />
     <Compile Include="Items\Boss\Akuma\CrucibleScale.cs" />
-    <Compile Include="Items\Boss\Akuma\Sunstorm.cs" />
+    <Compile Include="Items\Boss\Akuma\SunStorm.cs" />
     <Compile Include="Items\Boss\Akuma\DaybreakArrow.cs" />
     <Compile Include="Items\Boss\Akuma\Daycrusher.cs" />
     <Compile Include="Items\Boss\Akuma\SunSpear.cs" />
@@ -318,7 +324,6 @@
     <Compile Include="Items\Boss\Grips\GripBag.cs" />
     <Compile Include="Items\Boss\Grips\GripTrophyBlue.cs" />
     <Compile Include="Items\Boss\Grips\GripTrophyRed.cs" />
-    <Compile Include="Items\Boss\Icegrim\IceGreatsword.cs" />
     <Compile Include="Items\Boss\MushroomMonarch\HeartyTruffle.cs" />
     <Compile Include="Items\Boss\MushroomMonarch\MonarchBag.cs" />
     <Compile Include="Items\Boss\MushroomMonarch\Mushium.cs" />
@@ -387,7 +392,6 @@
     <Compile Include="Items\Magic\ElectricitySpell.cs" />
     <Compile Include="Items\Magic\FireburstTome.cs" />
     <Compile Include="Items\Magic\GelWand.cs" />
-    <Compile Include="Items\Magic\Jelatin.cs" />
     <Compile Include="Items\Magic\LuminiteStaff.cs" />
     <Compile Include="Items\Magic\MagicFlower.cs" />
     <Compile Include="Items\Magic\ManaRose.cs" />
@@ -627,6 +631,7 @@
     <Compile Include="Items\Throwing\Throwshroom.cs" />
     <Compile Include="Items\Throwing\YtriumBoomerang.cs" />
     <Compile Include="Items\Tools\CrystalPickaxe.cs" />
+    <Compile Include="Items\Tools\DarkmatterJackhammer.cs" />
     <Compile Include="Items\Tools\DarkmatterPitchet.cs" />
     <Compile Include="Items\Tools\DepthDigger.cs" />
     <Compile Include="Items\Tools\DragonDigger.cs" />
@@ -839,6 +844,7 @@
     <Compile Include="Tiles\Trophy\BroodTrophy.cs" />
     <Compile Include="Tiles\Trophy\GripBlueTrophy.cs" />
     <Compile Include="Tiles\Trophy\GripRedTrophy.cs" />
+    <Compile Include="Tiles\Trophy\RaiderTrophy.cs" />
     <Compile Include="Tiles\Trophy\RetrieverTrophy.cs" />
     <Compile Include="Tiles\Trophy\ZeroTrophy.cs" />
     <Compile Include="Tiles\TruePaladinsSmeltery.cs" />
@@ -930,6 +936,7 @@
     <Content Include="bin\Debug\Terraria.exe" />
     <Content Include="bin\Debug\TerrariaModded.exe" />
     <Content Include="Buffs\broodmini.png" />
+    <Content Include="Buffs\BurningAsh.png" />
     <Content Include="Buffs\ChairMinionBuff.png" />
     <Content Include="Buffs\ChairMinionBuffEX.png" />
     <Content Include="Buffs\Clueless.png" />
@@ -945,6 +952,7 @@
     <Content Include="Buffs\UnstableSoul.png" />
     <Content Include="build.txt" />
     <Content Include="description.txt" />
+    <Content Include="Dusts\AshRain.png" />
     <Content Include="Dusts\AbyssiumDust.png" />
     <Content Include="Dusts\AkumaADust.png" />
     <Content Include="Dusts\AkumaDust.png" />
@@ -965,11 +973,13 @@
     <Content Include="Dusts\InfinityOverloadP.png" />
     <Content Include="Dusts\InfinityOverloadR.png" />
     <Content Include="Dusts\InfinityOverloadY.png" />
+    <Content Include="Dusts\MireBubbleDust.png" />
     <Content Include="Dusts\OrangeSolution.png" />
     <Content Include="Dusts\OrderSolution.png" />
     <Content Include="Dusts\RadiantIncineriteDust.png" />
     <Content Include="Dusts\RazeleafDust.png" />
     <Content Include="Dusts\RazewoodDust.png" />
+    <Content Include="Dusts\StarDust.png" />
     <Content Include="Dusts\UmbreonSPDust.png" />
     <Content Include="Dusts\VoidDust.png" />
     <Content Include="Dusts\ZeroDust.png" />
@@ -1000,6 +1010,10 @@
     <Content Include="Gores\InfernoGripGore2.png" />
     <Content Include="Gores\InfernoGripGore3.png" />
     <Content Include="Gores\InfernoGripGore4.png" />
+    <Content Include="Gores\ISGore1.png" />
+    <Content Include="Gores\ISGore2.png" />
+    <Content Include="Gores\ISGore3.png" />
+    <Content Include="Gores\ISGore4.png" />
     <Content Include="Gores\MireGripGore1.png" />
     <Content Include="Gores\MireGripGore2.png" />
     <Content Include="Gores\MireGripGore3.png" />
@@ -1010,11 +1024,19 @@
     <Content Include="Gores\NCGore4.png" />
     <Content Include="Gores\SearcherGore1.png" />
     <Content Include="Gores\SearcherGore2.png" />
+    <Content Include="Gores\WyrmlingGore1.png" />
+    <Content Include="Gores\WyrmlingGore2.png" />
+    <Content Include="Gores\WyrmlingGore3.png" />
+    <Content Include="Gores\WyrmlingGore4.png" />
     <Content Include="Gores\ZeroGore1.png" />
     <Content Include="Gores\ZeroGore2.png" />
     <Content Include="Gores\ZeroGore3.png" />
     <Content Include="icon.png" />
     <Content Include="IMPORTANTREADME.txt" />
+    <Content Include="Items\Accessories\AshProofVest0.png" />
+    <Content Include="Items\Accessories\AshProofVest1.png" />
+    <Content Include="Items\Accessories\AshProofVest2.png" />
+    <Content Include="Items\Accessories\AshProofVest3.png" />
     <Content Include="Items\Accessories\BotchedBand.png" />
     <Content Include="Items\Accessories\BotchedBand_HandsOn.png" />
     <Content Include="Items\Accessories\DemonGauntlet.png" />
@@ -1029,6 +1051,7 @@
     <Content Include="Items\Accessories\InfinityGauntlet_HandsOn_Glow.png" />
     <Content Include="Items\Accessories\InfinityGauntlet_Wings.png" />
     <Content Include="Items\Accessories\InfinityGauntlet_Wings_Glow.png" />
+    <Content Include="Items\Accessories\Lantern.png" />
     <Content Include="Items\Accessories\LifeCharm.png" />
     <Content Include="Items\Accessories\LifeCharm_Neck.png" />
     <Content Include="Items\Accessories\MindStone.png" />
@@ -1390,6 +1413,7 @@
     <Content Include="Items\BossSummons\CyberneticBell_Glow.png" />
     <Content Include="Items\BossSummons\CyberneticClaw.png" />
     <Content Include="Items\BossSummons\CyberneticClaw_Glow.png" />
+    <Content Include="Items\BossSummons\DraconianRune.png" />
     <Content Include="Items\BossSummons\DraconianSigil.png" />
     <Content Include="Items\BossSummons\DragonBell.png" />
     <Content Include="Items\BossSummons\DreadSigil.png" />
@@ -1402,8 +1426,6 @@
     <Content Include="Items\BossSummons\ZeroRune_Glow.png" />
     <Content Include="Items\BossSummons\ZeroTesseract.png" />
     <Content Include="Items\BossSummons\ZeroTesseract_Glow.png" />
-    <Content Include="Items\Boss\Akumata\ChaosSoul.png" />
-    <Content Include="Items\Boss\Akumata\ChaosSoul_Glow.png" />
     <Content Include="Items\Boss\Akuma\AkumaTrophy.png" />
     <Content Include="Items\Boss\Akuma\CrucibleScale.png" />
     <Content Include="Items\Boss\Akuma\Dawnstrike.png" />
@@ -1426,7 +1448,7 @@
     <Content Include="Items\Boss\Akuma\SunSpear_Glow.png" />
     <Content Include="Items\Boss\Akuma\SunStaff.png" />
     <Content Include="Items\Boss\Akuma\SunStaff_Glow.png" />
-    <Content Include="Items\Boss\Akuma\Sunstorm.png" />
+    <Content Include="Items\Boss\Akuma\SunStorm.png" />
     <Content Include="Items\Boss\Akuma\SunStorm_Glow.png" />
     <Content Include="Items\Boss\Akuma\TaiyangBaolei.png" />
     <Content Include="Items\Boss\Broodmother\BroodBag.png" />
@@ -1463,7 +1485,6 @@
     <Content Include="Items\Boss\Hydra\HydraBag.png" />
     <Content Include="Items\Boss\Hydra\HydraHide.png" />
     <Content Include="Items\Boss\Hydra\HydraPendant.png" />
-    <Content Include="Items\Boss\Icegrim\IceGreatsword.png" />
     <Content Include="Items\Boss\MushroomMonarch\HeartyTruffle.png" />
     <Content Include="Items\Boss\MushroomMonarch\MonarchBag.png" />
     <Content Include="Items\Boss\MushroomMonarch\Mushium.png" />
@@ -1590,7 +1611,6 @@
     <Content Include="Items\Magic\GelWand.png" />
     <Content Include="Items\Magic\GildedStaff.png" />
     <Content Include="Items\Magic\Gong.png" />
-    <Content Include="Items\Magic\Jelatin.png" />
     <Content Include="Items\Magic\LuminiteStaff.png" />
     <Content Include="Items\Magic\MagicFlower.png" />
     <Content Include="Items\Magic\ManaRose.png" />
@@ -1862,6 +1882,7 @@
     <Content Include="Items\Projectiles\SauceYellow.png" />
     <Content Include="Items\Projectiles\Shen\ShenFire.png" />
     <Content Include="Items\Projectiles\SpookerangP.png" />
+    <Content Include="Items\Projectiles\SpookyKnife.png" />
     <Content Include="Items\Projectiles\Squirt.png" />
     <Content Include="Items\Projectiles\Taserblast.png" />
     <Content Include="Items\Projectiles\Taserblast_Glow.png" />
@@ -2182,7 +2203,6 @@
     <Content Include="NPCs\Bosses\Shen\ShenWingF.png" />
     <Content Include="NPCs\Bosses\Yamata\Yamata.png" />
     <Content Include="NPCs\Bosses\Yamata\YamataA.png" />
-    <Content Include="NPCs\Bosses\Zero\MiniProbe.png" />
     <Content Include="NPCs\Bosses\Zero\SearcherZero.png" />
     <Content Include="NPCs\Bosses\Zero\SearcherZero_Glow.png" />
     <Content Include="NPCs\Enemies\Inferno\InfernoMimic.png" />
@@ -2303,6 +2323,7 @@
     <Content Include="Palletes\Yamata &amp; Akuma.png" />
     <Content Include="Palletes\Yamata.png" />
     <Content Include="Sounds\Music\Akuma.mp3" />
+    <Content Include="Sounds\Music\Akuma2.mp3" />
     <Content Include="Sounds\Music\DradonMode.mp3" />
     <Content Include="Sounds\Music\End.mp3" />
     <Content Include="Sounds\Music\Monarch.mp3" />
@@ -2502,12 +2523,13 @@
     <Content Include="Tiles\TerraCore_Glow.png" />
     <Content Include="Tiles\Torchstone.png" />
     <Content Include="Tiles\Trophy\AkumaTrophy.png" />
-    <Content Include="Tiles\Trophy\AkumaTrophy_Glow.png" />
     <Content Include="Tiles\Trophy\BroodTrophy.png" />
     <Content Include="Tiles\Trophy\BroodTrophy_Glow.png" />
     <Content Include="Tiles\Trophy\GripBlueTrophy.png" />
     <Content Include="Tiles\Trophy\GripRedTrophy.png" />
     <Content Include="Tiles\Trophy\GripRedTrophy_Glow.png" />
+    <Content Include="Tiles\Trophy\RaiderTrophy.png" />
+    <Content Include="Tiles\Trophy\RaiderTrophy_Glow.png" />
     <Content Include="Tiles\Trophy\RetrieverTrophy.png" />
     <Content Include="Tiles\Trophy\RetrieverTrophy_Glow.png" />
     <Content Include="Tiles\Trophy\ZeroTrophy.png" />
@@ -2581,7 +2603,6 @@
     <None Include="Palletes\Abbadon.gpl" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Achievement\" />
     <Folder Include="bin\Release\" />
     <Folder Include="Items\Mounts\" />
     <Folder Include="Items\Projectiles\Yamata\" />
@@ -2589,6 +2610,7 @@
     <Folder Include="NPCs\Bosses\Hydra\" />
     <Folder Include="NPCs\Bosses\Orthrus\" />
     <Folder Include="NPCs\Bosses\SoC\" />
+    <Folder Include="NPCs\Bosses\Zero\Zero2\" />
     <Folder Include="obj\Debug\TempPE\" />
     <Folder Include="obj\NPCs\" />
     <Folder Include="Tiles\Daybreak\" />

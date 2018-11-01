@@ -1,7 +1,6 @@
 ﻿using System.IO;
 using System.Linq;
 using AAMod.Buffs;
-using AAMod.Items.Projectiles;
 using AAMod.Items.Dev;
 using AAMod.NPCs.Bosses.Zero;
 using AAMod.NPCs.Bosses.Akuma;
@@ -255,11 +254,15 @@ namespace AAMod
                         Main.rainTime++;
                     }
                 }
-                if (Main.dayTime)
+                if (Main.dayTime || (!AAWorld.downedYamata && !Main.expertMode) || (!AAWorld.downedYamataA && Main.expertMode))
                 {
                     if (!FogRemover)
                     {
                         player.AddBuff(mod.BuffType<Clueless>(), 5);
+                    }
+                    else
+                    {
+                        
                     }
                 }
             }*/
@@ -299,8 +302,12 @@ namespace AAMod
             }
             /*if(player.GetModPlayer<AAPlayer>().ZoneInferno)
             {
-                if (!Main.dayTime)
+                if (!Main.dayTime || (!AAWorld.downedAkuma && !Main.expertMode) || (!AAWorld.downedAkumaA && Main.expertMode))
                 {
+                    if (Main.rand.Next(6) == 0)
+                    {
+                        Dust.NewDust(new Vector2(Main.rand.Next((int)Main.screenPosition.X, (int)Main.screenPosition.X + (int)Main.screenWidth), Main.screenPosition.Y), player.width, player.height, mod.DustType("AshRain"));
+                    }
                     if (!AshRemover)
                     {
                         player.AddBuff(mod.BuffType<BurningAsh>(), 5);
