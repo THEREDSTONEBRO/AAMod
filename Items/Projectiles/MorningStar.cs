@@ -6,6 +6,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.GameContent.Achievements;
 using Microsoft.Xna.Framework.Graphics;
+using AAMod.Dusts;
 
 namespace AAMod.Items.Projectiles
 {
@@ -25,7 +26,6 @@ namespace AAMod.Items.Projectiles
                 glowMasks[glowMasks.Length - 1] = mod.GetTexture("Items/Projectiles/" + GetType().Name);
                 customGlowMask = (short)(glowMasks.Length - 1);
                 Main.glowMaskTexture = glowMasks;
-                projectile.glowMask = customGlowMask;
             }
         }
 
@@ -43,125 +43,77 @@ namespace AAMod.Items.Projectiles
             projectile.scale = 0.9f;
             projectile.melee = true;
             projectile.timeLeft = 300;
+            projectile.glowMask = customGlowMask;
 
         }
+
         public override void AI()
         {
-            float num472 = projectile.Center.X;
-            float num473 = projectile.Center.Y;
-            float num474 = 400f;
-            bool flag17 = false;
-            for (int num475 = 0; num475 < 200; num475++)
+            int stardust = mod.DustType("StarDust");
+            int dustId = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y + 2f), projectile.width, projectile.height + 5, stardust, projectile.velocity.X * 0.2f,
+                projectile.velocity.Y * 0.2f, 100, default(Color), 2f);
+            Main.dust[dustId].noGravity = true;
+            int dustId3 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y + 2f), projectile.width, projectile.height + 5, stardust, projectile.velocity.X * 0.2f,
+                projectile.velocity.Y * 0.2f, 100, default(Color), 2f);
+            Main.dust[dustId3].noGravity = true;
+
+            const int aislotHomingCooldown = 0;
+            const int homingDelay = 10;
+            const float desiredFlySpeedInPixelsPerFrame = 60;
+            const float amountOfFramesToLerpBy = 20; // minimum of 1, please keep in full numbers even though it's a float!
+            projectile.rotation += 0.1f;
+            projectile.ai[aislotHomingCooldown]++;
+            if (projectile.ai[aislotHomingCooldown] > homingDelay)
             {
-                if (Main.npc[num475].CanBeChasedBy(projectile, false) && Collision.CanHit(projectile.Center, 1, 1, Main.npc[num475].Center, 1, 1))
+                projectile.ai[aislotHomingCooldown] = homingDelay; //cap this value 
+
+                int foundTarget = HomeOnTarget();
+                if (foundTarget != -1)
                 {
-                    float num476 = Main.npc[num475].position.X + (float)(Main.npc[num475].width / 2);
-                    float num477 = Main.npc[num475].position.Y + (float)(Main.npc[num475].height / 2);
-                    float num478 = Math.Abs(projectile.position.X + (float)(projectile.width / 2) - num476) + Math.Abs(projectile.position.Y + (float)(projectile.height / 2) - num477);
-                    if (num478 < num474)
-                    {
-                        num474 = num478;
-                        num472 = num476;
-                        num473 = num477;
-                        flag17 = true;
-                    }
+                    NPC n = Main.npc[foundTarget];
+                    Vector2 desiredVelocity = projectile.DirectionTo(n.Center) * desiredFlySpeedInPixelsPerFrame;
+                    projectile.velocity = Vector2.Lerp(projectile.velocity, desiredVelocity, 1f / amountOfFramesToLerpBy);
                 }
             }
-            if (flag17)
+        }
+
+        private int HomeOnTarget()
+        {
+            const bool homingCanAimAtWetEnemies = true;
+            const float homingMaximumRangeInPixels = 1000;
+
+            int selectedTarget = -1;
+            for (int i = 0; i < Main.maxNPCs; i++)
             {
-                float num483 = 20f;
-                Vector2 vector35 = new Vector2(projectile.position.X + ((float)projectile.width * 0.5f), projectile.position.Y + ((float)projectile.height * 0.5f));
-                float num484 = num472 - vector35.X;
-                float num485 = num473 - vector35.Y;
-                float num486 = (float)Math.Sqrt((double)((num484 * num484) + (num485 * num485)));
-                num486 = num483 / num486;
-                num484 *= projectile.velocity.X;
-                num485 *= projectile.velocity.Y;
-                projectile.velocity.X = (projectile.velocity.X) / 21f;
-                projectile.velocity.Y = (projectile.velocity.Y) / 21f;
-                if (projectile.ai[1] == 0f && projectile.type == 44)
+                NPC n = Main.npc[i];
+                if (n.CanBeChasedBy(projectile) && (!n.wet || homingCanAimAtWetEnemies))
                 {
-                    projectile.ai[1] = 1f;
-                    Main.PlaySound(SoundID.Item8, projectile.position);
+                    float distance = projectile.Distance(n.Center);
+                    if (distance <= homingMaximumRangeInPixels &&
+                        (
+                            selectedTarget == -1 || //there is no selected target
+                            projectile.Distance(Main.npc[selectedTarget].Center) > distance) //or we are closer to this target than the already selected target
+                    )
+                        selectedTarget = i;
                 }
-                if (projectile.type != 263 && projectile.type != 274)
-                {
-                    projectile.rotation += projectile.direction * 0.8f;
-                    projectile.ai[0] += 1f;
-                    if (projectile.ai[0] >= 30f)
-                    {
-                        if (projectile.ai[0] < 100f)
-                        {
-                            projectile.velocity *= 1.06f;
-                        }
-                        else
-                        {
-                            projectile.ai[0] = 200f;
-                        }
-                    }
-                    for (int num257 = 0; num257 < 2; num257++)
-                    {
-                        int num258 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, mod.DustType<Dusts.StarDust>(), 0f, 0f, 100, default(Color), 1f);
-                        Main.dust[num258].noGravity = true;
-                    }
-                    return;
-                }
-                if (projectile.type == 274 && projectile.velocity.X < 0f)
-                {
-                    projectile.spriteDirection = -1;
-                }
-                projectile.rotation += projectile.direction * 0.05f;
-                projectile.rotation += projectile.direction * 0.5f * (projectile.timeLeft / 180f);
-                if (projectile.type == 274)
-                {
-                    projectile.velocity *= 0.96f;
-                    return;
-                }
-                projectile.velocity *= 0.95f;
-                return;
             }
-            if (projectile.ai[1] == 0f && projectile.type == 44)
+
+            return selectedTarget;
+        }
+
+        public override void Kill(int timeleft)
+        {
+            int stardust = mod.DustType("StarDust");
+            for (int num468 = 0; num468 < 20; num468++)
             {
-                projectile.ai[1] = 1f;
-                Main.PlaySound(SoundID.Item8, projectile.position);
+                int num469 = Dust.NewDust(new Vector2(projectile.Center.X, projectile.Center.Y), projectile.width, projectile.height, stardust, -projectile.velocity.X * 0.2f,
+                    -projectile.velocity.Y * 0.2f, 100, default(Color), 2f);
+                Main.dust[num469].noGravity = true;
+                Main.dust[num469].velocity *= 2f;
+                num469 = Dust.NewDust(new Vector2(projectile.Center.X, projectile.Center.Y), projectile.width, projectile.height, stardust, -projectile.velocity.X * 0.2f,
+                    -projectile.velocity.Y * 0.2f, 100, default(Color));
+                Main.dust[num469].velocity *= 2f;
             }
-            if (projectile.type != 263 && projectile.type != 274)
-            {
-                projectile.rotation += projectile.direction * 0.8f;
-                projectile.ai[0] += 1f;
-                if (projectile.ai[0] >= 30f)
-                {
-                    if (projectile.ai[0] < 100f)
-                    {
-                        projectile.velocity *= 1.06f;
-                    }
-                    else
-                    {
-                        projectile.ai[0] = 200f;
-                    }
-                }
-                for (int num257 = 0; num257 < 2; num257++)
-                {
-                    int num258 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, mod.DustType<Dusts.StarDust>(), 0f, 0f, 100, default(Color), 1f);
-                    Main.dust[num258].noGravity = true;
-                }
-                return;
-            }
-            if (projectile.type == 274 && projectile.velocity.X < 0f)
-            {
-                projectile.spriteDirection = -1;
-            }
-            projectile.rotation += projectile.direction * 0.05f;
-            projectile.rotation += projectile.direction * 0.5f * (projectile.timeLeft / 180f);
-            if (projectile.type == 274)
-            {
-                projectile.velocity *= 0.96f;
-                return;
-            }
-            projectile.velocity *= 0.95f;
-            Lighting.AddLight(projectile.Center, (255 - projectile.alpha) * 0.5f / 255f, (255 - projectile.alpha) * 0.3f / 255f, (255 - projectile.alpha) * 0f / 255f);
-            return;
-            
         }
     }
 }

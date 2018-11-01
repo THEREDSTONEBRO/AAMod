@@ -19,15 +19,20 @@ namespace AAMod.Items.Projectiles
         {
             projectile.width = 30;
             projectile.height = 30;
-            projectile.aiStyle = 55;
             projectile.friendly = true;
+            projectile.hostile = false;
             projectile.melee = true;
             projectile.tileCollide = false;
             projectile.ignoreWater = true;
+            projectile.penetrate = 4; //
+            projectile.timeLeft = 300;
+            projectile.aiStyle = 1; //
+            aiType = ProjectileID.Bullet;
         }
 
         public override void AI()
         {
+
             projectile.frameCounter++;
             if (projectile.frameCounter > 0)
             {
@@ -48,6 +53,60 @@ namespace AAMod.Items.Projectiles
                 projectile.spriteDirection = 1;
                 projectile.rotation = (float)Math.Atan2((double)projectile.velocity.Y, (double)projectile.velocity.X);
             }
+            int num557 = 8;
+            //dust!
+            int dustId = Dust.NewDust(new Vector2(projectile.position.X + (float)num557, projectile.position.Y + (float)num557), projectile.width - num557 * 2, projectile.height - num557 * 2, 6, 0f, 0f, 0, default(Color), 1f);
+            Main.dust[dustId].noGravity = true;
+            int dustId3 = Dust.NewDust(new Vector2(projectile.position.X + (float)num557, projectile.position.Y + (float)num557), projectile.width - num557 * 2, projectile.height - num557 * 2, 6, 0f, 0f, 0, default(Color), 1f);
+            Main.dust[dustId3].noGravity = true;
+
+            const int aislotHomingCooldown = 0;
+            const int homingDelay = 10;
+            const float desiredFlySpeedInPixelsPerFrame = 60;
+            const float amountOfFramesToLerpBy = 20; // minimum of 1, please keep in full numbers even though it's a float!
+
+            projectile.ai[aislotHomingCooldown]++;
+            if (projectile.ai[aislotHomingCooldown] > homingDelay)
+            {
+                projectile.ai[aislotHomingCooldown] = homingDelay; //cap this value 
+
+                int foundTarget = HomeOnTarget();
+                if (foundTarget != -1)
+                {
+                    NPC n = Main.npc[foundTarget];
+                    Vector2 desiredVelocity = projectile.DirectionTo(n.Center) * desiredFlySpeedInPixelsPerFrame;
+                    projectile.velocity = Vector2.Lerp(projectile.velocity, desiredVelocity, 1f / amountOfFramesToLerpBy);
+                }
+            }
+        }
+
+        private int HomeOnTarget()
+        {
+            const bool homingCanAimAtWetEnemies = true;
+            const float homingMaximumRangeInPixels = 1000;
+
+            int selectedTarget = -1;
+            for (int i = 0; i < Main.maxNPCs; i++)
+            {
+                NPC n = Main.npc[i];
+                if (n.CanBeChasedBy(projectile) && (!n.wet || homingCanAimAtWetEnemies))
+                {
+                    float distance = projectile.Distance(n.Center);
+                    if (distance <= homingMaximumRangeInPixels &&
+                        (
+                            selectedTarget == -1 || //there is no selected target
+                            projectile.Distance(Main.npc[selectedTarget].Center) > distance) //or we are closer to this target than the already selected target
+                    )
+                        selectedTarget = i;
+                }
+            }
+
+            return selectedTarget;
+        }
+
+        /*public override void AI()
+        {
+            
             if (projectile.ai[0] >= 0f && projectile.ai[0] < 200f)
             {
                 int num547 = (int)projectile.ai[0];
@@ -82,8 +141,7 @@ namespace AAMod.Items.Projectiles
                         }
                     }
                 }
-                int num557 = 8;
-                int num558 = Dust.NewDust(new Vector2(projectile.position.X + (float)num557, projectile.position.Y + (float)num557), projectile.width - num557 * 2, projectile.height - num557 * 2, 6, 0f, 0f, 0, default(Color), 1f);
+                int num558 = 
                 Main.dust[num558].velocity *= 0.5f;
                 Main.dust[num558].velocity += projectile.velocity * 0.5f;
                 Main.dust[num558].noGravity = true;
@@ -93,7 +151,7 @@ namespace AAMod.Items.Projectiles
             }
             projectile.Kill();
             return;
-        }
+        }*/
 
         public override void Kill(int timeLeft)
         {
@@ -110,7 +168,7 @@ namespace AAMod.Items.Projectiles
 
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
-            target.AddBuff(BuffID.Wet, 600);
+            target.AddBuff(BuffID.OnFire, 300);
         }
     }
 }
