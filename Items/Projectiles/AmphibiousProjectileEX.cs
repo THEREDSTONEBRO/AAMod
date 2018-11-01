@@ -26,7 +26,6 @@ namespace AAMod.Items.Projectiles
                 Main.glowMaskTexture = glowMasks;
             }
 
-            projectile.glowMask = customGlowMask;
         }
 
         public override void SetDefaults()
@@ -42,6 +41,7 @@ namespace AAMod.Items.Projectiles
             projectile.timeLeft = 900;
             projectile.friendly = true;
             projectile.hostile = false;
+            projectile.glowMask = customGlowMask;
         }
 
         public override void AI()
