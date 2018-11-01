@@ -424,6 +424,7 @@
     <Compile Include="Items\Melee\AbyssalTwilight.cs" />
     <Compile Include="Items\Melee\Amnesia.cs" />
     <Compile Include="Items\Melee\AncientPoker.cs" />
+    <Compile Include="Items\Melee\Apocalypse.cs" />
     <Compile Include="Items\Melee\BlazingDawn.cs" />
     <Compile Include="Items\Melee\BloodThirster.cs" />
     <Compile Include="Items\Melee\BreakingDawn.cs" />
@@ -435,6 +436,7 @@
     <Compile Include="Items\Melee\CrystalGreatsword.cs" />
     <Compile Include="Items\Melee\CrystalShortsword.cs" />
     <Compile Include="Items\Melee\CthulhusBlade.cs" />
+    <Compile Include="Items\Melee\DraculaKnives.cs" />
     <Compile Include="Items\Melee\ScytheOfDecay.cs" />
     <Compile Include="Items\Melee\DarkShredders.cs" />
     <Compile Include="Items\Melee\Depthwalker.cs" />
