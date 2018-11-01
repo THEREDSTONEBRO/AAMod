@@ -1,5 +1,6 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -25,19 +26,42 @@ namespace AAMod.Items.Melee
             }
             item.glowMask = customGlowMask;
             DisplayName.SetDefault("Apocalypse");
-            Tooltip.SetDefault("Horseman's Blade EX");
+            Tooltip.SetDefault(@"The Flaming Jacks travel towards the sunset, where
+souls travel to reach the afterlife.
+Horseman's Blade EX");
         }
 		public override void SetDefaults()
 		{
-            item.CloneDefaults(ItemID.TheHorsemansBlade);
-			item.damage = 200;
-			item.width = 54;
-			item.height = 54;
-			item.useTime = 17;
+            item.melee = true;
+            item.damage = 200;
+            item.useStyle = 1;
+            item.autoReuse = true;
+            item.UseSound = SoundID.Item21;
+            item.shootSpeed = 20f;
+            item.width = 54;
+			item.height = 54;    
+            item.knockBack = 6.5f;
+            item.useTime = 17;
 			item.useAnimation = 17;
 			item.value = 1000000;
             item.expert = true;
+            item.shoot = mod.ProjectileType("Apocalypse");
 		}
+
+        public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
+        {
+                    float spread = 45f * 0.0174f;
+                    float baseSpeed = (float)Math.Sqrt((speedX * speedX) + (speedY * speedY));
+                    double startAngle = Math.Atan2(speedX, speedY) - .1d;
+                    double deltaAngle = spread / 6f;
+                    double offsetAngle;
+                    for (int i = 0; i < 3; i++)
+                    {
+                        offsetAngle = startAngle + (deltaAngle * i);
+                        Terraria.Projectile.NewProjectile(position.X, position.Y, baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle), item.shoot, damage, knockBack, item.owner);
+                    }
+                    return true;
+        }
 
         public override void AddRecipes()
 		{

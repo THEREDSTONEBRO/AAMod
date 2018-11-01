@@ -81,6 +81,8 @@ namespace AAMod.NPCs.Bosses.Akuma
         public override void AI()
 		{
 			bool expertMode = Main.expertMode;
+            Main.dayTime = true;
+            Main.time = 27000;
 			int defenseDown = (int)(30f * (1f - npc.life / (float)npc.lifeMax));
 			npc.defense = npc.defDefense - defenseDown;
 			Lighting.AddLight((int)((npc.position.X + npc.width / 2) / 16f), (int)((npc.position.Y + npc.height / 2) / 16f), 0.2f, 0.05f, 0.2f);
@@ -494,8 +496,23 @@ namespace AAMod.NPCs.Bosses.Akuma
 		
 		public override void HitEffect(int hitDirection, double damage)
 		{
-			
-		}
+            int dust1 = mod.DustType<Dusts.AkumaDust>();
+            int dust2 = mod.DustType<Dusts.AkumaDust>();
+            if (npc.life <= 0)
+            {
+                Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, dust1, 0f, 0f, 0, default(Color), 1f);
+                Main.dust[dust1].velocity *= 0.5f;
+                Main.dust[dust1].scale *= 1.3f;
+                Main.dust[dust1].fadeIn = 1f;
+                Main.dust[dust1].noGravity = false;
+                Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, dust2, 0f, 0f, 0, default(Color), 1f);
+                Main.dust[dust2].velocity *= 0.5f;
+                Main.dust[dust2].scale *= 1.3f;
+                Main.dust[dust2].fadeIn = 1f;
+                Main.dust[dust2].noGravity = true;
+
+            }
+        }
 		
 		public override void BossLoot(ref string name, ref int potionType)
 		{
@@ -647,7 +664,22 @@ namespace AAMod.NPCs.Bosses.Akuma
 
         public override void HitEffect(int hitDirection, double damage)
         {
-            
+            int dust1 = mod.DustType<Dusts.AkumaDust>();
+            int dust2 = mod.DustType<Dusts.AkumaDust>();
+            if (npc.life <= 0)
+            {
+                Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, dust1, 0f, 0f, 0, default(Color), 1f);
+                Main.dust[dust1].velocity *= 0.5f;
+                Main.dust[dust1].scale *= 1.3f;
+                Main.dust[dust1].fadeIn = 1f;
+                Main.dust[dust1].noGravity = false;
+                Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, dust2, 0f, 0f, 0, default(Color), 1f);
+                Main.dust[dust2].velocity *= 0.5f;
+                Main.dust[dust2].scale *= 1.3f;
+                Main.dust[dust2].fadeIn = 1f;
+                Main.dust[dust2].noGravity = true;
+
+            }
         }
 
         public override void OnHitPlayer(Player player, int damage, bool crit)
@@ -757,7 +789,22 @@ namespace AAMod.NPCs.Bosses.Akuma
 
         public override void HitEffect(int hitDirection, double damage)
         {
-            
+            int dust1 = mod.DustType<Dusts.AkumaDust>();
+            int dust2 = mod.DustType<Dusts.AkumaDust>();
+            if (npc.life <= 0)
+            {
+                Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, dust1, 0f, 0f, 0, default(Color), 1f);
+                Main.dust[dust1].velocity *= 0.5f;
+                Main.dust[dust1].scale *= 1.3f;
+                Main.dust[dust1].fadeIn = 1f;
+                Main.dust[dust1].noGravity = false;
+                Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, dust2, 0f, 0f, 0, default(Color), 1f);
+                Main.dust[dust2].velocity *= 0.5f;
+                Main.dust[dust2].scale *= 1.3f;
+                Main.dust[dust2].fadeIn = 1f;
+                Main.dust[dust2].noGravity = true;
+
+            }
         }
 
         public override bool CheckActive()

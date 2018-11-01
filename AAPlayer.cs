@@ -4,6 +4,7 @@ using AAMod.Buffs;
 using AAMod.Items.Projectiles;
 using AAMod.Items.Dev;
 using AAMod.NPCs.Bosses.Zero;
+using AAMod.NPCs.Bosses.Akuma;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
@@ -154,11 +155,11 @@ namespace AAMod
 
         public override void UpdateBiomeVisuals()
         {
-            bool useInferno = ZoneInferno || SunAltar;
+            bool useInferno = ZoneInferno || SunAltar || NPC.AnyNPCs(mod.NPCType<AkumaHead>()) || NPC.AnyNPCs(mod.NPCType<AkumaAHead>());
             player.ManageSpecialBiomeVisuals("AAMod:InfernoSky", useInferno);
-            bool useMire = ZoneMire || MoonAltar;
+            bool useMire = ZoneMire || MoonAltar /*|| NPC.AnyNPCs(mod.NPCType<Yamata>()) || NPC.AnyNPCs(mod.NPCType<YamataAwakened>())*/;
             player.ManageSpecialBiomeVisuals("AAMod:MireSky", useMire);
-            bool useVoid = ZoneVoid || VoidUnit;
+            bool useVoid = ZoneVoid || VoidUnit || NPC.AnyNPCs(mod.NPCType<Zero>()) || NPC.AnyNPCs(mod.NPCType<ZeroAwakened>());
             player.ManageSpecialBiomeVisuals("AAMod:VoidSky", useVoid);
             //bool useSnow = player.ZoneSnow && NPC.downedMoonlord == true; //|| VoidUnit/;
             //player.ManageSpecialBiomeVisuals("AAMod:SnowSky", useSnow);
@@ -243,7 +244,7 @@ namespace AAMod
                     Main.maxRaining = 0f;
                 }
             }
-            if (player.GetModPlayer<AAPlayer>().ZoneMire)
+            /*if (player.GetModPlayer<AAPlayer>().ZoneMire)
             {
                 if (Main.raining)
                 {
@@ -259,7 +260,7 @@ namespace AAMod
                         player.AddBuff(mod.BuffType<Clueless>(), 5);
                     }
                 }
-            }
+            }*/
             if (player.GetModPlayer<AAPlayer>().ZoneVoid)
             {
                 if (!BrokenCode)
@@ -294,7 +295,7 @@ namespace AAMod
                     player.gravity = 1f;
                 }
             }
-            if(player.GetModPlayer<AAPlayer>().ZoneInferno)
+            /*if(player.GetModPlayer<AAPlayer>().ZoneInferno)
             {
                 if (!Main.dayTime)
                 {
@@ -303,7 +304,7 @@ namespace AAMod
                         player.AddBuff(mod.BuffType<BurningAsh>(), 5);
                     }
                 }
-            }
+            }*/
         }
 
         public override void GetWeaponKnockback(Item item, ref float knockback)

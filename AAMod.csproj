@@ -217,6 +217,7 @@
     <Compile Include="Items\Armor\Valkyrie\ValkyrieChestplate.cs" />
     <Compile Include="Items\Armor\Valkyrie\ValkyrieHelm.cs" />
     <Compile Include="Items\Blocks\Abyssium.cs" />
+    <Compile Include="Items\Blocks\AkumaABox.cs" />
     <Compile Include="Items\Blocks\AkumaBox.cs" />
     <Compile Include="Items\Blocks\ShenABox.cs" />
     <Compile Include="Items\Blocks\ShenBox.cs" />
@@ -502,6 +503,7 @@
     <Compile Include="Items\Projectiles\Akuma\Solar.cs" />
     <Compile Include="Items\Projectiles\Akuma\SunSpear.cs" />
     <Compile Include="Items\Projectiles\Akuma\SunSpearShot.cs" />
+    <Compile Include="Items\Projectiles\Apocalypse.cs" />
     <Compile Include="Items\Projectiles\Bubble.cs" />
     <Compile Include="Items\Projectiles\CatsEye.cs" />
     <Compile Include="Items\Projectiles\AmphibiousProjectile.cs" />
@@ -702,6 +704,7 @@
     <Compile Include="NPCs\Bosses\Zero\SearcherZero.cs" />
     <Compile Include="NPCs\Enemies\Inferno\InfernoMimic.cs" />
     <Compile Include="NPCs\Enemies\Inferno\InfernoSalamander.cs" />
+    <Compile Include="NPCs\Enemies\Mire\ChaoticTwilight.cs" />
     <Compile Include="NPCs\Enemies\Mire\MireMimic.cs" />
     <Compile Include="NPCs\MimicSummon.cs" />
     <Compile Include="NPCs\Bosses\MushroomMonarch\MonarchRUNAWAY.cs" />
@@ -745,6 +748,7 @@
     <Compile Include="Tiles\AACrate.cs" />
     <Compile Include="Tiles\AbyssiumBar.cs" />
     <Compile Include="Tiles\AbyssiumOre.cs" />
+    <Compile Include="Tiles\AkumaABox.cs" />
     <Compile Include="Tiles\AkumaBox.cs" />
     <Compile Include="Tiles\ShenABox.cs" />
     <Compile Include="Tiles\ShenBox.cs" />
@@ -1423,6 +1427,7 @@
     <Content Include="Items\Boss\Akuma\SunStaff_Glow.png" />
     <Content Include="Items\Boss\Akuma\Sunstorm.png" />
     <Content Include="Items\Boss\Akuma\SunStorm_Glow.png" />
+    <Content Include="Items\Boss\Akuma\TaiyangBaolei.png" />
     <Content Include="Items\Boss\Broodmother\BroodBag.png" />
     <Content Include="Items\Boss\Broodmother\BroodBag_Glow.png" />
     <Content Include="Items\Boss\Broodmother\BroodmotherTrophy.png" />
@@ -1642,6 +1647,7 @@
     <Content Include="Items\Melee\Amnesia.png" />
     <Content Include="Items\Melee\AncientPoker.png" />
     <Content Include="Items\Melee\Apocalypse.png" />
+    <Content Include="Items\Melee\Apocalypse_Glow.png" />
     <Content Include="Items\Melee\BackScratcher.png" />
     <Content Include="Items\Melee\BaneOfTheBunny.png" />
     <Content Include="Items\Melee\BlazingDawn.png" />
@@ -2113,6 +2119,7 @@
     <Content Include="NPCs\Bosses\Akuma\Unused\AkumaAHead_Glow.png" />
     <Content Include="NPCs\Bosses\Akuma\Unused\AkumaHead1.png" />
     <Content Include="NPCs\Bosses\Akuma\Unused\AkumaHead_Glow.png" />
+    <Content Include="NPCs\Bosses\Madness\Madness.png" />
     <Content Include="NPCs\Bosses\Shen\DiscordianBreath.png" />
     <Content Include="NPCs\Bosses\Shen\DiscordianInferno.png" />
     <Content Include="NPCs\Bosses\Shen\DoragonWingsB.png" />
