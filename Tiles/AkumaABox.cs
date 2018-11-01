@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace AAMod.Tiles
 {
-	class AkumaBox : ModTile
+	class AkumaABox : ModTile
 	{
 		public override void SetDefaults()
 		{
@@ -21,7 +21,7 @@ namespace AAMod.Tiles
 			disableSmartCursor = true;
 			ModTranslation name = CreateMapEntryName();
 			name.SetDefault("Music Box");
-            dustType = mod.DustType("AkumaDust");
+            dustType = mod.DustType("AkumaADust");
             AddMapEntry(new Color(200, 200, 200), name);
 		}
 
@@ -34,12 +34,12 @@ namespace AAMod.Tiles
                 zero = Vector2.Zero;
             }
             int height = tile.frameY == 36 ? 18 : 16;
-            Main.spriteBatch.Draw(mod.GetTexture("Tiles/AkumaBox_Glow"), new Vector2((i * 16) - (int)Main.screenPosition.X, (j * 16) - (int)Main.screenPosition.Y) + zero, new Rectangle(tile.frameX, tile.frameY, 16, height), Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
+            Main.spriteBatch.Draw(mod.GetTexture("Tiles/AkumaABox_Glow"), new Vector2((i * 16) - (int)Main.screenPosition.X, (j * 16) - (int)Main.screenPosition.Y) + zero, new Rectangle(tile.frameX, tile.frameY, 16, height), Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
         }
 
         public override void KillMultiTile(int i, int j, int frameX, int frameY)
 		{
-			Item.NewItem(i * 16, j * 16, 16, 48, mod.ItemType("AkumaBox"));
+			Item.NewItem(i * 16, j * 16, 16, 48, mod.ItemType("AkumaABox"));
 		}
 
 		public override void MouseOver(int i, int j)
@@ -47,7 +47,7 @@ namespace AAMod.Tiles
 			Player player = Main.LocalPlayer;
 			player.noThrow = 2;
 			player.showItemIcon = true;
-			player.showItemIcon2 = mod.ItemType("AkumaBox");
+			player.showItemIcon2 = mod.ItemType("AkumaABox");
 		}
 	}
 }

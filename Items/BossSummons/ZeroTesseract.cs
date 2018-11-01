@@ -60,7 +60,7 @@ UNSTABLE. C0NTAINS C0DE T0 ACTIVATE THE BRINGER 0F DEATH");
 
         public override bool UseItem(Player player)
         {
-            if (!AAWorld.downedZero && Main.expertMode)
+            if (!AAWorld.downedZero && !Main.expertMode)
             {
                 Main.NewText("ZER0 UNIT ACTIVATED. ENGAGE D00MBRINGER PR0T0C0L.", Color.Red.R, Color.Red.G, Color.Red.B);
             }

@@ -3,6 +3,7 @@ using System.Linq;
 using AAMod.Buffs;
 using AAMod.Items.Dev;
 using AAMod.NPCs.Bosses.Zero;
+using AAMod.NPCs.Bosses.Akuma;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
@@ -79,6 +80,7 @@ namespace AAMod
         public bool death;
         public bool AshRemover;
         public bool FogRemover;
+        public bool Baolei;
         //debuffs
         public bool infinityOverload = false;
         public bool discordInferno = false;
@@ -141,6 +143,7 @@ namespace AAMod
             Raidmini = false;
             MiniProbe = false;
             Blackend = false;
+            Baolei = false;
         }
 
         public override void UpdateBiomes()
@@ -153,11 +156,11 @@ namespace AAMod
 
         public override void UpdateBiomeVisuals()
         {
-            bool useInferno = ZoneInferno || SunAltar;
+            bool useInferno = ZoneInferno || SunAltar || NPC.AnyNPCs(mod.NPCType<AkumaHead>()) || NPC.AnyNPCs(mod.NPCType<AkumaAHead>());
             player.ManageSpecialBiomeVisuals("AAMod:InfernoSky", useInferno);
-            bool useMire = ZoneMire || MoonAltar;
+            bool useMire = ZoneMire || MoonAltar /*|| NPC.AnyNPCs(mod.NPCType<Yamata>()) || NPC.AnyNPCs(mod.NPCType<YamataAwakened>())*/;
             player.ManageSpecialBiomeVisuals("AAMod:MireSky", useMire);
-            bool useVoid = ZoneVoid || VoidUnit;
+            bool useVoid = ZoneVoid || VoidUnit || NPC.AnyNPCs(mod.NPCType<Zero>()) || NPC.AnyNPCs(mod.NPCType<ZeroAwakened>());
             player.ManageSpecialBiomeVisuals("AAMod:VoidSky", useVoid);
             //bool useSnow = player.ZoneSnow && NPC.downedMoonlord == true; //|| VoidUnit/;
             //player.ManageSpecialBiomeVisuals("AAMod:SnowSky", useSnow);
@@ -242,7 +245,7 @@ namespace AAMod
                     Main.maxRaining = 0f;
                 }
             }
-            if (player.GetModPlayer<AAPlayer>().ZoneMire)
+            /*if (player.GetModPlayer<AAPlayer>().ZoneMire)
             {
                 if (Main.raining)
                 {
@@ -262,7 +265,7 @@ namespace AAMod
                         
                     }
                 }
-            }
+            }*/
             if (player.GetModPlayer<AAPlayer>().ZoneVoid)
             {
                 if (!BrokenCode)
@@ -297,7 +300,7 @@ namespace AAMod
                     player.gravity = 1f;
                 }
             }
-            if(player.GetModPlayer<AAPlayer>().ZoneInferno)
+            /*if(player.GetModPlayer<AAPlayer>().ZoneInferno)
             {
                 if (!Main.dayTime || (!AAWorld.downedAkuma && !Main.expertMode) || (!AAWorld.downedAkumaA && Main.expertMode))
                 {
@@ -310,7 +313,7 @@ namespace AAMod
                         player.AddBuff(mod.BuffType<BurningAsh>(), 5);
                     }
                 }
-            }
+            }*/
         }
 
         public override void GetWeaponKnockback(Item item, ref float knockback)
@@ -651,8 +654,79 @@ namespace AAMod
             }
         }
 
+        public void ItemCheck_ManageRightClickFeatures_BaoleiRaise(bool theGeneralCheck)
+        {
+
+            bool flag = false;
+            if (theGeneralCheck && Baolei && !player.mount.Active && (player.itemAnimation == 0 || PlayerInput.Triggers.JustPressed.MouseRight))
+            {
+                flag = true;
+            }
+            if (player.shield_parry_cooldown > 0)
+            {
+                player.shield_parry_cooldown--;
+                if (player.shield_parry_cooldown == 0)
+                {
+                    Main.PlaySound(25, -1, -1, 1, 1f, 0f);
+                    for (int i = 0; i < 10; i++)
+                    {
+                        int num = Dust.NewDust(player.Center + new Vector2((player.direction * 6) + ((player.direction == -1) ? -10 : 0), -14f), 10, 16, mod.DustType<Dusts.AkumaDust>(), 0f, 0f, 255, new Color(255, 100, 0, 127), Main.rand.Next(10, 16) * 0.1f);
+                        Main.dust[num].noLight = false;
+                        Main.dust[num].noGravity = true;
+                        Main.dust[num].velocity *= 0.5f;
+                    }
+                }
+            }
+            if (player.shieldParryTimeLeft > 0 && ++player.shieldParryTimeLeft > 20)
+            {
+                player.shieldParryTimeLeft = 0;
+            }
+            if (flag != player.shieldRaised)
+            {
+                player.shieldRaised = flag;
+                if (player.shieldRaised)
+                {
+                    if (player.shield_parry_cooldown == 0)
+                    {
+                        player.shieldParryTimeLeft = 1;
+                    }
+                    player.itemAnimation = 0;
+                    player.itemTime = 0;
+                    player.reuseDelay = 0;
+                }
+                else
+                {
+                    player.shield_parry_cooldown = 15;
+                    player.shieldParryTimeLeft = 0;
+                    if (player.attackCD < 20)
+                    {
+                        player.attackCD = 20;
+                    }
+                }
+            }
+            bool arg_1C7_0 = player.shieldRaised;
+        }
+
         public override void ModifyHitNPCWithProj(Projectile proj, NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
         {
+
+            if (Baolei && proj.melee && Main.rand.Next(2) == 0)
+            {
+                if (!Main.dayTime)
+                {
+
+                }
+                if (Main.dayTime && Main.time < 23400 && Main.time > 30600)
+                {
+                    target.AddBuff(BuffID.OnFire, 1000);
+                }
+                if (Main.dayTime && Main.time >= 23400 && Main.time <= 30600)
+                {
+                    target.AddBuff(BuffID.Daybreak, 1000);
+                }
+            }
+
+
             if (zeroSet && proj.melee && Main.rand.Next(2) == 0)
             {
                 target.AddBuff(BuffID.WitheredArmor, 1000);

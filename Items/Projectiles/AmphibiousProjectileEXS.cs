@@ -43,48 +43,91 @@ namespace AAMod.Items.Projectiles
             projectile.glowMask = customGlowMask;
         }
 
-        public override bool PreDraw(SpriteBatch sb, Color lightColor) //this is where the animation happens
-        {
-            projectile.frameCounter++; //increase the frameCounter by one
-            if (projectile.frameCounter >= 10) //once the frameCounter has reached 10 - change the 10 to change how fast the projectile animates
-            {
-                projectile.frame++; //go to the next frame
-                projectile.frameCounter = 0; //reset the counter
-                if (projectile.frame > 5) //if past the last frame
-                    projectile.frame = 0; //go back to the first frame
-            }
-            return true;
-        }
-
         public override void AI()
         {
-            projectile.rotation = ((float)Math.Atan2(projectile.velocity.Y, projectile.velocity.X) + 1.57f) + 30f;
-            for (int i = 0; i < 200; i++)
+            projectile.frameCounter++;
+            if (projectile.frameCounter > 0)
             {
-                NPC target = Main.npc[i];
-                //If the npc is hostile
-                if (!target.friendly)
+                projectile.frame++;
+                projectile.frameCounter = 0;
+                if (projectile.frame > 4)
                 {
-                    //Get the shoot trajectory from the projectile and target
-                    float shootToX = target.position.X + ((float)target.width * 0.5f) - projectile.Center.X;
-                    float shootToY = target.position.Y - projectile.Center.Y;
-                    float distance = (float)System.Math.Sqrt((double)((shootToX * shootToX) + (shootToY * shootToY)));
-
-                    //If the distance between the live targeted npc and the projectile is less than 480 pixels
-                    if (distance < 480f && !target.friendly && target.active)
-                    {
-                        //Divide the factor, 3f, which is the desired velocity
-                        distance = 3f / distance;
-
-                        //Multiply the distance by a multiplier if you wish the projectile to have go faster
-                        shootToX *= distance * 5;
-                        shootToY *= distance * 5;
-
-                        //Set the velocities to the shoot values
-                        projectile.velocity.X = shootToX;
-                        projectile.velocity.Y = shootToY;
-                    }
+                    projectile.frame = 0;
                 }
+            }
+            if (projectile.velocity.X < 0f)
+            {
+                projectile.spriteDirection = -1;
+                projectile.rotation = (float)Math.Atan2((double)(-(double)projectile.velocity.Y), (double)(-(double)projectile.velocity.X));
+            }
+            else
+            {
+                projectile.spriteDirection = 1;
+                projectile.rotation = (float)Math.Atan2((double)projectile.velocity.Y, (double)projectile.velocity.X);
+            }
+
+            int dustId = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y + 2f), projectile.width, projectile.height + 5, 60, projectile.velocity.X * 0.2f,
+                projectile.velocity.Y * 0.2f, 100, new Color(191, 86, 154), 2f);
+            Main.dust[dustId].noGravity = true;
+            int dustId3 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y + 2f), projectile.width, projectile.height + 5, 60, projectile.velocity.X * 0.2f,
+                projectile.velocity.Y * 0.2f, 100, new Color(191, 86, 154), 2f);
+            Main.dust[dustId3].noGravity = true;
+
+            const int aislotHomingCooldown = 0;
+            const int homingDelay = 10;
+            const float desiredFlySpeedInPixelsPerFrame = 60;
+            const float amountOfFramesToLerpBy = 20; // minimum of 1, please keep in full numbers even though it's a float!
+
+            projectile.ai[aislotHomingCooldown]++;
+            if (projectile.ai[aislotHomingCooldown] > homingDelay)
+            {
+                projectile.ai[aislotHomingCooldown] = homingDelay; //cap this value 
+
+                int foundTarget = HomeOnTarget();
+                if (foundTarget != -1)
+                {
+                    NPC n = Main.npc[foundTarget];
+                    Vector2 desiredVelocity = projectile.DirectionTo(n.Center) * desiredFlySpeedInPixelsPerFrame;
+                    projectile.velocity = Vector2.Lerp(projectile.velocity, desiredVelocity, 1f / amountOfFramesToLerpBy);
+                }
+            }
+        }
+
+        private int HomeOnTarget()
+        {
+            const bool homingCanAimAtWetEnemies = true;
+            const float homingMaximumRangeInPixels = 1000;
+
+            int selectedTarget = -1;
+            for (int i = 0; i < Main.maxNPCs; i++)
+            {
+                NPC n = Main.npc[i];
+                if (n.CanBeChasedBy(projectile) && (!n.wet || homingCanAimAtWetEnemies))
+                {
+                    float distance = projectile.Distance(n.Center);
+                    if (distance <= homingMaximumRangeInPixels &&
+                        (
+                            selectedTarget == -1 || //there is no selected target
+                            projectile.Distance(Main.npc[selectedTarget].Center) > distance) //or we are closer to this target than the already selected target
+                    )
+                        selectedTarget = i;
+                }
+            }
+
+            return selectedTarget;
+        }
+
+        public override void Kill(int timeleft)
+        {
+            for (int num468 = 0; num468 < 20; num468++)
+            {
+                int num469 = Dust.NewDust(new Vector2(projectile.Center.X, projectile.Center.Y), projectile.width, projectile.height, 60, -projectile.velocity.X * 0.2f,
+                    -projectile.velocity.Y * 0.2f, 100, new Color(191, 86, 154), 2f);
+                Main.dust[num469].noGravity = true;
+                Main.dust[num469].velocity *= 2f;
+                num469 = Dust.NewDust(new Vector2(projectile.Center.X, projectile.Center.Y), projectile.width, projectile.height, 60, -projectile.velocity.X * 0.2f,
+                    -projectile.velocity.Y * 0.2f, 100, new Color(191, 86, 154));
+                Main.dust[num469].velocity *= 2f;
             }
         }
     }
