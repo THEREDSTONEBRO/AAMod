@@ -329,7 +329,7 @@ namespace AAMod
             }
             if (player.GetModPlayer<AAPlayer>(mod).ZoneInferno)
             {
-                if (AAWorld.infernoTiles <= 100 && Main.player[Main.myPlayer].position.Y < Main.worldSurface * 16.0)
+                if (AAWorld.infernoTiles > 0 && Main.player[Main.myPlayer].position.Y < Main.worldSurface * 16.0)
                 {
                     int maxValue = 800 / AAWorld.infernoTiles;
                     float num = Main.screenWidth / (float)Main.maxScreenW;
