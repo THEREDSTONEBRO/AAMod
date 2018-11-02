@@ -495,7 +495,7 @@ namespace AAMod.NPCs.Bosses.Akuma
             if (Main.expertMode && !AAWorld.downedAkumaA)
             {
                 Main.NewText("Gah..! How could this happen?! Even in my full form?! Fine, take your reward. You earned it.", Color.DeepSkyBlue.R, Color.DeepSkyBlue.G, Color.DeepSkyBlue.B);
-                AAWorld.downedAkumaA = true;
+                
             }
             if (Main.expertMode && AAWorld.downedAkumaA)
             {
@@ -507,6 +507,7 @@ namespace AAMod.NPCs.Bosses.Akuma
                 Main.NewText("Nice hacks, kid. Now come back and fight me like a real man in expert mode. Then I’ll give you your prize.", Color.DeepSkyBlue.R, Color.DeepSkyBlue.G, Color.DeepSkyBlue.B);
                 
             }
+            AAWorld.downedAkumaA = true;
         }
 		
 		public override void OnHitPlayer(Player player, int damage, bool crit)

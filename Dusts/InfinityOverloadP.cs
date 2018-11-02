@@ -26,7 +26,7 @@ namespace AAMod.Dusts
 				{
 					strength = 1f;
 				}
-				Lighting.AddLight(dust.position, 0.1f * strength, 0.2f * strength, 0.7f * strength);
+				Lighting.AddLight(dust.position, 0.5f * strength, 0.2f * strength, 0.6f * strength);
 			}
 			return false;
 		}

@@ -634,7 +634,6 @@ namespace AAMod.NPCs.Bosses.Akuma
 
         public override bool PreDraw(SpriteBatch spriteBatch, Color drawColor)
         {
-            
             Texture2D texture = mod.GetTexture("NPCs/Bosses/Akuma/AkumaArms");
             AAMod.DrawTexture(spriteBatch, npc.localAI[3] == 1f ? texture : Main.npcTexture[npc.type], 0, npc, drawColor);
             return false;

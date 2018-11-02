@@ -29,7 +29,7 @@ namespace AAMod.Items.Projectiles
             projectile.glowMask = customGlowMask;
             DisplayName.SetDefault("Cat");
 
-            Main.projFrames[projectile.type] = 5;
+            Main.projFrames[projectile.type] = 4;
         }
     	
         public override void SetDefaults()
