@@ -60,6 +60,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Terraria\Terraria.exe</HintPath>
     </Reference>
+    <Reference Include="TerrariaHooks">
+      <HintPath>.\TerrariaHooks.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AAMod.cs" />
@@ -935,7 +938,6 @@
     <Content Include="bin\Debug\Microsoft.Xna.Framework.Xact.dll" />
     <Content Include="bin\Debug\ReLogic.dll" />
     <Content Include="bin\Debug\Terraria.exe" />
-    <Content Include="bin\Debug\TerrariaModded.exe" />
     <Content Include="Buffs\broodmini.png" />
     <Content Include="Buffs\BurningAsh.png" />
     <Content Include="Buffs\ChairMinionBuff.png" />
@@ -2150,6 +2152,7 @@
     <Content Include="Items\Walls\DoomsdayWall_Glow.png" />
     <Content Include="Items\Walls\DoomstoneBrickWall.png" />
     <Content Include="Items\Walls\DoomstoneBrickWall_Glow.png" />
+    <Content Include="lib\TerrariaHooks.dll" />
     <Content Include="Map\InfernoMap.png" />
     <Content Include="Map\MireMap.png" />
     <Content Include="Map\VoidMap.png" />
@@ -2572,6 +2575,10 @@
     <Content Include="UI\CorruptionLoadBar.png" />
     <Content Include="UI\CrimsonLoadBar.png" />
     <Content Include="UI\Hammer.png" />
+    <Content Include="UI\IconCorruption.png" />
+    <Content Include="UI\IconCrimson.png" />
+    <Content Include="UI\IconHallowCorruption.png" />
+    <Content Include="UI\IconHallowCrimson.png" />
     <Content Include="UI\Pick.png" />
     <Content Include="Walls\AbyssiumChunkWall.png" />
     <Content Include="Walls\DarkmudWall.png" />
@@ -2634,7 +2641,6 @@
     <Folder Include="NPCs\Bosses\SoC\" />
     <Folder Include="NPCs\Bosses\Zero\Zero2\" />
     <Folder Include="obj\Debug\TempPE\" />
-    <Folder Include="obj\NPCs\" />
     <Folder Include="Tiles\Daybreak\" />
     <Folder Include="Tiles\Doomsday\" />
     <Folder Include="Tiles\Eventide\" />
