@@ -20,7 +20,6 @@ namespace AAMod
     {
         public static ModHotKey InfinityHotKey;
         internal static AAMod instance;
-        internal bool BaseLoaded;
         internal UserInterface UserInterface;
         internal TerratoolUI TerratoolUI;
         public static Texture2D ZeroArmTex;
@@ -94,14 +93,6 @@ namespace AAMod
                 AchievementLibs.Call("AddAchievementWithoutReward", this, "Doomsday Arrives", "Defeat Zero's true, dark Awakened form", "Achievements/ZeroA", (Func<bool>)(() => AAWorld.downedZeroA));
                 //AchievementLibs.Call("AddAchievementWithoutReward", this, "Unyielding Discord", "Defeat the Discordian Drake, Shen Doragon", "Achievements/ShenA", (Func<bool>)(() => AAWorld.downedZeroA));
                 //AchievementLibs.Call("AddAchievementWithoutReward", this, "Master of Unity", "Defeat Shen Doragon's true, chaotic Awakened form", "Achievements/ShenAA", (Func<bool>)(() => AAWorld.downedZeroA));
-            }
-            try
-            {
-                BaseLoaded = ModLoader.GetMod("BaseMod") != null;
-            }
-            catch (Exception e)
-            {
-                ErrorLogger.Log("AAMod PostSetupContent Error: " + e.StackTrace + e.Message);
             }
         }
 
