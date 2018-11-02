@@ -5,8 +5,10 @@ Thanks to these amazing people for all their help with the mod.
 Coders;
 
 -Hallam, God of Rainbows (Mod of Redemption/Coder)
--Turqoise (Agherium/Coder/Composer)
--Chinzilla (Coder)
+-Turqoise (Varia)
+-Chinzilla
+-StealYourFace
+-RunicGlympse (Revolt)
 
 Spriters;
 
@@ -23,6 +25,7 @@ Spriters;
 -Tied
 -Cooper
 -SpectralAves
+-Niorin
 
 Composers;
 
@@ -30,6 +33,7 @@ Composers;
 -Karamitasu
 -Charlie Debnam
 -Saucecoie
+-Turquoise
 
 Testers;
 
@@ -38,16 +42,17 @@ Testers;
 -ZipZopZoop
 -JerryHNK
 -Flurr
+-Fargowilta
 
 Artists;
 
 -Runefield
 -Non
+-MechanicPluto
 
 Development;
 -TheDoctorDallin
 -Eliza Miles
--Kingskrall
 
 Development Assistance;
 -Grox The Great

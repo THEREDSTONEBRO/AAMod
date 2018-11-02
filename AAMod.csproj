@@ -507,6 +507,7 @@
     <Compile Include="Items\Potions\GrandHealingPotion.cs" />
     <Compile Include="Items\Potions\TheBigOne.cs" />
     <Compile Include="Items\Projectiles\Akuma\AkumaFlare.cs" />
+    <Compile Include="Items\Projectiles\Akuma\SunSpearRain.cs" />
     <Compile Include="Items\Projectiles\Akuma\Sunstorm.cs" />
     <Compile Include="Items\Projectiles\Akuma\DaybreakArrow.cs" />
     <Compile Include="Items\Projectiles\Akuma\Daycrusher.cs" />

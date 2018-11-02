@@ -113,14 +113,14 @@ namespace AAMod.Items.Boss.Akuma      //We need this to basically indicate the f
             return false;
         }
 
-        public override void AddRecipes()  //How to craft this item
+        public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.PixieDust, 18);   //you need 1 DirtBlock
-			recipe.AddIngredient(ItemID.CrystalShard, 16);
-            recipe.AddIngredient(ItemID.CrystalStorm, 1);
-            recipe.AddTile(TileID.WorkBenches);   //at work bench
-            recipe.SetResult(this);
+            recipe.AddIngredient(null, "DaybreakIncinerite", 5);
+            recipe.AddIngredient(null, "CrucibleScale", 5);
+            recipe.AddIngredient(ItemID.LunarFlareBook, 1);
+            recipe.AddTile(null, "BinaryReassembler");
+            recipe.SetResult(this, 1);
             recipe.AddRecipe();
         }
     }
