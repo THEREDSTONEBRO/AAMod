@@ -66,10 +66,10 @@ namespace AAMod.Items.Projectiles
                 projectile.rotation = (float)Math.Atan2((double)projectile.velocity.Y, (double)projectile.velocity.X);
             }
 
-            int dustId = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y + 2f), projectile.width, projectile.height + 5, 60, projectile.velocity.X * 0.2f,
+            int dustId = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y + 2f), projectile.width, projectile.height + 5, mod.DustType<Dusts.InfinityOverloadP>(), projectile.velocity.X * 0.2f,
                 projectile.velocity.Y * 0.2f, 100, new Color(191, 86, 154), 2f);
             Main.dust[dustId].noGravity = true;
-            int dustId3 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y + 2f), projectile.width, projectile.height + 5, 60, projectile.velocity.X * 0.2f,
+            int dustId3 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y + 2f), projectile.width, projectile.height + 5, mod.DustType<Dusts.InfinityOverloadP>(), projectile.velocity.X * 0.2f,
                 projectile.velocity.Y * 0.2f, 100, new Color(191, 86, 154), 2f);
             Main.dust[dustId3].noGravity = true;
 
@@ -96,7 +96,7 @@ namespace AAMod.Items.Projectiles
         private int HomeOnTarget()
         {
             const bool homingCanAimAtWetEnemies = true;
-            const float homingMaximumRangeInPixels = 1000;
+            const float homingMaximumRangeInPixels = 400;
 
             int selectedTarget = -1;
             for (int i = 0; i < Main.maxNPCs; i++)
@@ -121,11 +121,11 @@ namespace AAMod.Items.Projectiles
         {
             for (int num468 = 0; num468 < 20; num468++)
             {
-                int num469 = Dust.NewDust(new Vector2(projectile.Center.X, projectile.Center.Y), projectile.width, projectile.height, 60, -projectile.velocity.X * 0.2f,
+                int num469 = Dust.NewDust(new Vector2(projectile.Center.X, projectile.Center.Y), projectile.width, projectile.height, mod.DustType<Dusts.InfinityOverloadP>(), -projectile.velocity.X * 0.2f,
                     -projectile.velocity.Y * 0.2f, 100, new Color(191, 86, 154), 2f);
                 Main.dust[num469].noGravity = true;
                 Main.dust[num469].velocity *= 2f;
-                num469 = Dust.NewDust(new Vector2(projectile.Center.X, projectile.Center.Y), projectile.width, projectile.height, 60, -projectile.velocity.X * 0.2f,
+                num469 = Dust.NewDust(new Vector2(projectile.Center.X, projectile.Center.Y), projectile.width, projectile.height, mod.DustType<Dusts.InfinityOverloadP>(), -projectile.velocity.X * 0.2f,
                     -projectile.velocity.Y * 0.2f, 100, new Color(191, 86, 154));
                 Main.dust[num469].velocity *= 2f;
             }

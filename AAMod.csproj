@@ -1796,6 +1796,7 @@
     <Content Include="Items\Projectiles\AmphibiousProjectileS.png" />
     <Content Include="Items\Projectiles\Akuma\FireProj.png" />
     <Content Include="Items\Projectiles\Akuma\Sunstorm.png" />
+    <Content Include="Items\Projectiles\Apocalypse.png" />
     <Content Include="Items\Projectiles\Bubble.png" />
     <Content Include="Items\Projectiles\CatsEye.png" />
     <Content Include="Items\Projectiles\CatsEye_Glow.png" />
@@ -2603,6 +2604,7 @@
     <None Include="Palletes\Abbadon.gpl" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Achievement\" />
     <Folder Include="bin\Release\" />
     <Folder Include="Items\Mounts\" />
     <Folder Include="Items\Projectiles\Yamata\" />

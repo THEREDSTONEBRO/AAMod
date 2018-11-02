@@ -83,7 +83,7 @@ namespace AAMod.Items.Projectiles
         private int HomeOnTarget()
         {
             const bool homingCanAimAtWetEnemies = true;
-            const float homingMaximumRangeInPixels = 1000;
+            const float homingMaximumRangeInPixels = 700;
 
             int selectedTarget = -1;
             for (int i = 0; i < Main.maxNPCs; i++)
