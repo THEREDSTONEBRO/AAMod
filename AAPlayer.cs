@@ -245,7 +245,7 @@ namespace AAMod
                     Main.maxRaining = 0f;
                 }
             }
-            /*if (player.GetModPlayer<AAPlayer>().ZoneMire)
+            if (player.GetModPlayer<AAPlayer>().ZoneMire)
             {
                 if (Main.raining)
                 {
@@ -265,7 +265,7 @@ namespace AAMod
                         
                     }
                 }
-            }*/
+            }
             if (player.GetModPlayer<AAPlayer>().ZoneVoid)
             {
                 if (!BrokenCode)
@@ -300,7 +300,7 @@ namespace AAMod
                     player.gravity = 1f;
                 }
             }
-            /*if(player.GetModPlayer<AAPlayer>().ZoneInferno)
+            if(player.GetModPlayer<AAPlayer>().ZoneInferno)
             {
                 if (!Main.dayTime || (!AAWorld.downedAkuma && !Main.expertMode) || (!AAWorld.downedAkumaA && Main.expertMode))
                 {
@@ -313,7 +313,7 @@ namespace AAMod
                         player.AddBuff(mod.BuffType<BurningAsh>(), 5);
                     }
                 }
-            }*/
+            }
         }
 
         public override void GetWeaponKnockback(Item item, ref float knockback)

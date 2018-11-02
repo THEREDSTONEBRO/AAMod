@@ -11,6 +11,10 @@ using Terraria.GameContent.Generation;
 using Terraria.ModLoader.IO;
 using AAMod.Tiles;
 using AAMod.Walls;
+using Terraria.GameContent.UI.Elements;
+using System.Reflection;
+using Microsoft.Xna.Framework.Graphics;
+using Terraria.Graphics;
 
 namespace AAMod
 {
