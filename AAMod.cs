@@ -6,13 +6,15 @@ using Terraria.ModLoader;
 using Terraria.Localization;
 using Terraria.UI;
 using AAMod.Backgrounds;
-using AAMod.NPCs.Bosses.Zero;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 using AAMod.UI;
 using Terraria.Graphics.Shaders;
 using System.Collections.Generic;
 using Terraria.DataStructures;
+using Terraria.GameContent.UI.Elements;
+using Terraria.Graphics;
+using System.Reflection;
 
 namespace AAMod
 {
@@ -20,10 +22,8 @@ namespace AAMod
     {
         public static ModHotKey InfinityHotKey;
         internal static AAMod instance;
-        internal bool BaseLoaded;
         internal UserInterface UserInterface;
         internal TerratoolUI TerratoolUI;
-        public static Texture2D ZeroArmTex;
 
         public AAMod()
         {
@@ -95,14 +95,6 @@ namespace AAMod
                 //AchievementLibs.Call("AddAchievementWithoutReward", this, "Unyielding Discord", "Defeat the Discordian Drake, Shen Doragon", "Achievements/ShenA", (Func<bool>)(() => AAWorld.downedZeroA));
                 //AchievementLibs.Call("AddAchievementWithoutReward", this, "Master of Unity", "Defeat Shen Doragon's true, chaotic Awakened form", "Achievements/ShenAA", (Func<bool>)(() => AAWorld.downedZeroA));
             }
-            try
-            {
-                BaseLoaded = ModLoader.GetMod("BaseMod") != null;
-            }
-            catch (Exception e)
-            {
-                ErrorLogger.Log("AAMod PostSetupContent Error: " + e.StackTrace + e.Message);
-            }
         }
 
         public static void PremultiplyTexture(Texture2D texture)
@@ -125,6 +117,8 @@ namespace AAMod
                 Main.rand = new Terraria.Utilities.UnifiedRandom();
 
             InfinityHotKey = RegisterHotKey("Snap", "G");
+
+            On.Terraria.GameContent.UI.Elements.UIGenProgressBar.DrawSelf += UIGenProgressBarDrawSelf;
 
             if (!Main.dedServ)
             {
@@ -172,6 +166,50 @@ namespace AAMod
                 TerratoolUI = new TerratoolUI();
                 UserInterface = new UserInterface();
             }
+        }
+
+        private void UIGenProgressBarDrawSelf(On.Terraria.GameContent.UI.Elements.UIGenProgressBar.orig_DrawSelf orig, UIGenProgressBar self, SpriteBatch spriteBatch)
+        {
+            var _targetOverallProgress = (float)GetInstanceField(self, "_targetOverallProgress");
+            var _targetCurrentProgress = (float)GetInstanceField(self, "_targetCurrentProgress");
+            var _visualOverallProgress = (float)GetInstanceField(self, "_visualOverallProgress");
+            var _visualCurrentProgress = (float)GetInstanceField(self, "_visualCurrentProgress");
+
+            _visualOverallProgress = _targetOverallProgress;
+            _visualCurrentProgress = _targetCurrentProgress;
+            CalculatedStyle dimensions = self.GetDimensions();
+            int completedWidth = (int)(_visualOverallProgress * 504f);
+            int completedWidth2 = (int)(_visualCurrentProgress * 504f);
+            Vector2 value = new Vector2(dimensions.X, dimensions.Y);
+            Color color = default(Color);
+            color.PackedValue = (uint)(WorldGen.crimson ? (-8131073) : (-11079073));
+            DrawFilling2(spriteBatch, value + new Vector2(20f, 40f), 16, completedWidth, 564, color, Color.Lerp(color, Color.Black, 0.5f), new Color(48, 48, 48));
+            color.PackedValue = 4290947159u;
+            DrawFilling2(spriteBatch, value + new Vector2(50f, 60f), 8, completedWidth2, 504, color, Color.Lerp(color, Color.Black, 0.5f), new Color(33, 33, 33));
+            Rectangle r = self.GetDimensions().ToRectangle();
+            r.X -= 8;
+            spriteBatch.Draw(WorldGen.crimson ? GetTexture("UI/CrimsonLoadBar") : GetTexture("UI/CorruptionLoadBar"), r.TopLeft(), Color.White);
+            spriteBatch.Draw(TextureManager.Load("Images/UI/WorldGen/Outer Lower"), r.TopLeft() + new Vector2(44f, 60f), Color.White);
+        }
+
+        //Simplist Reflection Example For Any Field Value Below
+        private static object GetInstanceField<T>(T instance, string fieldName)
+        {
+            BindingFlags bindFlags = BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Static;
+            FieldInfo field = typeof(T).GetField(fieldName, bindFlags);
+            return field.GetValue(instance);
+        }
+        //Simplist Reflection Example For Any Field Value Above
+
+        private void DrawFilling2(SpriteBatch spritebatch, Vector2 topLeft, int height, int completedWidth, int totalWidth, Color filled, Color separator, Color empty)
+        {
+            if (completedWidth % 2 != 0)
+            {
+                completedWidth--;
+            }
+            spritebatch.Draw(Main.magicPixel, new Rectangle((int)topLeft.X, (int)topLeft.Y, completedWidth, height), new Rectangle(0, 0, 1, 1), filled);
+            spritebatch.Draw(Main.magicPixel, new Rectangle((int)topLeft.X + completedWidth, (int)topLeft.Y, totalWidth - completedWidth, height), new Rectangle(0, 0, 1, 1), empty);
+            spritebatch.Draw(Main.magicPixel, new Rectangle((int)topLeft.X + completedWidth - 2, (int)topLeft.Y, 2, height), new Rectangle(0, 0, 1, 1), separator);
         }
 
         public override void Unload()
@@ -1203,8 +1241,10 @@ namespace AAMod
             Color lightColor = overrideColor != null ? (Color)overrideColor : GetLightColor(position + new Vector2(width * 0.5f, height * 0.5f));
             if (sb is List<DrawData>)
             {
-                DrawData dd = new DrawData(texture, GetDrawPosition(position, origin, width, height, texture.Width, texture.Height, framecount, scale, drawCentered), frame, lightColor, rotation, origin, scale, direction == 1 ? SpriteEffects.FlipHorizontally : SpriteEffects.None, 0);
-                dd.shader = shader;
+                DrawData dd = new DrawData(texture, GetDrawPosition(position, origin, width, height, texture.Width, texture.Height, framecount, scale, drawCentered), frame, lightColor, rotation, origin, scale, direction == 1 ? SpriteEffects.FlipHorizontally : SpriteEffects.None, 0)
+                {
+                    shader = shader
+                };
                 ((List<DrawData>)sb).Add(dd);
             }
             else if (sb is SpriteBatch)

@@ -14,16 +14,6 @@ namespace AAMod.Dusts
             dust.noGravity = true;
         }
 
-        public override bool Update(Dust dust)
-        {
-            bool flag5 = WorldGen.SolidTile(Framing.GetTileSafely((int)dust.position.X / 16, (int)dust.position.Y / 16));
-            if (flag5)
-            {
-                dust.noLight = true;
-            }
-            return true;
-        }
-
         public override bool MidUpdate(Dust dust)
         {
             dust.rotation += dust.velocity.X / 3f;
@@ -43,6 +33,17 @@ namespace AAMod.Dusts
             return false;
         }
 
+        public override bool Update(Dust dust)
+        {
+            bool flag5 = WorldGen.SolidTile(Framing.GetTileSafely((int)dust.position.X / 16, (int)dust.position.Y / 16));
+            if (flag5)
+            {
+                dust.noLight = true;
+            }
+            return true;
+        }
+
+        
         public override Color? GetAlpha(Dust dust, Color lightColor)
         {
             return new Color(lightColor.R, lightColor.G, lightColor.B, 25);
