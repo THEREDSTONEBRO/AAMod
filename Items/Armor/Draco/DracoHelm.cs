@@ -47,7 +47,7 @@ The blazing fury of the Inferno rests in this armor");
 
         public override bool IsArmorSet(Item head, Item body, Item legs)
 		{
-			return body.type == mod.ItemType("DoomsdayChestplate") && legs.type == mod.ItemType("DoomsdayLeggings");
+			return body.type == mod.ItemType("DracoPlate") && legs.type == mod.ItemType("DracoLeggings");
 		}
 
 		public override void UpdateArmorSet(Player player)
