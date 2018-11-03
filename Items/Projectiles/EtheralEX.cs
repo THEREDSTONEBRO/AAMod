@@ -9,7 +9,7 @@ using Terraria.Enums;
 
 namespace AAMod.Items.Projectiles
 {
-    public class Etheral : ModProjectile
+    public class EtheralEX : ModProjectile
     {
         public static short customGlowMask = 0;
         public override void SetStaticDefaults()
@@ -37,7 +37,7 @@ namespace AAMod.Items.Projectiles
 			projectile.tileCollide = false;
 			projectile.magic = true;
 			projectile.ignoreWater = true;
-            item.glowMask = customGlowMask;
+            projectile.glowMask = customGlowMask;
         }
 
         public override void AI()

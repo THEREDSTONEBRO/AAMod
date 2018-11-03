@@ -8,7 +8,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Dev
 {
-	public class Etheral : ModItem
+	public class EtheralEX : ModItem
 	{
         public static short customGlowMask = 0;
         public override void SetStaticDefaults()
@@ -24,13 +24,13 @@ namespace AAMod.Items.Dev
                 customGlowMask = (short)(glowMasks.Length - 1);
                 Main.glowMaskTexture = glowMasks;
             }
-            DisplayName.SetDefault("Etheral");
-			Tooltip.SetDefault(@"Fires a beam that blasts through enemies");
+            DisplayName.SetDefault("Light");
+			Tooltip.SetDefault(@"Etheral EX");
 		}
 
 	    public override void SetDefaults()
 	    {
-	        item.damage = 150;
+	        item.damage = 250;
 	        item.magic = true;
 	        item.mana = 105;
 	        item.width = 16;
@@ -45,9 +45,10 @@ namespace AAMod.Items.Dev
 			item.channel = true;
 	        item.knockBack = 0f;
 	        item.value = Item.sellPrice(1, 0, 0, 0); ;
-	        item.shoot = mod.ProjectileType("Etheral");
+	        item.shoot = mod.ProjectileType("EtheralEX");
 	        item.shootSpeed = 30f;
             item.glowMask = customGlowMask;
+            item.expert = true;
         }
 	    
 	    public override void ModifyTooltips(List<TooltipLine> list)
@@ -60,5 +61,15 @@ namespace AAMod.Items.Dev
 	            }
 	        }
 	    }
+
+        public override void AddRecipes()  //How to craft this sword
+        {
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(null, "Etheral");
+            recipe.AddIngredient(null, "EXSoul");
+            recipe.AddTile(null, "BinaryReassembler");
+            recipe.SetResult(this);
+            recipe.AddRecipe();
+        }
     }
 }

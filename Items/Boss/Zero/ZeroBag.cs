@@ -48,7 +48,7 @@ namespace AAMod.Items.Boss.Zero
             }
             if (Main.rand.NextFloat() < 0.01f)
             {
-                int choice = Main.rand.Next(14);
+                int choice = Main.rand.Next(17);
                 {
                     if (choice == 0)
                     {
@@ -122,6 +122,10 @@ namespace AAMod.Items.Boss.Zero
                     if (choice == 13)
                     {
                         player.QuickSpawnItem(mod.ItemType("GentlemansRapier"));
+                    }
+                    if (choice == 14)
+                    {
+                        player.QuickSpawnItem(mod.ItemType("Etheral"));
                     }
                 }
             }

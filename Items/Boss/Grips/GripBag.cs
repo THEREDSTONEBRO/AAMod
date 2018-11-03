@@ -37,7 +37,7 @@ namespace AAMod.Items.Boss.Grips
             {
                 player.QuickSpawnItem(mod.ItemType("GripMaskRed"));
             }
-            if (Main.rand.Next(2) == 0)
+            if (Main.rand.NextFloat() < 0.01f)
             {
                 int choice = Main.rand.Next(7);
                 {

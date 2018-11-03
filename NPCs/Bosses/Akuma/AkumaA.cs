@@ -441,7 +441,7 @@ namespace AAMod.NPCs.Bosses.Akuma
                 float posY = dirY * dist;
 
                 // Reset the velocity of this NPC, because we don't want it to move on its own
-                npc.velocity = Vector2.Zero;
+                
                 if (npc.velocity.X < 0f)
                 {
                     npc.spriteDirection = 1;
@@ -559,7 +559,6 @@ namespace AAMod.NPCs.Bosses.Akuma
                 float posY = dirY * dist;
 
                 // Reset the velocity of this NPC, because we don't want it to move on its own
-                npc.velocity = Vector2.Zero;
                 if (npc.velocity.X < 0f)
                 {
                     npc.spriteDirection = 1;
@@ -678,7 +677,6 @@ namespace AAMod.NPCs.Bosses.Akuma
                 float posY = dirY * dist;
 
                 // Reset the velocity of this NPC, because we don't want it to move on its own
-                npc.velocity = Vector2.Zero;
                 if (npc.velocity.X < 0f)
                 {
                     npc.spriteDirection = 1;

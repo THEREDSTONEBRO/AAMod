@@ -46,7 +46,7 @@ namespace AAMod.Items.Boss.Retriever
             {
                 player.QuickSpawnItem(mod.ItemType("RetrieverMask"));
             }
-            if (Main.rand.Next(2) == 0)
+            if (Main.rand.NextFloat() < 0.01f)
             {
                 int choice = Main.rand.Next(7);
                 {

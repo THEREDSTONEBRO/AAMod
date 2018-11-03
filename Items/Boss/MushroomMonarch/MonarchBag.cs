@@ -33,7 +33,7 @@ namespace AAMod.Items.Boss.MushroomMonarch
             {
                 player.QuickSpawnItem(mod.ItemType("NCMask"));
             }
-            if (Main.rand.Next(2) == 0)
+            if (Main.rand.NextFloat() < 0.01f)
             {
                 int choice = Main.rand.Next(6);
                 {

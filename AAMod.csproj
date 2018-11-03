@@ -379,6 +379,8 @@
     <Compile Include="Items\Dev\DuckstepGunEX.cs" />
     <Compile Include="Items\Dev\EnderStaff.cs" />
     <Compile Include="Items\Dev\EnderStaffEX.cs" />
+    <Compile Include="Items\Dev\EtheralEX.cs" />
+    <Compile Include="Items\Dev\Etheral.cs" />
     <Compile Include="Items\Dev\GentlemansLongblade.cs" />
     <Compile Include="Items\Dev\GentlemansRapier.cs" />
     <Compile Include="Items\Dev\HallamDevWeapon.cs" />
@@ -536,6 +538,8 @@
     <Compile Include="Items\Projectiles\Akuma\Dawnstrike.cs" />
     <Compile Include="Items\Projectiles\DecayScythe.cs" />
     <Compile Include="Items\Projectiles\DMK.cs" />
+    <Compile Include="Items\Projectiles\Etheral.cs" />
+    <Compile Include="Items\Projectiles\EtheralEX.cs" />
     <Compile Include="Items\Projectiles\LuminiteMeteor.cs" />
     <Compile Include="Items\Projectiles\AntimonBoomerangP.cs" />
     <Compile Include="Items\Projectiles\APP.cs" />
@@ -1594,10 +1598,10 @@
     <Content Include="Items\Dev\EnderStaff.png" />
     <Content Include="Items\Dev\EnderStaffEX.png" />
     <Content Include="Items\Dev\EnderStaffEX_Glow.png" />
-    <Content Include="Items\Dev\Ethereal.png" />
-    <Content Include="Items\Dev\EtherealEX.png" />
-    <Content Include="Items\Dev\EtherealEX_Glow.png" />
-    <Content Include="Items\Dev\Ethereal_Glow.png" />
+    <Content Include="Items\Dev\Etheral.png" />
+    <Content Include="Items\Dev\EtheralEX.png" />
+    <Content Include="Items\Dev\EtheralEX_Glow.png" />
+    <Content Include="Items\Dev\Etheral_Glow.png" />
     <Content Include="Items\Dev\GentlemansLongblade.png" />
     <Content Include="Items\Dev\GentlemansLongblade_Glow.png" />
     <Content Include="Items\Dev\GentlemansRapier.png" />
