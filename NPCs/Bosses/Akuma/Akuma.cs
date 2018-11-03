@@ -64,6 +64,10 @@ namespace AAMod.NPCs.Bosses.Akuma
             npc.DeathSound = new LegacySoundStyle(2, 124, Terraria.Audio.SoundType.Sound);
             music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/Akuma");
             musicPriority = MusicPriority.BossHigh;
+            for (int k = 0; k < npc.buffImmune.Length; k++)
+            {
+                npc.buffImmune[k] = true;
+            }
         }
 
 		public override bool PreAI()
@@ -156,8 +160,8 @@ namespace AAMod.NPCs.Bosses.Akuma
 					}
 				}
 			}
-			float speed = 8f;
-			float acceleration = 0.07f;
+			float speed = 10f;
+			float acceleration = 0.16f;
 
 			Vector2 npcCenter = new Vector2(npc.position.X + npc.width * 0.5f, npc.position.Y + npc.height * 0.5f);
 			float targetXPos = Main.player[npc.target].position.X + (Main.player[npc.target].width / 2);
