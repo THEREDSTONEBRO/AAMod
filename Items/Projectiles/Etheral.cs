@@ -37,7 +37,7 @@ namespace AAMod.Items.Projectiles
 			projectile.tileCollide = false;
 			projectile.magic = true;
 			projectile.ignoreWater = true;
-            item.glowMask = customGlowMask;
+            projectile.glowMask = customGlowMask;
         }
 
         public override void AI()
