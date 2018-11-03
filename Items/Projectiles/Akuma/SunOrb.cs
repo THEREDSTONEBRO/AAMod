@@ -34,7 +34,6 @@ namespace AAMod.Items.Projectiles.Akuma
             projectile.timeLeft = Projectile.SentryLifeTime;
             projectile.ignoreWater = true;
             projectile.tileCollide = false;
-            projectile.alpha = 255;
             projectile.hide = true;
             projectile.sentry = true;
         }
