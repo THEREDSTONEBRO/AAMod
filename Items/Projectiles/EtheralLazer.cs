@@ -11,7 +11,7 @@ namespace AAMod.Items.Projectiles
 {
 	// The following laser shows a channeled ability, after charging up the laser will be fired
 	// Using custom drawing, dust effects, and custom collision checks for tiles
-	public class EtheralLaser : ModProjectile
+	public class EtheralLazer : ModProjectile
 	{
 		// The maximum charge value
 		private const float MaxChargeValue = 50f;
