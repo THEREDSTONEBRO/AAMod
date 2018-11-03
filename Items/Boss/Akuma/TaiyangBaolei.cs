@@ -12,10 +12,11 @@ namespace AAMod.Items.Boss.Akuma
     public class TaiyangBaolei : ModItem
     {
         private int saveTime;
+        private int Defense;
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Bulwark Of Chaos");
+            DisplayName.SetDefault("Taiyang Baolei");
             Tooltip.SetDefault(@"Allows you parry incoming attacks with a right-click
 During the day, item's defense is doubled and your melee & magic attacks set enemies ablaze
 From 11:00 AM to 1:00 PM, ");
@@ -28,7 +29,7 @@ From 11:00 AM to 1:00 PM, ");
             item.value = Item.sellPrice(1, 0, 0, 0);
             item.expert = true;
             item.accessory = true;
-            item.defense = 4;
+            item.defense = Defense;
         }
         
         public override void ModifyTooltips(List<TooltipLine> list)
@@ -52,15 +53,15 @@ From 11:00 AM to 1:00 PM, ");
             player.GetModPlayer<AAPlayer>().Baolei = true;
             if (!Main.dayTime)
             {
-                item.defense = 4;
+                Defense = 4;
             }
             if (Main.dayTime && Main.time < 23400 && Main.time > 30600)
             {
-                item.defense = 8;
+                Defense = 8;
             }
             if (Main.dayTime && Main.time >= 23400 && Main.time <= 30600)
             {
-                item.defense = 16;
+                Defense = 16;
             }
         }
     }

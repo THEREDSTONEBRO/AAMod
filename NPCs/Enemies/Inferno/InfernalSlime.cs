@@ -36,13 +36,7 @@ namespace AAMod.NPCs.Enemies.Inferno
 
 		public override float SpawnChance(NPCSpawnInfo spawnInfo)
 		{
-            Player player = spawnInfo.player;
-            if (!(player.ZoneTowerSolar || player.ZoneTowerVortex || player.ZoneTowerNebula || player.ZoneTowerStardust) && ((!Main.pumpkinMoon && !Main.snowMoon) || spawnInfo.spawnTileY > Main.worldSurface || Main.dayTime) && (!Main.eclipse || spawnInfo.spawnTileY > Main.worldSurface || Main.dayTime) && (SpawnCondition.GoblinArmy.Chance == 0))
-            {
-                int[] TileArray2 = { mod.TileType("InfernoGrass"), mod.TileType("Torchstone") };
-                return TileArray2.Contains(Main.tile[spawnInfo.spawnTileX, spawnInfo.spawnTileY].type) ? 2.5f : 0f;
-            }
-            return 0f;
+            return spawnInfo.player.GetModPlayer<AAPlayer>(mod).ZoneInferno && spawnInfo.spawnTileY > Main.worldSurface ? .4f : 0f;
         }
 
         public override void PostDraw(SpriteBatch spriteBatch, Color drawColor)

@@ -41,7 +41,7 @@ namespace AAMod.NPCs.Bosses.Akuma
         public override void Kill(int timeLeft)
         {
             Main.NewText("IT MAKES THEM STRONGER", Color.DeepSkyBlue.R, Color.DeepSkyBlue.G, Color.DeepSkyBlue.B);
-            NPC.NewNPC((int)projectile.position.X + Main.rand.Next(-800, 800), (int)projectile.position.Y + Main.rand.Next(250, 1000), mod.NPCType<AkumaAHead>());
+            NPC.NewNPC((int)projectile.position.X + Main.rand.Next(-800, 800), (int)projectile.position.Y + Main.rand.Next(250, 1000), mod.NPCType<AkumaA>());
         }
     }
 }

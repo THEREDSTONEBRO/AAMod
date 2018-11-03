@@ -43,7 +43,7 @@ Only Usable during the day");
         // We use the CanUseItem hook to prevent a player from using this item while the boss is present in the world.
         public override bool CanUseItem(Player player)
         {
-            return !NPC.AnyNPCs(mod.NPCType("AkumaHead")) && Main.dayTime /*&& !NPC.AnyNPCs(mod.NPCType<AkumaAHead>())*/;
+            return !NPC.AnyNPCs(mod.NPCType<Akuma>()) && Main.dayTime && !NPC.AnyNPCs(mod.NPCType<AkumaA>());
         }
 
         public override bool UseItem(Player player)
@@ -66,12 +66,12 @@ Only Usable during the day");
                 Main.NewText("Back for more, kid? Don’t you have better things to do? You already beat me once.  Alright, but I won’t go easy on you.", Color.Orange.R, Color.Orange.G, Color.Orange.B);
             }
 
-            NPC.NewNPC((int)player.position.X + Main.rand.Next(-800, 800), (int)player.position.Y + Main.rand.Next(250, 1000), mod.NPCType<AkumaHead>());
+            NPC.NewNPC((int)player.position.X + Main.rand.Next(-1000, 1000), (int)player.position.Y + Main.rand.Next(1000, 1000), mod.NPCType<Akuma>());
             Main.PlaySound(SoundID.Roar, player.position, 0);
             return true;
         }
 
-        /*public override void AddRecipes()
+        public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(null, "DaybreakIncinerite", 10);
@@ -79,6 +79,6 @@ Only Usable during the day");
             recipe.AddTile(null, "QuantumFusionAccelerator");
             recipe.SetResult(this, 1);
             recipe.AddRecipe();
-        }*/
+        }
     }
 }

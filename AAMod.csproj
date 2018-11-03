@@ -298,6 +298,7 @@
     <Compile Include="Items\BossSummons\CuriousClaw.cs" />
     <Compile Include="Items\BossSummons\CyberneticBell.cs" />
     <Compile Include="Items\BossSummons\CyberneticClaw.cs" />
+    <Compile Include="Items\BossSummons\DraconianRune.cs" />
     <Compile Include="Items\BossSummons\DraconianSigil.cs" />
     <Compile Include="Items\BossSummons\DragonBell.cs" />
     <Compile Include="Items\BossSummons\EquinoxWorm.cs" />
@@ -306,6 +307,7 @@
     <Compile Include="Items\BossSummons\ZeroRune.cs" />
     <Compile Include="Items\BossSummons\ZeroTesseract.cs" />
     <Compile Include="Items\Boss\Akuma\CrucibleScale.cs" />
+    <Compile Include="Items\Boss\Akuma\SunStaff.cs" />
     <Compile Include="Items\Boss\Akuma\SunStorm.cs" />
     <Compile Include="Items\Boss\Akuma\DaybreakArrow.cs" />
     <Compile Include="Items\Boss\Akuma\Daycrusher.cs" />
@@ -315,6 +317,7 @@
     <Compile Include="Items\Boss\Akuma\AkumaTrophy.cs" />
     <Compile Include="Items\Boss\Akuma\Dawnstrike.cs" />
     <Compile Include="Items\Boss\Akuma\TaiyangBaolei.cs" />
+    <Compile Include="Items\Boss\Akuma\AkumaBag.cs" />
     <Compile Include="Items\Boss\Broodmother\BroodBag.cs" />
     <Compile Include="Items\Boss\Broodmother\BroodmotherTrophy.cs" />
     <Compile Include="Items\Boss\Broodmother\BroodScale.cs" />
@@ -487,6 +490,7 @@
     <Compile Include="Items\Melee\TechneciumSword.cs" />
     <Compile Include="Items\Melee\TerraBladeEX.cs" />
     <Compile Include="Items\Melee\TheCorruptor.cs" />
+    <Compile Include="Items\Melee\Shadowban.cs" />
     <Compile Include="Items\Melee\TheFox.cs" />
     <Compile Include="Items\Melee\TrueAbyssalTwilight.cs" />
     <Compile Include="Items\Melee\TrueBlazingDawn.cs" />
@@ -507,6 +511,8 @@
     <Compile Include="Items\Potions\GrandHealingPotion.cs" />
     <Compile Include="Items\Potions\TheBigOne.cs" />
     <Compile Include="Items\Projectiles\Akuma\AkumaFlare.cs" />
+    <Compile Include="Items\Projectiles\Akuma\Sunray.cs" />
+    <Compile Include="Items\Projectiles\Akuma\SunOrb.cs" />
     <Compile Include="Items\Projectiles\Akuma\SunSpearRain.cs" />
     <Compile Include="Items\Projectiles\Akuma\Sunstorm.cs" />
     <Compile Include="Items\Projectiles\Akuma\DaybreakArrow.cs" />
@@ -700,6 +706,7 @@
     <Compile Include="NPCs\Bosses\Akuma\Akuma.cs" />
     <Compile Include="NPCs\Bosses\Akuma\AkumaTransition.cs" />
     <Compile Include="NPCs\Bosses\Akuma\AkumaA.cs" />
+    <Compile Include="NPCs\Bosses\Akuma\AFireProjHostile.cs" />
     <Compile Include="NPCs\Bosses\Akuma\Unused\OldAkuma.cs" />
     <Compile Include="NPCs\Bosses\Akuma\Unused\OldAkumaA.cs" />
     <Compile Include="NPCs\Bosses\Broodmother\BroodEgg.cs" />
@@ -1465,6 +1472,11 @@
     <Content Include="Items\Boss\Akuma\SunStorm.png" />
     <Content Include="Items\Boss\Akuma\SunStorm_Glow.png" />
     <Content Include="Items\Boss\Akuma\TaiyangBaolei.png" />
+    <Content Include="Items\Boss\Akuma\TaiyangBaoleiA.png" />
+    <Content Include="Items\Boss\Akuma\TaiyangBaoleiA2.png" />
+    <Content Include="Items\Boss\Akuma\TaiyangBaoleiA2_Shield.png" />
+    <Content Include="Items\Boss\Akuma\TaiyangBaoleia_Shield.png" />
+    <Content Include="Items\Boss\Akuma\TaiyangBaolei_Shield.png" />
     <Content Include="Items\Boss\Broodmother\BroodBag.png" />
     <Content Include="Items\Boss\Broodmother\BroodBag_Glow.png" />
     <Content Include="Items\Boss\Broodmother\BroodmotherTrophy.png" />
@@ -1705,6 +1717,7 @@
     <Content Include="Items\Melee\Discord.png" />
     <Content Include="Items\Melee\DiversDoom.png" />
     <Content Include="Items\Melee\DraculaKnives.png" />
+    <Content Include="Items\Melee\DraculaKnives_Glow.png" />
     <Content Include="Items\Melee\DragonBlade.png" />
     <Content Include="Items\Melee\DragonBlade_Glow.png" />
     <Content Include="Items\Melee\DragonBreath.png" />
