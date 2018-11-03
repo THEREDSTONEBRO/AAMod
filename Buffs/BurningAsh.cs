@@ -20,9 +20,10 @@ namespace AAMod.Buffs
             if (player.GetModPlayer<AAPlayer>(mod).ZoneInferno && !Main.dayTime)
             {
                 player.buffTime[buffIndex] = 5;
+                player.lifeRegenTime = 1;
+                player.lifeRegen -= 7;
             }
-            player.lifeRegenTime = 1;
-            player.lifeRegen -= 7;
+            
 		}
 	}
 }

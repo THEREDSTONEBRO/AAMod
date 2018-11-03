@@ -251,6 +251,19 @@ namespace AAMod.NPCs.Bosses.Akuma
                     }
                 }
             }
+            float num40 = Main.player[npc.target].position.X + (float)(Main.player[npc.target].width / 2);
+            num40 = (float)((int)(num40 / 16f) * 16);
+            if (num40 < 0f)
+            {
+                npc.spriteDirection = 1;
+            }
+            else if (num40 > 0f)
+            {
+                npc.spriteDirection = -1;
+            }
+
+            int num54 = npc.width;
+            num54 = 42;
 
             npc.rotation = (float)Math.Atan2(npc.velocity.Y, npc.velocity.X) + 1.57f;
 
@@ -338,6 +351,17 @@ namespace AAMod.NPCs.Bosses.Akuma
                     npc.active = false;
                     // NetMessage.SendData(28, -1, -1, "", npc.whoAmI, -1f, 0.0f, 0.0f, 0, 0, 0);
                 }
+            }
+
+            float num40 = Main.player[npc.target].position.X + (float)(Main.player[npc.target].width / 2);
+            num40 = (float)((int)(num40 / 16f) * 16);
+            if (num40 < 0f)
+            {
+                npc.spriteDirection = 1;
+            }
+            else if (num40 > 0f)
+            {
+                npc.spriteDirection = -1;
             }
 
             if (npc.ai[1] < (double)Main.npc.Length)
@@ -457,6 +481,17 @@ namespace AAMod.NPCs.Bosses.Akuma
                 float posX = dirX * dist;
                 float posY = dirY * dist;
 
+                float num40 = Main.player[npc.target].position.X + (float)(Main.player[npc.target].width / 2);
+                num40 = (float)((int)(num40 / 16f) * 16);
+                if (num40 < 0f)
+                {
+                    npc.spriteDirection = 1;
+                }
+                else if (num40 > 0f)
+                {
+                    npc.spriteDirection = -1;
+                }
+
                 // Reset the velocity of this NPC, because we don't want it to move on its own
                 npc.velocity = Vector2.Zero;
                 // And set this NPCs position accordingly to that of this NPCs parent NPC.
@@ -541,6 +576,17 @@ namespace AAMod.NPCs.Bosses.Akuma
                     npc.active = false;
                     // NetMessage.SendData(28, -1, -1, "", npc.whoAmI, -1f, 0.0f, 0.0f, 0, 0, 0);
                 }
+            }
+
+            float num40 = Main.player[npc.target].position.X + (float)(Main.player[npc.target].width / 2);
+            num40 = (float)((int)(num40 / 16f) * 16);
+            if (num40 < 0f)
+            {
+                npc.spriteDirection = 1;
+            }
+            else if (num40 > 0f)
+            {
+                npc.spriteDirection = -1;
             }
 
             if (npc.ai[1] < (double)Main.npc.Length)
