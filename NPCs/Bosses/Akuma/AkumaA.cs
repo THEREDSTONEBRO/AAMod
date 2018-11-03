@@ -24,8 +24,8 @@ namespace AAMod.NPCs.Bosses.Akuma
 		public override void SetDefaults()
 		{
 			npc.noTileCollide = true;
-			npc.width = 70;
-			npc.height = 144;
+			npc.width = 144;
+			npc.height = 70;
 			npc.aiStyle = -1;
 			npc.netAlways = true;
             npc.damage = 90;
@@ -46,6 +46,10 @@ namespace AAMod.NPCs.Bosses.Akuma
             music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/Akuma2");
             musicPriority = MusicPriority.BossHigh;
             bossBag = mod.ItemType("AkumaBag");
+            for (int k = 0; k < npc.buffImmune.Length; k++)
+            {
+                npc.buffImmune[k] = true;
+            }
         }
 
         public override bool PreAI()
@@ -139,8 +143,8 @@ namespace AAMod.NPCs.Bosses.Akuma
 					}
 				}
 			}
-			float speed = 8f;
-			float acceleration = 0.07f;
+			float speed = 12f;
+			float acceleration = 0.20f;
 
 			Vector2 npcCenter = new Vector2(npc.position.X + npc.width * 0.5f, npc.position.Y + npc.height * 0.5f);
 			float targetXPos = Main.player[npc.target].position.X + (Main.player[npc.target].width / 2);
@@ -237,8 +241,17 @@ namespace AAMod.NPCs.Bosses.Akuma
             }
 
             npc.rotation = (float)Math.Atan2(npc.velocity.Y, npc.velocity.X) + 1.57f;
+            if (npc.velocity.X < 0f)
+            {
+                npc.spriteDirection = 1;
 
-			if (collision)
+            }
+            else
+            {
+                npc.spriteDirection = -1;
+            }
+
+            if (collision)
 			{
 				if (npc.localAI[0] != 1)
 					npc.netUpdate = true;
@@ -334,9 +347,34 @@ namespace AAMod.NPCs.Bosses.Akuma
             {
                 spriteEffects = SpriteEffects.FlipHorizontally;
             }
-            spriteBatch.Draw(mod.GetTexture("NPCs/Bosses/Akuma/AkumaA_Glow"), new Vector2(npc.Center.X - Main.screenPosition.X, npc.Center.Y - Main.screenPosition.Y),
-            npc.frame, Color.White, npc.rotation,
-            new Vector2(npc.width * 0.5f, npc.height * 0.5f), 1f, spriteEffects, 0f);
+
+            if (npc.type == mod.NPCType("AkumaA"))
+            {
+                spriteBatch.Draw(mod.GetTexture("NPCs/Bosses/Akuma/AkumaA_Glow"), new Vector2(npc.Center.X - Main.screenPosition.X, npc.Center.Y - Main.screenPosition.Y),
+                npc.frame, Color.White, npc.rotation,
+                new Vector2(npc.width * 0.5f, npc.height * 0.5f), 1f, spriteEffects, 0f);
+            }
+
+            if (npc.type == mod.NPCType("AkumaAArms"))
+            {
+                spriteBatch.Draw(mod.GetTexture("NPCs/Bosses/Akuma/AkumaAArms_Glow"), new Vector2(npc.Center.X - Main.screenPosition.X, npc.Center.Y - Main.screenPosition.Y),
+                npc.frame, Color.White, npc.rotation,
+                new Vector2(npc.width * 0.5f, npc.height * 0.5f), 1f, spriteEffects, 0f);
+            }
+
+            if (npc.type == mod.NPCType("AkumaABody"))
+            {
+                spriteBatch.Draw(mod.GetTexture("NPCs/Bosses/Akuma/AkumaABody_Glow"), new Vector2(npc.Center.X - Main.screenPosition.X, npc.Center.Y - Main.screenPosition.Y),
+                npc.frame, Color.White, npc.rotation,
+                new Vector2(npc.width * 0.5f, npc.height * 0.5f), 1f, spriteEffects, 0f);
+            }
+
+            if (npc.type == mod.NPCType("AkumaATail"))
+            {
+                spriteBatch.Draw(mod.GetTexture("NPCs/Bosses/Akuma/AkumaATail_Glow"), new Vector2(npc.Center.X - Main.screenPosition.X, npc.Center.Y - Main.screenPosition.Y),
+                npc.frame, Color.White, npc.rotation,
+                new Vector2(npc.width * 0.5f, npc.height * 0.5f), 1f, spriteEffects, 0f);
+            }
         }
     }
 
@@ -346,12 +384,14 @@ namespace AAMod.NPCs.Bosses.Akuma
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Akuma");
+            DisplayName.SetDefault("Akuma Awakened");
         }
 
         public override void SetDefaults()
         {
             base.SetDefaults();
+            npc.width = 82;
+            npc.height = 96;
             npc.dontCountMe = true;
         }
 
@@ -383,6 +423,7 @@ namespace AAMod.NPCs.Bosses.Akuma
             {
                 music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/RayOfHope");
             }
+
             if (npc.ai[1] < (double)Main.npc.Length)
             {
                 // We're getting the center of this NPC.
@@ -401,6 +442,15 @@ namespace AAMod.NPCs.Bosses.Akuma
 
                 // Reset the velocity of this NPC, because we don't want it to move on its own
                 npc.velocity = Vector2.Zero;
+                if (npc.velocity.X < 0f)
+                {
+                    npc.spriteDirection = 1;
+
+                }
+                else
+                {
+                    npc.spriteDirection = -1;
+                }
                 // And set this NPCs position accordingly to that of this NPCs parent NPC.
                 npc.position.X = npc.position.X + posX;
                 npc.position.Y = npc.position.Y + posY;
@@ -440,18 +490,6 @@ namespace AAMod.NPCs.Bosses.Akuma
                 Panic = true;
                 Main.NewText("Still got it, do ya? I like that about you, kid..!", Color.DeepSkyBlue.R, Color.DeepSkyBlue.G, Color.DeepSkyBlue.B);
             }
-        }
-
-        public override void PostDraw(SpriteBatch spriteBatch, Color drawColor)
-        {
-            SpriteEffects spriteEffects = SpriteEffects.None;
-            if (npc.spriteDirection == 1)
-            {
-                spriteEffects = SpriteEffects.FlipHorizontally;
-            }
-            spriteBatch.Draw(mod.GetTexture("NPCs/Bosses/Akuma/AkumaAArms_Glow"), new Vector2(npc.Center.X - Main.screenPosition.X, npc.Center.Y - Main.screenPosition.Y),
-            npc.frame, Color.White, npc.rotation,
-            new Vector2(npc.width * 0.5f, npc.height * 0.5f), 1f, spriteEffects, 0f);
         }
     }
 
@@ -461,16 +499,18 @@ namespace AAMod.NPCs.Bosses.Akuma
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Akuma");
+            DisplayName.SetDefault("Akuma Awakened");
         }
 
         public override void SetDefaults()
         {
             base.SetDefaults();
+            npc.width = 52;
+            npc.height = 96;
             npc.dontCountMe = true;
         }
 
-        
+
 
         public override bool? DrawHealthBar(byte hbPosition, ref float scale, ref Vector2 position)
         {
@@ -500,6 +540,7 @@ namespace AAMod.NPCs.Bosses.Akuma
             {
                 music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/RayOfHope");
             }
+
             if (npc.ai[1] < (double)Main.npc.Length)
             {
                 // We're getting the center of this NPC.
@@ -508,6 +549,7 @@ namespace AAMod.NPCs.Bosses.Akuma
                 float dirX = Main.npc[(int)npc.ai[1]].position.X + (float)(Main.npc[(int)npc.ai[1]].width / 2) - npcCenter.X;
                 float dirY = Main.npc[(int)npc.ai[1]].position.Y + (float)(Main.npc[(int)npc.ai[1]].height / 2) - npcCenter.Y;
                 // We then use Atan2 to get a correct rotation towards that parent NPC.
+
                 npc.rotation = (float)Math.Atan2(dirY, dirX) + 1.57f;
                 // We also get the length of the direction vector.
                 float length = (float)Math.Sqrt(dirX * dirX + dirY * dirY);
@@ -518,6 +560,15 @@ namespace AAMod.NPCs.Bosses.Akuma
 
                 // Reset the velocity of this NPC, because we don't want it to move on its own
                 npc.velocity = Vector2.Zero;
+                if (npc.velocity.X < 0f)
+                {
+                    npc.spriteDirection = 1;
+
+                }
+                else
+                {
+                    npc.spriteDirection = -1;
+                }
                 // And set this NPCs position accordingly to that of this NPCs parent NPC.
                 npc.position.X = npc.position.X + posX;
                 npc.position.Y = npc.position.Y + posY;
@@ -558,18 +609,6 @@ namespace AAMod.NPCs.Bosses.Akuma
                 Main.NewText("Still got it, do ya? I like that about you, kid..!", Color.DeepSkyBlue.R, Color.DeepSkyBlue.G, Color.DeepSkyBlue.B);
             }
         }
-
-        public override void PostDraw(SpriteBatch spriteBatch, Color drawColor)
-        {
-            SpriteEffects spriteEffects = SpriteEffects.None;
-            if (npc.spriteDirection == 1)
-            {
-                spriteEffects = SpriteEffects.FlipHorizontally;
-            }
-            spriteBatch.Draw(mod.GetTexture("NPCs/Bosses/Akuma/AkumaABody_Glow"), new Vector2(npc.Center.X - Main.screenPosition.X, npc.Center.Y - Main.screenPosition.Y),
-            npc.frame, Color.White, npc.rotation,
-            new Vector2(npc.width * 0.5f, npc.height * 0.5f), 1f, spriteEffects, 0f);
-        }
     }
 
     public class AkumaATail : AkumaA
@@ -578,16 +617,19 @@ namespace AAMod.NPCs.Bosses.Akuma
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Akuma");
+            DisplayName.SetDefault("Akuma Awakened");
         }
 
         public override void SetDefaults()
         {
             base.SetDefaults();
+
+            npc.width = 44;
+            npc.height = 78;
             npc.dontCountMe = true;
         }
 
-        
+
 
         public override bool? DrawHealthBar(byte hbPosition, ref float scale, ref Vector2 position)
         {
@@ -617,6 +659,8 @@ namespace AAMod.NPCs.Bosses.Akuma
             {
                 music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/RayOfHope");
             }
+
+
             if (npc.ai[1] < (double)Main.npc.Length)
             {
                 // We're getting the center of this NPC.
@@ -635,6 +679,15 @@ namespace AAMod.NPCs.Bosses.Akuma
 
                 // Reset the velocity of this NPC, because we don't want it to move on its own
                 npc.velocity = Vector2.Zero;
+                if (npc.velocity.X < 0f)
+                {
+                    npc.spriteDirection = 1;
+
+                }
+                else
+                {
+                    npc.spriteDirection = -1;
+                }
                 // And set this NPCs position accordingly to that of this NPCs parent NPC.
                 npc.position.X = npc.position.X + posX;
                 npc.position.Y = npc.position.Y + posY;
@@ -673,17 +726,6 @@ namespace AAMod.NPCs.Bosses.Akuma
                 Main.NewText("Still got it, do ya? I like that about you, kid..!", Color.DeepSkyBlue.R, Color.DeepSkyBlue.G, Color.DeepSkyBlue.B);
             }
         }
-
-        public override void PostDraw(SpriteBatch spriteBatch, Color drawColor)
-        {
-            SpriteEffects spriteEffects = SpriteEffects.None;
-            if (npc.spriteDirection == 1)
-            {
-                spriteEffects = SpriteEffects.FlipHorizontally;
-            }
-            spriteBatch.Draw(mod.GetTexture("NPCs/Bosses/Akuma/AkumaATail_Glow"), new Vector2(npc.Center.X - Main.screenPosition.X, npc.Center.Y - Main.screenPosition.Y),
-            npc.frame, Color.White, npc.rotation,
-            new Vector2(npc.width * 0.5f, npc.height * 0.5f), 1f, spriteEffects, 0f);
-        }
+        
     }
 }

@@ -1,4 +1,5 @@
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
 using System.Linq;
 using Terraria;
@@ -14,8 +15,23 @@ namespace AAMod.Items.Boss.Akuma
         private int saveTime;
         private int Defense;
 
+        public static short customGlowMask = 0;
+
+
         public override void SetStaticDefaults()
         {
+
+            if (Main.netMode != 2)
+            {
+                Texture2D[] glowMasks = new Texture2D[Main.glowMaskTexture.Length + 1];
+                for (int i = 0; i < Main.glowMaskTexture.Length; i++)
+                {
+                    glowMasks[i] = Main.glowMaskTexture[i];
+                }
+                glowMasks[glowMasks.Length - 1] = mod.GetTexture("Items/Boss/Akuma/" + GetType().Name + "_Glow");
+                customGlowMask = (short)(glowMasks.Length - 1);
+                Main.glowMaskTexture = glowMasks;
+            }
             DisplayName.SetDefault("Taiyang Baolei");
             Tooltip.SetDefault(@"Allows you parry incoming attacks with a right-click
 During the day, item's defense is doubled and your melee & magic attacks set enemies ablaze
@@ -30,6 +46,7 @@ From 11:00 AM to 1:00 PM, ");
             item.expert = true;
             item.accessory = true;
             item.defense = Defense;
+            item.glowMask = customGlowMask;
         }
         
         public override void ModifyTooltips(List<TooltipLine> list)

@@ -33,7 +33,7 @@ namespace AAMod.Items.Boss.Akuma      //We need this to basically indicate the f
             item.autoReuse = true;
             item.mana = 13;
             item.useStyle = 5;
-            item.damage = 100;
+            item.damage = 50;
             item.useAnimation = 10;
             item.useTime = 10;
             item.width = 40;
@@ -45,7 +45,7 @@ namespace AAMod.Items.Boss.Akuma      //We need this to basically indicate the f
             item.magic = true;
             item.rare = 10;
             item.noMelee = true;
-            item.UseSound = new LegacySoundStyle(2, 124, Terraria.Audio.SoundType.Sound); ;
+            item.UseSound = new LegacySoundStyle(2, 124, Terraria.Audio.SoundType.Sound);
             item.glowMask = customGlowMask;
         }
 

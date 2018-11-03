@@ -22,8 +22,8 @@ namespace AAMod.NPCs.Bosses.Akuma
 		public override void SetDefaults()
 		{
 			npc.noTileCollide = true;
-			npc.width = 70;
 			npc.height = 144;
+			npc.width = 70;
 			npc.aiStyle = -1;
 			npc.netAlways = true;
 			npc.knockBackResist = 0f; if (!Main.expertMode && !AAWorld.downedAkuma)
@@ -64,6 +64,10 @@ namespace AAMod.NPCs.Bosses.Akuma
             npc.DeathSound = new LegacySoundStyle(2, 124, Terraria.Audio.SoundType.Sound);
             music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/Akuma");
             musicPriority = MusicPriority.BossHigh;
+            for (int k = 0; k < npc.buffImmune.Length; k++)
+            {
+                npc.buffImmune[k] = true;
+            }
         }
 
 		public override bool PreAI()
@@ -114,7 +118,7 @@ namespace AAMod.NPCs.Bosses.Akuma
                         }*/
                     }
 
-                    latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("AkumaATail"), npc.whoAmI, 0, latestNPC);
+                    latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("AkumaTail"), npc.whoAmI, 0, latestNPC);
                     Main.npc[(int)latestNPC].realLife = npc.whoAmI;
                     Main.npc[(int)latestNPC].ai[3] = npc.whoAmI;
 
@@ -156,8 +160,8 @@ namespace AAMod.NPCs.Bosses.Akuma
 					}
 				}
 			}
-			float speed = 8f;
-			float acceleration = 0.07f;
+			float speed = 10f;
+			float acceleration = 0.16f;
 
 			Vector2 npcCenter = new Vector2(npc.position.X + npc.width * 0.5f, npc.position.Y + npc.height * 0.5f);
 			float targetXPos = Main.player[npc.target].position.X + (Main.player[npc.target].width / 2);
@@ -251,23 +255,19 @@ namespace AAMod.NPCs.Bosses.Akuma
                     }
                 }
             }
-            float num40 = Main.player[npc.target].position.X + (float)(Main.player[npc.target].width / 2);
-            num40 = (float)((int)(num40 / 16f) * 16);
-            if (num40 < 0f)
+
+            npc.rotation = (float)Math.Atan2(npc.velocity.Y, npc.velocity.X) + 1.57f;
+            if (npc.velocity.X < 0f)
             {
                 npc.spriteDirection = 1;
+
             }
-            else if (num40 > 0f)
+            else
             {
                 npc.spriteDirection = -1;
             }
 
-            int num54 = npc.width;
-            num54 = 42;
-
-            npc.rotation = (float)Math.Atan2(npc.velocity.Y, npc.velocity.X) + 1.57f;
-
-			if (collision)
+            if (collision)
 			{
 				if (npc.localAI[0] != 1)
 					npc.netUpdate = true;
@@ -307,9 +307,27 @@ namespace AAMod.NPCs.Bosses.Akuma
             {
                 spriteEffects = SpriteEffects.FlipHorizontally;
             }
-            spriteBatch.Draw(mod.GetTexture("NPCs/Bosses/Akuma/Akuma_Glow"), new Vector2(npc.Center.X - Main.screenPosition.X, npc.Center.Y - Main.screenPosition.Y),
-            npc.frame, Color.White, npc.rotation,
-            new Vector2(npc.width * 0.5f, npc.height * 0.5f), 1f, spriteEffects, 0f);
+            if (npc.type == mod.NPCType("AkumaA"))
+            {
+                spriteBatch.Draw(mod.GetTexture("NPCs/Bosses/Akuma/Akuma_Glow"), new Vector2(npc.Center.X - Main.screenPosition.X, npc.Center.Y - Main.screenPosition.Y),
+                npc.frame, Color.White, npc.rotation,
+                new Vector2(npc.width * 0.5f, npc.height * 0.5f), 1f, spriteEffects, 0f);
+            }
+
+            if (npc.type == mod.NPCType("AkumaArms"))
+            {
+                
+            }
+
+            if (npc.type == mod.NPCType("AkumaBody"))
+            {
+                
+            }
+
+            if (npc.type == mod.NPCType("AkumaTail"))
+            {
+                
+            }
         }
     }
 
@@ -325,6 +343,8 @@ namespace AAMod.NPCs.Bosses.Akuma
         public override void SetDefaults()
         {
             base.SetDefaults();
+            npc.width = 82;
+            npc.height = 96;
             npc.dontCountMe = true;
         }
 
@@ -353,17 +373,6 @@ namespace AAMod.NPCs.Bosses.Akuma
                 }
             }
 
-            float num40 = Main.player[npc.target].position.X + (float)(Main.player[npc.target].width / 2);
-            num40 = (float)((int)(num40 / 16f) * 16);
-            if (num40 < 0f)
-            {
-                npc.spriteDirection = 1;
-            }
-            else if (num40 > 0f)
-            {
-                npc.spriteDirection = -1;
-            }
-
             if (npc.ai[1] < (double)Main.npc.Length)
             {
                 // We're getting the center of this NPC.
@@ -379,9 +388,18 @@ namespace AAMod.NPCs.Bosses.Akuma
                 float dist = (length - (float)npc.width) / length;
                 float posX = dirX * dist;
                 float posY = dirY * dist;
-
+                
                 // Reset the velocity of this NPC, because we don't want it to move on its own
                 npc.velocity = Vector2.Zero;
+                if (npc.velocity.X < 0f)
+                {
+                    npc.spriteDirection = 1;
+
+                }
+                else
+                {
+                    npc.spriteDirection = -1;
+                }
                 // And set this NPCs position accordingly to that of this NPCs parent NPC.
                 npc.position.X = npc.position.X + posX;
                 npc.position.Y = npc.position.Y + posY;
@@ -403,6 +421,8 @@ namespace AAMod.NPCs.Bosses.Akuma
         public override void SetDefaults()
         {
             base.SetDefaults();
+            npc.width = 52;
+            npc.height = 92;
             npc.dontCountMe = true;
         }
 
@@ -463,8 +483,6 @@ namespace AAMod.NPCs.Bosses.Akuma
                 }
             }
 
-            
-
             if (npc.ai[1] < (double)Main.npc.Length)
             {
                 // We're getting the center of this NPC.
@@ -481,19 +499,20 @@ namespace AAMod.NPCs.Bosses.Akuma
                 float posX = dirX * dist;
                 float posY = dirY * dist;
 
-                float num40 = Main.player[npc.target].position.X + (float)(Main.player[npc.target].width / 2);
-                num40 = (float)((int)(num40 / 16f) * 16);
-                if (num40 < 0f)
+
+                //npc.rotation = (float)Math.Atan2(npc.velocity.Y, npc.velocity.X) + 1.57f;
+                
+                // Reset the velocity of this NPC, because we don't want it to move on its own
+                npc.velocity = Vector2.Zero;
+                if (npc.velocity.X < 0f)
                 {
                     npc.spriteDirection = 1;
+
                 }
-                else if (num40 > 0f)
+                else
                 {
                     npc.spriteDirection = -1;
                 }
-
-                // Reset the velocity of this NPC, because we don't want it to move on its own
-                npc.velocity = Vector2.Zero;
                 // And set this NPCs position accordingly to that of this NPCs parent NPC.
                 npc.position.X = npc.position.X + posX;
                 npc.position.Y = npc.position.Y + posY;
@@ -514,6 +533,9 @@ namespace AAMod.NPCs.Bosses.Akuma
         public override void SetDefaults()
         {
             base.SetDefaults();
+
+            npc.width = 44;
+            npc.height = 78;
             npc.dontCountMe = true;
         }
 
@@ -577,17 +599,8 @@ namespace AAMod.NPCs.Bosses.Akuma
                     // NetMessage.SendData(28, -1, -1, "", npc.whoAmI, -1f, 0.0f, 0.0f, 0, 0, 0);
                 }
             }
-
-            float num40 = Main.player[npc.target].position.X + (float)(Main.player[npc.target].width / 2);
-            num40 = (float)((int)(num40 / 16f) * 16);
-            if (num40 < 0f)
-            {
-                npc.spriteDirection = 1;
-            }
-            else if (num40 > 0f)
-            {
-                npc.spriteDirection = -1;
-            }
+            
+            
 
             if (npc.ai[1] < (double)Main.npc.Length)
             {
@@ -607,6 +620,15 @@ namespace AAMod.NPCs.Bosses.Akuma
 
                 // Reset the velocity of this NPC, because we don't want it to move on its own
                 npc.velocity = Vector2.Zero;
+                if (npc.velocity.X < 0f)
+                {
+                    npc.spriteDirection = 1;
+
+                }
+                else
+                {
+                    npc.spriteDirection = -1;
+                }
                 // And set this NPCs position accordingly to that of this NPCs parent NPC.
                 npc.position.X = npc.position.X + posX;
                 npc.position.Y = npc.position.Y + posY;
