@@ -497,9 +497,7 @@ namespace AAMod.NPCs.Bosses.Akuma
                 float dist = (length - (float)npc.width) / length;
                 float posX = dirX * dist;
                 float posY = dirY * dist;
-
-
-                //npc.rotation = (float)Math.Atan2(npc.velocity.Y, npc.velocity.X) + 1.57f;
+                
                 
                 // Reset the velocity of this NPC, because we don't want it to move on its own
                 if (npc.velocity.X < 0f)
