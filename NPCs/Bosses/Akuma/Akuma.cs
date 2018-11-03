@@ -93,7 +93,12 @@ namespace AAMod.NPCs.Bosses.Akuma
                     int AkumaALength = 9;
                     for (int i = 0; i < AkumaALength; ++i)
                     {
-                        if (segment == 0 || segment == 2 || segment == 3 || segment == 5 || segment == 6 || segment == 8)
+
+                        latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("AkumaBody"), npc.whoAmI, 0, latestNPC);
+                        Main.npc[(int)latestNPC].realLife = npc.whoAmI;
+                        Main.npc[(int)latestNPC].ai[3] = npc.whoAmI;
+
+                        /*if (segment == 0 || segment == 2 || segment == 3 || segment == 5 || segment == 6 || segment == 8)
                         {
                             latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("AkumaBody"), npc.whoAmI, 0, latestNPC);
                             Main.npc[(int)latestNPC].realLife = npc.whoAmI;
@@ -106,7 +111,7 @@ namespace AAMod.NPCs.Bosses.Akuma
                             Main.npc[(int)latestNPC].realLife = npc.whoAmI;
                             Main.npc[(int)latestNPC].ai[3] = npc.whoAmI;
                             segment += 1;
-                        }
+                        }*/
                     }
 
                     latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("AkumaATail"), npc.whoAmI, 0, latestNPC);
@@ -227,8 +232,27 @@ namespace AAMod.NPCs.Bosses.Akuma
 						npc.velocity.X = npc.velocity.X - acceleration;
 				}
 			}
+            if (Main.player[npc.target].dead)
+            {
+                npc.velocity.Y = npc.velocity.Y + 1f;
+                if ((double)npc.position.Y > Main.rockLayer * 16.0)
+                {
+                    npc.velocity.Y = npc.velocity.Y + 1f;
+                    speed = 30f;
+                }
+                if ((double)npc.position.Y > Main.rockLayer * 16.0)
+                {
+                    for (int num957 = 0; num957 < 200; num957++)
+                    {
+                        if (Main.npc[num957].aiStyle == npc.aiStyle)
+                        {
+                            Main.npc[num957].active = false;
+                        }
+                    }
+                }
+            }
 
-			npc.rotation = (float)Math.Atan2(npc.velocity.Y, npc.velocity.X) + 1.57f;
+            npc.rotation = (float)Math.Atan2(npc.velocity.Y, npc.velocity.X) + 1.57f;
 
 			if (collision)
 			{
@@ -414,6 +438,8 @@ namespace AAMod.NPCs.Bosses.Akuma
                     // NetMessage.SendData(28, -1, -1, "", npc.whoAmI, -1f, 0.0f, 0.0f, 0, 0, 0);
                 }
             }
+
+            
 
             if (npc.ai[1] < (double)Main.npc.Length)
             {

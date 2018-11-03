@@ -13,7 +13,7 @@ namespace AAMod.NPCs.Bosses.Akuma
 	{
         public override string Texture { get { return "AAMod/NPCs/Bosses/Akuma/AkumaA"; } }
 
-        private bool Panic;
+        public bool Panic;
 
         public override void SetStaticDefaults()
 		{
@@ -72,7 +72,13 @@ namespace AAMod.NPCs.Bosses.Akuma
                     int AkumaALength = 9;
 					for (int i = 0; i < AkumaALength; ++i)
 					{
-                        if (segment == 0 || segment == 2 || segment == 3 || segment == 5 || segment == 6 || segment == 8)
+
+                        latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("AkumaBody"), npc.whoAmI, 0, latestNPC);
+                        Main.npc[(int)latestNPC].realLife = npc.whoAmI;
+                        Main.npc[(int)latestNPC].ai[3] = npc.whoAmI;
+
+
+                        /*if (segment == 0 || segment == 2 || segment == 3 || segment == 5 || segment == 6 || segment == 8)
                         {
                             latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("AkumaABody"), npc.whoAmI, 0, latestNPC);
                             Main.npc[(int)latestNPC].realLife = npc.whoAmI;
@@ -85,7 +91,7 @@ namespace AAMod.NPCs.Bosses.Akuma
                             Main.npc[(int)latestNPC].realLife = npc.whoAmI;
                             Main.npc[(int)latestNPC].ai[3] = npc.whoAmI;
                             segment += 1;
-                        }
+                        }*/
                     }
 
                     latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("AkumaATail"), npc.whoAmI, 0, latestNPC);
@@ -210,7 +216,27 @@ namespace AAMod.NPCs.Bosses.Akuma
 				}
 			}
 
-			npc.rotation = (float)Math.Atan2(npc.velocity.Y, npc.velocity.X) + 1.57f;
+            if (Main.player[npc.target].dead)
+            {
+                npc.velocity.Y = npc.velocity.Y + 1f;
+                if ((double)npc.position.Y > Main.rockLayer * 16.0)
+                {
+                    npc.velocity.Y = npc.velocity.Y + 1f;
+                    speed = 30f;
+                }
+                if ((double)npc.position.Y > Main.rockLayer * 16.0)
+                {
+                    for (int num957 = 0; num957 < 200; num957++)
+                    {
+                        if (Main.npc[num957].aiStyle == npc.aiStyle)
+                        {
+                            Main.npc[num957].active = false;
+                        }
+                    }
+                }
+            }
+
+            npc.rotation = (float)Math.Atan2(npc.velocity.Y, npc.velocity.X) + 1.57f;
 
 			if (collision)
 			{
@@ -256,22 +282,6 @@ namespace AAMod.NPCs.Bosses.Akuma
                 Panic = true;
                 Main.NewText("Still got it, do ya? I like that about you, kid..!", Color.DeepSkyBlue.R, Color.DeepSkyBlue.G, Color.DeepSkyBlue.B);
             }
-            if (npc.life <= 0 && Main.expertMode && !AAWorld.downedAkumaA && Main.expertMode && npc.type == mod.NPCType<AkumaA>())
-            {
-                Main.NewText("Gah..! How could this happen?! Even in my full form?! Fine, take your reward. You earned it.", Color.DeepSkyBlue.R, Color.DeepSkyBlue.G, Color.DeepSkyBlue.B);
-
-                Panic = false;
-            }
-            if (npc.life <= 0 && Main.expertMode && AAWorld.downedAkumaA && Main.expertMode && npc.type == mod.NPCType<AkumaA>())
-            {
-                Main.NewText("Snuffed out again. You have my respect, kid. Here.", Color.DeepSkyBlue.R, Color.DeepSkyBlue.G, Color.DeepSkyBlue.B);
-                Panic = false;
-            }
-            if (npc.life <= 0 && !Main.expertMode)
-            {
-                Main.NewText("Nice hacks, kid. Now come back and fight me like a real man in expert mode. Then I’ll give you your prize.", Color.DeepSkyBlue.R, Color.DeepSkyBlue.G, Color.DeepSkyBlue.B);
-                Panic = false;
-            }
         }
 
         public override void NPCLoot()
@@ -288,6 +298,22 @@ namespace AAMod.NPCs.Bosses.Akuma
                 }
                 npc.DropBossBags();
                 return;
+            }
+            if (!AAWorld.downedAkumaA && Main.expertMode)
+            {
+                Main.NewText("Gah..! How could this happen?! Even in my full form?! Fine, take your reward. You earned it.", Color.DeepSkyBlue.R, Color.DeepSkyBlue.G, Color.DeepSkyBlue.B);
+
+                Panic = false;
+            }
+            if (AAWorld.downedAkumaA && Main.expertMode)
+            {
+                Main.NewText("Snuffed out again. You have my respect, kid. Here.", Color.DeepSkyBlue.R, Color.DeepSkyBlue.G, Color.DeepSkyBlue.B);
+                Panic = false;
+            }
+            if (!Main.expertMode)
+            {
+                Main.NewText("Nice hacks, kid. Now come back and fight me like a real man in expert mode. Then I’ll give you your prize.", Color.DeepSkyBlue.R, Color.DeepSkyBlue.G, Color.DeepSkyBlue.B);
+                Panic = false;
             }
 
 
@@ -382,6 +408,40 @@ namespace AAMod.NPCs.Bosses.Akuma
             return false;
         }
 
+        public override void HitEffect(int hitDirection, double damage)
+        {
+            int dust1 = mod.DustType<Dusts.AkumaADust>();
+            int dust2 = mod.DustType<Dusts.AkumaADust>();
+            if (npc.life <= 0)
+            {
+                Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, dust1, 0f, 0f, 0, default(Color), 1f);
+                Main.dust[dust1].velocity *= 0.5f;
+                Main.dust[dust1].scale *= 1.3f;
+                Main.dust[dust1].fadeIn = 1f;
+                Main.dust[dust1].noGravity = false;
+                Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, dust2, 0f, 0f, 0, default(Color), 1f);
+                Main.dust[dust2].velocity *= 0.5f;
+                Main.dust[dust2].scale *= 1.3f;
+                Main.dust[dust2].fadeIn = 1f;
+                Main.dust[dust2].noGravity = true;
+
+            }
+            if (npc.life > npc.lifeMax / 5)
+            {
+                Panic = false;
+            }
+            if (npc.life <= npc.lifeMax / 5 && Panic == false && !AAWorld.downedAkumaA == false && Main.expertMode && npc.type == mod.NPCType<AkumaA>())
+            {
+                Panic = true;
+                Main.NewText("Wha—?! How have you lasted this long?! Grrrrrr…! I refuse to be bested by you! Have at it!", Color.DeepSkyBlue.R, Color.DeepSkyBlue.G, Color.DeepSkyBlue.B);
+            }
+            if (npc.life <= npc.lifeMax / 5 && Panic == false && AAWorld.downedAkumaA == false && Main.expertMode && npc.type == mod.NPCType<AkumaA>())
+            {
+                Panic = true;
+                Main.NewText("Still got it, do ya? I like that about you, kid..!", Color.DeepSkyBlue.R, Color.DeepSkyBlue.G, Color.DeepSkyBlue.B);
+            }
+        }
+
         public override void PostDraw(SpriteBatch spriteBatch, Color drawColor)
         {
             SpriteEffects spriteEffects = SpriteEffects.None;
@@ -465,6 +525,40 @@ namespace AAMod.NPCs.Bosses.Akuma
             return false;
         }
 
+        public override void HitEffect(int hitDirection, double damage)
+        {
+            int dust1 = mod.DustType<Dusts.AkumaADust>();
+            int dust2 = mod.DustType<Dusts.AkumaADust>();
+            if (npc.life <= 0)
+            {
+                Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, dust1, 0f, 0f, 0, default(Color), 1f);
+                Main.dust[dust1].velocity *= 0.5f;
+                Main.dust[dust1].scale *= 1.3f;
+                Main.dust[dust1].fadeIn = 1f;
+                Main.dust[dust1].noGravity = false;
+                Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, dust2, 0f, 0f, 0, default(Color), 1f);
+                Main.dust[dust2].velocity *= 0.5f;
+                Main.dust[dust2].scale *= 1.3f;
+                Main.dust[dust2].fadeIn = 1f;
+                Main.dust[dust2].noGravity = true;
+
+            }
+            if (npc.life > npc.lifeMax / 5)
+            {
+                Panic = false;
+            }
+            if (npc.life <= npc.lifeMax / 5 && Panic == false && !AAWorld.downedAkumaA == false && Main.expertMode && npc.type == mod.NPCType<AkumaA>())
+            {
+                Panic = true;
+                Main.NewText("Wha—?! How have you lasted this long?! Grrrrrr…! I refuse to be bested by you! Have at it!", Color.DeepSkyBlue.R, Color.DeepSkyBlue.G, Color.DeepSkyBlue.B);
+            }
+            if (npc.life <= npc.lifeMax / 5 && Panic == false && AAWorld.downedAkumaA == false && Main.expertMode && npc.type == mod.NPCType<AkumaA>())
+            {
+                Panic = true;
+                Main.NewText("Still got it, do ya? I like that about you, kid..!", Color.DeepSkyBlue.R, Color.DeepSkyBlue.G, Color.DeepSkyBlue.B);
+            }
+        }
+
         public override void PostDraw(SpriteBatch spriteBatch, Color drawColor)
         {
             SpriteEffects spriteEffects = SpriteEffects.None;
@@ -546,6 +640,38 @@ namespace AAMod.NPCs.Bosses.Akuma
                 npc.position.Y = npc.position.Y + posY;
             }
             return false;
+        }
+
+        public override void HitEffect(int hitDirection, double damage)
+        {
+            int dust1 = mod.DustType<Dusts.AkumaADust>();
+            int dust2 = mod.DustType<Dusts.AkumaADust>();
+            if (npc.life <= 0)
+            {
+                Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, dust1, 0f, 0f, 0, default(Color), 1f);
+                Main.dust[dust1].scale *= 1.3f;
+                Main.dust[dust1].fadeIn = 1f;
+                Main.dust[dust1].noGravity = false;
+                Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, dust2, 0f, 0f, 0, default(Color), 1f);
+                Main.dust[dust2].scale *= 1.3f;
+                Main.dust[dust2].fadeIn = 1f;
+                Main.dust[dust2].noGravity = true;
+
+            }
+            if (npc.life > npc.lifeMax / 5)
+            {
+                Panic = false;
+            }
+            if (npc.life <= npc.lifeMax / 5 && Panic == false && !AAWorld.downedAkumaA == false && Main.expertMode && npc.type == mod.NPCType<AkumaA>())
+            {
+                Panic = true;
+                Main.NewText("Wha—?! How have you lasted this long?! Grrrrrr…! I refuse to be bested by you! Have at it!", Color.DeepSkyBlue.R, Color.DeepSkyBlue.G, Color.DeepSkyBlue.B);
+            }
+            if (npc.life <= npc.lifeMax / 5 && Panic == false && AAWorld.downedAkumaA == false && Main.expertMode && npc.type == mod.NPCType<AkumaA>())
+            {
+                Panic = true;
+                Main.NewText("Still got it, do ya? I like that about you, kid..!", Color.DeepSkyBlue.R, Color.DeepSkyBlue.G, Color.DeepSkyBlue.B);
+            }
         }
 
         public override void PostDraw(SpriteBatch spriteBatch, Color drawColor)

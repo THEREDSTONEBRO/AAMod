@@ -9,7 +9,6 @@ namespace AAMod.Dusts
         public override void OnSpawn(Dust dust)
         {
             dust.velocity.Y = Main.rand.Next(-10, 6) * 0.1f;
-            dust.velocity.X *= 2f;
             dust.scale *= 1.3f;
             dust.noGravity = true;
         }
