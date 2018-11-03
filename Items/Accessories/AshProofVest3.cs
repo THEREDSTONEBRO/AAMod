@@ -26,6 +26,7 @@ namespace AAMod.Items.Accessories
                 {
                     Main.PlaySound(SoundID.Item34);
                     item.type = mod.ItemType<AshProofVest2>();
+                    item.CloneDefaults(mod.ItemType<AshProofVest2>());
                 }
             }
             else

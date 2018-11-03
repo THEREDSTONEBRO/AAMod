@@ -22,7 +22,7 @@ namespace AAMod.Buffs
                 player.buffTime[buffIndex] = 5;
             }
             player.lifeRegenTime = 1;
-            player.lifeRegen -= 22;
+            player.lifeRegen -= 7;
 		}
 	}
 }

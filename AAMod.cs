@@ -129,6 +129,8 @@ namespace AAMod
                 PremultiplyTexture(GetTexture("Backgrounds/InfernoSky"));
                 PremultiplyTexture(GetTexture("Backgrounds/MireSky"));
                 PremultiplyTexture(GetTexture("Backgrounds/VoidSky"));
+                PremultiplyTexture(GetTexture("Backgrounds/fogless"));
+                PremultiplyTexture(GetTexture("Backgrounds/fog"));
 
                 AddEquipTexture(null, EquipType.Legs, "N1_Legs", "AAMod/Items/Vanity/N1/N1_Legs");
 
@@ -157,11 +159,18 @@ namespace AAMod
                 Filters.Scene["AAMod:VoidSky"] = new Filter(new VoidSkyData("FilterMiniTower").UseColor(0.15f, 0.1f, 0.1f).UseOpacity(0.3f), EffectPriority.VeryHigh);
                 SkyManager.Instance["AAMod:VoidSky"] = new VoidSky();
                 VoidSky.PlanetTexture = GetTexture("Backgrounds/VoidBH");
-                Filters.Scene["AAMod:InfernoSky"] = new Filter(new InfernoSkyData("FilterMiniTower").UseColor(1f, 0.20f, 0f).UseOpacity(0.6f), EffectPriority.High);
+                Filters.Scene["AAMod:InfernoSky"] = new Filter(new InfernoSkyData("FilterMiniTower").UseColor(1f, 0.20f, 0f).UseOpacity(0.3f), EffectPriority.VeryHigh);
                 SkyManager.Instance["AAMod:InfernoSky"] = new InfernoSky();
                 InfernoSky.PlanetTexture = GetTexture("Backgrounds/InfernoSun");
-                
-                
+
+                Filters.Scene["Fog"] = new Filter(new ScreenShaderData("FilterBlizzardForeground").UseOpacity(0.6f).UseImageOffset(Main.player[Main.myPlayer].Center).UseImageScale(new Vector2(Main.screenWidth, Main.screenHeight)), EffectPriority.High);
+                Overlays.Scene["Fog"] = new SimpleOverlay("Backgrounds/fog", new ScreenShaderData("FilterBlizzardBackground").UseOpacity(0.6f), EffectPriority.High, RenderLayers.Sky);
+                SkyManager.Instance["Fog"] = new Fog();
+                Fog.FogTexture = GetTexture("Backgrounds/fog");
+                Filters.Scene["Fogless"] = new Filter(new ScreenShaderData("FilterBlizzardForeground").UseOpacity(0.3f).UseImageOffset(Main.player[Main.myPlayer].Center).UseImageScale(new Vector2(Main.screenWidth, Main.screenHeight)), EffectPriority.High);
+                Overlays.Scene["Fogless"] = new SimpleOverlay("Backgrounds/fogless", new ScreenShaderData("FilterBlizzardBackground").UseOpacity(0.3f), EffectPriority.High, RenderLayers.Sky);
+                SkyManager.Instance["Fogless"] = new Fogless();
+                Fogless.FoglessTexture = GetTexture("Backgrounds/fogless");
 
                 TerratoolUI = new TerratoolUI();
                 UserInterface = new UserInterface();

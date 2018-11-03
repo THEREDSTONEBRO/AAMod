@@ -73,6 +73,8 @@
     <Compile Include="Backgrounds\InfernoSkyData.cs" />
     <Compile Include="Backgrounds\InfernoSurfaceBgStyle.cs" />
     <Compile Include="Backgrounds\InfernoUgBgStyle.cs" />
+    <Compile Include="Backgrounds\Fogless.cs" />
+    <Compile Include="Backgrounds\Fog.cs" />
     <Compile Include="Backgrounds\MireSky.cs" />
     <Compile Include="Backgrounds\MireSkyData.cs" />
     <Compile Include="Backgrounds\MireSurfaceBgStyle.cs" />
@@ -901,6 +903,8 @@
     <Content Include="Achievements\ZeroANot.png" />
     <Content Include="Achievements\ZeroNot.png" />
     <Content Include="Backgrounds\Aurora.png" />
+    <Content Include="Backgrounds\fog.png" />
+    <Content Include="Backgrounds\fogless.png" />
     <Content Include="Backgrounds\InfernoBG1.png" />
     <Content Include="Backgrounds\InfernoCavern.png" />
     <Content Include="Backgrounds\InfernoCavern1.png" />
@@ -2565,6 +2569,8 @@
     <Content Include="Tiles\ZeroBox_Glow.png" />
     <Content Include="UI\Axe.png" />
     <Content Include="UI\Base.png" />
+    <Content Include="UI\CorruptionLoadBar.png" />
+    <Content Include="UI\CrimsonLoadBar.png" />
     <Content Include="UI\Hammer.png" />
     <Content Include="UI\IconCorruption.png" />
     <Content Include="UI\IconCrimson.png" />

@@ -12,6 +12,9 @@ using Terraria.GameInput;
 using Terraria.ID;
 using Terraria.ModLoader;
 using System;
+using Terraria.Graphics.Effects;
+using Terraria.Graphics.Shaders;
+using AAMod.Backgrounds;
 
 namespace AAMod
 {
@@ -64,7 +67,6 @@ namespace AAMod
         public bool dreadSet;
         public bool zeroSet;
         public bool valkyrieSet;
-        public bool Blackend;
         // Accessory bools.
         public bool clawsOfChaos;
         public bool demonGauntlet;
@@ -145,28 +147,31 @@ namespace AAMod
             Broodmini = false;
             Raidmini = false;
             MiniProbe = false;
-            Blackend = false;
             Baolei = false;
             AshCurse = !Main.dayTime || (!AAWorld.downedAkuma && !Main.expertMode) || (!AAWorld.downedAkumaA && Main.expertMode);
         }
 
         public override void UpdateBiomes()
         {
-            ZoneMire = (AAWorld.mireTiles > 100);
-            ZoneInferno = (AAWorld.infernoTiles > 100);
+            ZoneMire = (AAWorld.mireTiles > 100)/* || (NPC.AnyNPCs(mod.NPCType<Yamata>()) || NPC.AnyNPCs(mod.NPCType<YamataAwakened>()))*/;
+            ZoneInferno = (AAWorld.infernoTiles > 100) || (NPC.AnyNPCs(mod.NPCType<AkumaHead>()) || NPC.AnyNPCs(mod.NPCType<AkumaAHead>()));
             ZoneMush = (AAWorld.mushTiles > 100);
-            ZoneVoid = (AAWorld.voidTiles > 20);
+            ZoneVoid = (AAWorld.voidTiles > 20) || (NPC.AnyNPCs(mod.NPCType<Zero>()) || NPC.AnyNPCs(mod.NPCType<ZeroAwakened>()));
         }
 
         public override void UpdateBiomeVisuals()
         {
-            bool useInferno = ZoneInferno || SunAltar || NPC.AnyNPCs(mod.NPCType<AkumaHead>()) || NPC.AnyNPCs(mod.NPCType<AkumaAHead>());
+            bool useInferno = ZoneInferno || SunAltar;
             player.ManageSpecialBiomeVisuals("AAMod:InfernoSky", useInferno);
             player.ManageSpecialBiomeVisuals("HeatDistortion", useInferno);
-            bool useMire = ZoneMire || MoonAltar /*|| NPC.AnyNPCs(mod.NPCType<Yamata>()) || NPC.AnyNPCs(mod.NPCType<YamataAwakened>())*/;
+            bool useMire = ZoneMire || MoonAltar;
             player.ManageSpecialBiomeVisuals("AAMod:MireSky", useMire);
-            bool useVoid = ZoneVoid || VoidUnit || NPC.AnyNPCs(mod.NPCType<Zero>()) || NPC.AnyNPCs(mod.NPCType<ZeroAwakened>());
+            bool useVoid = ZoneVoid || VoidUnit;
             player.ManageSpecialBiomeVisuals("AAMod:VoidSky", useVoid);
+            bool useFog = !FogRemover && (Main.dayTime || (!AAWorld.downedYamata && !Main.expertMode) || (!AAWorld.downedYamataA && Main.expertMode)) && ZoneMire;
+            bool useFogless = FogRemover && (Main.dayTime || (!AAWorld.downedYamata && !Main.expertMode) || (!AAWorld.downedYamataA && Main.expertMode)) && ZoneMire;
+            player.ManageSpecialBiomeVisuals("Fog", useFog);
+            player.ManageSpecialBiomeVisuals("Fogless", useFogless);
             //bool useSnow = player.ZoneSnow && NPC.downedMoonlord == true; //|| VoidUnit/;
             //player.ManageSpecialBiomeVisuals("AAMod:SnowSky", useSnow);
         }
@@ -250,7 +255,7 @@ namespace AAMod
                     Main.maxRaining = 0f;
                 }
             }
-            /*if (player.GetModPlayer<AAPlayer>().ZoneMire)
+            if (player.GetModPlayer<AAPlayer>().ZoneMire)
             {
                 if (Main.raining)
                 {
@@ -261,16 +266,12 @@ namespace AAMod
                 }
                 if (Main.dayTime || (!AAWorld.downedYamata && !Main.expertMode) || (!AAWorld.downedYamataA && Main.expertMode))
                 {
-                    if (!FogRemover)
+                    if (!player.GetModPlayer<AAPlayer>(mod).FogRemover)
                     {
                         player.AddBuff(mod.BuffType<Clueless>(), 5);
                     }
-                    else
-                    {
-                        
-                    }
-               
-            }*/
+                }
+            }
             if (player.GetModPlayer<AAPlayer>().ZoneVoid)
             {
                 if (!BrokenCode)
@@ -305,21 +306,14 @@ namespace AAMod
                     player.gravity = 1f;
                 }
             }
-            if(player.GetModPlayer<AAPlayer>().ZoneInferno)
+            if (player.GetModPlayer<AAPlayer>().ZoneInferno)
             {
-                
                 if (AshCurse)
                 {
                     AshRain(player, mod);
-                    if (!AshRemover)
-                    {
-                        player.AddBuff(mod.BuffType<BurningAsh>(), 5);
-                    }
                 }
             }
         }
-
-        
 
         public static void AshRain(Player player, Mod mod)
         {
@@ -327,8 +321,12 @@ namespace AAMod
             {
                 return;
             }
-            if (player.GetModPlayer<AAPlayer>(mod).ZoneInferno)
+            if (player.GetModPlayer<AAPlayer>(mod).ZoneInferno && player.GetModPlayer<AAPlayer>(mod).AshCurse)
             {
+                if (!player.GetModPlayer<AAPlayer>(mod).AshRemover)
+                {
+                    player.AddBuff(mod.BuffType<BurningAsh>(), 5);
+                }
                 if (AAWorld.infernoTiles > 0 && Main.player[Main.myPlayer].position.Y < Main.worldSurface * 16.0)
                 {
                     int maxValue = 800 / AAWorld.infernoTiles;
@@ -402,7 +400,6 @@ namespace AAMod
                 }
             }
         }
-
         public override void GetWeaponKnockback(Item item, ref float knockback)
         {
             if (demonGauntlet == true)
@@ -969,30 +966,6 @@ namespace AAMod
                 return mod.GetTexture("Map/VoidMap");
             }
             return null;
-        }
-
-        public override void ModifyDrawInfo(ref PlayerDrawInfo drawInfo)
-        {
-            if (Blackend)
-            {
-                drawInfo.upperArmorColor = Color.Black;
-                drawInfo.middleArmorColor = Color.Black;
-                drawInfo.lowerArmorColor = Color.Black;
-                drawInfo.hairColor = Color.Black;
-                drawInfo.eyeWhiteColor = Color.Black;
-                drawInfo.eyeColor = Color.Black;
-                drawInfo.faceColor = Color.Black;
-                drawInfo.bodyColor = Color.Black;
-                drawInfo.legColor = Color.Black;
-                drawInfo.shirtColor = Color.Black;
-                drawInfo.underShirtColor = Color.Black;
-                drawInfo.pantsColor = Color.Black;
-                drawInfo.shoeColor = Color.Black;
-                drawInfo.headGlowMaskColor = Color.Black;
-                drawInfo.bodyGlowMaskColor = Color.Black;
-                drawInfo.armGlowMaskColor = Color.Black;
-                drawInfo.legGlowMaskColor = Color.Black;
-            }
         }
     }
 }

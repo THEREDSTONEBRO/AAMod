@@ -20,7 +20,6 @@ namespace AAMod.Buffs
             {
                 player.buffTime[buffIndex] = 5;
             }
-            player.GetModPlayer<AAPlayer>(mod).Blackend = true;
 		}
 	}
 }
