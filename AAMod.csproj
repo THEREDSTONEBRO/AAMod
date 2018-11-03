@@ -2164,6 +2164,10 @@
     <Content Include="Map\InfernoMap.png" />
     <Content Include="Map\MireMap.png" />
     <Content Include="Map\VoidMap.png" />
+    <Content Include="NPCs\Bosses\Akuma\Akuma.png" />
+    <Content Include="NPCs\Bosses\Akuma\AkumaA.png" />
+    <Content Include="NPCs\Bosses\Akuma\AkumaA_Glow.png" />
+    <Content Include="NPCs\Bosses\Akuma\Akuma_Glow.png" />
     <Content Include="NPCs\Bosses\Akuma\Unused\Akuma.png" />
     <Content Include="NPCs\Bosses\Akuma\Unused\AkumaA.png" />
     <Content Include="NPCs\Bosses\Akuma\Unused\AkumaAHead1.png" />
@@ -2185,12 +2189,10 @@
     <Content Include="NPCs\Bosses\Akuma\AkumaAArms_Glow.png" />
     <Content Include="NPCs\Bosses\Akuma\AkumaABody.png" />
     <Content Include="NPCs\Bosses\Akuma\AkumaABody_Glow.png" />
-    <Content Include="NPCs\Bosses\Akuma\AkumaAHead.png" />
     <Content Include="NPCs\Bosses\Akuma\AkumaArms.png" />
     <Content Include="NPCs\Bosses\Akuma\AkumaATail.png" />
     <Content Include="NPCs\Bosses\Akuma\AkumaATail_Glow.png" />
     <Content Include="NPCs\Bosses\Akuma\AkumaBody.png" />
-    <Content Include="NPCs\Bosses\Akuma\AkumaHead.png" />
     <Content Include="NPCs\Bosses\Akuma\AkumaTail.png" />
     <Content Include="NPCs\Bosses\Akuma\AkumaTransition.png" />
     <Content Include="NPCs\Bosses\Akuma\FireProjHostile.png" />

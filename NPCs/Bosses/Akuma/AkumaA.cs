@@ -13,7 +13,7 @@ namespace AAMod.NPCs.Bosses.Akuma
 	{
         public override string Texture { get { return "AAMod/NPCs/Bosses/Akuma/AkumaA"; } }
 
-        private bool Panic = false;
+        private bool Panic;
 
         public override void SetStaticDefaults()
 		{
@@ -68,13 +68,24 @@ namespace AAMod.NPCs.Bosses.Akuma
 				{
 					npc.realLife = npc.whoAmI;
 					int latestNPC = npc.whoAmI;
-
-                    int AkumaALength = 12;
+                    int segment = 0;
+                    int AkumaALength = 9;
 					for (int i = 0; i < AkumaALength; ++i)
 					{
-						latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("AkumaABody"), npc.whoAmI, 0, latestNPC);
-						Main.npc[(int)latestNPC].realLife = npc.whoAmI;
-						Main.npc[(int)latestNPC].ai[3] = npc.whoAmI;
+                        if (segment == 0 || segment == 2 || segment == 3 || segment == 5 || segment == 6 || segment == 8)
+                        {
+                            latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("AkumaABody"), npc.whoAmI, 0, latestNPC);
+                            Main.npc[(int)latestNPC].realLife = npc.whoAmI;
+                            Main.npc[(int)latestNPC].ai[3] = npc.whoAmI;
+                            segment += 1;
+                        }
+                        if (segment == 1 || segment == 4 || segment == 7)
+                        {
+                            latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("AkumaAArm"), npc.whoAmI, 0, latestNPC);
+                            Main.npc[(int)latestNPC].realLife = npc.whoAmI;
+                            Main.npc[(int)latestNPC].ai[3] = npc.whoAmI;
+                            segment += 1;
+                        }
                     }
 
                     latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("AkumaATail"), npc.whoAmI, 0, latestNPC);
@@ -231,23 +242,27 @@ namespace AAMod.NPCs.Bosses.Akuma
                 Main.dust[dust2].noGravity = true;
 
             }
-            if (npc.life <= npc.lifeMax / 5 && Panic == false && !AAWorld.downedAkumaA == false && Main.expertMode)
+            if (npc.life > npc.lifeMax / 5)
+            {
+                Panic = false;
+            }
+            if (npc.life <= npc.lifeMax / 5 && Panic == false && !AAWorld.downedAkumaA == false && Main.expertMode && npc.type == mod.NPCType<AkumaA>())
             {
                 Panic = true;
                 Main.NewText("Wha—?! How have you lasted this long?! Grrrrrr…! I refuse to be bested by you! Have at it!", Color.DeepSkyBlue.R, Color.DeepSkyBlue.G, Color.DeepSkyBlue.B);
             }
-            if (npc.life <= npc.lifeMax / 5 && Panic == false && AAWorld.downedAkumaA == false && Main.expertMode)
+            if (npc.life <= npc.lifeMax / 5 && Panic == false && AAWorld.downedAkumaA == false && Main.expertMode && npc.type == mod.NPCType<AkumaA>())
             {
                 Panic = true;
                 Main.NewText("Still got it, do ya? I like that about you, kid..!", Color.DeepSkyBlue.R, Color.DeepSkyBlue.G, Color.DeepSkyBlue.B);
             }
-            if (npc.life <= 0 && Main.expertMode && !AAWorld.downedAkumaA)
+            if (npc.life <= 0 && Main.expertMode && !AAWorld.downedAkumaA && Main.expertMode && npc.type == mod.NPCType<AkumaA>())
             {
                 Main.NewText("Gah..! How could this happen?! Even in my full form?! Fine, take your reward. You earned it.", Color.DeepSkyBlue.R, Color.DeepSkyBlue.G, Color.DeepSkyBlue.B);
 
                 Panic = false;
             }
-            if (npc.life <= 0 && Main.expertMode && AAWorld.downedAkumaA)
+            if (npc.life <= 0 && Main.expertMode && AAWorld.downedAkumaA && Main.expertMode && npc.type == mod.NPCType<AkumaA>())
             {
                 Main.NewText("Snuffed out again. You have my respect, kid. Here.", Color.DeepSkyBlue.R, Color.DeepSkyBlue.G, Color.DeepSkyBlue.B);
                 Panic = false;
@@ -285,6 +300,17 @@ namespace AAMod.NPCs.Bosses.Akuma
                 Main.NewText("Wuss.", Color.Red.R, Color.Red.G, Color.Red.B);
             }
             return false;
+        }
+        public override void PostDraw(SpriteBatch spriteBatch, Color drawColor)
+        {
+            SpriteEffects spriteEffects = SpriteEffects.None;
+            if (npc.spriteDirection == 1)
+            {
+                spriteEffects = SpriteEffects.FlipHorizontally;
+            }
+            spriteBatch.Draw(mod.GetTexture("NPCs/Bosses/Akuma/AkumaA_Glow"), new Vector2(npc.Center.X - Main.screenPosition.X, npc.Center.Y - Main.screenPosition.Y),
+            npc.frame, Color.White, npc.rotation,
+            new Vector2(npc.width * 0.5f, npc.height * 0.5f), 1f, spriteEffects, 0f);
         }
     }
 
@@ -354,6 +380,18 @@ namespace AAMod.NPCs.Bosses.Akuma
                 npc.position.Y = npc.position.Y + posY;
             }
             return false;
+        }
+
+        public override void PostDraw(SpriteBatch spriteBatch, Color drawColor)
+        {
+            SpriteEffects spriteEffects = SpriteEffects.None;
+            if (npc.spriteDirection == 1)
+            {
+                spriteEffects = SpriteEffects.FlipHorizontally;
+            }
+            spriteBatch.Draw(mod.GetTexture("NPCs/Bosses/Akuma/AkumaAArms_Glow"), new Vector2(npc.Center.X - Main.screenPosition.X, npc.Center.Y - Main.screenPosition.Y),
+            npc.frame, Color.White, npc.rotation,
+            new Vector2(npc.width * 0.5f, npc.height * 0.5f), 1f, spriteEffects, 0f);
         }
     }
 
@@ -426,6 +464,18 @@ namespace AAMod.NPCs.Bosses.Akuma
             }
             return false;
         }
+
+        public override void PostDraw(SpriteBatch spriteBatch, Color drawColor)
+        {
+            SpriteEffects spriteEffects = SpriteEffects.None;
+            if (npc.spriteDirection == 1)
+            {
+                spriteEffects = SpriteEffects.FlipHorizontally;
+            }
+            spriteBatch.Draw(mod.GetTexture("NPCs/Bosses/Akuma/AkumaABody_Glow"), new Vector2(npc.Center.X - Main.screenPosition.X, npc.Center.Y - Main.screenPosition.Y),
+            npc.frame, Color.White, npc.rotation,
+            new Vector2(npc.width * 0.5f, npc.height * 0.5f), 1f, spriteEffects, 0f);
+        }
     }
 
     public class AkumaATail : AkumaA
@@ -496,6 +546,18 @@ namespace AAMod.NPCs.Bosses.Akuma
                 npc.position.Y = npc.position.Y + posY;
             }
             return false;
+        }
+
+        public override void PostDraw(SpriteBatch spriteBatch, Color drawColor)
+        {
+            SpriteEffects spriteEffects = SpriteEffects.None;
+            if (npc.spriteDirection == 1)
+            {
+                spriteEffects = SpriteEffects.FlipHorizontally;
+            }
+            spriteBatch.Draw(mod.GetTexture("NPCs/Bosses/Akuma/AkumaATail_Glow"), new Vector2(npc.Center.X - Main.screenPosition.X, npc.Center.Y - Main.screenPosition.Y),
+            npc.frame, Color.White, npc.rotation,
+            new Vector2(npc.width * 0.5f, npc.height * 0.5f), 1f, spriteEffects, 0f);
         }
     }
 }
