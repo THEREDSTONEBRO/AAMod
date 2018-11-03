@@ -16,7 +16,7 @@ namespace AAMod.Buffs
 
 		public override void Update(Player player, ref int buffIndex)
 		{
-            if (player.GetModPlayer<AAPlayer>(mod).ZoneMire && Main.dayTime)
+            if (player.GetModPlayer<AAPlayer>(mod).ZoneMire && (Main.dayTime /*|| (NPC.AnyNPCs(mod.NPCType<Yamata>()) || NPC.AnyNPCs(mod.NPCType<YamataAwakened>()))*/))
             {
                 player.buffTime[buffIndex] = 5;
             }

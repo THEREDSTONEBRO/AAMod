@@ -13,11 +13,16 @@ namespace AAMod.Backgrounds
         public float Intensity;
         private float FogTime = 0f;
 
+        public override void OnLoad()
+        {
+            FogTexture = TextureManager.Load("Backgrounds/fog");
+        }
+
         public override void Update(GameTime gameTime)
         {
             if (Active)
             {
-                Intensity = 0.1f;
+                Intensity = 0.4f;
                 if (FogTime < 1f)
                 {
                     FogTime += 0.1f;
@@ -43,8 +48,11 @@ namespace AAMod.Backgrounds
         {
             if (maxDepth >= 3.40282347E+38f && minDepth < 3.40282347E+38f)
             {
-                Player player = Main.player[Main.myPlayer];
-                spriteBatch.Draw(FogTexture, player.Center, null, Color.White * FogTime * Intensity, 0f, new Vector2(player.Center.X, player.Center.Y), 1f, SpriteEffects.None, 10f);
+                if (Main.dayTime || (!AAWorld.downedYamata && !Main.expertMode) || (!AAWorld.downedYamataA && Main.expertMode))
+                {
+                    Player player = Main.player[Main.myPlayer];
+                    spriteBatch.Draw(FogTexture, player.Center, null, Color.White * FogTime * Intensity, 0f, new Vector2(player.Center.X, player.Center.Y), 1f, SpriteEffects.None, 10f);
+                }
             }
         }
 
@@ -55,7 +63,7 @@ namespace AAMod.Backgrounds
 
         public override void Activate(Vector2 position, params object[] args)
         {
-            Intensity = 0.1f;
+            Intensity = 0.4f;
             Active = true;
         }
 
@@ -71,7 +79,7 @@ namespace AAMod.Backgrounds
 
         public override bool IsActive()
         {
-            return Active || Intensity == 0.1f;
+            return Active || Intensity == 0.4f;
         }
     }
 }

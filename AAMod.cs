@@ -163,12 +163,12 @@ namespace AAMod
                 SkyManager.Instance["AAMod:InfernoSky"] = new InfernoSky();
                 InfernoSky.PlanetTexture = GetTexture("Backgrounds/InfernoSun");
 
-                Filters.Scene["Fog"] = new Filter(new ScreenShaderData("FilterBlizzardForeground").UseOpacity(0.6f).UseImageOffset(Main.player[Main.myPlayer].Center).UseImageScale(new Vector2(Main.screenWidth, Main.screenHeight)), EffectPriority.High);
-                Overlays.Scene["Fog"] = new SimpleOverlay("Backgrounds/fog", new ScreenShaderData("FilterBlizzardBackground").UseOpacity(0.6f), EffectPriority.High, RenderLayers.Sky);
+                Filters.Scene["Fog"] = new Filter(new ScreenShaderData("FilterBlizzardForeground").UseImage("Backgrounds/fog").UseOpacity(0.6f).UseImageScale(new Vector2(Main.screenWidth, Main.screenHeight)), EffectPriority.High);
+                Overlays.Scene["Fog"] = new SimpleOverlay("Backgrounds/fog", new ScreenShaderData("FilterBlizzardBackground").UseImage("Backgrounds/fog").UseOpacity(0.6f).UseImageScale(new Vector2(Main.screenWidth, Main.screenHeight)), EffectPriority.High, RenderLayers.Sky);
                 SkyManager.Instance["Fog"] = new Fog();
                 Fog.FogTexture = GetTexture("Backgrounds/fog");
-                Filters.Scene["Fogless"] = new Filter(new ScreenShaderData("FilterBlizzardForeground").UseOpacity(0.3f).UseImageOffset(Main.player[Main.myPlayer].Center).UseImageScale(new Vector2(Main.screenWidth, Main.screenHeight)), EffectPriority.High);
-                Overlays.Scene["Fogless"] = new SimpleOverlay("Backgrounds/fogless", new ScreenShaderData("FilterBlizzardBackground").UseOpacity(0.3f), EffectPriority.High, RenderLayers.Sky);
+                Filters.Scene["Fogless"] = new Filter(new ScreenShaderData("FilterBlizzardForeground").UseImage("Backgrounds/fogless").UseOpacity(0.3f).UseImageScale(new Vector2(Main.screenWidth, Main.screenHeight)), EffectPriority.High);
+                Overlays.Scene["Fogless"] = new SimpleOverlay("Backgrounds/fogless", new ScreenShaderData("FilterBlizzardBackground").UseImage("Backgrounds/fogless").UseOpacity(0.3f).UseImageScale(new Vector2(Main.screenWidth, Main.screenHeight)), EffectPriority.High, RenderLayers.Sky);
                 SkyManager.Instance["Fogless"] = new Fogless();
                 Fogless.FoglessTexture = GetTexture("Backgrounds/fogless");
 

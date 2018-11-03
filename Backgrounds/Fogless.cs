@@ -13,6 +13,11 @@ namespace AAMod.Backgrounds
         public float Intensity;
         private float FoglessTime = 0f;
 
+        public override void OnLoad()
+        {
+            FoglessTexture = TextureManager.Load("Backgrounds/fogless");
+        }
+
         public override void Update(GameTime gameTime)
         {
             if (Active)
@@ -43,8 +48,11 @@ namespace AAMod.Backgrounds
         {
             if (maxDepth >= 3.40282347E+38f && minDepth < 3.40282347E+38f)
             {
-                Player player = Main.player[Main.myPlayer];
-                spriteBatch.Draw(FoglessTexture, player.Center, null, Color.White * FoglessTime * Intensity, 0f, new Vector2(player.Center.X, player.Center.Y), 1f, SpriteEffects.None, 10f);
+                if (Main.dayTime || (!AAWorld.downedYamata && !Main.expertMode) || (!AAWorld.downedYamataA && Main.expertMode))
+                {
+                    Player player = Main.player[Main.myPlayer];
+                    spriteBatch.Draw(FoglessTexture, player.Center, null, Color.White * FoglessTime * Intensity, 0f, new Vector2(player.Center.X, player.Center.Y), 1f, SpriteEffects.None, 10f);
+                }
             }
         }
 
