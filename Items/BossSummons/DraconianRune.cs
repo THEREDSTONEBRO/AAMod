@@ -7,13 +7,13 @@ using Microsoft.Xna.Framework;
 
 namespace AAMod.Items.BossSummons
 {
-    public class DraconianSigil : ModItem
+    public class DraconianRune : ModItem
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Draconian Sun Sigil");
-            Tooltip.SetDefault(@"An ornate tablet said to contain the radiant power of a thousand suns
-Summons Akuma
+            DisplayName.SetDefault("Draconian Sun Rune");
+            Tooltip.SetDefault(@"An enchanted tablet bursting with flaming chaotic energy
+Summons Akuma Awakened
 Only Usable during the day");
         }
 
@@ -48,24 +48,7 @@ Only Usable during the day");
 
         public override bool UseItem(Player player)
         {
-
-            if (!AAWorld.downedAkuma && !Main.expertMode)
-            {
-                Main.NewText("Heh, I hope you’re ready to feel the fury of the blazing sun kid.", Color.Orange.R, Color.Orange.G, Color.Orange.B);
-            }
-            if (!AAWorld.downedAkumaA && Main.expertMode)
-            {
-                Main.NewText("Heh, I hope you’re ready to feel the fury of the blazing sun kid.", Color.Orange.R, Color.Orange.G, Color.Orange.B);
-            }
-            if (!Main.expertMode && AAWorld.downedAkuma)
-            {
-                Main.NewText("Back for more, kid? Don’t you have better things to do? You already beat me once.  Alright, but I won’t go easy on you.", Color.Orange.R, Color.Orange.G, Color.Orange.B);
-            }
-            if (Main.expertMode && AAWorld.downedAkumaA)
-            {
-                Main.NewText("Back for more, kid? Don’t you have better things to do? You already beat me once.  Alright, but I won’t go easy on you.", Color.Orange.R, Color.Orange.G, Color.Orange.B);
-            }
-
+            Main.NewText("Cutting right to the chase I see..? Alright then, prepare for hell..!", Color.DeepSkyBlue.R, Color.DeepSkyBlue.G, Color.DeepSkyBlue.B);
             NPC.NewNPC((int)player.position.X + Main.rand.Next(-1000, 1000), (int)player.position.Y + Main.rand.Next(1000, 1000), mod.NPCType<Akuma>());
             Main.PlaySound(SoundID.Roar, player.position, 0);
             return true;
@@ -73,12 +56,15 @@ Only Usable during the day");
 
         public override void AddRecipes()
         {
-            ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(null, "DaybreakIncinerite", 10);
-            recipe.AddIngredient(null, "RadiumBar", 5);
-            recipe.AddTile(null, "QuantumFusionAccelerator");
-            recipe.SetResult(this, 1);
-            recipe.AddRecipe();
+            if (Main.expertMode)
+            { 
+                ModRecipe recipe = new ModRecipe(mod);
+                recipe.AddIngredient(null, "CrucibleScale", 20);
+                recipe.AddIngredient(null, "DraconianSigil");
+                recipe.AddTile(null, "QuantumFusionAccelerator");
+                recipe.SetResult(this, 1);
+                recipe.AddRecipe();
+            }
         }
     }
 }

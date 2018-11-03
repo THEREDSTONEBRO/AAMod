@@ -1,15 +1,29 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using System;
 using Terraria;
 using Terraria.ModLoader;
 
-namespace AAMod.NPCs.Bosses.Zero
+namespace AAMod.NPCs.Bosses.Akuma
 {
-    internal class DeathLaser : ModProjectile
+    internal class AFireProjHostile : ModProjectile
     {
+        public static short customGlowMask = 0;
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Doom Laser");
+            Main.projFrames[projectile.type] = 5;
+            if (Main.netMode != 2)
+            {
+                Texture2D[] glowMasks = new Texture2D[Main.glowMaskTexture.Length + 1];
+                for (int i = 0; i < Main.glowMaskTexture.Length; i++)
+                {
+                    glowMasks[i] = Main.glowMaskTexture[i];
+                }
+                glowMasks[glowMasks.Length - 1] = mod.GetTexture("NPCs/Bosses/Akuma/" + GetType().Name + "_Glow");
+                customGlowMask = (short)(glowMasks.Length - 1);
+                Main.glowMaskTexture = glowMasks;
+            }
+            DisplayName.SetDefault("Blazing Fury");
         }
 
         public override void SetDefaults()
@@ -22,6 +36,7 @@ namespace AAMod.NPCs.Bosses.Zero
             projectile.penetrate = 0;
             projectile.alpha = 60;
             projectile.timeLeft = 60;
+            projectile.glowMask = customGlowMask;
         }
 
         public override void AI()
@@ -34,6 +49,18 @@ namespace AAMod.NPCs.Bosses.Zero
             {
                 projectile.Kill();
             }
+
+            projectile.frameCounter++;
+            if (projectile.frameCounter > 0)
+            {
+                projectile.frame++;
+                projectile.frameCounter = 0;
+                if (projectile.frame > 3)
+                {
+                    projectile.frame = 0;
+                }
+            }
+
             projectile.rotation = (float)Math.Atan2(projectile.velocity.Y, projectile.velocity.X) + 1.57f;
             const int aislotHomingCooldown = 0;
             const int homingDelay = 10;
@@ -53,6 +80,11 @@ namespace AAMod.NPCs.Bosses.Zero
                     projectile.velocity = Vector2.Lerp(projectile.velocity, desiredVelocity, 1f / amountOfFramesToLerpBy);
                 }
             }
+        }
+
+        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+        {
+            target.AddBuff(mod.BuffType("DragonFire"), 600);
         }
 
         private int HomeOnTarget()

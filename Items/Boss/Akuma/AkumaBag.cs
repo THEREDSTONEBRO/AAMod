@@ -2,10 +2,10 @@ using System;
 using Terraria;
 using Terraria.ModLoader;
 
-namespace AAMod.Items.Boss.Zero
+namespace AAMod.Items.Boss.Akuma
 {
-	public class ZeroBag : ModItem
-	{
+    public class AkumaBag : ModItem
+    {
         public static short customGlowMask = 0;
         public override void SetStaticDefaults()
         {
@@ -16,35 +16,35 @@ namespace AAMod.Items.Boss.Zero
                 {
                     glowMasks[i] = Main.glowMaskTexture[i];
                 }
-                glowMasks[glowMasks.Length - 1] = mod.GetTexture("Items/Boss/Zero/" + GetType().Name + "_Glow");
+                glowMasks[glowMasks.Length - 1] = mod.GetTexture("Items/Boss/Akuma/" + GetType().Name + "_Glow");
                 customGlowMask = (short)(glowMasks.Length - 1);
                 Main.glowMaskTexture = glowMasks;
             }
-            item.glowMask = customGlowMask;
             DisplayName.SetDefault("Treasure Bag");
-			Tooltip.SetDefault("{$CommonItemTooltip.RightClickToOpen}");
-		}
+            Tooltip.SetDefault("{$CommonItemTooltip.RightClickToOpen}");
+        }
 
-		public override void SetDefaults()
-		{
-			item.maxStack = 999;
-			item.consumable = true;
-			item.width = 36;
-			item.height = 32;
-			item.expert = true;
-			bossBagNPC = mod.NPCType("Zero");
-		}
+        public override void SetDefaults()
+        {
+            item.maxStack = 999;
+            item.consumable = true;
+            item.width = 32;
+            item.height = 32;
+            item.expert = true;
+            bossBagNPC = mod.NPCType("AkumaA");
+            item.glowMask = customGlowMask;
+        }
 
-		public override bool CanRightClick()
-		{
-			return true;
-		}
+        public override bool CanRightClick()
+        {
+            return true;
+        }
 
-		public override void OpenBossBag(Player player)
-		{
+        public override void OpenBossBag(Player player)
+        {
             if (Main.rand.Next(7) == 0)
             {
-                player.QuickSpawnItem(mod.ItemType("ZeroMask"));
+                //player.QuickSpawnItem(mod.ItemType("ZeroMask"));
             }
             if (Main.rand.NextFloat() < 0.01f)
             {
@@ -125,16 +125,11 @@ namespace AAMod.Items.Boss.Zero
                     }
                 }
             }
-            player.QuickSpawnItem(mod.ItemType("UnstableSingularity"), Main.rand.Next(30, 40));
-            player.QuickSpawnItem(mod.ItemType("BrokenCode"));
-            string[] lootTable = { "Battery", "ZeroArrow", "Vortex", "EventHorizon", "RealityCannon", "RiftShredder", "VoidStar", "TeslaHand", "ZeroStar", "Neutralizer" };
+            player.QuickSpawnItem(mod.ItemType("CrucibleScales"), Main.rand.Next(30, 40));
+            player.QuickSpawnItem(mod.ItemType("TaiyangBaolei"));
+            string[] lootTable = { "Solar", "SunSpear", "ReignOfFire", "DaybreakArrow", "Daycrusher", "Dawnstrike", "Sunstorm", "SunStaff" };
             int loot = Main.rand.Next(lootTable.Length);
             player.QuickSpawnItem(mod.ItemType(lootTable[loot]));
-            if (Main.rand.NextFloat() < 0.05f && AAWorld.RealityDropped == false)
-            {
-                player.QuickSpawnItem(mod.ItemType("RealityStone"));
-                AAWorld.RealityDropped = true;
-            }
         }
-	}
+    }
 }

@@ -114,6 +114,30 @@ namespace AAMod.NPCs
                 }
             }
 
+            if (npc.type == NPCID.EnchantedSword)
+            {
+                if (Main.rand.NextFloat() < 0.1f)
+                {
+                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ItemID.Excalibur);
+                }
+            }
+
+            if (npc.type == NPCID.CrimsonAxe)
+            {
+                if (Main.rand.NextFloat() < 0.1f)
+                {
+                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ItemID.BloodLustCluster);
+                }
+            }
+
+            if (npc.type == NPCID.CursedHammer)
+            {
+                if (Main.rand.NextFloat() < 0.1f)
+                {
+                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("Shadowban"));
+                }
+            }
+
             if (Main.rand.Next(4096) == 0)   //item rarity
             {
                 Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("ShinyCharm")); //Item spawn

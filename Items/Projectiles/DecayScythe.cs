@@ -36,7 +36,7 @@ namespace AAMod.Items.Projectiles     //We need this to basically indicate the f
             projectile.tileCollide = false; //Tells the game whether or not it can collide with a tile
             projectile.ignoreWater = true; //Tells the game whether or not projectile will be affected by water        
             projectile.melee = true;  //Tells the game whether it is a melee projectile or not
-            projectile.scale = 1.5f;
+            projectile.scale = 3f;
             projectile.glowMask = customGlowMask;
         }
         public override void AI()
@@ -45,7 +45,7 @@ namespace AAMod.Items.Projectiles     //We need this to basically indicate the f
             projectile.soundDelay--;
             if (projectile.soundDelay <= 0)//this is the proper sound delay for this type of weapon
             {
-                Main.PlaySound(1, (int)projectile.Center.X, (int)projectile.Center.Y, 1);    //this is the sound when the weapon is used
+                Main.PlaySound(2, (int)projectile.Center.X, (int)projectile.Center.Y, 15);    //this is the sound when the weapon is used
                 projectile.soundDelay = 45;    //this is the proper sound delay for this type of weapon
             }
             //-----------------------------------------------How the projectile works---------------------------------------------------------------------
@@ -61,7 +61,7 @@ namespace AAMod.Items.Projectiles     //We need this to basically indicate the f
             projectile.Center = player.MountedCenter;
             projectile.position.X += player.width / 2 * player.direction;  //this is the projectile width sptrite direction from the playr
             projectile.spriteDirection = player.direction;
-            projectile.rotation += 1f * player.direction; //this is the projectile rotation/spinning speed
+            projectile.rotation += .5f * player.direction; //this is the projectile rotation/spinning speed
             if (projectile.rotation > MathHelper.TwoPi)
             {
                 projectile.rotation -= MathHelper.TwoPi;

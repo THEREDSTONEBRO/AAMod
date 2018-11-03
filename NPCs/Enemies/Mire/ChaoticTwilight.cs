@@ -33,16 +33,8 @@ namespace AAMod.NPCs.Enemies.Mire
 
 		public override float SpawnChance(NPCSpawnInfo spawnInfo)
 		{
-			Player player = spawnInfo.player;
-			if (!(player.ZoneTowerSolar || player.ZoneTowerVortex || player.ZoneTowerNebula || player.ZoneTowerStardust) && ((!Main.pumpkinMoon && !Main.snowMoon) || spawnInfo.spawnTileY > Main.worldSurface || Main.dayTime) && (!Main.eclipse || spawnInfo.spawnTileY > Main.worldSurface || !Main.dayTime) && (SpawnCondition.GoblinArmy.Chance == 0))
-			{
-                int[] TileArray2 = { mod.TileType("MireGrass"), mod.TileType("Depthstone") };
-
-                return TileArray2.Contains(Main.tile[spawnInfo.spawnTileX, spawnInfo.spawnTileY].type) && spawnInfo.spawnTileY > (Main.rockLayer) ? 0.1f : 0f;
-                
-			}
-			return 0f;
-		}
+            return spawnInfo.player.GetModPlayer<AAPlayer>(mod).ZoneInferno && spawnInfo.spawnTileY > Main.worldSurface ? .1f : 0f;
+        }
 
 		public override void HitEffect(int hitDirection, double damage)
 		{
@@ -58,7 +50,11 @@ namespace AAMod.NPCs.Enemies.Mire
 
 		public override void NPCLoot()
 		{
-		    //empty for desired loots
-		}
+            
+                if (Main.rand.NextFloat() < 0.1f)
+                {
+                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("AbyssalTwilight"));
+                }
+        }
 	}
 }

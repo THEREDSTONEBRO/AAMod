@@ -123,17 +123,12 @@ namespace AAMod.NPCs.Enemies.Other
                     }
                     break;
             }
-            NPCUtils.TargetClosestOldOnesInvasion(npc, true, null);
             NPCAimedTarget targetData = npc.GetTargetData(true);
             if (flag5)
             {
                 if (npc.localAI[0] == 0f)
                 {
                     npc.alpha = 255;
-                }
-                if (npc.localAI[0] == 30f)
-                {
-                    Main.PlayTrackedSound(SoundID.DD2_EtherianPortalSpawnEnemy, npc.Center);
                 }
                 if (npc.localAI[0] < 60f)
                 {
