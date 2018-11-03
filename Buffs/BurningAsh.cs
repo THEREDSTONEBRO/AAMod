@@ -1,4 +1,4 @@
-using AAMod.NPCs;
+using AAMod.NPCs.Bosses.Akuma;
 using Terraria;
 using Terraria.ModLoader;
 
@@ -17,7 +17,7 @@ namespace AAMod.Buffs
 
 		public override void Update(Player player, ref int buffIndex)
 		{
-            if (player.GetModPlayer<AAPlayer>(mod).ZoneInferno && !Main.dayTime)
+            if (player.GetModPlayer<AAPlayer>(mod).ZoneInferno && (!Main.dayTime || (!AAWorld.downedAkuma && !Main.expertMode) || (!AAWorld.downedAkumaA && Main.expertMode)))
             {
                 player.buffTime[buffIndex] = 5;
                 player.lifeRegenTime = 1;
