@@ -15,6 +15,7 @@ namespace AAMod.NPCs.Bosses.Akuma
         public override string Texture { get { return "AAMod/NPCs/Bosses/Akuma/AkumaA"; } }
 
         public bool Panic;
+        public bool Loludided;
 
         public override void SetStaticDefaults()
 		{
@@ -25,21 +26,37 @@ namespace AAMod.NPCs.Bosses.Akuma
 		public override void SetDefaults()
 		{
 			npc.noTileCollide = true;
-             npc.width = 90;
+             npc.width = 84;
             npc.height = 144;
 			npc.aiStyle = -1;
 			npc.netAlways = true;
             if (!AAWorld.downedAkumaA)
             {
                 npc.lifeMax = 300000;
-                npc.damage = 90;
-                npc.defense = 130;
+                if (npc.life > npc.lifeMax / 5 && Panic == false && !AAWorld.downedAkumaA && Main.expertMode && npc.type == mod.NPCType<AkumaA>())
+                {
+                    npc.damage = 90;
+                    npc.defense = 130;
+                }
+                if (npc.life <= npc.lifeMax / 5 && Panic == false && !AAWorld.downedAkumaA && Main.expertMode && npc.type == mod.NPCType<AkumaA>())
+                {
+                    npc.damage = 120;
+                    npc.defense = 150;
+                }
             }
             if (AAWorld.downedAkumaA)
             {
                 npc.lifeMax = 400000;
-                npc.damage = 120;
-                npc.defense = 150;
+                if (npc.life > npc.lifeMax / 5 && Panic == false && !AAWorld.downedAkumaA && Main.expertMode && npc.type == mod.NPCType<AkumaA>())
+                {
+                    npc.damage = 120;
+                    npc.defense = 150;
+                }
+                if (npc.life > npc.lifeMax / 5 && Panic == false && !AAWorld.downedAkumaA && Main.expertMode && npc.type == mod.NPCType<AkumaA>())
+                {
+                    npc.damage = 140;
+                    npc.defense = 170;
+                }
             }
             if (Main.expertMode)
             {
@@ -165,8 +182,17 @@ namespace AAMod.NPCs.Bosses.Akuma
 					}
 				}
 			}
-			float speed = 12f;
-			float acceleration = 0.40f;
+            float speedval = 0f;
+            if (npc.life > npc.lifeMax / 5 && npc.type == mod.NPCType<AkumaA>())
+            {
+                speedval = 8f;
+            }
+            if (npc.life <= npc.lifeMax / 5 && npc.type == mod.NPCType<AkumaA>())
+            {
+                speedval = 10f;
+            }
+            float speed = speedval;
+            float acceleration = 0.40f;
 
 			Vector2 npcCenter = new Vector2(npc.position.X + npc.width * 0.5f, npc.position.Y + npc.height * 0.5f);
 			float targetXPos = Main.player[npc.target].position.X + (Main.player[npc.target].width / 2);
@@ -244,6 +270,11 @@ namespace AAMod.NPCs.Bosses.Akuma
 
             if (Main.player[npc.target].dead)
             {
+                if (Loludided == false)
+                {
+                    Main.NewText("You just got burned, kid.", Color.DeepSkyBlue.R, Color.DeepSkyBlue.G, Color.DeepSkyBlue.B);
+                    Loludided = true;
+                }
                 npc.velocity.Y = npc.velocity.Y + 1f;
                 if ((double)npc.position.Y > Main.rockLayer * 16.0)
                 {
@@ -388,7 +419,7 @@ namespace AAMod.NPCs.Bosses.Akuma
         public override void SetDefaults()
         {
             base.SetDefaults();
-             npc.width = 90;
+             npc.width = 84;
             npc.height = 96;
             npc.dontCountMe = true;
             npc.alpha = 255;
@@ -523,7 +554,7 @@ namespace AAMod.NPCs.Bosses.Akuma
         public override void SetDefaults()
         {
             base.SetDefaults();
-             npc.width = 90;
+             npc.width = 84;
             npc.height = 96;
             npc.dontCountMe = true;
             npc.alpha = 255;

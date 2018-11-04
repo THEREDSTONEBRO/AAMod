@@ -171,7 +171,7 @@ namespace AAMod.Items.Projectiles.Akuma
             }
         }
 
-        public void DrawProj(int i, Main main)
+        /*public override void PostDraw(SpriteBatch spriteBatch, Color lightColor)
         {
             Projectile projectile = Main.projectile[i];
             main.LoadProjectile(projectile.type);
@@ -200,6 +200,6 @@ namespace AAMod.Items.Projectiles.Akuma
             Main.spriteBatch.Draw(Main.extraTexture[50], vector38, null, alpha4 * 0.8f, projectile.rotation * 0.5f, origin8, projectile.scale * 0.9f, spriteEffects, 0f);
             alpha4.A = 0;
             Main.spriteBatch.Draw(texture2D30, vector38, null, alpha4, projectile.rotation, origin8, projectile.scale, spriteEffects, 0f);
-        }
+        }*/
     }
 }

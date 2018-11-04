@@ -15,6 +15,8 @@ namespace AAMod.NPCs.Bosses.Akuma
         
         public override string Texture { get { return "AAMod/NPCs/Bosses/Akuma/Akuma"; } }
 
+        public bool loludided;
+
         public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Akuma");
@@ -25,7 +27,7 @@ namespace AAMod.NPCs.Bosses.Akuma
 		{
 			npc.noTileCollide = true;
 			npc.height = 144;
-			npc.width = 90;
+			npc.width = 84;
 			npc.aiStyle = -1;
 			npc.netAlways = true;
 			npc.knockBackResist = 0f; if (!Main.expertMode && !AAWorld.downedAkuma)
@@ -176,7 +178,7 @@ namespace AAMod.NPCs.Bosses.Akuma
 					}
 				}
 			}
-			float speed = 10f;
+			float speed = 7f;
 			float acceleration = 0.16f;
 
 			Vector2 npcCenter = new Vector2(npc.position.X + npc.width * 0.5f, npc.position.Y + npc.height * 0.5f);
@@ -254,6 +256,11 @@ namespace AAMod.NPCs.Bosses.Akuma
 			}
             if (Main.player[npc.target].dead)
             {
+                if (loludided == false)
+                {
+                    Main.NewText("I thought you terrarians put up more of a fight. Guess not.", new Color(180, 41, 32));
+                    loludided = true;
+                }
                 npc.velocity.Y = npc.velocity.Y + 1f;
                 if ((double)npc.position.Y > Main.rockLayer * 16.0)
                 {
@@ -368,7 +375,7 @@ namespace AAMod.NPCs.Bosses.Akuma
         public override void SetDefaults()
         {
             base.SetDefaults();
-            npc.width = 90;
+            npc.width = 84;
             npc.height = 96;
             npc.dontCountMe = true;
 
@@ -492,7 +499,7 @@ namespace AAMod.NPCs.Bosses.Akuma
         public override void SetDefaults()
         {
             base.SetDefaults();
-            npc.width = 90;
+            npc.width = 84;
             npc.height = 92;
             npc.dontCountMe = true;
 

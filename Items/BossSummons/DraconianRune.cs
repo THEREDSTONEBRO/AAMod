@@ -49,7 +49,7 @@ Only Usable during the day");
         public override bool UseItem(Player player)
         {
             Main.NewText("Cutting right to the chase I see..? Alright then, prepare for hell..!", Color.DeepSkyBlue.R, Color.DeepSkyBlue.G, Color.DeepSkyBlue.B);
-            NPC.NewNPC((int)player.position.X + Main.rand.Next(-1000, 1000), (int)player.position.Y + Main.rand.Next(1000, 1000), mod.NPCType<AkumaA>());
+            NPC.NewNPC((int)player.position.X + Main.rand.Next(-2000, 2000), (int)player.position.Y + Main.rand.Next(2000, 2000), mod.NPCType<AkumaA>());
             Main.PlaySound(SoundID.Roar, player.position, 0);
             return true;
         }

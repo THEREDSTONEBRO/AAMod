@@ -920,6 +920,7 @@
     <Content Include="Achievements\ZeroA.png" />
     <Content Include="Achievements\ZeroANot.png" />
     <Content Include="Achievements\ZeroNot.png" />
+    <Content Include="Backgrounds\AkumaSun.png" />
     <Content Include="Backgrounds\Aurora.png" />
     <Content Include="Backgrounds\fog.png" />
     <Content Include="Backgrounds\fogless.png" />
@@ -955,6 +956,7 @@
     <Content Include="Backgrounds\VoidFlash.png" />
     <Content Include="Backgrounds\VoidPlanet.png" />
     <Content Include="Backgrounds\VoidSky.png" />
+    <Content Include="Backgrounds\YamataMoon.png" />
     <Content Include="bin\Debug\AAMod.dll" />
     <Content Include="bin\Debug\AAMod.pdb" />
     <Content Include="bin\Debug\Microsoft.Xna.Framework.dll" />
