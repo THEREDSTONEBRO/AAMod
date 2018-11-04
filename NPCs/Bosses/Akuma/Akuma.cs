@@ -93,30 +93,42 @@ namespace AAMod.NPCs.Bosses.Akuma
                 {
                     npc.realLife = npc.whoAmI;
                     int latestNPC = npc.whoAmI;
-                    int segment = 0;
-                    int AkumaALength = 9;
-                    for (int i = 0; i < AkumaALength; ++i)
-                    {
 
-                        latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("AkumaBody"), npc.whoAmI, 0, latestNPC);
-                        Main.npc[(int)latestNPC].realLife = npc.whoAmI;
-                        Main.npc[(int)latestNPC].ai[3] = npc.whoAmI;
+                    latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("AkumaBody"), npc.whoAmI, 0, latestNPC);
+                    Main.npc[(int)latestNPC].realLife = npc.whoAmI;
+                    Main.npc[(int)latestNPC].ai[3] = npc.whoAmI;
 
-                        /*if (segment == 0 || segment == 2 || segment == 3 || segment == 5 || segment == 6 || segment == 8)
-                        {
-                            latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("AkumaBody"), npc.whoAmI, 0, latestNPC);
-                            Main.npc[(int)latestNPC].realLife = npc.whoAmI;
-                            Main.npc[(int)latestNPC].ai[3] = npc.whoAmI;
-                            segment += 1;
-                        }
-                        if (segment == 1 || segment == 4 || segment == 7)
-                        {
-                            latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("AkumaArm"), npc.whoAmI, 0, latestNPC);
-                            Main.npc[(int)latestNPC].realLife = npc.whoAmI;
-                            Main.npc[(int)latestNPC].ai[3] = npc.whoAmI;
-                            segment += 1;
-                        }*/
-                    }
+                    latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("AkumaArm"), npc.whoAmI, 0, latestNPC);
+                    Main.npc[(int)latestNPC].realLife = npc.whoAmI;
+                    Main.npc[(int)latestNPC].ai[3] = npc.whoAmI;
+
+                    latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("AkumaBody"), npc.whoAmI, 0, latestNPC);
+                    Main.npc[(int)latestNPC].realLife = npc.whoAmI;
+                    Main.npc[(int)latestNPC].ai[3] = npc.whoAmI;
+
+                    latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("AkumaBody"), npc.whoAmI, 0, latestNPC);
+                    Main.npc[(int)latestNPC].realLife = npc.whoAmI;
+                    Main.npc[(int)latestNPC].ai[3] = npc.whoAmI;
+
+                    latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("AkumaArm"), npc.whoAmI, 0, latestNPC);
+                    Main.npc[(int)latestNPC].realLife = npc.whoAmI;
+                    Main.npc[(int)latestNPC].ai[3] = npc.whoAmI;
+
+                    latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("AkumaBody"), npc.whoAmI, 0, latestNPC);
+                    Main.npc[(int)latestNPC].realLife = npc.whoAmI;
+                    Main.npc[(int)latestNPC].ai[3] = npc.whoAmI;
+
+                    latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("AkumaBody"), npc.whoAmI, 0, latestNPC);
+                    Main.npc[(int)latestNPC].realLife = npc.whoAmI;
+                    Main.npc[(int)latestNPC].ai[3] = npc.whoAmI;
+
+                    latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("AkumaArm"), npc.whoAmI, 0, latestNPC);
+                    Main.npc[(int)latestNPC].realLife = npc.whoAmI;
+                    Main.npc[(int)latestNPC].ai[3] = npc.whoAmI;
+
+                    latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("AkumaBody"), npc.whoAmI, 0, latestNPC);
+                    Main.npc[(int)latestNPC].realLife = npc.whoAmI;
+                    Main.npc[(int)latestNPC].ai[3] = npc.whoAmI;
 
                     latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("AkumaTail"), npc.whoAmI, 0, latestNPC);
                     Main.npc[(int)latestNPC].realLife = npc.whoAmI;
@@ -286,7 +298,7 @@ namespace AAMod.NPCs.Bosses.Akuma
                 if (!Main.expertMode)
                 {
                     npc.DropLoot(mod.ItemType("CrucibleScale"), 25, 35);
-                    string[] lootTable = { "Solar", "SunSpear", "ReignOfFire", "DaybreakArrow", "Daycrusher", "Dawnstrike", "Sunstorm", "SunStaff"};
+                    string[] lootTable = { "Solar", "SunSpear", "ReignOfFire", "DaybreakArrow", "Daycrusher", "Dawnstrike", "SunStorm", "SunStaff"};
                     int loot = Main.rand.Next(lootTable.Length);
                     npc.DropLoot(mod.ItemType(lootTable[loot]));
                     //npc.DropLoot(Items.Vanity.Mask.AkumaMask.type, 1f / 7);
@@ -388,9 +400,9 @@ namespace AAMod.NPCs.Bosses.Akuma
                 float dist = (length - (float)npc.width) / length;
                 float posX = dirX * dist;
                 float posY = dirY * dist;
-                
+
                 // Reset the velocity of this NPC, because we don't want it to move on its own
-                if (npc.velocity.X < 0f)
+                if (dirX < 0f)
                 {
                     npc.spriteDirection = 1;
 
@@ -497,10 +509,9 @@ namespace AAMod.NPCs.Bosses.Akuma
                 float dist = (length - (float)npc.width) / length;
                 float posX = dirX * dist;
                 float posY = dirY * dist;
-                
-                
+
                 // Reset the velocity of this NPC, because we don't want it to move on its own
-                if (npc.velocity.X < 0f)
+                if (dirX < 0f)
                 {
                     npc.spriteDirection = 1;
 
@@ -513,6 +524,14 @@ namespace AAMod.NPCs.Bosses.Akuma
                 npc.position.X = npc.position.X + posX;
                 npc.position.Y = npc.position.Y + posY;
             }
+            return false;
+        }
+
+        public override bool PreDraw(SpriteBatch spriteBatch, Color drawColor)
+        {
+            Mod mod = ModLoader.GetMod("AAMod");
+            Texture2D texture = mod.GetTexture("NPCs/Bosses/Akuma/AkumaArms");
+            AAMod.DrawTexture(spriteBatch, (npc.localAI[3] == 1f ? texture : Main.npcTexture[npc.type]), 0, npc, drawColor);
             return false;
         }
     }
@@ -531,7 +550,7 @@ namespace AAMod.NPCs.Bosses.Akuma
             base.SetDefaults();
 
             npc.width = 44;
-            npc.height = 78;
+            npc.height = 96;
             npc.dontCountMe = true;
         }
 
@@ -546,8 +565,8 @@ namespace AAMod.NPCs.Bosses.Akuma
 
                 npc.position.X = npc.position.X + (float)(npc.width / 2);
                 npc.position.Y = npc.position.Y + (float)(npc.height / 2);
-                npc.width = 40;
-                npc.height = 60;
+                npc.width = 44;
+                npc.height = 78;
                 npc.position.X = npc.position.X - (float)(npc.width / 2);
                 npc.position.Y = npc.position.Y - (float)(npc.height / 2);
                 for (int num621 = 0; num621 < 100; num621++)
@@ -595,8 +614,6 @@ namespace AAMod.NPCs.Bosses.Akuma
                     // NetMessage.SendData(28, -1, -1, "", npc.whoAmI, -1f, 0.0f, 0.0f, 0, 0, 0);
                 }
             }
-            
-            
 
             if (npc.ai[1] < (double)Main.npc.Length)
             {
@@ -615,7 +632,7 @@ namespace AAMod.NPCs.Bosses.Akuma
                 float posY = dirY * dist;
 
                 // Reset the velocity of this NPC, because we don't want it to move on its own
-                if (npc.velocity.X < 0f)
+                if (dirX < 0f)
                 {
                     npc.spriteDirection = 1;
 

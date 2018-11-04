@@ -308,6 +308,7 @@
     <Compile Include="Items\BossSummons\IntimidatingMushroom.cs" />
     <Compile Include="Items\BossSummons\ZeroRune.cs" />
     <Compile Include="Items\BossSummons\ZeroTesseract.cs" />
+    <Compile Include="Items\Boss\Akuma\AkumaTerratool.cs" />
     <Compile Include="Items\Boss\Akuma\CrucibleScale.cs" />
     <Compile Include="Items\Boss\Akuma\SunStaff.cs" />
     <Compile Include="Items\Boss\Akuma\SunStorm.cs" />
@@ -1455,6 +1456,10 @@
     <Content Include="Items\BossSummons\ZeroRune_Glow.png" />
     <Content Include="Items\BossSummons\ZeroTesseract.png" />
     <Content Include="Items\BossSummons\ZeroTesseract_Glow.png" />
+    <Content Include="Items\Boss\Akuma\AkumaBag.png" />
+    <Content Include="Items\Boss\Akuma\AkumaBag_Glow.png" />
+    <Content Include="Items\Boss\Akuma\AkumaTerratool.png" />
+    <Content Include="Items\Boss\Akuma\AkumaTerratool_Glow.png" />
     <Content Include="Items\Boss\Akuma\AkumaTrophy.png" />
     <Content Include="Items\Boss\Akuma\CrucibleScale.png" />
     <Content Include="Items\Boss\Akuma\Dawnstrike.png" />
@@ -1463,10 +1468,13 @@
     <Content Include="Items\Boss\Akuma\DaybreakArrow_Glow.png" />
     <Content Include="Items\Boss\Akuma\Daycrusher.png" />
     <Content Include="Items\Boss\Akuma\Daycrusher_Glow.png" />
+    <Content Include="Items\Boss\Akuma\Daystorm.png" />
+    <Content Include="Items\Boss\Akuma\Daystorm_Glow.png" />
     <Content Include="Items\Boss\Akuma\DragonSlasher.png" />
     <Content Include="Items\Boss\Akuma\DragonSlasher_Glow.png" />
     <Content Include="Items\Boss\Akuma\LungStaff.png" />
     <Content Include="Items\Boss\Akuma\LungStaff_Glow.png" />
+    <Content Include="Items\Boss\Akuma\MorningGlory.png" />
     <Content Include="Items\Boss\Akuma\RadiantDawn.png" />
     <Content Include="Items\Boss\Akuma\RadiantDawn_Glow.png" />
     <Content Include="Items\Boss\Akuma\ReignOfFire.png" />
@@ -1480,11 +1488,15 @@
     <Content Include="Items\Boss\Akuma\SunStorm.png" />
     <Content Include="Items\Boss\Akuma\SunStorm_Glow.png" />
     <Content Include="Items\Boss\Akuma\TaiyangBaolei.png" />
+    <Content Include="Items\Boss\Akuma\TaiyangBaolei1.png" />
     <Content Include="Items\Boss\Akuma\TaiyangBaoleiA.png" />
     <Content Include="Items\Boss\Akuma\TaiyangBaoleiA2.png" />
     <Content Include="Items\Boss\Akuma\TaiyangBaoleiA2_Shield.png" />
     <Content Include="Items\Boss\Akuma\TaiyangBaoleia_Shield.png" />
+    <Content Include="Items\Boss\Akuma\TaiyangBaolei_Glow.png" />
     <Content Include="Items\Boss\Akuma\TaiyangBaolei_Shield.png" />
+    <Content Include="Items\Boss\Akuma\TaiyangBaolei_Shield1.png" />
+    <Content Include="Items\Boss\Akuma\TaiyangBaolei_ShieldA2.png" />
     <Content Include="Items\Boss\Broodmother\BroodBag.png" />
     <Content Include="Items\Boss\Broodmother\BroodBag_Glow.png" />
     <Content Include="Items\Boss\Broodmother\BroodmotherTrophy.png" />
@@ -1820,6 +1832,8 @@
     <Content Include="Items\Projectiles\Akuma\SunOrb.png" />
     <Content Include="Items\Projectiles\Akuma\Sunray.png" />
     <Content Include="Items\Projectiles\Akuma\SunSpear.png" />
+    <Content Include="Items\Projectiles\Akuma\SunSpearRain.png" />
+    <Content Include="Items\Projectiles\Akuma\SunSpearRain_Glow.png" />
     <Content Include="Items\Projectiles\Akuma\SunSpearShot.png" />
     <Content Include="Items\Projectiles\Akuma\SunSpearShot_Glow.png" />
     <Content Include="Items\Projectiles\Akuma\SunSpear_Glow.png" />

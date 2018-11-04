@@ -77,7 +77,7 @@ namespace AAMod.NPCs.Bosses.Akuma
 					for (int i = 0; i < AkumaALength; ++i)
 					{
 
-                        latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("AkumaBody"), npc.whoAmI, 0, latestNPC);
+                        latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("AkumaABody"), npc.whoAmI, 0, latestNPC);
                         Main.npc[(int)latestNPC].realLife = npc.whoAmI;
                         Main.npc[(int)latestNPC].ai[3] = npc.whoAmI;
 
@@ -299,7 +299,7 @@ namespace AAMod.NPCs.Bosses.Akuma
 
         public override void NPCLoot()
 		{
-			AAWorld.downedAkumaA = true;
+			
 
             if (Main.expertMode)
             {
@@ -310,25 +310,27 @@ namespace AAMod.NPCs.Bosses.Akuma
                     Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("EXSoul"));
                 }
                 npc.DropBossBags();
-                return;
+                
             }
             if (!AAWorld.downedAkumaA && Main.expertMode)
             {
                 Main.NewText("Gah..! How could this happen?! Even in my full form?! Fine, take your reward. You earned it.", Color.DeepSkyBlue.R, Color.DeepSkyBlue.G, Color.DeepSkyBlue.B);
 
-                Panic = false;
+                
             }
             if (AAWorld.downedAkumaA && Main.expertMode)
             {
                 Main.NewText("Snuffed out again. You have my respect, kid. Here.", Color.DeepSkyBlue.R, Color.DeepSkyBlue.G, Color.DeepSkyBlue.B);
-                Panic = false;
+                
             }
             if (!Main.expertMode)
             {
                 Main.NewText("Nice hacks, kid. Now come back and fight me like a real man in expert mode. Then I’ll give you your prize.", Color.DeepSkyBlue.R, Color.DeepSkyBlue.G, Color.DeepSkyBlue.B);
-                Panic = false;
+                
             }
 
+            AAWorld.downedAkumaA = true;
+            return;
 
         }
 
@@ -441,8 +443,8 @@ namespace AAMod.NPCs.Bosses.Akuma
                 float posY = dirY * dist;
 
                 // Reset the velocity of this NPC, because we don't want it to move on its own
-                
-                if (npc.velocity.X < 0f)
+
+                if (dirX < 0f)
                 {
                     npc.spriteDirection = 1;
 
@@ -559,7 +561,7 @@ namespace AAMod.NPCs.Bosses.Akuma
                 float posY = dirY * dist;
 
                 // Reset the velocity of this NPC, because we don't want it to move on its own
-                if (npc.velocity.X < 0f)
+                if (dirX < 0f)
                 {
                     npc.spriteDirection = 1;
 
@@ -608,6 +610,14 @@ namespace AAMod.NPCs.Bosses.Akuma
                 Main.NewText("Still got it, do ya? I like that about you, kid..!", Color.DeepSkyBlue.R, Color.DeepSkyBlue.G, Color.DeepSkyBlue.B);
             }
         }
+
+        public override bool PreDraw(SpriteBatch spriteBatch, Color drawColor)
+        {
+            Mod mod = ModLoader.GetMod("AAMod");
+            Texture2D texture = mod.GetTexture("NPCs/Bosses/AkumaAArms");
+            AAMod.DrawTexture(spriteBatch, (npc.localAI[1] == 1f ? texture : Main.npcTexture[npc.type]), 0, npc, drawColor);
+            return false;
+        }
     }
 
     public class AkumaATail : AkumaA
@@ -623,7 +633,7 @@ namespace AAMod.NPCs.Bosses.Akuma
         {
             base.SetDefaults();
 
-            npc.width = 44;
+            npc.width = 96;
             npc.height = 78;
             npc.dontCountMe = true;
         }
@@ -677,7 +687,7 @@ namespace AAMod.NPCs.Bosses.Akuma
                 float posY = dirY * dist;
 
                 // Reset the velocity of this NPC, because we don't want it to move on its own
-                if (npc.velocity.X < 0f)
+                if (dirX < 0f)
                 {
                     npc.spriteDirection = 1;
 

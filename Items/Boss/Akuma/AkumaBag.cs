@@ -130,9 +130,9 @@ namespace AAMod.Items.Boss.Akuma
                     }
                 }
             }
-            player.QuickSpawnItem(mod.ItemType("CrucibleScales"), Main.rand.Next(30, 40));
+            player.QuickSpawnItem(mod.ItemType("CrucibleScale"), Main.rand.Next(30, 40));
             player.QuickSpawnItem(mod.ItemType("TaiyangBaolei"));
-            string[] lootTable = { "Solar", "SunSpear", "ReignOfFire", "DaybreakArrow", "Daycrusher", "Dawnstrike", "Sunstorm", "SunStaff" };
+            string[] lootTable = { "Solar", "SunSpear", "ReignOfFire", "DaybreakArrow", "Daycrusher", "Dawnstrike", "SunStorm", "SunStaff" };
             int loot = Main.rand.Next(lootTable.Length);
             player.QuickSpawnItem(mod.ItemType(lootTable[loot]));
         }
