@@ -53,8 +53,8 @@ namespace AAMod.Items.Projectiles.Akuma
                     Dust dust1;
                     Dust dust2;
                     Vector2 position = projectile.position;
-                    dust1 = Main.dust[Dust.NewDust(position, 0, 0, mod.DustType<Dusts.AkumaDust>(), 4.736842f, 0f, 46, default(Color), 1f)];
-                    dust2 = Main.dust[Dust.NewDust(position, 0, 0, mod.DustType<Dusts.AkumaDust>(), 4.736842f, 0f, 46, default(Color), 1f)];
+                    dust1 = Main.dust[Dust.NewDust(position, 0, 0, mod.DustType<Dusts.AkumaDust>(), 0,0, 0, default(Color), 1f)];
+                    dust2 = Main.dust[Dust.NewDust(position, 0, 0, mod.DustType<Dusts.AkumaDust>(), 0, 0, 0, default(Color), 1f)];
                     dust1.noGravity = true;
                     dust2.noGravity = true;
                 }

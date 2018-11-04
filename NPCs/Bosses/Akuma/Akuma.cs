@@ -9,8 +9,10 @@ using Terraria.Audio;
 
 namespace AAMod.NPCs.Bosses.Akuma
 {
-	public class Akuma : ModNPC
+    [AutoloadBossHead]
+    public class Akuma : ModNPC
 	{
+        
         public override string Texture { get { return "AAMod/NPCs/Bosses/Akuma/Akuma"; } }
 
         public override void SetStaticDefaults()
@@ -23,7 +25,7 @@ namespace AAMod.NPCs.Bosses.Akuma
 		{
 			npc.noTileCollide = true;
 			npc.height = 144;
-			npc.width = 70;
+			npc.width = 90;
 			npc.aiStyle = -1;
 			npc.netAlways = true;
 			npc.knockBackResist = 0f; if (!Main.expertMode && !AAWorld.downedAkuma)
@@ -68,67 +70,68 @@ namespace AAMod.NPCs.Bosses.Akuma
             {
                 npc.buffImmune[k] = true;
             }
+
+            npc.alpha = 255;
         }
 
-		public override bool PreAI()
-		{
-
+        public override bool PreAI()
+        {
             Main.dayTime = true;
             Main.time = 24000;
-
-
             Player player = Main.player[npc.target];
-			float dist = npc.Distance(player.Center);
-			if (dist < 300 & Main.rand.Next(3) == 1)
-			{
-				if (Main.rand.Next(10) == 1)
-					Main.PlaySound(2, (int)npc.position.X, (int)npc.position.Y, 9);
+            float dist = npc.Distance(player.Center);
+            if (dist < 300 & Main.rand.Next(3) == 1)
+            {
+                if (Main.rand.Next(10) == 1)
+                    Main.PlaySound(2, (int)npc.position.X, (int)npc.position.Y, 9);
 
-				int proj2 = Projectile.NewProjectile(npc.Center.X + Main.rand.Next(-20, 20), npc.Center.Y  + Main.rand.Next(-20, 20), npc.velocity.X* Main.rand.Next(1, 2), npc.velocity.Y * Main.rand.Next(1, 2), mod.ProjectileType("Starshock"), 20, 0, Main.myPlayer);
-				Main.projectile[proj2].timeLeft = 60;
-			}
-			if (Main.netMode != 1)
-			{
+                int proj2 = Projectile.NewProjectile(npc.Center.X + Main.rand.Next(-20, 20), npc.Center.Y + Main.rand.Next(-20, 20), npc.velocity.X * Main.rand.Next(1, 2), npc.velocity.Y * Main.rand.Next(1, 2), mod.ProjectileType("AFireProjHostile"), 20, 0, Main.myPlayer);
+                Main.projectile[proj2].timeLeft = 60;
+            }
+
+            if (npc.alpha != 0)
+            {
+                for (int spawnDust = 0; spawnDust < 2; spawnDust++)
+                {
+                    int num935 = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, mod.DustType("AkumaDust"), 0f, 0f, 100, default(Color), 2f);
+                    Main.dust[num935].noGravity = true;
+                    Main.dust[num935].noLight = true;
+                }
+            }
+            npc.alpha -= 12;
+            if (npc.alpha < 0)
+            {
+                npc.alpha = 0;
+            }
+
+            if (Main.netMode != 1)
+            {
                 if (npc.ai[0] == 0)
                 {
                     npc.realLife = npc.whoAmI;
                     int latestNPC = npc.whoAmI;
+                    int segment = 0;
+                    int AkumaALength = 9;
+                    for (int i = 0; i < AkumaALength; ++i)
+                    {
 
-                    latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("AkumaBody"), npc.whoAmI, 0, latestNPC);
-                    Main.npc[(int)latestNPC].realLife = npc.whoAmI;
-                    Main.npc[(int)latestNPC].ai[3] = npc.whoAmI;
 
-                    latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("AkumaArms"), npc.whoAmI, 0, latestNPC);
-                    Main.npc[(int)latestNPC].realLife = npc.whoAmI;
-                    Main.npc[(int)latestNPC].ai[3] = npc.whoAmI;
 
-                    latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("AkumaBody"), npc.whoAmI, 0, latestNPC);
-                    Main.npc[(int)latestNPC].realLife = npc.whoAmI;
-                    Main.npc[(int)latestNPC].ai[3] = npc.whoAmI;
-
-                    latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("AkumaBody"), npc.whoAmI, 0, latestNPC);
-                    Main.npc[(int)latestNPC].realLife = npc.whoAmI;
-                    Main.npc[(int)latestNPC].ai[3] = npc.whoAmI;
-
-                    latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("AkumaArms"), npc.whoAmI, 0, latestNPC);
-                    Main.npc[(int)latestNPC].realLife = npc.whoAmI;
-                    Main.npc[(int)latestNPC].ai[3] = npc.whoAmI;
-
-                    latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("AkumaBody"), npc.whoAmI, 0, latestNPC);
-                    Main.npc[(int)latestNPC].realLife = npc.whoAmI;
-                    Main.npc[(int)latestNPC].ai[3] = npc.whoAmI;
-
-                    latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("AkumaBody"), npc.whoAmI, 0, latestNPC);
-                    Main.npc[(int)latestNPC].realLife = npc.whoAmI;
-                    Main.npc[(int)latestNPC].ai[3] = npc.whoAmI;
-
-                    latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("AkumaArms"), npc.whoAmI, 0, latestNPC);
-                    Main.npc[(int)latestNPC].realLife = npc.whoAmI;
-                    Main.npc[(int)latestNPC].ai[3] = npc.whoAmI;
-
-                    latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("AkumaBody"), npc.whoAmI, 0, latestNPC);
-                    Main.npc[(int)latestNPC].realLife = npc.whoAmI;
-                    Main.npc[(int)latestNPC].ai[3] = npc.whoAmI;
+                        if (segment == 0 || segment == 2 || segment == 3 || segment == 5 || segment == 6 || segment == 8)
+                        {
+                            latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("AkumaBody"), npc.whoAmI, 0, latestNPC);
+                            Main.npc[(int)latestNPC].realLife = npc.whoAmI;
+                            Main.npc[(int)latestNPC].ai[3] = npc.whoAmI;
+                            segment += 1;
+                        }
+                        if (segment == 1 || segment == 4 || segment == 7)
+                        {
+                            latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("AkumaArms"), npc.whoAmI, 0, latestNPC);
+                            Main.npc[(int)latestNPC].realLife = npc.whoAmI;
+                            Main.npc[(int)latestNPC].ai[3] = npc.whoAmI;
+                            segment += 1;
+                        }
+                    }
 
                     latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("AkumaTail"), npc.whoAmI, 0, latestNPC);
                     Main.npc[(int)latestNPC].realLife = npc.whoAmI;
@@ -139,7 +142,8 @@ namespace AAMod.NPCs.Bosses.Akuma
                 }
             }
 
-			int minTilePosX = (int)(npc.position.X / 16.0) - 1;
+
+            int minTilePosX = (int)(npc.position.X / 16.0) - 1;
 			int maxTilePosX = (int)((npc.position.X + npc.width) / 16.0) + 2;
 			int minTilePosY = (int)(npc.position.Y / 16.0) - 1;
 			int maxTilePosY = (int)((npc.position.Y + npc.height) / 16.0) + 2;
@@ -295,52 +299,61 @@ namespace AAMod.NPCs.Bosses.Akuma
 		{
 			AAWorld.downedAkuma = true;
             
-                if (!Main.expertMode)
-                {
-                    npc.DropLoot(mod.ItemType("CrucibleScale"), 25, 35);
-                    string[] lootTable = { "Solar", "SunSpear", "ReignOfFire", "DaybreakArrow", "Daycrusher", "Dawnstrike", "SunStorm", "SunStaff"};
+            
+            if (!Main.expertMode)
+            {
+                npc.DropLoot(mod.ItemType("CrucibleScale"), 25, 35);
+                string[] lootTable = { "Solar", "SunSpear", "ReignOfFire", "DaybreakArrow", "Daycrusher", "Dawnstrike", "SunStorm", "SunStaff"};
                     int loot = Main.rand.Next(lootTable.Length);
                     npc.DropLoot(mod.ItemType(lootTable[loot]));
                     //npc.DropLoot(Items.Vanity.Mask.AkumaMask.type, 1f / 7);
                     npc.DropLoot(Items.Boss.Akuma.AkumaTrophy.type, 1f / 10);
-                    Main.NewText("Hmpf...you’re pretty good kid, but not good enough. Come back once you’ve gotten a bit better.", Color.OrangeRed.R, Color.OrangeRed.G, Color.OrangeRed.B);
-                }
-                if (Main.expertMode)
-                {
-                    Projectile.NewProjectile((new Vector2(npc.position.X, npc.position.Y)), (new Vector2(0f, 0f)), mod.ProjectileType("AkumaTransition"), 0, 0);
-                }
-                npc.value = 0f;
-                npc.boss = false;
+                    Main.NewText("Hmpf...you’re pretty good kid, but not good enough. Come back once you’ve gotten a bit better.", new Color(180, 41, 32));
+            }
+            if (Main.expertMode)
+            {
+                Projectile.NewProjectile((new Vector2(npc.position.X, npc.position.Y)), (new Vector2(0f, 0f)), mod.ProjectileType("AkumaTransition"), 0, 0);
+            }
+            npc.value = 0f;
+            npc.boss = false;
 		}
-        public override void PostDraw(SpriteBatch spriteBatch, Color drawColor)
+
+        public override void BossLoot(ref string name, ref int potionType)
         {
-            SpriteEffects spriteEffects = SpriteEffects.None;
-            if (npc.spriteDirection == 1)
+            if (!Main.expertMode)
             {
-                spriteEffects = SpriteEffects.FlipHorizontally;
-            }
-            if (npc.type == mod.NPCType("AkumaA"))
-            {
-                spriteBatch.Draw(mod.GetTexture("NPCs/Bosses/Akuma/Akuma_Glow"), new Vector2(npc.Center.X - Main.screenPosition.X, npc.Center.Y - Main.screenPosition.Y),
-                npc.frame, Color.White, npc.rotation,
-                new Vector2(npc.width * 0.5f, npc.height * 0.5f), 1f, spriteEffects, 0f);
-            }
-
-            if (npc.type == mod.NPCType("AkumaArms"))
-            {
-                
-            }
-
-            if (npc.type == mod.NPCType("AkumaBody"))
-            {
-                
-            }
-
-            if (npc.type == mod.NPCType("AkumaTail"))
-            {
-                
+                potionType = ItemID.SuperHealingPotion;   //boss drops
+                AAWorld.downedZero = true;
             }
         }
+
+        public override void HitEffect(int hitDirection, double damage)
+        {
+            if (npc.life <= 0)
+            {
+
+                npc.position.X = npc.position.X + (float)(npc.width / 2);
+                npc.position.Y = npc.position.Y + (float)(npc.height / 2);
+                npc.width = 44;
+                npc.height = 78;
+                npc.position.X = npc.position.X - (float)(npc.width / 2);
+                npc.position.Y = npc.position.Y - (float)(npc.height / 2);
+                int dust1 = mod.DustType<Dusts.AkumaDust>();
+                int dust2 = mod.DustType<Dusts.AkumaDust>();
+                Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, dust1, 0f, 0f, 0, default(Color), 1f);
+                Main.dust[dust1].velocity *= 0.5f;
+                Main.dust[dust1].scale *= 1.3f;
+                Main.dust[dust1].fadeIn = 1f;
+                Main.dust[dust1].noGravity = false;
+                Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, dust2, 0f, 0f, 0, default(Color), 1f);
+                Main.dust[dust2].velocity *= 0.5f;
+                Main.dust[dust2].scale *= 1.3f;
+                Main.dust[dust2].fadeIn = 1f;
+                Main.dust[dust2].noGravity = true;
+            }
+        }
+
+        
     }
 
     public class AkumaArms : Akuma
@@ -355,14 +368,42 @@ namespace AAMod.NPCs.Bosses.Akuma
         public override void SetDefaults()
         {
             base.SetDefaults();
-            npc.width = 82;
+            npc.width = 90;
             npc.height = 96;
             npc.dontCountMe = true;
+
+            npc.alpha = 255;
         }
 
         public override bool? DrawHealthBar(byte hbPosition, ref float scale, ref Vector2 position)
         {
             return false;
+        }
+
+        public override void HitEffect(int hitDirection, double damage)
+        {
+            if (npc.life <= 0)
+            {
+
+                npc.position.X = npc.position.X + (float)(npc.width / 2);
+                npc.position.Y = npc.position.Y + (float)(npc.height / 2);
+                npc.width = 44;
+                npc.height = 78;
+                npc.position.X = npc.position.X - (float)(npc.width / 2);
+                npc.position.Y = npc.position.Y - (float)(npc.height / 2);
+                int dust1 = mod.DustType<Dusts.AkumaDust>();
+                int dust2 = mod.DustType<Dusts.AkumaDust>();
+                Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, dust1, 0f, 0f, 0, default(Color), 1f);
+                Main.dust[dust1].velocity *= 0.5f;
+                Main.dust[dust1].scale *= 1.3f;
+                Main.dust[dust1].fadeIn = 1f;
+                Main.dust[dust1].noGravity = false;
+                Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, dust2, 0f, 0f, 0, default(Color), 1f);
+                Main.dust[dust2].velocity *= 0.5f;
+                Main.dust[dust2].scale *= 1.3f;
+                Main.dust[dust2].fadeIn = 1f;
+                Main.dust[dust2].noGravity = true;
+            }
         }
 
         public override bool PreAI()
@@ -384,6 +425,25 @@ namespace AAMod.NPCs.Bosses.Akuma
                     // NetMessage.SendData(28, -1, -1, "", npc.whoAmI, -1f, 0.0f, 0.0f, 0, 0, 0);
                 }
             }
+
+            if (Main.npc[(int)npc.ai[1]].alpha < 128)
+            {
+                if (npc.alpha != 0)
+                {
+                    for (int num934 = 0; num934 < 2; num934++)
+                    {
+                        int num935 = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, mod.DustType("AkumaADust"), 0f, 0f, 100, default(Color), 2f);
+                        Main.dust[num935].noGravity = false;
+                        Main.dust[num935].noLight = false;
+                    }
+                }
+                npc.alpha -= 42;
+                if (npc.alpha < 0)
+                {
+                    npc.alpha = 0;
+                }
+            }
+
 
             if (npc.ai[1] < (double)Main.npc.Length)
             {
@@ -432,9 +492,11 @@ namespace AAMod.NPCs.Bosses.Akuma
         public override void SetDefaults()
         {
             base.SetDefaults();
-            npc.width = 52;
+            npc.width = 90;
             npc.height = 92;
             npc.dontCountMe = true;
+
+            npc.alpha = 255;
         }
 
         public override void HitEffect(int hitDirection, double damage)
@@ -448,24 +510,18 @@ namespace AAMod.NPCs.Bosses.Akuma
                 npc.height = 40;
                 npc.position.X = npc.position.X - (float)(npc.width / 2);
                 npc.position.Y = npc.position.Y - (float)(npc.height / 2);
-                for (int num621 = 0; num621 < 200; num621++)
-                {
-                    int num622 = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, 206, 0f, 0f, 100, default(Color), 2f);
-                    Main.dust[num622].velocity *= 3f;
-                    if (Main.rand.Next(2) == 0)
-                    {
-                        Main.dust[num622].scale = 0.5f;
-                        Main.dust[num622].fadeIn = 1f + (float)Main.rand.Next(10) * 0.1f;
-                    }
-                }
-                for (int num623 = 0; num623 < 400; num623++)
-                {
-                    int num624 = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, 206, 0f, 0f, 100, default(Color), 3f);
-                    Main.dust[num624].noGravity = true;
-                    Main.dust[num624].velocity *= 5f;
-                    num624 = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, 206, 0f, 0f, 100, default(Color), 2f);
-                    Main.dust[num624].velocity *= 2f;
-                }
+                int dust1 = mod.DustType<Dusts.AkumaDust>();
+                int dust2 = mod.DustType<Dusts.AkumaDust>();
+                Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, dust1, 0f, 0f, 0, default(Color), 1f);
+                Main.dust[dust1].velocity *= 0.5f;
+                Main.dust[dust1].scale *= 1.3f;
+                Main.dust[dust1].fadeIn = 1f;
+                Main.dust[dust1].noGravity = false;
+                Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, dust2, 0f, 0f, 0, default(Color), 1f);
+                Main.dust[dust2].velocity *= 0.5f;
+                Main.dust[dust2].scale *= 1.3f;
+                Main.dust[dust2].fadeIn = 1f;
+                Main.dust[dust2].noGravity = true;
             }
         }
 
@@ -473,6 +529,8 @@ namespace AAMod.NPCs.Bosses.Akuma
         {
             return false;
         }
+
+
 
         public override bool PreAI()
         {
@@ -491,6 +549,24 @@ namespace AAMod.NPCs.Bosses.Akuma
                     npc.HitEffect(0, 10.0);
                     npc.active = false;
                     // NetMessage.SendData(28, -1, -1, "", npc.whoAmI, -1f, 0.0f, 0.0f, 0, 0, 0);
+                }
+            }
+
+            if (Main.npc[(int)npc.ai[1]].alpha < 128)
+            {
+                if (npc.alpha != 0)
+                {
+                    for (int num934 = 0; num934 < 2; num934++)
+                    {
+                        int num935 = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, mod.DustType("AkumaADust"), 0f, 0f, 100, default(Color), 2f);
+                        Main.dust[num935].noGravity = false;
+                        Main.dust[num935].noLight = false;
+                    }
+                }
+                npc.alpha -= 42;
+                if (npc.alpha < 0)
+                {
+                    npc.alpha = 0;
                 }
             }
 
@@ -526,14 +602,6 @@ namespace AAMod.NPCs.Bosses.Akuma
             }
             return false;
         }
-
-        public override bool PreDraw(SpriteBatch spriteBatch, Color drawColor)
-        {
-            Mod mod = ModLoader.GetMod("AAMod");
-            Texture2D texture = mod.GetTexture("NPCs/Bosses/Akuma/AkumaArms");
-            AAMod.DrawTexture(spriteBatch, (npc.localAI[3] == 1f ? texture : Main.npcTexture[npc.type]), 0, npc, drawColor);
-            return false;
-        }
     }
 
     public class AkumaTail : Akuma
@@ -549,17 +617,15 @@ namespace AAMod.NPCs.Bosses.Akuma
         {
             base.SetDefaults();
 
-            npc.width = 44;
+            npc.width = 78;
             npc.height = 96;
             npc.dontCountMe = true;
+
+            npc.alpha = 255;
         }
 
         public override void HitEffect(int hitDirection, double damage)
         {
-            for (int k = 0; k < 5; k++)
-            {
-                Dust.NewDust(npc.position, npc.width, npc.height, 6, hitDirection, -1f, 0, default(Color), 1f);
-            }
             if (npc.life <= 0)
             {
 
@@ -569,24 +635,18 @@ namespace AAMod.NPCs.Bosses.Akuma
                 npc.height = 78;
                 npc.position.X = npc.position.X - (float)(npc.width / 2);
                 npc.position.Y = npc.position.Y - (float)(npc.height / 2);
-                for (int num621 = 0; num621 < 100; num621++)
-                {
-                    int num622 = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, 206, 0f, 0f, 100, default(Color), 2f);
-                    Main.dust[num622].velocity *= 3f;
-                    if (Main.rand.Next(2) == 0)
-                    {
-                        Main.dust[num622].scale = 0.5f;
-                        Main.dust[num622].fadeIn = 1f + (float)Main.rand.Next(10) * 0.1f;
-                    }
-                }
-                for (int num623 = 0; num623 < 400; num623++)
-                {
-                    int num624 = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, 206, 0f, 0f, 100, default(Color), 3f);
-                    Main.dust[num624].noGravity = true;
-                    Main.dust[num624].velocity *= 5f;
-                    num624 = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, 206, 0f, 0f, 100, default(Color), 2f);
-                    Main.dust[num624].velocity *= 2f;
-                }
+                int dust1 = mod.DustType<Dusts.AkumaDust>();
+                int dust2 = mod.DustType<Dusts.AkumaDust>();
+                Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, dust1, 0f, 0f, 0, default(Color), 1f);
+                Main.dust[dust1].velocity *= 0.5f;
+                Main.dust[dust1].scale *= 1.3f;
+                Main.dust[dust1].fadeIn = 1f;
+                Main.dust[dust1].noGravity = false;
+                Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, dust2, 0f, 0f, 0, default(Color), 1f);
+                Main.dust[dust2].velocity *= 0.5f;
+                Main.dust[dust2].scale *= 1.3f;
+                Main.dust[dust2].fadeIn = 1f;
+                Main.dust[dust2].noGravity = true;
             }
         }
 
@@ -612,6 +672,24 @@ namespace AAMod.NPCs.Bosses.Akuma
                     npc.HitEffect(0, 10.0);
                     npc.active = false;
                     // NetMessage.SendData(28, -1, -1, "", npc.whoAmI, -1f, 0.0f, 0.0f, 0, 0, 0);
+                }
+            }
+
+            if (Main.npc[(int)npc.ai[1]].alpha < 128)
+            {
+                if (npc.alpha != 0)
+                {
+                    for (int num934 = 0; num934 < 2; num934++)
+                    {
+                        int num935 = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, mod.DustType("AkumaADust"), 0f, 0f, 100, default(Color), 2f);
+                        Main.dust[num935].noGravity = false;
+                        Main.dust[num935].noLight = false;
+                    }
+                }
+                npc.alpha -= 42;
+                if (npc.alpha < 0)
+                {
+                    npc.alpha = 0;
                 }
             }
 

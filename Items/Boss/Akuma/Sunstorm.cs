@@ -33,9 +33,9 @@ namespace AAMod.Items.Boss.Akuma      //We need this to basically indicate the f
             item.autoReuse = true;
             item.mana = 13;
             item.useStyle = 5;
-            item.damage = 50;
-            item.useAnimation = 10;
-            item.useTime = 10;
+            item.damage = 130;
+            item.useAnimation = 17;
+            item.useTime = 17;
             item.width = 40;
             item.height = 40;
             item.shoot = mod.ProjectileType("Sunstorm");
@@ -47,6 +47,7 @@ namespace AAMod.Items.Boss.Akuma      //We need this to basically indicate the f
             item.noMelee = true;
             item.UseSound = new LegacySoundStyle(2, 124, Terraria.Audio.SoundType.Sound);
             item.glowMask = customGlowMask;
+
         }
 
         public override void ModifyTooltips(List<TooltipLine> list)

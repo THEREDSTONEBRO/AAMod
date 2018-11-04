@@ -35,7 +35,7 @@ namespace AAMod.Items.Boss.Akuma
             DisplayName.SetDefault("Taiyang Baolei");
             Tooltip.SetDefault(@"Allows you parry incoming attacks with a right-click
 During the day, item's defense is doubled and your melee & magic attacks set enemies ablaze
-From 11:00 AM to 1:00 PM, ");
+From 11:00 AM to 1:00 PM, item's defense is trippled and your melee & magic attacks inflict daybroken");
         }
 
         public override void SetDefaults()

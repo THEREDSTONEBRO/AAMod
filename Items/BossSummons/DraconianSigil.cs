@@ -51,19 +51,19 @@ Only Usable during the day");
 
             if (!AAWorld.downedAkuma && !Main.expertMode)
             {
-                Main.NewText("Heh, I hope you’re ready to feel the fury of the blazing sun kid.", Color.Orange.R, Color.Orange.G, Color.Orange.B);
+                Main.NewText("Heh, I hope you’re ready to feel the fury of the blazing sun kid.", new Color(180, 41, 32));
             }
             if (!AAWorld.downedAkumaA && Main.expertMode)
             {
-                Main.NewText("Heh, I hope you’re ready to feel the fury of the blazing sun kid.", Color.Orange.R, Color.Orange.G, Color.Orange.B);
+                Main.NewText("Heh, I hope you’re ready to feel the fury of the blazing sun kid.", new Color(180, 41, 32));
             }
             if (!Main.expertMode && AAWorld.downedAkuma)
             {
-                Main.NewText("Back for more, kid? Don’t you have better things to do? You already beat me once.  Alright, but I won’t go easy on you.", Color.Orange.R, Color.Orange.G, Color.Orange.B);
+                Main.NewText("Back for more, kid? Don’t you have better things to do? You already beat me once.  Alright, but I won’t go easy on you.", new Color(180, 41, 32));
             }
             if (Main.expertMode && AAWorld.downedAkumaA)
             {
-                Main.NewText("Back for more, kid? Don’t you have better things to do? You already beat me once.  Alright, but I won’t go easy on you.", Color.Orange.R, Color.Orange.G, Color.Orange.B);
+                Main.NewText("Back for more, kid? Don’t you have better things to do? You already beat me once.  Alright, but I won’t go easy on you.", new Color(180, 41, 32));
             }
 
             NPC.NewNPC((int)player.position.X + Main.rand.Next(-1000, 1000), (int)player.position.Y + Main.rand.Next(1000, 1000), mod.NPCType<Akuma>());

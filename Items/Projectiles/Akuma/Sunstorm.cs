@@ -25,7 +25,6 @@ namespace AAMod.Items.Projectiles.Akuma
             projectile.extraUpdates = 5;
             projectile.penetrate = -1;
             projectile.usesLocalNPCImmunity = true;
-            projectile.localNPCHitCooldown = 7;
         }
 
 
@@ -148,15 +147,6 @@ namespace AAMod.Items.Projectiles.Akuma
                 {
                     Main.dust[num60].noLight = true;
                 }
-            }
-            for (int num61 = 0; num61 < 1; num61++)
-            {
-                int num62 = Gore.NewGore(projectile.position + new Vector2((float)(projectile.width * Main.rand.Next(100)) / 100f, (float)(projectile.height * Main.rand.Next(100)) / 100f) - Vector2.One * 10f, default(Vector2), Main.rand.Next(61, 64), 1f);
-                Main.gore[num62].velocity *= 0.3f;
-                Gore expr_2525_cp_0 = Main.gore[num62];
-                expr_2525_cp_0.velocity.X = expr_2525_cp_0.velocity.X + (float)Main.rand.Next(-10, 11) * 0.05f;
-                Gore expr_2553_cp_0 = Main.gore[num62];
-                expr_2553_cp_0.velocity.Y = expr_2553_cp_0.velocity.Y + (float)Main.rand.Next(-10, 11) * 0.05f;
             }
         }
     }

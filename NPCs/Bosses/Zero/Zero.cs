@@ -157,7 +157,7 @@ namespace AAMod.NPCs.Bosses.Zero
         {
             if (!Main.expertMode)
             {
-                potionType = ItemID.GreaterHealingPotion;   //boss drops
+                potionType = ItemID.SuperHealingPotion;   //boss drops
                 AAWorld.downedZero = true;
             }
         }

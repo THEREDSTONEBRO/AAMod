@@ -15,6 +15,7 @@ using Terraria.DataStructures;
 using Terraria.GameContent.UI.Elements;
 using Terraria.Graphics;
 using System.Reflection;
+using AAMod.NPCs.Bosses.Akuma;
 
 namespace AAMod
 {
@@ -24,6 +25,7 @@ namespace AAMod
         internal static AAMod instance;
         internal UserInterface UserInterface;
         internal TerratoolUI TerratoolUI;
+        public static bool AkumaMusic;
 
         public AAMod()
         {
@@ -131,6 +133,7 @@ namespace AAMod
                 PremultiplyTexture(GetTexture("Backgrounds/VoidSky"));
                 PremultiplyTexture(GetTexture("Backgrounds/fogless"));
                 PremultiplyTexture(GetTexture("Backgrounds/fog"));
+                PremultiplyTexture(GetTexture("Backgrounds/AkumaSun"));
 
                 AddEquipTexture(null, EquipType.Legs, "N1_Legs", "AAMod/Items/Vanity/N1/N1_Legs");
 
@@ -156,12 +159,16 @@ namespace AAMod
                 Filters.Scene["AAMod:MireSky"] = new Filter(new MireSkyData("FilterMiniTower").UseColor(0f, 0.20f, 1f).UseOpacity(0.3f), EffectPriority.High);
                 SkyManager.Instance["AAMod:MireSky"] = new MireSky();
                 MireSky.PlanetTexture = GetTexture("Backgrounds/MireMoon");
-                Filters.Scene["AAMod:VoidSky"] = new Filter(new VoidSkyData("FilterMiniTower").UseColor(0.15f, 0.1f, 0.1f).UseOpacity(0.3f), EffectPriority.VeryHigh);
+                Filters.Scene["AAMod:VoidSky"] = new Filter(new VoidSkyData("FilterMiniTower").UseColor(0.15f, 0.1f, 0.1f).UseOpacity(0.3f), EffectPriority.High);
                 SkyManager.Instance["AAMod:VoidSky"] = new VoidSky();
                 VoidSky.PlanetTexture = GetTexture("Backgrounds/VoidBH");
-                Filters.Scene["AAMod:InfernoSky"] = new Filter(new InfernoSkyData("FilterMiniTower").UseColor(1f, 0.20f, 0f).UseOpacity(0.3f), EffectPriority.VeryHigh);
+                Filters.Scene["AAMod:InfernoSky"] = new Filter(new InfernoSkyData("FilterMiniTower").UseColor(1f, 0.20f, 0f).UseOpacity(0.3f), EffectPriority.High);
                 SkyManager.Instance["AAMod:InfernoSky"] = new InfernoSky();
                 InfernoSky.PlanetTexture = GetTexture("Backgrounds/InfernoSun");
+
+                Filters.Scene["AAMod:AkumaSky"] = new Filter(new AkumaSkyData("FilterMiniTower").UseColor(0f, 0.191f, 0.255f).UseOpacity(0.3f), EffectPriority.VeryHigh);
+                SkyManager.Instance["AAMod:AkumaSky"] = new AkumaSky();
+                AkumaSky.PlanetTexture = GetTexture("Backgrounds/AkumaSun");
 
                 Filters.Scene["Fog"] = new Filter(new ScreenShaderData("FilterBlizzardForeground").UseImage("Backgrounds/fog").UseOpacity(0.6f).UseImageScale(new Vector2(Main.screenWidth, Main.screenHeight)), EffectPriority.High);
                 Overlays.Scene["Fog"] = new SimpleOverlay("Backgrounds/fog", new ScreenShaderData("FilterBlizzardBackground").UseImage("Backgrounds/fog").UseOpacity(0.6f).UseImageScale(new Vector2(Main.screenWidth, Main.screenHeight)), EffectPriority.High, RenderLayers.Sky);
@@ -324,6 +331,12 @@ namespace AAMod
 
                 }
 
+            }
+            if (AkumaMusic == true)
+            {
+                music = GetSoundSlot(SoundType.Music, "Sounds/Music/Akuma2");
+
+                priority = MusicPriority.BossHigh;
             }
             AAPlayer Ancients = player.GetModPlayer<AAPlayer>();
             if (Ancients.ZoneInferno)

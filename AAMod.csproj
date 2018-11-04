@@ -69,7 +69,9 @@
     <Compile Include="AAPlayer.cs" />
     <Compile Include="AAUtils.cs" />
     <Compile Include="AAWorld.cs" />
+    <Compile Include="Backgrounds\AkumaSky.cs" />
     <Compile Include="Backgrounds\InfernoSky.cs" />
+    <Compile Include="Backgrounds\AkumaSkyData.cs" />
     <Compile Include="Backgrounds\InfernoSkyData.cs" />
     <Compile Include="Backgrounds\InfernoSurfaceBgStyle.cs" />
     <Compile Include="Backgrounds\InfernoUgBgStyle.cs" />
@@ -1195,6 +1197,10 @@
     <Content Include="Items\Armor\Draco\DracoPlate_Arms.png" />
     <Content Include="Items\Armor\Draco\DracoPlate_Body.png" />
     <Content Include="Items\Armor\Draco\DracoPlate_Female.png" />
+    <Content Include="Items\Armor\Dread\DreadGreaves.png" />
+    <Content Include="Items\Armor\Dread\DreadHood.png" />
+    <Content Include="Items\Armor\Dread\DreadPlate.png" />
+    <Content Include="Items\Armor\Dread\DreadWings.png" />
     <Content Include="Items\Armor\Dynaskull\Dynaskull.png" />
     <Content Include="Items\Armor\Dynaskull\DynaskullGreaves.png" />
     <Content Include="Items\Armor\Dynaskull\DynaskullGreaves_Legs.png" />
@@ -1474,6 +1480,7 @@
     <Content Include="Items\Boss\Akuma\DragonSlasher_Glow.png" />
     <Content Include="Items\Boss\Akuma\LungStaff.png" />
     <Content Include="Items\Boss\Akuma\LungStaff_Glow.png" />
+    <Content Include="Items\Boss\Akuma\Lung\LungHead.png" />
     <Content Include="Items\Boss\Akuma\MorningGlory.png" />
     <Content Include="Items\Boss\Akuma\RadiantDawn.png" />
     <Content Include="Items\Boss\Akuma\RadiantDawn_Glow.png" />
@@ -2665,6 +2672,8 @@
   <ItemGroup>
     <Folder Include="Achievement\" />
     <Folder Include="bin\Release\" />
+    <Folder Include="Items\Boss\Akumata\" />
+    <Folder Include="Items\Boss\Icegrim\" />
     <Folder Include="Items\Mounts\" />
     <Folder Include="Items\Projectiles\Yamata\" />
     <Folder Include="NPCs\Bosses\Decay\" />

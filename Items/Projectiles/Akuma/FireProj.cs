@@ -56,7 +56,7 @@ namespace AAMod.Items.Projectiles.Akuma
             for (int num189 = 0; num189 < 1; num189++)
             {
                 int num190 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, mod.DustType<Dusts.AkumaADust>(), 0f, 0f, 0, default(Color), 1f);
-                Main.dust[num190].velocity *= 0.5f;
+                
                 Main.dust[num190].scale *= 1.3f;
                 Main.dust[num190].fadeIn = 1f;
                 Main.dust[num190].noGravity = true;

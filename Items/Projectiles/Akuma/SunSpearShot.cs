@@ -128,7 +128,7 @@ namespace AAMod.Items.Projectiles.Akuma
                     }
                     if (num561 > (float)projectile.damage * 0.1f)
                     {
-                        Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, 0f, 0f, 344, (int)num561, projectile.knockBack * 0.55f, projectile.owner, 0f, (float)Main.rand.Next(3));
+                        Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, 0f, 0f, mod.ProjectileType("SunSpearRain"), (int)num561, projectile.knockBack * 0.55f, projectile.owner, 0f, (float)Main.rand.Next(3));
                         return;
                     }
                 }

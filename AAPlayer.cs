@@ -161,9 +161,14 @@ namespace AAMod
 
         public override void UpdateBiomeVisuals()
         {
-            bool useInferno = ZoneInferno || SunAltar;
+            bool useAkuma = NPC.AnyNPCs(mod.NPCType<AkumaA>());
+            bool useInferno = (ZoneInferno || SunAltar) && !useAkuma;
             player.ManageSpecialBiomeVisuals("AAMod:InfernoSky", useInferno);
             player.ManageSpecialBiomeVisuals("HeatDistortion", useInferno);
+            
+                player.ManageSpecialBiomeVisuals("AAMod:AkumaSky", useAkuma);
+                player.ManageSpecialBiomeVisuals("HeatDistortion", useAkuma);
+            
             bool useMire = ZoneMire || MoonAltar;
             player.ManageSpecialBiomeVisuals("AAMod:MireSky", useMire);
             bool useVoid = ZoneVoid || VoidUnit;

@@ -9,7 +9,8 @@ using Terraria.Audio;
 
 namespace AAMod.NPCs.Bosses.Akuma
 {
-	public class AkumaA : ModNPC
+    [AutoloadBossHead]
+    public class AkumaA : ModNPC
 	{
         public override string Texture { get { return "AAMod/NPCs/Bosses/Akuma/AkumaA"; } }
 
@@ -24,13 +25,22 @@ namespace AAMod.NPCs.Bosses.Akuma
 		public override void SetDefaults()
 		{
 			npc.noTileCollide = true;
-			npc.width = 144;
-			npc.height = 70;
+             npc.width = 90;
+            npc.height = 144;
 			npc.aiStyle = -1;
 			npc.netAlways = true;
-            npc.damage = 90;
-            npc.defense = 130;
-            npc.lifeMax = 300000;
+            if (!AAWorld.downedAkumaA)
+            {
+                npc.lifeMax = 300000;
+                npc.damage = 90;
+                npc.defense = 130;
+            }
+            if (AAWorld.downedAkumaA)
+            {
+                npc.lifeMax = 400000;
+                npc.damage = 120;
+                npc.defense = 150;
+            }
             if (Main.expertMode)
             {
                 npc.value = Item.buyPrice(20, 0, 0, 0);
@@ -50,6 +60,7 @@ namespace AAMod.NPCs.Bosses.Akuma
             {
                 npc.buffImmune[k] = true;
             }
+            npc.alpha = 255;
         }
 
         public override bool PreAI()
@@ -66,7 +77,21 @@ namespace AAMod.NPCs.Bosses.Akuma
 				int proj2 = Projectile.NewProjectile(npc.Center.X + Main.rand.Next(-20, 20), npc.Center.Y  + Main.rand.Next(-20, 20), npc.velocity.X* Main.rand.Next(1, 2), npc.velocity.Y * Main.rand.Next(1, 2), mod.ProjectileType("AFireProjHostile"), 20, 0, Main.myPlayer);
 				Main.projectile[proj2].timeLeft = 60;
 			}
-			if (Main.netMode != 1)
+            if (npc.alpha != 0)
+            {
+                for (int spawnDust = 0; spawnDust < 2; spawnDust++)
+                {
+                    int num935 = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, mod.DustType("AkumaADust"), 0f, 0f, 100, default(Color), 2f);
+                    Main.dust[num935].noGravity = true;
+                    Main.dust[num935].noLight = true;
+                }
+            }
+            npc.alpha -= 12;
+            if (npc.alpha < 0)
+            {
+                npc.alpha = 0;
+            }
+            if (Main.netMode != 1)
 			{
 				if (npc.ai[0] == 0)
 				{
@@ -141,7 +166,7 @@ namespace AAMod.NPCs.Bosses.Akuma
 				}
 			}
 			float speed = 12f;
-			float acceleration = 0.20f;
+			float acceleration = 0.40f;
 
 			Vector2 npcCenter = new Vector2(npc.position.X + npc.width * 0.5f, npc.position.Y + npc.height * 0.5f);
 			float targetXPos = Main.player[npc.target].position.X + (Main.player[npc.target].width / 2);
@@ -282,12 +307,12 @@ namespace AAMod.NPCs.Bosses.Akuma
             {
                 Panic = false;
             }
-            if (npc.life <= npc.lifeMax / 5 && Panic == false && !AAWorld.downedAkumaA == false && Main.expertMode && npc.type == mod.NPCType<AkumaA>())
+            if (npc.life <= npc.lifeMax / 5 && Panic == false && !AAWorld.downedAkumaA && Main.expertMode && npc.type == mod.NPCType<AkumaA>())
             {
                 Panic = true;
                 Main.NewText("Wha—?! How have you lasted this long?! Grrrrrr…! I refuse to be bested by you! Have at it!", Color.DeepSkyBlue.R, Color.DeepSkyBlue.G, Color.DeepSkyBlue.B);
             }
-            if (npc.life <= npc.lifeMax / 5 && Panic == false && AAWorld.downedAkumaA == false && Main.expertMode && npc.type == mod.NPCType<AkumaA>())
+            if (npc.life <= npc.lifeMax / 5 && Panic == false && AAWorld.downedAkumaA&& Main.expertMode && npc.type == mod.NPCType<AkumaA>())
             {
                 Panic = true;
                 Main.NewText("Still got it, do ya? I like that about you, kid..!", Color.DeepSkyBlue.R, Color.DeepSkyBlue.G, Color.DeepSkyBlue.B);
@@ -331,6 +356,15 @@ namespace AAMod.NPCs.Bosses.Akuma
 
         }
 
+        public override void BossLoot(ref string name, ref int potionType)
+        {
+            if (Main.expertMode)
+            {
+                potionType = ItemID.SuperHealingPotion;   //boss drops
+                AAWorld.downedZero = true;
+            }
+        }
+
         public override bool StrikeNPC(ref double damage, int defense, ref float knockback, int hitDirection, ref bool crit)
         {
             if (damage > npc.lifeMax / 2)
@@ -339,42 +373,7 @@ namespace AAMod.NPCs.Bosses.Akuma
             }
             return false;
         }
-        public override void PostDraw(SpriteBatch spriteBatch, Color drawColor)
-        {
-            SpriteEffects spriteEffects = SpriteEffects.None;
-            if (npc.spriteDirection == 1)
-            {
-                spriteEffects = SpriteEffects.FlipHorizontally;
-            }
-
-            if (npc.type == mod.NPCType("AkumaA"))
-            {
-                spriteBatch.Draw(mod.GetTexture("NPCs/Bosses/Akuma/AkumaA_Glow"), new Vector2(npc.Center.X - Main.screenPosition.X, npc.Center.Y - Main.screenPosition.Y),
-                npc.frame, Color.White, npc.rotation,
-                new Vector2(npc.width * 0.5f, npc.height * 0.5f), 1f, spriteEffects, 0f);
-            }
-
-            if (npc.type == mod.NPCType("AkumaAArms"))
-            {
-                spriteBatch.Draw(mod.GetTexture("NPCs/Bosses/Akuma/AkumaAArms_Glow"), new Vector2(npc.Center.X - Main.screenPosition.X, npc.Center.Y - Main.screenPosition.Y),
-                npc.frame, Color.White, npc.rotation,
-                new Vector2(npc.width * 0.5f, npc.height * 0.5f), 1f, spriteEffects, 0f);
-            }
-
-            if (npc.type == mod.NPCType("AkumaABody"))
-            {
-                spriteBatch.Draw(mod.GetTexture("NPCs/Bosses/Akuma/AkumaABody_Glow"), new Vector2(npc.Center.X - Main.screenPosition.X, npc.Center.Y - Main.screenPosition.Y),
-                npc.frame, Color.White, npc.rotation,
-                new Vector2(npc.width * 0.5f, npc.height * 0.5f), 1f, spriteEffects, 0f);
-            }
-
-            if (npc.type == mod.NPCType("AkumaATail"))
-            {
-                spriteBatch.Draw(mod.GetTexture("NPCs/Bosses/Akuma/AkumaATail_Glow"), new Vector2(npc.Center.X - Main.screenPosition.X, npc.Center.Y - Main.screenPosition.Y),
-                npc.frame, Color.White, npc.rotation,
-                new Vector2(npc.width * 0.5f, npc.height * 0.5f), 1f, spriteEffects, 0f);
-            }
-        }
+        
     }
 
     public class AkumaAArms : AkumaA
@@ -389,9 +388,10 @@ namespace AAMod.NPCs.Bosses.Akuma
         public override void SetDefaults()
         {
             base.SetDefaults();
-            npc.width = 82;
+             npc.width = 90;
             npc.height = 96;
             npc.dontCountMe = true;
+            npc.alpha = 255;
         }
 
         public override bool? DrawHealthBar(byte hbPosition, ref float scale, ref Vector2 position)
@@ -407,6 +407,24 @@ namespace AAMod.NPCs.Bosses.Akuma
                 npc.TargetClosest(true);
             if (Main.player[npc.target].dead && npc.timeLeft > 300)
                 npc.timeLeft = 300;
+
+            if (Main.npc[(int)npc.ai[1]].alpha < 128)
+            {
+                if (npc.alpha != 0)
+                {
+                    for (int num934 = 0; num934 < 2; num934++)
+                    {
+                        int num935 = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, mod.DustType("AkumaADust"), 0f, 0f, 100, default(Color), 2f);
+                        Main.dust[num935].noGravity = false;
+                        Main.dust[num935].noLight = false;
+                    }
+                }
+                npc.alpha -= 8;
+                if (npc.alpha < 0)
+                {
+                    npc.alpha = 0;
+                }
+            }
 
             if (Main.netMode != 1)
             {
@@ -459,10 +477,11 @@ namespace AAMod.NPCs.Bosses.Akuma
 
         public override void HitEffect(int hitDirection, double damage)
         {
-            int dust1 = mod.DustType<Dusts.AkumaADust>();
-            int dust2 = mod.DustType<Dusts.AkumaADust>();
+            
             if (npc.life <= 0)
             {
+                int dust1 = mod.DustType<Dusts.AkumaADust>();
+                int dust2 = mod.DustType<Dusts.AkumaADust>();
                 Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, dust1, 0f, 0f, 0, default(Color), 1f);
                 Main.dust[dust1].velocity *= 0.5f;
                 Main.dust[dust1].scale *= 1.3f;
@@ -479,12 +498,12 @@ namespace AAMod.NPCs.Bosses.Akuma
             {
                 Panic = false;
             }
-            if (npc.life <= npc.lifeMax / 5 && Panic == false && !AAWorld.downedAkumaA == false && Main.expertMode && npc.type == mod.NPCType<AkumaA>())
+            if (npc.life <= npc.lifeMax / 5 && Panic == false && !AAWorld.downedAkumaA && Main.expertMode && npc.type == mod.NPCType<AkumaA>())
             {
                 Panic = true;
                 Main.NewText("Wha—?! How have you lasted this long?! Grrrrrr…! I refuse to be bested by you! Have at it!", Color.DeepSkyBlue.R, Color.DeepSkyBlue.G, Color.DeepSkyBlue.B);
             }
-            if (npc.life <= npc.lifeMax / 5 && Panic == false && AAWorld.downedAkumaA == false && Main.expertMode && npc.type == mod.NPCType<AkumaA>())
+            if (npc.life <= npc.lifeMax / 5 && Panic == false && AAWorld.downedAkumaA && Main.expertMode && npc.type == mod.NPCType<AkumaA>())
             {
                 Panic = true;
                 Main.NewText("Still got it, do ya? I like that about you, kid..!", Color.DeepSkyBlue.R, Color.DeepSkyBlue.G, Color.DeepSkyBlue.B);
@@ -504,9 +523,10 @@ namespace AAMod.NPCs.Bosses.Akuma
         public override void SetDefaults()
         {
             base.SetDefaults();
-            npc.width = 52;
+             npc.width = 90;
             npc.height = 96;
             npc.dontCountMe = true;
+            npc.alpha = 255;
         }
 
 
@@ -524,6 +544,24 @@ namespace AAMod.NPCs.Bosses.Akuma
                 npc.TargetClosest(true);
             if (Main.player[npc.target].dead && npc.timeLeft > 300)
                 npc.timeLeft = 300;
+
+            if (Main.npc[(int)npc.ai[1]].alpha < 128)
+            {
+                if (npc.alpha != 0)
+                {
+                    for (int num934 = 0; num934 < 2; num934++)
+                    {
+                        int num935 = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, mod.DustType("AkumaADust"), 0f, 0f, 100, default(Color), 2f);
+                        Main.dust[num935].noGravity = false;
+                        Main.dust[num935].noLight = false;
+                    }
+                }
+                npc.alpha -= 8;
+                if (npc.alpha < 0)
+                {
+                    npc.alpha = 0;
+                }
+            }
 
             if (Main.netMode != 1)
             {
@@ -607,14 +645,6 @@ namespace AAMod.NPCs.Bosses.Akuma
                 Main.NewText("Still got it, do ya? I like that about you, kid..!", Color.DeepSkyBlue.R, Color.DeepSkyBlue.G, Color.DeepSkyBlue.B);
             }
         }
-
-        public override bool PreDraw(SpriteBatch spriteBatch, Color drawColor)
-        {
-            Mod mod = ModLoader.GetMod("AAMod");
-            Texture2D texture = mod.GetTexture("NPCs/Bosses/AkumaAArms");
-            AAMod.DrawTexture(spriteBatch, (npc.localAI[1] == 1f ? texture : Main.npcTexture[npc.type]), 0, npc, drawColor);
-            return false;
-        }
     }
 
     public class AkumaATail : AkumaA
@@ -629,10 +659,10 @@ namespace AAMod.NPCs.Bosses.Akuma
         public override void SetDefaults()
         {
             base.SetDefaults();
-
-            npc.width = 96;
-            npc.height = 78;
+            npc.width = 78;
+            npc.height = 96;
             npc.dontCountMe = true;
+            npc.alpha = 255;
         }
 
 
@@ -664,6 +694,24 @@ namespace AAMod.NPCs.Bosses.Akuma
             if (npc.life <= npc.lifeMax / 5)
             {
                 music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/RayOfHope");
+            }
+
+            if (Main.npc[(int)npc.ai[1]].alpha < 128)
+            {
+                if (npc.alpha != 0)
+                {
+                    for (int num934 = 0; num934 < 2; num934++)
+                    {
+                        int num935 = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, mod.DustType("AkumaADust"), 0f, 0f, 100, default(Color), 2f);
+                        Main.dust[num935].noGravity = false;
+                        Main.dust[num935].noLight = false;
+                    }
+                }
+                npc.alpha -= 8;
+                if (npc.alpha < 0)
+                {
+                    npc.alpha = 0;
+                }
             }
 
 
@@ -720,12 +768,12 @@ namespace AAMod.NPCs.Bosses.Akuma
             {
                 Panic = false;
             }
-            if (npc.life <= npc.lifeMax / 5 && Panic == false && !AAWorld.downedAkumaA == false && Main.expertMode && npc.type == mod.NPCType<AkumaA>())
+            if (npc.life <= npc.lifeMax / 5 && Panic == false && !AAWorld.downedAkumaA && Main.expertMode && npc.type == mod.NPCType<AkumaA>())
             {
                 Panic = true;
                 Main.NewText("Wha—?! How have you lasted this long?! Grrrrrr…! I refuse to be bested by you! Have at it!", Color.DeepSkyBlue.R, Color.DeepSkyBlue.G, Color.DeepSkyBlue.B);
             }
-            if (npc.life <= npc.lifeMax / 5 && Panic == false && AAWorld.downedAkumaA == false && Main.expertMode && npc.type == mod.NPCType<AkumaA>())
+            if (npc.life <= npc.lifeMax / 5 && Panic == false && AAWorld.downedAkumaA && Main.expertMode && npc.type == mod.NPCType<AkumaA>())
             {
                 Panic = true;
                 Main.NewText("Still got it, do ya? I like that about you, kid..!", Color.DeepSkyBlue.R, Color.DeepSkyBlue.G, Color.DeepSkyBlue.B);
