@@ -77,12 +77,9 @@ namespace AAMod.NPCs.Bosses.Akuma
 					for (int i = 0; i < AkumaALength; ++i)
 					{
 
-                        latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("AkumaABody"), npc.whoAmI, 0, latestNPC);
-                        Main.npc[(int)latestNPC].realLife = npc.whoAmI;
-                        Main.npc[(int)latestNPC].ai[3] = npc.whoAmI;
+                       
 
-
-                        /*if (segment == 0 || segment == 2 || segment == 3 || segment == 5 || segment == 6 || segment == 8)
+                        if (segment == 0 || segment == 2 || segment == 3 || segment == 5 || segment == 6 || segment == 8)
                         {
                             latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("AkumaABody"), npc.whoAmI, 0, latestNPC);
                             Main.npc[(int)latestNPC].realLife = npc.whoAmI;
@@ -91,11 +88,11 @@ namespace AAMod.NPCs.Bosses.Akuma
                         }
                         if (segment == 1 || segment == 4 || segment == 7)
                         {
-                            latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("AkumaAArm"), npc.whoAmI, 0, latestNPC);
+                            latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("AkumaAArms"), npc.whoAmI, 0, latestNPC);
                             Main.npc[(int)latestNPC].realLife = npc.whoAmI;
                             Main.npc[(int)latestNPC].ai[3] = npc.whoAmI;
                             segment += 1;
-                        }*/
+                        }
                     }
 
                     latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("AkumaATail"), npc.whoAmI, 0, latestNPC);
