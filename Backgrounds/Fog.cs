@@ -22,7 +22,7 @@ namespace AAMod.Backgrounds
         {
             if (Active)
             {
-                Intensity = 0.4f;
+                Intensity = 4f;
                 if (FogTime < 1f)
                 {
                     FogTime += 0.1f;
@@ -51,7 +51,8 @@ namespace AAMod.Backgrounds
                 if (Main.dayTime || (!AAWorld.downedYamata && !Main.expertMode) || (!AAWorld.downedYamataA && Main.expertMode))
                 {
                     Player player = Main.player[Main.myPlayer];
-                    spriteBatch.Draw(FogTexture, player.Center, null, Color.White * FogTime * Intensity, 0f, new Vector2(player.Center.X, player.Center.Y), 1f, SpriteEffects.None, 10f);
+                    var FogPos = new Vector2(Main.screenWidth / 2, Main.screenHeight / 2);
+                    spriteBatch.Draw(FogTexture, FogPos, null, Color.White * FogTime * Intensity, 0f, new Vector2(player.Center.X, player.Center.Y), 1f, SpriteEffects.None, 1f);
                 }
             }
         }
@@ -63,7 +64,7 @@ namespace AAMod.Backgrounds
 
         public override void Activate(Vector2 position, params object[] args)
         {
-            Intensity = 0.4f;
+            Intensity = 4f;
             Active = true;
         }
 
@@ -79,7 +80,7 @@ namespace AAMod.Backgrounds
 
         public override bool IsActive()
         {
-            return Active || Intensity == 0.4f;
+            return Active || Intensity == 4f;
         }
     }
 }
