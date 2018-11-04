@@ -35,6 +35,8 @@ namespace AAMod
         public bool VoidUnit = false;
         public bool SunAltar = false;
         public bool MoonAltar = false;
+        public bool AkumaAltar = false;
+        public bool YamataAltar = false;
         private int VoidGrav;
         public bool AshCurse;
         public static int Ashes = 0;
@@ -161,14 +163,12 @@ namespace AAMod
 
         public override void UpdateBiomeVisuals()
         {
-            bool useAkuma = NPC.AnyNPCs(mod.NPCType<AkumaA>());
+            bool useAkuma = NPC.AnyNPCs(mod.NPCType<AkumaA>()) || AkumaAltar;
             bool useInferno = (ZoneInferno || SunAltar) && !useAkuma;
             player.ManageSpecialBiomeVisuals("AAMod:InfernoSky", useInferno);
             player.ManageSpecialBiomeVisuals("HeatDistortion", useInferno);
-            
-                player.ManageSpecialBiomeVisuals("AAMod:AkumaSky", useAkuma);
-                player.ManageSpecialBiomeVisuals("HeatDistortion", useAkuma);
-            
+            player.ManageSpecialBiomeVisuals("AAMod:AkumaSky", useAkuma);
+            player.ManageSpecialBiomeVisuals("HeatDistortion", useAkuma);
             bool useMire = ZoneMire || MoonAltar;
             player.ManageSpecialBiomeVisuals("AAMod:MireSky", useMire);
             bool useVoid = ZoneVoid || VoidUnit;

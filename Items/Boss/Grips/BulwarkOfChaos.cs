@@ -20,7 +20,7 @@ namespace AAMod.Items.Boss.Grips
         public override void SetStaticDefaults()
         {            DisplayName.SetDefault("Bulwark Of Chaos");
             Tooltip.SetDefault(
-@"For every hit you land on an enemy, five true damage (damage unassigned to any class) is dealt
+@"For every hit you land on an enemy, 5 true damage (damage unassigned to any class) is dealt
 Allows you to dash into enemies, damaging them");
         }
 		public override void UpdateAccessory(Player player, bool hideVisual)

@@ -288,6 +288,7 @@
     <Compile Include="Items\Blocks\RRBox.cs" />
     <Compile Include="Items\Blocks\ScorchedDynastyWood.cs" />
     <Compile Include="Items\Blocks\ScorchedShingles.cs" />
+    <Compile Include="Items\Blocks\SunAltarA.cs" />
     <Compile Include="Items\Blocks\SunAltar.cs" />
     <Compile Include="Items\Blocks\TechneciumOre.cs" />
     <Compile Include="Items\Blocks\TerraCore.cs" />

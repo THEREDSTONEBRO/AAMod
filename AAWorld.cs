@@ -1412,6 +1412,7 @@ namespace AAMod
             modPlayer.VoidUnit = false;
             modPlayer.SunAltar = false;
             modPlayer.MoonAltar = false;
+            modPlayer.AkumaAltar = false;
         }
     }
 }

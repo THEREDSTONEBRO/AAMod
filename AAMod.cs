@@ -50,7 +50,7 @@ namespace AAMod
                 bossChecklist.Call("AddBossWithInfo", "Retriever", 6.9999997f, (Func<bool>)(() => AAWorld.downedRetriever), "Use a [i:" + ItemType("CyberneticClaw") + "] at night");
                 //bossChecklist.Call("AddBossWithInfo", "Orthrus X", 6.9999998f, (Func<bool>)(() => AAWorld.downedOrthrus), "Use a [i:" + ItemType("CyberneticChow") + "] at night");
                 //bossChecklist.Call("AddBossWithInfo", "Raider Ultima", 6.9999999f, (Func<bool>)(() => AAWorld.downedRaider), "Use a [i:" + ItemType("CyberneticSignal") + "] at night");
-                bossChecklist.Call("AddBossWithInfo", "Nightcrawler & Daybringer", 14.00000000001f, (Func<bool>)(() => AAWorld.downedEquinox), "Use a [i:" + ItemType("EquinoxWorm"));
+                bossChecklist.Call("AddBossWithInfo", "Nightcrawler & Daybringer", 14.00000000001f, (Func<bool>)(() => AAWorld.downedEquinox), "Use a [i:" + ItemType("EquinoxWorm") + "]");
                 bossChecklist.Call("AddBossWithInfo", "Akuma", 15.0001f, (Func<bool>)(() => AAWorld.downedAkuma), "Use a [i:" + ItemType("DraconianSigil") + "] in the Inferno during the day");
                 //bossChecklist.Call("AddBossWithInfo", "Yamata", 15.0002f, (Func<bool>)(() => AAWorld.downedYamata), "Use a [i:" + ItemType("EventideSigil") + "] in the Mire at night");
                 if (Main.expertMode)
@@ -62,7 +62,7 @@ namespace AAMod
                     bossChecklist.Call("AddBossWithInfo", "Zero", 16f, (Func<bool>)(() => AAWorld.downedZero), "Use a [i:" + ItemType("ZeroTesseract") + "] in the Void");
                 }
                 
-                //bossChecklist.Call("AddBossWithInfo", "Shen", 100f, (Func<bool>)(() => AAWorld.downedShen), "Use a [i:" + ItemType("ChaosSigil"));
+                //bossChecklist.Call("AddBossWithInfo", "Shen Doragon", 100f, (Func<bool>)(() => AAWorld.downedShen), "Use a [i:" + ItemType("ChaosSigil"));
                 
                 //SlimeKing = 1f;
                 //EyeOfCthulhu = 2f;
