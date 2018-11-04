@@ -19,6 +19,7 @@ namespace AAMod.Buffs
             if (player.GetModPlayer<AAPlayer>(mod).ZoneMire && (Main.dayTime /*|| (NPC.AnyNPCs(mod.NPCType<Yamata>()) || NPC.AnyNPCs(mod.NPCType<YamataAwakened>()))*/))
             {
                 player.buffTime[buffIndex] = 5;
+                player.blind = true;
             }
 		}
 	}

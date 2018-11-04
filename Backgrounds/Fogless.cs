@@ -51,7 +51,8 @@ namespace AAMod.Backgrounds
                 if (Main.dayTime || (!AAWorld.downedYamata && !Main.expertMode) || (!AAWorld.downedYamataA && Main.expertMode))
                 {
                     Player player = Main.player[Main.myPlayer];
-                    spriteBatch.Draw(FoglessTexture, player.Center, null, Color.White * FoglessTime * Intensity, 0f, new Vector2(player.Center.X, player.Center.Y), 1f, SpriteEffects.None, 10f);
+                    var FoglessPos = new Vector2(Main.screenWidth / 2, Main.screenHeight / 2);
+                    spriteBatch.Draw(FoglessTexture, FoglessPos, null, Color.White * FoglessTime * Intensity, 0f, new Vector2(player.Center.X, player.Center.Y), 1f, SpriteEffects.None, 1f);
                 }
             }
         }
