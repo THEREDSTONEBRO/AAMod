@@ -245,30 +245,11 @@ namespace AAMod
                 }
             }
         }
-        public override void PreUpdate()
+
+        public override void PostUpdate()
         {
-            if ((Mind || Power || Reality || Soul || Space || Time) && (!dwarvenGauntlet && !InfinityGauntlet && !TrueInfinityGauntlet))
-            {
-                player.AddBuff(mod.BuffType<InfinityOverload>(), 180);
-            }
-            if (player.GetModPlayer<AAPlayer>().ZoneVoid || player.GetModPlayer<AAPlayer>().ZoneInferno)
-            {
-                if (Main.raining)
-                {
-                    Main.rainTime = 0;
-                    Main.raining = false;
-                    Main.maxRaining = 0f;
-                }
-            }
             if (player.GetModPlayer<AAPlayer>().ZoneMire)
             {
-                if (Main.raining)
-                {
-                    if (Main.rand.Next(5) == 0)
-                    {
-                        Main.rainTime++;
-                    }
-                }
                 if (Main.dayTime || (!AAWorld.downedYamata && !Main.expertMode) || (!AAWorld.downedYamataA && Main.expertMode))
                 {
                     if (!player.GetModPlayer<AAPlayer>(mod).FogRemover)
@@ -316,6 +297,33 @@ namespace AAMod
                 if (AshCurse)
                 {
                     AshRain(player, mod);
+                }
+            }
+        }
+
+        public override void PreUpdate()
+        {
+            if ((Mind || Power || Reality || Soul || Space || Time) && (!dwarvenGauntlet && !InfinityGauntlet && !TrueInfinityGauntlet))
+            {
+                player.AddBuff(mod.BuffType<InfinityOverload>(), 180);
+            }
+            if (player.GetModPlayer<AAPlayer>().ZoneVoid || player.GetModPlayer<AAPlayer>().ZoneInferno)
+            {
+                if (Main.raining)
+                {
+                    Main.rainTime = 0;
+                    Main.raining = false;
+                    Main.maxRaining = 0f;
+                }
+            }
+            if (player.GetModPlayer<AAPlayer>().ZoneMire)
+            {
+                if (Main.raining)
+                {
+                    if (Main.rand.Next(5) == 0)
+                    {
+                        Main.rainTime++;
+                    }
                 }
             }
         }

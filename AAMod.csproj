@@ -2200,7 +2200,9 @@
     <Content Include="NPCs\Bosses\Akuma\Akuma.png" />
     <Content Include="NPCs\Bosses\Akuma\AkumaA.png" />
     <Content Include="NPCs\Bosses\Akuma\AkumaA_Glow.png" />
+    <Content Include="NPCs\Bosses\Akuma\AkumaA_Head_Boss.png" />
     <Content Include="NPCs\Bosses\Akuma\Akuma_Glow.png" />
+    <Content Include="NPCs\Bosses\Akuma\Akuma_Head_Boss.png" />
     <Content Include="NPCs\Bosses\Akuma\Unused\Akuma.png" />
     <Content Include="NPCs\Bosses\Akuma\Unused\AkumaA.png" />
     <Content Include="NPCs\Bosses\Akuma\Unused\AkumaAHead1.png" />
@@ -2674,7 +2676,6 @@
     <None Include="Palletes\Abbadon.gpl" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Achievement\" />
     <Folder Include="bin\Release\" />
     <Folder Include="Items\Boss\Akumata\" />
     <Folder Include="Items\Boss\Icegrim\" />
