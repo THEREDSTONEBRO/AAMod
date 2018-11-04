@@ -166,7 +166,7 @@ namespace AAMod
                 SkyManager.Instance["AAMod:InfernoSky"] = new InfernoSky();
                 InfernoSky.PlanetTexture = GetTexture("Backgrounds/InfernoSun");
 
-                Filters.Scene["AAMod:AkumaSky"] = new Filter(new AkumaSkyData("FilterMiniTower").UseColor(0f, 0.191f, 0.255f).UseOpacity(0.3f), EffectPriority.VeryHigh);
+                Filters.Scene["AAMod:AkumaSky"] = new Filter(new AkumaSkyData("FilterMiniTower").UseColor(0f, 0.1f, 0.2f).UseOpacity(0.3f), EffectPriority.VeryHigh);
                 SkyManager.Instance["AAMod:AkumaSky"] = new AkumaSky();
                 AkumaSky.PlanetTexture = GetTexture("Backgrounds/AkumaSun");
 
