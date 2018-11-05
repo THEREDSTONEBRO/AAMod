@@ -41,6 +41,7 @@ namespace AAMod.Items.Projectiles.Akuma
             projectile.magic = true;
             projectile.ignoreWater = true;
             projectile.glowMask = customGlowMask;
+            
         }
         
 

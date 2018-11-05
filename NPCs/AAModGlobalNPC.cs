@@ -114,6 +114,14 @@ namespace AAMod.NPCs
                 }
             }
 
+            if (npc.type == NPCID.DukeFishron)
+            {
+                if (Main.rand.NextFloat() < 0.1f)
+                {
+                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("Seashroom"));
+                }
+            }
+
             if (npc.type == NPCID.EnchantedSword)
             {
                 if (Main.rand.NextFloat() < 0.1f)

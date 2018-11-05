@@ -11,7 +11,6 @@ namespace AAMod.Items.Projectiles
         public static short customGlowMask = 0;
         public override void SetStaticDefaults()
         {
-            Main.projFrames[projectile.type] = 5;
             if (Main.netMode != 2)
             {
                 Texture2D[] glowMasks = new Texture2D[Main.glowMaskTexture.Length + 1];

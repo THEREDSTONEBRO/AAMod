@@ -34,7 +34,7 @@ namespace AAMod.Items.Projectiles
         {
 
             projectile.frameCounter++;
-            if (projectile.frameCounter > 0)
+            if (projectile.frameCounter > 5)
             {
                 projectile.frame++;
                 projectile.frameCounter = 0;

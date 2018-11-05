@@ -28,8 +28,8 @@ namespace AAMod.Items.Pets
 
 		public override void SetDefaults()
 		{
-			projectile.CloneDefaults(ProjectileID.ZephyrFish);
-            aiType = ProjectileID.ZephyrFish;
+			projectile.CloneDefaults(ProjectileID.SuspiciousTentacle);
+            aiType = ProjectileID.SuspiciousTentacle;
             projectile.width = 14;
             projectile.height = 14;
             projectile.glowMask = customGlowMask;
@@ -38,7 +38,7 @@ namespace AAMod.Items.Pets
 		public override bool PreAI()
 		{
 			Player player = Main.player[projectile.owner];
-			player.zephyrfish = false; // Relic from aiType
+			player.suspiciouslookingTentacle = false; // Relic from aiType
 			return true;
 		}
 

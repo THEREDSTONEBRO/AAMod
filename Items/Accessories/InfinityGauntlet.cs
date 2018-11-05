@@ -112,17 +112,17 @@ All effects of the infinity stones
         public override void VerticalWingSpeeds(Player player, ref float ascentWhenFalling, ref float ascentWhenRising,
             ref float maxCanAscendMultiplier, ref float maxAscentMultiplier, ref float constantAscend)
         {
-            ascentWhenFalling = 0.85f;
-            ascentWhenRising = 0.15f;
+            ascentWhenFalling = 1f;
+            ascentWhenRising = 0.4f;
             maxCanAscendMultiplier = 1f;
-            maxAscentMultiplier = 3f;
-            constantAscend = 0.135f;
+            maxAscentMultiplier = 5f;
+            constantAscend = 0.3f;
         }
 
         public override void HorizontalWingSpeeds(Player player, ref float speed, ref float acceleration)
         {
-            speed = 20f;
-            acceleration *= 3.5f;
+            speed = 25f;
+            acceleration *= 5f;
         }
 
         public override void AddRecipes()

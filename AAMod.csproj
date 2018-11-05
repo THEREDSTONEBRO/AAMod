@@ -87,6 +87,7 @@
     <Compile Include="Backgrounds\VoidSky.cs" />
     <Compile Include="Backgrounds\VoidSkyData.cs" />
     <Compile Include="Backgrounds\VoidSurfaceBgStyle.cs" />
+    <Compile Include="Buffs\Sharkron.cs" />
     <Compile Include="Buffs\BurningAsh.cs" />
     <Compile Include="Buffs\MiniProbe.cs" />
     <Compile Include="Buffs\Broodmini.cs" />
@@ -149,6 +150,12 @@
     <Compile Include="Items\Accessories\SpaceStone.cs" />
     <Compile Include="Items\Accessories\TimeStone.cs" />
     <Compile Include="Items\Accessories\WingsofChaos.cs" />
+    <Compile Include="Items\Accessories\Wings\DarkmatterJetpack.cs" />
+    <Compile Include="Items\Accessories\Wings\DraconianWings.cs" />
+    <Compile Include="Items\Accessories\Wings\DreadWings.cs" />
+    <Compile Include="Items\Accessories\Wings\RadiumWings.cs" />
+    <Compile Include="Items\Accessories\Wings\WingsofChaos.cs" />
+    <Compile Include="Items\Accessories\Wings\ZeroWings.cs" />
     <Compile Include="Items\Armor\Darkmatter\DarkmatterBreastplate.cs" />
     <Compile Include="Items\Armor\Darkmatter\DarkmatterGreaves.cs" />
     <Compile Include="Items\Armor\Darkmatter\DarkmatterHeaddress.cs" />
@@ -516,6 +523,8 @@
     <Compile Include="Items\Pets\PortaProbe.cs" />
     <Compile Include="Items\Pets\RaidEgg.cs" />
     <Compile Include="Items\Pets\Raidmini.cs" />
+    <Compile Include="Items\Pets\Seashroom.cs" />
+    <Compile Include="Items\Pets\Sharkron.cs" />
     <Compile Include="Items\Potions\GrandManaPotion.cs" />
     <Compile Include="Items\Potions\GrandHealingPotion.cs" />
     <Compile Include="Items\Potions\TheBigOne.cs" />
@@ -978,6 +987,7 @@
     <Content Include="Buffs\InfinityOverload.png" />
     <Content Include="Buffs\MiniProbe.png" />
     <Content Include="Buffs\Raidmini.png" />
+    <Content Include="Buffs\Sharkron.png" />
     <Content Include="Buffs\Terrablaze.png" />
     <Content Include="Buffs\UnstableSoul.png" />
     <Content Include="build.txt" />
@@ -1114,6 +1124,19 @@
     <Content Include="Items\Accessories\TimeStone_Glow.png" />
     <Content Include="Items\Accessories\WingsofChaos.png" />
     <Content Include="Items\Accessories\WingsofChaos_Wings.png" />
+    <Content Include="Items\Accessories\Wings\DarkmatterJetpack.png" />
+    <Content Include="Items\Accessories\Wings\DarkmatterJetpack_Wings.png" />
+    <Content Include="Items\Accessories\Wings\DraconianWings.png" />
+    <Content Include="Items\Accessories\Wings\DraconianWings_Wings.png" />
+    <Content Include="Items\Accessories\Wings\DreadWings.png" />
+    <Content Include="Items\Accessories\Wings\DreadWings_Wings.png" />
+    <Content Include="Items\Accessories\Wings\RadiumWings.png" />
+    <Content Include="Items\Accessories\Wings\RadiumWings_Wings.png" />
+    <Content Include="Items\Accessories\Wings\WingsofChaos.png" />
+    <Content Include="Items\Accessories\Wings\WingsofChaos_Wings.png" />
+    <Content Include="Items\Accessories\Wings\ZeroWings.png" />
+    <Content Include="Items\Accessories\Wings\ZeroWings_Wings.png" />
+    <Content Include="Items\Accessories\Wings\ZeroWings_Wings_Glow.png" />
     <Content Include="Items\Armor\Darkmatter\DarkmatterBreastplate.png" />
     <Content Include="Items\Armor\Darkmatter\DarkmatterBreastplate_Arms.png" />
     <Content Include="Items\Armor\Darkmatter\DarkmatterBreastplate_Body.png" />
@@ -1830,6 +1853,9 @@
     <Content Include="Items\Pets\RaidEgg_Glow.png" />
     <Content Include="Items\Pets\Raidmini.png" />
     <Content Include="Items\Pets\Raidmini_Glow.png" />
+    <Content Include="Items\Pets\Seashroom.png" />
+    <Content Include="Items\Pets\Seashroom_Glow.png" />
+    <Content Include="Items\Pets\Sharkron.png" />
     <Content Include="Items\Potions\GrandHealingPotion.png" />
     <Content Include="Items\Potions\GrandManaPotion.png" />
     <Content Include="Items\Potions\TheBigOne.png" />

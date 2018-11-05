@@ -101,6 +101,7 @@ namespace AAMod
         public bool Broodmini = false;
         public bool Raidmini = false;
         public bool MiniProbe = false;
+        public bool Sharkron = false;
 
         public override void ResetEffects()
         {
@@ -149,6 +150,7 @@ namespace AAMod
             Broodmini = false;
             Raidmini = false;
             MiniProbe = false;
+            Sharkron = false;
             Baolei = false;
             AshCurse = !Main.dayTime || (!AAWorld.downedAkuma && !Main.expertMode) || (!AAWorld.downedAkumaA && Main.expertMode);
         }
