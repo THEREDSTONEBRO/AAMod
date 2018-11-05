@@ -15,7 +15,7 @@ using Terraria.DataStructures;
 using Terraria.GameContent.UI.Elements;
 using Terraria.Graphics;
 using System.Reflection;
-using AAMod.NPCs.Bosses.Akuma;
+using Terraria.IO;
 
 namespace AAMod
 {
@@ -121,6 +121,7 @@ namespace AAMod
             InfinityHotKey = RegisterHotKey("Snap", "G");
 
             On.Terraria.GameContent.UI.Elements.UIGenProgressBar.DrawSelf += UIGenProgressBarDrawSelf;
+            On.Terraria.GameContent.UI.Elements.UIWorldListItem.GetIcon += UIWorldListItemGetIcon;
 
             if (!Main.dedServ)
             {
@@ -182,6 +183,13 @@ namespace AAMod
                 TerratoolUI = new TerratoolUI();
                 UserInterface = new UserInterface();
             }
+        }
+
+        private Texture2D UIWorldListItemGetIcon(On.Terraria.GameContent.UI.Elements.UIWorldListItem.orig_GetIcon orig, UIWorldListItem self)
+        {
+            var _data = (WorldFileData)GetInstanceField(self, "_data");
+
+            return GetTexture(("UI/Icon") + (_data.IsHardMode ? "Hallow" : "") + (_data.HasCorruption ? "Corruption" : "Crimson"));
         }
 
         private void UIGenProgressBarDrawSelf(On.Terraria.GameContent.UI.Elements.UIGenProgressBar.orig_DrawSelf orig, UIGenProgressBar self, SpriteBatch spriteBatch)
