@@ -423,7 +423,71 @@ namespace AAMod
             }
         }
 
-        public void DrawItem(int i)
+        public override void PostUpdateMiscEffects()
+        {
+            if (player.pulley)
+            {
+                ModDashMovement();
+            }
+            else if (player.grappling[0] == -1 && !player.tongued)
+            {
+                ModDashMovement();
+            }
+        }
+
+        public void ModDashMovement()
+        {
+            if (Baolei)
+            {
+                Rectangle rectangle = new Rectangle((int)((double)player.position.X + (double)player.velocity.X * 0.5 - 4.0), (int)((double)player.position.Y + (double)player.velocity.Y * 0.5 - 4.0), player.width + 8, player.height + 8);
+                for (int i = 0; i < 200; i++)
+                {
+                    if (Main.npc[i].active && !Main.npc[i].dontTakeDamage && !Main.npc[i].friendly && Main.npc[i].immune[player.whoAmI] <= 0)
+                    {
+                        NPC nPC = Main.npc[i];
+                        Rectangle rect = nPC.getRect();
+                        if (rectangle.Intersects(rect) && (nPC.noTileCollide || player.CanHit(nPC)))
+                        {
+                            float num = 500f * player.meleeDamage;
+                            float num2 = 12f;
+                            bool crit = false;
+                            if (player.kbGlove)
+                            {
+                                num2 *= 2f;
+                            }
+                            if (player.kbBuff)
+                            {
+                                num2 *= 1.5f;
+                            }
+                            if (Main.rand.Next(100) < player.meleeCrit)
+                            {
+                                crit = true;
+                            }
+                            int direction = player.direction;
+                            if (player.velocity.X < 0f)
+                            {
+                                direction = -1;
+                            }
+                            if (player.velocity.X > 0f)
+                            {
+                                direction = 1;
+                            }
+                            if (player.whoAmI == Main.myPlayer)
+                            {
+                                player.ApplyDamageToNPC(nPC, (int)num, num2, direction, crit);
+                            }
+                            nPC.immune[player.whoAmI] = 6;
+                            player.immune = true;
+                            player.immuneNoBlink = true;
+                            player.immuneTime = 4;
+                        }
+                    }
+                }
+            }
+        }
+
+
+            public void DrawItem(int i)
         {
 
             if (player.HeldItem.type == mod.ItemType("VoidStar"))
@@ -742,59 +806,7 @@ namespace AAMod
                 fullBright = true;
             }
         }
-
-        public void ItemCheck_ManageRightClickFeatures_BaoleiRaise(bool theGeneralCheck)
-        {
-
-            bool flag = false;
-            if (theGeneralCheck && Baolei && !player.mount.Active && (player.itemAnimation == 0 || PlayerInput.Triggers.JustPressed.MouseRight))
-            {
-                flag = true;
-            }
-            if (player.shield_parry_cooldown > 0)
-            {
-                player.shield_parry_cooldown--;
-                if (player.shield_parry_cooldown == 0)
-                {
-                    Main.PlaySound(25, -1, -1, 1, 1f, 0f);
-                    for (int i = 0; i < 10; i++)
-                    {
-                        int num = Dust.NewDust(player.Center + new Vector2((player.direction * 6) + ((player.direction == -1) ? -10 : 0), -14f), 10, 16, mod.DustType<Dusts.AkumaDust>(), 0f, 0f, 255, new Color(255, 100, 0, 127), Main.rand.Next(10, 16) * 0.1f);
-                        Main.dust[num].noLight = false;
-                        Main.dust[num].noGravity = true;
-                        Main.dust[num].velocity *= 0.5f;
-                    }
-                }
-            }
-            if (player.shieldParryTimeLeft > 0 && ++player.shieldParryTimeLeft > 20)
-            {
-                player.shieldParryTimeLeft = 0;
-            }
-            if (flag != player.shieldRaised)
-            {
-                player.shieldRaised = flag;
-                if (player.shieldRaised)
-                {
-                    if (player.shield_parry_cooldown == 0)
-                    {
-                        player.shieldParryTimeLeft = 1;
-                    }
-                    player.itemAnimation = 0;
-                    player.itemTime = 0;
-                    player.reuseDelay = 0;
-                }
-                else
-                {
-                    player.shield_parry_cooldown = 15;
-                    player.shieldParryTimeLeft = 0;
-                    if (player.attackCD < 20)
-                    {
-                        player.attackCD = 20;
-                    }
-                }
-            }
-            bool arg_1C7_0 = player.shieldRaised;
-        }
+        
 
         public override void ModifyHitNPCWithProj(Projectile proj, NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
         {

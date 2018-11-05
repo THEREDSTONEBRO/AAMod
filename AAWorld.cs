@@ -168,6 +168,8 @@ namespace AAMod
             if (downedZero) downed.Add("0");
             if (downedZeroA) downed.Add("0A");
             if (downedShen) downed.Add("Shen");
+            if (downedAkumaA) downed.Add("AkumaA");
+            if (downedYamataA) downed.Add("YamataA");
 
             return new TagCompound {
                 {"downed", downed}
@@ -283,6 +285,8 @@ namespace AAMod
             downedZero = downed.Contains("0");
             downedZeroA = downed.Contains("0A");
             downedShen = downed.Contains("Shen");
+            downedAkumaA = downed.Contains("AkumaA");
+            downedYamataA = downed.Contains("YamataA");
             //World Changes
             downedGrips = downedGripRed && downedGripBlue;
             ChaosOres = downedGrips;
