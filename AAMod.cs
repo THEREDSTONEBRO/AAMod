@@ -185,7 +185,7 @@ namespace AAMod
 
                 if (WorldGen.crimson == true)
                 {
-                    Main.itemTexture[521] = GetTexture("Items/SoulOfNightRed");
+                    Main.itemTexture[521] = GetTexture("Items/Materials/SoulOfNightRed");
                 }
             }
         }

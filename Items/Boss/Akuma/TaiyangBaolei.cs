@@ -48,6 +48,7 @@ From 11:00 AM to 1:00 PM, you gain 20% damage resistance and your melee & magic 
             item.accessory = true;
             item.defense = 8;
             item.glowMask = customGlowMask;
+            
         }
         
         public override void ModifyTooltips(List<TooltipLine> list)
@@ -91,7 +92,7 @@ From 11:00 AM to 1:00 PM, you gain 20% damage resistance and your melee & magic 
             player.buffImmune[mod.BuffType("DragonFire")] = true;
             player.buffImmune[mod.BuffType("BurningAsh")] = true;
             player.noKnockback = true;
-            player.GetModPlayer<AAPlayer>().Baolei = true;
+            player.dash = 3;
             if (!Main.dayTime)
             {
                 player.endurance += 0f;

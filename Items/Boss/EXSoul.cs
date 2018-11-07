@@ -43,7 +43,6 @@ namespace AAMod.Items.Boss
             item.rare = 11;
             item.expert = true;
             item.glowMask = customGlowMask;
-            item.alpha = 50;
         }
         
         /*public override void PostUpdate()

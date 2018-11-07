@@ -35,7 +35,7 @@ namespace AAMod.Items.Pets
             item.buffType = mod.BuffType("Sharkron");
 		}
 
-		public override void UseStyle(Player player)
+        public override void UseStyle(Player player)
 		{
 			if (player.whoAmI == Main.myPlayer && player.itemTime == 0)
 			{

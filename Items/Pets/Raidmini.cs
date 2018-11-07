@@ -54,6 +54,16 @@ namespace AAMod.Items.Pets
 			{
 				projectile.timeLeft = 2;
 			}
-		}
+            projectile.frameCounter++;
+            if (projectile.frameCounter > 5)
+            {
+                projectile.frame++;
+                projectile.frameCounter = 0;
+                if (projectile.frame > 2)
+                {
+                    projectile.frame = 0;
+                }
+            }
+        }
 	}
 }

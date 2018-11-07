@@ -28,8 +28,8 @@ namespace AAMod.Items.Pets
 
 		public override void SetDefaults()
 		{
-			projectile.CloneDefaults(ProjectileID.ZephyrFish);
-			aiType = ProjectileID.ZephyrFish;
+			projectile.CloneDefaults(ProjectileID.DD2PetDragon);
+			aiType = ProjectileID.DD2PetDragon;
             projectile.width = 66;
             projectile.height = 56;
             projectile.glowMask = customGlowMask;
@@ -38,7 +38,7 @@ namespace AAMod.Items.Pets
 		public override bool PreAI()
 		{
 			Player player = Main.player[projectile.owner];
-			player.zephyrfish = false; // Relic from aiType
+			player.petFlagDD2Dragon = false; // Relic from aiType
 			return true;
 		}
 
@@ -54,6 +54,6 @@ namespace AAMod.Items.Pets
 			{
 				projectile.timeLeft = 2;
 			}
-		}
+        }
 	}
 }

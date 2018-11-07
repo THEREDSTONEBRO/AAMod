@@ -97,7 +97,7 @@ namespace AAMod.Items.Boss.Zero
                     }
                     if (choice == 7)
                     {
-                        player.QuickSpawnItem(mod.ItemType("Ryugen"));
+                        player.QuickSpawnItem(mod.ItemType("CharlieShell"));
                     }
                     if (choice == 8)
                     {

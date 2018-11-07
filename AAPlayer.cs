@@ -88,6 +88,7 @@ namespace AAMod
         public bool AshRemover;
         public bool FogRemover;
         public bool Baolei;
+        public bool DragonShell;
         //debuffs
         public bool infinityOverload = false;
         public bool discordInferno = false;
@@ -249,6 +250,10 @@ namespace AAMod
 
                     }
                 }
+            }
+            if (DragonShell)
+            {
+                npc.AddBuff(BuffID.Daybreak, 300);
             }
         }
 

@@ -163,7 +163,7 @@ namespace AAMod.NPCs.Bosses.Broodmother
             if (npc.ai[0] == -1f)
             {
                 Vector2 value50 = new Vector2(0f, -8f);
-                npc.velocity = ((npc.velocity * 9f) + value50) / 10f;
+                npc.velocity = ((npc.velocity * 11f) + value50) / 10f;
                 npc.noTileCollide = true;
                 npc.dontTakeDamage = true;
                 return;
@@ -180,29 +180,29 @@ namespace AAMod.NPCs.Bosses.Broodmother
                     npc.direction = -1;
                 }
                 npc.spriteDirection = npc.direction;
-                npc.rotation = ((npc.rotation * 9f) + (npc.velocity.X * 0.1f)) / 10f;
+                npc.rotation = ((npc.rotation * 9f) + (npc.velocity.X * 0.4f)) / 10f;
                 if (npc.collideX)
                 {
-                    npc.velocity.X = npc.velocity.X * (-npc.oldVelocity.X * 0.5f);
-                    if (npc.velocity.X > 4f)
+                    npc.velocity.X = npc.velocity.X * (-npc.oldVelocity.X * 0.6f);
+                    if (npc.velocity.X > 5f)
                     {
-                        npc.velocity.X = 4f;
+                        npc.velocity.X = 5f;
                     }
-                    if (npc.velocity.X < -4f)
+                    if (npc.velocity.X < -5f)
                     {
-                        npc.velocity.X = -4f;
+                        npc.velocity.X = -5f;
                     }
                 }
                 if (npc.collideY)
                 {
-                    npc.velocity.Y = npc.velocity.Y * (-npc.oldVelocity.Y * 0.5f);
-                    if (npc.velocity.Y > 4f)
+                    npc.velocity.Y = npc.velocity.Y * (-npc.oldVelocity.Y * 0.6f);
+                    if (npc.velocity.Y > 5f)
                     {
-                        npc.velocity.Y = 4f;
+                        npc.velocity.Y = 5f;
                     }
-                    if (npc.velocity.Y < -4f)
+                    if (npc.velocity.Y < -5f)
                     {
-                        npc.velocity.Y = -4f;
+                        npc.velocity.Y = -5f;
                     }
                 }
                 Vector2 value51 = Main.player[npc.target].Center - npc.Center;
@@ -224,11 +224,11 @@ namespace AAMod.NPCs.Bosses.Broodmother
                 }
                 else if (npc.velocity.Length() > 2f)
                 {
-                    npc.velocity *= 0.95f;
+                    npc.velocity *= 0.99f;
                 }
                 else if (npc.velocity.Length() < 1f)
                 {
-                    npc.velocity *= 1.05f;
+                    npc.velocity *= 1.11f;
                 }
                 npc.ai[1] += 1f;
                 if (npc.justHit)
@@ -281,7 +281,7 @@ namespace AAMod.NPCs.Bosses.Broodmother
                         npc.direction = 1;
                     }
                     npc.spriteDirection = npc.direction;
-                    npc.rotation = ((npc.rotation * 9f) + (npc.velocity.X * 0.08f)) / 10f;
+                    npc.rotation = ((npc.rotation * 9f) + (npc.velocity.X * 0.10f)) / 10f;
                     Vector2 value52 = Main.player[npc.target].Center - npc.Center;
                     if (value52.Length() < 300f && !Collision.SolidCollision(npc.position, npc.width, npc.height))
                     {
@@ -322,25 +322,25 @@ namespace AAMod.NPCs.Bosses.Broodmother
                     if (npc.collideX)
                     {
                         npc.velocity.X = npc.velocity.X * (-npc.oldVelocity.X * 0.5f);
-                        if (npc.velocity.X > 4f)
+                        if (npc.velocity.X > 5f)
                         {
-                            npc.velocity.X = 4f;
+                            npc.velocity.X = 5f;
                         }
-                        if (npc.velocity.X < -4f)
+                        if (npc.velocity.X < -5f)
                         {
-                            npc.velocity.X = -4f;
+                            npc.velocity.X = -5f;
                         }
                     }
                     if (npc.collideY)
                     {
                         npc.velocity.Y = npc.velocity.Y * (-npc.oldVelocity.Y * 0.5f);
-                        if (npc.velocity.Y > 4f)
+                        if (npc.velocity.Y > 5f)
                         {
-                            npc.velocity.Y = 4f;
+                            npc.velocity.Y = 5f;
                         }
-                        if (npc.velocity.Y < -4f)
+                        if (npc.velocity.Y < -5f)
                         {
-                            npc.velocity.Y = -4f;
+                            npc.velocity.Y = -5f;
                         }
                     }
                     Vector2 value53 = Main.player[npc.target].Center - npc.Center;
@@ -380,7 +380,7 @@ namespace AAMod.NPCs.Bosses.Broodmother
                             npc.direction = 1;
                         }
                         npc.spriteDirection = npc.direction;
-                        npc.rotation = ((npc.rotation * 4f) + (npc.velocity.X * 0.07f)) / 5f;
+                        npc.rotation = ((npc.rotation * 4f) + (npc.velocity.X * 0.09f)) / 5f;
                         Vector2 value54 = Main.player[npc.target].Center - npc.Center;
                         value54.Y -= 12f;
                         if (npc.Center.X > Main.player[npc.target].Center.X)
@@ -408,7 +408,7 @@ namespace AAMod.NPCs.Bosses.Broodmother
                     {
                         npc.knockBackResist = 0f;
                         npc.noTileCollide = true;
-                        npc.rotation = ((npc.rotation * 4f) + (npc.velocity.X * 0.07f)) / 5f;
+                        npc.rotation = ((npc.rotation * 4f) + (npc.velocity.X * 0.09f)) / 5f;
                         Vector2 vector206 = Main.player[npc.target].Center - npc.Center;
                         vector206.Y -= 12f;
                         float scaleFactor19 = 16f;
@@ -471,7 +471,7 @@ namespace AAMod.NPCs.Bosses.Broodmother
                                     npc.ai[3] = 0f;
                                 }
                             }
-                            npc.rotation = ((npc.rotation * 4f) + (npc.velocity.X * 0.07f)) / 5f;
+                            npc.rotation = ((npc.rotation * 4f) + (npc.velocity.X * 0.09f)) / 5f;
                             return;
                         }
                         if (npc.ai[0] == 4f)

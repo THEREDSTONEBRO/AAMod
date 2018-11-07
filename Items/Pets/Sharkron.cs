@@ -11,7 +11,7 @@ namespace AAMod.Items.Pets
         public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Sharkron"); // Automatic from .lang files
-			Main.projFrames[projectile.type] = 2;
+			Main.projFrames[projectile.type] = 4;
 			Main.projPet[projectile.type] = true;
         }
 
