@@ -117,7 +117,7 @@ namespace AAMod.Items.Melee
             recipe.AddIngredient(ItemID.VampireKnives);
             recipe.AddIngredient(null, "EXSoul");
 		    recipe.AddTile(null, "QuantumFusionAccelerator");
-            recipe.SetResult(this, 50);
+            recipe.SetResult(this);
             recipe.AddRecipe();
 		}
     }
