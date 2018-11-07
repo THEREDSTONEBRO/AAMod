@@ -182,6 +182,11 @@ namespace AAMod
 
                 TerratoolUI = new TerratoolUI();
                 UserInterface = new UserInterface();
+
+                if (WorldGen.crimson == true)
+                {
+                    Main.itemTexture[521] = GetTexture("Items/SoulOfNightRed");
+                }
             }
         }
 
