@@ -120,8 +120,8 @@ namespace AAMod
 
             InfinityHotKey = RegisterHotKey("Snap", "G");
 
-            On.Terraria.GameContent.UI.Elements.UIGenProgressBar.DrawSelf += UIGenProgressBarDrawSelf;
-            On.Terraria.GameContent.UI.Elements.UIWorldListItem.GetIcon += UIWorldListItemGetIcon;
+            //On.Terraria.GameContent.UI.Elements.UIGenProgressBar.DrawSelf += UIGenProgressBarDrawSelf;
+            //On.Terraria.GameContent.UI.Elements.UIWorldListItem.GetIcon += UIWorldListItemGetIcon;
 
             if (!Main.dedServ)
             {
@@ -190,7 +190,8 @@ namespace AAMod
             }
         }
 
-        private Texture2D UIWorldListItemGetIcon(On.Terraria.GameContent.UI.Elements.UIWorldListItem.orig_GetIcon orig, UIWorldListItem self)
+        //DO NOT UNCOMMENT
+        /*private Texture2D UIWorldListItemGetIcon(On.Terraria.GameContent.UI.Elements.UIWorldListItem.orig_GetIcon orig, UIWorldListItem self)
         {
             var _data = (WorldFileData)GetInstanceField(self, "_data");
 
@@ -219,7 +220,7 @@ namespace AAMod
             r.X -= 8;
             spriteBatch.Draw(WorldGen.crimson ? GetTexture("UI/CrimsonLoadBar") : GetTexture("UI/CorruptionLoadBar"), r.TopLeft(), Color.White);
             spriteBatch.Draw(TextureManager.Load("Images/UI/WorldGen/Outer Lower"), r.TopLeft() + new Vector2(44f, 60f), Color.White);
-        }
+        }*/
 
         //Simplist Reflection Example For Any Field Value Below
         private static object GetInstanceField<T>(T instance, string fieldName)

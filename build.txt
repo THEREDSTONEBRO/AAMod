@@ -1,9 +1,8 @@
 author = Alphakip
-version = 0.3.4
+version = 0.4.1
 displayName = Ancients-Awakened
 includePDB = true
 buildIgnore = *.csproj, *.user, obj\*, bin\*, .vs\*
 hideCode = false
 hideResources = false
 includeSource = true
-modReferences = TerrariaHooks
