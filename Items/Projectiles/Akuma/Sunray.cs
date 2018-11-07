@@ -56,7 +56,7 @@ namespace AAMod.Items.Projectiles.Akuma
         {
 
             Vector2? vector68 = null;
-            if (projectile.velocity.HasNaNs() || projectile.velocity == Vector2.Zero)
+           if (projectile.velocity.HasNaNs() || projectile.velocity == Vector2.Zero)
                 projectile.velocity = -Vector2.UnitY;
 
             if (Main.projectile[(int)projectile.ai[1]].active && Main.projectile[(int)projectile.ai[1]].type == mod.ProjectileType("SunOrb"))
@@ -70,7 +70,7 @@ namespace AAMod.Items.Projectiles.Akuma
             }
 
             if (projectile.velocity.HasNaNs() || projectile.velocity == Vector2.Zero)
-                projectile.velocity = -Vector2.UnitY;
+            projectile.velocity = -Vector2.UnitY;
 
             float num810 = projectile.velocity.ToRotation();
             projectile.rotation = num810 - (float)(Math.PI / 2);
