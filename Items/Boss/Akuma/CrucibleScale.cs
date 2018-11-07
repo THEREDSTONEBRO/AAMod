@@ -14,7 +14,7 @@ namespace AAMod.Items.Boss.Akuma
         {
             DisplayName.SetDefault("Crucible Scale");
             Tooltip.SetDefault("The fury of the draconian sun eminates from this scale");
-            Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(4, 6));
+            Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(4, 4));
         }
 
         public override void ModifyTooltips(List<TooltipLine> list)
@@ -31,10 +31,10 @@ namespace AAMod.Items.Boss.Akuma
         // TODO -- Velocity Y smaller, post NewItem?
         public override void SetDefaults()
         {
-            item.width = 32;
-            item.height = 34;
+            item.width = 28;
+            item.height = 30;
             item.maxStack = 999;
-            item.value = 10000;
+            item.value = 100000;
             item.rare = 11;
         }
 

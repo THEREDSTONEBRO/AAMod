@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 namespace AAMod.Items.Accessories.Wings
 {
 	[AutoloadEquip(EquipType.Wings)]
-	public class ExampleWings : ModItem
+	public class DreadWings : ModItem
 	{
 		public override void SetStaticDefaults()
         {
@@ -41,13 +41,14 @@ namespace AAMod.Items.Accessories.Wings
 			acceleration *= 3.5f;
 		}
 
-		public override void AddRecipes()
-		{
-			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(null, "EquipMaterial", 60);
-			recipe.AddTile(null, "ExampleWorkbench");
-			recipe.SetResult(this);
-			recipe.AddRecipe();
-		}
-	}
+        public override void AddRecipes()
+        {
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(null, "EventideAbyssium", 15);
+            recipe.AddIngredient(null, "DreadScale", 5);
+            recipe.AddTile(null, "BinaryReassembler");
+            recipe.SetResult(this);
+            recipe.AddRecipe();
+        }
+    }
 }

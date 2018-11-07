@@ -600,6 +600,7 @@
     <Compile Include="Items\Projectiles\SauceProjectile.cs" />
     <Compile Include="Items\Projectiles\SpookerangP.cs" />
     <Compile Include="Items\Projectiles\Squirt.cs" />
+    <Compile Include="Items\Projectiles\StormJavelin.cs" />
     <Compile Include="Items\Projectiles\Taserblast.cs" />
     <Compile Include="Items\Projectiles\TechneciumBoomerangP.cs" />
     <Compile Include="Items\Projectiles\TerraArrow.cs" />
@@ -662,6 +663,7 @@
     <Compile Include="Items\Throwing\HellBall.cs" />
     <Compile Include="Items\Throwing\LunaticJavelin.cs" />
     <Compile Include="Items\Throwing\Spookerang.cs" />
+    <Compile Include="Items\Throwing\StormJavelin.cs" />
     <Compile Include="Items\Throwing\TechneciumBoomerang.cs" />
     <Compile Include="Items\Throwing\Throwshroom.cs" />
     <Compile Include="Items\Throwing\YtriumBoomerang.cs" />
@@ -1930,7 +1932,6 @@
     <Content Include="Items\Projectiles\Etheral.png" />
     <Content Include="Items\Projectiles\EtheralEX.png" />
     <Content Include="Items\Projectiles\EtheralLazer.png" />
-    <Content Include="Items\Projectiles\EtheralLazerEX.png" />
     <Content Include="Items\Projectiles\FulguritePhasesaber.png" />
     <Content Include="Items\Projectiles\GSP.png" />
     <Content Include="Items\Projectiles\HellBallP.png" />

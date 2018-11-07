@@ -20,9 +20,12 @@ namespace AAMod.Items.Throwing
                 {
                     glowMasks[i] = Main.glowMaskTexture[i];
                 }
-                item.glowMask = customGlowMask;
-                DisplayName.SetDefault("Darkmatter Spinblade");
+                glowMasks[glowMasks.Length - 1] = mod.GetTexture("Items/Throwing/" + GetType().Name + "_Glow");
+                customGlowMask = (short)(glowMasks.Length - 1);
+                Main.glowMaskTexture = glowMasks;
             }
+
+            DisplayName.SetDefault("Darkmatter Spinblade");
         }
         public override void SetDefaults()
 		{
@@ -41,7 +44,8 @@ namespace AAMod.Items.Throwing
 			item.shoot = mod.ProjectileType ("DMC");
 			item.UseSound = SoundID.Item1;
 			item.autoReuse = true;
-		}
+            item.glowMask = customGlowMask;
+        }
 
         
 

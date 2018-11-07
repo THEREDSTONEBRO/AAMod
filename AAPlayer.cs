@@ -165,13 +165,19 @@ namespace AAMod
 
         public override void UpdateBiomeVisuals()
         {
+            /*
+            bool useYamata = NPC.AnyNPCs(mod.NPCType<YamataA>()) || YamataAltar;
+            player.ManageSpecialBiomeVisuals("AAMod:AkumaSky", useAkuma);
+            player.ManageSpecialBiomeVisuals("HeatDistortion", useAkuma);
+             */
+
             bool useAkuma = NPC.AnyNPCs(mod.NPCType<AkumaA>()) || AkumaAltar;
+            player.ManageSpecialBiomeVisuals("AAMod:AkumaSky", useAkuma);
+            player.ManageSpecialBiomeVisuals("HeatDistortion", useAkuma);
             bool useInferno = (ZoneInferno || SunAltar) && !useAkuma;
             player.ManageSpecialBiomeVisuals("AAMod:InfernoSky", useInferno);
             player.ManageSpecialBiomeVisuals("HeatDistortion", useInferno);
-            player.ManageSpecialBiomeVisuals("AAMod:AkumaSky", useAkuma);
-            player.ManageSpecialBiomeVisuals("HeatDistortion", useAkuma);
-            bool useMire = ZoneMire || MoonAltar;
+            bool useMire = ZoneMire || MoonAltar /*&& !UseYamata */;
             player.ManageSpecialBiomeVisuals("AAMod:MireSky", useMire);
             bool useVoid = ZoneVoid || VoidUnit;
             player.ManageSpecialBiomeVisuals("AAMod:VoidSky", useVoid);
@@ -179,8 +185,6 @@ namespace AAMod
             bool useFogless = FogRemover && (Main.dayTime || (!AAWorld.downedYamata && !Main.expertMode) || (!AAWorld.downedYamataA && Main.expertMode)) && ZoneMire;
             player.ManageSpecialBiomeVisuals("Fog", useFog);
             player.ManageSpecialBiomeVisuals("Fogless", useFogless);
-            //bool useSnow = player.ZoneSnow && NPC.downedMoonlord == true; //|| VoidUnit/;
-            //player.ManageSpecialBiomeVisuals("AAMod:SnowSky", useSnow);
         }
 
         public override bool CustomBiomesMatch(Player other)
@@ -497,7 +501,7 @@ namespace AAMod
         }
 
 
-            public void DrawItem(int i)
+        public void DrawItem(int i)
         {
 
             if (player.HeldItem.type == mod.ItemType("VoidStar"))
