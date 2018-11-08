@@ -26,19 +26,19 @@ namespace AAMod.NPCs.Bosses.Akuma
 		public override void SetDefaults()
 		{
 			npc.noTileCollide = true;
-             npc.width = 84;
+            npc.width = 84;
             npc.height = 144;
 			npc.aiStyle = -1;
 			npc.netAlways = true;
             if (!AAWorld.downedAkumaA)
             {
                 npc.lifeMax = 300000;
-                if (npc.life > npc.lifeMax / 5 && Panic == false && !AAWorld.downedAkumaA && Main.expertMode && npc.type == mod.NPCType<AkumaA>())
+                if (npc.life > npc.lifeMax / 5)
                 {
                     npc.damage = 90;
                     npc.defense = 130;
                 }
-                if (npc.life <= npc.lifeMax / 5 && Panic == false && !AAWorld.downedAkumaA && Main.expertMode && npc.type == mod.NPCType<AkumaA>())
+                if (npc.life <= npc.lifeMax / 5)
                 {
                     npc.damage = 120;
                     npc.defense = 150;
@@ -47,12 +47,12 @@ namespace AAMod.NPCs.Bosses.Akuma
             if (AAWorld.downedAkumaA)
             {
                 npc.lifeMax = 400000;
-                if (npc.life > npc.lifeMax / 5 && Panic == false && !AAWorld.downedAkumaA && Main.expertMode && npc.type == mod.NPCType<AkumaA>())
+                if (npc.life > npc.lifeMax / 5)
                 {
                     npc.damage = 120;
                     npc.defense = 150;
                 }
-                if (npc.life > npc.lifeMax / 5 && Panic == false && !AAWorld.downedAkumaA && Main.expertMode && npc.type == mod.NPCType<AkumaA>())
+                if (npc.life <= npc.lifeMax / 5)
                 {
                     npc.damage = 140;
                     npc.defense = 170;

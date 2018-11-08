@@ -19,7 +19,7 @@ namespace AAMod.NPCs.Bosses.Zero
     {
         private List<string> SteamId64List;
         private static string CurrentSteamID64;
-
+        private bool Killed = false;
         public int timer;
         public static int type;
         private bool Panic = false;
@@ -29,23 +29,39 @@ namespace AAMod.NPCs.Bosses.Zero
         {
             DisplayName.SetDefault("Zero Awakened");
             Main.npcFrameCount[npc.type] = 12;    //boss frame/animation 
-            NPCID.Sets.TrailCacheLength[npc.type] = 5;
+            NPCID.Sets.TrailCacheLength[npc.type] = 10;
             NPCID.Sets.TrailingMode[npc.type] = 0;
         }
         public override void SetDefaults()
         {
-            npc.aiStyle = 0;  //5 is the flying AI
+            npc.aiStyle = 0;
             if (!AAWorld.downedZeroA)
             {
-                npc.lifeMax = 120000;   //boss life
-                npc.damage = 70;  //boss damage
-                npc.defense = 70;    //boss defense
+                npc.lifeMax = 150000;
+                if (npc.life > npc.lifeMax / 5)
+                {
+                    npc.damage = 100;
+                    npc.defense = 60;
+                }
+                if (npc.life <= npc.lifeMax / 5)
+                {
+                    npc.damage = 120;
+                    npc.defense = 90;
+                }
             }
             if (AAWorld.downedZeroA)
             {
-                npc.lifeMax = 150000;   //boss life
-                npc.damage = 100;  //boss damage
-                npc.defense = 100;    //boss defense
+                npc.lifeMax = 200000;
+                if (npc.life > npc.lifeMax / 5)
+                {
+                    npc.damage = 120;
+                    npc.defense = 80;
+                }
+                if (npc.life <= npc.lifeMax / 5)
+                {
+                    npc.damage = 140;
+                    npc.defense = 110;
+                }
             }
             npc.knockBackResist = 0f;
             npc.width = 178;
@@ -126,8 +142,8 @@ namespace AAMod.NPCs.Bosses.Zero
             {
                 if (Main.rand.Next(0,10) == 0)
                 {
-                    int Xint = (Main.rand.Next(0, 2) == 0) ? Main.rand.Next(-30, -9) : Main.rand.Next(10, 31);
-                    int Yint = (Main.rand.Next(0, 2) == 0) ? Main.rand.Next(-30, -9) : Main.rand.Next(10, 31);
+                    int Xint = (Main.rand.Next(0, 2) == 0) ? Main.rand.Next(-100, -21) : Main.rand.Next(80, 31);
+                    int Yint = (Main.rand.Next(0, 2) == 0) ? Main.rand.Next(-100, -21) : Main.rand.Next(80, 31);
                     Player player = Main.player[npc.target];
                     Vector2 tele = new Vector2(player.Center.X + Xint, player.Center.Y + Yint);
                     npc.Center = tele;
@@ -294,7 +310,13 @@ namespace AAMod.NPCs.Bosses.Zero
             }
             if (dead2)
             {
-                Main.NewText("TARGET NEUTRALIZED. RETURNING T0 0RBIT.", Color.Red.R, Color.Red.G, Color.Red.B);
+                
+                if (Killed == false)
+                {
+                    Main.NewText("TARGET NEUTRALIZED. RETURNING T0 0RBIT.", Color.Red.R, Color.Red.G, Color.Red.B);
+                    Killed = true;
+                }
+                
                 Panic = false;
                 npc.velocity.Y = npc.velocity.Y - 0.04f;
                 if (npc.timeLeft > 10)

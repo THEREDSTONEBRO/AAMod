@@ -550,6 +550,7 @@
     <Compile Include="Items\Projectiles\DMK.cs" />
     <Compile Include="Items\Projectiles\Etheral.cs" />
     <Compile Include="Items\Projectiles\EtheralEX.cs" />
+    <Compile Include="Items\Projectiles\EtheralLazer.cs" />
     <Compile Include="Items\Projectiles\LuminiteMeteor.cs" />
     <Compile Include="Items\Projectiles\AntimonBoomerangP.cs" />
     <Compile Include="Items\Projectiles\APP.cs" />

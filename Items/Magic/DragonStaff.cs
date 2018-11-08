@@ -18,7 +18,7 @@ namespace AAMod.Items.Magic
 
             item.useTime = 12;
             item.useAnimation = 12;
-            item.useStyle = 1;        //this is how the item is holded
+            item.useStyle = 5;     //this is how the item is holded
             item.noMelee = true;
             item.knockBack = 6;        
             item.value = 10000;
@@ -35,7 +35,7 @@ namespace AAMod.Items.Magic
       DisplayName.SetDefault("Dragon Staff");
       Tooltip.SetDefault("Shoots dragon scales.");
             Item.staff[item.type] = true;
-        }
+    }
 
 		public override void AddRecipes()  //How to craft this item
         {

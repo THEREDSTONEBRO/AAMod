@@ -19,7 +19,7 @@ namespace AAMod.Items.Ranged
             item.useTime = 25;
             item.useAnimation = 25;
             item.useStyle = 5;
-            item.shoot = 14;
+            item.shoot = 10;
             item.useAmmo = AmmoID.Bullet;
             item.knockBack = 2;
             item.value = 2000;

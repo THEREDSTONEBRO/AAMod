@@ -31,7 +31,7 @@ namespace AAMod.Items.Throwing
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Abyssal Arc");
+            DisplayName.SetDefault("Darkmatter Kunai");
             Tooltip.SetDefault("");
         }
         public override void AddRecipes()

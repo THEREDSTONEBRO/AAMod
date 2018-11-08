@@ -37,9 +37,9 @@ namespace AAMod.NPCs.Bosses.Zero
             }
             if (Main.expertMode && !AAWorld.downedZeroA)
             {
-                npc.damage = 80;
-                npc.defense = 70;
-                npc.lifeMax = 200000;
+                npc.damage = 90;
+                npc.defense = 80;
+                npc.lifeMax = 220000;
             }
             if (Main.expertMode && AAWorld.downedZeroA)
             {

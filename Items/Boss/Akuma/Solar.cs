@@ -45,10 +45,6 @@ Inflicts daybreak");
             item.shoot = mod.ProjectileType("Solar");  
 		}
 
-        public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)
-        {
-            target.AddBuff(BuffID.Daybreak, 600);
-        }
 
         public override void ModifyTooltips(List<TooltipLine> list)
         {
