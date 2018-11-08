@@ -1,4 +1,4 @@
-/*using System;
+using System;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Terraria;
@@ -42,8 +42,8 @@ namespace AAMod.Items.Boss.Zero
             item.height = 32;
             item.damage = 250;
             item.UseSound = SoundID.Item13;
-            item.shoot = mod.ProjectileType("DoomRayP");
-            item.value = Item.sellPrice(0, 50, 0, 0);
+            item.shoot = mod.ProjectileType("DoomRay");
+            item.value = Item.sellPrice(1, 0, 0, 0);
             item.noMelee = true;
             item.magic = true;
             item.autoReuse = true;
@@ -86,4 +86,4 @@ namespace AAMod.Items.Boss.Zero
 	        recipe.AddRecipe();
 		}
 	}
-}*/
+}

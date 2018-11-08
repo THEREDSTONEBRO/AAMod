@@ -563,7 +563,6 @@
     <Compile Include="Items\Projectiles\DarkShredders.cs" />
     <Compile Include="Items\Projectiles\DBP.cs" />
     <Compile Include="Items\Projectiles\Depthwalker.cs" />
-    <Compile Include="Items\Projectiles\DoomRay.cs" />
     <Compile Include="Items\Projectiles\DragonArrow.cs" />
     <Compile Include="Items\Projectiles\DragonBreathP.cs" />
     <Compile Include="Items\Projectiles\DragonP.cs" />
@@ -618,6 +617,7 @@
     <Compile Include="Items\Projectiles\YtriumBoomerangP.cs" />
     <Compile Include="Items\Projectiles\Zero\Antimatter.cs" />
     <Compile Include="Items\Projectiles\DMC.cs" />
+    <Compile Include="Items\Projectiles\Zero\DoomRay.cs" />
     <Compile Include="Items\Projectiles\Zero\Vortex.cs" />
     <Compile Include="Items\Projectiles\Zero\ZeroArrow.cs" />
     <Compile Include="Items\Projectiles\Zero\DoomRayP.cs" />
@@ -1844,10 +1844,14 @@
     <Content Include="Items\Projectiles\Akuma\Daycrusher.png" />
     <Content Include="Items\Projectiles\Akuma\Daycrusher_Chain.png" />
     <Content Include="Items\Projectiles\Akuma\Daycrusher_Chain_Glow.png" />
+    <Content Include="Items\Projectiles\Akuma\Dayser.png" />
+    <Content Include="Items\Projectiles\Akuma\Daystorm.png" />
     <Content Include="Items\Projectiles\Akuma\Solar.png" />
     <Content Include="Items\Projectiles\Akuma\Solar_Glow.png" />
     <Content Include="Items\Projectiles\Akuma\SunOrb.png" />
+    <Content Include="Items\Projectiles\Akuma\SunOrb_Glow.png" />
     <Content Include="Items\Projectiles\Akuma\Sunray.png" />
+    <Content Include="Items\Projectiles\Akuma\Sunray_Glow.png" />
     <Content Include="Items\Projectiles\Akuma\SunSpear.png" />
     <Content Include="Items\Projectiles\Akuma\SunSpearRain.png" />
     <Content Include="Items\Projectiles\Akuma\SunSpearRain_Glow.png" />
@@ -1893,8 +1897,6 @@
     <Content Include="Items\Projectiles\DarkShredders_glow.png" />
     <Content Include="Items\Projectiles\DBP.png" />
     <Content Include="Items\Projectiles\Depthwalker.png" />
-    <Content Include="Items\Projectiles\DoomRay.png" />
-    <Content Include="Items\Projectiles\DoomRay_Glow.png" />
     <Content Include="Items\Projectiles\DragonArrow.png" />
     <Content Include="Items\Projectiles\DragonBreathP.png" />
     <Content Include="Items\Projectiles\DragonBreathP_Glow.png" />

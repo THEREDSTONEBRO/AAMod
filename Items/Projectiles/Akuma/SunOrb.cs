@@ -171,25 +171,17 @@ namespace AAMod.Items.Projectiles.Akuma
             }
         }
 
-        /*public override void PostDraw(SpriteBatch spriteBatch, Color lightColor)
+        public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
         {
-            Projectile projectile = Main.projectile[i];
-            main.LoadProjectile(projectile.type);
             SpriteEffects spriteEffects = SpriteEffects.None;
-            Vector2 mountedCenter = Main.player[projectile.owner].MountedCenter;
             Color color25 = Lighting.GetColor((int)((double)projectile.position.X + (double)projectile.width * 0.5) / 16, (int)(((double)projectile.position.Y + (double)projectile.height * 0.5) / 16.0));
-            if (projectile.hide && !ProjectileID.Sets.DontAttachHideToAlpha[projectile.type])
-            {
-                color25 = Lighting.GetColor((int)mountedCenter.X / 16, (int)(mountedCenter.Y / 16f));
-            }
             Vector2 vector38 = projectile.position + new Vector2((float)projectile.width, (float)projectile.height) / 2f + Vector2.UnitY * projectile.gfxOffY - Main.screenPosition;
             Texture2D texture2D30 = Main.projectileTexture[projectile.type];
             Color alpha4 = projectile.GetAlpha(color25);
             Vector2 origin8 = new Vector2((float)texture2D30.Width, (float)texture2D30.Height) / 2f;
-
             Color color55 = alpha4 * 0.8f;
             color55.A /= 2;
-            Color color56 = Color.Lerp(alpha4, Color.Black, 0.5f);
+            Microsoft.Xna.Framework.Color color56 = Microsoft.Xna.Framework.Color.Lerp(alpha4, Microsoft.Xna.Framework.Color.Black, 0.5f);
             color56.A = alpha4.A;
             float num274 = 0.95f + (projectile.rotation * 0.75f).ToRotationVector2().Y * 0.1f;
             color56 *= num274;
@@ -199,7 +191,7 @@ namespace AAMod.Items.Projectiles.Akuma
             Main.spriteBatch.Draw(texture2D30, vector38, null, color55, -projectile.rotation * 0.7f, origin8, projectile.scale, spriteEffects ^ SpriteEffects.FlipHorizontally, 0f);
             Main.spriteBatch.Draw(Main.extraTexture[50], vector38, null, alpha4 * 0.8f, projectile.rotation * 0.5f, origin8, projectile.scale * 0.9f, spriteEffects, 0f);
             alpha4.A = 0;
-            Main.spriteBatch.Draw(texture2D30, vector38, null, alpha4, projectile.rotation, origin8, projectile.scale, spriteEffects, 0f);
-        }*/
+            return false;
+        }
     }
 }
