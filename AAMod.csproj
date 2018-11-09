@@ -450,6 +450,7 @@
     <Compile Include="Items\Melee\Amnesia.cs" />
     <Compile Include="Items\Melee\AncientPoker.cs" />
     <Compile Include="Items\Melee\Apocalypse.cs" />
+    <Compile Include="Items\Melee\BackScratcher.cs" />
     <Compile Include="Items\Melee\BlazingDawn.cs" />
     <Compile Include="Items\Melee\BloodThirster.cs" />
     <Compile Include="Items\Melee\BreakingDawn.cs" />
@@ -617,7 +618,6 @@
     <Compile Include="Items\Projectiles\YtriumBoomerangP.cs" />
     <Compile Include="Items\Projectiles\Zero\Antimatter.cs" />
     <Compile Include="Items\Projectiles\DMC.cs" />
-    <Compile Include="Items\Projectiles\Zero\DoomRay.cs" />
     <Compile Include="Items\Projectiles\Zero\Vortex.cs" />
     <Compile Include="Items\Projectiles\Zero\ZeroArrow.cs" />
     <Compile Include="Items\Projectiles\Zero\DoomRayP.cs" />

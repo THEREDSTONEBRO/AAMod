@@ -49,7 +49,7 @@ namespace AAMod.NPCs.Enemies.Mire
 
 		public override void NPCLoot()
 		{
-			string[] lootTable = { "BotchedBand", "Bubbleshot" };
+			string[] lootTable = { "BotchedBand", "Bubbleshot", "BackScratcher" };
 			int loot = Main.rand.Next(lootTable.Length);
 			Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType(lootTable[loot]));
 		}

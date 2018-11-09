@@ -45,7 +45,8 @@ namespace AAMod.Items.Dev
 			item.channel = true;
 	        item.knockBack = 0f;
 	        item.value = Item.sellPrice(1, 0, 0, 0); ;
-	        item.shoot = mod.ProjectileType("Etheral");
+            item.channel = true;
+            item.shoot = mod.ProjectileType("EtheralLazer");
 	        item.shootSpeed = 30f;
             item.glowMask = customGlowMask;
         }

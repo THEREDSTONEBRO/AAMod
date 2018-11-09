@@ -42,7 +42,8 @@ namespace AAMod.Items.Boss.Zero
             item.height = 32;
             item.damage = 250;
             item.UseSound = SoundID.Item13;
-            item.shoot = mod.ProjectileType("DoomRay");
+            item.channel = true;
+            item.shoot = mod.ProjectileType("DoomRayP");
             item.value = Item.sellPrice(1, 0, 0, 0);
             item.noMelee = true;
             item.magic = true;
@@ -58,21 +59,6 @@ namespace AAMod.Items.Boss.Zero
                     line2.overrideColor = new Color(120, 0, 30);
                 }
             }
-        }
-
-        public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
-        {
-            float spread = 12f * 0.0174f;
-            float baseSpeed = (float)Math.Sqrt(speedX * speedX + speedY * speedY);
-            double startAngle = Math.Atan2(speedX, speedY) - .1d;
-            double deltaAngle = spread / 6f;
-            double offsetAngle;
-            for (int i = 0; i < 3; i++)
-            {
-                offsetAngle = startAngle + deltaAngle * i;
-                Terraria.Projectile.NewProjectile(position.X, position.Y, baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle), item.shoot, damage, knockBack, item.owner);
-            }
-            return false;
         }
         
 		public override void AddRecipes()
