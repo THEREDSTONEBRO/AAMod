@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using Microsoft.Xna.Framework;
-using Terraria;
-using Terraria.ID;
+﻿using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.GameContent.Achievements;
 
 namespace AAMod.Items.Projectiles
 {
-	// to investigate: Projectile.Damage, (8843)
-	class TitanAxe : ModProjectile
+    // to investigate: Projectile.Damage, (8843)
+    class TitanAxe : ModProjectile
 	{
 		public override void SetDefaults()
 		{

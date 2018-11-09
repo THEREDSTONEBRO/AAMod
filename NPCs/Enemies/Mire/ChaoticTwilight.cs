@@ -1,14 +1,11 @@
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using System;
 using Microsoft.Xna.Framework;
-using System.Linq;
-using System.Collections.Generic;
 
 namespace AAMod.NPCs.Enemies.Mire
 {
-	public class ChaoticTwilight : ModNPC
+    public class ChaoticTwilight : ModNPC
 	{
 		public override void SetStaticDefaults()
 		{

@@ -1,12 +1,10 @@
-using System;
-using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace AAMod.Items.Throwing
 {
-	public class TechneciumBoomerang : ModItem
+    public class TechneciumBoomerang : ModItem
 	{
 		public override void SetDefaults()
 		{

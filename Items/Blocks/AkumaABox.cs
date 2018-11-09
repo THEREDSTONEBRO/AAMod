@@ -1,12 +1,10 @@
 using Terraria.ModLoader;
-using Terraria;
-using Terraria.ID;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 
 namespace AAMod.Items.Blocks
 {
-	public class AkumaABox : ModItem
+    public class AkumaABox : ModItem
 	{
 		public override void SetStaticDefaults()
 		{

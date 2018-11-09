@@ -1,14 +1,12 @@
-using System;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Terraria;
-using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace AAMod.Items.Boss.Zero
 {
-	public class EventHorizon : ModItem
+    public class EventHorizon : ModItem
 	{
 		public override void SetStaticDefaults()
 		{

@@ -1,10 +1,9 @@
-using AAMod;
 using Terraria;
 using Terraria.ModLoader;
 
 namespace AAMod.Buffs
 {
-	public class Sharkron : ModBuff
+    public class Sharkron : ModBuff
 	{
 		public override void SetDefaults()
 		{

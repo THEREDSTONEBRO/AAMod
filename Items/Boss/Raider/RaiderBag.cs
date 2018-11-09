@@ -1,10 +1,9 @@
-using System;
 using Terraria;
 using Terraria.ModLoader;
 
 namespace AAMod.Items.Boss.Raider
 {
-	public class RaiderBag : ModItem
+    public class RaiderBag : ModItem
 	{
         public static short customGlowMask = 0;
         public override void SetStaticDefaults()

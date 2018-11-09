@@ -1,5 +1,4 @@
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.Enums;
 using Terraria.ID;
@@ -8,7 +7,7 @@ using Terraria.ObjectData;
 
 namespace AAMod.Tiles.BogwoodF
 {
-	public class BogwoodChair : ModTile
+    public class BogwoodChair : ModTile
 	{
 		public override void SetDefaults()
 		{

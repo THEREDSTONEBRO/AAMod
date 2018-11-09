@@ -1,15 +1,13 @@
-using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
 using Microsoft.Xna.Framework;
 using System.Collections.Generic;
-using System.Linq;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria.Audio;
 
 namespace AAMod.Items.Boss.Zero
 {
-	public class Neutralizer : ModItem
+    public class Neutralizer : ModItem
 	{
         public static short customGlowMask = 0;
         public override void SetStaticDefaults()

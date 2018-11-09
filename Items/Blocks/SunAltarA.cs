@@ -1,10 +1,9 @@
 using Terraria;
-using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace AAMod.Items.Blocks
 {
-	public class SunAltarA : ModItem
+    public class SunAltarA : ModItem
 	{
 
         public override void SetStaticDefaults()

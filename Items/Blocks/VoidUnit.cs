@@ -1,12 +1,11 @@
 using Microsoft.Xna.Framework;
 using System.Collections.Generic;
 using Terraria;
-using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace AAMod.Items.Blocks
 {
-	public class VoidUnit : ModItem
+    public class VoidUnit : ModItem
 	{
 
         public static short customGlowMask = 0;

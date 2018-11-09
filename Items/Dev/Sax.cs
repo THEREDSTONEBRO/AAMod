@@ -1,10 +1,9 @@
 using Terraria;
-using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace AAMod.Items.Dev
 {
-	public class Sax : ModItem
+    public class Sax : ModItem
 	{
 		public override void SetStaticDefaults()
 		{

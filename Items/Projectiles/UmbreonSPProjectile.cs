@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-using AAMod.Items.Melee;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
@@ -8,7 +6,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Projectiles
 {
-	public class UmbreonSPProjectile : ModProjectile
+    public class UmbreonSPProjectile : ModProjectile
 	{
 		public override void SetDefaults()
 		{

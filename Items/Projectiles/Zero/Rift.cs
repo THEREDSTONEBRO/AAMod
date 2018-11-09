@@ -1,16 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.GameContent.Achievements;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace AAMod.Items.Projectiles.Zero
 {
-	// to investigate: Projectile.Damage, (8843)
-	class Rift : ModProjectile
+    // to investigate: Projectile.Damage, (8843)
+    class Rift : ModProjectile
 	{
         public static short customGlowMask = 0;
         public override void SetStaticDefaults()

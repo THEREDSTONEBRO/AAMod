@@ -1,11 +1,6 @@
-using System;
-using System.Collections.Generic;
-using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using System.Diagnostics;
-using AAMod.NPCs;
 
 namespace AAMod.Items.Projectiles   //The directory for your .cs and .png; Example: TutorialMOD/Projectiles
 {

@@ -1,9 +1,8 @@
-using Terraria;
 using Terraria.ModLoader;
 
 namespace AAMod.Water
 {
-	public class InfernoWaterfallStyle : ModWaterfallStyle
+    public class InfernoWaterfallStyle : ModWaterfallStyle
 	{
 		
 	}

@@ -1,11 +1,10 @@
-using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace AAMod.Items.Pets
 {
-	public class Sharkron : ModProjectile
+    public class Sharkron : ModProjectile
     {
         public static short customGlowMask = 0;
         public override void SetStaticDefaults()

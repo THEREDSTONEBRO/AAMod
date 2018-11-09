@@ -1,6 +1,4 @@
-﻿using System;
-using System.Linq;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ID;
@@ -8,7 +6,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.NPCs.Enemies.Void
 {
-	public class Null : ModNPC
+    public class Null : ModNPC
 	{
 		
 		public override void SetStaticDefaults()

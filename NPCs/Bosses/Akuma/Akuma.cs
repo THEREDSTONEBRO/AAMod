@@ -1,9 +1,7 @@
 ﻿using Terraria;
 using System;
 using Terraria.ID;
-using System.Diagnostics;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using Terraria.ModLoader;
 using Terraria.Audio;
 

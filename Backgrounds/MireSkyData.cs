@@ -1,6 +1,5 @@
 ﻿using Terraria;
 using Terraria.Graphics.Shaders;
-using Terraria.ModLoader;
 
 namespace AAMod.Backgrounds
 {

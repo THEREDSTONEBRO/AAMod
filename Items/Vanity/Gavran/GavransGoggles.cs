@@ -1,12 +1,10 @@
-using Terraria;
-using Terraria.ID;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
 using System.Collections.Generic;
 
 namespace AAMod.Items.Vanity.Gavran
 {
-	[AutoloadEquip(EquipType.Head)]
+    [AutoloadEquip(EquipType.Head)]
 	public class GavransGoggles : ModItem
 	{
 		public override void SetStaticDefaults()

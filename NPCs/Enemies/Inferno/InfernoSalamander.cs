@@ -1,15 +1,10 @@
-using System;
-using System.IO;
-using System.Linq;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace AAMod.NPCs.Enemies.Inferno
 {
-    
+
     public class InfernoSalamander : ModNPC
     {
 

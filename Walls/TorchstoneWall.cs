@@ -1,13 +1,11 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System.IO;
 using Terraria;
-using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace AAMod.Walls
 {
-	public class TorchstoneWall : ModWall
+    public class TorchstoneWall : ModWall
 	{
 		public override void SetDefaults()
 		{

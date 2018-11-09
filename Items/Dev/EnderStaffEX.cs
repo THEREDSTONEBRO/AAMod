@@ -1,13 +1,12 @@
 using Microsoft.Xna.Framework;
-using System.Collections.Generic;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace AAMod.Items.Dev
 {
-	//imported from my tAPI mod because I'm lazy
-	public class EnderStaffEX : ModItem
+    //imported from my tAPI mod because I'm lazy
+    public class EnderStaffEX : ModItem
 	{
         public static short customGlowMask = 0;
         public override void SetStaticDefaults()

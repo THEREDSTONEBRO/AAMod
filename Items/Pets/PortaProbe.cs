@@ -1,11 +1,10 @@
-using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace AAMod.Items.Pets
 {
-	public class PortaProbe : ModItem
+    public class PortaProbe : ModItem
 	{
         public override void SetStaticDefaults()
 		{

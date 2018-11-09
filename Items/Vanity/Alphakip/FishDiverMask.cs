@@ -1,12 +1,10 @@
-using Terraria;
-using Terraria.ID;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
 using System.Collections.Generic;
 
 namespace AAMod.Items.Vanity.Alphakip
 {
-	[AutoloadEquip(EquipType.Head)]
+    [AutoloadEquip(EquipType.Head)]
 	public class FishDiverMask : ModItem
 	{
 		public override void SetStaticDefaults()

@@ -1,14 +1,12 @@
-using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using System.Collections.Generic;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 
 namespace AAMod.Items.Dev
 {
-	public class UmbreonSPEX : ModItem
+    public class UmbreonSPEX : ModItem
 	{
 		public static short customGlowMask = 0;
 		public override void SetStaticDefaults()

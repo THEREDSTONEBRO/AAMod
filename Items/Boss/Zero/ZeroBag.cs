@@ -1,10 +1,9 @@
-using System;
 using Terraria;
 using Terraria.ModLoader;
 
 namespace AAMod.Items.Boss.Zero
 {
-	public class ZeroBag : ModItem
+    public class ZeroBag : ModItem
 	{
         public static short customGlowMask = 0;
         public override void SetStaticDefaults()

@@ -1,13 +1,11 @@
-using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using System.Collections.Generic;//<---This
 using Microsoft.Xna.Framework.Graphics;//<---and this are used by the glowmask code.
 
 namespace AAMod.Items.Melee
 {
-	public class TerraBladeEX : ModItem
+    public class TerraBladeEX : ModItem
 	{
 		public static short customGlowMask = 0;
 		public override void SetStaticDefaults()

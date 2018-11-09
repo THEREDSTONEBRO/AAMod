@@ -1,10 +1,9 @@
-using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
 
 namespace AAMod.Water
 {
-	public class InfernoWaterSplash : ModDust
+    public class InfernoWaterSplash : ModDust
 	{
 		public override void SetDefaults()
 		{

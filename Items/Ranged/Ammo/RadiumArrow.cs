@@ -1,10 +1,9 @@
-using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace AAMod.Items.Ranged.Ammo
 {
-	public class RadiumArrow : ModItem
+    public class RadiumArrow : ModItem
 	{
 		public override void SetStaticDefaults()
 		{

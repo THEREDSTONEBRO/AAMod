@@ -1,12 +1,9 @@
-using Microsoft.Xna.Framework;
-using Terraria;
-using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace AAMod.Items.Projectiles
 {
-	//ported from my tAPI mod because I don't want to make artwork
-	public class HydraTuneller : ModProjectile
+    //ported from my tAPI mod because I don't want to make artwork
+    public class HydraTuneller : ModProjectile
 	{
 		public override void SetDefaults()
 		{

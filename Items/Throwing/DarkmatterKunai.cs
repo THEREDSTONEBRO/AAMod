@@ -1,12 +1,9 @@
-using System;
-using Microsoft.Xna.Framework;
-using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace AAMod.Items.Throwing
 {
-	public class DarkmatterKunai : ModItem
+    public class DarkmatterKunai : ModItem
 	{
 		public override void SetDefaults()
 		{

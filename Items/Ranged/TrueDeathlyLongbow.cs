@@ -2,14 +2,12 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
 using Microsoft.Xna.Framework;
-using System.Collections.Generic;
-using System.Linq;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 
 namespace AAMod.Items.Ranged
 {
-	public class TrueDeathlyLongbow : ModItem
+    public class TrueDeathlyLongbow : ModItem
 	{
         public static short customGlowMask = 0;
         public override void SetStaticDefaults()

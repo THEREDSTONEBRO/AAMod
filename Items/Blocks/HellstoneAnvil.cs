@@ -1,6 +1,5 @@
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
 
 namespace AAMod.Items.Blocks
 {

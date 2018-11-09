@@ -1,6 +1,5 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
 using Terraria.ModLoader;
-using Terraria.ID;
 
 namespace AAMod.Tiles
 {

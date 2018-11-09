@@ -1,10 +1,9 @@
-using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
 
 namespace AAMod.Dusts
 {
-	public class MireBubbleDust : ModDust
+    public class MireBubbleDust : ModDust
 	{
 		public override void OnSpawn(Dust dust)
 		{

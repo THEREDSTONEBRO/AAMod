@@ -12,9 +12,6 @@ using Terraria.GameInput;
 using Terraria.ID;
 using Terraria.ModLoader;
 using System;
-using Terraria.Graphics.Effects;
-using Terraria.Graphics.Shaders;
-using AAMod.Backgrounds;
 
 namespace AAMod
 {

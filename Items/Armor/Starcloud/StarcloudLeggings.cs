@@ -1,11 +1,10 @@
-using System.Collections.Generic;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace AAMod.Items.Armor.Starcloud
 {
-	[AutoloadEquip(EquipType.Legs)]
+    [AutoloadEquip(EquipType.Legs)]
     public class StarcloudLeggings : ModItem
     {
         public override void SetDefaults()

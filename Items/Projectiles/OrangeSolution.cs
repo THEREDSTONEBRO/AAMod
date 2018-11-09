@@ -1,12 +1,11 @@
 using System;
 using Microsoft.Xna.Framework;
 using Terraria;
-using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace AAMod.Items.Projectiles
 {
-	public class OrangeSolution : ModProjectile
+    public class OrangeSolution : ModProjectile
 	{
 		public override void SetStaticDefaults()
 		{

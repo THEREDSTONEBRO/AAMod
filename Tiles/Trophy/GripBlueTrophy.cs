@@ -1,12 +1,11 @@
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 
 namespace AAMod.Tiles.Trophy
 {
-	public class GripBlueTrophy : ModTile
+    public class GripBlueTrophy : ModTile
 	{
 		public override void SetDefaults()
 		{

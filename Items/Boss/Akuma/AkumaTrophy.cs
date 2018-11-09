@@ -1,11 +1,10 @@
 using Terraria.ModLoader;
-using Terraria;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 
 namespace AAMod.Items.Boss.Akuma
 {
-	public class AkumaTrophy : ModItem
+    public class AkumaTrophy : ModItem
 	{
         public static int type;
         

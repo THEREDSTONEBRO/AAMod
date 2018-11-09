@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using Microsoft.Xna.Framework;
-using Terraria;
-using Terraria.ID;
+﻿using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.DataStructures;
 
 namespace AAMod.Items.Potions
 {
-	public class GrandManaPotion : ModItem
+    public class GrandManaPotion : ModItem
 	{
 		public override void SetStaticDefaults()
 		{

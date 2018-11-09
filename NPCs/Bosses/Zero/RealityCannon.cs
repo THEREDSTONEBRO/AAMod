@@ -1,6 +1,5 @@
 using System;
 using System.IO;
-using AAMod.Items.Dev;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;

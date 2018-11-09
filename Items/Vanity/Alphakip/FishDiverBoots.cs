@@ -1,12 +1,10 @@
 using Microsoft.Xna.Framework;
 using System.Collections.Generic;
-using Terraria;
-using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace AAMod.Items.Vanity.Alphakip
 {
-	[AutoloadEquip(EquipType.Legs)]
+    [AutoloadEquip(EquipType.Legs)]
 	public class FishDiverBoots : ModItem
 	{
 		public override void SetStaticDefaults()

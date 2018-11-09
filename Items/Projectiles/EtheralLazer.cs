@@ -1,17 +1,15 @@
 using System;
-using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ModLoader;
-using Terraria.ID;
 using Terraria.Enums;
 
 namespace AAMod.Items.Projectiles
 {
-	// The following laser shows a channeled ability, after charging up the laser will be fired
-	// Using custom drawing, dust effects, and custom collision checks for tiles
-	public class EtheralLazer : ModProjectile
+    // The following laser shows a channeled ability, after charging up the laser will be fired
+    // Using custom drawing, dust effects, and custom collision checks for tiles
+    public class EtheralLazer : ModProjectile
 	{
 		// The maximum charge value
 		private const float MaxChargeValue = 50f;

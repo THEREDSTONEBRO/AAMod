@@ -1,11 +1,9 @@
-using AAMod;
 using Terraria;
-using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace AAMod.Buffs
 {
-	public class MiniProbe : ModBuff
+    public class MiniProbe : ModBuff
 	{
 		public override void SetDefaults()
 		{

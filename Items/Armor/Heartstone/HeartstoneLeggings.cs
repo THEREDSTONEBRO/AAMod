@@ -1,11 +1,10 @@
-using System.Collections.Generic;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace AAMod.Items.Armor.Heartstone
 {
-	[AutoloadEquip(EquipType.Legs)]
+    [AutoloadEquip(EquipType.Legs)]
     public class HeartstoneLeggings : ModItem
     {
         public override void SetDefaults()

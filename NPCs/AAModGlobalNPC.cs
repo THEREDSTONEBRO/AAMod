@@ -1,7 +1,4 @@
 using System.Collections.Generic;
-using System.Linq;
-using AAMod.Buffs;
-using AAMod.NPCs.Enemies.Void;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -9,7 +6,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.NPCs
 {
-	public class AAModGlobalNPC : GlobalNPC
+    public class AAModGlobalNPC : GlobalNPC
 	{
         public bool TimeFrozen = false;
         public bool infinityOverload = false;
@@ -209,6 +206,77 @@ namespace AAMod.NPCs
                 {
                     Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("AncientPoker"));
                 }
+            }
+            if (npc.type == NPCID.Paladin)
+            {
+                if (Main.rand.NextFloat() < .17f)
+                {
+                    Item.NewItem(npc.getRect(), mod.ItemType("Paladin_Helmet"));
+                    Item.NewItem(npc.getRect(), mod.ItemType("Paladin_Chestplate"));
+                    Item.NewItem(npc.getRect(), mod.ItemType("Paladin_Boots"));
+                }
+            }
+            //Probes (Lil destroyer laser shits)
+            if (npc.type == NPCID.Probe)
+            {
+                Item.NewItem(npc.getRect(), mod.ItemType("Energy_Cell"), Main.rand.Next(3, 12));
+            }
+            //The Destroyer
+            if (npc.type == NPCID.TheDestroyer)
+            {
+                Item.NewItem(npc.getRect(), mod.ItemType("Energy_Cell"), Main.rand.Next(8, 16));
+                if (Main.rand.NextFloat() < .34f)
+                {
+                    Item.NewItem(npc.getRect(), mod.ItemType("Laser_Rifle"));
+                }
+            }
+            //Skeletrono Primeus (Skeletron Prime)
+            if (npc.type == NPCID.SkeletronPrime)
+            {
+                Item.NewItem(npc.getRect(), mod.ItemType("Energy_Cell"), Main.rand.Next(8, 16));
+                if (Main.rand.NextFloat() < .34f)
+                {
+                    Item.NewItem(npc.getRect(), mod.ItemType("Laser_Rifle"));
+                }
+            }
+            //Wall Of Flesh
+            if (npc.type == NPCID.WallofFlesh)
+            {
+                Item.NewItem(npc.getRect(), mod.ItemType("Nightmare_Ore"), Main.rand.Next(50, 60));
+                if (Main.rand.NextFloat() < .34f)
+                {
+                    Item.NewItem(npc.getRect(), mod.ItemType("HK_MP5"));
+                }
+            }
+            //Mothership
+            if (npc.type == NPCID.MartianSaucerCore)
+            {
+                if (Main.rand.NextFloat() < .12f)
+                {
+                    Item.NewItem(npc.getRect(), mod.ItemType("Alien_Rifle"));
+                }
+                if (Main.rand.NextFloat() < .03f)
+                {
+                    Item.NewItem(npc.getRect(), mod.ItemType("Energy_Conduit"));
+                }
+            }
+            //Wall Of Flesh
+            if (npc.type == NPCID.Vulture)
+            {
+                Item.NewItem(npc.getRect(), mod.ItemType("vulture_feather"), Main.rand.Next(0, 2));
+            }
+            //Drippler
+            if (npc.type == NPCID.Drippler)
+            {
+                if (Main.rand.NextFloat() < .005f)
+                {
+                    Item.NewItem(npc.getRect(), mod.ItemType("Bloody_Mary"));
+                }
+            }
+            //Wyvern
+            if (npc.type == NPCID.WyvernBody)
+            {
+                Item.NewItem(npc.getRect(), mod.ItemType("Dragon_Scale"), Main.rand.Next(0, 3));
             }
         }
 

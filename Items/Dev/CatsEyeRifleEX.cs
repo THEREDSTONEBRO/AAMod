@@ -1,12 +1,7 @@
 using Terraria;
-using System;
-using Terraria.ID;
-using System.Diagnostics;
 using Microsoft.Xna.Framework;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework.Graphics;
-using Terraria.Audio;
-using System.Collections.Generic;
 
 namespace AAMod.Items.Dev
 {

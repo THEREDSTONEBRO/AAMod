@@ -3,11 +3,10 @@ using Terraria;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 using Terraria.DataStructures;
-using Microsoft.Xna.Framework.Graphics;
 
 namespace AAMod.Tiles
 {
-	class GripsBox : ModTile
+    class GripsBox : ModTile
 	{
 		public override void SetDefaults()
 		{

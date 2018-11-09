@@ -1,4 +1,3 @@
-using AAMod.NPCs.Bosses.Akuma;
 using Terraria;
 using Terraria.ModLoader;
 

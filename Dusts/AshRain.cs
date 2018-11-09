@@ -1,11 +1,10 @@
-using AAMod.NPCs.Bosses.Akuma;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
 
 namespace AAMod.Dusts
 {
-	public class AshRain : ModDust
+    public class AshRain : ModDust
 	{
 		public override void OnSpawn(Dust dust)
 		{

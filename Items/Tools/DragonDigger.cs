@@ -1,11 +1,9 @@
-using Microsoft.Xna.Framework;
-using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace AAMod.Items.Tools
 {
-	public class DragonDigger : ModItem
+    public class DragonDigger : ModItem
 	{
 		public override void SetStaticDefaults()
 		{

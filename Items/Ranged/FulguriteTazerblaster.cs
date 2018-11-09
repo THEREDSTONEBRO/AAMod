@@ -2,12 +2,11 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
-using System;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace AAMod.Items.Ranged
 {
-	public class FulguriteTazerblaster : ModItem
+    public class FulguriteTazerblaster : ModItem
 	{
         public static short customGlowMask = 0;
         public override void SetStaticDefaults()

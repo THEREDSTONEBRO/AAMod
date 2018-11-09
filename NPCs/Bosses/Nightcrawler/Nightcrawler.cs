@@ -4,7 +4,6 @@ using Terraria.ModLoader;
 using Terraria.ID;
 using System.IO;
 using AAMod.NPCs.Bosses.Daybringer;
-using System;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace AAMod.NPCs.Bosses.Nightcrawler

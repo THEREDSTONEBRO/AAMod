@@ -1,11 +1,10 @@
-using System;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
 
 namespace AAMod.Dusts
 {
-	public class UmbreonSPDust : ModDust
+    public class UmbreonSPDust : ModDust
 	{
 		public override void OnSpawn(Dust dust)
 		{

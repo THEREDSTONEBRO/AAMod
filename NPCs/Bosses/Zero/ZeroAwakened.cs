@@ -1,13 +1,9 @@
 ﻿using System;
-using AAMod;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
-using Terraria.Audio;
-using Terraria.Graphics.Shaders;
 using Terraria.ID;
 using Terraria.ModLoader;
-using AAMod.Items.Dev;
 using System.Collections.Generic;
 using System.Reflection;
 using Terraria.DataStructures;

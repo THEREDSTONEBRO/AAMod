@@ -1,12 +1,7 @@
-﻿using System.IO;
-using System.Linq;
-using AAMod.NPCs;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.DataStructures;
-using Terraria.GameInput;
-using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace AAMod

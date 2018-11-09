@@ -1,10 +1,9 @@
 using Microsoft.Xna.Framework;
-using Terraria;
 using Terraria.ModLoader;
 
 namespace AAMod.Walls
 {
-	public class MireGrassWall : ModWall
+    public class MireGrassWall : ModWall
 	{
 		public override void SetDefaults()
 		{

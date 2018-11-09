@@ -4,7 +4,6 @@ using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.Graphics;
 using Terraria.Graphics.Effects;
-using Terraria.Utilities;
 
 namespace AAMod.Backgrounds
 {

@@ -1,10 +1,9 @@
 using Microsoft.Xna.Framework;
-using Terraria;
 using Terraria.ModLoader;
 
 namespace AAMod.Walls
 {
-	public class LivingBogleafWall : ModWall
+    public class LivingBogleafWall : ModWall
 	{
 		public override void SetDefaults()
 		{

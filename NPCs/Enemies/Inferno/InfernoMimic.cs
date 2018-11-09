@@ -1,14 +1,11 @@
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using System;
 using Microsoft.Xna.Framework;
-using System.Linq;
-using System.Collections.Generic;
 
 namespace AAMod.NPCs.Enemies.Inferno
 {
-	public class InfernoMimic : ModNPC
+    public class InfernoMimic : ModNPC
 	{
 		public override void SetStaticDefaults()
 		{

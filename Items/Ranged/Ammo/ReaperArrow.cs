@@ -1,10 +1,9 @@
-using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace AAMod.Items.Ranged.Ammo
 {
-	public class ReaperArrow : ModItem
+    public class ReaperArrow : ModItem
 	{
 		public override void SetStaticDefaults()
 		{

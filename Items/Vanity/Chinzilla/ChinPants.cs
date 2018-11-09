@@ -1,13 +1,10 @@
-using System;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
-using Terraria;
-using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace AAMod.Items.Vanity.Chinzilla
 {
-	[AutoloadEquip(EquipType.Legs)]
+    [AutoloadEquip(EquipType.Legs)]
 	public class ChinPants : ModItem
 	{
 		public override void SetStaticDefaults()

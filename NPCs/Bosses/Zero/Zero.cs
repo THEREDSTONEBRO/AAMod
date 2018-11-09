@@ -1,14 +1,10 @@
 using System;
 using System.IO;
-using AAMod.NPCs.Enemies.Void;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
-using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
-using AAMod;
-using AAMod.Items.Dev;
 
 namespace AAMod.NPCs.Bosses.Zero
 {

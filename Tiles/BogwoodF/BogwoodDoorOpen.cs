@@ -1,5 +1,4 @@
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.Enums;
@@ -9,7 +8,7 @@ using Terraria.ObjectData;
 
 namespace AAMod.Tiles.BogwoodF
 {
-	public class BogwoodDoorOpen : ModTile
+    public class BogwoodDoorOpen : ModTile
 	{
 		public override void SetDefaults()
 		{

@@ -12,10 +12,7 @@ using AAMod.UI;
 using Terraria.Graphics.Shaders;
 using System.Collections.Generic;
 using Terraria.DataStructures;
-using Terraria.GameContent.UI.Elements;
-using Terraria.Graphics;
 using System.Reflection;
-using Terraria.IO;
 
 namespace AAMod
 {
@@ -45,14 +42,9 @@ namespace AAMod
             if (bossChecklist != null)
             {
                 bossChecklist.Call("AddBossWithInfo", "Grips of Chaos", 2.00000000001f, (Func<bool>)(() => AAWorld.downedGrips), "Use a [i:" + ItemType("CuriousClaw") + "] or [i:" + ItemType("InterestingClaw") + "] at night");
-                //bossChecklist.Call("AddBossWithInfo", "Hydra", 3.000000001f, (Func<bool>)(() => AAWorld.downedRetriever), "Use a [i:" + ItemType("HydraChow") + "] in the Mire");
-                //bossChecklist.Call("AddBossWithInfo", "Broodmother", 3.000000002f, (Func<bool>)(() => AAWorld.downedRetriever), "Use a [i:" + ItemType("DragonBell") + "] in the Inferno");
                 bossChecklist.Call("AddBossWithInfo", "Retriever", 6.9999997f, (Func<bool>)(() => AAWorld.downedRetriever), "Use a [i:" + ItemType("CyberneticClaw") + "] at night");
-                //bossChecklist.Call("AddBossWithInfo", "Orthrus X", 6.9999998f, (Func<bool>)(() => AAWorld.downedOrthrus), "Use a [i:" + ItemType("CyberneticChow") + "] at night");
-                //bossChecklist.Call("AddBossWithInfo", "Raider Ultima", 6.9999999f, (Func<bool>)(() => AAWorld.downedRaider), "Use a [i:" + ItemType("CyberneticSignal") + "] at night");
                 bossChecklist.Call("AddBossWithInfo", "Nightcrawler & Daybringer", 14.00000000001f, (Func<bool>)(() => AAWorld.downedEquinox), "Use a [i:" + ItemType("EquinoxWorm") + "]");
                 bossChecklist.Call("AddBossWithInfo", "Akuma", 15.0001f, (Func<bool>)(() => AAWorld.downedAkuma), "Use a [i:" + ItemType("DraconianSigil") + "] in the Inferno during the day");
-                //bossChecklist.Call("AddBossWithInfo", "Yamata", 15.0002f, (Func<bool>)(() => AAWorld.downedYamata), "Use a [i:" + ItemType("EventideSigil") + "] in the Mire at night");
                 if (Main.expertMode)
                 {
                     bossChecklist.Call("AddBossWithInfo", "Zero", 16f, (Func<bool>)(() => AAWorld.downedZeroA), "Use a [i:" + ItemType("ZeroTesseract") + "] in the Void");
@@ -61,8 +53,6 @@ namespace AAMod
                 {
                     bossChecklist.Call("AddBossWithInfo", "Zero", 16f, (Func<bool>)(() => AAWorld.downedZero), "Use a [i:" + ItemType("ZeroTesseract") + "] in the Void");
                 }
-                
-                //bossChecklist.Call("AddBossWithInfo", "Shen Doragon", 100f, (Func<bool>)(() => AAWorld.downedShen), "Use a [i:" + ItemType("ChaosSigil"));
                 
                 //SlimeKing = 1f;
                 //EyeOfCthulhu = 2f;
@@ -83,19 +73,12 @@ namespace AAMod
             {
                 AchievementLibs.Call("AddAchievementWithoutReward", this, "Have a Seat", "Crabs... My Mortal Enemy...", "Achievements/Chair", (Func<bool>)(() => AAWorld.Chairlol));
                 AchievementLibs.Call("AddAchievementWithoutReward", this, "Claws of Catastrophe", "Defeat the rampaging hands of discord, the Grips of Chaos", "Achievements/Grips", (Func<bool>)(() => AAWorld.downedGrips));
-                //AchievementLibs.Call("AddAchievementWithoutReward", this, "Abyssal Wrath", "Defeat the 3 headed monstrosity, the Hydra", "Achievements/HydraA", (Func<bool>)(() => AAWorld.downedHydra));
                 AchievementLibs.Call("AddAchievementWithoutReward", this, "A Mother's Rage", "Defeat the flaming dragoness, the Broodmother", "Achievements/Brood", (Func<bool>)(() => AAWorld.downedBrood));
                 AchievementLibs.Call("AddAchievementWithoutReward", this, "Storming Seige", "Defeat any of the robotic replicas known as the Storm Bosses", "Achievements/Storm", (Func<bool>)(() => AAWorld.downedStormAny));
-                //AchievementLibs.Call("AddAchievementWithoutReward", this, "Thunderous Victory", "Defeat all of the Storm Bosses, causing Fulgurite to spawn in your world", "Achievements/StormA", (Func<bool>)(() => AAWorld.downedStormAll));
                 AchievementLibs.Call("AddAchievementWithoutReward", this, "Epitome of Equinox", "Defeat the Equinox worms, the Daybringer and the Nightcrawler", "Achievements/Equinox", (Func<bool>)(() => AAWorld.downedEquinox));
                 AchievementLibs.Call("AddAchievementWithoutReward", this, "Trial by Fire", "Defeat the draconian sun serpent himself, Akuma", "Achievements/AkumaA", (Func<bool>)(() => AAWorld.downedAkuma));
-                //AchievementLibs.Call("AddAchievementWithoutReward", this, "True Blazing Fury", "Defeat Akuma's true, radiant Awakened form", "Achievements/AkumaAA", (Func<bool>)(() => AAWorld.downedAkuma));
-                //AchievementLibs.Call("AddAchievementWithoutReward", this, "Crecent of Madness", "Defeat the dread moon hydra himself, Yamata", "Achievements/YamataA", (Func<bool>)(() => AAWorld.downedAkuma));
-                //AchievementLibs.Call("AddAchievementWithoutReward", this, "True Abyssal Wrath", "Defeat Yamata's true, deathly Awakened form", "Achievements/YamataAA", (Func<bool>)(() => AAWorld.downedAkuma));
                 AchievementLibs.Call("AddAchievementWithoutReward", this, "Clockwork Catastrophe", "Destroy the dark doomsday automaton, Zero", "Achievements/Zero", (Func<bool>)(() => AAWorld.downedZero));
                 AchievementLibs.Call("AddAchievementWithoutReward", this, "Doomsday Arrives", "Defeat Zero's true, dark Awakened form", "Achievements/ZeroA", (Func<bool>)(() => AAWorld.downedZeroA));
-                //AchievementLibs.Call("AddAchievementWithoutReward", this, "Unyielding Discord", "Defeat the Discordian Drake, Shen Doragon", "Achievements/ShenA", (Func<bool>)(() => AAWorld.downedZeroA));
-                //AchievementLibs.Call("AddAchievementWithoutReward", this, "Master of Unity", "Defeat Shen Doragon's true, chaotic Awakened form", "Achievements/ShenAA", (Func<bool>)(() => AAWorld.downedZeroA));
             }
         }
 
@@ -119,9 +102,7 @@ namespace AAMod
                 Main.rand = new Terraria.Utilities.UnifiedRandom();
 
             InfinityHotKey = RegisterHotKey("Snap", "G");
-
-            //On.Terraria.GameContent.UI.Elements.UIGenProgressBar.DrawSelf += UIGenProgressBarDrawSelf;
-            //On.Terraria.GameContent.UI.Elements.UIWorldListItem.GetIcon += UIWorldListItemGetIcon;
+            
 
             if (!Main.dedServ)
             {
@@ -141,7 +122,6 @@ namespace AAMod
                 AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/WeAreNumberOne"), ItemType("N1Box"), TileType("N1Box"));
                 AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/HydraTheme"), ItemType("HydraBox"), TileType("HydraBox"));
                 AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/BroodTheme"), ItemType("BroodBox"), TileType("BroodBox"));
-                //AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/RajahTheme"), ItemType("RRBox"), TileType("RRBox"));
                 AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/InfernoSurface"), ItemType("InfernoBox"), TileType("InfernoBox"));
                 AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/MireSurface"), ItemType("MireBox"), TileType("MireBox"));
                 AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/InfernoUnderground"), ItemType("InfernoUBox"), TileType("InfernoUBox"));
@@ -182,7 +162,9 @@ namespace AAMod
 
                 TerratoolUI = new TerratoolUI();
                 UserInterface = new UserInterface();
-
+                Main.itemTexture[1291] = GetTexture("Resprites/LifeFruit");
+                Main.itemTexture[1327] = GetTexture("Resprites/DeathSickle");
+                Main.itemTexture[3460] = GetTexture("Resprites/Luminite");
                 if (WorldGen.crimson == true)
                 {
                     Main.itemTexture[521] = GetTexture("Items/Materials/SoulOfNightRed");
@@ -190,37 +172,7 @@ namespace AAMod
             }
         }
 
-        //DO NOT UNCOMMENT
-        /*private Texture2D UIWorldListItemGetIcon(On.Terraria.GameContent.UI.Elements.UIWorldListItem.orig_GetIcon orig, UIWorldListItem self)
-        {
-            var _data = (WorldFileData)GetInstanceField(self, "_data");
-
-            return GetTexture(("UI/Icon") + (_data.IsHardMode ? "Hallow" : "") + (_data.HasCorruption ? "Corruption" : "Crimson"));
-        }
-
-        private void UIGenProgressBarDrawSelf(On.Terraria.GameContent.UI.Elements.UIGenProgressBar.orig_DrawSelf orig, UIGenProgressBar self, SpriteBatch spriteBatch)
-        {
-            var _targetOverallProgress = (float)GetInstanceField(self, "_targetOverallProgress");
-            var _targetCurrentProgress = (float)GetInstanceField(self, "_targetCurrentProgress");
-            var _visualOverallProgress = (float)GetInstanceField(self, "_visualOverallProgress");
-            var _visualCurrentProgress = (float)GetInstanceField(self, "_visualCurrentProgress");
-
-            _visualOverallProgress = _targetOverallProgress;
-            _visualCurrentProgress = _targetCurrentProgress;
-            CalculatedStyle dimensions = self.GetDimensions();
-            int completedWidth = (int)(_visualOverallProgress * 504f);
-            int completedWidth2 = (int)(_visualCurrentProgress * 504f);
-            Vector2 value = new Vector2(dimensions.X, dimensions.Y);
-            Color color = default(Color);
-            color.PackedValue = (uint)(WorldGen.crimson ? (-8131073) : (-11079073));
-            DrawFilling2(spriteBatch, value + new Vector2(20f, 40f), 16, completedWidth, 564, color, Color.Lerp(color, Color.Black, 0.5f), new Color(48, 48, 48));
-            color.PackedValue = 4290947159u;
-            DrawFilling2(spriteBatch, value + new Vector2(50f, 60f), 8, completedWidth2, 504, color, Color.Lerp(color, Color.Black, 0.5f), new Color(33, 33, 33));
-            Rectangle r = self.GetDimensions().ToRectangle();
-            r.X -= 8;
-            spriteBatch.Draw(WorldGen.crimson ? GetTexture("UI/CrimsonLoadBar") : GetTexture("UI/CorruptionLoadBar"), r.TopLeft(), Color.White);
-            spriteBatch.Draw(TextureManager.Load("Images/UI/WorldGen/Outer Lower"), r.TopLeft() + new Vector2(44f, 60f), Color.White);
-        }*/
+        
 
         //Simplist Reflection Example For Any Field Value Below
         private static object GetInstanceField<T>(T instance, string fieldName)
@@ -314,6 +266,20 @@ namespace AAMod
                 //ItemType("RealityRift"),
             });
             RecipeGroup.RegisterGroup("AAMod:SuperAncientMaterials", group5);
+
+            RecipeGroup group6 = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " Ichor", new int[]
+            {
+                ItemID.Ichor,
+                ItemID.CursedFlame
+            });
+            RecipeGroup.RegisterGroup("AnyIchor", group6);
+            //-------------------------------------------------
+            group6 = new RecipeGroup(getName: () => Language.GetTextValue("LegacyMisc.37") + " Hardmode Forge", validItems: new int[]
+            {
+                ItemID.AdamantiteForge,
+                ItemID.TitaniumForge
+            });
+            RecipeGroup.RegisterGroup("AnyHardmodeForge", group6);
 
             if (RecipeGroup.recipeGroupIDs.ContainsKey("Wood"))
             {
@@ -899,6 +865,22 @@ namespace AAMod
                 recipe.SetResult(ItemID.GravityGlobe, 1);
                 recipe.AddRecipe();
             }
+
+            /*
+			// Our first recipe, transforming a dirtblock to a gold coin while near any workbench.
+			ModRecipe recipe = new ModRecipe(this);
+			recipe.AddIngredient(null, "Paladins_Alloy", 35);
+			recipe.AddTile(TileID.MythrilAnvil);
+			recipe.SetResult(ItemID.PaladinsHammer);
+			recipe.AddRecipe();
+
+			// Our second recipe, the same as above, but this time 10 times as fast
+			recipe = new ModRecipe(this);
+			recipe.AddIngredient(null, "Paladins_Alloy", 40);
+			recipe.AddTile(TileID.MythrilAnvil);
+			recipe.SetResult(ItemID.PaladinsShield);
+			recipe.AddRecipe();
+			*/
         }
 
         public static Color BuffEffects(Entity codable, Color lightColor, float shadow = 0f, bool effects = true, bool poisoned = false, bool onFire = false, bool onFire2 = false, bool hunter = false, bool noItems = false, bool blind = false, bool bleed = false, bool venom = false, bool midas = false, bool ichor = false, bool onFrostBurn = false, bool burned = false, bool honey = false, bool dripping = false, bool drippingSlime = false, bool loveStruck = false, bool stinky = false)

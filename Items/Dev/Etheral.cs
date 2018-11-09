@@ -1,14 +1,12 @@
-using System;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Terraria;
-using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace AAMod.Items.Dev
 {
-	public class Etheral : ModItem
+    public class Etheral : ModItem
 	{
         public static short customGlowMask = 0;
         public override void SetStaticDefaults()

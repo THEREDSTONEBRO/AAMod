@@ -1,17 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Terraria;
-using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.GameContent.Achievements;
 using Microsoft.Xna.Framework.Graphics;
-using AAMod.Dusts;
 
 namespace AAMod.Items.Projectiles
 {
-	// to investigate: Projectile.Damage, (8843)
-	public class MorningStar : ModProjectile
+    // to investigate: Projectile.Damage, (8843)
+    public class MorningStar : ModProjectile
 	{
         public static short customGlowMask = 0;
         public override void SetStaticDefaults()

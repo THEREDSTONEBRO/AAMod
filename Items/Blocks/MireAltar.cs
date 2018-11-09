@@ -1,10 +1,9 @@
 using Terraria.ModLoader;
-using Terraria;
 using Terraria.ID;
 
 namespace AAMod.Items.Blocks
 {
-	public class MireAltar : ModItem
+    public class MireAltar : ModItem
 	{
 		public override void SetStaticDefaults()
 		{

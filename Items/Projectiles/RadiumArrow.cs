@@ -1,4 +1,3 @@
-using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ID;
@@ -6,7 +5,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Projectiles
 {
-	public class RadiumArrow : ModProjectile
+    public class RadiumArrow : ModProjectile
 	{
         public static short customGlowMask = 0;
         public override void SetStaticDefaults()
