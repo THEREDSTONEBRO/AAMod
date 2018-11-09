@@ -33,6 +33,11 @@ Dark, yet still barely visible");
             return body.type == mod.ItemType("DarkmatterBreastplate") && legs.type == mod.ItemType("DarkmatterGreaves");
         }
 
+        public override void DrawHair(ref bool drawHair, ref bool drawAltHair)
+        {
+            drawHair = true;
+        }
+
         public override void UpdateArmorSet(Player player)
         {
 
