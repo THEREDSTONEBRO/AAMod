@@ -29,7 +29,7 @@ namespace AAMod.NPCs.Bosses.Zero
         {
             DisplayName.SetDefault("Zero Awakened");
             Main.npcFrameCount[npc.type] = 12;    //boss frame/animation 
-            NPCID.Sets.TrailCacheLength[npc.type] = 10;
+            NPCID.Sets.TrailCacheLength[npc.type] = 15;
             NPCID.Sets.TrailingMode[npc.type] = 0;
         }
         public override void SetDefaults()
@@ -142,8 +142,8 @@ namespace AAMod.NPCs.Bosses.Zero
             {
                 if (Main.rand.Next(0,10) == 0)
                 {
-                    int Xint = (Main.rand.Next(0, 2) == 0) ? Main.rand.Next(-100, -21) : Main.rand.Next(80, 31);
-                    int Yint = (Main.rand.Next(0, 2) == 0) ? Main.rand.Next(-100, -21) : Main.rand.Next(80, 31);
+                    int Xint = (Main.rand.Next(0, 2) == 0) ? Main.rand.Next(-100, -21) : Main.rand.Next(-120, 31);
+                    int Yint = (Main.rand.Next(0, 2) == 0) ? Main.rand.Next(-100, -21) : Main.rand.Next(-120, 31);
                     Player player = Main.player[npc.target];
                     Vector2 tele = new Vector2(player.Center.X + Xint, player.Center.Y + Yint);
                     npc.Center = tele;

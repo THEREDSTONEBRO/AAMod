@@ -23,7 +23,7 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
         public override void SetDefaults()
         {
             npc.lifeMax = 1000;   //boss life
-            npc.damage = 24;  //boss damage
+            npc.damage = 12;  //boss damage
             npc.defense = 12;    //boss defense
             npc.knockBackResist = 0f;   //this boss will behavior like the DemonEye  //boss frame/animation 
             npc.value = Item.buyPrice(0, 0, 75, 45);
@@ -61,8 +61,8 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
         }
         public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
         {
-            npc.lifeMax = (int)(npc.lifeMax * 0.1f * bossLifeScale);  //boss life scale in expertmode
-            npc.damage = (int)(npc.damage * 0.1f);  //boss damage increase in expermode
+            npc.lifeMax = (int)(npc.lifeMax * 1.1f * bossLifeScale);  //boss life scale in expertmode
+            npc.damage = (int)(npc.damage * 1.1f);  //boss damage increase in expermode
         }
     }
 }
