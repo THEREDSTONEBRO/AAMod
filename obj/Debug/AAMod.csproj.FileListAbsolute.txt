@@ -36,10 +36,3 @@ C:\Users\Office HP\Documents\My Games\Terraria\ModLoader\Mod Sources\AAMod\bin\D
 C:\Users\Office HP\Documents\My Games\Terraria\ModLoader\Mod Sources\AAMod\bin\Debug\AAMod.pdb
 C:\Users\Office HP\Documents\My Games\Terraria\ModLoader\Mod Sources\AAMod\obj\Debug\AAMod.csproj.CopyComplete
 C:\Users\Mitch\OneDrive\Documents\My Games\Terraria\ModLoader\Mod Sources\AAMod\bin\Debug\TerrariaHooks.dll
-C:\Users\Tails\Documents\My Games\Terraria\ModLoader\Mod Sources\AAMod\obj\Debug\AAMod.csprojAssemblyReference.cache
-C:\Users\Tails\Documents\My Games\Terraria\ModLoader\Mod Sources\AAMod\obj\Debug\AAMod.csproj.CoreCompileInputs.cache
-C:\Users\Tails\Documents\My Games\Terraria\ModLoader\Mod Sources\AAMod\obj\Debug\AAMod.dll
-C:\Users\Tails\Documents\My Games\Terraria\ModLoader\Mod Sources\AAMod\obj\Debug\AAMod.pdb
-C:\Users\Tails\Documents\My Games\Terraria\ModLoader\Mod Sources\AAMod\bin\Debug\AAMod.dll
-C:\Users\Tails\Documents\My Games\Terraria\ModLoader\Mod Sources\AAMod\bin\Debug\AAMod.pdb
-C:\Users\Tails\Documents\My Games\Terraria\ModLoader\Mod Sources\AAMod\obj\Debug\AAMod.csproj.CopyComplete
