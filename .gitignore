@@ -1,5 +1,3 @@
 AAMod.csproj
 *.csproj
 .vs/AAMod/v15/.suo
-.vs/AAMod/v15/Server/sqlite3/storage.ide
-*.ide
