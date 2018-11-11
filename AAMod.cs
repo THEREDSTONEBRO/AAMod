@@ -13,6 +13,8 @@ using Terraria.Graphics.Shaders;
 using System.Collections.Generic;
 using Terraria.DataStructures;
 using System.Reflection;
+using Terraria.GameContent.UI.Elements;
+using Terraria.GameContent.UI.States;
 
 namespace AAMod
 {
@@ -23,6 +25,8 @@ namespace AAMod
         internal UserInterface UserInterface;
         internal TerratoolUI TerratoolUI;
         public static bool AkumaMusic;
+        public static Texture2D Corrupt = null;
+        public static Texture2D Crimson = null;
 
         public AAMod()
         {
@@ -102,7 +106,6 @@ namespace AAMod
                 Main.rand = new Terraria.Utilities.UnifiedRandom();
 
             InfinityHotKey = RegisterHotKey("Snap", "G");
-            
 
             if (!Main.dedServ)
             {
@@ -170,28 +173,6 @@ namespace AAMod
                     Main.itemTexture[521] = GetTexture("Items/Materials/SoulOfNightRed");
                 }
             }
-        }
-
-        
-
-        //Simplist Reflection Example For Any Field Value Below
-        private static object GetInstanceField<T>(T instance, string fieldName)
-        {
-            BindingFlags bindFlags = BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Static;
-            FieldInfo field = typeof(T).GetField(fieldName, bindFlags);
-            return field.GetValue(instance);
-        }
-        //Simplist Reflection Example For Any Field Value Above
-
-        private void DrawFilling2(SpriteBatch spritebatch, Vector2 topLeft, int height, int completedWidth, int totalWidth, Color filled, Color separator, Color empty)
-        {
-            if (completedWidth % 2 != 0)
-            {
-                completedWidth--;
-            }
-            spritebatch.Draw(Main.magicPixel, new Rectangle((int)topLeft.X, (int)topLeft.Y, completedWidth, height), new Rectangle(0, 0, 1, 1), filled);
-            spritebatch.Draw(Main.magicPixel, new Rectangle((int)topLeft.X + completedWidth, (int)topLeft.Y, totalWidth - completedWidth, height), new Rectangle(0, 0, 1, 1), empty);
-            spritebatch.Draw(Main.magicPixel, new Rectangle((int)topLeft.X + completedWidth - 2, (int)topLeft.Y, 2, height), new Rectangle(0, 0, 1, 1), separator);
         }
 
         public override void Unload()
