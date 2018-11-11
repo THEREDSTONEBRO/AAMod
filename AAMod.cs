@@ -15,11 +15,13 @@ using Terraria.DataStructures;
 using System.Reflection;
 using Terraria.GameContent.UI.Elements;
 using Terraria.GameContent.UI.States;
+using Terraria.GameContent.UI;
 
 namespace AAMod
 {
     class AAMod : Mod
     {
+        public static int GoblinSoul;
         public static ModHotKey InfinityHotKey;
         internal static AAMod instance;
         internal UserInterface UserInterface;
@@ -46,16 +48,20 @@ namespace AAMod
             if (bossChecklist != null)
             {
                 bossChecklist.Call("AddBossWithInfo", "Grips of Chaos", 2.00000000001f, (Func<bool>)(() => AAWorld.downedGrips), "Use a [i:" + ItemType("CuriousClaw") + "] or [i:" + ItemType("InterestingClaw") + "] at night");
+                bossChecklist.Call("AddBossWithInfo", "Broodmother", 4.00000000001f, (Func<bool>)(() => AAWorld.downedBrood), "Use a [i:" + ItemType("DragonBell") + "] in the Inferno");
                 bossChecklist.Call("AddBossWithInfo", "Retriever", 6.9999997f, (Func<bool>)(() => AAWorld.downedRetriever), "Use a [i:" + ItemType("CyberneticClaw") + "] at night");
+                bossChecklist.Call("AddBossWithInfo", "Raider Ultima", 6.9999997f, (Func<bool>)(() => AAWorld.downedRaider), "Use a [i:" + ItemType("CyberneticBell") + "] at night");
                 bossChecklist.Call("AddBossWithInfo", "Nightcrawler & Daybringer", 14.00000000001f, (Func<bool>)(() => AAWorld.downedEquinox), "Use a [i:" + ItemType("EquinoxWorm") + "]");
-                bossChecklist.Call("AddBossWithInfo", "Akuma", 15.0001f, (Func<bool>)(() => AAWorld.downedAkuma), "Use a [i:" + ItemType("DraconianSigil") + "] in the Inferno during the day");
+                
                 if (Main.expertMode)
                 {
-                    bossChecklist.Call("AddBossWithInfo", "Zero", 16f, (Func<bool>)(() => AAWorld.downedZeroA), "Use a [i:" + ItemType("ZeroTesseract") + "] in the Void");
+                    bossChecklist.Call("AddBossWithInfo", "Akuma", 18.0001f, (Func<bool>)(() => AAWorld.downedAkumaA), "Use a [i:" + ItemType("DraconianSigil") + "] in the Inferno during the day");
+                    bossChecklist.Call("AddBossWithInfo", "Zero", 18.0001f, (Func<bool>)(() => AAWorld.downedZeroA), "Use a [i:" + ItemType("ZeroTesseract") + "] in the Void");
                 }
                 else
                 {
-                    bossChecklist.Call("AddBossWithInfo", "Zero", 16f, (Func<bool>)(() => AAWorld.downedZero), "Use a [i:" + ItemType("ZeroTesseract") + "] in the Void");
+                    bossChecklist.Call("AddBossWithInfo", "Akuma", 18.0001f, (Func<bool>)(() => AAWorld.downedAkuma), "Use a [i:" + ItemType("DraconianSigil") + "] in the Inferno during the day");
+                    bossChecklist.Call("AddBossWithInfo", "Zero", 18.001f, (Func<bool>)(() => AAWorld.downedZero), "Use a [i:" + ItemType("ZeroTesseract") + "] in the Void");
                 }
                 
                 //SlimeKing = 1f;
@@ -77,10 +83,11 @@ namespace AAMod
             {
                 AchievementLibs.Call("AddAchievementWithoutReward", this, "Have a Seat", "Crabs... My Mortal Enemy...", "Achievements/Chair", (Func<bool>)(() => AAWorld.Chairlol));
                 AchievementLibs.Call("AddAchievementWithoutReward", this, "Claws of Catastrophe", "Defeat the rampaging hands of discord, the Grips of Chaos", "Achievements/Grips", (Func<bool>)(() => AAWorld.downedGrips));
-                AchievementLibs.Call("AddAchievementWithoutReward", this, "A Mother's Rage", "Defeat the flaming dragoness, the Broodmother", "Achievements/Brood", (Func<bool>)(() => AAWorld.downedBrood));
+                AchievementLibs.Call("AddAchievementWithoutReward", this, "Blazing Fury", "Defeat the flaming dragoness, the Broodmother", "Achievements/Brood", (Func<bool>)(() => AAWorld.downedBrood));
                 AchievementLibs.Call("AddAchievementWithoutReward", this, "Storming Seige", "Defeat any of the robotic replicas known as the Storm Bosses", "Achievements/Storm", (Func<bool>)(() => AAWorld.downedStormAny));
                 AchievementLibs.Call("AddAchievementWithoutReward", this, "Epitome of Equinox", "Defeat the Equinox worms, the Daybringer and the Nightcrawler", "Achievements/Equinox", (Func<bool>)(() => AAWorld.downedEquinox));
                 AchievementLibs.Call("AddAchievementWithoutReward", this, "Trial by Fire", "Defeat the draconian sun serpent himself, Akuma", "Achievements/AkumaA", (Func<bool>)(() => AAWorld.downedAkuma));
+                AchievementLibs.Call("AddAchievementWithoutReward", this, "True Blazing Fury", "Defeat Akuma's true, radiant Awakened form", "Achievements/AkumaA", (Func<bool>)(() => AAWorld.downedAkumaA));
                 AchievementLibs.Call("AddAchievementWithoutReward", this, "Clockwork Catastrophe", "Destroy the dark doomsday automaton, Zero", "Achievements/Zero", (Func<bool>)(() => AAWorld.downedZero));
                 AchievementLibs.Call("AddAchievementWithoutReward", this, "Doomsday Arrives", "Defeat Zero's true, dark Awakened form", "Achievements/ZeroA", (Func<bool>)(() => AAWorld.downedZeroA));
             }
@@ -101,7 +108,7 @@ namespace AAMod
         public override void Load()
         {
             instance = this;
-
+            GoblinSoul = CustomCurrencyManager.RegisterCurrency(new CustomCurrency(ItemType<Items.Currency.GoblinSoul>(), 999L));
             if (Main.rand == null)
                 Main.rand = new Terraria.Utilities.UnifiedRandom();
 

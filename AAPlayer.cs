@@ -39,6 +39,8 @@ namespace AAMod
         public static int Ashes = 0;
         // Armor bools.
         public bool steelSet;
+        public bool goblinSlayer;
+        public bool IsGoblin;
         public bool leatherSet;
         public bool silkSet;
         public bool roseSet;
@@ -120,6 +122,7 @@ namespace AAMod
             dragonFire = false;
             hydraToxin = false;
             terraBlaze = false;
+            goblinSlayer = false;
             tribalSet = false;
             trueTribal = false;
             impSet = false;
@@ -151,6 +154,7 @@ namespace AAMod
             Sharkron = false;
             Baolei = false;
             AshCurse = !Main.dayTime || (!AAWorld.downedAkuma && !Main.expertMode) || (!AAWorld.downedAkumaA && Main.expertMode);
+            IsGoblin = false;
         }
 
         public override void UpdateBiomes()
@@ -251,6 +255,29 @@ namespace AAMod
             if (DragonShell)
             {
                 npc.AddBuff(BuffID.Daybreak, 300);
+            }
+
+            if (npc.type == NPCID.GoblinArcher
+                        || npc.type == NPCID.GoblinPeon
+                        || npc.type == NPCID.GoblinScout
+                        || npc.type == NPCID.GoblinSorcerer
+                        || npc.type == NPCID.GoblinSummoner
+                        || npc.type == NPCID.GoblinThief
+                        || npc.type == NPCID.GoblinWarrior
+                        || npc.type == NPCID.DD2GoblinBomberT1
+                        || npc.type == NPCID.DD2GoblinBomberT2
+                        || npc.type == NPCID.DD2GoblinBomberT3
+                        || npc.type == NPCID.DD2GoblinT1
+                        || npc.type == NPCID.DD2GoblinT2
+                        || npc.type == NPCID.DD2GoblinBomberT3
+                        || npc.type == NPCID.BoundGoblin
+                        || npc.type == NPCID.GoblinTinkerer)
+            {
+                player.endurance *= 1.8f;
+            }
+            else
+            {
+                player.endurance *= 1f;
             }
         }
 
@@ -437,70 +464,13 @@ namespace AAMod
                     knockback += 2f;
                 }
             }
-        }
-
-        public override void PostUpdateMiscEffects()
-        {
-            if (player.pulley)
+            if (IsGoblin)
             {
-                ModDashMovement();
-            }
-            else if (player.grappling[0] == -1 && !player.tongued)
-            {
-                ModDashMovement();
+                knockback += 5f;
             }
         }
 
-        public void ModDashMovement()
-        {
-            if (Baolei)
-            {
-                Rectangle rectangle = new Rectangle((int)((double)player.position.X + (double)player.velocity.X * 0.5 - 4.0), (int)((double)player.position.Y + (double)player.velocity.Y * 0.5 - 4.0), player.width + 8, player.height + 8);
-                for (int i = 0; i < 200; i++)
-                {
-                    if (Main.npc[i].active && !Main.npc[i].dontTakeDamage && !Main.npc[i].friendly && Main.npc[i].immune[player.whoAmI] <= 0)
-                    {
-                        NPC nPC = Main.npc[i];
-                        Rectangle rect = nPC.getRect();
-                        if (rectangle.Intersects(rect) && (nPC.noTileCollide || player.CanHit(nPC)))
-                        {
-                            float num = 500f * player.meleeDamage;
-                            float num2 = 12f;
-                            bool crit = false;
-                            if (player.kbGlove)
-                            {
-                                num2 *= 2f;
-                            }
-                            if (player.kbBuff)
-                            {
-                                num2 *= 1.5f;
-                            }
-                            if (Main.rand.Next(100) < player.meleeCrit)
-                            {
-                                crit = true;
-                            }
-                            int direction = player.direction;
-                            if (player.velocity.X < 0f)
-                            {
-                                direction = -1;
-                            }
-                            if (player.velocity.X > 0f)
-                            {
-                                direction = 1;
-                            }
-                            if (player.whoAmI == Main.myPlayer)
-                            {
-                                player.ApplyDamageToNPC(nPC, (int)num, num2, direction, crit);
-                            }
-                            nPC.immune[player.whoAmI] = 6;
-                            player.immune = true;
-                            player.immuneNoBlink = true;
-                            player.immuneTime = 4;
-                        }
-                    }
-                }
-            }
-        }
+        
 
 
         public void DrawItem(int i)
@@ -628,8 +598,29 @@ namespace AAMod
         }
 
         public override void ModifyHitNPC(Item item, NPC target, ref int damage, ref float knockback, ref bool crit)
-
         {
+            if (goblinSlayer)
+            {
+                if (target.type == NPCID.GoblinArcher 
+                    || target.type == NPCID.GoblinPeon 
+                    || target.type == NPCID.GoblinScout 
+                    || target.type == NPCID.GoblinSorcerer 
+                    || target.type == NPCID.GoblinSummoner 
+                    || target.type == NPCID.GoblinThief 
+                    || target.type == NPCID.GoblinWarrior 
+                    || target.type == NPCID.DD2GoblinBomberT1 
+                    || target.type == NPCID.DD2GoblinBomberT2
+                    || target.type == NPCID.DD2GoblinBomberT3
+                    || target.type == NPCID.DD2GoblinT1
+                    || target.type == NPCID.DD2GoblinT2
+                    || target.type == NPCID.DD2GoblinBomberT3
+                    || target.type == NPCID.BoundGoblin
+                    || target.type == NPCID.GoblinTinkerer)
+                {
+                    damage = damage * 5;
+                    IsGoblin = true;
+                }
+            }
             if (valkyrieSet && Main.rand.Next(2) == 0)
             {
                 target.AddBuff(BuffID.Frostburn, 180);

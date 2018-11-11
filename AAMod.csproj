@@ -102,6 +102,7 @@
     <Compile Include="Buffs\Sharkron.cs" />
     <Compile Include="Buffs\Terrablaze.cs" />
     <Compile Include="Buffs\UnstableSoul.cs" />
+    <Compile Include="CustomCurrency.cs" />
     <Compile Include="Dusts\AbyssiumDust.cs" />
     <Compile Include="Dusts\AkumaADust.cs" />
     <Compile Include="Dusts\AkumaDust.cs" />
@@ -213,6 +214,9 @@
     <Compile Include="Items\Armor\Galaxy\GalaxyBreastplate.cs" />
     <Compile Include="Items\Armor\Galaxy\GalaxyGreaves.cs" />
     <Compile Include="Items\Armor\Galaxy\GalaxyHelmet.cs" />
+    <Compile Include="Items\Armor\GoblinSlayer\GoblinSlayerChest.cs" />
+    <Compile Include="Items\Armor\GoblinSlayer\GoblinSlayerGreaves.cs" />
+    <Compile Include="Items\Armor\GoblinSlayer\GoblinSlayerHelm.cs" />
     <Compile Include="Items\Armor\Heartstone\HeartstoneChestguard.cs" />
     <Compile Include="Items\Armor\Heartstone\HeartstoneHelmet.cs" />
     <Compile Include="Items\Armor\Heartstone\HeartstoneLeggings.cs" />
@@ -410,6 +414,7 @@
     <Compile Include="Items\Boss\Zero\ZeroBag.cs" />
     <Compile Include="Items\Boss\Zero\ZeroStar.cs" />
     <Compile Include="Items\Boss\Zero\ZeroTrophy.cs" />
+    <Compile Include="Items\Currency\GoblinSoul.cs" />
     <Compile Include="Items\Dev\AmphibianLongsword.cs" />
     <Compile Include="Items\Dev\AmphibianLongswordEX.cs" />
     <Compile Include="Items\Dev\AmphibianLongswordEXS.cs" />
@@ -486,6 +491,7 @@
     <Compile Include="Items\Materials\TechneciumBar.cs" />
     <Compile Include="Items\Materials\vulture_feather.cs" />
     <Compile Include="Items\Materials\YtriumBar.cs" />
+    <Compile Include="Items\Melee\GoblinSlayer.cs" />
     <Compile Include="Items\Melee\AbyssalTwilight.cs" />
     <Compile Include="Items\Melee\Amnesia.cs" />
     <Compile Include="Items\Melee\AncientPoker.cs" />
@@ -859,6 +865,7 @@
     <Compile Include="NPCs\Enemies\Void\Null.cs" />
     <Compile Include="NPCs\Enemies\Void\Searcher.cs" />
     <Compile Include="NPCs\MimicSummon.cs" />
+    <Compile Include="NPCs\TownNPCs\GoblinSlayer.cs" />
     <Compile Include="NPCs\TownNPCs\Mushman.cs" />
     <Compile Include="NPCs\TownNPCs\Samurai.cs" />
     <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
@@ -1382,6 +1389,14 @@
     <Content Include="Items\Armor\Galaxy\GalaxyGreaves_Legs.png" />
     <Content Include="Items\Armor\Galaxy\GalaxyHelmet.png" />
     <Content Include="Items\Armor\Galaxy\GalaxyHelmet_Head.png" />
+    <Content Include="Items\Armor\GoblinSlayer\GoblinSlayerChest.png" />
+    <Content Include="Items\Armor\GoblinSlayer\GoblinSlayerChest_Arms.png" />
+    <Content Include="Items\Armor\GoblinSlayer\GoblinSlayerChest_Female.png" />
+    <Content Include="Items\Armor\GoblinSlayer\GoblinSlayerGreaves.png" />
+    <Content Include="Items\Armor\GoblinSlayer\GoblinSlayerGreaves_Legs.png" />
+    <Content Include="Items\Armor\GoblinSlayer\GoblinSlayerHelm.png" />
+    <Content Include="Items\Armor\GoblinSlayer\GoblinSlayerHelm_Head.png" />
+    <Content Include="Items\Armor\GoblinSlayer\GoblinSlayerChest_Body.png" />
     <Content Include="Items\Armor\Heartstone\HeartstoneChestguard.png" />
     <Content Include="Items\Armor\Heartstone\HeartstoneChestguard_Arms.png" />
     <Content Include="Items\Armor\Heartstone\HeartstoneChestguard_Body.png" />
@@ -1791,6 +1806,7 @@
     <Content Include="Items\Boss\Zero\ZeroStar_Glow.png" />
     <Content Include="Items\Boss\Zero\ZeroTrophy.png" />
     <Content Include="Items\Boss\Zero\ZeroTrophy_Glow.png" />
+    <Content Include="Items\Currency\GoblinSoul.png" />
     <Content Include="Items\Dev\AmphibianLongsword.png" />
     <Content Include="Items\Dev\AmphibianLongswordEX.png" />
     <Content Include="Items\Dev\AmphibianLongswordEXS.png" />

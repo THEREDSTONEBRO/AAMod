@@ -278,6 +278,29 @@ namespace AAMod.NPCs
             {
                 Item.NewItem(npc.getRect(), mod.ItemType("Dragon_Scale"), Main.rand.Next(0, 3));
             }
+            if ((npc.type == NPCID.GoblinArcher
+                || npc.type == NPCID.GoblinPeon
+                || npc.type == NPCID.GoblinScout
+                || npc.type == NPCID.GoblinSorcerer
+                || npc.type == NPCID.GoblinSummoner
+                || npc.type == NPCID.GoblinThief
+                || npc.type == NPCID.GoblinWarrior
+                || npc.type == NPCID.DD2GoblinBomberT1
+                || npc.type == NPCID.DD2GoblinBomberT2
+                || npc.type == NPCID.DD2GoblinBomberT3
+                || npc.type == NPCID.DD2GoblinT1
+                || npc.type == NPCID.DD2GoblinT2
+                || npc.type == NPCID.DD2GoblinBomberT3
+                || npc.type == NPCID.BoundGoblin
+                || npc.type == NPCID.GoblinTinkerer) 
+                && NPC.downedGoblins)
+            {
+                int GoblinSlayer = NPC.FindFirstNPC(mod.NPCType("GoblinSlayer"));
+                if (GoblinSlayer >= 0)
+                {
+                    Item.NewItem(npc.getRect(), mod.ItemType("GoblinSoul"), Main.rand.Next(0, 1));
+                }
+            }
         }
 
 		public override void DrawEffects(NPC npc, ref Color drawColor)

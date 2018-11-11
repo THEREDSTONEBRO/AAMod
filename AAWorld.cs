@@ -293,6 +293,7 @@ namespace AAMod
             Luminite = NPC.downedMoonlord;
             DarkMatter = downedNC;
             RadiumOre = downedDB;
+            
         }
 
         private string NumberRand(int size)
