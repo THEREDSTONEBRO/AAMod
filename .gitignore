@@ -1,3 +1,6 @@
 AAMod.csproj
 *.csproj
 .vs/AAMod/v15/.suo
+*.ide
+*.csproj
+.vs/AAMod/DesignTimeBuild/.dtbcache
