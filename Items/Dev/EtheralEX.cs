@@ -24,7 +24,8 @@ namespace AAMod.Items.Dev
             }
             DisplayName.SetDefault("Light");
 			Tooltip.SetDefault(@"Etheral EX");
-		}
+            Item.staff[item.type] = true;
+        }
 
 	    public override void SetDefaults()
 	    {

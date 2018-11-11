@@ -54,14 +54,11 @@ namespace AAMod.Items.Projectiles.Akuma
 
         public override bool PreAI()
         {
+            projectile.Center = Main.projectile[(int)projectile.ai[1]].Center;
+            projectile.velocity = Vector2.Normalize(Main.projectile[(int)projectile.ai[1]].ai[1].ToRotationVector2());
             if (projectile.velocity.HasNaNs() || projectile.velocity == Vector2.Zero)
             {
                 projectile.velocity = -Vector2.UnitY;
-            }
-            else if (projectile.type == 642 && Main.projectile[(int)projectile.ai[1]].active && Main.projectile[(int)projectile.ai[1]].type == 641)
-            {
-                projectile.Center = Main.projectile[(int)projectile.ai[1]].Center;
-                projectile.velocity = Vector2.Normalize(Main.projectile[(int)projectile.ai[1]].ai[1].ToRotationVector2());
             }
             if (projectile.velocity.HasNaNs() || projectile.velocity == Vector2.Zero)
             {

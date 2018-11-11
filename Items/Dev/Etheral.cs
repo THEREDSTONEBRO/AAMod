@@ -24,7 +24,8 @@ namespace AAMod.Items.Dev
             }
             DisplayName.SetDefault("Etheral");
 			Tooltip.SetDefault(@"Fires a beam that blasts through enemies");
-		}
+            Item.staff[item.type] = true;
+        }
 
 	    public override void SetDefaults()
 	    {

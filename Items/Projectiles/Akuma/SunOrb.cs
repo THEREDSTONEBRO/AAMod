@@ -44,7 +44,7 @@ namespace AAMod.Items.Projectiles.Akuma
             float num1058 = 1000f;
             projectile.velocity = Vector2.Zero;
             
-                projectile.alpha -= 5;
+            projectile.alpha -= 5;
             if (projectile.alpha < 0)
             {
                     projectile.alpha = 0;
@@ -59,7 +59,7 @@ namespace AAMod.Items.Projectiles.Akuma
             if (Main.rand.Next(2) == 0)
             {
                 Vector2 vector135 = Vector2.UnitY.RotatedByRandom(6.2831854820251465);
-                Dust dust31 = Main.dust[Dust.NewDust(projectile.Center - vector135 * 30f, 0, 0, 229, 0f, 0f, 0, default(Color), 1f)];
+                Dust dust31 = Main.dust[Dust.NewDust(projectile.Center - vector135 * 30f, 0, 0, mod.DustType<Dusts.AkumaADust>(), 0f, 0f, 0, default(Color), 1f)];
                 dust31.noGravity = true;
                 dust31.position = projectile.Center - vector135 * (float)Main.rand.Next(10, 21);
                 dust31.velocity = vector135.RotatedBy(1.5707963705062866, default(Vector2)) * 6f;
@@ -70,7 +70,7 @@ namespace AAMod.Items.Projectiles.Akuma
             if (Main.rand.Next(2) == 0)
             {
                 Vector2 vector136 = Vector2.UnitY.RotatedByRandom(6.2831854820251465);
-                Dust dust32 = Main.dust[Dust.NewDust(projectile.Center - vector136 * 30f, 0, 0, 240, 0f, 0f, 0, default(Color), 1f)];
+                Dust dust32 = Main.dust[Dust.NewDust(projectile.Center - vector136 * 30f, 0, 0, mod.DustType<Dusts.AkumaADust>(), 0f, 0f, 0, default(Color), 1f)];
                 dust32.noGravity = true;
                 dust32.position = projectile.Center - vector136 * 30f;
                 dust32.velocity = vector136.RotatedBy(-1.5707963705062866, default(Vector2)) * 3f;
@@ -81,7 +81,7 @@ namespace AAMod.Items.Projectiles.Akuma
             if (projectile.ai[0] < 0f)
             {
                 Vector2 center15 = projectile.Center;
-                int num1059 = Dust.NewDust(center15 - Vector2.One * 8f, 16, 16, 229, projectile.velocity.X / 2f, projectile.velocity.Y / 2f, 0, default(Color), 1f);
+                int num1059 = Dust.NewDust(center15 - Vector2.One * 8f, 16, 16, mod.DustType<Dusts.AkumaADust>(), projectile.velocity.X / 2f, projectile.velocity.Y / 2f, 0, default(Color), 1f);
                 Main.dust[num1059].velocity *= 2f;
                 Main.dust[num1059].noGravity = true;
                 Main.dust[num1059].scale = Utils.SelectRandom<float>(Main.rand, new float[]
@@ -170,7 +170,7 @@ namespace AAMod.Items.Projectiles.Akuma
             }
         }
 
-        public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
+        /*public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
         {
             SpriteEffects spriteEffects = SpriteEffects.None;
             Color color25 = Lighting.GetColor((int)((double)projectile.position.X + (double)projectile.width * 0.5) / 16, (int)(((double)projectile.position.Y + (double)projectile.height * 0.5) / 16.0));
@@ -190,7 +190,7 @@ namespace AAMod.Items.Projectiles.Akuma
             Main.spriteBatch.Draw(texture2D30, vector38, null, color55, -projectile.rotation * 0.7f, origin8, projectile.scale, spriteEffects ^ SpriteEffects.FlipHorizontally, 0f);
             Main.spriteBatch.Draw(Main.extraTexture[50], vector38, null, alpha4 * 0.8f, projectile.rotation * 0.5f, origin8, projectile.scale * 0.9f, spriteEffects, 0f);
             alpha4.A = 0;
-            return false;
-        }
+            return true;
+        }*/
     }
 }
