@@ -36,17 +36,6 @@ namespace AAMod.Items.Armor.GoblinSlayer
 80% damage resistance from goblins
 'I hunt goblins or nothing.'";
             player.GetModPlayer<AAPlayer>(mod).goblinSlayer = true;
-            bool flag21 = false;
-            if (player.jump > 0)
-            {
-                flag21 = true;
-            }
-            else if (player.velocity.Y != 0f && player.controlJump)
-            {
-                flag21 = true;
-            }
-            if (flag21)
-            {
                 Color newColor = Main.hslToRgb(Main.rgbToHsl(player.eyeColor).X, 1f, 0.5f);
                 int num88 = (player.direction == 1) ? 0 : -4;
                 int num89 = (player.gravDir == 1f) ? player.height : 0;
@@ -76,7 +65,6 @@ namespace AAMod.Items.Armor.GoblinSlayer
                     dust10.noLight = true;
                     dust10.shader = GameShaders.Armor.GetSecondaryShader(player.cWings, player);
                 }
-            }
         }
 	}
 }

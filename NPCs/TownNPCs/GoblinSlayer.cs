@@ -132,6 +132,10 @@ namespace AAMod.NPCs.TownNPCs
             shop.item[nextSlot].shopCustomPrice = new int?(15);
             shop.item[nextSlot].shopSpecialCurrency = AAMod.GoblinSoul;
             nextSlot++;
+            shop.item[nextSlot].SetDefaults(ItemID.GoblinBattleStandard);
+            shop.item[nextSlot].shopCustomPrice = new int?(5);
+            shop.item[nextSlot].shopSpecialCurrency = AAMod.GoblinSoul;
+            nextSlot++;
         }
 
 		public override void NPCLoot()
