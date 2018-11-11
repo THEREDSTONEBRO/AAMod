@@ -47,8 +47,8 @@ Non-consumable");
 			item.height = 40;
 			item.consumable = false;             //You need to set the item consumable so that the ammo would automatically consumed
 			item.knockBack = 7f;
-			item.value = 100;
-			item.rare = 6;
+			item.value = Item.buyPrice(1, 0, 0, 0);
+            item.rare = 6;
 			item.shoot = mod.ProjectileType("Neutralizer");         //The speed of the projectile
 			item.ammo = AmmoID.Arrow;              //The ammo class this ammo belongs to.
 		}

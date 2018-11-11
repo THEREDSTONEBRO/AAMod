@@ -29,7 +29,7 @@ namespace AAMod.Items.Boss.Zero
             item.useStyle = 5;
             item.knockBack = 2f;
             item.UseSound = SoundID.Item116;
-            item.value = 1000000;
+            item.value = Item.buyPrice(1, 0, 0, 0);
             item.shoot = mod.ProjectileType("EventHorizon");
             item.shootSpeed = 22f;
 		}

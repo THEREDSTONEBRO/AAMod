@@ -50,7 +50,7 @@ Non-consumable");
 			item.height = 32;
 			item.consumable = false;             //You need to set the item consumable so that the ammo would automatically consumed
 			item.knockBack = 7f;
-			item.value = 100;
+			item.value = Item.buyPrice(1, 0, 0, 0); ;
 			item.rare = 6;
 			item.shoot = mod.ProjectileType("Antimatter");   //The projectile shoot when your weapon using this ammo
 			item.shootSpeed = 1f;                  //The speed of the projectile

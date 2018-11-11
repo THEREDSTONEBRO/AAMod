@@ -383,6 +383,7 @@
     <Compile Include="Items\Boss\Akuma\DaybreakArrow.cs" />
     <Compile Include="Items\Boss\Akuma\Daycrusher.cs" />
     <Compile Include="Items\Boss\Akuma\Daystorm.cs" />
+    <Compile Include="Items\Boss\Akuma\DragonSlasher.cs" />
     <Compile Include="Items\Boss\Akuma\ReignOfFire.cs" />
     <Compile Include="Items\Boss\Akuma\Solar.cs" />
     <Compile Include="Items\Boss\Akuma\SunSpear.cs" />

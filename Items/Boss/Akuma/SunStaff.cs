@@ -42,7 +42,7 @@ Inflicts Daybroken");
             item.useAnimation = 30;
             item.useTime = 30;
             item.noMelee = true;
-            item.value = Item.sellPrice(0, 10, 0, 0);
+            item.value = Item.buyPrice(1, 0, 0, 0);
             item.knockBack = 5f;
             item.summon = true;
             item.sentry = true;

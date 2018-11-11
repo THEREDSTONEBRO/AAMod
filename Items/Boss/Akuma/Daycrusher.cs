@@ -43,7 +43,7 @@ Inflicts Daybroken");
         {
             item.width = 54;
             item.height = 44;
-            item.value = Item.sellPrice(0, 10, 0, 0);
+            item.value = Item.buyPrice(1, 0, 0, 0); ;
             item.rare = 1;
 
             item.noMelee = true;

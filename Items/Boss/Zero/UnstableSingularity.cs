@@ -48,7 +48,7 @@ namespace AAMod.Items.Boss.Zero
             item.width = 22;
             item.height = 24;
             item.maxStack = 999;
-            item.value = 10000;
+            item.value = Item.buyPrice(1, 0, 0, 0);
         }
 
         // The following 2 methods are purely to show off these 2 hooks. Don't use them in your own code.

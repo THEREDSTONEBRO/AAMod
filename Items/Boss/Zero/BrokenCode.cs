@@ -53,7 +53,7 @@ You don't look so good
             item.width = 60;
             item.height = 52;
             item.maxStack = 1;
-            item.value = 10000;
+            item.value = Item.buyPrice(3, 0, 0, 0);
             item.expert = true;
             item.accessory = true;
         }

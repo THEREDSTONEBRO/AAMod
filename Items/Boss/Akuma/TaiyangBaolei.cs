@@ -40,7 +40,7 @@ From 11:00 AM to 1:00 PM, you gain 20% damage resistance and your melee & magic 
         {
             item.width = 30;
             item.height = 32;
-            item.value = Item.sellPrice(1, 0, 0, 0);
+            item.value = Item.sellPrice(3, 0, 0, 0);
             item.expert = true;
             item.accessory = true;
             item.defense = 8;
