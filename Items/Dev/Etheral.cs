@@ -24,7 +24,6 @@ namespace AAMod.Items.Dev
             }
             DisplayName.SetDefault("Etheral");
 			Tooltip.SetDefault(@"Fires a beam that blasts through enemies");
-            Item.staff[item.type] = true;
         }
 
 	    public override void SetDefaults()
@@ -32,15 +31,14 @@ namespace AAMod.Items.Dev
 	        item.damage = 150;
 	        item.magic = true;
 	        item.mana = 105;
-	        item.width = 16;
-	        item.height = 16;
+	        item.width = 130;
+	        item.height = 46;
 	        item.useTime = 10;
 	        item.useAnimation = 10;
 	        item.reuseDelay = 5;
 	        item.useStyle = 5;
 	        item.UseSound = SoundID.Item13;
 	        item.noMelee = true;
-	        item.noUseGraphic = true;
 			item.channel = true;
 	        item.knockBack = 0f;
 	        item.value = Item.sellPrice(1, 0, 0, 0); ;

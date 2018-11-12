@@ -2,6 +2,7 @@ using Terraria;
 using Microsoft.Xna.Framework;
 using Terraria.ModLoader;
 using System.Collections.Generic;
+using Terraria.ID;
 
 namespace AAMod.Items.Boss.Akuma
 {
@@ -28,7 +29,7 @@ namespace AAMod.Items.Boss.Akuma
 
         public override void SetDefaults()
         {
-
+            item.CloneDefaults(ItemID.LaserMachinegun);
             item.useStyle = 5;
             item.useAnimation = 20;
             item.useTime = 20;

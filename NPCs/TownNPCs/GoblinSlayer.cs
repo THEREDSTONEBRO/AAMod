@@ -84,7 +84,7 @@ namespace AAMod.NPCs.TownNPCs
             int Goblin = NPC.FindFirstNPC(NPCID.GoblinTinkerer);
 			if (Goblin >= 0 && Main.rand.Next(4) == 0)
 			{
-                chat.Add("I don't trust " + Main.npc[Goblin].GivenName + ". He's a goblin");
+                chat.Add("I don't trust " + Main.npc[Goblin].GivenName + ". He's a goblin.");
             }
             int DD2Bartender = NPC.FindFirstNPC(NPCID.DD2Bartender);
             if (DD2Bartender >= 0 && Main.rand.Next(4) == 0)
@@ -93,7 +93,7 @@ namespace AAMod.NPCs.TownNPCs
             }
             chat.Add("I don't like goblins.");
             chat.Add("Seen any goblins I can kill?");
-            chat.Add("Goblins are a scourge on this earth");
+            chat.Add("Goblins are a scourge on this earth.");
             chat.Add("Find any good goblin dens to raid?");
             chat.Add("Why do I hate goblins? Because they're goblins.");
             chat.Add("Hey, while you're out there, can you kill some goblins for me? Give me their souls and I'll trade you for some of my extra goblin slaying gear.");
