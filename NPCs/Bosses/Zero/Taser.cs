@@ -23,7 +23,7 @@ namespace AAMod.NPCs.Bosses.Zero
             npc.defense = 40;
             npc.HitSound = SoundID.NPCHit4;
             npc.DeathSound = SoundID.NPCHit4;
-            npc.lifeMax = 100000;
+            npc.lifeMax = 50000;
             npc.noGravity = true;
             animationType = NPCID.PrimeSaw;
             npc.noTileCollide = true;
@@ -35,12 +35,7 @@ namespace AAMod.NPCs.Bosses.Zero
             npc.netAlways = true;
 
         }
-
-        public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
-        {
-            npc.lifeMax = (int)(npc.lifeMax * 0.625f * bossLifeScale * (1 + (numPlayers / 10)));
-            npc.damage = (int)(npc.damage * 0.6f);
-        }
+        
 
         public override void FindFrame(int frameHeight)
         {

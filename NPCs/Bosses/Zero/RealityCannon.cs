@@ -22,7 +22,7 @@ namespace AAMod.NPCs.Bosses.Zero
             npc.height = 70;
             npc.damage = 30;
             npc.defense = 40;
-            npc.lifeMax = 100000;
+            npc.lifeMax = 50000;
             npc.HitSound = SoundID.NPCHit4;
             npc.DeathSound = SoundID.NPCHit4;
             npc.noGravity = true;
@@ -35,12 +35,7 @@ namespace AAMod.NPCs.Bosses.Zero
             npc.lavaImmune = true;
             npc.netAlways = true;
         }
-
-        public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
-        {
-            npc.lifeMax = (int)(npc.lifeMax * 0.625f * bossLifeScale * (1 + (numPlayers / 10)));
-            npc.damage = (int)(npc.damage * 0.6f);
-        }
+        
 
         public override void SendExtraAI(BinaryWriter writer)
         {

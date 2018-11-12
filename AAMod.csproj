@@ -138,6 +138,7 @@
     <Compile Include="Dusts\UmbreonSPDust.cs" />
     <Compile Include="Dusts\VoidDust.cs" />
     <Compile Include="Dusts\ZeroDust.cs" />
+    <Compile Include="Items\AAModGlobalItem.cs" />
     <Compile Include="Items\Accessories\AshProofVest0.cs" />
     <Compile Include="Items\Accessories\AshProofVest1.cs" />
     <Compile Include="Items\Accessories\AshProofVest2.cs" />
@@ -773,6 +774,7 @@
     <Compile Include="Items\Usable\IceCrate.cs" />
     <Compile Include="Items\Usable\IndigoSolution.cs" />
     <Compile Include="Items\Usable\InfernoCrate.cs" />
+    <Compile Include="Items\Usable\KeyOfBlight.cs" />
     <Compile Include="Items\Usable\KeyOfSmite.cs" />
     <Compile Include="Items\Usable\KeyOfSpite.cs" />
     <Compile Include="Items\Usable\LivingBogleafWand.cs" />

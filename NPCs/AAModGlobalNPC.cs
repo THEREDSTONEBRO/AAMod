@@ -295,11 +295,8 @@ namespace AAMod.NPCs
                 || npc.type == NPCID.GoblinTinkerer) 
                 && NPC.downedGoblins)
             {
-                int GoblinSlayer = NPC.FindFirstNPC(mod.NPCType("GoblinSlayer"));
-                if (GoblinSlayer >= 0)
-                {
                     Item.NewItem(npc.getRect(), mod.ItemType("GoblinSoul"), Main.rand.Next(0, 1));
-                }
+                
             }
         }
 

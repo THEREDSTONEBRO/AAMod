@@ -35,13 +35,13 @@ namespace AAMod.NPCs.Bosses.Zero
             {
                 npc.damage = 90;
                 npc.defense = 80;
-                npc.lifeMax = 220000;
+                npc.lifeMax = 200000;
             }
             if (Main.expertMode && AAWorld.downedZeroA)
             {
                 npc.damage = 100;
                 npc.defense = 90;
-                npc.lifeMax = 240000;
+                npc.lifeMax = 220000;
             }
             if (Main.expertMode)
             {
@@ -168,12 +168,6 @@ namespace AAMod.NPCs.Bosses.Zero
             spriteBatch.Draw(mod.GetTexture("NPCs/Bosses/Zero/Zero_Glow"), new Vector2(npc.Center.X - Main.screenPosition.X, npc.Center.Y - Main.screenPosition.Y),
             npc.frame, Color.White, npc.rotation,
             new Vector2(npc.width * 0.5f, npc.height * 0.5f), 1f, spriteEffects, 0f);
-        }
-
-        public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
-        {
-            npc.lifeMax = (int)(npc.lifeMax * 0.8f * bossLifeScale);
-            npc.damage = (int)(npc.damage * 0.7f);
         }
 
         public override void AI()
