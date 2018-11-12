@@ -31,13 +31,7 @@ namespace AAMod.Items.Projectiles   //The directory for your .cs and .png; Examp
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
             target.AddBuff(BuffID.Chilled, 1000);
-            /*for (int i = 0; i < 200; i++)
-            {
-                if (Main.npc[i].active && Vector2.Distance(target.Center, projectile.Center) < 100)
-                {
-                    Main.npc[i].GetGlobalNPC<AAModGlobalNPC>().TimeFrozen = true;
-                }
-            }*/
+            target.AddBuff(mod.BuffType("TimeFrozen"), 300);
         }
         
         public override void SetStaticDefaults()
