@@ -104,7 +104,7 @@ namespace AAMod.NPCs.Bosses.Akuma
             Main.time = 24000;
             Player player = Main.player[npc.target];
 			float dist = npc.Distance(player.Center);
-            /*if (dist < 300 & Main.rand.Next(3) == 1 && fireAttack == false)
+            if (dist < 300 & Main.rand.Next(4) == 1 && fireAttack == false)
             {
                 fireAttack = true;
             }
@@ -125,7 +125,7 @@ namespace AAMod.NPCs.Bosses.Akuma
                     attackFrame = 0;
                     attackCounter = 0;
                 }
-            }*/
+            }
             if (npc.alpha != 0)
             {
                 for (int spawnDust = 0; spawnDust < 2; spawnDust++)

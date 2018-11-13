@@ -11,7 +11,7 @@ namespace AAMod.NPCs.Bosses.Akuma
         public static short customGlowMask = 0;
         public override void SetStaticDefaults()
         {
-            Main.projFrames[projectile.type] = 5;
+            Main.projFrames[projectile.type] = 4;
             if (Main.netMode != 2)
             {
                 Texture2D[] glowMasks = new Texture2D[Main.glowMaskTexture.Length + 1];
@@ -30,8 +30,9 @@ namespace AAMod.NPCs.Bosses.Akuma
         {
             projectile.width = 10;
             projectile.height = 10;
+            projectile.friendly = false;
             projectile.hostile = true;
-            projectile.scale = 2f;
+            projectile.scale = 1.3f;
             projectile.ignoreWater = true;
             projectile.penetrate = 1;
             projectile.alpha = 60;
@@ -60,19 +61,10 @@ namespace AAMod.NPCs.Bosses.Akuma
                     projectile.frame = 0;
                 }
             }
-
-            if (projectile.timeLeft > 0)
-            {
-                projectile.timeLeft--;
-            }
-            if (projectile.timeLeft == 0)
-            {
-                projectile.Kill();
-            }
             projectile.rotation = (float)Math.Atan2(projectile.velocity.Y, projectile.velocity.X) + 1.57f;
             const int aislotHomingCooldown = 0;
             const int homingDelay = 10;
-            const float desiredFlySpeedInPixelsPerFrame = 60;
+            const float desiredFlySpeedInPixelsPerFrame = 30;
             const float amountOfFramesToLerpBy = 20; // minimum of 1, please keep in full numbers even though it's a float!
 
             projectile.ai[aislotHomingCooldown]++;

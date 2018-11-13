@@ -20,6 +20,7 @@ namespace AAMod.NPCs.Bosses.Zero
         public static int type;
         private bool Panic = false;
         private bool DradonMode = false;
+        private bool introPlayed = false;
 
         public override void SetStaticDefaults()
         {
@@ -221,7 +222,7 @@ namespace AAMod.NPCs.Bosses.Zero
             }
             return false;
         }
-
+        private int endTimer;
         public override void AI()
         {
             if (DradonMode)
@@ -233,7 +234,16 @@ namespace AAMod.NPCs.Bosses.Zero
             }
             if (npc.life <= npc.lifeMax / 5 && !DradonMode)
             {
+                endTimer++;
                 music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/End");
+                if (!introPlayed)
+                {
+                    music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/EndIntro");
+                }
+                if (endTimer >= 660)
+                {
+                    introPlayed = true;
+                }
             }
             if (npc.target < 0 || npc.target == 255 || Main.player[npc.target].dead || !Main.player[npc.target].active)
             {

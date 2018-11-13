@@ -18,7 +18,7 @@ namespace AAMod.NPCs.Bosses.Akuma
             projectile.width = 10;
             projectile.height = 10;
             projectile.hostile = true;
-            projectile.friendly = true;
+            projectile.friendly = false;
             projectile.ignoreWater = true;
             projectile.penetrate = 1;
             projectile.alpha = 60;

@@ -99,7 +99,7 @@ namespace AAMod.NPCs.Bosses.Akuma
             Main.time = 24000;
             Player player = Main.player[npc.target];
             float dist = npc.Distance(player.Center);
-            /*if (dist < 300 & Main.rand.Next(3) == 1 && fireAttack == false)
+            if (dist < 300 & Main.rand.Next(5) == 1 && fireAttack == false)
             {
                 fireAttack = true;
             }
@@ -113,14 +113,14 @@ namespace AAMod.NPCs.Bosses.Akuma
                     int proj2 = Projectile.NewProjectile(npc.Center.X + Main.rand.Next(-20, 20), npc.Center.Y + Main.rand.Next(-20, 20), npc.velocity.X * Main.rand.Next(1, 2), npc.velocity.Y * Main.rand.Next(1, 2), mod.ProjectileType("AkumaBreath"), 20, 0, Main.myPlayer);
                     Main.projectile[proj2].timeLeft = 60;
                 }
-                if (attackTimer >= 30)
+                if (attackTimer >= 80)
                 {
                     fireAttack = false;
                     attackTimer = 0;
                     attackFrame = 0;
                     attackCounter = 0;
                 }
-            }*/
+            }
             if (npc.alpha != 0)
             {
                 for (int spawnDust = 0; spawnDust < 2; spawnDust++)
