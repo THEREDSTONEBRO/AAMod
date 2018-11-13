@@ -8,7 +8,7 @@ namespace AAMod.Items.Accessories.Wings
 	{
 		public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Wings of Chaos");
+            DisplayName.SetDefault("Dread Moon Wings");
         }
 
 		public override void SetDefaults()

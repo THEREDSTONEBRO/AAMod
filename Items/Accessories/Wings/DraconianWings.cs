@@ -10,7 +10,7 @@ namespace AAMod.Items.Accessories.Wings
 	{
 		public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Draconian Wings");
+            DisplayName.SetDefault("Draconian Sun Wings");
         }
 
 		public override void SetDefaults()

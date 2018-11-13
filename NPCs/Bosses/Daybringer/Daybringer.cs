@@ -27,7 +27,7 @@ namespace AAMod.NPCs.Bosses.Daybringer
                 }
                 spriteBatch.Draw(mod.GetTexture("NPCs/Bosses/Daybringer/Daybringer_Glow"), new Vector2(npc.Center.X - Main.screenPosition.X, npc.Center.Y - Main.screenPosition.Y),
                 npc.frame, Color.White, npc.rotation,
-                new Vector2(npc.width * 0.5f, npc.height * 0.5f), 1f, spriteEffects, 0f);
+                new Vector2(npc.width * 0.5f, npc.height * 0.5f), npc.scale, spriteEffects, 0f);
             }
         }
         public override void SetDefaults()
@@ -108,7 +108,7 @@ namespace AAMod.NPCs.Bosses.Daybringer
                 }
                 spriteBatch.Draw(mod.GetTexture("NPCs/Bosses/Daybringer/DBBody_Glow"), new Vector2(npc.Center.X - Main.screenPosition.X, npc.Center.Y - Main.screenPosition.Y),
                 npc.frame, Color.White, npc.rotation,
-                new Vector2(npc.width * 0.5f, npc.height * 0.5f), 1f, spriteEffects, 0f);
+                new Vector2(npc.width * 0.5f, npc.height * 0.5f), npc.scale, spriteEffects, 0f);
             }
         }
 
@@ -158,7 +158,7 @@ namespace AAMod.NPCs.Bosses.Daybringer
                 }
                 spriteBatch.Draw(mod.GetTexture("NPCs/Bosses/Daybringer/DBTail_Glow"), new Vector2(npc.Center.X - Main.screenPosition.X, npc.Center.Y - Main.screenPosition.Y),
                 npc.frame, Color.White, npc.rotation,
-                new Vector2(npc.width * 0.5f, npc.height * 0.5f), 1f, spriteEffects, 0f);
+                new Vector2(npc.width * 0.5f, npc.height * 0.5f), npc.scale, spriteEffects, 0f);
             }
         }
 

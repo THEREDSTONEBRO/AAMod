@@ -10,7 +10,7 @@ namespace AAMod.NPCs.Enemies.Mire
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Chaotic Twilight");
-			Main.npcFrameCount[npc.type] = Main.npcFrameCount[83];
+            Main.npcFrameCount[npc.type] = 4;
 		}
 
 		public override void SetDefaults()

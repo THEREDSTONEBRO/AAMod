@@ -83,7 +83,7 @@ Inflicts Daybroken");
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(null, "DaybreakIncinerite", 5);
             recipe.AddIngredient(null, "CrucibleScale", 5);
-            recipe.AddIngredient(ItemID.StarWrath);
+            recipe.AddIngredient(ItemID.MoonlordTurretStaff);
             recipe.AddTile(null, "BinaryReassembler");
             recipe.SetResult(this);
             recipe.AddRecipe();

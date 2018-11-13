@@ -1,7 +1,6 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
 using Terraria.ModLoader;
 
-
 namespace AAMod.Tiles
 {
     class OroborosTree : ModTree

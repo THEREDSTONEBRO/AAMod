@@ -138,11 +138,15 @@ namespace AAMod.NPCs.Bosses.Zero
             {
                 if (Main.rand.Next(0,10) == 0)
                 {
-                    int Xint = (Main.rand.Next(0, 2) == 0) ? Main.rand.Next(-100, -21) : Main.rand.Next(-120, 31);
-                    int Yint = (Main.rand.Next(0, 2) == 0) ? Main.rand.Next(-100, -21) : Main.rand.Next(-120, 31);
-                    Player player = Main.player[npc.target];
-                    Vector2 tele = new Vector2(player.Center.X + Xint, player.Center.Y + Yint);
-                    npc.Center = tele;
+                    int Xint = Main.rand.Next(-400, 400);
+                    int Yint = Main.rand.Next(-400, 400);
+                    if ((Xint < -50 || Xint > 50) && (Yint < -60 || Yint > 60))
+                    {
+                        //Main.NewText("CALLED! XINT: " + Xint + ". YINT: " + Yint);
+                        Player player = Main.player[npc.target];
+                        Vector2 tele = new Vector2((player.Center.X + Xint), (player.Center.Y + Yint));
+                        npc.Center = tele;
+                    }
                 }
             }
             if (npc.life <= 0 && Main.expertMode && !AAWorld.downedZeroA && npc.type == mod.NPCType<ZeroAwakened>())

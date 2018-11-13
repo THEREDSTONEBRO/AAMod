@@ -25,6 +25,7 @@ namespace AAMod.NPCs
 		{
             infinityOverload = false;
             terraBlaze = false;
+            TimeFrozen = false;
         }
 
 		public override void SetDefaults(NPC npc)

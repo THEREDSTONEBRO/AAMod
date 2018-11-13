@@ -48,7 +48,7 @@ namespace AAMod.Items.Ranged
 		    	offsetAngle = startAngle + (deltaAngle * i);
 		    	Terraria.Projectile.NewProjectile(position.X, position.Y, baseSpeed*(float)Math.Sin(offsetAngle), baseSpeed*(float)Math.Cos(offsetAngle), item.shoot, damage, knockBack, item.owner);
 		    }
-		    return true;
+		    return false;
 		}
 
         public override void AddRecipes()

@@ -854,45 +854,11 @@ namespace AAMod
             {
                 target.AddBuff(BuffID.WitheredArmor, 600);
             }
-
-            if (Time && proj.melee && Main.rand.Next(2) == 0)
+            
+            if(Time && Main.rand.Next(2) == 0)
             {
-                for (int i = 0; i < 200; i++)
-                {
-                    target.AddBuff(BuffID.Chilled, 180);
-                }
-            }
-
-            if (Time && proj.ranged && Main.rand.Next(2) == 0)
-            {
-                for (int i = 0; i < 200; i++)
-                {
-                    target.AddBuff(BuffID.Chilled, 180);
-                }
-            }
-
-            if (Time && proj.magic && Main.rand.Next(2) == 0)
-            {
-                for (int i = 0; i < 200; i++)
-                {
-                    target.AddBuff(BuffID.Chilled, 180);
-                }
-            }
-
-            if (Time && proj.minion && Main.rand.Next(2) == 0)
-            {
-                for (int i = 0; i < 200; i++)
-                {
-                    target.AddBuff(BuffID.Chilled, 180);
-                }
-            }
-
-            if (Time && proj.thrown && Main.rand.Next(2) == 0)
-            {
-                for (int i = 0; i < 200; i++)
-                {
-                    target.AddBuff(BuffID.Chilled, 180);
-                }
+                target.AddBuff(BuffID.Chilled, 180);
+                target.AddBuff(mod.BuffType("TimeFrozen"), 300);
             }
 
             if (DynaskullSet && proj.thrown && Main.rand.Next(2) == 0)

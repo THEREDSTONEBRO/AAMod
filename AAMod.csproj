@@ -50,6 +50,7 @@
     <Reference Include="ReLogic, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -59,9 +60,6 @@
     <Reference Include="Terraria, Version=1.3.5.1, Culture=neutral, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Terraria\Terraria.exe</HintPath>
-    </Reference>
-    <Reference Include="TerrariaHooks">
-      <HintPath>.\TerrariaHooks.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -87,6 +85,24 @@
     <Compile Include="Backgrounds\VoidSky.cs" />
     <Compile Include="Backgrounds\VoidSkyData.cs" />
     <Compile Include="Backgrounds\VoidSurfaceBgStyle.cs" />
+    <Compile Include="Base\BaseMod\Base\BaseAI.cs" />
+    <Compile Include="Base\BaseMod\Base\BaseConstants.cs" />
+    <Compile Include="Base\BaseMod\Base\BaseDrawing.cs" />
+    <Compile Include="Base\BaseMod\Base\BaseInvasion.cs" />
+    <Compile Include="Base\BaseMod\Base\BaseNet.cs" />
+    <Compile Include="Base\BaseMod\Base\BasePlayer.cs" />
+    <Compile Include="Base\BaseMod\Base\BaseShaderCompiler.cs" />
+    <Compile Include="Base\BaseMod\Base\BaseTile.cs" />
+    <Compile Include="Base\BaseMod\Base\BaseUseStyle.cs" />
+    <Compile Include="Base\BaseMod\Base\BaseUtility.cs" />
+    <Compile Include="Base\BaseMod\Base\BaseWorldGen.cs" />
+    <Compile Include="Base\BaseMod\Base\BaseWorldGenTex.cs" />
+    <Compile Include="Base\BaseMod\MNet.cs" />
+    <Compile Include="Base\BaseMod\MNPC.cs" />
+    <Compile Include="Base\BaseMod\MPlayer.cs" />
+    <Compile Include="Base\BaseMod\MProjectile.cs" />
+    <Compile Include="Base\NPCs\ParentNPC.cs" />
+    <Compile Include="Base\Projectiles\ParentProjectile.cs" />
     <Compile Include="Buffs\Broodmini.cs" />
     <Compile Include="Buffs\BurningAsh.cs" />
     <Compile Include="Buffs\ChairMinionBuff.cs" />
@@ -492,6 +508,7 @@
     <Compile Include="Items\Materials\TechneciumBar.cs" />
     <Compile Include="Items\Materials\vulture_feather.cs" />
     <Compile Include="Items\Materials\YtriumBar.cs" />
+    <Compile Include="Items\Melee\SunLance.cs" />
     <Compile Include="Items\Melee\GoblinSlayer.cs" />
     <Compile Include="Items\Melee\AbyssalTwilight.cs" />
     <Compile Include="Items\Melee\Amnesia.cs" />
@@ -501,7 +518,7 @@
     <Compile Include="Items\Melee\Bloody_Mary.cs" />
     <Compile Include="Items\Melee\BreakingDawn.cs" />
     <Compile Include="Items\Melee\Chaos.cs" />
-    <Compile Include="Items\Melee\ClawOfChaosBlue - Copy.cs" />
+    <Compile Include="Items\Melee\BackScratcher.cs" />
     <Compile Include="Items\Melee\ClawOfChaosBlue.cs" />
     <Compile Include="Items\Melee\ClawOfChaosRed.cs" />
     <Compile Include="Items\Melee\CloudEdge.cs" />
@@ -595,6 +612,7 @@
     <Compile Include="Items\Projectiles\AmphibiousProjectileS.cs" />
     <Compile Include="Items\Projectiles\AntimonBoomerangP.cs" />
     <Compile Include="Items\Projectiles\Apocalypse.cs" />
+    <Compile Include="Items\Projectiles\SunLance.cs" />
     <Compile Include="Items\Projectiles\APP.cs" />
     <Compile Include="Items\Projectiles\BigCrystal.cs" />
     <Compile Include="Items\Projectiles\Bubble.cs" />
@@ -818,6 +836,7 @@
     <Compile Include="NPCs\Bosses\Akuma\AFireProjHostile.cs" />
     <Compile Include="NPCs\Bosses\Akuma\Akuma.cs" />
     <Compile Include="NPCs\Bosses\Akuma\AkumaA.cs" />
+    <Compile Include="NPCs\Bosses\Akuma\AkumaBreath.cs" />
     <Compile Include="NPCs\Bosses\Akuma\AkumaTransition.cs" />
     <Compile Include="NPCs\Bosses\Akuma\Unused\OldAkuma.cs" />
     <Compile Include="NPCs\Bosses\Akuma\Unused\OldAkumaA.cs" />
@@ -855,10 +874,14 @@
     <Compile Include="NPCs\Bosses\Zero\ZeroAwakened.cs" />
     <Compile Include="NPCs\Bosses\Zero\ZeroDeath1.cs" />
     <Compile Include="NPCs\Bosses\Zero\ZeroDeath2.cs" />
+    <Compile Include="NPCs\Enemies\Inferno\Wyrm.cs" />
+    <Compile Include="NPCs\Enemies\Inferno\Wyrmling.cs" />
+    <Compile Include="NPCs\Enemies\Inferno\Flamebrute.cs" />
     <Compile Include="NPCs\Enemies\Inferno\InfernalSlime.cs" />
     <Compile Include="NPCs\Enemies\Inferno\InfernoMimic.cs" />
     <Compile Include="NPCs\Enemies\Inferno\InfernoSalamander.cs" />
     <Compile Include="NPCs\Enemies\Mire\ChaoticTwilight.cs" />
+    <Compile Include="NPCs\Enemies\Mire\Mosster.cs" />
     <Compile Include="NPCs\Enemies\Mire\MireMimic.cs" />
     <Compile Include="NPCs\Enemies\Other\CyberClaw.cs" />
     <Compile Include="NPCs\Enemies\Other\DragonClaw.cs" />
@@ -1059,6 +1082,11 @@
     <Content Include="Backgrounds\VoidPlanet.png" />
     <Content Include="Backgrounds\VoidSky.png" />
     <Content Include="Backgrounds\YamataMoon.png" />
+    <Content Include="Base\BaseMod\Snippets\DrawSegmentedChain.txt" />
+    <Content Include="Base\BaseMod\Snippets\ThoriumRadiantExample.txt" />
+    <Content Include="Base\NPCs\ParentNPC.png" />
+    <Content Include="Base\Projectiles\ParentProjectile.png" />
+    <Content Include="Base\Textures\TrueMagicPixel.png" />
     <Content Include="bin\Debug\AAMod.dll" />
     <Content Include="bin\Debug\AAMod.pdb" />
     <Content Include="bin\Debug\Microsoft.Xna.Framework.dll" />
@@ -2473,12 +2501,14 @@
     <Content Include="NPCs\Bosses\Akuma\AkumaAArms_Glow.png" />
     <Content Include="NPCs\Bosses\Akuma\AkumaABody.png" />
     <Content Include="NPCs\Bosses\Akuma\AkumaABody_Glow.png" />
+    <Content Include="NPCs\Bosses\Akuma\AkumaABreath.png" />
     <Content Include="NPCs\Bosses\Akuma\AkumaArms.png" />
     <Content Include="NPCs\Bosses\Akuma\AkumaATail.png" />
     <Content Include="NPCs\Bosses\Akuma\AkumaATail_Glow.png" />
     <Content Include="NPCs\Bosses\Akuma\AkumaA_Glow.png" />
     <Content Include="NPCs\Bosses\Akuma\AkumaA_Head_Boss.png" />
     <Content Include="NPCs\Bosses\Akuma\AkumaBody.png" />
+    <Content Include="NPCs\Bosses\Akuma\AkumaBreath.png" />
     <Content Include="NPCs\Bosses\Akuma\AkumaTail.png" />
     <Content Include="NPCs\Bosses\Akuma\AkumaTransition.png" />
     <Content Include="NPCs\Bosses\Akuma\Akuma_Glow.png" />
