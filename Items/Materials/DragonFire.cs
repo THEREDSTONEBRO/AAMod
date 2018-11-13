@@ -7,7 +7,7 @@ namespace AAMod.Items.Materials
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Dragonfire");
-            Tooltip.SetDefault("The Essance of Chaos found from the Inferno");
+            Tooltip.SetDefault("The Essence of Chaos found from the Inferno");
         }
         public override void SetDefaults()
         {

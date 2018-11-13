@@ -259,7 +259,7 @@ namespace AAMod.NPCs.Bosses.Wyrmling
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
 
-            return spawnInfo.player.GetModPlayer<AAPlayer>(mod).ZoneInferno ? 0f : .25f;
+            return spawnInfo.player.GetModPlayer<AAPlayer>(mod).ZoneInferno ? 0.25f : 0f;
         }
 
         public override void NPCLoot()

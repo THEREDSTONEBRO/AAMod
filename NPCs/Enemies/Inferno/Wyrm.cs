@@ -255,8 +255,11 @@ namespace AAMod.NPCs.Bosses.Wyrm
 
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
-
-            return spawnInfo.player.GetModPlayer<AAPlayer>(mod).ZoneInferno ? 0f : .25f;
+            if (Main.hardMode)
+            {
+                return spawnInfo.player.GetModPlayer<AAPlayer>(mod).ZoneInferno ? 0.25f : 0f;
+            }
+            return 0f;
         }
 
         public override void NPCLoot()
