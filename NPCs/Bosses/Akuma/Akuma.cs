@@ -99,7 +99,7 @@ namespace AAMod.NPCs.Bosses.Akuma
             Main.time = 24000;
             Player player = Main.player[npc.target];
             float dist = npc.Distance(player.Center);
-            if (dist < 300 & Main.rand.Next(3) == 1 && fireAttack == false)
+            /*if (dist < 300 & Main.rand.Next(3) == 1 && fireAttack == false)
             {
                 fireAttack = true;
             }
@@ -110,7 +110,7 @@ namespace AAMod.NPCs.Bosses.Akuma
                 {
                     if (Main.rand.Next(10) == 1)
                     Main.PlaySound(SoundID.Item34, npc.position);
-                    int proj2 = Projectile.NewProjectile(npc.position.X, npc.position.Y, npc.velocity.X, npc.velocity.Y, mod.DustType<Dusts.AkumaDust>(), npc.damage, 0, mod.NPCType<Akuma>(), 0f, 0f);
+                    int proj2 = Projectile.NewProjectile(npc.Center.X + Main.rand.Next(-20, 20), npc.Center.Y + Main.rand.Next(-20, 20), npc.velocity.X * Main.rand.Next(1, 2), npc.velocity.Y * Main.rand.Next(1, 2), mod.ProjectileType("AkumaBreath"), 20, 0, Main.myPlayer);
                     Main.projectile[proj2].timeLeft = 60;
                 }
                 if (attackTimer >= 30)
@@ -120,7 +120,7 @@ namespace AAMod.NPCs.Bosses.Akuma
                     attackFrame = 0;
                     attackCounter = 0;
                 }
-            }
+            }*/
             if (npc.alpha != 0)
             {
                 for (int spawnDust = 0; spawnDust < 2; spawnDust++)
@@ -331,7 +331,7 @@ namespace AAMod.NPCs.Bosses.Akuma
         public override bool PreDraw(SpriteBatch spriteBatch, Color drawColor)
         {
             Texture2D texture = Main.npcTexture[npc.type];
-            Texture2D attackAni = mod.GetTexture("NPCs/Bosses/AkumaHead1");
+            Texture2D attackAni = mod.GetTexture("NPCs/Bosses/Akuma/Akuma");
             var effects = npc.spriteDirection == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
             if (fireAttack == false)
             {

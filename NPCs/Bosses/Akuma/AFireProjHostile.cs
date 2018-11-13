@@ -61,6 +61,14 @@ namespace AAMod.NPCs.Bosses.Akuma
                 }
             }
 
+            if (projectile.timeLeft > 0)
+            {
+                projectile.timeLeft--;
+            }
+            if (projectile.timeLeft == 0)
+            {
+                projectile.Kill();
+            }
             projectile.rotation = (float)Math.Atan2(projectile.velocity.Y, projectile.velocity.X) + 1.57f;
             const int aislotHomingCooldown = 0;
             const int homingDelay = 10;
@@ -80,11 +88,6 @@ namespace AAMod.NPCs.Bosses.Akuma
                     projectile.velocity = Vector2.Lerp(projectile.velocity, desiredVelocity, 1f / amountOfFramesToLerpBy);
                 }
             }
-        }
-
-        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
-        {
-            target.AddBuff(mod.BuffType("DragonFire"), 600);
         }
 
         private int HomeOnTarget()
@@ -110,5 +113,14 @@ namespace AAMod.NPCs.Bosses.Akuma
 
             return selectedTarget;
         }
+
+
+
+        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+        {
+            target.AddBuff(mod.BuffType("DragonFire"), 600);
+        }
+
+        
     }
 }
