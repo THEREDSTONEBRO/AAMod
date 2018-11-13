@@ -2567,6 +2567,8 @@
     <Content Include="NPCs\Bosses\Nightcrawler\NightcrawlerTail.png" />
     <Content Include="NPCs\Bosses\Nightcrawler\Nightcrawler_Glow.png" />
     <Content Include="NPCs\Bosses\Nightcrawler\Nightcrawler_Head_Boss.png" />
+    <Content Include="NPCs\Bosses\Oblivion\00110000.png" />
+    <Content Include="NPCs\Bosses\Oblivion\Oblivion.png" />
     <Content Include="NPCs\Bosses\Pantheon\Earth.png" />
     <Content Include="NPCs\Bosses\Pantheon\Juno.gif" />
     <Content Include="NPCs\Bosses\Pantheon\Juno.png" />
@@ -2637,13 +2639,17 @@
     <Content Include="NPCs\Bosses\Zero\ZeroTrail.png" />
     <Content Include="NPCs\Bosses\Zero\Zero_Glow.png" />
     <Content Include="NPCs\Bosses\Zero\Zero_Head_Boss.png" />
+    <Content Include="NPCs\Enemies\Inferno\Flamebrute.png" />
+    <Content Include="NPCs\Enemies\Inferno\Flamebrute_Glow.png" />
     <Content Include="NPCs\Enemies\Inferno\InfernalSlime.png" />
     <Content Include="NPCs\Enemies\Inferno\InfernalSlime_Glow.png" />
     <Content Include="NPCs\Enemies\Inferno\InfernoMimic.png" />
     <Content Include="NPCs\Enemies\Inferno\InfernoSalamander.png" />
+    <Content Include="NPCs\Enemies\Inferno\InfernoSalamander_Glow.png" />
     <Content Include="NPCs\Enemies\Inferno\WyrmBody1.png" />
     <Content Include="NPCs\Enemies\Inferno\WyrmBody2.png" />
     <Content Include="NPCs\Enemies\Inferno\WyrmBody3.png" />
+    <Content Include="NPCs\Enemies\Inferno\WyrmBody4.png" />
     <Content Include="NPCs\Enemies\Inferno\WyrmHead.png" />
     <Content Include="NPCs\Enemies\Inferno\WyrmlingBody.png" />
     <Content Include="NPCs\Enemies\Inferno\WyrmlingHead.png" />

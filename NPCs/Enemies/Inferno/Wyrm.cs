@@ -68,31 +68,21 @@ namespace AAMod.NPCs.Bosses.Wyrm
                     npc.realLife = npc.whoAmI;
                     int latestNPC = npc.whoAmI;
                     int segment = 0;
-                    int WyrmLength = 10;
+                    int WyrmLength = 7;
                     for (int i = 0; i < WyrmLength; ++i)
                     {
-                        if (segment >= 0 || segment <= 7)
-                        {
-                            latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("WyrmBody1"), npc.whoAmI, 0, latestNPC);
-                            Main.npc[(int)latestNPC].realLife = npc.whoAmI;
-                            Main.npc[(int)latestNPC].ai[3] = npc.whoAmI;
-                            segment += 1;
-                        }
-                        if (segment == 8)
-                        {
-                            latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("WyrmBody2"), npc.whoAmI, 0, latestNPC);
-                            Main.npc[(int)latestNPC].realLife = npc.whoAmI;
-                            Main.npc[(int)latestNPC].ai[3] = npc.whoAmI;
-                            segment += 1;
-                        }
-                        if (segment == 9)
-                        {
-                            latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("WyrmBody3"), npc.whoAmI, 0, latestNPC);
-                            Main.npc[(int)latestNPC].realLife = npc.whoAmI;
-                            Main.npc[(int)latestNPC].ai[3] = npc.whoAmI;
-                            segment += 1;
-                        }
+                        latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("WyrmBody1"), npc.whoAmI, 0, latestNPC);
+                        Main.npc[(int)latestNPC].realLife = npc.whoAmI;
+                        Main.npc[(int)latestNPC].ai[3] = npc.whoAmI;
+                        segment += 1;
                     }
+                    latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("WyrmBody2"), npc.whoAmI, 0, latestNPC);
+                    Main.npc[(int)latestNPC].realLife = npc.whoAmI;
+                    Main.npc[(int)latestNPC].ai[3] = npc.whoAmI;
+
+                    latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("WyrmBody3"), npc.whoAmI, 0, latestNPC);
+                    Main.npc[(int)latestNPC].realLife = npc.whoAmI;
+                    Main.npc[(int)latestNPC].ai[3] = npc.whoAmI;
 
                     latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("WyrmBody4"), npc.whoAmI, 0, latestNPC);
                     Main.npc[(int)latestNPC].realLife = npc.whoAmI;
@@ -312,7 +302,7 @@ namespace AAMod.NPCs.Bosses.Wyrm
 
     public class WyrmBody1 : Wyrm
     {
-        public override string Texture { get { return "AAMod/NPCs/Bosses/Wyrm/WyrmBody1"; } }
+        public override string Texture { get { return "AAMod/NPCs/Enemies/Inferno/WyrmBody1"; } }
 
         public override void SetStaticDefaults()
         {
@@ -433,7 +423,7 @@ namespace AAMod.NPCs.Bosses.Wyrm
 
     public class WyrmBody2 : Wyrm
     {
-        public override string Texture { get { return "AAMod/NPCs/Bosses/Wyrm/WyrmBody2"; } }
+        public override string Texture { get { return "AAMod/NPCs/Enemies/Inferno/WyrmBody2"; } }
 
         public override void SetStaticDefaults()
         {
@@ -555,7 +545,7 @@ namespace AAMod.NPCs.Bosses.Wyrm
 
     public class WyrmBody3 : Wyrm
     {
-        public override string Texture { get { return "AAMod/NPCs/Bosses/Wyrm/WyrmBody3"; } }
+        public override string Texture { get { return "AAMod/NPCs/Enemies/Inferno/WyrmBody3"; } }
 
         public override void SetStaticDefaults()
         {
@@ -676,7 +666,7 @@ namespace AAMod.NPCs.Bosses.Wyrm
 
     public class WyrmBody4 : Wyrm
     {
-        public override string Texture { get { return "AAMod/NPCs/Bosses/Wyrm/WyrmBody4"; } }
+        public override string Texture { get { return "AAMod/NPCs/Enemies/Inferno/WyrmBody4"; } }
 
         public override void SetStaticDefaults()
         {

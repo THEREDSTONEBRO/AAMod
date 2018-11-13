@@ -292,13 +292,11 @@ namespace AAMod.NPCs.Bosses.Wyrmling
                 Main.dust[dust2].noGravity = true;
             }
         }
-
-        
     }
 
     public class WyrmlingTail1 : Wyrmling
     {
-        public override string Texture { get { return "AAMod/NPCs/Bosses/Wyrmling/WyrmlingTail1"; } }
+        public override string Texture { get { return "AAMod/NPCs/Enemies/Inferno/WyrmlingTail1"; } }
 
         public override void SetStaticDefaults()
         {
@@ -419,7 +417,7 @@ namespace AAMod.NPCs.Bosses.Wyrmling
 
     public class WyrmlingBody : Wyrmling
     {
-        public override string Texture { get { return "AAMod/NPCs/Bosses/Wyrmling/WyrmlingBody"; } }
+        public override string Texture { get { return "AAMod/NPCs/Enemies/Inferno/WyrmlingBody"; } }
 
         public override void SetStaticDefaults()
         {
@@ -541,7 +539,7 @@ namespace AAMod.NPCs.Bosses.Wyrmling
 
     public class WyrmlingTail2 : Wyrmling
     {
-        public override string Texture { get { return "AAMod/NPCs/Bosses/Wyrmling/WyrmlingTail"; } }
+        public override string Texture { get { return "AAMod/NPCs/Enemies/Inferno/WyrmlingTail2"; } }
 
         public override void SetStaticDefaults()
         {
