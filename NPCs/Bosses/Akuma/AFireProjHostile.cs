@@ -33,7 +33,7 @@ namespace AAMod.NPCs.Bosses.Akuma
             projectile.hostile = true;
             projectile.scale = 2f;
             projectile.ignoreWater = true;
-            projectile.penetrate = 0;
+            projectile.penetrate = 1;
             projectile.alpha = 60;
             projectile.timeLeft = 60;
             projectile.glowMask = customGlowMask;

@@ -6,4 +6,3 @@ buildIgnore = *.csproj, *.user, obj\*, bin\*, .vs\*
 hideCode = false
 hideResources = false
 includeSource = true
-modReferences = BaseMod

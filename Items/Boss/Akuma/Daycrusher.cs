@@ -4,7 +4,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AAmod.Items.Boss.Akuma
+namespace AAMod.Items.Boss.Akuma
 {
     public class Daycrusher : ModItem
     {
