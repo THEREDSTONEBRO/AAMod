@@ -17,8 +17,7 @@ using Terraria.GameContent.UI.Elements;
 using Terraria.GameContent.UI.States;
 using Terraria.GameContent.UI;
 using System.IO;
-using AAMod.Base;
-using AAMod.Base;
+//using AAMod.Base;
 
 namespace AAMod
 {
@@ -1287,7 +1286,7 @@ namespace AAMod
             return position - screenPos + new Vector2(width * 0.5f, height) - new Vector2(texWidth * scale / 2f, texHeight * scale / (float)framecount) + (origin * scale) + new Vector2(0f, 5f);
         }
 
-        public override void HandlePacket(BinaryReader bb, int whoAmI)
+        /*public override void HandlePacket(BinaryReader bb, int whoAmI)
         {
             MsgType msg = (MsgType)bb.ReadByte();
             if (msg == MsgType.ProjectileHostility) //projectile hostility and ownership
@@ -1327,13 +1326,13 @@ namespace AAMod
                 }
                 if (Main.netMode == 2) BaseNet.SyncAI(classID, id, newAI, aitype);
             }
-        }
+        }*/
     }
 
-    enum MsgType : byte
+    /*enum MsgType : byte
     {
         ProjectileHostility,
         SyncAI
-    }
+    }*/
 }
 
