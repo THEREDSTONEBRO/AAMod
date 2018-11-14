@@ -22,7 +22,7 @@ namespace AAMod.NPCs.Bosses.Akuma
             projectile.ignoreWater = true;
             projectile.penetrate = 1;
             projectile.alpha = 60;
-            projectile.timeLeft = 60;
+            projectile.timeLeft = 100;
         }
 
         public override void AI()
@@ -31,9 +31,9 @@ namespace AAMod.NPCs.Bosses.Akuma
             {
                 projectile.ai[0] = 8f;
             }
-            if (projectile.timeLeft > 60)
+            if (projectile.timeLeft > 100)
             {
-                projectile.timeLeft = 60;
+                projectile.timeLeft = 100;
             }
             if (projectile.ai[0] > 7f)
             {
@@ -59,13 +59,12 @@ namespace AAMod.NPCs.Bosses.Akuma
                         if (Main.rand.Next(6) != 0)
                         {
                             Main.dust[num299].noGravity = true;
-                            Main.dust[num299].scale *= 1.5f;
                             Dust expr_DD5D_cp_0 = Main.dust[num299];
                             expr_DD5D_cp_0.velocity.X = expr_DD5D_cp_0.velocity.X * 2f;
                             Dust expr_DD7D_cp_0 = Main.dust[num299];
                             expr_DD7D_cp_0.velocity.Y = expr_DD7D_cp_0.velocity.Y * 2f;
                         }
-                        Main.dust[num299].scale *= 1.25f;
+                        Main.dust[num299].noGravity = true;
                         Dust expr_DDE2_cp_0 = Main.dust[num299];
                         expr_DDE2_cp_0.velocity.X = expr_DDE2_cp_0.velocity.X * 1.2f;
                         Dust expr_DE02_cp_0 = Main.dust[num299];

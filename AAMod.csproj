@@ -820,9 +820,9 @@
     <Compile Include="NPCs\Bosses\Akuma\AFireProjHostile.cs" />
     <Compile Include="NPCs\Bosses\Akuma\Akuma.cs" />
     <Compile Include="NPCs\Bosses\Akuma\AkumaA.cs" />
+    <Compile Include="NPCs\Bosses\Akuma\AkumaABreath.cs" />
+    <Compile Include="NPCs\Bosses\Akuma\AkumaBreath.cs" />
     <Compile Include="NPCs\Bosses\Akuma\AkumaTransition.cs" />
-    <Compile Include="NPCs\Bosses\Akuma\Unused\OldAkuma.cs" />
-    <Compile Include="NPCs\Bosses\Akuma\Unused\OldAkumaA.cs" />
     <Compile Include="NPCs\Bosses\Broodmother\BroodEgg.cs" />
     <Compile Include="NPCs\Bosses\Broodmother\Broodmini.cs" />
     <Compile Include="NPCs\Bosses\Broodmother\Broodmother.cs" />
@@ -2490,12 +2490,6 @@
     <Content Include="NPCs\Bosses\Akuma\Akuma_Head_Boss.png" />
     <Content Include="NPCs\Bosses\Akuma\FireProjHostile.png" />
     <Content Include="NPCs\Bosses\Akuma\FireProjHostile_Glow.png" />
-    <Content Include="NPCs\Bosses\Akuma\Unused\Akuma.png" />
-    <Content Include="NPCs\Bosses\Akuma\Unused\AkumaA.png" />
-    <Content Include="NPCs\Bosses\Akuma\Unused\AkumaAHead1.png" />
-    <Content Include="NPCs\Bosses\Akuma\Unused\AkumaAHead_Glow.png" />
-    <Content Include="NPCs\Bosses\Akuma\Unused\AkumaHead1.png" />
-    <Content Include="NPCs\Bosses\Akuma\Unused\AkumaHead_Glow.png" />
     <Content Include="NPCs\Bosses\Broodmother\BroodEgg.png" />
     <Content Include="NPCs\Bosses\Broodmother\BroodEgg_Glow.png" />
     <Content Include="NPCs\Bosses\Broodmother\BroodEgg_Head_Boss.png" />
@@ -2542,6 +2536,9 @@
     <Content Include="NPCs\Bosses\Nightcrawler\NightcrawlerTail.png" />
     <Content Include="NPCs\Bosses\Nightcrawler\Nightcrawler_Glow.png" />
     <Content Include="NPCs\Bosses\Nightcrawler\Nightcrawler_Head_Boss.png" />
+    <Content Include="NPCs\Bosses\Oblivion\00110000.gif" />
+    <Content Include="NPCs\Bosses\Oblivion\00110000.png" />
+    <Content Include="NPCs\Bosses\Oblivion\Oblivion.png" />
     <Content Include="NPCs\Bosses\Pantheon\Earth.png" />
     <Content Include="NPCs\Bosses\Pantheon\Juno.gif" />
     <Content Include="NPCs\Bosses\Pantheon\Juno.png" />
@@ -2956,6 +2953,7 @@
     <None Include=".vs\AAMod\v15\Server\sqlite3\storage.ide-shm" />
     <None Include=".vs\AAMod\v15\Server\sqlite3\storage.ide-wal" />
     <None Include="Items\Boss\Zero.zip" />
+    <None Include="NPCs\Bosses\Oblivion\00110000.piskel" />
     <None Include="obj\Debug\AAMod.csproj.CopyComplete" />
     <None Include="obj\Debug\AAMod.csproj.CoreCompileInputs.cache" />
     <None Include="obj\Debug\AAMod.csprojAssemblyReference.cache" />

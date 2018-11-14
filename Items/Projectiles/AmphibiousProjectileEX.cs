@@ -2,6 +2,7 @@ using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace AAMod.Items.Projectiles
@@ -114,6 +115,11 @@ namespace AAMod.Items.Projectiles
             }
 
             return selectedTarget;
+        }
+
+        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+        {
+            target.AddBuff(BuffID.Wet, 1000);
         }
 
         public override void Kill(int timeleft)

@@ -329,7 +329,7 @@ namespace AAMod.NPCs.Bosses.Zero
                     }
                 }
             }
-            if (dead2)
+            if (dead2 || Math.Abs(npc.position.X - Main.player[npc.target].position.X) > 6000f || Math.Abs(npc.position.Y - Main.player[npc.target].position.Y) > 6000f)
             {
                 
                 if (Killed == false)

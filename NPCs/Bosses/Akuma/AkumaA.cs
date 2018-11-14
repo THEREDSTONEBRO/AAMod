@@ -15,6 +15,7 @@ namespace AAMod.NPCs.Bosses.Akuma
 
         public bool Panic;
         public bool Loludided;
+        public int fireTimer = 0;
 
         public override void SetStaticDefaults()
 		{
@@ -69,7 +70,7 @@ namespace AAMod.NPCs.Bosses.Akuma
             npc.noGravity = true;
             npc.noTileCollide = true;
             npc.behindTiles = true;
-            npc.DeathSound = new LegacySoundStyle(2, 124, Terraria.Audio.SoundType.Sound);
+            npc.DeathSound = new LegacySoundStyle(2, 88, Terraria.Audio.SoundType.Sound);
             music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/Akuma2");
             musicPriority = MusicPriority.BossHigh;
             bossBag = mod.ItemType("AkumaBag");
@@ -77,6 +78,7 @@ namespace AAMod.NPCs.Bosses.Akuma
             {
                 npc.buffImmune[k] = true;
             }
+            npc.buffImmune[103] = false;
             npc.alpha = 255;
         }
         private bool fireAttack;
@@ -104,28 +106,54 @@ namespace AAMod.NPCs.Bosses.Akuma
             Main.time = 24000;
             Player player = Main.player[npc.target];
 			float dist = npc.Distance(player.Center);
-            if (dist > 200 & Main.rand.Next(20) == 1 && fireAttack == false)
+            fireTimer++;
+            if (dist > 400 && fireTimer >= 240 && fireAttack == false)
             {
                 fireAttack = true;
+
+                fireTimer = 0;
             }
             if (fireAttack == true)
             {
                 attackTimer++;
-                if (attackTimer == 20)
+                if (Main.rand.Next(5) == 0)
                 {
-                    if (Main.rand.Next(10) == 1)
-                    Main.PlaySound(SoundID.Item34, npc.position);
-                    int proj2 = Projectile.NewProjectile(npc.Center.X + Main.rand.Next(-20, 20), npc.Center.Y + Main.rand.Next(-20, 20), npc.velocity.X * Main.rand.Next(1, 2), npc.velocity.Y * Main.rand.Next(1, 2), mod.ProjectileType("AFireProjHostile"), 20, 0, Main.myPlayer);
-                    Main.projectile[proj2].timeLeft = 60;
-                    Main.projectile[proj2].damage = npc.damage;
+                    if (attackTimer == 20 && !npc.HasBuff(103))
+                    {
+                        Main.PlaySound(SoundID.Item34, npc.position);
+                        int proj2 = Projectile.NewProjectile(npc.Center.X + Main.rand.Next(-20, 20), npc.Center.Y + Main.rand.Next(-20, 20), npc.velocity.X * 1.6f, npc.velocity.Y * 1.6f, mod.ProjectileType("AFireProjHostile"), 20, 0, Main.myPlayer);
+                        Main.projectile[proj2].damage = npc.damage / 3;
+                        attackTimer = 0;
+                        attackFrame = 0;
+                        attackCounter = 0;
+                    }
+                    if (attackTimer >= 120)
+                    {
+                        fireAttack = false;
+                    }
                 }
-                if (attackTimer >= 30)
+                else
                 {
-                    fireAttack = false;
-                    attackTimer = 0;
-                    attackFrame = 0;
-                    attackCounter = 0;
+                    if ((attackTimer == 30 || attackTimer == 60 || attackTimer == 79) && !npc.HasBuff(103))
+                    {
+                        for (int i = 0; i < 80; ++i)
+                        {
+                            if (Main.rand.Next(10) == 1)
+                                Main.PlaySound(SoundID.Item34, npc.position);
+                            int proj2 = Projectile.NewProjectile(npc.Center.X + Main.rand.Next(-20, 20), npc.Center.Y + Main.rand.Next(-20, 20), npc.velocity.X * 1.6f, npc.velocity.Y * 1.6f, mod.ProjectileType("AkumaABreath"), 20, 0, Main.myPlayer);
+                            Main.projectile[proj2].timeLeft = 60;
+                            Main.projectile[proj2].damage = npc.damage / 4;
+                        }
+                    }
+                    if (attackTimer >= 80)
+                    {
+                        fireAttack = false;
+                        attackTimer = 0;
+                        attackFrame = 0;
+                        attackCounter = 0;
+                    }
                 }
+                
             }
             if (npc.alpha != 0)
             {
@@ -222,7 +250,7 @@ namespace AAMod.NPCs.Bosses.Akuma
                 speedval = 11f;
             }
             float speed = speedval;
-            float acceleration = 0.40f;
+            float acceleration = 0.18f;
 
 			Vector2 npcCenter = new Vector2(npc.position.X + npc.width * 0.5f, npc.position.Y + npc.height * 0.5f);
 			float targetXPos = Main.player[npc.target].position.X + (Main.player[npc.target].width / 2);
@@ -298,7 +326,7 @@ namespace AAMod.NPCs.Bosses.Akuma
 				}
 			}
 
-            if (Main.player[npc.target].dead)
+            if (Main.player[npc.target].dead || Math.Abs(npc.position.X - Main.player[npc.target].position.X) > 6000f || Math.Abs(npc.position.Y - Main.player[npc.target].position.Y) > 6000f)
             {
                 if (Loludided == false)
                 {
@@ -513,7 +541,7 @@ namespace AAMod.NPCs.Bosses.Akuma
                         Main.dust[num935].noLight = false;
                     }
                 }
-                npc.alpha -= 4;
+                npc.alpha -= 10;
                 if (npc.alpha < 0)
                 {
                     npc.alpha = 0;
@@ -668,7 +696,7 @@ namespace AAMod.NPCs.Bosses.Akuma
                         Main.dust[num935].noLight = false;
                     }
                 }
-                npc.alpha -= 4;
+                npc.alpha -= 10;
                 if (npc.alpha < 0)
                 {
                     npc.alpha = 0;
@@ -837,7 +865,7 @@ namespace AAMod.NPCs.Bosses.Akuma
                         Main.dust[num935].noLight = false;
                     }
                 }
-                npc.alpha -= 4;
+                npc.alpha -= 10;
                 if (npc.alpha < 0)
                 {
                     npc.alpha = 0;

@@ -32,11 +32,11 @@ namespace AAMod.NPCs.Bosses.Akuma
             projectile.height = 10;
             projectile.friendly = false;
             projectile.hostile = true;
-            projectile.scale = 1.3f;
+            projectile.scale = 1.1f;
             projectile.ignoreWater = true;
             projectile.penetrate = 1;
             projectile.alpha = 60;
-            projectile.timeLeft = 60;
+            projectile.timeLeft = 300;
             projectile.glowMask = customGlowMask;
         }
 
@@ -63,7 +63,7 @@ namespace AAMod.NPCs.Bosses.Akuma
             }
             projectile.rotation = (float)Math.Atan2(projectile.velocity.Y, projectile.velocity.X) + 1.57f;
             const int aislotHomingCooldown = 0;
-            const int homingDelay = 10;
+            const int homingDelay = 60;
             const float desiredFlySpeedInPixelsPerFrame = 60;
             const float amountOfFramesToLerpBy = 20; // minimum of 1, please keep in full numbers even though it's a float!
 
@@ -80,24 +80,33 @@ namespace AAMod.NPCs.Bosses.Akuma
                     projectile.velocity = Vector2.Lerp(projectile.velocity, desiredVelocity, 1f / amountOfFramesToLerpBy);
                 }
             }
-            if (Main.rand.NextFloat() < 0.9210526f)
+            for (int num189 = 0; num189 < 1; num189++)
             {
-                Dust dust;
-                Vector2 position = projectile.position;
-                dust = Main.dust[Dust.NewDust(position, 30, 30, mod.DustType("AkumaDust"), 0f, 0f, 0, default(Color), 1)];
-                dust.noGravity = true;
+                int num190 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, mod.DustType<Dusts.AkumaADust>(), 0f, 0f, 0, default(Color), 1f);
+
+                Main.dust[num190].scale *= 1.3f;
+                Main.dust[num190].fadeIn = 1f;
+                Main.dust[num190].noGravity = true;
             }
+        }
+
+        public override void OnHitPlayer(Player target, int damage, bool crit)
+        {
+            Kill(0);
         }
 
         public override void Kill(int timeleft)
         {
+            float spread = 45f * 0.0174f;
+            double startAngle = Math.Atan2(projectile.velocity.X, projectile.velocity.Y) - (spread / 2);
+            double deltaAngle = spread / 8f;
             for (int num468 = 0; num468 < 20; num468++)
             {
-                int num469 = Dust.NewDust(new Vector2(projectile.Center.X, projectile.Center.Y), projectile.width, projectile.height, mod.DustType("AkumaDust"), -projectile.velocity.X * 0.2f,
+                int num469 = Dust.NewDust(new Vector2(projectile.Center.X, projectile.Center.Y), projectile.width, projectile.height, mod.DustType<Dusts.AkumaADust>(), -projectile.velocity.X * 0.2f,
                     -projectile.velocity.Y * 0.2f, 0, default(Color), 1f);
                 Main.dust[num469].noGravity = true;
                 Main.dust[num469].velocity *= 2f;
-                num469 = Dust.NewDust(new Vector2(projectile.Center.X, projectile.Center.Y), projectile.width, projectile.height, mod.DustType("AkumaDust"), -projectile.velocity.X * 0.2f,
+                num469 = Dust.NewDust(new Vector2(projectile.Center.X, projectile.Center.Y), projectile.width, projectile.height, mod.DustType<Dusts.AkumaADust>(), -projectile.velocity.X * 0.2f,
                     -projectile.velocity.Y * 0.2f, 0, default(Color), 1f);
                 Main.dust[num469].velocity *= 2f;
             }

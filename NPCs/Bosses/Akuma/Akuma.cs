@@ -73,7 +73,7 @@ namespace AAMod.NPCs.Bosses.Akuma
             {
                 npc.buffImmune[k] = true;
             }
-
+            npc.buffImmune[103] = false;
             npc.alpha = 255;
         }
         private bool fireAttack;
@@ -106,7 +106,7 @@ namespace AAMod.NPCs.Bosses.Akuma
             if (fireAttack == true)
             {
                 attackTimer++;
-                if (attackTimer == 20)
+                if ((attackTimer == 20 || attackTimer == 50 || attackTimer == 79) && !npc.HasBuff(103))
                 {
                     for (int i = 0; i < 80; ++i)
                     {
@@ -114,7 +114,7 @@ namespace AAMod.NPCs.Bosses.Akuma
                             Main.PlaySound(SoundID.Item34, npc.position);
                         int proj2 = Projectile.NewProjectile(npc.Center.X + Main.rand.Next(-20, 20), npc.Center.Y + Main.rand.Next(-20, 20), npc.velocity.X * Main.rand.Next(2, 4), npc.velocity.Y * Main.rand.Next(2, 4), mod.ProjectileType("AkumaBreath"), 20, 0, Main.myPlayer);
                         Main.projectile[proj2].timeLeft = 60;
-                        Main.projectile[proj2].damage = npc.damage;
+                        Main.projectile[proj2].damage = npc.damage / 4;
                     }
                 }
                 if (attackTimer >= 80)
@@ -284,7 +284,7 @@ namespace AAMod.NPCs.Bosses.Akuma
 						npc.velocity.X = npc.velocity.X - acceleration;
 				}
 			}
-            if (Main.player[npc.target].dead)
+            if (Main.player[npc.target].dead || Math.Abs(npc.position.X - Main.player[npc.target].position.X) > 6000f || Math.Abs(npc.position.Y - Main.player[npc.target].position.Y) > 6000f)
             {
                 if (loludided == false)
                 {

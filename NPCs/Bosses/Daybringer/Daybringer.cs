@@ -5,6 +5,7 @@ using Terraria.ID;
 using System.IO;
 using AAMod.NPCs.Bosses.Nightcrawler;
 using Microsoft.Xna.Framework.Graphics;
+using System;
 
 namespace AAMod.NPCs.Bosses.Daybringer
 {
@@ -234,7 +235,7 @@ namespace AAMod.NPCs.Bosses.Daybringer
             {
                 npc.TargetClosest(true);
             }
-            if (Main.player[npc.target].dead && npc.timeLeft > 300)
+            if ((Main.player[npc.target].dead && npc.timeLeft > 300) || Math.Abs(npc.position.X - Main.player[npc.target].position.X) > 6000f || Math.Abs(npc.position.Y - Main.player[npc.target].position.Y) > 6000f)
             {
                 npc.timeLeft = 300;
             }
