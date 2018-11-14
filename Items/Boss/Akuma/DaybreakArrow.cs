@@ -22,7 +22,6 @@ namespace AAMod.Items.Boss.Akuma
                 customGlowMask = (short)(glowMasks.Length - 1);
                 Main.glowMaskTexture = glowMasks;
             }
-            item.glowMask = customGlowMask;
             DisplayName.SetDefault("Daybreak Arrow");
 			Tooltip.SetDefault(@"Scorches its target with the heat of the scorching sun
 Inflicts Daybroken
@@ -42,7 +41,8 @@ Non-consumable");
 			item.shoot = mod.ProjectileType("DaybreakArrow");   //The projectile shoot when your weapon using this ammo
 			item.shootSpeed = 3f;                  //The speed of the projectile
 			item.ammo = AmmoID.Arrow;              //The ammo class this ammo belongs to.
-		}
+            item.glowMask = customGlowMask;
+        }
 
         public override void ModifyTooltips(List<TooltipLine> list)
         {

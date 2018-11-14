@@ -38,5 +38,10 @@ namespace AAMod.Tiles
             g = 0f;
             b = 0.51f;
         }
+
+        public override bool CanExplode(int i, int j)
+        {
+            return false;
+        }
     }
 }

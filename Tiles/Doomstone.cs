@@ -55,5 +55,10 @@ namespace AAMod.Tiles
             style = 0;
             return mod.TileType("OroborosSapling");
         }
+
+        public override bool CanExplode(int i, int j)
+        {
+            return false;
+        }
     }
 }

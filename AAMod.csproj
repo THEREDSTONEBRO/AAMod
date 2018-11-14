@@ -383,6 +383,7 @@
     <Compile Include="Items\Boss\Akuma\DragonSlasher.cs" />
     <Compile Include="Items\Boss\Akuma\ReignOfFire.cs" />
     <Compile Include="Items\Boss\Akuma\Solar.cs" />
+    <Compile Include="Items\Boss\Akuma\MorningGlory.cs" />
     <Compile Include="Items\Boss\Akuma\SunSpear.cs" />
     <Compile Include="Items\Boss\Akuma\SunStaff.cs" />
     <Compile Include="Items\Boss\Akuma\SunStorm.cs" />
@@ -599,6 +600,7 @@
     <Compile Include="Items\Projectiles\Akuma\Dayser.cs" />
     <Compile Include="Items\Projectiles\Akuma\Daystorm.cs" />
     <Compile Include="Items\Projectiles\Akuma\FireProj.cs" />
+    <Compile Include="Items\Projectiles\Akuma\MorningGlory.cs" />
     <Compile Include="Items\Projectiles\Akuma\Solar.cs" />
     <Compile Include="Items\Projectiles\Akuma\SunOrb.cs" />
     <Compile Include="Items\Projectiles\Akuma\Sunray.cs" />
