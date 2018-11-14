@@ -53,10 +53,22 @@ namespace AAMod.NPCs
                     damage = 40;
                 }
             }
+            if (npc.type == NPCID.KingSlime || npc.type == NPCID.Plantera)
+            {
+                if (npc.onFire)
+                {
+                    if (npc.lifeRegen > 0)
+                    {
+                        npc.lifeRegen = 0;
+                    }
+                    npc.lifeRegen -= 20;
+                }
+            }
+
             if (noDamage)
-                damage -= damageBefore;
+            damage -= damageBefore;
             if (drain && before > 0)
-                npc.lifeRegen -= before;
+            npc.lifeRegen -= before;
             if (terraBlaze)
             {
                 if (npc.lifeRegen > 0)
@@ -82,6 +94,21 @@ namespace AAMod.NPCs
                         npc.velocity.X = (npc.velocity.X / 16) * 15;
                         npc.velocity.Y = (npc.velocity.Y / 16) * 15;
                     }
+                }
+            }
+        }
+
+        public override void ModifyHitByItem(NPC npc, Player player, Item item, ref int damage, ref float knockback, ref bool crit)
+        {
+            if (npc.type == NPCID.Golem || npc.type == NPCID.GolemFistLeft || npc.type == NPCID.GolemFistRight || npc.type == NPCID.GolemHead)
+            {
+                if (item.pick > 0)
+                {
+                    damage = item.damage + item.pick;
+                }
+                else
+                {
+                    npc.defense = 20;
                 }
             }
         }

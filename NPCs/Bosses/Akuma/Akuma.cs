@@ -15,6 +15,7 @@ namespace AAMod.NPCs.Bosses.Akuma
         public override string Texture { get { return "AAMod/NPCs/Bosses/Akuma/Akuma"; } }
 
         public bool loludided;
+        private bool weakness;
 
         public override void SetStaticDefaults()
 		{
@@ -115,6 +116,20 @@ namespace AAMod.NPCs.Bosses.Akuma
                         int proj2 = Projectile.NewProjectile(npc.Center.X + Main.rand.Next(-20, 20), npc.Center.Y + Main.rand.Next(-20, 20), npc.velocity.X * Main.rand.Next(2, 4), npc.velocity.Y * Main.rand.Next(2, 4), mod.ProjectileType("AkumaBreath"), 20, 0, Main.myPlayer);
                         Main.projectile[proj2].timeLeft = 60;
                         Main.projectile[proj2].damage = npc.damage / 4;
+                    }
+                }
+                if ((attackTimer == 20 || attackTimer == 50 || attackTimer == 79) && npc.HasBuff(103))
+                {
+                    for (int spawnDust = 0; spawnDust < 2; spawnDust++)
+                    {
+                        int num935 = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, mod.DustType("MireBubbleDust"), 0f, 0f, 100, default(Color), 2f);
+                        Main.dust[num935].noGravity = true;
+                        Main.dust[num935].velocity.Y -= 1f;
+                    }
+                    if (weakness == false)
+                    {
+                        weakness = true;
+                        Main.NewText("Water?! AGH...! I CAN'T BREATHE FIRE!", new Color(180, 41, 32));
                     }
                 }
                 if (attackTimer >= 80)
