@@ -33,30 +33,30 @@ namespace AAMod.NPCs.Bosses.Akuma
 			npc.netAlways = true;
 			npc.knockBackResist = 0f; if (!Main.expertMode && !AAWorld.downedAkuma)
             {
-                npc.damage = 80;
+                npc.damage = 50;
                 npc.defense = 100;
-                npc.lifeMax = 200000;
+                npc.lifeMax = 140000;
                 npc.value = Item.buyPrice(0, 55, 0, 0);
             }
             if (!Main.expertMode && AAWorld.downedAkuma)
             {
-                npc.damage = 90;
+                npc.damage = 60;
                 npc.defense = 120;
-                npc.lifeMax = 220000;
+                npc.lifeMax = 160000;
                 npc.value = Item.buyPrice(0, 55, 0, 0);
             }
             if (Main.expertMode && !AAWorld.downedAkumaA)
             {
-                npc.damage = 80;
+                npc.damage = 60;
                 npc.defense = 100;
-                npc.lifeMax = 200000;
+                npc.lifeMax = 140000;
                 npc.value = Item.buyPrice(0, 0, 0, 0);
             }
             if (Main.expertMode && AAWorld.downedAkumaA)
             {
-                npc.damage = 100;
+                npc.damage = 70;
                 npc.defense = 130;
-                npc.lifeMax = 240000;
+                npc.lifeMax = 160000;
                 npc.value = Item.buyPrice(0, 0, 0, 0);
             }
             npc.knockBackResist = 0f;
@@ -108,10 +108,13 @@ namespace AAMod.NPCs.Bosses.Akuma
                 attackTimer++;
                 if (attackTimer == 20)
                 {
-                    if (Main.rand.Next(10) == 1)
-                    Main.PlaySound(SoundID.Item34, npc.position);
-                    int proj2 = Projectile.NewProjectile(npc.Center.X + Main.rand.Next(-20, 20), npc.Center.Y + Main.rand.Next(-20, 20), npc.velocity.X * Main.rand.Next(2, 4), npc.velocity.Y * Main.rand.Next(2, 4), mod.ProjectileType("AkumaBreath"), 20, 0, Main.myPlayer);
-                    Main.projectile[proj2].timeLeft = 60;
+                    for (int i = 0; i < 80; ++i)
+                    {
+                        if (Main.rand.Next(10) == 1)
+                        Main.PlaySound(SoundID.Item34, npc.position);
+                        int proj2 = Projectile.NewProjectile(npc.Center.X + Main.rand.Next(-20, 20), npc.Center.Y + Main.rand.Next(-20, 20), npc.velocity.X * Main.rand.Next(2, 4), npc.velocity.Y * Main.rand.Next(2, 4), mod.ProjectileType("AkumaBreath"), 20, 0, Main.myPlayer);
+                        Main.projectile[proj2].timeLeft = 60;
+                    }
                 }
                 if (attackTimer >= 80)
                 {
@@ -405,7 +408,24 @@ namespace AAMod.NPCs.Bosses.Akuma
             }
         }
 
-        
+        public override void ModifyHitByProjectile(Projectile projectile, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
+        {
+            Player player = Main.player[npc.target];
+            if (player.vortexStealthActive && projectile.ranged)
+            {
+                damage /= 2;
+                crit = false;
+            }
+            if (projectile.penetrate == -1 && !projectile.minion)
+            {
+                projectile.penetrate = 1;
+            }
+            else if (projectile.penetrate >= 1)
+            {
+                projectile.penetrate = 1;
+            }
+        }
+
     }
 
     public class AkumaArms : Akuma
@@ -529,7 +549,25 @@ namespace AAMod.NPCs.Bosses.Akuma
             }
             return false;
         }
-        
+
+        public override void ModifyHitByProjectile(Projectile projectile, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
+        {
+            Player player = Main.player[npc.target];
+            if (player.vortexStealthActive && projectile.ranged)
+            {
+                damage /= 2;
+                crit = false;
+            }
+            if (projectile.penetrate == -1 && !projectile.minion)
+            {
+                projectile.penetrate = 1;
+            }
+            else if (projectile.penetrate >= 1)
+            {
+                projectile.penetrate = 1;
+            }
+        }
+
     }
 
     public class AkumaBody : Akuma
@@ -654,6 +692,23 @@ namespace AAMod.NPCs.Bosses.Akuma
             }
             return false;
         }
+        public override void ModifyHitByProjectile(Projectile projectile, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
+        {
+            Player player = Main.player[npc.target];
+            if (player.vortexStealthActive && projectile.ranged)
+            {
+                damage /= 2;
+                crit = false;
+            }
+            if (projectile.penetrate == -1 && !projectile.minion)
+            {
+                projectile.penetrate = 1;
+            }
+            else if (projectile.penetrate >= 1)
+            {
+                projectile.penetrate = 1;
+            }
+        }
     }
 
     public class AkumaTail : Akuma
@@ -776,6 +831,24 @@ namespace AAMod.NPCs.Bosses.Akuma
                 npc.position.Y = npc.position.Y + posY;
             }
             return false;
+        }
+
+        public override void ModifyHitByProjectile(Projectile projectile, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
+        {
+            Player player = Main.player[npc.target];
+            if (player.vortexStealthActive && projectile.ranged)
+            {
+                damage /= 2;
+                crit = false;
+            }
+            if (projectile.penetrate == -1 && !projectile.minion)
+            {
+                projectile.penetrate = 1;
+            }
+            else if (projectile.penetrate >= 1)
+            {
+                projectile.penetrate = 1;
+            }
         }
     }
 }

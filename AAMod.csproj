@@ -612,6 +612,7 @@
     <Compile Include="Items\Projectiles\AmphibiousProjectileS.cs" />
     <Compile Include="Items\Projectiles\AntimonBoomerangP.cs" />
     <Compile Include="Items\Projectiles\Apocalypse.cs" />
+    <Compile Include="Items\Projectiles\DBreath.cs" />
     <Compile Include="Items\Projectiles\SunLance.cs" />
     <Compile Include="Items\Projectiles\APP.cs" />
     <Compile Include="Items\Projectiles\BigCrystal.cs" />

@@ -56,10 +56,10 @@ namespace AAMod.NPCs.Bosses.Akuma
                     for (int num298 = 0; num298 < 1; num298++)
                     {
                         int num299 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, mod.DustType("AkumaDust"), projectile.velocity.X * 0.2f, projectile.velocity.Y * 0.2f, 100, default(Color), 1f);
-                        if (Main.rand.Next(3) != 0)
+                        if (Main.rand.Next(6) != 0)
                         {
                             Main.dust[num299].noGravity = true;
-                            Main.dust[num299].scale *= 3f;
+                            Main.dust[num299].scale *= 1.5f;
                             Dust expr_DD5D_cp_0 = Main.dust[num299];
                             expr_DD5D_cp_0.velocity.X = expr_DD5D_cp_0.velocity.X * 2f;
                             Dust expr_DD7D_cp_0 = Main.dust[num299];

@@ -56,7 +56,7 @@ namespace AAMod.NPCs.Bosses.Akuma
             {
                 projectile.frame++;
                 projectile.frameCounter = 0;
-                if (projectile.frame > 3)
+                if (projectile.frame > 7)
                 {
                     projectile.frame = 0;
                 }
@@ -64,7 +64,7 @@ namespace AAMod.NPCs.Bosses.Akuma
             projectile.rotation = (float)Math.Atan2(projectile.velocity.Y, projectile.velocity.X) + 1.57f;
             const int aislotHomingCooldown = 0;
             const int homingDelay = 10;
-            const float desiredFlySpeedInPixelsPerFrame = 30;
+            const float desiredFlySpeedInPixelsPerFrame = 90;
             const float amountOfFramesToLerpBy = 20; // minimum of 1, please keep in full numbers even though it's a float!
 
             projectile.ai[aislotHomingCooldown]++;
@@ -79,6 +79,27 @@ namespace AAMod.NPCs.Bosses.Akuma
                     Vector2 desiredVelocity = projectile.DirectionTo(target.Center) * desiredFlySpeedInPixelsPerFrame;
                     projectile.velocity = Vector2.Lerp(projectile.velocity, desiredVelocity, 1f / amountOfFramesToLerpBy);
                 }
+            }
+            if (Main.rand.NextFloat() < 0.9210526f)
+            {
+                Dust dust;
+                Vector2 position = projectile.position;
+                dust = Main.dust[Dust.NewDust(position, 30, 30, mod.DustType("AkumaDust"), 0f, 0f, 0, default(Color), 1)];
+                dust.noGravity = true;
+            }
+        }
+
+        public override void Kill(int timeleft)
+        {
+            for (int num468 = 0; num468 < 20; num468++)
+            {
+                int num469 = Dust.NewDust(new Vector2(projectile.Center.X, projectile.Center.Y), projectile.width, projectile.height, mod.DustType("AkumaDust"), -projectile.velocity.X * 0.2f,
+                    -projectile.velocity.Y * 0.2f, 0, default(Color), 1f);
+                Main.dust[num469].noGravity = true;
+                Main.dust[num469].velocity *= 2f;
+                num469 = Dust.NewDust(new Vector2(projectile.Center.X, projectile.Center.Y), projectile.width, projectile.height, mod.DustType("AkumaDust"), -projectile.velocity.X * 0.2f,
+                    -projectile.velocity.Y * 0.2f, 0, default(Color), 1f);
+                Main.dust[num469].velocity *= 2f;
             }
         }
 
