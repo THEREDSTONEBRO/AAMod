@@ -48,7 +48,7 @@ namespace AAMod.Backgrounds
         {
             if (maxDepth >= 3.40282347E+38f && minDepth < 3.40282347E+38f)
             {
-                if (Main.dayTime || (!AAWorld.downedYamata && !Main.expertMode) || (!AAWorld.downedYamataA && Main.expertMode))
+                if (Main.dayTime /*&& ((!AAWorld.downedYamata && !Main.expertMode) || (!AAWorld.downedYamataA && Main.expertMode))*/)
                 {
                     Player player = Main.player[Main.myPlayer];
                     var FogPos = new Vector2(Main.screenWidth / 2, Main.screenHeight / 2);

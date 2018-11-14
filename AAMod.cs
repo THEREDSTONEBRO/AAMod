@@ -12,9 +12,6 @@ using AAMod.UI;
 using Terraria.Graphics.Shaders;
 using System.Collections.Generic;
 using Terraria.DataStructures;
-using System.Reflection;
-using Terraria.GameContent.UI.Elements;
-using Terraria.GameContent.UI.States;
 using Terraria.GameContent.UI;
 using System.IO;
 //using AAMod.Base;
@@ -29,8 +26,6 @@ namespace AAMod
         internal UserInterface UserInterface;
         internal TerratoolUI TerratoolUI;
         public static bool AkumaMusic;
-        public static Texture2D Corrupt = null;
-        public static Texture2D Crimson = null;
 
         public AAMod()
         {

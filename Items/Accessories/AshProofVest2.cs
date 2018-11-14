@@ -15,16 +15,58 @@ namespace AAMod.Items.Accessories
             item.accessory = true;
         }
 
+        public override void UpdateInventory(Player player)
+        {
+            if (item.type == mod.ItemType<AshProofVest0>())
+            {
+                if (Main.itemAnimations[item.type].Frame == 5)
+                {
+                    item.TurnToAir();
+                }
+            }
+        }
+
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
+            if (item.type == mod.ItemType<AshProofVest0>())
+            {
+                if (Main.itemAnimations[item.type].Frame == 5)
+                {
+                    item.TurnToAir();
+                }
+            }
             if (item.accessory)
             {
                 player.GetModPlayer<AAPlayer>().AshRemover = true;
-                if (Main.rand.Next(3600) == 0 && player.GetModPlayer<AAPlayer>().ZoneInferno && !Main.dayTime)
+                if (player.GetModPlayer<AAPlayer>().ZoneInferno && !Main.dayTime && ((!AAWorld.downedAkuma && !Main.expertMode) || (!AAWorld.downedAkumaA && Main.expertMode)))
                 {
-                    Main.PlaySound(SoundID.Item34);
-                    item.type = mod.ItemType<AshProofVest1>();
-                    item.CloneDefaults(mod.ItemType<AshProofVest1>());
+                    if (Main.rand.Next(3600) == 0)
+                    {
+                        if (item.type == mod.ItemType<AshProofVest3>())
+                        {
+                            Main.PlaySound(SoundID.Item34);
+                            item.type = mod.ItemType<AshProofVest2>();
+                            item.CloneDefaults(mod.ItemType<AshProofVest2>());
+                            item.stack++;
+                            item.stack--;
+                        }
+                        else if (item.type == mod.ItemType<AshProofVest2>())
+                        {
+                            Main.PlaySound(SoundID.Item34);
+                            item.type = mod.ItemType<AshProofVest1>();
+                            item.CloneDefaults(mod.ItemType<AshProofVest1>());
+                            item.stack++;
+                            item.stack--;
+                        }
+                        else
+                        {
+                            Main.PlaySound(SoundID.Item34);
+                            item.type = mod.ItemType<AshProofVest0>();
+                            item.CloneDefaults(mod.ItemType<AshProofVest0>());
+                            item.stack++;
+                            item.stack--;
+                        }
+                    }
                 }
             }
             else
