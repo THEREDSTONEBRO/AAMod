@@ -4,6 +4,7 @@ using Terraria.ID;
 using Microsoft.Xna.Framework;
 using Terraria.ModLoader;
 using Terraria.Audio;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace AAMod.NPCs.Bosses.Akuma
 {
@@ -19,7 +20,9 @@ namespace AAMod.NPCs.Bosses.Akuma
 		{
 			DisplayName.SetDefault("Akuma");
 			NPCID.Sets.TechnicallyABoss[npc.type] = true;
-		}
+            Main.npcFrameCount[npc.type] = 3;
+
+        }
 
 		public override void SetDefaults()
 		{
@@ -30,30 +33,30 @@ namespace AAMod.NPCs.Bosses.Akuma
 			npc.netAlways = true;
 			npc.knockBackResist = 0f; if (!Main.expertMode && !AAWorld.downedAkuma)
             {
-                npc.damage = 80;
+                npc.damage = 50;
                 npc.defense = 100;
-                npc.lifeMax = 200000;
+                npc.lifeMax = 140000;
                 npc.value = Item.buyPrice(0, 55, 0, 0);
             }
             if (!Main.expertMode && AAWorld.downedAkuma)
             {
-                npc.damage = 90;
+                npc.damage = 60;
                 npc.defense = 120;
-                npc.lifeMax = 220000;
+                npc.lifeMax = 160000;
                 npc.value = Item.buyPrice(0, 55, 0, 0);
             }
             if (Main.expertMode && !AAWorld.downedAkumaA)
             {
-                npc.damage = 80;
+                npc.damage = 60;
                 npc.defense = 100;
-                npc.lifeMax = 200000;
+                npc.lifeMax = 140000;
                 npc.value = Item.buyPrice(0, 0, 0, 0);
             }
             if (Main.expertMode && AAWorld.downedAkumaA)
             {
-                npc.damage = 100;
+                npc.damage = 70;
                 npc.defense = 130;
-                npc.lifeMax = 240000;
+                npc.lifeMax = 160000;
                 npc.value = Item.buyPrice(0, 0, 0, 0);
             }
             npc.knockBackResist = 0f;
@@ -73,22 +76,54 @@ namespace AAMod.NPCs.Bosses.Akuma
 
             npc.alpha = 255;
         }
-
+        private bool fireAttack;
+        private int attackFrame;
+        private int attackCounter;
+        private int attackTimer;
         public override bool PreAI()
         {
+            if (fireAttack == true)
+            {
+                attackCounter++;
+                if (attackCounter > 10)
+                {
+                    attackFrame++;
+                    attackCounter = 0;
+                }
+                if (attackFrame >= 3)
+                {
+                    attackFrame = 2;
+                }
+            }
             Main.dayTime = true;
             Main.time = 24000;
             Player player = Main.player[npc.target];
             float dist = npc.Distance(player.Center);
-            if (dist < 300 & Main.rand.Next(3) == 1)
+            if (dist < 300 & Main.rand.Next(5) == 1 && fireAttack == false)
             {
-                if (Main.rand.Next(10) == 1)
-                    Main.PlaySound(2, (int)npc.position.X, (int)npc.position.Y, 9);
-
-                int proj2 = Projectile.NewProjectile(npc.Center.X + Main.rand.Next(-20, 20), npc.Center.Y + Main.rand.Next(-20, 20), npc.velocity.X * Main.rand.Next(1, 2), npc.velocity.Y * Main.rand.Next(1, 2), mod.ProjectileType("AFireProjHostile"), 20, 0, Main.myPlayer);
-                Main.projectile[proj2].timeLeft = 60;
+                fireAttack = true;
             }
-
+            if (fireAttack == true)
+            {
+                attackTimer++;
+                if (attackTimer == 20)
+                {
+                    for (int i = 0; i < 80; ++i)
+                    {
+                        if (Main.rand.Next(10) == 1)
+                        Main.PlaySound(SoundID.Item34, npc.position);
+                        int proj2 = Projectile.NewProjectile(npc.Center.X + Main.rand.Next(-20, 20), npc.Center.Y + Main.rand.Next(-20, 20), npc.velocity.X * Main.rand.Next(2, 4), npc.velocity.Y * Main.rand.Next(2, 4), mod.ProjectileType("AkumaBreath"), 20, 0, Main.myPlayer);
+                        Main.projectile[proj2].timeLeft = 60;
+                    }
+                }
+                if (attackTimer >= 80)
+                {
+                    fireAttack = false;
+                    attackTimer = 0;
+                    attackFrame = 0;
+                    attackCounter = 0;
+                }
+            }
             if (npc.alpha != 0)
             {
                 for (int spawnDust = 0; spawnDust < 2; spawnDust++)
@@ -114,9 +149,6 @@ namespace AAMod.NPCs.Bosses.Akuma
                     int AkumaALength = 9;
                     for (int i = 0; i < AkumaALength; ++i)
                     {
-
-
-
                         if (segment == 0 || segment == 2 || segment == 3 || segment == 5 || segment == 6 || segment == 8)
                         {
                             latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("AkumaBody"), npc.whoAmI, 0, latestNPC);
@@ -141,8 +173,7 @@ namespace AAMod.NPCs.Bosses.Akuma
                     npc.netUpdate = true;
                 }
             }
-
-
+            
             int minTilePosX = (int)(npc.position.X / 16.0) - 1;
 			int maxTilePosX = (int)((npc.position.X + npc.width) / 16.0) + 2;
 			int minTilePosY = (int)(npc.position.Y / 16.0) - 1;
@@ -176,7 +207,7 @@ namespace AAMod.NPCs.Bosses.Akuma
 					}
 				}
 			}
-			float speed = 7f;
+			float speed = 8f;
 			float acceleration = 0.16f;
 
 			Vector2 npcCenter = new Vector2(npc.position.X + npc.width * 0.5f, npc.position.Y + npc.height * 0.5f);
@@ -300,7 +331,26 @@ namespace AAMod.NPCs.Bosses.Akuma
 			return false;
 		}
 
-		public override void NPCLoot()
+        public override bool PreDraw(SpriteBatch spriteBatch, Color drawColor)
+        {
+            Texture2D texture = Main.npcTexture[npc.type];
+            Texture2D attackAni = mod.GetTexture("NPCs/Bosses/Akuma/Akuma");
+            var effects = npc.spriteDirection == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
+            if (fireAttack == false)
+            {
+                spriteBatch.Draw(texture, npc.Center - Main.screenPosition, npc.frame, drawColor, npc.rotation, npc.frame.Size() / 2, npc.scale, npc.spriteDirection == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0f);
+            }
+            if (fireAttack == true)
+            {
+                Vector2 drawCenter = new Vector2(npc.Center.X, npc.Center.Y);
+                int num214 = attackAni.Height / 3;
+                int y6 = num214 * attackFrame;
+                Main.spriteBatch.Draw(attackAni, drawCenter - Main.screenPosition, new Microsoft.Xna.Framework.Rectangle?(new Microsoft.Xna.Framework.Rectangle(0, y6, attackAni.Width, num214)), drawColor, npc.rotation, new Vector2((float)attackAni.Width / 2f, (float)num214 / 2f), npc.scale, npc.spriteDirection == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0f);
+            }
+            return false;
+        }
+
+        public override void NPCLoot()
 		{
 			AAWorld.downedAkuma = true;
             
@@ -358,7 +408,24 @@ namespace AAMod.NPCs.Bosses.Akuma
             }
         }
 
-        
+        public override void ModifyHitByProjectile(Projectile projectile, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
+        {
+            Player player = Main.player[npc.target];
+            if (player.vortexStealthActive && projectile.ranged)
+            {
+                damage /= 2;
+                crit = false;
+            }
+            if (projectile.penetrate == -1 && !projectile.minion)
+            {
+                projectile.penetrate = 1;
+            }
+            else if (projectile.penetrate >= 1)
+            {
+                projectile.penetrate = 1;
+            }
+        }
+
     }
 
     public class AkumaArms : Akuma
@@ -482,7 +549,25 @@ namespace AAMod.NPCs.Bosses.Akuma
             }
             return false;
         }
-        
+
+        public override void ModifyHitByProjectile(Projectile projectile, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
+        {
+            Player player = Main.player[npc.target];
+            if (player.vortexStealthActive && projectile.ranged)
+            {
+                damage /= 2;
+                crit = false;
+            }
+            if (projectile.penetrate == -1 && !projectile.minion)
+            {
+                projectile.penetrate = 1;
+            }
+            else if (projectile.penetrate >= 1)
+            {
+                projectile.penetrate = 1;
+            }
+        }
+
     }
 
     public class AkumaBody : Akuma
@@ -607,6 +692,23 @@ namespace AAMod.NPCs.Bosses.Akuma
             }
             return false;
         }
+        public override void ModifyHitByProjectile(Projectile projectile, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
+        {
+            Player player = Main.player[npc.target];
+            if (player.vortexStealthActive && projectile.ranged)
+            {
+                damage /= 2;
+                crit = false;
+            }
+            if (projectile.penetrate == -1 && !projectile.minion)
+            {
+                projectile.penetrate = 1;
+            }
+            else if (projectile.penetrate >= 1)
+            {
+                projectile.penetrate = 1;
+            }
+        }
     }
 
     public class AkumaTail : Akuma
@@ -729,6 +831,24 @@ namespace AAMod.NPCs.Bosses.Akuma
                 npc.position.Y = npc.position.Y + posY;
             }
             return false;
+        }
+
+        public override void ModifyHitByProjectile(Projectile projectile, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
+        {
+            Player player = Main.player[npc.target];
+            if (player.vortexStealthActive && projectile.ranged)
+            {
+                damage /= 2;
+                crit = false;
+            }
+            if (projectile.penetrate == -1 && !projectile.minion)
+            {
+                projectile.penetrate = 1;
+            }
+            else if (projectile.penetrate >= 1)
+            {
+                projectile.penetrate = 1;
+            }
         }
     }
 }

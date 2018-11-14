@@ -4,6 +4,7 @@ using Terraria.ID;
 using Microsoft.Xna.Framework;
 using Terraria.ModLoader;
 using Terraria.Audio;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace AAMod.NPCs.Bosses.Akuma
 {
@@ -19,7 +20,8 @@ namespace AAMod.NPCs.Bosses.Akuma
 		{
 			DisplayName.SetDefault("Akuma Awakened");
 			NPCID.Sets.TechnicallyABoss[npc.type] = true;
-		}
+            Main.npcFrameCount[npc.type] = 3;
+        }
 
 		public override void SetDefaults()
 		{
@@ -30,29 +32,29 @@ namespace AAMod.NPCs.Bosses.Akuma
 			npc.netAlways = true;
             if (!AAWorld.downedAkumaA)
             {
-                npc.lifeMax = 300000;
+                npc.lifeMax = 150000;
                 if (npc.life > npc.lifeMax / 5)
                 {
-                    npc.damage = 90;
+                    npc.damage = 70;
                     npc.defense = 130;
                 }
                 if (npc.life <= npc.lifeMax / 5)
                 {
-                    npc.damage = 120;
+                    npc.damage = 80;
                     npc.defense = 150;
                 }
             }
             if (AAWorld.downedAkumaA)
             {
-                npc.lifeMax = 400000;
+                npc.lifeMax = 160000;
                 if (npc.life > npc.lifeMax / 5)
                 {
-                    npc.damage = 120;
+                    npc.damage = 80;
                     npc.defense = 150;
                 }
                 if (npc.life <= npc.lifeMax / 5)
                 {
-                    npc.damage = 140;
+                    npc.damage = 90;
                     npc.defense = 170;
                 }
             }
@@ -77,21 +79,53 @@ namespace AAMod.NPCs.Bosses.Akuma
             }
             npc.alpha = 255;
         }
-
+        private bool fireAttack;
+        private int attackFrame;
+        private int attackCounter;
+        private int attackTimer;
         public override bool PreAI()
 		{
+            if (fireAttack == true)
+            {
+                attackCounter++;
+                if (attackCounter > 10)
+                {
+                    attackFrame++;
+                    attackCounter = 0;
+                }
+                if (attackFrame >= 3)
+                {
+                    attackFrame = 2;
+                }
+            }
+
+            npc.frameCounter = 0;
             Main.dayTime = true;
             Main.time = 24000;
             Player player = Main.player[npc.target];
 			float dist = npc.Distance(player.Center);
-			if (dist < 300 & Main.rand.Next(3) == 1)
-			{
-				if (Main.rand.Next(10) == 1)
-					Main.PlaySound(2, (int)npc.position.X, (int)npc.position.Y, 9);
-
-				int proj2 = Projectile.NewProjectile(npc.Center.X + Main.rand.Next(-20, 20), npc.Center.Y  + Main.rand.Next(-20, 20), npc.velocity.X* Main.rand.Next(1, 2), npc.velocity.Y * Main.rand.Next(1, 2), mod.ProjectileType("AFireProjHostile"), 20, 0, Main.myPlayer);
-				Main.projectile[proj2].timeLeft = 60;
-			}
+            if (dist < 300 & Main.rand.Next(4) == 1 && fireAttack == false)
+            {
+                fireAttack = true;
+            }
+            if (fireAttack == true)
+            {
+                attackTimer++;
+                if (attackTimer == 20)
+                {
+                    if (Main.rand.Next(10) == 1)
+                        Main.PlaySound(SoundID.Item34, npc.position);
+                    int proj2 = Projectile.NewProjectile(npc.Center.X + Main.rand.Next(-20, 20), npc.Center.Y + Main.rand.Next(-20, 20), npc.velocity.X * Main.rand.Next(1, 2), npc.velocity.Y * Main.rand.Next(1, 2), mod.ProjectileType("AFireProjHostile"), 20, 0, Main.myPlayer);
+                    Main.projectile[proj2].timeLeft = 60;
+                }
+                if (attackTimer >= 30)
+                {
+                    fireAttack = false;
+                    attackTimer = 0;
+                    attackFrame = 0;
+                    attackCounter = 0;
+                }
+            }
             if (npc.alpha != 0)
             {
                 for (int spawnDust = 0; spawnDust < 2; spawnDust++)
@@ -116,9 +150,6 @@ namespace AAMod.NPCs.Bosses.Akuma
                     int AkumaALength = 9;
 					for (int i = 0; i < AkumaALength; ++i)
 					{
-
-                       
-
                         if (segment == 0 || segment == 2 || segment == 3 || segment == 5 || segment == 6 || segment == 8)
                         {
                             latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("AkumaABody"), npc.whoAmI, 0, latestNPC);
@@ -183,11 +214,11 @@ namespace AAMod.NPCs.Bosses.Akuma
             float speedval = 0f;
             if (npc.life > npc.lifeMax / 5 && npc.type == mod.NPCType<AkumaA>())
             {
-                speedval = 8f;
+                speedval = 10f;
             }
             if (npc.life <= npc.lifeMax / 5 && npc.type == mod.NPCType<AkumaA>())
             {
-                speedval = 10f;
+                speedval = 12f;
             }
             float speed = speedval;
             float acceleration = 0.40f;
@@ -314,6 +345,24 @@ namespace AAMod.NPCs.Bosses.Akuma
 			return false;
 		}
 
+        public override bool PreDraw(SpriteBatch spriteBatch, Color drawColor)
+        {
+            Texture2D texture = Main.npcTexture[npc.type];
+            Texture2D attackAni = mod.GetTexture("NPCs/Bosses/Akuma/AkumaA");
+            var effects = npc.spriteDirection == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
+            if (fireAttack == false)
+            {
+                spriteBatch.Draw(texture, npc.Center - Main.screenPosition, npc.frame, drawColor, npc.rotation, npc.frame.Size() / 2, npc.scale, npc.spriteDirection == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0f);
+            }
+            if (fireAttack == true)
+            {
+                Vector2 drawCenter = new Vector2(npc.Center.X, npc.Center.Y);
+                int num214 = attackAni.Height / 3;
+                int y6 = num214 * attackFrame;
+                Main.spriteBatch.Draw(attackAni, drawCenter - Main.screenPosition, new Microsoft.Xna.Framework.Rectangle?(new Microsoft.Xna.Framework.Rectangle(0, y6, attackAni.Width, num214)), drawColor, npc.rotation, new Vector2((float)attackAni.Width / 2f, (float)num214 / 2f), npc.scale, npc.spriteDirection == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0f);
+            }
+            return false;
+        }
         public override void HitEffect(int hitDirection, double damage)
         {
             int dust1 = mod.DustType<Dusts.AkumaADust>();
@@ -339,7 +388,7 @@ namespace AAMod.NPCs.Bosses.Akuma
             if (npc.life <= npc.lifeMax / 5 && Panic == false && !AAWorld.downedAkumaA && Main.expertMode && npc.type == mod.NPCType<AkumaA>())
             {
                 Panic = true;
-                Main.NewText("Wha—?! How have you lasted this long?! Grrrrrr…! I refuse to be bested by you! Have at it!", Color.DeepSkyBlue.R, Color.DeepSkyBlue.G, Color.DeepSkyBlue.B);
+                Main.NewText("What?! How have you lasted this long?! Grrrrrr…! I refuse to be bested by you! Have at it!", Color.DeepSkyBlue.R, Color.DeepSkyBlue.G, Color.DeepSkyBlue.B);
             }
             if (npc.life <= npc.lifeMax / 5 && Panic == false && AAWorld.downedAkumaA&& Main.expertMode && npc.type == mod.NPCType<AkumaA>())
             {
@@ -350,8 +399,6 @@ namespace AAMod.NPCs.Bosses.Akuma
 
         public override void NPCLoot()
 		{
-			
-
             if (Main.expertMode)
             {
                 //npc.DropLoot(Items.Vanity.Mask.AkumaMask.type, 1f / 7);
@@ -363,26 +410,7 @@ namespace AAMod.NPCs.Bosses.Akuma
                 npc.DropBossBags();
                 
             }
-            if (!AAWorld.downedAkumaA && Main.expertMode)
-            {
-                Main.NewText("Gah..! How could this happen?! Even in my full form?! Fine, take your reward. You earned it.", Color.DeepSkyBlue.R, Color.DeepSkyBlue.G, Color.DeepSkyBlue.B);
-
-                
-            }
-            if (AAWorld.downedAkumaA && Main.expertMode)
-            {
-                Main.NewText("Snuffed out again. You have my respect, kid. Here.", Color.DeepSkyBlue.R, Color.DeepSkyBlue.G, Color.DeepSkyBlue.B);
-                
-            }
-            if (!Main.expertMode)
-            {
-                Main.NewText("Nice hacks, kid. Now come back and fight me like a real man in expert mode. Then I’ll give you your prize.", Color.DeepSkyBlue.R, Color.DeepSkyBlue.G, Color.DeepSkyBlue.B);
-                
-            }
-
-            AAWorld.downedAkumaA = true;
             return;
-
         }
 
         public override void BossLoot(ref string name, ref int potionType)
@@ -390,8 +418,26 @@ namespace AAMod.NPCs.Bosses.Akuma
             if (Main.expertMode)
             {
                 potionType = ItemID.SuperHealingPotion;   //boss drops
-                AAWorld.downedZero = true;
+                AAWorld.downedAkumaA = true;
             }
+
+            if (!AAWorld.downedAkumaA && Main.expertMode)
+            {
+                Main.NewText("Gah..! How could this happen?! Even in my full form?! Fine, take your reward. You earned it.", Color.DeepSkyBlue.R, Color.DeepSkyBlue.G, Color.DeepSkyBlue.B);
+
+
+            }
+            if (AAWorld.downedAkumaA && Main.expertMode)
+            {
+                Main.NewText("Snuffed out again. You have my respect, kid. Here.", Color.DeepSkyBlue.R, Color.DeepSkyBlue.G, Color.DeepSkyBlue.B);
+
+            }
+            if (!Main.expertMode)
+            {
+                Main.NewText("Nice hacks, kid. Now come back and fight me like a real man in expert mode. Then I’ll give you your prize.", Color.DeepSkyBlue.R, Color.DeepSkyBlue.G, Color.DeepSkyBlue.B);
+
+            }
+            AAWorld.downedAkumaA = true;
         }
 
         public override bool StrikeNPC(ref double damage, int defense, ref float knockback, int hitDirection, ref bool crit)
@@ -402,7 +448,25 @@ namespace AAMod.NPCs.Bosses.Akuma
             }
             return false;
         }
-        
+
+        public override void ModifyHitByProjectile(Projectile projectile, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
+        {
+            Player player = Main.player[npc.target];
+            if (player.vortexStealthActive && projectile.ranged)
+            {
+                damage /= 2;
+                crit = false;
+            }
+            if (projectile.penetrate == -1 && !projectile.minion)
+            {
+                projectile.penetrate = 1;
+            }
+            else if (projectile.penetrate >= 1)
+            {
+                projectile.penetrate = 1;
+            }
+        }
+
     }
 
     public class AkumaAArms : AkumaA
@@ -448,7 +512,7 @@ namespace AAMod.NPCs.Bosses.Akuma
                         Main.dust[num935].noLight = false;
                     }
                 }
-                npc.alpha -= 8;
+                npc.alpha -= 4;
                 if (npc.alpha < 0)
                 {
                     npc.alpha = 0;
@@ -530,12 +594,30 @@ namespace AAMod.NPCs.Bosses.Akuma
             if (npc.life <= npc.lifeMax / 5 && Panic == false && !AAWorld.downedAkumaA && Main.expertMode && npc.type == mod.NPCType<AkumaA>())
             {
                 Panic = true;
-                Main.NewText("Wha—?! How have you lasted this long?! Grrrrrr…! I refuse to be bested by you! Have at it!", Color.DeepSkyBlue.R, Color.DeepSkyBlue.G, Color.DeepSkyBlue.B);
+                Main.NewText("What?! How have you lasted this long?! Grrrrrr…! I refuse to be bested by you! Have at it!", Color.DeepSkyBlue.R, Color.DeepSkyBlue.G, Color.DeepSkyBlue.B);
             }
             if (npc.life <= npc.lifeMax / 5 && Panic == false && AAWorld.downedAkumaA && Main.expertMode && npc.type == mod.NPCType<AkumaA>())
             {
                 Panic = true;
                 Main.NewText("Still got it, do ya? I like that about you, kid..!", Color.DeepSkyBlue.R, Color.DeepSkyBlue.G, Color.DeepSkyBlue.B);
+            }
+        }
+
+        public override void ModifyHitByProjectile(Projectile projectile, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
+        {
+            Player player = Main.player[npc.target];
+            if (player.vortexStealthActive && projectile.ranged)
+            {
+                damage /= 2;
+                crit = false;
+            }
+            if (projectile.penetrate == -1 && !projectile.minion)
+            {
+                projectile.penetrate = 1;
+            }
+            else if (projectile.penetrate >= 1)
+            {
+                projectile.penetrate = 1;
             }
         }
     }
@@ -585,7 +667,7 @@ namespace AAMod.NPCs.Bosses.Akuma
                         Main.dust[num935].noLight = false;
                     }
                 }
-                npc.alpha -= 8;
+                npc.alpha -= 4;
                 if (npc.alpha < 0)
                 {
                     npc.alpha = 0;
@@ -666,12 +748,30 @@ namespace AAMod.NPCs.Bosses.Akuma
             if (npc.life <= npc.lifeMax / 5 && Panic == false && !AAWorld.downedAkumaA == false && Main.expertMode && npc.type == mod.NPCType<AkumaA>())
             {
                 Panic = true;
-                Main.NewText("Wha—?! How have you lasted this long?! Grrrrrr…! I refuse to be bested by you! Have at it!", Color.DeepSkyBlue.R, Color.DeepSkyBlue.G, Color.DeepSkyBlue.B);
+                Main.NewText("What?! How have you lasted this long?! Grrrrrr…! I refuse to be bested by you! Have at it!", Color.DeepSkyBlue.R, Color.DeepSkyBlue.G, Color.DeepSkyBlue.B);
             }
             if (npc.life <= npc.lifeMax / 5 && Panic == false && AAWorld.downedAkumaA == false && Main.expertMode && npc.type == mod.NPCType<AkumaA>())
             {
                 Panic = true;
                 Main.NewText("Still got it, do ya? I like that about you, kid..!", Color.DeepSkyBlue.R, Color.DeepSkyBlue.G, Color.DeepSkyBlue.B);
+            }
+        }
+
+        public override void ModifyHitByProjectile(Projectile projectile, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
+        {
+            Player player = Main.player[npc.target];
+            if (player.vortexStealthActive && projectile.ranged)
+            {
+                damage /= 2;
+                crit = false;
+            }
+            if (projectile.penetrate == -1 && !projectile.minion)
+            {
+                projectile.penetrate = 1;
+            }
+            else if (projectile.penetrate >= 1)
+            {
+                projectile.penetrate = 1;
             }
         }
     }
@@ -736,7 +836,7 @@ namespace AAMod.NPCs.Bosses.Akuma
                         Main.dust[num935].noLight = false;
                     }
                 }
-                npc.alpha -= 8;
+                npc.alpha -= 4;
                 if (npc.alpha < 0)
                 {
                     npc.alpha = 0;
@@ -800,7 +900,7 @@ namespace AAMod.NPCs.Bosses.Akuma
             if (npc.life <= npc.lifeMax / 5 && Panic == false && !AAWorld.downedAkumaA && Main.expertMode && npc.type == mod.NPCType<AkumaA>())
             {
                 Panic = true;
-                Main.NewText("Wha—?! How have you lasted this long?! Grrrrrr…! I refuse to be bested by you! Have at it!", Color.DeepSkyBlue.R, Color.DeepSkyBlue.G, Color.DeepSkyBlue.B);
+                Main.NewText("What?! How have you lasted this long?! Grrrrrr…! I refuse to be bested by you! Have at it!", Color.DeepSkyBlue.R, Color.DeepSkyBlue.G, Color.DeepSkyBlue.B);
             }
             if (npc.life <= npc.lifeMax / 5 && Panic == false && AAWorld.downedAkumaA && Main.expertMode && npc.type == mod.NPCType<AkumaA>())
             {
@@ -808,6 +908,22 @@ namespace AAMod.NPCs.Bosses.Akuma
                 Main.NewText("Still got it, do ya? I like that about you, kid..!", Color.DeepSkyBlue.R, Color.DeepSkyBlue.G, Color.DeepSkyBlue.B);
             }
         }
-        
+        public override void ModifyHitByProjectile(Projectile projectile, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
+        {
+            Player player = Main.player[npc.target];
+            if (player.vortexStealthActive && projectile.ranged)
+            {
+                damage /= 2;
+                crit = false;
+            }
+            if (projectile.penetrate == -1 && !projectile.minion)
+            {
+                projectile.penetrate = 1;
+            }
+            else if (projectile.penetrate >= 1)
+            {
+                projectile.penetrate = 1;
+            }
+        }
     }
 }
