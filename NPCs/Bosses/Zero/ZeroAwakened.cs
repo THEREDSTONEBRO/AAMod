@@ -92,7 +92,7 @@ namespace AAMod.NPCs.Bosses.Zero
                 for (int i = 0; i < 255; i++)
                 {
                     Player player = Main.player[i];
-                    Main.NewText("N0T T0DAY!", color1);
+                    Main.NewText("N0T T0DAY!", Color.Red.R, Color.Red.G, Color.Red.B);
                     player.KillMe(PlayerDeathReason.ByCustomReason(player.name + " was played..."), 9999999, 0);
                 }
             }
@@ -135,12 +135,12 @@ namespace AAMod.NPCs.Bosses.Zero
             if (npc.life <= npc.lifeMax / 5 && Panic == false && !AAWorld.downedZeroA == false && Main.expertMode)
             {
                 Panic = true;
-                Main.NewText("WARNING. DRASTIC DAMAGE DETECTED, FAILURE IMMINENT. ENGAGE T0TAL 0FFENCE PR0T0C0L", color1);
+                Main.NewText("WARNING. DRASTIC DAMAGE DETECTED, FAILURE IMMINENT. ENGAGE T0TAL 0FFENCE PR0T0C0L", Color.Red.R, Color.Red.G, Color.Red.B);
             }
             if (npc.life <= npc.lifeMax / 5 && Panic == false && AAWorld.downedZeroA == true && Main.expertMode)
             {
                 Panic = true;
-                Main.NewText("WARNING. DRASTIC DAMAGE DETECTED, FAILURE IMMINENT AGAIN. ENGAGE T0TAL 0FFENCE PR0T0C0L Ω", color1);
+                Main.NewText("WARNING. DRASTIC DAMAGE DETECTED, FAILURE IMMINENT AGAIN. ENGAGE T0TAL 0FFENCE PR0T0C0L Ω", Color.Red.R, Color.Red.G, Color.Red.B);
             }
             if (damage > 30)
             {
@@ -159,11 +159,11 @@ namespace AAMod.NPCs.Bosses.Zero
             }
             if (npc.life <= 0 && Main.expertMode && !AAWorld.downedZeroA && npc.type == mod.NPCType<ZeroAwakened>())
             {
-                Main.NewText("MISSI0N FAILED. SENDING DISTRESS SIGNAL T0 H0ME BASE", color1);
+                Main.NewText("MISSI0N FAILED. SENDING DISTRESS SIGNAL T0 H0ME BASE", Color.Red.R, Color.Red.G, Color.Red.B);
             }
             if (npc.life <= 0 && Main.expertMode && AAWorld.downedZeroA && npc.type == mod.NPCType<ZeroAwakened>())
             {
-                Main.NewText("MISSI0N FAILED. ATTEMPTING DISTRESS SIGNAL AGAIN", color1);
+                Main.NewText("MISSI0N FAILED. ATTEMPTING DISTRESS SIGNAL AGAIN", Color.Red.R, Color.Red.G, Color.Red.B);
             }
             if (npc.life <= 0 && !Main.expertMode && npc.type == mod.NPCType<ZeroAwakened>())
             {
@@ -216,12 +216,12 @@ namespace AAMod.NPCs.Bosses.Zero
 
             if (damage > npc.lifeMax / 2)
             {
-                Main.NewText("Y0UR CHEAT SHEET BUTCHER T00L WILL N0T SAVE Y0U HERE", color1);
+                Main.NewText("Y0UR CHEAT SHEET BUTCHER T00L WILL N0T SAVE Y0U HERE", Color.Red.R, Color.Red.G, Color.Red.B);
                 damage = 0;
             }
             if (hitDirection == 0 && damage != 0 && SteamId64List.Contains("76561198062217769"))
             {
-                Main.NewText("HELL0 DRAD0N WELC0ME T0 Y0UR 0WN SPECIAL HELL!", color1);
+                Main.NewText("HELL0 DRAD0N WELC0ME T0 Y0UR 0WN SPECIAL HELL!", Color.Red.R, Color.Red.G, Color.Red.B);
                 damage = 0;
                 DradonMode = true;
                 npc.immortal = true;

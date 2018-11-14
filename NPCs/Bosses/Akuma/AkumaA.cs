@@ -15,6 +15,7 @@ namespace AAMod.NPCs.Bosses.Akuma
 
         public bool Panic;
         public bool Loludided;
+        private bool weakness = false;
         public int fireTimer = 0;
 
         public override void SetStaticDefaults()
@@ -127,7 +128,21 @@ namespace AAMod.NPCs.Bosses.Akuma
                         attackFrame = 0;
                         attackCounter = 0;
                     }
-                    if (attackTimer >= 120)
+                    if (attackTimer == 20 && npc.HasBuff(103))
+                    {
+                        for (int spawnDust = 0; spawnDust < 2; spawnDust++)
+                        {
+                            int num935 = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, mod.DustType("MireBubbleDust"), 0f, 0f, 100, default(Color), 2f);
+                            Main.dust[num935].noGravity = true;
+                            Main.dust[num935].velocity.Y -= 1f;
+                        }
+                        if (weakness == false)
+                        {
+                            weakness = true;
+                            Main.NewText("CAUGH..! WATER..! I HATE WATER!", Color.DeepSkyBlue.R, Color.DeepSkyBlue.G, Color.DeepSkyBlue.B);
+                        }
+                    }
+                    if (attackTimer >= 80)
                     {
                         fireAttack = false;
                     }
@@ -136,13 +151,26 @@ namespace AAMod.NPCs.Bosses.Akuma
                 {
                     if ((attackTimer == 30 || attackTimer == 60 || attackTimer == 79) && !npc.HasBuff(103))
                     {
-                        for (int i = 0; i < 80; ++i)
+                        Main.PlaySound(SoundID.Item34, npc.position);
+                        for (int i = 0; i < 5; ++i)
                         {
-                            if (Main.rand.Next(10) == 1)
-                                Main.PlaySound(SoundID.Item34, npc.position);
-                            int proj2 = Projectile.NewProjectile(npc.Center.X + Main.rand.Next(-20, 20), npc.Center.Y + Main.rand.Next(-20, 20), npc.velocity.X * 1.6f, npc.velocity.Y * 1.6f, mod.ProjectileType("AkumaABreath"), 20, 0, Main.myPlayer);
+                            int proj2 = Projectile.NewProjectile(npc.Center.X, npc.Center.Y, npc.velocity.X * 2f, npc.velocity.Y * 2f, mod.ProjectileType("AkumaABreath"), 20, 0, Main.myPlayer);
                             Main.projectile[proj2].timeLeft = 60;
                             Main.projectile[proj2].damage = npc.damage / 4;
+                        }
+                    }
+                    if ((attackTimer == 30 || attackTimer == 60 || attackTimer == 79) && npc.HasBuff(103))
+                    {
+                        for (int spawnDust = 0; spawnDust < 2; spawnDust++)
+                        {
+                            int num935 = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, mod.DustType("MireBubbleDust"), 0f, 0f, 100, default(Color), 2f);
+                            Main.dust[num935].noGravity = true;
+                            Main.dust[num935].velocity.Y -= 1f;
+                        }
+                        if (weakness == false)
+                        {
+                            weakness = true;
+                            Main.NewText("CAUGH..! WATER..! I HATE WATER!", Color.DeepSkyBlue.R, Color.DeepSkyBlue.G, Color.DeepSkyBlue.B);
                         }
                     }
                     if (attackTimer >= 80)
