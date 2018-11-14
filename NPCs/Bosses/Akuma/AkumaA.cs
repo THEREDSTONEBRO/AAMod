@@ -104,7 +104,7 @@ namespace AAMod.NPCs.Bosses.Akuma
             Main.time = 24000;
             Player player = Main.player[npc.target];
 			float dist = npc.Distance(player.Center);
-            if (dist < 300 & Main.rand.Next(4) == 1 && fireAttack == false)
+            if (dist > 200 & Main.rand.Next(7) == 1 && fireAttack == false)
             {
                 fireAttack = true;
             }
@@ -114,7 +114,7 @@ namespace AAMod.NPCs.Bosses.Akuma
                 if (attackTimer == 20)
                 {
                     if (Main.rand.Next(10) == 1)
-                        Main.PlaySound(SoundID.Item34, npc.position);
+                    Main.PlaySound(SoundID.Item34, npc.position);
                     int proj2 = Projectile.NewProjectile(npc.Center.X + Main.rand.Next(-20, 20), npc.Center.Y + Main.rand.Next(-20, 20), npc.velocity.X * Main.rand.Next(1, 2), npc.velocity.Y * Main.rand.Next(1, 2), mod.ProjectileType("AFireProjHostile"), 20, 0, Main.myPlayer);
                     Main.projectile[proj2].timeLeft = 60;
                 }
@@ -214,11 +214,11 @@ namespace AAMod.NPCs.Bosses.Akuma
             float speedval = 0f;
             if (npc.life > npc.lifeMax / 5 && npc.type == mod.NPCType<AkumaA>())
             {
-                speedval = 10f;
+                speedval = 9f;
             }
             if (npc.life <= npc.lifeMax / 5 && npc.type == mod.NPCType<AkumaA>())
             {
-                speedval = 12f;
+                speedval = 11f;
             }
             float speed = speedval;
             float acceleration = 0.40f;

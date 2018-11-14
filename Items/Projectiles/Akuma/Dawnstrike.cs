@@ -31,19 +31,6 @@ namespace AAMod.Items.Projectiles.Akuma
             }
             if (projectile.ai[0] > 7f)
             {
-                float num296 = 1f;
-                if (projectile.ai[0] == 8f)
-                {
-                    num296 = 0.25f;
-                }
-                else if (projectile.ai[0] == 9f)
-                {
-                    num296 = 0.5f;
-                }
-                else if (projectile.ai[0] == 10f)
-                {
-                    num296 = 0.75f;
-                }
                 projectile.ai[0] += 1f;
                 if (Main.rand.NextFloat() < 1f)
                 {

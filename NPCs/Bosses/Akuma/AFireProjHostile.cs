@@ -52,11 +52,11 @@ namespace AAMod.NPCs.Bosses.Akuma
             }
 
             projectile.frameCounter++;
-            if (projectile.frameCounter > 0)
+            if (projectile.frameCounter > 6)
             {
                 projectile.frame++;
                 projectile.frameCounter = 0;
-                if (projectile.frame > 7)
+                if (projectile.frame > 3)
                 {
                     projectile.frame = 0;
                 }
@@ -64,7 +64,7 @@ namespace AAMod.NPCs.Bosses.Akuma
             projectile.rotation = (float)Math.Atan2(projectile.velocity.Y, projectile.velocity.X) + 1.57f;
             const int aislotHomingCooldown = 0;
             const int homingDelay = 10;
-            const float desiredFlySpeedInPixelsPerFrame = 90;
+            const float desiredFlySpeedInPixelsPerFrame = 60;
             const float amountOfFramesToLerpBy = 20; // minimum of 1, please keep in full numbers even though it's a float!
 
             projectile.ai[aislotHomingCooldown]++;
@@ -106,7 +106,7 @@ namespace AAMod.NPCs.Bosses.Akuma
         private int HomeOnTarget()
         {
             const bool homingCanAimAtWetEnemies = true;
-            const float homingMaximumRangeInPixels = 1000;
+            const float homingMaximumRangeInPixels = 500;
 
             int selectedTarget = -1;
             for (int i = 0; i < Main.maxNPCs; i++)
