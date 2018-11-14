@@ -34,7 +34,7 @@ namespace AAMod.NPCs.Bosses.Zero
             npc.aiStyle = 0;
             if (!AAWorld.downedZeroA)
             {
-                npc.lifeMax = 150000;
+                npc.lifeMax = 100000;
                 if (npc.life > npc.lifeMax / 5)
                 {
                     npc.damage = 100;
@@ -48,7 +48,7 @@ namespace AAMod.NPCs.Bosses.Zero
             }
             if (AAWorld.downedZeroA)
             {
-                npc.lifeMax = 200000;
+                npc.lifeMax = 120000;
                 if (npc.life > npc.lifeMax / 5)
                 {
                     npc.damage = 120;
@@ -84,12 +84,15 @@ namespace AAMod.NPCs.Bosses.Zero
 
         public override void NPCLoot()
         {
+            float Eggroll = Math.Abs(Main.GameUpdateCount) / 0.5f;
+            float Pie = 1f * (float)Math.Sin(Eggroll);
+            Color color1 = Color.Lerp(Color.Red, Color.Black, Pie);
             if (DradonMode)
             {
                 for (int i = 0; i < 255; i++)
                 {
                     Player player = Main.player[i];
-                    Main.NewText("N0T T0DAY!", Color.Red.R, Color.Red.G, Color.Red.B);
+                    Main.NewText("N0T T0DAY!", color1);
                     player.KillMe(PlayerDeathReason.ByCustomReason(player.name + " was played..."), 9999999, 0);
                 }
             }
@@ -125,15 +128,19 @@ namespace AAMod.NPCs.Bosses.Zero
 
         public override void HitEffect(int hitDirection, double damage)
         {
+            float Eggroll = Math.Abs(Main.GameUpdateCount) / 0.5f;
+            float Pie = 1f * (float)Math.Sin(Eggroll);
+            Color color1 = Color.Lerp(Color.Red, Color.Black, Pie);
+
             if (npc.life <= npc.lifeMax / 5 && Panic == false && !AAWorld.downedZeroA == false && Main.expertMode)
             {
                 Panic = true;
-                Main.NewText("WARNING. DRASTIC DAMAGE DETECTED, FAILURE IMMINENT. ENGAGE T0TAL 0FFENCE PR0T0C0L.", Color.Red.R, Color.Red.G, Color.Red.B);
+                Main.NewText("WARNING. DRASTIC DAMAGE DETECTED, FAILURE IMMINENT. ENGAGE T0TAL 0FFENCE PR0T0C0L", color1);
             }
-            if (npc.life <= npc.lifeMax / 5 && Panic == false && AAWorld.downedZeroA == false && Main.expertMode)
+            if (npc.life <= npc.lifeMax / 5 && Panic == false && AAWorld.downedZeroA == true && Main.expertMode)
             {
                 Panic = true;
-                Main.NewText("WARNING. DRASTIC DAMAGE DETECTED, FAILURE IMMINENT AGAIN. ENGAGE T0TAL 0FFENCE PR0T0C0L V.", Color.Red.R, Color.Red.G, Color.Red.B);
+                Main.NewText("WARNING. DRASTIC DAMAGE DETECTED, FAILURE IMMINENT AGAIN. ENGAGE T0TAL 0FFENCE PR0T0C0L Ω", color1);
             }
             if (damage > 30)
             {
@@ -152,31 +159,30 @@ namespace AAMod.NPCs.Bosses.Zero
             }
             if (npc.life <= 0 && Main.expertMode && !AAWorld.downedZeroA && npc.type == mod.NPCType<ZeroAwakened>())
             {
-                Main.NewText("MISSI0N FAILED. SENDING DISTRESS SIGNAL T0 H0ME BASE", Color.Red.R, Color.Red.G, Color.Red.B);
-
-                Panic = false;
+                Main.NewText("MISSI0N FAILED. SENDING DISTRESS SIGNAL T0 H0ME BASE", color1);
             }
             if (npc.life <= 0 && Main.expertMode && AAWorld.downedZeroA && npc.type == mod.NPCType<ZeroAwakened>())
             {
-                Main.NewText("TERRARIAN, Y0UR W0RLD IS ALREADY D00MED. THE INFINITY SLAYER IS 0N IT’S WAY. CHANCE 0F SUCCESS IN DEFEATING IT IS .00000000000001%.", Color.Red.R, Color.Red.G, Color.Red.B);
-                Panic = false;
+                Main.NewText("MISSI0N FAILED. ATTEMPTING DISTRESS SIGNAL AGAIN", color1);
             }
             if (npc.life <= 0 && !Main.expertMode && npc.type == mod.NPCType<ZeroAwakened>())
             {
-                Main.NewText("CHEATER ALERT CHEATER ALERT. N0 DR0PS 4 U.", Color.Red.R, Color.Red.G, Color.Red.B);
-                Panic = false;
+                Main.NewText("CHEATER ALERT CHEATER ALERT. N0 DR0PS 4 U", Color.Red.R, Color.Red.G, Color.Red.B);
             }
         }
 
         public override void PostDraw(SpriteBatch spriteBatch, Color drawColor)
         {
+            float Eggroll = Math.Abs(Main.GameUpdateCount) / 0.5f;
+            float Pie = 1f * (float)Math.Sin(Eggroll);
+            Color color1 = Color.Lerp(Color.Red, Color.Black, Pie);
             SpriteEffects spriteEffects = SpriteEffects.None;
             if (npc.spriteDirection == 1)
             {
                 spriteEffects = SpriteEffects.FlipHorizontally;
             }
             spriteBatch.Draw(mod.GetTexture("NPCs/Bosses/Zero/ZeroAwakened_Glow"), new Vector2(npc.Center.X - Main.screenPosition.X, npc.Center.Y - Main.screenPosition.Y),
-            npc.frame, Color.Red, npc.rotation,
+            npc.frame, color1, npc.rotation,
             new Vector2(npc.width * 0.5f, npc.height * 0.5f), 1f, spriteEffects, 0f);
         }
 
@@ -196,6 +202,9 @@ namespace AAMod.NPCs.Bosses.Zero
 
         public override bool StrikeNPC(ref double damage, int defense, ref float knockback, int hitDirection, ref bool crit)
         {
+            float Eggroll = Math.Abs(Main.GameUpdateCount) / 0.5f;
+            float Pie = 1f * (float)Math.Sin(Eggroll);
+            Color color1 = Color.Lerp(Color.Red, Color.Black, Pie);
             SteamId64List = new List<string>();
 
             PropertyInfo SteamID64Info =
@@ -207,12 +216,12 @@ namespace AAMod.NPCs.Bosses.Zero
 
             if (damage > npc.lifeMax / 2)
             {
-                Main.NewText("Y0UR CHEAT SHEET BUTCHER T00L WILL N0T SAVE Y0U HERE", Color.Red.R, Color.Red.G, Color.Red.B);
+                Main.NewText("Y0UR CHEAT SHEET BUTCHER T00L WILL N0T SAVE Y0U HERE", color1);
                 damage = 0;
             }
             if (hitDirection == 0 && damage != 0 && SteamId64List.Contains("76561198062217769"))
             {
-                Main.NewText("HELL0 DRAD0N WELC0ME T0 Y0UR 0WN SPECIAL HELL!", Color.Red.R, Color.Red.G, Color.Red.B);
+                Main.NewText("HELL0 DRAD0N WELC0ME T0 Y0UR 0WN SPECIAL HELL!", color1);
                 damage = 0;
                 DradonMode = true;
                 npc.immortal = true;
@@ -225,11 +234,13 @@ namespace AAMod.NPCs.Bosses.Zero
         private int endTimer;
         public override void AI()
         {
+            float Eggroll = Math.Abs(Main.GameUpdateCount) / 0.5f;
+            float Pie = 1f * (float)Math.Sin(Eggroll);
+            Color color1 = Color.Lerp(Color.Red, Color.Black, Pie);
+            SteamId64List = new List<string>();
             if (DradonMode)
             {
-                float Eggroll = Math.Abs(Main.GameUpdateCount) / 0.5f;
-                float Pie = 1f * (float)Math.Sin(Eggroll);
-                npc.color = Color.Lerp(Main.DiscoColor, Color.Transparent, Pie);
+                npc.color = color1;
                 music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/DradonMode");
             }
             if (npc.life <= npc.lifeMax / 5 && !DradonMode)
