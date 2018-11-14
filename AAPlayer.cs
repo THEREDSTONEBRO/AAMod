@@ -22,6 +22,7 @@ namespace AAMod
         public bool enderMinionEX = false;
         public bool ChairMinion = false;
         public bool ChairMinionEX = false;
+        public bool LungMinion = false;
         // Biome bools.
         public bool ZoneMire = false;
         public bool ZoneInferno = false;
@@ -117,6 +118,7 @@ namespace AAMod
             enderMinionEX = false;
             ChairMinion = false;
             ChairMinionEX = false;
+            LungMinion = false;
             infinityOverload = false;
             discordInferno = false;
             dragonFire = false;

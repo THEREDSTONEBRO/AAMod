@@ -97,6 +97,7 @@
     <Compile Include="Buffs\EnderMinionBuffEX.cs" />
     <Compile Include="Buffs\HydraToxin.cs" />
     <Compile Include="Buffs\InfinityOverload.cs" />
+    <Compile Include="Buffs\LungMinion.cs" />
     <Compile Include="Buffs\MiniProbe.cs" />
     <Compile Include="Buffs\Raidmini.cs" />
     <Compile Include="Buffs\Sharkron.cs" />
@@ -365,6 +366,8 @@
     <Compile Include="Items\Boss\Akuma\DaybreakArrow.cs" />
     <Compile Include="Items\Boss\Akuma\Daycrusher.cs" />
     <Compile Include="Items\Boss\Akuma\Daystorm.cs" />
+    <Compile Include="Items\Boss\Akuma\LungStaff.cs" />
+    <Compile Include="Items\Boss\Akuma\RadiantDawn.cs" />
     <Compile Include="Items\Boss\Akuma\DragonSlasher.cs" />
     <Compile Include="Items\Boss\Akuma\ReignOfFire.cs" />
     <Compile Include="Items\Boss\Akuma\Solar.cs" />
@@ -583,6 +586,10 @@
     <Compile Include="Items\Projectiles\Akuma\Dayser.cs" />
     <Compile Include="Items\Projectiles\Akuma\Daystorm.cs" />
     <Compile Include="Items\Projectiles\Akuma\FireProj.cs" />
+    <Compile Include="Items\Projectiles\Akuma\FireRain.cs" />
+    <Compile Include="Items\Projectiles\Akuma\Lung\LungBody.cs" />
+    <Compile Include="Items\Projectiles\Akuma\Lung\LungHead.cs" />
+    <Compile Include="Items\Projectiles\Akuma\Lung\LungTail.cs" />
     <Compile Include="Items\Projectiles\Akuma\MorningGlory.cs" />
     <Compile Include="Items\Projectiles\Akuma\Solar.cs" />
     <Compile Include="Items\Projectiles\Akuma\SunOrb.cs" />
@@ -1080,6 +1087,7 @@
     <Content Include="Buffs\EnderMinionBuffEX.png" />
     <Content Include="Buffs\HydraToxin.png" />
     <Content Include="Buffs\InfinityOverload.png" />
+    <Content Include="Buffs\LungMinion.png" />
     <Content Include="Buffs\MiniProbe.png" />
     <Content Include="Buffs\Raidmini.png" />
     <Content Include="Buffs\Sharkron.png" />
@@ -1693,8 +1701,8 @@
     <Content Include="Items\Boss\Akuma\DragonSlasher_Glow.png" />
     <Content Include="Items\Boss\Akuma\LungStaff.png" />
     <Content Include="Items\Boss\Akuma\LungStaff_Glow.png" />
-    <Content Include="Items\Boss\Akuma\Lung\LungHead.png" />
     <Content Include="Items\Boss\Akuma\MorningGlory.png" />
+    <Content Include="Items\Boss\Akuma\MorningGlory_Glow.png" />
     <Content Include="Items\Boss\Akuma\RadiantDawn.png" />
     <Content Include="Items\Boss\Akuma\RadiantDawn_Glow.png" />
     <Content Include="Items\Boss\Akuma\ReignOfFire.png" />
@@ -2061,6 +2069,17 @@
     <Content Include="Items\Projectiles\Akuma\Dayser.png" />
     <Content Include="Items\Projectiles\Akuma\Daystorm.png" />
     <Content Include="Items\Projectiles\Akuma\FireProj.png" />
+    <Content Include="Items\Projectiles\Akuma\FireRain.png" />
+    <Content Include="Items\Projectiles\Akuma\Lung\LungBody1.png" />
+    <Content Include="Items\Projectiles\Akuma\Lung\LungBody1_Glow.png" />
+    <Content Include="Items\Projectiles\Akuma\Lung\LungBody2.png" />
+    <Content Include="Items\Projectiles\Akuma\Lung\LungBody2_Glow.png" />
+    <Content Include="Items\Projectiles\Akuma\Lung\LungHead.png" />
+    <Content Include="Items\Projectiles\Akuma\Lung\LungHead_Glow.png" />
+    <Content Include="Items\Projectiles\Akuma\Lung\LungTail.png" />
+    <Content Include="Items\Projectiles\Akuma\Lung\LungTail_Glow.png" />
+    <Content Include="Items\Projectiles\Akuma\MorningGlory.png" />
+    <Content Include="Items\Projectiles\Akuma\MorningGlory_Glow.png" />
     <Content Include="Items\Projectiles\Akuma\Solar.png" />
     <Content Include="Items\Projectiles\Akuma\Solar_Glow.png" />
     <Content Include="Items\Projectiles\Akuma\SunOrb.png" />
@@ -2595,7 +2614,7 @@
     <Content Include="NPCs\Bosses\Zero\VoidStarP.png" />
     <Content Include="NPCs\Bosses\Zero\VoidStar_Glow.png" />
     <Content Include="NPCs\Bosses\Zero\Zero.png" />
-    <Content Include="NPCs\Bosses\Zero\Zero2.png" />
+    <Content Include="NPCs\Bosses\Zero\Zero1.png" />
     <Content Include="NPCs\Bosses\Zero\ZeroArm.png" />
     <Content Include="NPCs\Bosses\Zero\ZeroAwakened.png" />
     <Content Include="NPCs\Bosses\Zero\ZeroAwakened1.png" />
@@ -2952,7 +2971,6 @@
     <None Include=".vs\AAMod\v15\Server\sqlite3\storage.ide" />
     <None Include=".vs\AAMod\v15\Server\sqlite3\storage.ide-shm" />
     <None Include=".vs\AAMod\v15\Server\sqlite3\storage.ide-wal" />
-    <None Include="Items\Boss\Zero.zip" />
     <None Include="NPCs\Bosses\Oblivion\00110000.piskel" />
     <None Include="obj\Debug\AAMod.csproj.CopyComplete" />
     <None Include="obj\Debug\AAMod.csproj.CoreCompileInputs.cache" />

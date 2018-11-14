@@ -373,8 +373,8 @@ namespace AAMod.NPCs.Bosses.Akuma
             
             if (!Main.expertMode)
             {
-                npc.DropLoot(mod.ItemType("CrucibleScale"), 25, 35);
-                string[] lootTable = { "Solar", "SunSpear", "ReignOfFire", "DaybreakArrow", "Daycrusher", "Dawnstrike", "SunStorm", "SunStaff", "DragonSlasher"};
+                npc.DropLoot(mod.ItemType("CrucibleScale"), 20, 30);
+                string[] lootTable = { "AkumaTerratool", "DayStorm", "LungStaff", "MorningGlory", "RadiantDawn", "Solar", "SunSpear", "ReignOfFire", "DaybreakArrow", "Daycrusher", "Dawnstrike", "SunStorm", "SunStaff", "DragonSlasher" };
                     int loot = Main.rand.Next(lootTable.Length);
                     npc.DropLoot(mod.ItemType(lootTable[loot]));
                     //npc.DropLoot(Items.Vanity.Mask.AkumaMask.type, 1f / 7);

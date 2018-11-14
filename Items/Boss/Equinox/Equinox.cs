@@ -85,7 +85,7 @@ namespace AAMod.Items.Boss.Equinox
             recipe.AddIngredient(null, "DarkVoid", 1);
             recipe.AddIngredient(null, "DarkMatter", 20);
             recipe.AddIngredient(null, "RadiumBar", 20);
-            recipe.AddTile(null, "BinaryReassembler");
+            recipe.AddTile(null, "QuantumFusionAccelerator");
             recipe.SetResult(this);
             recipe.AddRecipe();
         }

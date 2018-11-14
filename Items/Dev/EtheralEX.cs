@@ -65,7 +65,7 @@ namespace AAMod.Items.Dev
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(null, "Etheral");
             recipe.AddIngredient(null, "EXSoul");
-            recipe.AddTile(null, "BinaryReassembler");
+            recipe.AddTile(null, "QuantumFusionAccelerator");
             recipe.SetResult(this);
             recipe.AddRecipe();
         }

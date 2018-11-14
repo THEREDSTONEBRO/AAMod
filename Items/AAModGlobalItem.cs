@@ -8,5 +8,6 @@ namespace AAMod.Items
 {
     public class AAModGlobalItem : GlobalItem
 	{
+        
     }
 }

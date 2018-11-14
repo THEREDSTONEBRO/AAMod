@@ -37,7 +37,7 @@ namespace AAMod.Items.Melee
         {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(null, "RadiumBar", 15);
-            recipe.AddTile(null, "BinaryReassembler");
+            recipe.AddTile(null, "QuantumFusionAccelerator");
             recipe.SetResult(this);
             recipe.AddRecipe();
         }

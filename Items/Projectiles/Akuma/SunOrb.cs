@@ -170,27 +170,13 @@ namespace AAMod.Items.Projectiles.Akuma
             }
         }
 
-        /*public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
+        public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
         {
-            SpriteEffects spriteEffects = SpriteEffects.None;
-            Color color25 = Lighting.GetColor((int)((double)projectile.position.X + (double)projectile.width * 0.5) / 16, (int)(((double)projectile.position.Y + (double)projectile.height * 0.5) / 16.0));
-            Vector2 vector38 = projectile.position + new Vector2((float)projectile.width, (float)projectile.height) / 2f + Vector2.UnitY * projectile.gfxOffY - Main.screenPosition;
-            Texture2D texture2D30 = Main.projectileTexture[projectile.type];
-            Color alpha4 = projectile.GetAlpha(color25);
-            Vector2 origin8 = new Vector2((float)texture2D30.Width, (float)texture2D30.Height) / 2f;
-            Color color55 = alpha4 * 0.8f;
-            color55.A /= 2;
-            Microsoft.Xna.Framework.Color color56 = Microsoft.Xna.Framework.Color.Lerp(alpha4, Microsoft.Xna.Framework.Color.Black, 0.5f);
-            color56.A = alpha4.A;
-            float num274 = 0.95f + (projectile.rotation * 0.75f).ToRotationVector2().Y * 0.1f;
-            color56 *= num274;
-            float scale12 = 0.6f + projectile.scale * 0.6f * num274;
-            Main.spriteBatch.Draw(Main.extraTexture[50], vector38, null, color56, -projectile.rotation + 0.35f, origin8, scale12, spriteEffects ^ SpriteEffects.FlipHorizontally, 0f);
-            Main.spriteBatch.Draw(Main.extraTexture[50], vector38, null, alpha4, -projectile.rotation, origin8, projectile.scale, spriteEffects ^ SpriteEffects.FlipHorizontally, 0f);
-            Main.spriteBatch.Draw(texture2D30, vector38, null, color55, -projectile.rotation * 0.7f, origin8, projectile.scale, spriteEffects ^ SpriteEffects.FlipHorizontally, 0f);
-            Main.spriteBatch.Draw(Main.extraTexture[50], vector38, null, alpha4 * 0.8f, projectile.rotation * 0.5f, origin8, projectile.scale * 0.9f, spriteEffects, 0f);
-            alpha4.A = 0;
-            return true;
-        }*/
+            Texture2D texture2D13 = Main.projectileTexture[projectile.type];
+            int num214 = Main.projectileTexture[projectile.type].Height / Main.projFrames[projectile.type];
+            int y6 = num214 * projectile.frame;
+            Main.spriteBatch.Draw(texture2D13, projectile.Center - Main.screenPosition + new Vector2(0f, projectile.gfxOffY), new Microsoft.Xna.Framework.Rectangle?(new Microsoft.Xna.Framework.Rectangle(0, y6, texture2D13.Width, num214)), projectile.GetAlpha(lightColor), projectile.rotation, new Vector2((float)texture2D13.Width / 2f, (float)num214 / 2f), projectile.scale, SpriteEffects.None, 0f);
+            return false;
+        }
     }
 }
