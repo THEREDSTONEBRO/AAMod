@@ -2984,7 +2984,6 @@
     <None Include=".vs\AAMod\v15\Server\sqlite3\storage.ide" />
     <None Include=".vs\AAMod\v15\Server\sqlite3\storage.ide-shm" />
     <None Include=".vs\AAMod\v15\Server\sqlite3\storage.ide-wal" />
-    <None Include="Items\Boss\Zero.zip" />
     <None Include="obj\Debug\AAMod.csproj.CopyComplete" />
     <None Include="obj\Debug\AAMod.csproj.CoreCompileInputs.cache" />
     <None Include="obj\Debug\AAMod.csprojAssemblyReference.cache" />

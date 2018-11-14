@@ -42,7 +42,7 @@ namespace AAMod
         public static bool downedHydra;
         public static bool downedGripRed;
         public static bool downedGripBlue;
-        public static bool downedGrips;
+        public static bool downedGrips = downedGripRed && downedGripBlue;
         public static bool downedRetriever;
         public static bool downedOrthrus;
         public static bool downedRaider;
@@ -50,7 +50,7 @@ namespace AAMod
         public static bool downedStormAll;
         public static bool downedDB;
         public static bool downedNC;
-        public static bool downedEquinox;
+        public static bool downedEquinox = downedNC && downedDB;
         public static bool downedAncient;
         public static bool downedSAncient;
         public static bool downedAkuma;
@@ -239,7 +239,7 @@ namespace AAMod
             downedAkuma = flags2[7];
 
             BitsByte flags3 = reader.ReadByte();
-            downedAkuma = flags3[1];
+            downedAkumaA = flags3[1];
             downedYamata = flags3[2];
             downedYamataA = flags3[3];
             zeroUS = flags3[4];
