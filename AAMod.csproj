@@ -101,6 +101,7 @@
     <Compile Include="Buffs\Raidmini.cs" />
     <Compile Include="Buffs\Sharkron.cs" />
     <Compile Include="Buffs\Terrablaze.cs" />
+    <Compile Include="Buffs\TimeFrozen.cs" />
     <Compile Include="Buffs\UnstableSoul.cs" />
     <Compile Include="CustomCurrency.cs" />
     <Compile Include="Dusts\AbyssiumDust.cs" />
@@ -501,7 +502,6 @@
     <Compile Include="Items\Melee\Bloody_Mary.cs" />
     <Compile Include="Items\Melee\BreakingDawn.cs" />
     <Compile Include="Items\Melee\Chaos.cs" />
-    <Compile Include="Items\Melee\ClawOfChaosBlue - Copy.cs" />
     <Compile Include="Items\Melee\ClawOfChaosBlue.cs" />
     <Compile Include="Items\Melee\ClawOfChaosRed.cs" />
     <Compile Include="Items\Melee\CloudEdge.cs" />
@@ -1082,6 +1082,7 @@
     <Content Include="Buffs\Raidmini.png" />
     <Content Include="Buffs\Sharkron.png" />
     <Content Include="Buffs\Terrablaze.png" />
+    <Content Include="Buffs\TimeFrozen.png" />
     <Content Include="Buffs\UnstableSoul.png" />
     <Content Include="build.txt" />
     <Content Include="description.txt" />
@@ -1971,6 +1972,7 @@
     <Content Include="Items\Melee\FulguriteTazesaber.png" />
     <Content Include="Items\Melee\FulguriteTazesaber_Glow.png" />
     <Content Include="Items\Melee\GladiatorsGlory.png" />
+    <Content Include="Items\Melee\GoblinSlayer.png" />
     <Content Include="Items\Melee\GrassSpear.png" />
     <Content Include="Items\Melee\GuardianNight.png" />
     <Content Include="Items\Melee\GuardianNight_Glow.png" />
@@ -2361,6 +2363,7 @@
     <Content Include="Items\Usable\InfernoInsignia_Glow.png" />
     <Content Include="Items\Usable\InfernoKey.png" />
     <Content Include="Items\Usable\InfernoKey_Glow.png" />
+    <Content Include="Items\Usable\KeyOfBlight.png" />
     <Content Include="Items\Usable\KeyOfSmite.png" />
     <Content Include="Items\Usable\KeyOfSpite.png" />
     <Content Include="Items\Usable\LivingBogleafWand.png" />
@@ -2635,6 +2638,8 @@
     <Content Include="NPCs\Enemies\Void\Searcher_Glow.png" />
     <Content Include="NPCs\Minibosses\Huo.png" />
     <Content Include="NPCs\Minibosses\Shin%27en.png" />
+    <Content Include="NPCs\TownNPCs\GoblinSlayer.png" />
+    <Content Include="NPCs\TownNPCs\GoblinSlayer_Head.png" />
     <Content Include="NPCs\TownNPCs\Mushman.png" />
     <Content Include="NPCs\TownNPCs\Mushman_Head.png" />
     <Content Include="NPCs\TownNPCs\Samurai.png" />
@@ -2959,7 +2964,6 @@
     <None Include="obj\Debug\ResolveAssemblyReference.cache" />
     <None Include="obj\Release\AAMod.csproj.CoreCompileInputs.cache" />
     <None Include="obj\Release\AAMod.csprojAssemblyReference.cache" />
-    <None Include="Palletes\Abbadon.gpl" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="bin\Release\" />

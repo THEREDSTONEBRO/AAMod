@@ -34,8 +34,8 @@ namespace AAMod
         public bool MoonAltar = false;
         public bool AkumaAltar = false;
         public bool YamataAltar = false;
-        private int VoidGrav;
         public bool AshCurse;
+        public int VoidGrav = 0;
         public static int Ashes = 0;
         // Armor bools.
         public bool steelSet;
@@ -153,7 +153,7 @@ namespace AAMod
             MiniProbe = false;
             Sharkron = false;
             Baolei = false;
-            AshCurse = !Main.dayTime || (!AAWorld.downedAkuma && !Main.expertMode) || (!AAWorld.downedAkumaA && Main.expertMode);
+            AshCurse = !Main.dayTime && ((!AAWorld.downedAkuma && !Main.expertMode) || (!AAWorld.downedAkumaA && Main.expertMode));
             IsGoblin = false;
         }
 
@@ -183,8 +183,8 @@ namespace AAMod
             player.ManageSpecialBiomeVisuals("AAMod:MireSky", useMire);
             bool useVoid = ZoneVoid || VoidUnit;
             player.ManageSpecialBiomeVisuals("AAMod:VoidSky", useVoid);
-            bool useFog = !FogRemover && (Main.dayTime || (!AAWorld.downedYamata && !Main.expertMode) || (!AAWorld.downedYamataA && Main.expertMode)) && ZoneMire;
-            bool useFogless = FogRemover && (Main.dayTime || (!AAWorld.downedYamata && !Main.expertMode) || (!AAWorld.downedYamataA && Main.expertMode)) && ZoneMire;
+            bool useFog = !FogRemover && (Main.dayTime && ((!AAWorld.downedYamata && !Main.expertMode) || (!AAWorld.downedYamataA && Main.expertMode))) && ZoneMire;
+            bool useFogless = FogRemover && (Main.dayTime && ((!AAWorld.downedYamata && !Main.expertMode) || (!AAWorld.downedYamataA && Main.expertMode))) && ZoneMire;
             player.ManageSpecialBiomeVisuals("Fog", useFog);
             player.ManageSpecialBiomeVisuals("Fogless", useFogless);
         }
@@ -285,7 +285,7 @@ namespace AAMod
         {
             if (player.GetModPlayer<AAPlayer>().ZoneMire)
             {
-                if (Main.dayTime || (!AAWorld.downedYamata && !Main.expertMode) || (!AAWorld.downedYamataA && Main.expertMode))
+                if (Main.dayTime && ((!AAWorld.downedYamata && !Main.expertMode) || (!AAWorld.downedYamataA && Main.expertMode)))
                 {
                     if (!player.GetModPlayer<AAPlayer>(mod).FogRemover)
                     {
@@ -293,31 +293,35 @@ namespace AAMod
                     }
                 }
             }
+            if (Main.rand.Next(3600) == 0)
+            {
+                VoidGrav = (Main.rand.Next(0, 5) + 1);
+            }
             if (player.GetModPlayer<AAPlayer>().ZoneVoid)
             {
                 if (!BrokenCode)
                 {
-                    if (Main.rand.Next(3600) == 0)
-                    {
-                        VoidGrav = Main.rand.Next(5);
-                    }
                     if (VoidGrav == 0)
+                    {
+                        VoidGrav = (Main.rand.Next(0, 5) + 1);
+                    }
+                    if (VoidGrav == 1)
                     {
                         player.gravity = 0.1f;
                     }
-                    else if (VoidGrav == 1)
+                    if (VoidGrav == 2)
                     {
                         player.gravity = 0.5f;
                     }
-                    else if (VoidGrav == 2)
+                    if (VoidGrav == 3)
                     {
                         player.gravity = 1f;
                     }
-                    else if (VoidGrav == 3)
+                    if (VoidGrav == 4)
                     {
                         player.gravity = 5f;
                     }
-                    else
+                    if (VoidGrav == 5)
                     {
                         player.gravity = 10f;
                     }

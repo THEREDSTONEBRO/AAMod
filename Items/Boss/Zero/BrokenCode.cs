@@ -142,11 +142,11 @@ You don't look so good
             }
             if (item.accessory)
             {
-                player.GetModPlayer<AAPlayer>(mod).BrokenCode = true;
+                player.GetModPlayer<AAPlayer>().BrokenCode = true;
             }
             else
             {
-                player.GetModPlayer<AAPlayer>(mod).BrokenCode = false;
+                player.GetModPlayer<AAPlayer>().BrokenCode = false;
             }
         }
 
