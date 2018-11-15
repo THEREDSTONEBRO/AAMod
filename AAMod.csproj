@@ -31,6 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="BaseMod">
+      <HintPath>..\..\..\..\..\..\Desktop\Ancients Awakened\Sources\BaseMod\BaseMod.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Xna.Framework, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\..\Desktop\Ancients Awakened\xna\Microsoft.Xna.Framework.dll</HintPath>
@@ -857,6 +860,8 @@
     <Compile Include="NPCs\Bosses\Shen\DiscordianInferno.cs" />
     <Compile Include="NPCs\Bosses\Shen\ShenDoragon.cs" />
     <Compile Include="NPCs\Bosses\Shen\ShenFirebomb.cs" />
+    <Compile Include="NPCs\Bosses\Yamata\Yamata.cs" />
+    <Compile Include="NPCs\Bosses\Yamata\YamataHandler.cs" />
     <Compile Include="NPCs\Bosses\Zero\DeathLaser.cs" />
     <Compile Include="NPCs\Bosses\Zero\RealityCannon.cs" />
     <Compile Include="NPCs\Bosses\Zero\RiftShredder.cs" />
@@ -2614,8 +2619,22 @@
     <Content Include="NPCs\Bosses\Unused\Decay.png" />
     <Content Include="NPCs\Bosses\Unused\MrBonesRevenge.png" />
     <Content Include="NPCs\Bosses\Unused\Soul of Cthulhu.png" />
+    <Content Include="NPCs\Bosses\Yamata\ShadowOfYamata.png" />
     <Content Include="NPCs\Bosses\Yamata\Yamata.png" />
     <Content Include="NPCs\Bosses\Yamata\YamataA.png" />
+    <Content Include="NPCs\Bosses\Yamata\YamataABody.png" />
+    <Content Include="NPCs\Bosses\Yamata\YamataAHead.png" />
+    <Content Include="NPCs\Bosses\Yamata\YamataALegBack.png" />
+    <Content Include="NPCs\Bosses\Yamata\YamataALegLeft.png" />
+    <Content Include="NPCs\Bosses\Yamata\YamataALegRight.png" />
+    <Content Include="NPCs\Bosses\Yamata\YamataANeck.png" />
+    <Content Include="NPCs\Bosses\Yamata\YamataBody.png" />
+    <Content Include="NPCs\Bosses\Yamata\YamataHead.png" />
+    <Content Include="NPCs\Bosses\Yamata\YamataHeadF.png" />
+    <Content Include="NPCs\Bosses\Yamata\YamataLegBack.png" />
+    <Content Include="NPCs\Bosses\Yamata\YamataLegLeft.png" />
+    <Content Include="NPCs\Bosses\Yamata\YamataLegRight.png" />
+    <Content Include="NPCs\Bosses\Yamata\YamataNeck.png" />
     <Content Include="NPCs\Bosses\Zero\DarkShock.png" />
     <Content Include="NPCs\Bosses\Zero\DeathLaser.png" />
     <Content Include="NPCs\Bosses\Zero\RealityCannon.png" />
