@@ -4,3 +4,5 @@ AAMod.csproj
 *.ide
 *.csproj
 .vs/AAMod/DesignTimeBuild/.dtbcache
+AAMod.csproj.user 
+AAMod.sln 
