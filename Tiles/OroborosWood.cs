@@ -15,7 +15,6 @@ namespace AAMod.Tiles
             drop = mod.ItemType("OroborosWood");   //put your CustomBlock name
             dustType = mod.DustType("DoomDust");
             AddMapEntry(new Color(60, 60, 60));
-			minPick = 225;
         }
     }
 }
