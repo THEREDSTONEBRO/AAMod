@@ -64,7 +64,6 @@ namespace AAMod.NPCs.Bosses.Zero
             npc.width = 178;
             npc.height = 174;
             npc.friendly = false;
-            animationType = NPCID.Retinazer;   //this boss will behavior like the DemonEye
             npc.value = Item.buyPrice(2, 0, 0, 0);
             npc.npcSlots = 1f;
             npc.boss = true;  
@@ -232,8 +231,31 @@ namespace AAMod.NPCs.Bosses.Zero
             return false;
         }
         private int endTimer;
+        private int timee = 5;
+
         public override void AI()
         {
+            if (timee > 0)
+            {
+                timee--;
+            }
+            if (timee == 0 && npc.frameCounter == 12)
+            {
+                npc.frameCounter = 1;
+                timee = 5;
+            }
+            if (timee == 0)
+            {
+                npc.frameCounter++;
+                if (npc.frameCounter == 12)
+                {
+                    timee = Main.rand.Next(0, 9);
+                }
+                else
+                {
+                    timee = 5;
+                }
+            }
             float Eggroll = Math.Abs(Main.GameUpdateCount) / 0.5f;
             float Pie = 1f * (float)Math.Sin(Eggroll);
             Color color1 = Color.Lerp(Color.Red, Color.Black, Pie);
