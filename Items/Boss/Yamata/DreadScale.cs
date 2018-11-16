@@ -12,7 +12,7 @@ namespace AAMod.Items.Boss.Yamata
         {
             DisplayName.SetDefault("Dread Scale");
             Tooltip.SetDefault("The power of the dread moon is in your hands");
-            Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(4, 14));
+            Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(4, 9));
         }
 
         public override void ModifyTooltips(List<TooltipLine> list)

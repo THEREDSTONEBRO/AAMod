@@ -35,7 +35,7 @@ namespace AAMod.NPCs.Enemies.Inferno
 
 		public override float SpawnChance(NPCSpawnInfo spawnInfo)
 		{
-            return spawnInfo.player.GetModPlayer<AAPlayer>(mod).ZoneInferno && spawnInfo.spawnTileY > Main.worldSurface ? 0.4f : 0f;
+            return spawnInfo.player.GetModPlayer<AAPlayer>(mod).ZoneInferno && spawnInfo.spawnTileY > Main.worldSurface && Main.dayTime ? 0.4f : 0f;
         }
 
         public override void PostDraw(SpriteBatch spriteBatch, Color drawColor)

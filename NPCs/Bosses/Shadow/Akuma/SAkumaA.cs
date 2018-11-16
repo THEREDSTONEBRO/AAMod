@@ -122,7 +122,6 @@ namespace AAMod.NPCs.Bosses.Shadow.Akuma
                         if (weakness == false)
                         {
                             weakness = true;
-                            Main.NewText("CAUGH..! WATER..! I HATE WATER!", Color.DeepSkyBlue.R, Color.DeepSkyBlue.G, Color.DeepSkyBlue.B);
                         }
                     }
                     if (attackTimer >= 80)
@@ -153,7 +152,6 @@ namespace AAMod.NPCs.Bosses.Shadow.Akuma
                         if (weakness == false)
                         {
                             weakness = true;
-                            Main.NewText("CAUGH..! WATER..! I HATE WATER!", Color.DeepSkyBlue.R, Color.DeepSkyBlue.G, Color.DeepSkyBlue.B);
                         }
                     }
                     if (attackTimer >= 80)
@@ -252,11 +250,11 @@ namespace AAMod.NPCs.Bosses.Shadow.Akuma
 				}
 			}
             float speedval = 0f;
-            if (npc.life > npc.lifeMax / 5 && npc.type == mod.NPCType<AkumaA>())
+            if (npc.life > npc.lifeMax / 5 && npc.type == mod.NPCType<SAkumaA>())
             {
                 speedval = 9f;
             }
-            if (npc.life <= npc.lifeMax / 5 && npc.type == mod.NPCType<AkumaA>())
+            if (npc.life <= npc.lifeMax / 5 && npc.type == mod.NPCType<SAkumaA>())
             {
                 speedval = 11f;
             }
@@ -464,7 +462,7 @@ namespace AAMod.NPCs.Bosses.Shadow.Akuma
 
     public class SAkumaAArms : SAkumaA
     {
-        public override string Texture { get { return "AAMod/NPCs/Bosses/Shadow/Akuma/AkumaAArms"; } }
+        public override string Texture { get { return "AAMod/NPCs/Bosses/Shadow/Akuma/SAkumaAArms"; } }
 
         public override void SetStaticDefaults()
         {

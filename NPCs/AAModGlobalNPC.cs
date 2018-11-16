@@ -8,11 +8,13 @@ namespace AAMod.NPCs
 {
     public class AAModGlobalNPC : GlobalNPC
 	{
+        //debuffs
         public bool TimeFrozen = false;
         public bool infinityOverload = false;
         public bool terraBlaze = false;
         public bool Dragonfire = false;
         public bool Hydratoxin = false;
+        public bool Moonraze = false;
 
         public override bool InstancePerEntity
 		{
@@ -39,6 +41,7 @@ namespace AAMod.NPCs
             bool drain = false;
             bool noDamage = damage <= 1;
             int damageBefore = damage;
+            int num = npc.lifeRegenExpectedLossPerSecond;
 
             if (infinityOverload)
             {
@@ -94,6 +97,25 @@ namespace AAMod.NPCs
                         npc.velocity.X = (npc.velocity.X / 16) * 15;
                         npc.velocity.Y = (npc.velocity.Y / 16) * 15;
                     }
+                }
+            }
+
+            if (Moonraze)
+            {
+                if (npc.lifeRegen > 0)
+                {
+                    npc.lifeRegen = 0;
+                }
+                int num7 = 0;
+                int num8 = 4;
+                if (num7 == 0)
+                {
+                    num7 = 1;
+                }
+                npc.lifeRegen -= num7 * 2 * 100;
+                if (num < num7 * 100 / num8)
+                {
+                    num = num7 * 100 / num8;
                 }
             }
         }
@@ -330,6 +352,7 @@ namespace AAMod.NPCs
 
 		public override void DrawEffects(NPC npc, ref Color drawColor)
 		{
+            Rectangle hitbox = npc.Hitbox;
             if (infinityOverload)
             {
                 if (Main.rand.Next(4) < 3)
@@ -410,6 +433,23 @@ namespace AAMod.NPCs
                     }
                 }
                 Lighting.AddLight(npc.position, 0.8f, 0.5f, 0.1f);
+            }
+
+            if (Moonraze)
+            {
+                for (int i = 0; i < 20; i++)
+                {
+                    int num3 = Utils.SelectRandom<int>(Main.rand, new int[]
+                    {
+                        6,
+                        259,
+                        158
+                    });
+                    int num4 = Dust.NewDust(hitbox.TopLeft(), npc.width, npc.height, num3, 0f, -2.5f, 0, new Color(115, 149, 171), 1f);
+                    Main.dust[num4].alpha = 200;
+                    Main.dust[num4].velocity *= 1.4f;
+                    Main.dust[num4].scale += Main.rand.NextFloat();
+                }
             }
 
             if (terraBlaze)

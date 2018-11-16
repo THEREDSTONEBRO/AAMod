@@ -88,6 +88,7 @@ namespace AAMod
         public bool AshRemover;
         public bool FogRemover;
         public bool Baolei;
+        public bool Naitokurosu;
         public bool DragonShell;
         //debuffs
         public bool infinityOverload = false;
@@ -155,6 +156,7 @@ namespace AAMod
             MiniProbe = false;
             Sharkron = false;
             Baolei = false;
+            Naitokurosu = false;
             AshCurse = !Main.dayTime && ((!AAWorld.downedAkuma && !Main.expertMode) || (!AAWorld.downedAkumaA && Main.expertMode));
             IsGoblin = false;
         }
@@ -824,7 +826,7 @@ namespace AAMod
         public override void ModifyHitNPCWithProj(Projectile proj, NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
         {
 
-            if (Baolei && proj.melee && Main.rand.Next(2) == 0)
+            if (Baolei && (proj.melee || proj.magic) && Main.rand.Next(2) == 0)
             {
                 if (!Main.dayTime)
                 {
@@ -837,6 +839,22 @@ namespace AAMod
                 if (Main.dayTime && Main.time >= 23400 && Main.time <= 30600)
                 {
                     target.AddBuff(BuffID.Daybreak, 1000);
+                }
+            }
+
+            if (Naitokurosu && (proj.ranged || proj.thrown) && Main.rand.Next(2) == 0)
+            {
+                if (Main.dayTime)
+                {
+
+                }
+                if (!Main.dayTime && Main.time < 14400 && Main.time > 21600)
+                {
+                    target.AddBuff(BuffID.Venom, 1000);
+                }
+                if (!Main.dayTime && Main.time >= 14400 && Main.time <= 21600)
+                {
+                    target.AddBuff(mod.BuffType("Moonraze"), 1000);
                 }
             }
 

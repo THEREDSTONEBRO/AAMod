@@ -75,7 +75,6 @@ namespace AAMod.NPCs.Bosses.Zero
                         selectedTarget = i;
                 }
             }
-
             return selectedTarget;
         }
     }

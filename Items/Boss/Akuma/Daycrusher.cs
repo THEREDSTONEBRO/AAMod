@@ -52,7 +52,6 @@ Inflicts Daybroken");
             item.useTime = 40;
             item.knockBack = 7.5F;
             item.damage = 240;
-            item.scale = 2F;
             item.noUseGraphic = true;
             item.shoot = mod.ProjectileType("Daycrusher");
             item.shootSpeed = 20F;

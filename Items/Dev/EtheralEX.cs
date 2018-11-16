@@ -30,7 +30,7 @@ namespace AAMod.Items.Dev
 	    {
 	        item.damage = 250;
 	        item.magic = true;
-	        item.mana = 125;
+	        item.mana = 20;
 	        item.width = 60;
 	        item.height = 26;
 	        item.useTime = 10;

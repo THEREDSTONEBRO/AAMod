@@ -107,33 +107,7 @@ namespace AAMod
             texture.SetData(buffer);
         }
 
-        public static Texture2D GetTexture(string name, string prefix = "Textures/")
-        {
-            Texture2D result;
-            if (Main.netMode == 2 || Main.dedServ)
-            {
-                result = null;
-            }
-            else
-            {
-                if (!precachedTextures.ContainsKey(prefix + name))
-                {
-                    foreach (KeyValuePair<string, Texture2D> kvp in Textures)
-                    {
-                        string tex = kvp.Key;
-                        if ((prefix.Equals("") || tex.Contains(prefix)) && (tex.Contains("/" + name) || tex.Contains("\\" + name)))
-                        {
-                            precachedTextures.Add(prefix + name, kvp.Value);
-                            result = kvp.Value;
-                            return result;
-                        }
-                    }
-                    throw new Exception("Texture \"" + name + "\" is missing!");
-                }
-                result = precachedTextures[prefix + name];
-            }
-            return result;
-        }
+        
 
         public override void Load()
         {
@@ -213,6 +187,34 @@ namespace AAMod
                 }
             }
         }
+
+        /*public static Texture2D GetTexture(string name, string prefix = "Textures/")
+        {
+            Texture2D result;
+            if (Main.netMode == 2 || Main.dedServ)
+            {
+                result = null;
+            }
+            else
+            {
+                if (!precachedTextures.ContainsKey(prefix + name))
+                {
+                    foreach (KeyValuePair<string, Texture2D> kvp in Textures)
+                    {
+                        string tex = kvp.Key;
+                        if ((prefix.Equals("") || tex.Contains(prefix)) && (tex.Contains("/" + name) || tex.Contains("\\" + name)))
+                        {
+                            precachedTextures.Add(prefix + name, kvp.Value);
+                            result = kvp.Value;
+                            return result;
+                        }
+                    }
+                    throw new Exception("Texture \"" + name + "\" is missing!");
+                }
+                result = precachedTextures[prefix + name];
+            }
+            return result;
+        }*/
 
         public override void Unload()
         {
