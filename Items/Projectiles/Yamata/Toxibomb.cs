@@ -23,7 +23,7 @@ namespace AAMod.Items.Projectiles.Yamata
                 Main.glowMaskTexture = glowMasks;
             }
             DisplayName.SetDefault("Soul Bomb");     //The English name of the projectile
-            Main.projFrames[projectile.type] = 5;     //The recording mode
+            Main.projFrames[projectile.type] = 4;     //The recording mode
 		}
 
 		public override void SetDefaults()
@@ -45,15 +45,14 @@ namespace AAMod.Items.Projectiles.Yamata
 
         public override void AI()
         {
-            if (Main.rand.NextFloat() < 1f)
+            if (++projectile.frameCounter >= 5)
             {
-                Dust dust1;
-                Dust dust2;
-                Vector2 position = projectile.position;
-                dust1 = Main.dust[Dust.NewDust(position, projectile.width, projectile.height, mod.DustType<Dusts.YamataDust>(), 0, 0, 0, new Color(20, 20, 76), 1f)];
-                dust2 = Main.dust[Dust.NewDust(position, projectile.width, projectile.height, mod.DustType<Dusts.YamataDust>(), 0, 0, 0, new Color(20, 20, 76), 1f)];
-                dust1.noGravity = true;
-                dust2.noGravity = true;
+                projectile.frameCounter = 0;
+                if (++projectile.frame >= 4)
+                {
+                    projectile.Kill();
+
+                }
             }
             if (projectile.ai[0] == 0f)
             {
@@ -109,11 +108,16 @@ namespace AAMod.Items.Projectiles.Yamata
             return;
         }
 
+        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+        {
+            target.AddBuff(mod.BuffType("Moonraze"), 600);
+        }
+
         public override void Kill(int timeleft)
         {
             for (int num468 = 0; num468 < 20; num468++)
             {
-                int num469 = Dust.NewDust(new Vector2(projectile.Center.X, projectile.Center.Y), projectile.width, projectile.height, mod.DustType<Dusts.YamataDust>(), -projectile.velocity.X * 0.2f,
+                int num469 = Dust.NewDust(new Vector2(projectile.width, projectile.height), projectile.width, projectile.height, mod.DustType<Dusts.YamataDust>(), -projectile.velocity.X * 0.2f,
                     -projectile.velocity.Y * 0.2f, 100, default(Color), 2f);
                 Main.dust[num469].noGravity = true;
                 Main.dust[num469].velocity *= 2f;
@@ -121,7 +125,7 @@ namespace AAMod.Items.Projectiles.Yamata
                     -projectile.velocity.Y * 0.2f, 100, default(Color));
                 Main.dust[num469].velocity *= 2f;
             }
-            Projectile.NewProjectile(projectile.position.X, projectile.position.Y, projectile.velocity.X, projectile.velocity.Y, mod.ProjectileType("Toxiboom"), projectile.damage, projectile.knockBack, projectile.owner, 0f, 0f);
+            Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, projectile.velocity.X, projectile.velocity.Y, mod.ProjectileType("Toxiboom"), projectile.damage, projectile.knockBack, projectile.owner, 0f, 0f);
         }
     }
 }

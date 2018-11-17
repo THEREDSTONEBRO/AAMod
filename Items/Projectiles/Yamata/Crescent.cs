@@ -47,20 +47,6 @@ namespace AAMod.Items.Projectiles.Yamata   //The directory for your .cs and .png
             ProjectileID.Sets.YoyosTopSpeed[projectile.type] = 17f;
         }
 
-        public override void AI()
-        {
-            if (Main.rand.NextFloat() < 1f)
-            {
-                Dust dust1;
-                Dust dust2;
-                Vector2 position = projectile.position;
-                dust1 = Main.dust[Dust.NewDust(position, 0, 0, mod.DustType<Dusts.YamataDust>(), 0f, 0f, 0, default(Color), 1f)];
-                dust2 = Main.dust[Dust.NewDust(position, 0, 0, mod.DustType<Dusts.YamataDust>(), 0f, 0f, 0, default(Color), 1f)];
-                dust1.noGravity = true;
-                dust2.noGravity = true;
-            }
-        }
-
 
 
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)

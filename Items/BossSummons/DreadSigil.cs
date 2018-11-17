@@ -38,7 +38,7 @@ Only Usable at night");
             {
                 if (line2.mod == "Terraria" && line2.Name == "ItemName")
                 {
-                    line2.overrideColor = new Color(20, 20, 76);
+                    line2.overrideColor = new Color(45, 46, 70);
                 }
             }
         }
@@ -64,14 +64,14 @@ Only Usable at night");
 		{
             if (Main.dayTime)
             {
-                if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("NO! I DON'T WANNA FIGHT NOW! COME BACK AT NIGHT!", new Color(20, 20, 76), false);
+                if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("NO! I DON'T WANNA FIGHT NOW! COME BACK AT NIGHT!", new Color(45, 46, 70), false);
                 return false;
             }
             if (player.GetModPlayer<AAPlayer>(mod).ZoneMire)
 			{
 				if (NPC.AnyNPCs(mod.NPCType("Yamata")))
 				{
-					if(player.whoAmI == Main.myPlayer) BaseUtility.Chat("WHAT THE HELL ARE YOU DOING?! I'M ALREADY HERE!!!", new Color(20, 20, 76), false);
+					if(player.whoAmI == Main.myPlayer) BaseUtility.Chat("WHAT THE HELL ARE YOU DOING?! I'M ALREADY HERE!!!", new Color(45, 46, 70), false);
 					return false;
 				}
                 if (NPC.AnyNPCs(mod.NPCType("YamataA")))
@@ -81,7 +81,7 @@ Only Usable at night");
                 }
                 return true;
 			}
-			if(player.whoAmI == Main.myPlayer) BaseUtility.Chat("Hey Dumbo! Mire is that way!", new Color(20, 20, 76), false);			
+			if(player.whoAmI == Main.myPlayer) BaseUtility.Chat("Hey Dumbo! Mire is that way!", new Color(45, 46, 70), false);			
 			return false;
 		}
 

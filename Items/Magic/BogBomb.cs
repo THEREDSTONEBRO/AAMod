@@ -14,8 +14,8 @@ namespace AAMod.Items.Magic        //We need this to basically indicate the fold
             item.magic = true;  
             item.width = 32;     
             item.height = 28;    
-            item.useTime = 26; 
-            item.useAnimation = 26; 
+            item.useTime = 20; 
+            item.useAnimation = 20; 
             item.useStyle = 5;        
             item.noMelee = true;   
             item.knockBack = 1; 
@@ -25,7 +25,7 @@ namespace AAMod.Items.Magic        //We need this to basically indicate the fold
             item.UseSound = SoundID.Item1; 
             item.autoReuse = true; 
             item.shoot = mod.ProjectileType("BogBomb");  
-            item.shootSpeed = 20f;    
+            item.shootSpeed = 30f;    
         }
 
 		public override void SetStaticDefaults()

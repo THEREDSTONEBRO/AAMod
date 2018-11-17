@@ -40,7 +40,7 @@ namespace AAMod.Items.Boss.Yamata        //We need this to basically indicate th
             {
                 if (line2.mod == "Terraria" && line2.Name == "ItemName")
                 {
-                    line2.overrideColor = new Color(20, 20, 76);
+                    line2.overrideColor = new Color(45, 46, 70);
                 }
             }
         }

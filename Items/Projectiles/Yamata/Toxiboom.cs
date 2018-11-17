@@ -46,6 +46,11 @@ namespace AAMod.Items.Projectiles.Yamata
 
         }
 
+        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+        {
+            target.AddBuff(mod.BuffType("Moonraze"), 600);
+        }
+
         public override void Kill(int timeLeft)
         {
             projectile.timeLeft = 0;

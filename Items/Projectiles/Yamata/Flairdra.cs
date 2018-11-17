@@ -33,8 +33,8 @@ namespace AAMod.Items.Projectiles.Yamata
                 projectile.Kill();
                 return;
             }
-            Main.player[projectile.owner].itemAnimation = 10;
-            Main.player[projectile.owner].itemTime = 10;
+            Main.player[projectile.owner].itemAnimation = 20;
+            Main.player[projectile.owner].itemTime = 20;
             float arg_1C53D_0 = vector54.X;
             if (vector54.X < 0f)
             {

@@ -33,5 +33,10 @@ namespace AAMod.Items.Projectiles.Yamata
             //return Color.White;
             return new Color(150, 0, 200, 0) * (1f - (projectile.alpha / 255f));
         }
+
+        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+        {
+            target.AddBuff(mod.BuffType("Moonraze"), 600);
+        }
     }
 }

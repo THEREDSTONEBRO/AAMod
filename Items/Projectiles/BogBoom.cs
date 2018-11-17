@@ -45,6 +45,8 @@ namespace AAMod.Items.Projectiles
 
         }
 
+        target.AddBuff(BuffID.Venom, 600);
+
         public override void Kill(int timeLeft)
         {
             projectile.timeLeft = 0;

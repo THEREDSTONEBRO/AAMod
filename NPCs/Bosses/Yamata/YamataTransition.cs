@@ -38,17 +38,17 @@ namespace AAMod.NPCs.Bosses.Yamata
             }
             if (timer == 375)          //if the timer has gotten to 7.5 seconds, this happens (60 = 1 second)
             {
-                Main.NewText("NYEHEHEHEHEHEHEHEH~!", new Color(20, 20, 76));
+                Main.NewText("NYEHEHEHEHEHEHEHEH~!", new Color(45, 46, 70));
                 AAMod.YamataMusic = true;
             }
             if (timer == 750)
             {
-                Main.NewText("You thought I was DONE..?!", new Color(20, 20, 76));
+                Main.NewText("You thought I was DONE..?!", new Color(45, 46, 70));
             }
 
             if (timer == 825)
             {
-                Main.NewText("HAH! AS IF!", new Color(20, 20, 76));
+                Main.NewText("HAH! AS IF!", new Color(45, 46, 70));
             }
             if (timer >= 900)
             {
@@ -69,7 +69,7 @@ namespace AAMod.NPCs.Bosses.Yamata
 
             if (timer == 900)
             {
-                Main.NewText("I hope you're ready...", new Color(20, 20, 76));
+                Main.NewText("I hope you're ready...", new Color(45, 46, 70));
             }
 
             if (timer == 1080)

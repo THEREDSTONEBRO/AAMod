@@ -604,7 +604,6 @@
     <Compile Include="Items\Potions\TheBigOne.cs" />
     <Compile Include="Items\Projectiles\Akuma\FireProjBoom.cs" />
     <Compile Include="Items\Projectiles\BogBomb.cs" />
-    <Compile Include="Items\Projectiles\Akuma\AkumaFlare.cs" />
     <Compile Include="Items\Projectiles\Akuma\Dawnstrike.cs" />
     <Compile Include="Items\Projectiles\Akuma\DaybreakArrow.cs" />
     <Compile Include="Items\Projectiles\Akuma\Daycrusher.cs" />
@@ -2140,7 +2139,6 @@
     <Content Include="Items\Potions\GrandHealingPotion.png" />
     <Content Include="Items\Potions\GrandManaPotion.png" />
     <Content Include="Items\Potions\TheBigOne.png" />
-    <Content Include="Items\Projectiles\Akuma\AkumaFlare.png" />
     <Content Include="Items\Projectiles\Akuma\Dawnstrike.png" />
     <Content Include="Items\Projectiles\Akuma\DaybreakArrow.png" />
     <Content Include="Items\Projectiles\Akuma\DaybreakArrow_Glow.png" />
@@ -2316,6 +2314,7 @@
     <Content Include="Items\Projectiles\Void.png" />
     <Content Include="Items\Projectiles\Void_Glow.png" />
     <Content Include="Items\Projectiles\Yamata\Crescent.png" />
+    <Content Include="Items\Projectiles\Yamata\Crescent_Glow.png" />
     <Content Include="Items\Projectiles\Yamata\Flairdra.png" />
     <Content Include="Items\Projectiles\Yamata\FlairdraCyclone.png" />
     <Content Include="Items\Projectiles\Yamata\Flairdra_Chain.png" />
