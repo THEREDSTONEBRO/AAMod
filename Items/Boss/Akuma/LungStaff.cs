@@ -110,5 +110,16 @@ namespace AAMod.Items.Boss.Akuma
 
             return false;
         }
+
+        public override void AddRecipes()
+        {
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(null, "DaybreakIncinerite", 5);
+            recipe.AddIngredient(null, "CrucibleScale", 5);
+            recipe.AddIngredient(null, "DragonriderStaff", 1);
+            recipe.AddTile(null, "BinaryReassembler");
+            recipe.SetResult(this, 1);
+            recipe.AddRecipe();
+        }
     }
 }

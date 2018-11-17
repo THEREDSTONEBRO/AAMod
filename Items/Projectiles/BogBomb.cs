@@ -18,12 +18,12 @@ namespace AAMod.Items.Projectiles
                 {
                     glowMasks[i] = Main.glowMaskTexture[i];
                 }
-                glowMasks[glowMasks.Length - 1] = mod.GetTexture("Items/Projectile/" + GetType().Name + "_Glow");
+                glowMasks[glowMasks.Length - 1] = mod.GetTexture("Items/Projectiles/" + GetType().Name + "_Glow");
                 customGlowMask = (short)(glowMasks.Length - 1);
                 Main.glowMaskTexture = glowMasks;
             }
             DisplayName.SetDefault("Bog Bomb");     //The English name of the projectile
-			ProjectileID.Sets.TrailCacheLength[projectile.type] = 5;     //The recording mode
+            Main.projFrames[projectile.type] = 5;     //The recording mode
 		}
 
 		public override void SetDefaults()

@@ -64,8 +64,8 @@ namespace AAMod.Items.Summoning.Minions
 
 
             int num1038 = 10;
-            if (player.dead) modPlayer.LungMinion = false;
-            if (modPlayer.LungMinion) projectile.timeLeft = 2;
+            if (player.dead) modPlayer.DragonMinion = false;
+            if (modPlayer.DragonMinion) projectile.timeLeft = 2;
             num1038 = 30;
 
             //D U S T

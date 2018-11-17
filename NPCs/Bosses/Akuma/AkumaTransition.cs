@@ -96,7 +96,7 @@ namespace AAMod.NPCs.Bosses.Akuma
             dust5.noGravity = false;
             dust6.noGravity = false;
 
-            Main.NewText("Akuma has been Awakened!", Color.Silver.R, Color.Silver.G, Color.Silver.B);
+            Main.NewText("Akuma has been Awakened!", Color.Magenta.R, Color.Magenta.G, Color.Magenta.B);
             Main.NewText("IT ONLY MAKES THEM STRONGER", Color.DeepSkyBlue.R, Color.DeepSkyBlue.G, Color.DeepSkyBlue.B);
 
             AAMod.AkumaMusic = false;

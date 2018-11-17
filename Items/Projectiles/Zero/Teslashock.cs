@@ -22,7 +22,7 @@ namespace AAMod.Items.Projectiles.Zero
                 Main.glowMaskTexture = glowMasks;
             }
             projectile.glowMask = customGlowMask;
-            DisplayName.SetDefault("Taserblast");
+            DisplayName.SetDefault("Teslablast");
         }
         public override void SetDefaults()
         {
@@ -30,7 +30,7 @@ namespace AAMod.Items.Projectiles.Zero
             projectile.height = 12;
             projectile.friendly = true;
             projectile.penetrate = -1;                       //this is the projectile penetration
-            Main.projFrames[projectile.type] = 4;           //this is projectile frames
+            Main.projFrames[projectile.type] = 3;           //this is projectile frames
             projectile.hostile = false;
             projectile.magic = true;                        //this make the projectile do magic damage
             projectile.tileCollide = true;                 //this make that the projectile does not go thru walls
@@ -49,9 +49,9 @@ namespace AAMod.Items.Projectiles.Zero
             if (++projectile.frameCounter >= 3)
             {
                 projectile.frameCounter = 0;
-                if (++projectile.frame >= 5)
+                if (++projectile.frame >= 2)
                 {
-                    projectile.frame = 1;
+                    projectile.frame = 00;
                 }
             }
         }

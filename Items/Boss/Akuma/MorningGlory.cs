@@ -37,7 +37,7 @@ namespace AAMod.Items.Boss.Akuma
             item.knockBack = 4f;
             item.melee = true;
             item.useStyle = 1;
-            item.UseSound = SoundID.Item1;
+            item.UseSound = SoundID.Item20;
             item.useAnimation = 13;
             item.useTime = 13;
             item.width = 30;

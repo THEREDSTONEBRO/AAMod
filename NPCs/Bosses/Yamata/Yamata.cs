@@ -68,10 +68,10 @@ namespace AAMod.NPCs.Bosses.Yamata
             npc.netAlways = true;
             for (int m = 0; m < npc.buffImmune.Length; m++) npc.buffImmune[m] = true;
 
-            frameWidth = 98;
-            frameHeight = 94;
+            frameWidth = 162;
+            frameHeight = 118;
             npc.frame = BaseDrawing.GetFrame(frameCount, frameWidth, frameHeight, 0, 2);
-            frameBottom = BaseDrawing.GetFrame(frameCount, frameWidth, 70, 0, 2);
+            frameBottom = BaseDrawing.GetFrame(frameCount, frameWidth, 54, 0, 2);
             frameHead = BaseDrawing.GetFrame(frameCount, frameWidth, 118, 0, 2);
 
             if (Main.expertMode)
@@ -121,7 +121,7 @@ namespace AAMod.NPCs.Bosses.Yamata
         public Rectangle frameBottom = new Rectangle(0, 0, 1, 1), frameHead = new Rectangle(0, 0, 1, 1);
         public bool flying = false, prevHalfHPLeft = false, halfHPLeft = false, prevFourthHPLeft = false, fourthHPLeft = false, summonedHealers1 = false, summonedHealers2 = false;
         public Player playerTarget = null;
-        public static int flyingTileCount = 12, totalMinionCount = 0;
+        public static int flyingTileCount = 4, totalMinionCount = 0;
 
         //damage counts
         public int swipeDamage = 100, scytheDamage = 120, eggDamage = 90;
@@ -163,7 +163,10 @@ namespace AAMod.NPCs.Bosses.Yamata
                 if (internalAI[1] == stateIdle) //idle (unused)
                 {
                     AIMovementIdle();
-                }
+                }else
+				{
+					AIMovementNormal();
+				}
             }
             else
             {
@@ -194,9 +197,9 @@ namespace AAMod.NPCs.Bosses.Yamata
 
         public void AIMovementNormal(float movementScalar = 1f, float playerDistance = -1f)
         {
-            float movementScalar2 = Math.Min(6f, Math.Max(1f, (playerDistance / (float)playerTooFarDist) * 6f));
+            float movementScalar2 = Math.Min(2f, Math.Max(1f, (playerDistance / (float)playerTooFarDist) * 2f));
             bool playerTooFar = playerDistance > playerTooFarDist;
-            BaseAI.AISpaceOctopus(npc, ref npc.ai, (flying ? 0.2f : 0.15f) * movementScalar2 * movementScalar, (flying ? 9f : 5f) * movementScalar2 * movementScalar, 140f, 70f, null);
+            BaseAI.AISpaceOctopus(npc, ref npc.ai, (flying ? 0.2f : 0.15f) * movementScalar2 * movementScalar, (flying ? 4f : 1f) * movementScalar2 * movementScalar, 50f, 40f, null);
             if (playerTooFar) npc.position += (playerTarget.position - playerTarget.oldPosition);
             npc.rotation = 0f;
         }
@@ -213,9 +216,9 @@ namespace AAMod.NPCs.Bosses.Yamata
             float prevAI = internalAI[1];
             if (prevAI == stateMovementOnly) //if the previous AI was movement only, choose a random attack AI sequence.
             {
-                internalAI[1] = (Main.expertMode ? statesToChangeToExpert[Main.rand.Next(statesToChangeToExpert.Length)] : statesToChangeTo[Main.rand.Next(statesToChangeTo.Length)]);
-                if (internalAI[1] != stateFireEggs && totalMinionCount < 2 && Main.rand.Next(3) != 0) internalAI[1] = stateFireEggs; //favor firing eggs if there are not many minions left
-                if (((internalAI[1] == stateArmCombo && Main.rand.Next(2) == 0) || internalAI[1] == stateFireEggs) && Main.expertMode && fourthHPLeft) internalAI[1] = stateArmAndEggs; //get serious at 25% hp on expert mode.
+                //internalAI[1] = (Main.expertMode ? statesToChangeToExpert[Main.rand.Next(statesToChangeToExpert.Length)] : statesToChangeTo[Main.rand.Next(statesToChangeTo.Length)]);
+                //if (internalAI[1] != stateFireEggs && totalMinionCount < 2 && Main.rand.Next(3) != 0) internalAI[1] = stateFireEggs; //favor firing eggs if there are not many minions left
+                //if (((internalAI[1] == stateArmCombo && Main.rand.Next(2) == 0) || internalAI[1] == stateFireEggs) && Main.expertMode && fourthHPLeft) internalAI[1] = stateArmAndEggs; //get serious at 25% hp on expert mode.
             }
             else// otherwise go to idle phase.
             {
@@ -292,7 +295,7 @@ namespace AAMod.NPCs.Bosses.Yamata
                     legs[m].DrawLeg(sb, npc, dColor);
                 }
             }
-            BaseDrawing.DrawTexture(sb, mod.GetTexture("NPCs/Bosses/Yamata/YamataTail"), 0, npc.position + new Vector2(0f, npc.gfxOffY + 40f) + bottomVisualOffset, npc.width, npc.height, npc.scale, npc.rotation, npc.spriteDirection, Main.npcFrameCount[npc.type], frameBottom, dColor, false);
+            BaseDrawing.DrawTexture(sb, mod.GetTexture("NPCs/Bosses/Yamata/YamataTail"), 0, npc.position + new Vector2(0f, npc.gfxOffY) + bottomVisualOffset, npc.width, npc.height, npc.scale, npc.rotation, npc.spriteDirection, Main.npcFrameCount[npc.type], frameBottom, dColor, false);
             BaseDrawing.DrawTexture(sb, Main.npcTexture[npc.type], 0, npc.position + new Vector2(0f, npc.gfxOffY) + topVisualOffset, npc.width, npc.height, npc.scale, npc.rotation, npc.spriteDirection, Main.npcFrameCount[npc.type], npc.frame, dColor, false);
             
             return false;
@@ -390,7 +393,7 @@ namespace AAMod.NPCs.Bosses.Yamata
     public class LegInfo : LimbInfo
     {
         Vector2 velocity, oldVelocity, legOrigin;
-        float velOffsetY = 0f, distanceToMove = 120f, distanceToMoveX = 50f;
+        float velOffsetY = 0f, distanceToMove = 40f, distanceToMoveX = 30f;
         bool flying = false, leftLeg = false;
 
         Vector2 pointToStandOn = default(Vector2);
@@ -403,13 +406,13 @@ namespace AAMod.NPCs.Bosses.Yamata
             position = initialPos;
             pointToStandOn = position;
             limbType = lType;
-            Hitbox = new Rectangle(0, 0, 42, 110);
+            Hitbox = new Rectangle(0, 0, 70, 92);
             legOrigin = new Vector2(limbType == 1 || limbType == 3 ? Hitbox.Width - 12 : 12, 12);
         }
 
         public void MoveLegFlying(NPC npc, bool leftLeg)
         {
-            Vector2 movementSpot = GetMantidConnector(npc) + new Vector2((limbType == 3 ? (-35f - Hitbox.Width) : limbType == 2 ? 35f : limbType == 1 ? (-25f - Hitbox.Width) : 25f), (limbType == 1 || limbType == 0 ? 10f : 15f));
+            Vector2 movementSpot = GetMantidConnector(npc) + new Vector2((limbType == 3 ? (-35f - Hitbox.Width) : limbType == 2 ? 35f : limbType == 1 ? (-15f - Hitbox.Width) : 15f), (limbType == 1 || limbType == 0 ? 10f : 15f));
             float velLength = (npc.position - npc.oldPos[1]).Length();
             if (velLength > 8f)
             {
@@ -501,8 +504,8 @@ namespace AAMod.NPCs.Bosses.Yamata
         public Vector2 GetStandOnPoint(NPC npc)
         {
             float scalar = npc.velocity.Length();
-            float outerLegDefault = 100f + (0.5f * scalar);
-            float innerLegDefault = 70f + (0.5f * scalar);
+            float outerLegDefault = 20f + (0.5f * scalar);
+            float innerLegDefault = 5f + (0.5f * scalar);
             float rightLegScalar = 1f + (npc.velocity.X > 2f ? (scalar * 0.2f) : 0f); //fixes an offset problem when the matriarch walks right
             float standOnX = npc.Center.X + yamata.topVisualOffset.X + (limbType == 3 ? (-outerLegDefault - Hitbox.Width) : limbType == 2 ? (outerLegDefault + Hitbox.Width) : limbType == 1 ? (-innerLegDefault - Hitbox.Width) : (innerLegDefault + Hitbox.Width));
             Vector2 defaultPlacement = default(Vector2);
@@ -535,8 +538,8 @@ namespace AAMod.NPCs.Bosses.Yamata
             }
             Vector2 drawPos = position - new Vector2(0f, velOffsetY);
             Color lightColor = npc.GetAlpha(BaseDrawing.GetLightColor(Center));
-            BaseDrawing.DrawChain(sb, new Texture2D[] { textures[0], null }, 0, drawPos + new Vector2(limbType == 1 || limbType == 3 ? Hitbox.Width - 10f : 10f, 20f), legJoint, 0f, null, 1f, false, null);
-            BaseDrawing.DrawChain(sb, new Texture2D[] { textures[0], textures[0] }, 0, legJoint, GetMantidConnector(npc), 0f, null, 1f, false, null);
+            //BaseDrawing.DrawChain(sb, new Texture2D[] { null, textures[0], null }, 0, drawPos + new Vector2(limbType == 1 || limbType == 3 ? Hitbox.Width - 10f : 10f, 20f), legJoint, 0f, null, 1f, false, null);
+            //BaseDrawing.DrawChain(sb, new Texture2D[] { textures[0], textures[0], textures[0] }, 0, legJoint, GetMantidConnector(npc), 0f, null, 1f, false, null);
             BaseDrawing.DrawTexture(sb, textures[1], 0, drawPos, Hitbox.Width, Hitbox.Height, npc.scale, rotation, limbType == 1 || limbType == 3 ? 1 : -1, 1, Hitbox, lightColor, false, legOrigin);
         }
     }

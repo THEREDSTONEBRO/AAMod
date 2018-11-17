@@ -26,6 +26,7 @@ namespace AAMod
         internal UserInterface UserInterface;
         internal TerratoolUI TerratoolUI;
         public static bool AkumaMusic;
+        public static bool YamataMusic;
         public static AAMod self = null;
         public static IDictionary<string, Texture2D> Textures = null;
         public static Dictionary<string, Texture2D> precachedTextures = new Dictionary<string, Texture2D>();
@@ -57,11 +58,13 @@ namespace AAMod
                 
                 if (Main.expertMode)
                 {
+                    bossChecklist.Call("AddBossWithInfo", "Yamata", 18.0001f, (Func<bool>)(() => AAWorld.downedYamataA), "Use a [i:" + ItemType("DreadSigil") + "] in the Mire at night");
                     bossChecklist.Call("AddBossWithInfo", "Akuma", 18.0001f, (Func<bool>)(() => AAWorld.downedAkumaA), "Use a [i:" + ItemType("DraconianSigil") + "] in the Inferno during the day");
                     bossChecklist.Call("AddBossWithInfo", "Zero", 18.0001f, (Func<bool>)(() => AAWorld.downedZeroA), "Use a [i:" + ItemType("ZeroTesseract") + "] in the Void");
                 }
                 else
                 {
+                    bossChecklist.Call("AddBossWithInfo", "Yamata", 18.0001f, (Func<bool>)(() => AAWorld.downedYamata), "Use a [i:" + ItemType("DreadSigil") + "] in the Mire at night");
                     bossChecklist.Call("AddBossWithInfo", "Akuma", 18.0001f, (Func<bool>)(() => AAWorld.downedAkuma), "Use a [i:" + ItemType("DraconianSigil") + "] in the Inferno during the day");
                     bossChecklist.Call("AddBossWithInfo", "Zero", 18.001f, (Func<bool>)(() => AAWorld.downedZero), "Use a [i:" + ItemType("ZeroTesseract") + "] in the Void");
                 }
@@ -337,6 +340,12 @@ namespace AAMod
             if (AkumaMusic == true)
             {
                 music = GetSoundSlot(SoundType.Music, "Sounds/Music/Akuma2");
+
+                priority = MusicPriority.BossHigh;
+            }
+            if (YamataMusic == true)
+            {
+                music = GetSoundSlot(SoundType.Music, "Sounds/Music/Yamata2");
 
                 priority = MusicPriority.BossHigh;
             }

@@ -74,5 +74,16 @@ Inflicts Moonraze");
             }
             return base.CanUseItem(player);
 		}
-	}
+
+        public override void AddRecipes()
+        {
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(null, "EventideAbyssium", 5);
+            recipe.AddIngredient(null, "DreadScale", 5);
+            recipe.AddIngredient(ItemID.Arkhalis, 1);
+            recipe.AddTile(null, "BinaryReassembler");
+            recipe.SetResult(this, 1);
+            recipe.AddRecipe();
+        }
+    }
 }

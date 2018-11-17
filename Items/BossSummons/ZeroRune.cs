@@ -1,3 +1,4 @@
+using BaseMod;
 using Microsoft.Xna.Framework;
 using System.Collections.Generic;
 using Terraria;
@@ -52,8 +53,22 @@ namespace AAMod.Items.BossSummons
         // We use the CanUseItem hook to prevent a player from using this item while the boss is present in the world.
         public override bool CanUseItem(Player player)
         {
-            AAPlayer modPlayer = player.GetModPlayer<AAPlayer>(mod);
-            return modPlayer.ZoneVoid && !NPC.AnyNPCs(mod.NPCType("Zero")) && !NPC.AnyNPCs(mod.NPCType("ZeroAwakened")) && Main.expertMode;
+            if (player.GetModPlayer<AAPlayer>(mod).ZoneVoid)
+            {
+                if (NPC.AnyNPCs(mod.NPCType("Zero")))
+                {
+                    if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("ERR0R. ZER0 UNIT ALREADY ACTIVE. PLEASE TRY AGAIN LATER.", new Color(255, 0, 0), false);
+                    return false;
+                }
+                if (NPC.AnyNPCs(mod.NPCType("ZeroAwakened")))
+                {
+                    if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("ERR0R. ZER0 UNIT ALREADY ACTIVE. PLEASE TRY AGAIN LATER.", new Color(255, 0, 0), false);
+                    return false;
+                }
+                return true;
+            }
+            if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("ERR0R. PLAYER.GETM0DPLAYER<AAPLAYER>(M0D).Z0NEV0ID == FALSE. PLEASE TRY AGAIN LATER.", new Color(255, 0, 0), false);
+            return false;
         }
 
         public override bool UseItem(Player player)

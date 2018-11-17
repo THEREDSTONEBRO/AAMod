@@ -30,7 +30,7 @@ namespace AAMod.Items.Blocks
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(ItemID.MusicBox);
             recipe.AddIngredient(null, "EventideAbyssium", 5);
-            //recipe.AddIngredient(null, "DreadScale", 5);
+            recipe.AddIngredient(null, "DreadScale", 5);
             recipe.AddTile(TileID.Sawmill);
             recipe.SetResult(this);
             recipe.AddRecipe();

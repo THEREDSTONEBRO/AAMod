@@ -25,17 +25,7 @@ namespace AAMod.Items.Projectiles.Yamata
         }
 		
 		public override void AI()
-		{
-            if (Main.rand.NextFloat() < 1f)
-            {
-                Dust dust1;
-                Dust dust2;
-                Vector2 position = projectile.position;
-                dust1 = Main.dust[Dust.NewDust(position, projectile.width, projectile.height, mod.DustType<Dusts.YamataDust>(), 0, 0, 0, default(Color), 1f)];
-                dust2 = Main.dust[Dust.NewDust(position, projectile.width, projectile.height, mod.DustType<Dusts.YamataDust>(), 0, 0, 0, default(Color), 1f)];
-                dust1.noGravity = true;
-                dust2.noGravity = true;
-            }
+        { 
             Vector2 vector54 = Main.player[projectile.owner].Center - projectile.Center;
             projectile.rotation = vector54.ToRotation() - 1.57f;
             if (Main.player[projectile.owner].dead)

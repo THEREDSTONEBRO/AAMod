@@ -47,7 +47,7 @@ namespace AAMod.NPCs.Enemies.Inferno
 
 		public override void NPCLoot()
 		{
-			string[] lootTable = { "OrnateBand" };
+			string[] lootTable = { "OrnateBand", "SunLance" };
 			int loot = Main.rand.Next(lootTable.Length);
 			Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType(lootTable[loot]));
 		}

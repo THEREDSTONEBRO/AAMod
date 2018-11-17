@@ -17,7 +17,7 @@ namespace AAMod.Items.Projectiles.Yamata
         {
             projectile.width = 14;
             projectile.height = 14;
-            projectile.aiStyle = 70;
+            projectile.aiStyle = 0;
             projectile.friendly = true;
             projectile.penetrate = 1;
             projectile.alpha = 255;
