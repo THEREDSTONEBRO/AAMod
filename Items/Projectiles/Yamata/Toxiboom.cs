@@ -25,7 +25,6 @@ namespace AAMod.Items.Projectiles.Yamata
             projectile.tileCollide = false;
             projectile.ignoreWater = true;
             projectile.timeLeft = 600;
-            projectile.scale *= 2;
             projectile.usesLocalNPCImmunity = true;
             projectile.localNPCHitCooldown = 4;
         }

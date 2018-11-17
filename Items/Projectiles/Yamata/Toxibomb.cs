@@ -50,7 +50,7 @@ namespace AAMod.Items.Projectiles.Yamata
                 projectile.frameCounter = 0;
                 if (++projectile.frame >= 4)
                 {
-                    projectile.Kill();
+                    projectile.frame = 0;
 
                 }
             }
@@ -125,7 +125,7 @@ namespace AAMod.Items.Projectiles.Yamata
                     -projectile.velocity.Y * 0.2f, 100, default(Color));
                 Main.dust[num469].velocity *= 2f;
             }
-            Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, projectile.velocity.X, projectile.velocity.Y, mod.ProjectileType("Toxiboom"), projectile.damage, projectile.knockBack, projectile.owner, 0f, 0f);
+            Projectile.NewProjectile(projectile.position.X, projectile.position.Y, projectile.velocity.X, projectile.velocity.Y, mod.ProjectileType("Toxiboom"), projectile.damage, projectile.knockBack, projectile.owner, 0f, 0f);
         }
     }
 }

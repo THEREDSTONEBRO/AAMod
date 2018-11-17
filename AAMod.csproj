@@ -324,8 +324,10 @@
     <Compile Include="Items\Blocks\InfernoUBox.cs" />
     <Compile Include="Items\Blocks\MireAltar.cs" />
     <Compile Include="Items\Blocks\MireBox.cs" />
+    <Compile Include="Items\Blocks\MireChest.cs" />
     <Compile Include="Items\Blocks\MireGrassBlock.cs" />
     <Compile Include="Items\Blocks\MireUBox.cs" />
+    <Compile Include="Items\Blocks\MonarchBox.cs" />
     <Compile Include="Items\Blocks\MoonAltar.cs" />
     <Compile Include="Items\Blocks\Mycelium.cs" />
     <Compile Include="Items\Blocks\N1Box.cs" />
@@ -645,6 +647,7 @@
     <Compile Include="Items\Projectiles\DarkmatterJackhammerPro.cs" />
     <Compile Include="Items\Projectiles\DarkShredders.cs" />
     <Compile Include="Items\Projectiles\DBP.cs" />
+    <Compile Include="Items\Projectiles\DBreath.cs" />
     <Compile Include="Items\Projectiles\DecayScythe.cs" />
     <Compile Include="Items\Projectiles\DecayScytheProj.cs" />
     <Compile Include="Items\Projectiles\Depthwalker.cs" />
@@ -1678,8 +1681,10 @@
     <Content Include="Items\Blocks\InfernoUBox.png" />
     <Content Include="Items\Blocks\MireAltar.png" />
     <Content Include="Items\Blocks\MireBox.png" />
+    <Content Include="Items\Blocks\MireChest.png" />
     <Content Include="Items\Blocks\MireGrassBlock.png" />
     <Content Include="Items\Blocks\MireUBox.png" />
+    <Content Include="Items\Blocks\MonarchBox.png" />
     <Content Include="Items\Blocks\MoonAltar.png" />
     <Content Include="Items\Blocks\Mycelium.png" />
     <Content Include="Items\Blocks\N1Box.png" />
@@ -2203,6 +2208,7 @@
     <Content Include="Items\Projectiles\DarkShredders.png" />
     <Content Include="Items\Projectiles\DarkShredders_glow.png" />
     <Content Include="Items\Projectiles\DBP.png" />
+    <Content Include="Items\Projectiles\DBreath.png" />
     <Content Include="Items\Projectiles\DecayScythe.png" />
     <Content Include="Items\Projectiles\DecayScytheProj.png" />
     <Content Include="Items\Projectiles\DecayScythe_Glow.png" />
