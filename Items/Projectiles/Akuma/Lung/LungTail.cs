@@ -105,8 +105,8 @@ namespace AAMod.Items.Projectiles.Akuma.Lung
                 scaleFactor16 = 16f;
                 int arg_2D9AD_0 = Main.projectile[byUUID].alpha;
                 Main.projectile[byUUID].localAI[0] = projectile.localAI[0] + 1f;
-                if (Main.projectile[byUUID].type != mod.ProjectileType("EaterHead")) Main.projectile[byUUID].localAI[1] = projectile.whoAmI;
-                if (projectile.owner == player.whoAmI && Main.projectile[byUUID].type == mod.ProjectileType("EaterHead"))
+                if (Main.projectile[byUUID].type != mod.ProjectileType("LungHead")) Main.projectile[byUUID].localAI[1] = projectile.whoAmI;
+                if (projectile.owner == player.whoAmI && Main.projectile[byUUID].type == mod.ProjectileType("LungHead"))
                 {
                     Main.projectile[byUUID].Kill();
                     projectile.Kill();
@@ -118,7 +118,7 @@ namespace AAMod.Items.Projectiles.Akuma.Lung
             if (projectile.alpha > 0)
                 for (int num1054 = 0; num1054 < 2; num1054++)
                 {
-                    int num1055 = Dust.NewDust(projectile.position, projectile.width, projectile.height, 135, 0f, 0f, 100, default(Color), 2f);
+                    int num1055 = Dust.NewDust(projectile.position, projectile.width, projectile.height, mod.DustType<Dusts.AkumaADust>(), 0f, 0f, 100, default(Color), 2f);
                     Main.dust[num1055].noGravity = true;
                     Main.dust[num1055].noLight = true;
                 }

@@ -591,6 +591,7 @@
     <Compile Include="Items\Potions\GrandHealingPotion.cs" />
     <Compile Include="Items\Potions\GrandManaPotion.cs" />
     <Compile Include="Items\Potions\TheBigOne.cs" />
+    <Compile Include="Items\Projectiles\BogBomb.cs" />
     <Compile Include="Items\Projectiles\Akuma\AkumaFlare.cs" />
     <Compile Include="Items\Projectiles\Akuma\Dawnstrike.cs" />
     <Compile Include="Items\Projectiles\Akuma\DaybreakArrow.cs" />
@@ -618,6 +619,7 @@
     <Compile Include="Items\Projectiles\Apocalypse.cs" />
     <Compile Include="Items\Projectiles\APP.cs" />
     <Compile Include="Items\Projectiles\BigCrystal.cs" />
+    <Compile Include="Items\Projectiles\BogBoom.cs" />
     <Compile Include="Items\Projectiles\Bubble.cs" />
     <Compile Include="Items\Projectiles\CatsEye.cs" />
     <Compile Include="Items\Projectiles\CGP.cs" />
@@ -751,8 +753,12 @@
     <Compile Include="Items\Ranged\TheSquirter.cs" />
     <Compile Include="Items\Ranged\TheVulcano.cs" />
     <Compile Include="Items\Ranged\TrueDeathlyLongbow.cs" />
+    <Compile Include="Items\Summoning\DragonriderStaff.cs" />
     <Compile Include="Items\Summoning\Minions\Chair.cs" />
     <Compile Include="Items\Summoning\Minions\ChairEX.cs" />
+    <Compile Include="Items\Summoning\Minions\DragonBody.cs" />
+    <Compile Include="Items\Summoning\Minions\DragonHead.cs" />
+    <Compile Include="Items\Summoning\Minions\DragonTail.cs" />
     <Compile Include="Items\Summoning\Minions\EnderMinion.cs" />
     <Compile Include="Items\Summoning\Minions\EnderMinionEX.cs" />
     <Compile Include="Items\Summoning\Minions\Minion2.cs" />
@@ -2115,10 +2121,10 @@
     <Content Include="Items\Projectiles\Akuma\Daystorm.png" />
     <Content Include="Items\Projectiles\Akuma\FireProj.png" />
     <Content Include="Items\Projectiles\Akuma\FireRain.png" />
+    <Content Include="Items\Projectiles\Akuma\Lung\LungBody.png" />
     <Content Include="Items\Projectiles\Akuma\Lung\LungBody1.png" />
     <Content Include="Items\Projectiles\Akuma\Lung\LungBody1_Glow.png" />
-    <Content Include="Items\Projectiles\Akuma\Lung\LungBody2.png" />
-    <Content Include="Items\Projectiles\Akuma\Lung\LungBody2_Glow.png" />
+    <Content Include="Items\Projectiles\Akuma\Lung\LungBody_Glow.png" />
     <Content Include="Items\Projectiles\Akuma\Lung\LungHead.png" />
     <Content Include="Items\Projectiles\Akuma\Lung\LungHead_Glow.png" />
     <Content Include="Items\Projectiles\Akuma\Lung\LungTail.png" />
@@ -2148,6 +2154,9 @@
     <Content Include="Items\Projectiles\Apocalypse.png" />
     <Content Include="Items\Projectiles\APP.png" />
     <Content Include="Items\Projectiles\BigCrystal.png" />
+    <Content Include="Items\Projectiles\BogBomb.png" />
+    <Content Include="Items\Projectiles\BogBomb_Glow.png" />
+    <Content Include="Items\Projectiles\BogBoom.png" />
     <Content Include="Items\Projectiles\Bubble.png" />
     <Content Include="Items\Projectiles\CatsEye.png" />
     <Content Include="Items\Projectiles\CatsEye_Glow.png" />
@@ -2182,6 +2191,7 @@
     <Content Include="Items\Projectiles\DragonSP.png" />
     <Content Include="Items\Projectiles\Duck.png" />
     <Content Include="Items\Projectiles\DuckEX.png" />
+    <Content Include="Items\Projectiles\EFish\Fishnado.png" />
     <Content Include="Items\Projectiles\ElectricitySpellP.png" />
     <Content Include="Items\Projectiles\EnderSickle.png" />
     <Content Include="Items\Projectiles\EnderSickle_Glow.png" />
@@ -2366,6 +2376,10 @@
     <Content Include="Items\Summoning\DragonriderStaff.png" />
     <Content Include="Items\Summoning\HydraHeadStaff.png" />
     <Content Include="Items\Summoning\Minions\DemonStaffMinion.png" />
+    <Content Include="Items\Summoning\Minions\DragonBody.png" />
+    <Content Include="Items\Summoning\Minions\DragonBody1.png" />
+    <Content Include="Items\Summoning\Minions\DragonHead.png" />
+    <Content Include="Items\Summoning\Minions\DragonTail.png" />
     <Content Include="Items\Summoning\Minions\EnderMinion.png" />
     <Content Include="Items\Summoning\Minions\EnderMinionEX.png" />
     <Content Include="Items\Summoning\WyrmStaff.png" />
