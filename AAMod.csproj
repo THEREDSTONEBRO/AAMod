@@ -2713,6 +2713,7 @@
     <Content Include="NPCs\Bosses\Unused\Decay.png" />
     <Content Include="NPCs\Bosses\Unused\MrBonesRevenge.png" />
     <Content Include="NPCs\Bosses\Unused\Soul of Cthulhu.png" />
+    <Content Include="NPCs\Bosses\Yamata\YamataTransition.png" />
     <Content Include="NPCs\Bosses\Yamata\Fog.png" />
     <Content Include="NPCs\Bosses\Yamata\ShadowOfYamata.png" />
     <Content Include="NPCs\Bosses\Yamata\Yamata.png" />
