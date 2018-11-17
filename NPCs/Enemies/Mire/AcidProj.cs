@@ -23,7 +23,7 @@ namespace AAMod.NPCs.Enemies.Mire
                 Main.glowMaskTexture = glowMasks;
             }
             DisplayName.SetDefault("Acid");     //The English name of the projectile
-			ProjectileID.Sets.TrailCacheLength[projectile.type] = 5;     //The recording mode
+            Main.projFrames[projectile.type] = 5;     //The recording mode
 		}
 
 		public override void SetDefaults()
@@ -31,17 +31,22 @@ namespace AAMod.NPCs.Enemies.Mire
 			projectile.width = 14;               //The width of projectile hitbox
 			projectile.height = 14;              //The height of projectile hitbox
 			projectile.aiStyle = 1;             //The ai style of the projectile, please reference the source code of Terraria
-			projectile.friendly = false;         //Can the projectile deal damage to enemies?
-			projectile.hostile = true;         //Can the projectile deal damage to the player?
+			projectile.friendly = true;         //Can the projectile deal damage to enemies?
+			projectile.hostile = false;         //Can the projectile deal damage to the player?
 			projectile.ranged = true;           //Is the projectile shoot by a ranged weapon?
 			projectile.penetrate = 1;           //How many monsters the projectile can penetrate. (OnTileCollide below also decrements penetrate for bounces as well)
 			projectile.timeLeft = 600;          //The live time for the projectile (60 = 1 second, so 600 is 10 seconds)
 			projectile.alpha = 20;              //How much light emit around the projectile
 			projectile.ignoreWater = true;
 			projectile.tileCollide = true;        //Set to above 0 if you want the projectile to update multiple time in a frame
-			aiType = ProjectileID.VenomArrow;           //Act exactly like default Bullet
+			aiType = ProjectileID.WoodenArrowFriendly;           //Act exactly like default Bullet
             projectile.glowMask = customGlowMask;
 		}
+
+        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+        {
+            target.AddBuff(BuffID.Venom, 600);
+        }
 
         public override void Kill(int timeleft)
         {
@@ -55,6 +60,7 @@ namespace AAMod.NPCs.Enemies.Mire
                     -projectile.velocity.Y * 0.2f, 100, new Color(86, 191, 188));
                 Main.dust[num469].velocity *= 2f;
             }
+            Projectile.NewProjectile(projectile.position.X, projectile.position.Y, projectile.velocity.X, projectile.velocity.Y, mod.ProjectileType("AcidBoom"), projectile.damage, projectile.knockBack, projectile.owner, 0f, 0f);
         }
     }
 }
