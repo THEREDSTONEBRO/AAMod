@@ -257,9 +257,11 @@ namespace AAMod.NPCs.Bosses.Yamata
                     npc.direction = 1;
                 }
             }
+
             int tileX = (int)(npc.Center.X / 16f) + npc.direction * 2;
             int tileY = (int)((npc.position.Y + (float)npc.height) / 16f);
             bool tileBelowEmpty = true;
+
             for (int tY = tileY; tY < tileY + hoverHeight; tY++)
             {
                 if (Main.tile[tileX, tY] == null)
@@ -276,33 +278,41 @@ namespace AAMod.NPCs.Bosses.Yamata
             {
                 tileBelowEmpty = true;
             }
+
             if (tileBelowEmpty)
             {
                 npc.velocity.Y += moveInterval;
-                if (npc.velocity.Y > maxSpeedY) { npc.velocity.Y = maxSpeedY; }
+                if (npc.velocity.Y > 9f)
+                {
+                    npc.velocity.Y = 9f;
+                }
             }
             else
             {
                 if (npc.directionY < 0 && npc.velocity.Y > 0f) { npc.velocity.Y -= moveInterval; }
                 if (npc.velocity.Y < -maxSpeedY) { npc.velocity.Y = -maxSpeedY; }
             }
+
+
             if (!ignoreWet && npc.wet)
             {
                 npc.velocity.Y -= moveInterval;
                 if (npc.velocity.Y < -maxSpeedY * 0.75f) { npc.velocity.Y = -maxSpeedY * 0.75f; }
             }
-            if (npc.collideX)
-            {
-                npc.velocity.X = npc.oldVelocity.X * -0.4f;
-                if (npc.direction == -1 && npc.velocity.X > 0f && npc.velocity.X < 1f) { npc.velocity.X = 1f; }
-                if (npc.direction == 1 && npc.velocity.X < 0f && npc.velocity.X > -1f) { npc.velocity.X = -1f; }
-            }
+
+
             if (npc.collideY)
             {
                 npc.velocity.Y = npc.oldVelocity.Y * -0.25f;
                 if (npc.velocity.Y > 0f && npc.velocity.Y < 1f) { npc.velocity.Y = 1f; }
                 if (npc.velocity.Y < 0f && npc.velocity.Y > -1f) { npc.velocity.Y = -1f; }
             }
+
+            if (!tileBelowEmpty && npc.target > -1 && Main.player[npc.target].active && !Main.player[npc.target].dead && Math.Abs(Main.player[npc.target].Center.X - npc.Center.X) < 50) //force a hover
+            {
+                if (Math.Abs(npc.velocity.X) > 0.3f) npc.velocity.X *= 0.9f; //slow the fuck down
+                if (Math.Abs(npc.velocity.Y) > 0.3f) npc.velocity.Y *= 0.9f; //slow the fuck down
+            }else
             if (npc.direction == -1 && npc.velocity.X > -maxSpeedX)
             {
                 npc.velocity.X -= (moveInterval * 0.5f);
@@ -312,7 +322,7 @@ namespace AAMod.NPCs.Bosses.Yamata
                 if (npc.velocity.X < -maxSpeedX) { npc.velocity.X = -maxSpeedX; }
             }
             else
-                if (npc.direction == 1 && npc.velocity.X < maxSpeedX)
+            if (npc.direction == 1 && npc.velocity.X < maxSpeedX)
             {
                 npc.velocity.X += (moveInterval * 0.5f);
                 if (npc.velocity.X < -maxSpeedX) { npc.velocity.X = npc.velocity.X + 0.1f; }
@@ -320,6 +330,8 @@ namespace AAMod.NPCs.Bosses.Yamata
                     if (npc.velocity.X < 0f) { npc.velocity.X = npc.velocity.X - 0.05f; }
                 if (npc.velocity.X > maxSpeedX) { npc.velocity.X = maxSpeedX; }
             }
+
+
             if (npc.directionY == -1 && (double)npc.velocity.Y > -hoverMaxSpeed)
             {
                 npc.velocity.Y = npc.velocity.Y - hoverInterval;
@@ -329,14 +341,14 @@ namespace AAMod.NPCs.Bosses.Yamata
                 if ((double)npc.velocity.Y < -hoverMaxSpeed) { npc.velocity.Y = -hoverMaxSpeed; }
             }
             else
-                if (npc.directionY == 1 && (double)npc.velocity.Y < hoverMaxSpeed)
-                {
-                    npc.velocity.Y = npc.velocity.Y + hoverInterval;
-                    if ((double)npc.velocity.Y < -hoverMaxSpeed) { npc.velocity.Y = npc.velocity.Y + 0.05f; }
-                    else
-                    if (npc.velocity.Y < 0f) { npc.velocity.Y = npc.velocity.Y - (hoverInterval - 0.01f); }
-                    if ((double)npc.velocity.Y > hoverMaxSpeed) { npc.velocity.Y = hoverMaxSpeed; }
-                }
+            if (npc.directionY == 1 && (double)npc.velocity.Y < hoverMaxSpeed)
+            {
+                npc.velocity.Y = npc.velocity.Y + hoverInterval;
+                if ((double)npc.velocity.Y < -hoverMaxSpeed) { npc.velocity.Y = npc.velocity.Y + 0.05f; }
+                else
+                if (npc.velocity.Y < 0f) { npc.velocity.Y = npc.velocity.Y - (hoverInterval - 0.01f); }
+                if ((double)npc.velocity.Y > hoverMaxSpeed) { npc.velocity.Y = hoverMaxSpeed; }
+            }
         }
 
 
@@ -423,12 +435,13 @@ namespace AAMod.NPCs.Bosses.Yamata
 
         public override bool PreDraw(SpriteBatch sb, Color dColor)
         {
+            legs[0].DrawLeg(sb, npc, dColor); //front legs
+            legs[1].DrawLeg(sb, npc, dColor);
+            legs[2].DrawLeg(sb, npc, dColor); //back legs
+            legs[3].DrawLeg(sb, npc, dColor);
             BaseDrawing.DrawTexture(sb, mod.GetTexture("NPCs/Bosses/Yamata/YamataTail"), 0, npc.position + new Vector2(0f, npc.gfxOffY) + bottomVisualOffset, npc.width, npc.height, npc.scale, npc.rotation, npc.spriteDirection, Main.npcFrameCount[npc.type], frameBottom, dColor, false);
             BaseDrawing.DrawTexture(sb, Main.npcTexture[npc.type], 0, npc.position + new Vector2(0f, npc.gfxOffY) + topVisualOffset, npc.width, npc.height, npc.scale, npc.rotation, npc.spriteDirection, Main.npcFrameCount[npc.type], npc.frame, dColor, false);
-            legs[2].DrawLeg(sb, npc, dColor); 
-            legs[3].DrawLeg(sb, npc, dColor);
-            legs[0].DrawLeg(sb, npc, dColor); 
-            legs[1].DrawLeg(sb, npc, dColor);
+            
             return false;
         }
     }
@@ -672,16 +685,16 @@ namespace AAMod.NPCs.Bosses.Yamata
             }
             Vector2 drawPos = position - new Vector2(0f, velOffsetY);
             Color lightColor = npc.GetAlpha(BaseDrawing.GetLightColor(Center));
-			if(!leftLeg)
-			{
-				BaseDrawing.DrawChain(sb, new Texture2D[] { null, textures[3], null }, 0, drawPos + new Vector2(Hitbox.Width * 0.5f, 6f), legJoint, 0f, null, 1f, false, null);
-				BaseDrawing.DrawChain(sb, new Texture2D[] { textures[3], textures[2], textures[3] }, 0, legJoint, GetMantidConnector(npc), 0f, null, 1f, false, null);			
-			}else
-			{
-				BaseDrawing.DrawChain(sb, new Texture2D[] { null, textures[1], null }, 0, drawPos + new Vector2(Hitbox.Width * 0.5f, 6f), legJoint, 0f, null, 1f, false, null);
-				BaseDrawing.DrawChain(sb, new Texture2D[] { textures[0], textures[1], textures[0] }, 0, legJoint, GetMantidConnector(npc), 0f, null, 1f, false, null);	
-			}
-            BaseDrawing.DrawTexture(sb, textures[4], 0, drawPos, Hitbox.Width, Hitbox.Height, npc.scale, rotation, limbType == 1 || limbType == 3 ? 1 : -1, 1, Hitbox, lightColor, false, legOrigin);
+            if (!leftLeg)
+            {
+                BaseDrawing.DrawChain(sb, new Texture2D[] { null, textures[3], null }, 0, drawPos + new Vector2(Hitbox.Width * 0.5f, 6f), legJoint, 0f, null, 1f, false, null);
+                BaseDrawing.DrawChain(sb, new Texture2D[] { textures[2], textures[3], textures[2] }, 0, legJoint, GetMantidConnector(npc), 0f, null, 1f, false, null);
+            }
+            else
+            {
+                BaseDrawing.DrawChain(sb, new Texture2D[] { null, textures[1], null }, 0, drawPos + new Vector2(Hitbox.Width * 0.5f, 6f), legJoint, 0f, null, 1f, false, null);
+                BaseDrawing.DrawChain(sb, new Texture2D[] { textures[0], textures[1], textures[0] }, 0, legJoint, GetMantidConnector(npc), 0f, null, 1f, false, null);
+            }
         }
     }
 }

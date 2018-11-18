@@ -605,6 +605,7 @@
     <Compile Include="Items\Potions\GrandManaPotion.cs" />
     <Compile Include="Items\Potions\TheBigOne.cs" />
     <Compile Include="Items\Projectiles\Akuma\FireProjBoom.cs" />
+    <Compile Include="Items\Projectiles\Akuma\MorningGlory.cs" />
     <Compile Include="Items\Projectiles\BogBomb.cs" />
     <Compile Include="Items\Projectiles\Akuma\Dawnstrike.cs" />
     <Compile Include="Items\Projectiles\Akuma\DaybreakArrow.cs" />
@@ -616,7 +617,6 @@
     <Compile Include="Items\Projectiles\Akuma\Lung\LungBody.cs" />
     <Compile Include="Items\Projectiles\Akuma\Lung\LungHead.cs" />
     <Compile Include="Items\Projectiles\Akuma\Lung\LungTail.cs" />
-    <Compile Include="Items\Projectiles\Akuma\MorningGlory.cs" />
     <Compile Include="Items\Projectiles\Akuma\Solar.cs" />
     <Compile Include="Items\Projectiles\Akuma\SunOrb.cs" />
     <Compile Include="Items\Projectiles\Akuma\Sunray.cs" />
@@ -701,6 +701,7 @@
     <Compile Include="Items\Projectiles\SpookerangP.cs" />
     <Compile Include="Items\Projectiles\Squirt.cs" />
     <Compile Include="Items\Projectiles\StormJavelin.cs" />
+    <Compile Include="Items\Projectiles\SunLance.cs" />
     <Compile Include="Items\Projectiles\Taserblast.cs" />
     <Compile Include="Items\Projectiles\TechneciumBoomerangP.cs" />
     <Compile Include="Items\Projectiles\TerraArrow.cs" />
@@ -2153,6 +2154,7 @@
     <Content Include="Items\Projectiles\Akuma\Dayser.png" />
     <Content Include="Items\Projectiles\Akuma\Daystorm.png" />
     <Content Include="Items\Projectiles\Akuma\FireProj.png" />
+    <Content Include="Items\Projectiles\Akuma\FireProjBoom.png" />
     <Content Include="Items\Projectiles\Akuma\FireRain.png" />
     <Content Include="Items\Projectiles\Akuma\Lung\LungBody.png" />
     <Content Include="Items\Projectiles\Akuma\Lung\LungBody1.png" />
@@ -2286,6 +2288,7 @@
     <Content Include="Items\Projectiles\Squirt.png" />
     <Content Include="Items\Projectiles\StormJavelin.png" />
     <Content Include="Items\Projectiles\StormJavelin_Glow.png" />
+    <Content Include="Items\Projectiles\SunLance.png" />
     <Content Include="Items\Projectiles\Taserblast.png" />
     <Content Include="Items\Projectiles\Taserblast_Glow.png" />
     <Content Include="Items\Projectiles\TechneciumBoomerangP.png" />
@@ -2718,6 +2721,12 @@
     <Content Include="NPCs\Bosses\Unused\Decay.png" />
     <Content Include="NPCs\Bosses\Unused\MrBonesRevenge.png" />
     <Content Include="NPCs\Bosses\Unused\Soul of Cthulhu.png" />
+    <Content Include="NPCs\Bosses\Yamata\YamataFoot.png" />
+    <Content Include="NPCs\Bosses\Yamata\YamataLegCap.png" />
+    <Content Include="NPCs\Bosses\Yamata\YamataLegCapR.png" />
+    <Content Include="NPCs\Bosses\Yamata\YamataLegSegment.png" />
+    <Content Include="NPCs\Bosses\Yamata\YamataLegSegmentR.png" />
+    <Content Include="NPCs\Bosses\Yamata\YamataNeck.png" />
     <Content Include="NPCs\Bosses\Yamata\YamataTransition.png" />
     <Content Include="NPCs\Bosses\Yamata\Fog.png" />
     <Content Include="NPCs\Bosses\Yamata\ShadowOfYamata.png" />
@@ -2728,7 +2737,6 @@
     <Content Include="NPCs\Bosses\Yamata\YamataABoom.png" />
     <Content Include="NPCs\Bosses\Yamata\YamataAHead.png" />
     <Content Include="NPCs\Bosses\Yamata\YamataALeg.png" />
-    <Content Include="NPCs\Bosses\Yamata\YamataALegBack.png" />
     <Content Include="NPCs\Bosses\Yamata\YamataANeck.png" />
     <Content Include="NPCs\Bosses\Yamata\YamataATail.png" />
     <Content Include="NPCs\Bosses\Yamata\YamataBody.png" />
@@ -2737,8 +2745,6 @@
     <Content Include="NPCs\Bosses\Yamata\YamataHead.png" />
     <Content Include="NPCs\Bosses\Yamata\YamataHeadF.png" />
     <Content Include="NPCs\Bosses\Yamata\YamataJoint.png" />
-    <Content Include="NPCs\Bosses\Yamata\YamataLeg.png" />
-    <Content Include="NPCs\Bosses\Yamata\YamataLegBack.png" />
     <Content Include="NPCs\Bosses\Yamata\YamataSoul.png" />
     <Content Include="NPCs\Bosses\Yamata\YamataTail.png" />
     <Content Include="NPCs\Bosses\Yamata\YamataWalk.gif" />
@@ -2790,7 +2796,9 @@
     <Content Include="NPCs\Enemies\Inferno\WyrmlingTail1.png" />
     <Content Include="NPCs\Enemies\Inferno\WyrmlingTail2.png" />
     <Content Include="NPCs\Enemies\Mire\AcidProj.png" />
+    <Content Include="NPCs\Enemies\Mire\AcidProj_Glow.png" />
     <Content Include="NPCs\Enemies\Mire\ChaoticTwilight.png" />
+    <Content Include="NPCs\Enemies\Mire\Kappa.png" />
     <Content Include="NPCs\Enemies\Mire\MireMimic.png" />
     <Content Include="NPCs\Enemies\Mire\Mosster.png" />
     <Content Include="NPCs\Enemies\Mire\Mosster_Glow.png" />
