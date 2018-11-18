@@ -11,7 +11,7 @@ namespace AAMod.Items.Projectiles.Akuma
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Soulsplosion");     //The English name of the projectile
+            DisplayName.SetDefault("Flamesplosion");     //The English name of the projectile
             Main.projFrames[projectile.type] = 4;     //The recording mode
         }
 

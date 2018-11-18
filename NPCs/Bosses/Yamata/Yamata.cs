@@ -19,6 +19,14 @@ namespace AAMod.NPCs.Bosses.Yamata
 	//[AutoloadBossHead]
 	public class Yamata : YamataBoss
 	{
+        public NPC TrueHead;
+        public NPC Head2;
+        public NPC Head3;
+        public NPC Head4;
+        public NPC Head5;
+        public NPC Head6;
+        public NPC Head7;
+        public bool HeadsSpawned = false;
 
         public override void SendExtraAI(BinaryWriter writer)
         {
@@ -56,9 +64,9 @@ namespace AAMod.NPCs.Bosses.Yamata
             npc.height = 90;
             npc.value = BaseUtility.CalcValue(0, 0, 0, 0);
             npc.aiStyle = -1;
-            npc.lifeMax = 180000;
-            npc.defense = 160;
-            npc.damage = 0;
+            npc.lifeMax = 200000;
+            npc.defense = 100;
+            npc.damage = 90;
             npc.DeathSound = new LegacySoundStyle(2, 88, Terraria.Audio.SoundType.Sound);
             npc.knockBackResist = 0f;
             npc.boss = true;
@@ -111,8 +119,6 @@ namespace AAMod.NPCs.Bosses.Yamata
             
         }
 
-        
-
         public float[] internalAI = new float[4];
         public int eggFireRate = 1, mantidHealerCount = 4, playerTooFarDist = 800;
         public int[] totalHealers = null;
@@ -134,6 +140,24 @@ namespace AAMod.NPCs.Bosses.Yamata
 
         public override void AI()
         {
+            if (!HeadsSpawned)
+            {
+                if (Main.netMode != 1)
+                {
+                    npc.realLife = npc.whoAmI;
+                    int latestNPC = npc.whoAmI;
+                    latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y - 100, mod.NPCType("YamataHead"), 0, npc.whoAmI);
+                    Main.npc[(int)latestNPC].realLife = npc.whoAmI;
+                    Main.npc[(int)latestNPC].ai[3] = npc.whoAmI;
+                    /*Head2 = Main.npc[NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y - 100, mod.NPCType("Head2"), 0, npc.whoAmI)];
+                    Head3 = Main.npc[NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y - 100, mod.NPCType("Head3"), 0, npc.whoAmI)];
+                    Head4 = Main.npc[NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y - 100, mod.NPCType("Head3"), 0, npc.whoAmI)];
+                    Head5 = Main.npc[NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y - 100, mod.NPCType("Head3"), 0, npc.whoAmI)];
+                    Head6 = Main.npc[NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y - 100, mod.NPCType("Head3"), 0, npc.whoAmI)];
+                    Head7 = Main.npc[NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y - 100, mod.NPCType("Head3"), 0, npc.whoAmI)];*/
+                }
+                HeadsSpawned = true;
+            }
             dustMantid = npc;
             prevHalfHPLeft = halfHPLeft;
             prevFourthHPLeft = fourthHPLeft;
@@ -157,14 +181,7 @@ namespace AAMod.NPCs.Bosses.Yamata
                 if ((playerDistance < playerTooFarDist - 100f) && Math.Abs(npc.velocity.Y) > 12f) npc.velocity.Y *= 0.8f;
                 if (!flying && npc.velocity.Y > 7f) npc.velocity.Y *= 0.75f;
                 internalAI[0]--; if (internalAI[0] <= 0) { internalAI[0] = 0; if (Main.netMode != 1) SwapAI(ref internalAI[0]); }
-                
-                if (internalAI[1] == stateIdle) //idle (unused)
-                {
-                    AIMovementIdle();
-                }else
-				{
-					AIMovementNormal();
-				}
+                AIMovementNormal();
             }
             else
             {
@@ -174,14 +191,6 @@ namespace AAMod.NPCs.Bosses.Yamata
             //topVisualOffset = new Vector2(Math.Min(8f, Math.Abs(npc.velocity.X) * 2f), 0f) * (npc.velocity.X < 0 ? 1 : -1);
             bottomVisualOffset = new Vector2(Math.Min(3f, Math.Abs(npc.velocity.X)), 0f) * (npc.velocity.X < 0 ? 1 : -1);
             UpdateLimbs();
-        }
-
-        public void AIMovementIdle()
-        {
-            npc.velocity *= 0.9f;
-            if (Math.Abs(npc.velocity.X) < 0.01f) npc.velocity.X = 0f;
-            if (Math.Abs(npc.velocity.Y) < 0.01f) npc.velocity.Y = 0f;
-            npc.rotation = 0f;
         }
 
         public void AIMovementRunAway()
@@ -433,13 +442,63 @@ namespace AAMod.NPCs.Bosses.Yamata
             }
         }
 
+        public void DrawHead(SpriteBatch spriteBatch, string headTexture, string glowMaskTexture, NPC head, Color drawColor)
+        {
+            if (head.active)
+            {
+                Vector2 neckOrigin = new Vector2(npc.Center.X, npc.Center.Y - 50);
+                Vector2 center = head.Center;
+                Vector2 distToProj = neckOrigin - head.Center;
+                float projRotation = distToProj.ToRotation() - 1.57f;
+                float distance = distToProj.Length();
+                spriteBatch.Draw(mod.GetTexture("NPCs/Bosses/Yamata/YamataNeck"), neckOrigin - Main.screenPosition,
+                new Rectangle(0, 0, 52, 30), drawColor, projRotation,
+                new Vector2(52 * 0.5f, 30 * 0.5f), 1f, SpriteEffects.None, 0f);
+                while (distance > 30f && !float.IsNaN(distance))
+                {
+                    distToProj.Normalize();                 //get unit vector
+                    distToProj *= 30f;                      //speed = 30
+                    center += distToProj;                   //update draw position
+                    distToProj = neckOrigin - center;    //update distance
+                    distance = distToProj.Length();
+
+
+                    //Draw chain
+                    spriteBatch.Draw(mod.GetTexture("NPCs/Bosses/Yamata/YamataNeck"), new Vector2(center.X - Main.screenPosition.X, center.Y - Main.screenPosition.Y),
+                        new Rectangle(0, 0, 52, 30), drawColor, projRotation,
+                        new Vector2(52 * 0.5f, 30 * 0.5f), 1f, SpriteEffects.None, 0f);
+
+                }
+                spriteBatch.Draw(mod.GetTexture("NPCs/Bosses/Yamata/YamataNeck"), neckOrigin - Main.screenPosition,
+                            new Rectangle(0, 0, 52, 30), drawColor, projRotation,
+                            new Vector2(52 * 0.5f, 30 * 0.5f), 1f, SpriteEffects.None, 0f);
+
+                spriteBatch.Draw(mod.GetTexture(headTexture), new Vector2(head.Center.X - Main.screenPosition.X, head.Center.Y - Main.screenPosition.Y),
+                            head.frame, drawColor, head.rotation,
+                            new Vector2(106 * 0.5f, 72 * 0.5f), 1f, SpriteEffects.None, 0f);
+                spriteBatch.Draw(mod.GetTexture(glowMaskTexture), new Vector2(head.Center.X - Main.screenPosition.X, head.Center.Y - Main.screenPosition.Y),
+                        head.frame, Color.White, head.rotation,
+                        new Vector2(106 * 0.5f, 72 * 0.5f), 1f, SpriteEffects.None, 0f);
+            }
+        }
+
         public override bool PreDraw(SpriteBatch sb, Color dColor)
         {
-            legs[0].DrawLeg(sb, npc, dColor); //front legs
-            legs[1].DrawLeg(sb, npc, dColor);
+            if (Main.netMode == 0)
+            {
+                DrawHead(sb, "NPCs/Bosses/Yamata/YamataHead", "NPCs/Bosses/Yamata/YamataHead_Glow", TrueHead, dColor);
+                /*DrawHead(sb, "NPCs/Bosses/Yamata/YamataHeadF", "NPCs/Bosses/Yamata/YamataHeadF_Glow", Head2, dColor);
+                DrawHead(sb, "NPCs/Bosses/Yamata/YamataHeadF", "NPCs/Bosses/Yamata/YamataHeadF_Glow", Head3, dColor);
+                DrawHead(sb, "NPCs/Bosses/Yamata/YamataHeadF", "NPCs/Bosses/Yamata/YamataHeadF_Glow", Head4, dColor);
+                DrawHead(sb, "NPCs/Bosses/Yamata/YamataHeadF", "NPCs/Bosses/Yamata/YamataHeadF_Glow", Head5, dColor);
+                DrawHead(sb, "NPCs/Bosses/Yamata/YamataHeadF", "NPCs/Bosses/Yamata/YamataHeadF_Glow", Head6, dColor);
+                DrawHead(sb, "NPCs/Bosses/Yamata/YamataHeadF", "NPCs/Bosses/Yamata/YamataHeadF_Glow", Head7, dColor);*/
+            }
+            BaseDrawing.DrawTexture(sb, mod.GetTexture("NPCs/Bosses/Yamata/YamataTail"), 0, npc.position + new Vector2(0f, npc.gfxOffY) + bottomVisualOffset, npc.width, npc.height, npc.scale, npc.rotation, npc.spriteDirection, Main.npcFrameCount[npc.type], frameBottom, dColor, false);
             legs[2].DrawLeg(sb, npc, dColor); //back legs
             legs[3].DrawLeg(sb, npc, dColor);
-            BaseDrawing.DrawTexture(sb, mod.GetTexture("NPCs/Bosses/Yamata/YamataTail"), 0, npc.position + new Vector2(0f, npc.gfxOffY) + bottomVisualOffset, npc.width, npc.height, npc.scale, npc.rotation, npc.spriteDirection, Main.npcFrameCount[npc.type], frameBottom, dColor, false);
+            legs[0].DrawLeg(sb, npc, dColor); //front legs
+            legs[1].DrawLeg(sb, npc, dColor);
             BaseDrawing.DrawTexture(sb, Main.npcTexture[npc.type], 0, npc.position + new Vector2(0f, npc.gfxOffY) + topVisualOffset, npc.width, npc.height, npc.scale, npc.rotation, npc.spriteDirection, Main.npcFrameCount[npc.type], npc.frame, dColor, false);
             
             return false;
@@ -463,48 +522,6 @@ namespace AAMod.NPCs.Bosses.Yamata
         {
             animType = type;
             animMult = aMult;
-            if (type == 0) //arm swipe down attack
-            {
-                movementRate = 0.025f * speedMult;
-                rightPos = new Vector2[] { default(Vector2), new Vector2(-230f, -10f), new Vector2(-120, 100f), new Vector2(40, 60f), new Vector2(10, 15f), default(Vector2) };
-                rightRotations = new float[] { 0f, halfPI * 1.2f, halfPI * 0.8f, 0f, -halfPI * 0.2f, 0f };
-                leftPos = new Vector2[] { default(Vector2), new Vector2(230f, -10f), new Vector2(120, 100f), new Vector2(-40, 60f), new Vector2(-10, 15f), default(Vector2) };
-                leftRotations = new float[] { 0f, -halfPI * 1.2f, -halfPI * 0.8f, 0f, halfPI * 0.2f, 0f };
-                hitRatios = new float[] { 0.2f, 0.35f, 0.5f, 0.7f };
-                flatJoint = true;
-            }
-            else
-            if (type == 1) //arm swipe up attack
-            {
-                movementRate = 0.025f * speedMult;
-                rightPos = new Vector2[] { default(Vector2), new Vector2(10, 15f), new Vector2(-140f, -170f), new Vector2(60, -150f), new Vector2(10, 20f), default(Vector2) };
-                rightRotations = new float[] { 0f, -halfPI * 2f, -halfPI * 1.8f, -halfPI * 1.2f, -halfPI * 0.7f, -halfPI * 0.4f, 0f };
-                leftPos = new Vector2[] { default(Vector2), new Vector2(-10, 15f), new Vector2(140f, -170f), new Vector2(-60, -150f), new Vector2(-10, 20f), default(Vector2) };
-                leftRotations = new float[] { 0f, halfPI * 2f, halfPI * 1.8f, halfPI * 1.2f, halfPI * 0.7f, halfPI * 0.4f, 0f };
-                hitRatios = new float[] { 0.4f, 0.5f, 0.6f, 0.7f };
-            }
-            else
-            if (type == 2) //arm swipe left/right attack
-            {
-                movementRate = 0.025f * speedMult;
-                rightPos = new Vector2[] { default(Vector2), new Vector2(30f, -80f), new Vector2(80f, 30f), new Vector2(30f, 90f), new Vector2(10, 15f), default(Vector2) };
-                rightRotations = new float[] { 0f, -halfPI * 2.5f, -halfPI, -halfPI * 0.5f, -halfPI * 0.2f, 0f };
-                leftPos = new Vector2[] { default(Vector2), new Vector2(-30f, -80f), new Vector2(-80f, 30f), new Vector2(-30f, 90f), new Vector2(-10, 15f), default(Vector2) };
-                leftRotations = new float[] { 0f, halfPI * 2.5f, halfPI, halfPI * 0.5f, halfPI * 0.2f, 0f };
-                hitRatios = new float[] { 0.2f, 0.35f, 0.5f, 0.7f };
-            }
-            else
-            if (type == 3) //spawn magic scythes
-            {
-                movementRate = 0.005f * speedMult;
-                rightPos = new Vector2[] { default(Vector2), new Vector2(20f, -60f), new Vector2(20f, -60f), new Vector2(20f, -60f), new Vector2(60f, 10f), new Vector2(60f, 10f), new Vector2(60f, 10f), new Vector2(20f, 60f), new Vector2(20f, 60f), new Vector2(20f, 60f), new Vector2(10, 15f), default(Vector2) };
-                rightRotations = new float[] { 0f, -halfPI * 1.5f, -halfPI * 1.5f, -halfPI * 1.5f, -halfPI, -halfPI, -halfPI, -halfPI, -halfPI * 0.5f, -halfPI * 0.5f, -halfPI * 0.5f, -halfPI * 0.5f, -halfPI * 0.2f, 0f };
-                leftPos = new Vector2[] { default(Vector2), new Vector2(-20f, -60f), new Vector2(-20f, -60f), new Vector2(-20f, -60f), new Vector2(-60f, 10f), new Vector2(-60f, 10f), new Vector2(-60f, 10f), new Vector2(-20f, 60f), new Vector2(-20f, 60f), new Vector2(-20f, 60f), new Vector2(-10, 15f), default(Vector2) };
-                leftRotations = new float[] { 0f, halfPI * 1.5f, halfPI * 1.5f, halfPI * 1.5f, halfPI, halfPI, halfPI, halfPI, halfPI * 0.5f, halfPI * 0.5f, halfPI * 0.5f, halfPI * 0.5f, halfPI * 0.2f, 0f };
-                //leftPos = new Vector2[]{ default(Vector2), new Vector2(-30f, -80f), new Vector2(-80f, 30f), new Vector2(-30f, 90f), new Vector2(-10, 15f), default(Vector2) };
-                //leftRotations = new float[]{ 0f, halfPI * 2.5f, halfPI, halfPI * 0.5f, halfPI * 0.2f, 0f };
-                hitRatios = new float[] { 0.2f, 0.5f, 0.72f, 2f };
-            }
         }
     }
 
@@ -521,17 +538,6 @@ namespace AAMod.NPCs.Bosses.Yamata
         public float rotation = 0f, movementRatio = 0f;
         public AnimationInfo overrideAnimation = null;
         public Yamata yamata = null;
-    }
-
-    public class HeadInfo : LimbInfo
-    {
-        public static Texture2D texture = null;
-
-        public HeadInfo(Yamata m)
-        {
-            yamata = m;
-            Hitbox = new Rectangle(0, 0, 118, 118);
-        }
     }
 
     public class LegInfo : LimbInfo
@@ -696,5 +702,6 @@ namespace AAMod.NPCs.Bosses.Yamata
                 BaseDrawing.DrawChain(sb, new Texture2D[] { textures[0], textures[1], textures[0] }, 0, legJoint, GetMantidConnector(npc), 0f, null, 1f, false, null);
             }
         }
+
     }
 }
