@@ -14,10 +14,10 @@ using Terraria.ModLoader;
 using BaseMod;
 using AAMod;
 
-namespace AAMod.NPCs.Bosses.Yamata
+namespace AAMod.NPCs.Bosses.Yamata.Awakened
 {
 	//[AutoloadBossHead]
-	public class Yamata : YamataBoss
+	public class YamataA : YamataBoss
 	{
         public NPC TrueHead;
         public NPC Head2;
@@ -27,6 +27,7 @@ namespace AAMod.NPCs.Bosses.Yamata
         public NPC Head6;
         public NPC Head7;
         public bool HeadsSpawned = false;
+        private bool Panic = false;
 
         public override void SendExtraAI(BinaryWriter writer)
         {
@@ -54,7 +55,7 @@ namespace AAMod.NPCs.Bosses.Yamata
 
         public override void SetStaticDefaults()
         {
-            displayName = "Yamata";
+            displayName = "Yamata Awakened";
         }
 
         public override void SetDefaults()
@@ -70,7 +71,7 @@ namespace AAMod.NPCs.Bosses.Yamata
             npc.DeathSound = new LegacySoundStyle(2, 88, Terraria.Audio.SoundType.Sound);
             npc.knockBackResist = 0f;
             npc.boss = true;
-            music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/Yamata");
+            music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/Yamata2");
             npc.noGravity = true;
             npc.netAlways = true;
             for (int m = 0; m < npc.buffImmune.Length; m++) npc.buffImmune[m] = true;
@@ -105,7 +106,36 @@ namespace AAMod.NPCs.Bosses.Yamata
 
         public override void BossLoot(ref string name, ref int potionType)
         {
-            potionType = ItemID.SuperHealingPotion;
+            if (Main.expertMode)
+            {
+                potionType = ItemID.SuperHealingPotion;   //boss drops
+                AAWorld.downedYamataA = true;
+            }
+
+            if (!AAWorld.downedYamataA && Main.expertMode)
+            {
+                Main.NewText("NO…! IMPOSSIBLE! YOU MUST HAVE CHEATED! GYAAAAAAH FINE! TAKE YOUR PRIZE..!", new Color(146, 30, 68));
+
+
+            }
+            if (AAWorld.downedYamataA && Main.expertMode)
+            {
+                Main.NewText("NOOOOOOOOOOOOOO!!! YOU LITTLE BRAT!!! I ALMOST HAD YOU THIS TIME!!! FINE, take your stuff! See if I care!", new Color(146, 30, 68));
+
+            }
+            if (!Main.expertMode)
+            {
+                Main.NewText("HAH! Nice try! Come back in Expert mode when you don’t have to cheat to beat me! All your loot is MINE still!", new Color(146, 30, 68));
+            }
+        }
+
+        public override bool StrikeNPC(ref double damage, int defense, ref float knockback, int hitDirection, ref bool crit)
+        {
+            if (damage > npc.lifeMax / 2)
+            {
+                Main.NewText("CHEATER CHEATER PUMPKIN EATER! THAT HURT YOU KNOW!!", new Color(146, 30, 68));
+            }
+            return false;
         }
 
         public override bool G_CanSpawn(int x, int y, int type, Player player)
@@ -115,25 +145,7 @@ namespace AAMod.NPCs.Bosses.Yamata
 
         public override void NPCLoot()
         {
-            AAWorld.downedYamata = true;
-
-
-            if (!Main.expertMode)
-            {
-                npc.DropLoot(mod.ItemType("DreadScale"), 20, 30);
-                string[] lootTable = {  "Crescent", "Flairdra", "Masamune", "Toxibomb", "YamatasWrath" };
-                int loot = Main.rand.Next(lootTable.Length);
-                npc.DropLoot(mod.ItemType(lootTable[loot]));
-                //npc.DropLoot(Items.Vanity.Mask.AkumaMask.type, 1f / 7);
-                npc.DropLoot(Items.Boss.Yamata.YamataTrophy.type, 1f / 10);
-                Main.NewText("HAH! I went easy on ya! Come back when you’re actually good and we can have a real fight!", new Color(45, 46, 70));
-            }
-            if (Main.expertMode)
-            {
-                Projectile.NewProjectile((new Vector2(npc.position.X, npc.position.Y)), (new Vector2(0f, 0f)), mod.ProjectileType("YamataTransition"), 0, 0);
-            }
-            npc.value = 0f;
-            npc.boss = false;
+            BaseAI.DropItem(npc, mod.ItemType("YamataTrophy"), 1, 1, 15, true);
             
         }
 
@@ -167,15 +179,14 @@ namespace AAMod.NPCs.Bosses.Yamata
                     latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y - 100, mod.NPCType("YamataHead"), 0, npc.whoAmI);
                     Main.npc[(int)latestNPC].realLife = npc.whoAmI;
                     Main.npc[(int)latestNPC].ai[3] = npc.whoAmI;
-                    /*Head2 = Main.npc[NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y - 100, mod.NPCType("Head2"), 0, npc.whoAmI)];
-                    Head3 = Main.npc[NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y - 100, mod.NPCType("Head3"), 0, npc.whoAmI)];
-                    Head4 = Main.npc[NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y - 100, mod.NPCType("Head3"), 0, npc.whoAmI)];
-                    Head5 = Main.npc[NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y - 100, mod.NPCType("Head3"), 0, npc.whoAmI)];
-                    Head6 = Main.npc[NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y - 100, mod.NPCType("Head3"), 0, npc.whoAmI)];
-                    Head7 = Main.npc[NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y - 100, mod.NPCType("Head3"), 0, npc.whoAmI)];
                 }
                 HeadsSpawned = true;
             }*/
+
+            if (npc.life <= npc.lifeMax / 5)
+            {
+                music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/RayOfHope");
+            }
             dustMantid = npc;
             prevHalfHPLeft = halfHPLeft;
             prevFourthHPLeft = fourthHPLeft;
@@ -211,9 +222,44 @@ namespace AAMod.NPCs.Bosses.Yamata
             UpdateLimbs();
         }
 
+
+
+        public override void HitEffect(int hitDirection, double damage)
+        {
+            int dust1 = mod.DustType<Dusts.AkumaADust>();
+            int dust2 = mod.DustType<Dusts.AkumaADust>();
+            if (npc.life <= 0)
+            {
+                Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, dust1, 0f, 0f, 0, default(Color), 1f);
+                Main.dust[dust1].velocity *= 0.5f;
+                Main.dust[dust1].scale *= 1.3f;
+                Main.dust[dust1].fadeIn = 1f;
+                Main.dust[dust1].noGravity = false;
+                Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, dust2, 0f, 0f, 0, default(Color), 1f);
+                Main.dust[dust2].velocity *= 0.5f;
+                Main.dust[dust2].scale *= 1.3f;
+                Main.dust[dust2].fadeIn = 1f;
+                Main.dust[dust2].noGravity = true;
+
+            }
+            if (npc.life > npc.lifeMax / 5)
+            {
+                Panic = false;
+            }
+            if (npc.life <= npc.lifeMax / 5 && Panic == false && !AAWorld.downedYamataA && Main.expertMode && npc.type == mod.NPCType<YamataA>())
+            {
+                Panic = true;
+                Main.NewText("Wh-WHA?! DIE! DIE YOU LITTLE TWERP! DIEDIEDIEDIEDIEDIEDIE!!!!", new Color(146, 30, 68));
+            }
+            if (npc.life <= npc.lifeMax / 5 && Panic == false && AAWorld.downedYamataA && Main.expertMode && npc.type == mod.NPCType<YamataA>())
+            {
+                Panic = true;
+                Main.NewText("NO NO NO!!! NOT AGAIN!!! THIS TIME IMMA STOMP YOU RIGHT INTO THE GROUND!!!", new Color(146, 30, 68));
+            }
+        }
+
         public void AIMovementRunAway()
         {
-            Main.NewText("NYEHEHEHEHEHEHEH..! And don’t come back!", new Color(45, 46, 70));
             npc.velocity.X *= 0.9f;
             if (Math.Abs(npc.velocity.X) < 0.01f) npc.velocity.X = 0f;
             npc.velocity.Y += 0.25f;
@@ -226,13 +272,13 @@ namespace AAMod.NPCs.Bosses.Yamata
         {
             float movementScalar2 = Math.Min(4f, Math.Max(1f, (playerDistance / (float)playerTooFarDist) * 4f));
             bool playerTooFar = playerDistance > playerTooFarDist;
-			YamataBody(npc, ref npc.ai, true, 0.2f, 2f, 1.5f, 0.04f, 1.5f, 3);
+			YamataABody(npc, ref npc.ai, true, 0.2f, 2f, 1.5f, 0.04f, 1.5f, 3);
             //BaseAI.AISpaceOctopus(npc, ref npc.ai, (flying ? 0.2f : 0.15f) * movementScalar2 * movementScalar, (flying ? 4f : 1f) * movementScalar2 * movementScalar, 120f, 40f, null);
             if (playerTooFar) npc.position += (playerTarget.position - playerTarget.oldPosition);
             npc.rotation = 0f;
         }
 
-        public static void YamataBody(NPC npc, ref float[] ai, bool ignoreWet = false, float moveInterval = 0.2f, float maxSpeedX = 2f, float maxSpeedY = 1.5f, float hoverInterval = 0.04f, float hoverMaxSpeed = 1.5f, int hoverHeight = 3)
+        public static void YamataABody(NPC npc, ref float[] ai, bool ignoreWet = false, float moveInterval = 0.2f, float maxSpeedX = 2f, float maxSpeedY = 1.5f, float hoverInterval = 0.04f, float hoverMaxSpeed = 1.5f, int hoverHeight = 3)
         {
             bool flyUpward = false;
             if (npc.justHit) { ai[2] = 0f; }
@@ -470,7 +516,7 @@ namespace AAMod.NPCs.Bosses.Yamata
                 Vector2 distToProj = neckOrigin - head.Center;
                 float projRotation = distToProj.ToRotation() - 1.57f;
                 float distance = distToProj.Length();
-                spriteBatch.Draw(mod.GetTexture("NPCs/Bosses/Yamata/YamataNeck"), neckOrigin - Main.screenPosition,
+                spriteBatch.Draw(mod.GetTexture("NPCs/Bosses/Yamata/YamataANeck"), neckOrigin - Main.screenPosition,
                 new Rectangle(0, 0, 52, 30), drawColor, projRotation,
                 new Vector2(52 * 0.5f, 30 * 0.5f), 1f, SpriteEffects.None, 0f);
                 while (distance > 30f && !float.IsNaN(distance))
@@ -483,12 +529,12 @@ namespace AAMod.NPCs.Bosses.Yamata
 
 
                     //Draw chain
-                    spriteBatch.Draw(mod.GetTexture("NPCs/Bosses/Yamata/YamataNeck"), new Vector2(center.X - Main.screenPosition.X, center.Y - Main.screenPosition.Y),
+                    spriteBatch.Draw(mod.GetTexture("NPCs/Bosses/Yamata/YamataANeck"), new Vector2(center.X - Main.screenPosition.X, center.Y - Main.screenPosition.Y),
                         new Rectangle(0, 0, 52, 30), drawColor, projRotation,
                         new Vector2(52 * 0.5f, 30 * 0.5f), 1f, SpriteEffects.None, 0f);
 
                 }
-                spriteBatch.Draw(mod.GetTexture("NPCs/Bosses/Yamata/YamataNeck"), neckOrigin - Main.screenPosition,
+                spriteBatch.Draw(mod.GetTexture("NPCs/Bosses/Yamata/YamataANeck"), neckOrigin - Main.screenPosition,
                             new Rectangle(0, 0, 52, 30), drawColor, projRotation,
                             new Vector2(52 * 0.5f, 30 * 0.5f), 1f, SpriteEffects.None, 0f);
 
@@ -505,15 +551,9 @@ namespace AAMod.NPCs.Bosses.Yamata
         {
             /*if (Main.netMode == 0)
             {
-                DrawHead(sb, "NPCs/Bosses/Yamata/YamataHead", "NPCs/Bosses/Yamata/YamataHead_Glow", TrueHead, dColor);
-                /*DrawHead(sb, "NPCs/Bosses/Yamata/YamataHeadF", "NPCs/Bosses/Yamata/YamataHeadF_Glow", Head2, dColor);
-                DrawHead(sb, "NPCs/Bosses/Yamata/YamataHeadF", "NPCs/Bosses/Yamata/YamataHeadF_Glow", Head3, dColor);
-                DrawHead(sb, "NPCs/Bosses/Yamata/YamataHeadF", "NPCs/Bosses/Yamata/YamataHeadF_Glow", Head4, dColor);
-                DrawHead(sb, "NPCs/Bosses/Yamata/YamataHeadF", "NPCs/Bosses/Yamata/YamataHeadF_Glow", Head5, dColor);
-                DrawHead(sb, "NPCs/Bosses/Yamata/YamataHeadF", "NPCs/Bosses/Yamata/YamataHeadF_Glow", Head6, dColor);
-                DrawHead(sb, "NPCs/Bosses/Yamata/YamataHeadF", "NPCs/Bosses/Yamata/YamataHeadF_Glow", Head7, dColor);
+                DrawHead(sb, "NPCs/Bosses/Yamata/YamataAHead", "NPCs/Bosses/Yamata/YamataAHead_Glow", TrueHead, dColor);
             }*/
-            BaseDrawing.DrawTexture(sb, mod.GetTexture("NPCs/Bosses/Yamata/YamataTail"), 0, npc.position + new Vector2(0f, npc.gfxOffY) + bottomVisualOffset, npc.width, npc.height, npc.scale, npc.rotation, npc.spriteDirection, Main.npcFrameCount[npc.type], frameBottom, dColor, false);
+            BaseDrawing.DrawTexture(sb, mod.GetTexture("NPCs/Bosses/Yamata/YamataATail"), 0, npc.position + new Vector2(0f, npc.gfxOffY) + bottomVisualOffset, npc.width, npc.height, npc.scale, npc.rotation, npc.spriteDirection, Main.npcFrameCount[npc.type], frameBottom, dColor, false);
             legs[2].DrawLeg(sb, npc, dColor); //back legs
             legs[3].DrawLeg(sb, npc, dColor);
             legs[0].DrawLeg(sb, npc, dColor); //front legs
@@ -524,7 +564,7 @@ namespace AAMod.NPCs.Bosses.Yamata
         }
     }
 
-    public class AnimationInfo
+    public class AwakenedAnimationInfo
     {
         public int animType = 0;
         Vector2[] leftPos = null, left2Pos = null;
@@ -537,14 +577,14 @@ namespace AAMod.NPCs.Bosses.Yamata
         public float[] hitRatios = null;
         public bool flatJoint = false;
 
-        public AnimationInfo(int type, float speedMult = 1f, float aMult = 1f)
+        public AwakenedAnimationInfo(int type, float speedMult = 1f, float aMult = 1f)
         {
             animType = type;
             animMult = aMult;
         }
     }
 
-    public class LimbInfo
+    public class AwakenedLimbInfo
     {
         public int limbType = 0;
         public Vector2 position, oldPosition;
@@ -556,10 +596,10 @@ namespace AAMod.NPCs.Bosses.Yamata
         public Rectangle Hitbox;
         public float rotation = 0f, movementRatio = 0f;
         public AnimationInfo overrideAnimation = null;
-        public Yamata yamata = null;
+        public YamataA yamataA = null;
     }
 
-    public class LegInfo : LimbInfo
+    public class LegInfo : AwakenedLimbInfo
     {
         Vector2 velocity, oldVelocity, legOrigin;
         float velOffsetY = 0f, distanceToMove = 120f, distanceToMoveX = 50f;
@@ -569,9 +609,9 @@ namespace AAMod.NPCs.Bosses.Yamata
         Vector2 legJoint = default(Vector2);
         public static Texture2D[] textures = null;
 
-        public LegInfo(int lType, Vector2 initialPos, Yamata m)
+        public LegInfo(int lType, Vector2 initialPos, YamataA m)
         {
-            yamata = m;
+            yamataA = m;
             position = initialPos;
             pointToStandOn = position;
             limbType = lType;
@@ -646,7 +686,7 @@ namespace AAMod.NPCs.Bosses.Yamata
                 if (overrideAnimation.movementRatio >= 1f) overrideAnimation = null;
             }
             else
-            if (((Yamata)npc.modNPC).flying)
+            if (((YamataA)npc.modNPC).flying)
             {
                 rotation = leftLeg ? -0.25f : 0.25f;
                 MoveLegFlying(npc, leftLeg);
@@ -676,24 +716,24 @@ namespace AAMod.NPCs.Bosses.Yamata
             float outerLegDefault = 70f + (0.5f * scalar);
             float innerLegDefault = 50f + (0.5f * scalar);
             float rightLegScalar = 1f + (npc.velocity.X > 2f ? (scalar * 0.2f) : 0f); //fixes an offset problem when the matriarch walks right
-            float standOnX = npc.Center.X + yamata.topVisualOffset.X + (limbType == 3 ? (-outerLegDefault - Hitbox.Width) : limbType == 2 ? (outerLegDefault + Hitbox.Width) : limbType == 1 ? (-innerLegDefault - Hitbox.Width) : (innerLegDefault + Hitbox.Width));
+            float standOnX = npc.Center.X + yamataA.topVisualOffset.X + (limbType == 3 ? (-outerLegDefault - Hitbox.Width) : limbType == 2 ? (outerLegDefault + Hitbox.Width) : limbType == 1 ? (-innerLegDefault - Hitbox.Width) : (innerLegDefault + Hitbox.Width));
 			Vector2 defaultPlacement = default(Vector2);
             int defaultTileY = (int)(npc.Bottom.Y / 16f);
             int tileY = BaseWorldGen.GetFirstTileFloor((int)(standOnX / 16f), (int)(npc.Bottom.Y / 16f));
-            if (tileY - defaultTileY > Yamata.flyingTileCount) { return default(Vector2); } //'flying' behavior
-            if (!flying && !yamata.flying)
+            if (tileY - defaultTileY > YamataA.flyingTileCount) { return default(Vector2); } //'flying' behavior
+            if (!flying && !yamataA.flying)
             {
                 tileY = (int)((int)((float)tileY * 16f) / 16);
                 float tilePosY = ((float)tileY * 16f);
                 if (Main.tile[(int)(standOnX / 16f), tileY] == null || !Main.tile[(int)(standOnX / 16f), tileY].nactive() || !Main.tileSolid[Main.tile[(int)(standOnX / 16f), tileY].type]) tilePosY += 16f;
                 return new Vector2(standOnX - (Hitbox.Width * 0.5f), tilePosY - Hitbox.Height);
             }
-            return ((flying || yamata.flying) ? default(Vector2) : defaultPlacement);
+            return ((flying || yamataA.flying) ? default(Vector2) : defaultPlacement);
         }
 
         public Vector2 GetMantidConnector(NPC npc)
         {
-            return npc.Center + yamata.topVisualOffset + new Vector2((limbType == 3 || limbType == 1 ? -40f : 40f), 0f);
+            return npc.Center + yamataA.topVisualOffset + new Vector2((limbType == 3 || limbType == 1 ? -40f : 40f), 0f);
         }
 
         public void DrawLeg(SpriteBatch sb, NPC npc, Color dColor)
@@ -702,11 +742,11 @@ namespace AAMod.NPCs.Bosses.Yamata
             if (textures == null)
             {
                 textures = new Texture2D[5];
-                textures[0] = mod.GetTexture("NPCs/Bosses/Yamata/YamataLegCap");
-				textures[1] = mod.GetTexture("NPCs/Bosses/Yamata/YamataLegSegment");
-                textures[2] = mod.GetTexture("NPCs/Bosses/Yamata/YamataLegCapR");
-				textures[3] = mod.GetTexture("NPCs/Bosses/Yamata/YamataLegSegmentR");				
-                textures[4] = mod.GetTexture("NPCs/Bosses/Yamata/YamataFoot");
+                textures[0] = mod.GetTexture("NPCs/Bosses/Yamata/YamataALegCap");
+				textures[1] = mod.GetTexture("NPCs/Bosses/Yamata/YamataALegSegment");
+                textures[2] = mod.GetTexture("NPCs/Bosses/Yamata/YamataALegCapR");
+				textures[3] = mod.GetTexture("NPCs/Bosses/Yamata/YamataALegSegmentR");				
+                textures[4] = mod.GetTexture("NPCs/Bosses/Yamata/YamataAFoot");
             }
             Vector2 drawPos = position - new Vector2(0f, velOffsetY);
             Color lightColor = npc.GetAlpha(BaseDrawing.GetLightColor(Center));

@@ -494,14 +494,13 @@ namespace AAMod.NPCs.Bosses.Akuma
                 Main.NewText("Nice hacks, kid. Now come back and fight me like a real man in expert mode. Then I’ll give you your prize.", Color.DeepSkyBlue.R, Color.DeepSkyBlue.G, Color.DeepSkyBlue.B);
 
             }
-            AAWorld.downedAkumaA = true;
         }
 
         public override bool StrikeNPC(ref double damage, int defense, ref float knockback, int hitDirection, ref bool crit)
         {
             if (damage > npc.lifeMax / 2)
             {
-                Main.NewText("Wuss.", Color.Red.R, Color.Red.G, Color.Red.B);
+                Main.NewText("Wuss.", Color.DeepSkyBlue.R, Color.DeepSkyBlue.G, Color.DeepSkyBlue.B);
             }
             return false;
         }

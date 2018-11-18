@@ -31,10 +31,14 @@ namespace AAMod.NPCs.Bosses.Yamata
                 dust2 = Main.dust[Dust.NewDust(position, 1, 1, mod.DustType<Dusts.YamataDust>(), 0, 0, 0, default(Color), 1f)];
                 dust3 = Main.dust[Dust.NewDust(position, 1, 1, mod.DustType<Dusts.YamataDust>(), 0, 0, 0, default(Color), 1f)];
                 dust4 = Main.dust[Dust.NewDust(position, 1, 1, mod.DustType<Dusts.YamataDust>(), 0, 0, 0, default(Color), 1f)];
-                dust1.noGravity = false;
-                dust2.noGravity = false;
-                dust3.noGravity = false;
-                dust4.noGravity = false;
+                dust1.noGravity = true;
+                dust1.velocity.Y -= 1;
+                dust2.noGravity = true;
+                dust2.velocity.Y -= 1;
+                dust3.noGravity = true;
+                dust3.velocity.Y -= 1;
+                dust4.noGravity = true;
+                dust4.velocity.Y -= 1;
             }
             if (timer == 375)          //if the timer has gotten to 7.5 seconds, this happens (60 = 1 second)
             {
@@ -61,10 +65,14 @@ namespace AAMod.NPCs.Bosses.Yamata
                 dust2 = Main.dust[Dust.NewDust(position, 1, 1, mod.DustType<Dusts.YamataDust>(), 0, 0, 0, default(Color), 1f)];
                 dust3 = Main.dust[Dust.NewDust(position, 1, 1, mod.DustType<Dusts.YamataDust>(), 0, 0, 0, default(Color), 1f)];
                 dust4 = Main.dust[Dust.NewDust(position, 1, 1, mod.DustType<Dusts.YamataDust>(), 0, 0, 0, default(Color), 1f)];
-                dust1.noGravity = false;
-                dust2.noGravity = false;
-                dust3.noGravity = false;
-                dust4.noGravity = false;
+                dust1.noGravity = true;
+                dust1.velocity.Y -= 1;
+                dust2.noGravity = true;
+                dust2.velocity.Y -= 1;
+                dust3.noGravity = true;
+                dust3.velocity.Y -= 1;
+                dust4.noGravity = true;
+                dust4.velocity.Y -= 1;
             }
 
             if (timer == 900)
@@ -94,19 +102,25 @@ namespace AAMod.NPCs.Bosses.Yamata
             dust4 = Main.dust[Dust.NewDust(position, projectile.width, projectile.height, mod.DustType<Dusts.YamataADust>(), 0, 0, 0, default(Color), 1f)];
             dust5 = Main.dust[Dust.NewDust(position, projectile.width, projectile.height, mod.DustType<Dusts.YamataADust>(), 0, 0, 0, default(Color), 1f)];
             dust6 = Main.dust[Dust.NewDust(position, projectile.width, projectile.height, mod.DustType<Dusts.YamataADust>(), 0, 0, 0, default(Color), 1f)];
-            dust1.noGravity = false;
-            dust2.noGravity = false;
-            dust3.noGravity = false;
-            dust4.noGravity = false;
-            dust5.noGravity = false;
-            dust6.noGravity = false;
-            
+            dust1.noGravity = true;
+            dust1.velocity.Y -= 1;
+            dust2.noGravity = true;
+            dust2.velocity.Y -= 1;
+            dust3.noGravity = true;
+            dust3.velocity.Y -= 1;
+            dust4.noGravity = true;
+            dust4.velocity.Y -= 1;
+            dust5.noGravity = true;
+            dust5.velocity.Y -= 1;
+            dust6.noGravity = true;
+            dust6.velocity.Y -= 1;
+
             Main.NewText("Yamata has been Awakened!", Color.Magenta.R, Color.Magenta.G, Color.Magenta.B);
             Main.NewText("...TO FACE TRUE ABYSSAL WRATH, YOU LITTLE WEALP!!!", new Color(146, 30, 68));
 
             AAMod.YamataMusic = false;
 
-            //NPC.NewNPC((int)projectile.position.X, (int)projectile.position.Y, mod.NPCType("YamataA"));
+            NPC.NewNPC((int)projectile.position.X, (int)projectile.position.Y, mod.NPCType("YamataA"));
         }
         
     }
