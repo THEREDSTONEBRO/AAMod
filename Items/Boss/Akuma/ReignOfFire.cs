@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.Audio;
 
 namespace AAMod.Items.Boss.Akuma   //where is located
 {
@@ -43,7 +44,7 @@ Inflicts Daybroken");
             item.useStyle = 1;        //Style is how this item is used, 1 is the style of the sword
             item.knockBack = 6.5f;      //Sword knockback
             item.value = Item.buyPrice(1, 0, 0, 0);
-            item.UseSound = SoundID.Item21;      //1 is the sound of the sword
+            item.UseSound = new LegacySoundStyle(2, 124, Terraria.Audio.SoundType.Sound);
             item.autoReuse = true;   //if it's capable of autoswing.
             item.useTurn = true;
             item.shootSpeed = 20f;

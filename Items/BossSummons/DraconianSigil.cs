@@ -4,6 +4,7 @@ using Terraria.ModLoader;
 using AAMod.NPCs.Bosses.Akuma;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
+using BaseMod;
 
 namespace AAMod.Items.BossSummons
 {
@@ -43,7 +44,27 @@ Only Usable during the day");
         // We use the CanUseItem hook to prevent a player from using this item while the boss is present in the world.
         public override bool CanUseItem(Player player)
         {
-            return !NPC.AnyNPCs(mod.NPCType<Akuma>()) && Main.dayTime && !NPC.AnyNPCs(mod.NPCType<AkumaA>());
+            if (!Main.dayTime)
+            {
+                if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("Geez, kid. Can't a dragon get a little shut-eye? Come back in the morning.", new Color(180, 41, 32), false);
+                return false;
+            }
+            if (player.GetModPlayer<AAPlayer>(mod).ZoneInferno)
+            {
+                if (NPC.AnyNPCs(mod.NPCType<Akuma>()))
+                {
+                    if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("Hey kid, that Sigil only works once, ya know.", new Color(180, 41, 32), false);
+                    return false;
+                }
+                if (NPC.AnyNPCs(mod.NPCType<AkumaA>()))
+                {
+                    if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("Hey kid, that Sigil only works once, ya know.", new Color(0, 191, 255), false);
+                    return false;
+                }
+                return true;
+            }
+            if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("You can only use that Sigil in the Inferno, kid.", new Color(180, 41, 32), false);
+            return false;
         }
 
         public override bool UseItem(Player player)

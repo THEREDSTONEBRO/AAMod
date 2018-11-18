@@ -11,6 +11,7 @@ using Terraria.GameContent.Generation;
 using Terraria.ModLoader.IO;
 using AAMod.Tiles;
 using AAMod.Walls;
+using Terraria.GameContent.Achievements;
 
 namespace AAMod
 {
@@ -442,6 +443,165 @@ namespace AAMod
                 WorldGen.GrowTree(position.X + i, y);
             }
         }
+
+        /*public void ChaosChests(GenerationProgress progress)
+        {
+            Main.mouseRightRelease = false;
+            int num60 = 0;
+            int num61;
+            for (num61 = (int)(Main.tile[myX, myY].frameX / 18); num61 > 1; num61 -= 2)
+            {
+            }
+            num61 = myX - num61;
+            int num62 = myY - (int)(Main.tile[myX, myY].frameY / 18);
+            if (Main.tile[myX, myY].type == 29)
+            {
+                num60 = 1;
+            }
+            else if (Main.tile[myX, myY].type == 97)
+            {
+                num60 = 2;
+            }
+            else if (Main.tile[myX, myY].type == 463)
+            {
+                num60 = 3;
+            }
+            if (this.sign > -1)
+            {
+                Main.PlaySound(11, -1, -1, 1, 1f, 0f);
+                this.sign = -1;
+                Main.editSign = false;
+                Main.npcChatText = string.Empty;
+            }
+            if (Main.editChest)
+            {
+                Main.PlaySound(12, -1, -1, 1, 1f, 0f);
+                Main.editChest = false;
+                Main.npcChatText = string.Empty;
+            }
+            if (this.editedChestName)
+            {
+                NetMessage.SendData(33, -1, -1, Main.chest[this.chest].name, this.chest, 1f, 0f, 0f, 0, 0, 0);
+                this.editedChestName = false;
+            }
+            if (Main.netMode == 1 && num60 == 0 && (Main.tile[num61, num62].frameX < 72 || Main.tile[num61, num62].frameX > 106) && (Main.tile[num61, num62].frameX < 144 || Main.tile[num61, num62].frameX > 178) && (Main.tile[num61, num62].frameX < 828 || Main.tile[num61, num62].frameX > 1006) && (Main.tile[num61, num62].frameX < 1296 || Main.tile[num61, num62].frameX > 1330) && (Main.tile[num61, num62].frameX < 1368 || Main.tile[num61, num62].frameX > 1402) && (Main.tile[num61, num62].frameX < 1440 || Main.tile[num61, num62].frameX > 1474))
+            {
+                if (num61 == this.chestX && num62 == this.chestY && this.chest != -1)
+                {
+                    this.chest = -1;
+                    Recipe.FindRecipes();
+                    Main.PlaySound(11, -1, -1, 1, 1f, 0f);
+                }
+                else
+                {
+                    NetMessage.SendData(31, -1, -1, "", num61, (float)num62, 0f, 0f, 0, 0, 0);
+                    Main.stackSplit = 600;
+                }
+            }
+            else
+            {
+                int num63 = -1;
+                if (num60 == 1)
+                {
+                    num63 = -2;
+                }
+                else if (num60 == 2)
+                {
+                    num63 = -3;
+                }
+                else if (num60 == 3)
+                {
+                    num63 = -4;
+                }
+                else
+                {
+                    bool flag11 = false;
+                    if (Chest.isLocked(num61, num62))
+                    {
+                        int num64 = 327;
+                        if (Main.tile[num61, num62].frameX >= 144 && Main.tile[num61, num62].frameX <= 178)
+                        {
+                            num64 = 329;
+                        }
+                        if (Main.tile[num61, num62].frameX >= 828 && Main.tile[num61, num62].frameX <= 1006)
+                        {
+                            int num65 = (int)(Main.tile[num61, num62].frameX / 18);
+                            int num66 = 0;
+                            while (num65 >= 2)
+                            {
+                                num65 -= 2;
+                                num66++;
+                            }
+                            num66 -= 23;
+                            num64 = 1533 + num66;
+                        }
+                        flag11 = true;
+                        for (int num67 = 0; num67 < 58; num67++)
+                        {
+                            if (this.inventory[num67].type == num64 && this.inventory[num67].stack > 0 && Chest.Unlock(num61, num62))
+                            {
+                                if (num64 != 329)
+                                {
+                                    this.inventory[num67].stack--;
+                                    if (this.inventory[num67].stack <= 0)
+                                    {
+                                        this.inventory[num67] = new Item();
+                                    }
+                                }
+                                if (Main.netMode == 1)
+                                {
+                                    NetMessage.SendData(52, -1, -1, "", this.whoAmI, 1f, (float)num61, (float)num62, 0, 0, 0);
+                                }
+                            }
+                        }
+                    }
+                    if (!flag11)
+                    {
+                        num63 = Chest.FindChest(num61, num62);
+                    }
+                }
+                if (num63 != -1)
+                {
+                    Main.stackSplit = 600;
+                    if (num63 == this.chest)
+                    {
+                        this.chest = -1;
+                        Main.PlaySound(11, -1, -1, 1, 1f, 0f);
+                    }
+                    else if (num63 != this.chest && this.chest == -1)
+                    {
+                        this.chest = num63;
+                        Main.playerInventory = true;
+                        if (PlayerInput.GrappleAndInteractAreShared)
+                        {
+                            PlayerInput.Triggers.JustPressed.Grapple = false;
+                        }
+                        Main.recBigList = false;
+                        Main.PlaySound(10, -1, -1, 1, 1f, 0f);
+                        this.chestX = num61;
+                        this.chestY = num62;
+                        if (Main.tile[num61, num62].frameX >= 36 && Main.tile[num61, num62].frameX < 72)
+                        {
+                            AchievementsHelper.HandleSpecialEvent(this, 16);
+                        }
+                    }
+                    else
+                    {
+                        this.chest = num63;
+                        Main.playerInventory = true;
+                        if (PlayerInput.GrappleAndInteractAreShared)
+                        {
+                            PlayerInput.Triggers.JustPressed.Grapple = false;
+                        }
+                        Main.recBigList = false;
+                        Main.PlaySound(12, -1, -1, 1, 1f, 0f);
+                        this.chestX = num61;
+                        this.chestY = num62;
+                    }
+                    Recipe.FindRecipes();
+                }
+            }
+        }*/
         
         public void VoidHouses(int X, int Y, int type = 30, int sizeX = 10, int sizeY = 7)
         {

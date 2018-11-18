@@ -65,32 +65,17 @@ namespace AAMod.Items.Projectiles.Akuma
 
         public override void Kill(int timeLeft)
         {
-            float spread = 45f * 0.0174f;
-            double startAngle = Math.Atan2(projectile.velocity.X, projectile.velocity.Y) - (spread / 2);
-            double deltaAngle = spread / 8f;
-            double offsetAngle;
-            int i;
-            if (projectile.whoAmI == mod.ProjectileType("FireProj"))
-            {
-                for (i = 0; i < 4; i++)
-                {
-                    offsetAngle = (startAngle + (deltaAngle * (i + (i * i)) / 2f)) + (32f * i);
-                    int Flame1 = Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, (float)(Math.Sin(offsetAngle) * 5f), (float)(Math.Cos(offsetAngle) * 5f), mod.ProjectileType("AkumaFlare"), 230, 1.25f, projectile.whoAmI, 0f, 0f);
-                    int Flame2 = Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, (float)(-Math.Sin(offsetAngle) * 5f), (float)(-Math.Cos(offsetAngle) * 5f), mod.ProjectileType("AkumaFlare"), 230, 1.25f, projectile.whoAmI, 0f, 0f);
-                    Main.projectile[Flame1].timeLeft = 120;
-                    Main.projectile[Flame2].timeLeft = 120;
-                }
-            }
-            for (int num468 = 0; num468 < 20; num468++)
+            for(int num468 = 0; num468 < 20; num468++)
             {
                 int num469 = Dust.NewDust(new Vector2(projectile.Center.X, projectile.Center.Y), projectile.width, projectile.height, mod.DustType<Dusts.AkumaADust>(), -projectile.velocity.X * 0.2f,
-                    -projectile.velocity.Y * 0.2f, 0, default(Color), 1f);
+                    -projectile.velocity.Y * 0.2f, 100, default(Color), 2f);
                 Main.dust[num469].noGravity = true;
                 Main.dust[num469].velocity *= 2f;
                 num469 = Dust.NewDust(new Vector2(projectile.Center.X, projectile.Center.Y), projectile.width, projectile.height, mod.DustType<Dusts.AkumaADust>(), -projectile.velocity.X * 0.2f,
-                    -projectile.velocity.Y * 0.2f, 0, default(Color), 1f);
+                    -projectile.velocity.Y * 0.2f, 100, default(Color));
                 Main.dust[num469].velocity *= 2f;
             }
+            Projectile.NewProjectile(projectile.position.X, projectile.position.Y, projectile.velocity.X, projectile.velocity.Y, mod.ProjectileType("FireProjBoom"), projectile.damage, projectile.knockBack, projectile.owner, 0f, 0f);
         }
 
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)

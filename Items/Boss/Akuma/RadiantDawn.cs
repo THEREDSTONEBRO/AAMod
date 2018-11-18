@@ -46,7 +46,9 @@ namespace AAMod.Items.Boss.Akuma
             item.shootSpeed = 14f;
             item.useAmmo = 40;
             item.glowMask = customGlowMask;
+            item.UseSound = SoundID.Item20;
         }
+
 
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {

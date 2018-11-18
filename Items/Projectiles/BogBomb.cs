@@ -18,12 +18,12 @@ namespace AAMod.Items.Projectiles
                 {
                     glowMasks[i] = Main.glowMaskTexture[i];
                 }
-                glowMasks[glowMasks.Length - 1] = mod.GetTexture("Items/Projectile/" + GetType().Name + "_Glow");
+                glowMasks[glowMasks.Length - 1] = mod.GetTexture("Items/Projectiles/" + GetType().Name + "_Glow");
                 customGlowMask = (short)(glowMasks.Length - 1);
                 Main.glowMaskTexture = glowMasks;
             }
             DisplayName.SetDefault("Bog Bomb");     //The English name of the projectile
-			ProjectileID.Sets.TrailCacheLength[projectile.type] = 5;     //The recording mode
+            Main.projFrames[projectile.type] = 5;     //The recording mode
 		}
 
 		public override void SetDefaults()
@@ -42,6 +42,11 @@ namespace AAMod.Items.Projectiles
 			aiType = ProjectileID.WoodenArrowFriendly;           //Act exactly like default Bullet
             projectile.glowMask = customGlowMask;
 		}
+
+        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+        {
+            target.AddBuff(BuffID.Venom, 600);
+        }
 
         public override void Kill(int timeleft)
         {

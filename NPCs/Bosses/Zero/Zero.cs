@@ -117,6 +117,7 @@ namespace AAMod.NPCs.Bosses.Zero
                 if (Main.expertMode)
                 {
                     NPC.NewNPC((int)spawnAt.X, (int)spawnAt.Y, mod.NPCType("ZeroAwakened"));
+                    Main.NewText("Zero has been Awakened!", Color.Magenta.R, Color.Magenta.G, Color.Magenta.B);
                     Main.NewText("INITIATING D00MSDAY PR0T0C0L. TARGET L0CKED. ENGAGING.", Color.Red.R, Color.Red.G, Color.Red.B);
                 }
                 if (!Main.expertMode)

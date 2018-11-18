@@ -17,7 +17,7 @@ namespace AAMod.Items.Projectiles.Yamata
         {
             projectile.width = 14;
             projectile.height = 14;
-            projectile.aiStyle = 70;
+            projectile.aiStyle = 0;
             projectile.friendly = true;
             projectile.penetrate = 1;
             projectile.alpha = 255;
@@ -33,8 +33,8 @@ namespace AAMod.Items.Projectiles.Yamata
                 Dust dust1;
                 Dust dust2;
                 Vector2 position = projectile.position;
-                dust1 = Main.dust[Dust.NewDust(position, projectile.width, projectile.height, mod.DustType<Dusts.YamataDust>(), 0, 0, 0, new Color(20, 20, 76), 1f)];
-                dust2 = Main.dust[Dust.NewDust(position, projectile.width, projectile.height, mod.DustType<Dusts.YamataDust>(), 0, 0, 0, new Color(20, 20, 76), 1f)];
+                dust1 = Main.dust[Dust.NewDust(position, projectile.width, projectile.height, mod.DustType<Dusts.YamataDust>(), 0, 0, 0, new Color(45, 46, 70), 1f)];
+                dust2 = Main.dust[Dust.NewDust(position, projectile.width, projectile.height, mod.DustType<Dusts.YamataDust>(), 0, 0, 0, new Color(45, 46, 70), 1f)];
                 dust1.noGravity = true;
                 dust2.noGravity = true;
             }

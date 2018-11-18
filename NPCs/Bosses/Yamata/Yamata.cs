@@ -64,14 +64,12 @@ namespace AAMod.NPCs.Bosses.Yamata
             npc.boss = true;
             music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/Yamata");
             npc.noGravity = true;
-            npc.noTileCollide = true;
             npc.netAlways = true;
             for (int m = 0; m < npc.buffImmune.Length; m++) npc.buffImmune[m] = true;
-
-            frameWidth = 98;
-            frameHeight = 94;
+            frameWidth = 162;
+            frameHeight = 118;
             npc.frame = BaseDrawing.GetFrame(frameCount, frameWidth, frameHeight, 0, 2);
-            frameBottom = BaseDrawing.GetFrame(frameCount, frameWidth, 70, 0, 2);
+            frameBottom = BaseDrawing.GetFrame(frameCount, frameWidth, 54, 0, 2);
             frameHead = BaseDrawing.GetFrame(frameCount, frameWidth, 118, 0, 2);
 
             if (Main.expertMode)
@@ -121,7 +119,7 @@ namespace AAMod.NPCs.Bosses.Yamata
         public Rectangle frameBottom = new Rectangle(0, 0, 1, 1), frameHead = new Rectangle(0, 0, 1, 1);
         public bool flying = false, prevHalfHPLeft = false, halfHPLeft = false, prevFourthHPLeft = false, fourthHPLeft = false, summonedHealers1 = false, summonedHealers2 = false;
         public Player playerTarget = null;
-        public static int flyingTileCount = 12, totalMinionCount = 0;
+        public static int flyingTileCount = 4, totalMinionCount = 0;
 
         //damage counts
         public int swipeDamage = 100, scytheDamage = 120, eggDamage = 90;
@@ -163,7 +161,10 @@ namespace AAMod.NPCs.Bosses.Yamata
                 if (internalAI[1] == stateIdle) //idle (unused)
                 {
                     AIMovementIdle();
-                }
+                }else
+				{
+					AIMovementNormal();
+				}
             }
             else
             {
@@ -187,20 +188,169 @@ namespace AAMod.NPCs.Bosses.Yamata
         {
             npc.velocity.X *= 0.9f;
             if (Math.Abs(npc.velocity.X) < 0.01f) npc.velocity.X = 0f;
-            npc.velocity.Y -= 0.25f;
+            npc.velocity.Y += 0.25f;
             npc.rotation = 0f;
-            if (npc.position.Y + npc.velocity.Y <= 0f && Main.netMode != 1) { BaseAI.KillNPC(npc); npc.netUpdate2 = true; } //if out of map, kill mantid
+			flying = true;
+            if (npc.position.Y - npc.height - npc.velocity.Y >= Main.maxTilesY && Main.netMode != 1) { BaseAI.KillNPC(npc); npc.netUpdate2 = true; } //if out of map, kill mantid
         }
 
         public void AIMovementNormal(float movementScalar = 1f, float playerDistance = -1f)
         {
-            float movementScalar2 = Math.Min(6f, Math.Max(1f, (playerDistance / (float)playerTooFarDist) * 6f));
+            float movementScalar2 = Math.Min(4f, Math.Max(1f, (playerDistance / (float)playerTooFarDist) * 4f));
             bool playerTooFar = playerDistance > playerTooFarDist;
-            BaseAI.AISpaceOctopus(npc, ref npc.ai, (flying ? 0.2f : 0.15f) * movementScalar2 * movementScalar, (flying ? 9f : 5f) * movementScalar2 * movementScalar, 140f, 70f, null);
+			YamataBody(npc, ref npc.ai, true, 0.2f, 2f, 1.5f, 0.04f, 1.5f, 3);
+            //BaseAI.AISpaceOctopus(npc, ref npc.ai, (flying ? 0.2f : 0.15f) * movementScalar2 * movementScalar, (flying ? 4f : 1f) * movementScalar2 * movementScalar, 120f, 40f, null);
             if (playerTooFar) npc.position += (playerTarget.position - playerTarget.oldPosition);
             npc.rotation = 0f;
         }
-        
+
+        public static void YamataBody(NPC npc, ref float[] ai, bool ignoreWet = false, float moveInterval = 0.2f, float maxSpeedX = 2f, float maxSpeedY = 1.5f, float hoverInterval = 0.04f, float hoverMaxSpeed = 1.5f, int hoverHeight = 3)
+        {
+            bool flyUpward = false;
+            if (npc.justHit) { ai[2] = 0f; }
+            if (ai[2] >= 0f)
+            {
+                int tileDist = 16;
+                bool inRangeX = false;
+                bool inRangeY = false;
+                if (npc.position.X > ai[0] - (float)tileDist && npc.position.X < ai[0] + (float)tileDist) { inRangeX = true; }
+                else
+                    if ((npc.velocity.X < 0f && npc.direction > 0) || (npc.velocity.X > 0f && npc.direction < 0)) { inRangeX = true; }
+                tileDist += 24;
+                if (npc.position.Y > ai[1] - (float)tileDist && npc.position.Y < ai[1] + (float)tileDist)
+                {
+                    inRangeY = true;
+                }
+                if (inRangeX && inRangeY)
+                {
+                    ai[2] += 1f;
+                    //i'm pretty sure projectile is never called, but it's in the original so...
+                    if (ai[2] >= 30f && tileDist == 16)
+                    {
+                        flyUpward = true;
+                    }
+                    if (ai[2] >= 60f)
+                    {
+                        ai[2] = -200f;
+                        npc.direction *= -1;
+                        npc.velocity.X = npc.velocity.X * -1f;
+                        npc.collideX = false;
+                    }
+                }
+                else
+                {
+                    ai[0] = npc.position.X;
+                    ai[1] = npc.position.Y;
+                    ai[2] = 0f;
+                }
+                npc.TargetClosest(true);
+            }
+            else
+            {
+                ai[2] += 1f;
+                if (Main.player[npc.target].position.X + (float)(Main.player[npc.target].width / 2) > npc.position.X + (float)(npc.width / 2))
+                {
+                    npc.direction = -1;
+                }
+                else
+                {
+                    npc.direction = 1;
+                }
+            }
+
+            int tileX = (int)(npc.Center.X / 16f) + npc.direction * 2;
+            int tileY = (int)((npc.position.Y + (float)npc.height) / 16f);
+            bool tileBelowEmpty = true;
+
+            for (int tY = tileY; tY < tileY + hoverHeight; tY++)
+            {
+                if (Main.tile[tileX, tY] == null)
+                {
+                    Main.tile[tileX, tY] = new Tile();
+                }
+                if ((Main.tile[tileX, tY].nactive() && Main.tileSolid[(int)Main.tile[tileX, tY].type]) || Main.tile[tileX, tY].liquid > 0)
+                {
+                    tileBelowEmpty = false;
+                    break;
+                }
+            }
+            if (flyUpward)
+            {
+                tileBelowEmpty = true;
+            }
+
+            if (tileBelowEmpty)
+            {
+                npc.velocity.Y += moveInterval;
+                if (npc.velocity.Y > 9f)
+                {
+                    npc.velocity.Y = 9f;
+                }
+            }
+            else
+            {
+                if (npc.directionY < 0 && npc.velocity.Y > 0f) { npc.velocity.Y -= moveInterval; }
+                if (npc.velocity.Y < -maxSpeedY) { npc.velocity.Y = -maxSpeedY; }
+            }
+
+
+            if (!ignoreWet && npc.wet)
+            {
+                npc.velocity.Y -= moveInterval;
+                if (npc.velocity.Y < -maxSpeedY * 0.75f) { npc.velocity.Y = -maxSpeedY * 0.75f; }
+            }
+
+
+            if (npc.collideY)
+            {
+                npc.velocity.Y = npc.oldVelocity.Y * -0.25f;
+                if (npc.velocity.Y > 0f && npc.velocity.Y < 1f) { npc.velocity.Y = 1f; }
+                if (npc.velocity.Y < 0f && npc.velocity.Y > -1f) { npc.velocity.Y = -1f; }
+            }
+
+            if (!tileBelowEmpty && npc.target > -1 && Main.player[npc.target].active && !Main.player[npc.target].dead && Math.Abs(Main.player[npc.target].Center.X - npc.Center.X) < 50) //force a hover
+            {
+                if (Math.Abs(npc.velocity.X) > 0.3f) npc.velocity.X *= 0.9f; //slow the fuck down
+                if (Math.Abs(npc.velocity.Y) > 0.3f) npc.velocity.Y *= 0.9f; //slow the fuck down
+            }else
+            if (npc.direction == -1 && npc.velocity.X > -maxSpeedX)
+            {
+                npc.velocity.X -= (moveInterval * 0.5f);
+                if (npc.velocity.X > maxSpeedX) { npc.velocity.X = npc.velocity.X - 0.1f; }
+                else
+                    if (npc.velocity.X > 0f) { npc.velocity.X = npc.velocity.X + 0.05f; }
+                if (npc.velocity.X < -maxSpeedX) { npc.velocity.X = -maxSpeedX; }
+            }
+            else
+            if (npc.direction == 1 && npc.velocity.X < maxSpeedX)
+            {
+                npc.velocity.X += (moveInterval * 0.5f);
+                if (npc.velocity.X < -maxSpeedX) { npc.velocity.X = npc.velocity.X + 0.1f; }
+                else
+                    if (npc.velocity.X < 0f) { npc.velocity.X = npc.velocity.X - 0.05f; }
+                if (npc.velocity.X > maxSpeedX) { npc.velocity.X = maxSpeedX; }
+            }
+
+
+            if (npc.directionY == -1 && (double)npc.velocity.Y > -hoverMaxSpeed)
+            {
+                npc.velocity.Y = npc.velocity.Y - hoverInterval;
+                if ((double)npc.velocity.Y > hoverMaxSpeed) { npc.velocity.Y = npc.velocity.Y - 0.05f; }
+                else
+                    if (npc.velocity.Y > 0f) { npc.velocity.Y = npc.velocity.Y + (hoverInterval - 0.01f); }
+                if ((double)npc.velocity.Y < -hoverMaxSpeed) { npc.velocity.Y = -hoverMaxSpeed; }
+            }
+            else
+            if (npc.directionY == 1 && (double)npc.velocity.Y < hoverMaxSpeed)
+            {
+                npc.velocity.Y = npc.velocity.Y + hoverInterval;
+                if ((double)npc.velocity.Y < -hoverMaxSpeed) { npc.velocity.Y = npc.velocity.Y + 0.05f; }
+                else
+                if (npc.velocity.Y < 0f) { npc.velocity.Y = npc.velocity.Y - (hoverInterval - 0.01f); }
+                if ((double)npc.velocity.Y > hoverMaxSpeed) { npc.velocity.Y = hoverMaxSpeed; }
+            }
+        }
+
 
         public Rectangle topHitbox = default(Rectangle), bottomHitbox = default(Rectangle), leftHitbox = default(Rectangle), rightHitbox = default(Rectangle);
         public const int stateIdle = 0, stateMovementOnly = 1, stateArmScythes = 2, stateArmSpawns = 3, stateArmCombo = 4, stateFireEggs = 5, stateArmAndEggs = 6;
@@ -213,9 +363,9 @@ namespace AAMod.NPCs.Bosses.Yamata
             float prevAI = internalAI[1];
             if (prevAI == stateMovementOnly) //if the previous AI was movement only, choose a random attack AI sequence.
             {
-                internalAI[1] = (Main.expertMode ? statesToChangeToExpert[Main.rand.Next(statesToChangeToExpert.Length)] : statesToChangeTo[Main.rand.Next(statesToChangeTo.Length)]);
-                if (internalAI[1] != stateFireEggs && totalMinionCount < 2 && Main.rand.Next(3) != 0) internalAI[1] = stateFireEggs; //favor firing eggs if there are not many minions left
-                if (((internalAI[1] == stateArmCombo && Main.rand.Next(2) == 0) || internalAI[1] == stateFireEggs) && Main.expertMode && fourthHPLeft) internalAI[1] = stateArmAndEggs; //get serious at 25% hp on expert mode.
+                //internalAI[1] = (Main.expertMode ? statesToChangeToExpert[Main.rand.Next(statesToChangeToExpert.Length)] : statesToChangeTo[Main.rand.Next(statesToChangeTo.Length)]);
+                //if (internalAI[1] != stateFireEggs && totalMinionCount < 2 && Main.rand.Next(3) != 0) internalAI[1] = stateFireEggs; //favor firing eggs if there are not many minions left
+                //if (((internalAI[1] == stateArmCombo && Main.rand.Next(2) == 0) || internalAI[1] == stateFireEggs) && Main.expertMode && fourthHPLeft) internalAI[1] = stateArmAndEggs; //get serious at 25% hp on expert mode.
             }
             else// otherwise go to idle phase.
             {
@@ -285,14 +435,11 @@ namespace AAMod.NPCs.Bosses.Yamata
 
         public override bool PreDraw(SpriteBatch sb, Color dColor)
         {
-            if (legs != null)
-            {
-                for (int m = 0; m < 4; m++)
-                {
-                    legs[m].DrawLeg(sb, npc, dColor);
-                }
-            }
-            BaseDrawing.DrawTexture(sb, mod.GetTexture("NPCs/Bosses/Yamata/YamataTail"), 0, npc.position + new Vector2(0f, npc.gfxOffY + 40f) + bottomVisualOffset, npc.width, npc.height, npc.scale, npc.rotation, npc.spriteDirection, Main.npcFrameCount[npc.type], frameBottom, dColor, false);
+            legs[0].DrawLeg(sb, npc, dColor); //front legs
+            legs[1].DrawLeg(sb, npc, dColor);
+            legs[2].DrawLeg(sb, npc, dColor); //back legs
+            legs[3].DrawLeg(sb, npc, dColor);
+            BaseDrawing.DrawTexture(sb, mod.GetTexture("NPCs/Bosses/Yamata/YamataTail"), 0, npc.position + new Vector2(0f, npc.gfxOffY) + bottomVisualOffset, npc.width, npc.height, npc.scale, npc.rotation, npc.spriteDirection, Main.npcFrameCount[npc.type], frameBottom, dColor, false);
             BaseDrawing.DrawTexture(sb, Main.npcTexture[npc.type], 0, npc.position + new Vector2(0f, npc.gfxOffY) + topVisualOffset, npc.width, npc.height, npc.scale, npc.rotation, npc.spriteDirection, Main.npcFrameCount[npc.type], npc.frame, dColor, false);
             
             return false;
@@ -403,13 +550,13 @@ namespace AAMod.NPCs.Bosses.Yamata
             position = initialPos;
             pointToStandOn = position;
             limbType = lType;
-            Hitbox = new Rectangle(0, 0, 42, 110);
+            Hitbox = new Rectangle(0, 0, 70, 38);
             legOrigin = new Vector2(limbType == 1 || limbType == 3 ? Hitbox.Width - 12 : 12, 12);
         }
 
         public void MoveLegFlying(NPC npc, bool leftLeg)
         {
-            Vector2 movementSpot = GetMantidConnector(npc) + new Vector2((limbType == 3 ? (-35f - Hitbox.Width) : limbType == 2 ? 35f : limbType == 1 ? (-25f - Hitbox.Width) : 25f), (limbType == 1 || limbType == 0 ? 10f : 15f));
+            Vector2 movementSpot = GetMantidConnector(npc) + new Vector2((limbType == 3 ? (-35f - Hitbox.Width) : limbType == 2 ? 35f : limbType == 1 ? (-15f - Hitbox.Width) : 15f), (limbType == 1 || limbType == 0 ? 10f : 15f));
             float velLength = (npc.position - npc.oldPos[1]).Length();
             if (velLength > 8f)
             {
@@ -417,11 +564,11 @@ namespace AAMod.NPCs.Bosses.Yamata
                 velocity = default(Vector2);
             }
             else
-            if (Vector2.Distance(movementSpot, position) > (15 + (int)npc.velocity.Length()))
+            if (Vector2.Distance(movementSpot, position) > (40 + (int)npc.velocity.Length()))
             {
                 Vector2 velAddon = (movementSpot - position); velAddon.Normalize(); velAddon *= (2f + (velLength * 0.25f));
                 velocity += velAddon;
-                float velMax = 8f + velLength;
+                float velMax = 4f + velLength;
                 if (velocity.Length() > velMax) { velocity.Normalize(); velocity *= velMax; }
                 position += velocity;
             }
@@ -434,9 +581,9 @@ namespace AAMod.NPCs.Bosses.Yamata
 
         public void UpdateVelOffsetY()
         {
-            movementRatio += 0.075f;
+            movementRatio += 0.04f;
             movementRatio = Math.Max(0f, Math.Min(1f, movementRatio));
-            velOffsetY = BaseUtility.MultiLerp(movementRatio, 0f, 40f, 0f);
+            velOffsetY = BaseUtility.MultiLerp(movementRatio, 0f, 30f, 0f);
         }
 
         public void MoveLegWalking(NPC npc, bool leftLeg, Vector2 standOnPoint)
@@ -446,9 +593,9 @@ namespace AAMod.NPCs.Bosses.Yamata
             {
                 Vector2 velAddon = (pointToStandOn - position); velAddon.Normalize(); velAddon *= (1.6f + (npc.velocity.Length() * 0.5f));
                 velocity += velAddon;
-                float velMax = 6f + npc.velocity.Length();
+                float velMax = 4f + npc.velocity.Length();
                 if (velocity.Length() > velMax) { velocity.Normalize(); velocity *= velMax; }
-                if (Vector2.Distance(pointToStandOn, position) <= 20) { position = pointToStandOn; velocity = default(Vector2); }
+                if (Vector2.Distance(pointToStandOn, position) <= 15) { position = pointToStandOn; velocity = default(Vector2); }
                 position += velocity;
                 if ((position == pointToStandOn || Vector2.Distance(standOnPoint, position + new Vector2((float)Hitbox.Width * 0.5f, 0f)) > distanceToMove || Math.Abs(position.X - standOnPoint.X) > distanceToMoveX))
                 {
@@ -493,7 +640,7 @@ namespace AAMod.NPCs.Bosses.Yamata
                 }
             }
             Vector2 mantidConnector = GetMantidConnector(npc);
-            legJoint = Vector2.Lerp(position, mantidConnector, 0.5f) + new Vector2(leftLeg ? 32 : 0f, 60);
+            legJoint = Vector2.Lerp(position, mantidConnector, 0.5f) + new Vector2(leftLeg ? 30 : 0f, -40);
             oldPosition = position;
             oldVelocity = velocity;
         }
@@ -501,11 +648,11 @@ namespace AAMod.NPCs.Bosses.Yamata
         public Vector2 GetStandOnPoint(NPC npc)
         {
             float scalar = npc.velocity.Length();
-            float outerLegDefault = 100f + (0.5f * scalar);
-            float innerLegDefault = 70f + (0.5f * scalar);
+            float outerLegDefault = 70f + (0.5f * scalar);
+            float innerLegDefault = 50f + (0.5f * scalar);
             float rightLegScalar = 1f + (npc.velocity.X > 2f ? (scalar * 0.2f) : 0f); //fixes an offset problem when the matriarch walks right
             float standOnX = npc.Center.X + yamata.topVisualOffset.X + (limbType == 3 ? (-outerLegDefault - Hitbox.Width) : limbType == 2 ? (outerLegDefault + Hitbox.Width) : limbType == 1 ? (-innerLegDefault - Hitbox.Width) : (innerLegDefault + Hitbox.Width));
-            Vector2 defaultPlacement = default(Vector2);
+			Vector2 defaultPlacement = default(Vector2);
             int defaultTileY = (int)(npc.Bottom.Y / 16f);
             int tileY = BaseWorldGen.GetFirstTileFloor((int)(standOnX / 16f), (int)(npc.Bottom.Y / 16f));
             if (tileY - defaultTileY > Yamata.flyingTileCount) { return default(Vector2); } //'flying' behavior
@@ -521,7 +668,7 @@ namespace AAMod.NPCs.Bosses.Yamata
 
         public Vector2 GetMantidConnector(NPC npc)
         {
-            return npc.Center + yamata.topVisualOffset + new Vector2((limbType == 3 || limbType == 1 ? -30f : 30f), 60f);
+            return npc.Center + yamata.topVisualOffset + new Vector2((limbType == 3 || limbType == 1 ? -40f : 40f), 0f);
         }
 
         public void DrawLeg(SpriteBatch sb, NPC npc, Color dColor)
@@ -529,15 +676,25 @@ namespace AAMod.NPCs.Bosses.Yamata
             Mod mod = AAMod.instance;
             if (textures == null)
             {
-                textures = new Texture2D[4];
-                textures[0] = mod.GetTexture("NPCs/Bosses/Yamata/YamataJoint");
-                textures[1] = mod.GetTexture("NPCs/Bosses/Yamata/YamataLeg");
+                textures = new Texture2D[5];
+                textures[0] = mod.GetTexture("NPCs/Bosses/Yamata/YamataLegCap");
+				textures[1] = mod.GetTexture("NPCs/Bosses/Yamata/YamataLegSegment");
+                textures[2] = mod.GetTexture("NPCs/Bosses/Yamata/YamataLegCapR");
+				textures[3] = mod.GetTexture("NPCs/Bosses/Yamata/YamataLegSegmentR");				
+                textures[4] = mod.GetTexture("NPCs/Bosses/Yamata/YamataFoot");
             }
             Vector2 drawPos = position - new Vector2(0f, velOffsetY);
             Color lightColor = npc.GetAlpha(BaseDrawing.GetLightColor(Center));
-            BaseDrawing.DrawChain(sb, new Texture2D[] { textures[0], null }, 0, drawPos + new Vector2(limbType == 1 || limbType == 3 ? Hitbox.Width - 10f : 10f, 20f), legJoint, 0f, null, 1f, false, null);
-            BaseDrawing.DrawChain(sb, new Texture2D[] { textures[0], textures[0] }, 0, legJoint, GetMantidConnector(npc), 0f, null, 1f, false, null);
-            BaseDrawing.DrawTexture(sb, textures[1], 0, drawPos, Hitbox.Width, Hitbox.Height, npc.scale, rotation, limbType == 1 || limbType == 3 ? 1 : -1, 1, Hitbox, lightColor, false, legOrigin);
+            if (!leftLeg)
+            {
+                BaseDrawing.DrawChain(sb, new Texture2D[] { null, textures[3], null }, 0, drawPos + new Vector2(Hitbox.Width * 0.5f, 6f), legJoint, 0f, null, 1f, false, null);
+                BaseDrawing.DrawChain(sb, new Texture2D[] { textures[2], textures[3], textures[2] }, 0, legJoint, GetMantidConnector(npc), 0f, null, 1f, false, null);
+            }
+            else
+            {
+                BaseDrawing.DrawChain(sb, new Texture2D[] { null, textures[1], null }, 0, drawPos + new Vector2(Hitbox.Width * 0.5f, 6f), legJoint, 0f, null, 1f, false, null);
+                BaseDrawing.DrawChain(sb, new Texture2D[] { textures[0], textures[1], textures[0] }, 0, legJoint, GetMantidConnector(npc), 0f, null, 1f, false, null);
+            }
         }
     }
 }

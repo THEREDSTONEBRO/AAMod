@@ -5,26 +5,14 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AAMod.NPCs.Enemies.Mire
+namespace AAMod.Items.Projectiles
 {
     public class BogBoom : ModProjectile
     {
-        public static short customGlowMask = 0;
         public override void SetStaticDefaults()
         {
-            if (Main.netMode != 2)
-            {
-                Texture2D[] glowMasks = new Texture2D[Main.glowMaskTexture.Length + 1];
-                for (int i = 0; i < Main.glowMaskTexture.Length; i++)
-                {
-                    glowMasks[i] = Main.glowMaskTexture[i];
-                }
-                glowMasks[glowMasks.Length - 1] = mod.GetTexture("NPCs/Enemies/Mire/" + GetType().Name + "_Glow");
-                customGlowMask = (short)(glowMasks.Length - 1);
-                Main.glowMaskTexture = glowMasks;
-            }
             DisplayName.SetDefault("Acid");     //The English name of the projectile
-            ProjectileID.Sets.TrailCacheLength[projectile.type] = 7;     //The recording mode
+            Main.projFrames[projectile.type] = 7;     //The recording mode
         }
 
         public override void SetDefaults()
@@ -34,14 +22,16 @@ namespace AAMod.NPCs.Enemies.Mire
             projectile.penetrate = -1;
             projectile.friendly = true;
             projectile.hostile = false;
-            projectile.tileCollide = true;
+            projectile.tileCollide = false;
             projectile.ignoreWater = true;
             projectile.timeLeft = 600;
+            projectile.usesLocalNPCImmunity = true;
+            projectile.localNPCHitCooldown = 5;
         }
 
         public override void AI()
         {
-            if (++projectile.frameCounter >= 10)
+            if (++projectile.frameCounter >= 5)
             {
                 projectile.frameCounter = 0;
                 if (++projectile.frame >= 6)
@@ -51,8 +41,13 @@ namespace AAMod.NPCs.Enemies.Mire
                 }
             }
             projectile.velocity.X *= 0.00f;
-            projectile.velocity.Y += 0.00f;
+            projectile.velocity.Y *= 0.00f;
 
+        }
+
+        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+        {
+            target.AddBuff(BuffID.Venom, 600);
         }
 
         public override void Kill(int timeLeft)

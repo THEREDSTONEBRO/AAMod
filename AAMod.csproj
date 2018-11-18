@@ -32,7 +32,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="BaseMod">
-      <HintPath>..\..\..\..\..\..\Desktop\Ancients Awakened\Sources\BaseMod\BaseMod.dll</HintPath>
+      <HintPath>.\BaseMod.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Xna.Framework, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
@@ -96,6 +96,7 @@
     <Compile Include="Buffs\ChairMinionBuffEX.cs" />
     <Compile Include="Buffs\Clueless.cs" />
     <Compile Include="Buffs\DragonFire.cs" />
+    <Compile Include="Buffs\DragonMinion.cs" />
     <Compile Include="Buffs\EnderMinionBuff.cs" />
     <Compile Include="Buffs\EnderMinionBuffEX.cs" />
     <Compile Include="Buffs\HydraToxin.cs" />
@@ -323,8 +324,10 @@
     <Compile Include="Items\Blocks\InfernoUBox.cs" />
     <Compile Include="Items\Blocks\MireAltar.cs" />
     <Compile Include="Items\Blocks\MireBox.cs" />
+    <Compile Include="Items\Blocks\MireChest.cs" />
     <Compile Include="Items\Blocks\MireGrassBlock.cs" />
     <Compile Include="Items\Blocks\MireUBox.cs" />
+    <Compile Include="Items\Blocks\MonarchBox.cs" />
     <Compile Include="Items\Blocks\MoonAltar.cs" />
     <Compile Include="Items\Blocks\Mycelium.cs" />
     <Compile Include="Items\Blocks\N1Box.cs" />
@@ -351,6 +354,7 @@
     <Compile Include="Items\Blocks\TruePaladinsSmeltery.cs" />
     <Compile Include="Items\Blocks\VoidBox.cs" />
     <Compile Include="Items\Blocks\VoidUnit.cs" />
+    <Compile Include="Items\Blocks\YamataABox.cs" />
     <Compile Include="Items\Blocks\YamataBox.cs" />
     <Compile Include="Items\Blocks\YtriumOre.cs" />
     <Compile Include="Items\Blocks\Zero2Box.cs" />
@@ -361,6 +365,8 @@
     <Compile Include="Items\BossSummons\DraconianRune.cs" />
     <Compile Include="Items\BossSummons\DraconianSigil.cs" />
     <Compile Include="Items\BossSummons\DragonBell.cs" />
+    <Compile Include="Items\BossSummons\DreadRune.cs" />
+    <Compile Include="Items\BossSummons\DreadSigil.cs" />
     <Compile Include="Items\BossSummons\EquinoxWorm.cs" />
     <Compile Include="Items\BossSummons\InterestingClaw.cs" />
     <Compile Include="Items\BossSummons\IntimidatingMushroom.cs" />
@@ -411,11 +417,15 @@
     <Compile Include="Items\Boss\Retriever\StormClaw.cs" />
     <Compile Include="Items\Boss\Retriever\StormRiot.cs" />
     <Compile Include="Items\Boss\Shen\ChaosSoul.cs" />
+    <Compile Include="Items\Boss\Yamata\Crescent.cs" />
+    <Compile Include="Items\Boss\Yamata\Toxibomb.cs" />
+    <Compile Include="Items\Boss\Yamata\YamatasWrath.cs" />
     <Compile Include="Items\Boss\Yamata\YamataBag.cs" />
     <Compile Include="Items\Boss\Yamata\Flairdra.cs" />
     <Compile Include="Items\Boss\Yamata\DreadScale.cs" />
     <Compile Include="Items\Boss\Yamata\Masamune.cs" />
     <Compile Include="Items\Boss\Yamata\Naitokurosu.cs" />
+    <Compile Include="Items\Boss\Yamata\YamataTrophy.cs" />
     <Compile Include="Items\Boss\Zero\AMR.cs" />
     <Compile Include="Items\Boss\Zero\Battery.cs" />
     <Compile Include="Items\Boss\Zero\BrokenCode.cs" />
@@ -460,6 +470,7 @@
     <Compile Include="Items\Dev\TitanAxe.cs" />
     <Compile Include="Items\Dev\UmbreonSP.cs" />
     <Compile Include="Items\Dev\UmbreonSPEX.cs" />
+    <Compile Include="Items\Magic\BogBomb.cs" />
     <Compile Include="Items\Magic\CrystalTome.cs" />
     <Compile Include="Items\Magic\DragonsBreath.cs" />
     <Compile Include="Items\Magic\DragonStaff.cs" />
@@ -509,6 +520,7 @@
     <Compile Include="Items\Materials\TechneciumBar.cs" />
     <Compile Include="Items\Materials\vulture_feather.cs" />
     <Compile Include="Items\Materials\YtriumBar.cs" />
+    <Compile Include="Items\Melee\BackScratcher.cs" />
     <Compile Include="Items\Melee\GoblinSlayer.cs" />
     <Compile Include="Items\Melee\AbyssalTwilight.cs" />
     <Compile Include="Items\Melee\Amnesia.cs" />
@@ -565,6 +577,7 @@
     <Compile Include="Items\Melee\ScytheOfDecay.cs" />
     <Compile Include="Items\Melee\Shadowban.cs" />
     <Compile Include="Items\Melee\SpookySword.cs" />
+    <Compile Include="Items\Melee\SunLance.cs" />
     <Compile Include="Items\Melee\TechneciumSword.cs" />
     <Compile Include="Items\Melee\TerraBladeEX.cs" />
     <Compile Include="Items\Melee\TheCorruptor.cs" />
@@ -591,8 +604,9 @@
     <Compile Include="Items\Potions\GrandHealingPotion.cs" />
     <Compile Include="Items\Potions\GrandManaPotion.cs" />
     <Compile Include="Items\Potions\TheBigOne.cs" />
+    <Compile Include="Items\Projectiles\Akuma\FireProjBoom.cs" />
+    <Compile Include="Items\Projectiles\Akuma\MorningGlory.cs" />
     <Compile Include="Items\Projectiles\BogBomb.cs" />
-    <Compile Include="Items\Projectiles\Akuma\AkumaFlare.cs" />
     <Compile Include="Items\Projectiles\Akuma\Dawnstrike.cs" />
     <Compile Include="Items\Projectiles\Akuma\DaybreakArrow.cs" />
     <Compile Include="Items\Projectiles\Akuma\Daycrusher.cs" />
@@ -603,7 +617,6 @@
     <Compile Include="Items\Projectiles\Akuma\Lung\LungBody.cs" />
     <Compile Include="Items\Projectiles\Akuma\Lung\LungHead.cs" />
     <Compile Include="Items\Projectiles\Akuma\Lung\LungTail.cs" />
-    <Compile Include="Items\Projectiles\Akuma\MorningGlory.cs" />
     <Compile Include="Items\Projectiles\Akuma\Solar.cs" />
     <Compile Include="Items\Projectiles\Akuma\SunOrb.cs" />
     <Compile Include="Items\Projectiles\Akuma\Sunray.cs" />
@@ -634,6 +647,7 @@
     <Compile Include="Items\Projectiles\DarkmatterJackhammerPro.cs" />
     <Compile Include="Items\Projectiles\DarkShredders.cs" />
     <Compile Include="Items\Projectiles\DBP.cs" />
+    <Compile Include="Items\Projectiles\DBreath.cs" />
     <Compile Include="Items\Projectiles\DecayScythe.cs" />
     <Compile Include="Items\Projectiles\DecayScytheProj.cs" />
     <Compile Include="Items\Projectiles\Depthwalker.cs" />
@@ -687,6 +701,7 @@
     <Compile Include="Items\Projectiles\SpookerangP.cs" />
     <Compile Include="Items\Projectiles\Squirt.cs" />
     <Compile Include="Items\Projectiles\StormJavelin.cs" />
+    <Compile Include="Items\Projectiles\SunLance.cs" />
     <Compile Include="Items\Projectiles\Taserblast.cs" />
     <Compile Include="Items\Projectiles\TechneciumBoomerangP.cs" />
     <Compile Include="Items\Projectiles\TerraArrow.cs" />
@@ -707,10 +722,14 @@
     <Compile Include="Items\Projectiles\TrueManaShot.cs" />
     <Compile Include="Items\Projectiles\UmbreonSPProjectile.cs" />
     <Compile Include="Items\Projectiles\Void.cs" />
+    <Compile Include="Items\Projectiles\Yamata\Crescent.cs" />
+    <Compile Include="Items\Projectiles\Yamata\Toxiboom.cs" />
+    <Compile Include="Items\Projectiles\Yamata\Toxibomb.cs" />
     <Compile Include="Items\Projectiles\Yamata\FlairdraCyclone.cs" />
     <Compile Include="Items\Projectiles\Yamata\Flairdra.cs" />
     <Compile Include="Items\Projectiles\Yamata\Masamune.cs" />
     <Compile Include="Items\Projectiles\Yamata\Surasshu.cs" />
+    <Compile Include="Items\Projectiles\Yamata\YWProjectile.cs" />
     <Compile Include="Items\Projectiles\YtriumBoomerangP.cs" />
     <Compile Include="Items\Projectiles\Zero\Antimatter.cs" />
     <Compile Include="Items\Projectiles\Zero\DoomRay.cs" />
@@ -880,6 +899,7 @@
     <Compile Include="NPCs\Bosses\Shen\DiscordianInferno.cs" />
     <Compile Include="NPCs\Bosses\Shen\ShenDoragon.cs" />
     <Compile Include="NPCs\Bosses\Shen\ShenFirebomb.cs" />
+    <Compile Include="NPCs\Bosses\Yamata\YamataTransition.cs" />
     <Compile Include="NPCs\Bosses\Yamata\YamataHead.cs" />
     <Compile Include="NPCs\Bosses\Yamata\Yamata.cs" />
     <Compile Include="NPCs\Bosses\Yamata\YamataHandler.cs" />
@@ -1120,12 +1140,15 @@
     <Content Include="Buffs\Clueless.png" />
     <Content Include="Buffs\DiscordInferno.png" />
     <Content Include="Buffs\DragonFire.png" />
+    <Content Include="Buffs\DragonMinion.png" />
     <Content Include="Buffs\EnderMinionBuff.png" />
     <Content Include="Buffs\EnderMinionBuffEX.png" />
+    <Content Include="Buffs\EXBuffTemplate.png" />
     <Content Include="Buffs\HydraToxin.png" />
     <Content Include="Buffs\InfinityOverload.png" />
     <Content Include="Buffs\LungMinion.png" />
     <Content Include="Buffs\MiniProbe.png" />
+    <Content Include="Buffs\Moonraze.png" />
     <Content Include="Buffs\Raidmini.png" />
     <Content Include="Buffs\Sharkron.png" />
     <Content Include="Buffs\Terrablaze.png" />
@@ -1659,8 +1682,10 @@
     <Content Include="Items\Blocks\InfernoUBox.png" />
     <Content Include="Items\Blocks\MireAltar.png" />
     <Content Include="Items\Blocks\MireBox.png" />
+    <Content Include="Items\Blocks\MireChest.png" />
     <Content Include="Items\Blocks\MireGrassBlock.png" />
     <Content Include="Items\Blocks\MireUBox.png" />
+    <Content Include="Items\Blocks\MonarchBox.png" />
     <Content Include="Items\Blocks\MoonAltar.png" />
     <Content Include="Items\Blocks\Mycelium.png" />
     <Content Include="Items\Blocks\N1Box.png" />
@@ -1696,6 +1721,7 @@
     <Content Include="Items\Blocks\VoidBox_Glow.png" />
     <Content Include="Items\Blocks\VoidUnit.png" />
     <Content Include="Items\Blocks\VoidUnit_Glow.png" />
+    <Content Include="Items\Blocks\YamataABox.png" />
     <Content Include="Items\Blocks\YamataBox.png" />
     <Content Include="Items\Blocks\YtriumOre.png" />
     <Content Include="Items\Blocks\Zero2Box.png" />
@@ -1711,6 +1737,7 @@
     <Content Include="Items\BossSummons\DraconianRune.png" />
     <Content Include="Items\BossSummons\DraconianSigil.png" />
     <Content Include="Items\BossSummons\DragonBell.png" />
+    <Content Include="Items\BossSummons\DreadRune.png" />
     <Content Include="Items\BossSummons\DreadSigil.png" />
     <Content Include="Items\BossSummons\EquinoxWorm.png" />
     <Content Include="Items\BossSummons\EquinoxWorm_Glow.png" />
@@ -1830,14 +1857,20 @@
     <Content Include="Items\Boss\Retriever\StormRiot_Shield.png" />
     <Content Include="Items\Boss\Shen\ChaosSoul.png" />
     <Content Include="Items\Boss\Shen\ChaosSoul_Glow.png" />
+    <Content Include="Items\Boss\Yamata\Crescent.png" />
     <Content Include="Items\Boss\Yamata\DreadScale.png" />
     <Content Include="Items\Boss\Yamata\DreadScale_Glow.png" />
     <Content Include="Items\Boss\Yamata\Flairdra.png" />
+    <Content Include="Items\Boss\Yamata\Flairdra_Glow.png" />
     <Content Include="Items\Boss\Yamata\Masamune.png" />
     <Content Include="Items\Boss\Yamata\Naitokurosu.png" />
     <Content Include="Items\Boss\Yamata\Naitokurosu_Neck.png" />
+    <Content Include="Items\Boss\Yamata\Toxibomb.png" />
     <Content Include="Items\Boss\Yamata\YamataBag.png" />
     <Content Include="Items\Boss\Yamata\YamataBag_Glow.png" />
+    <Content Include="Items\Boss\Yamata\YamatasWrath.png" />
+    <Content Include="Items\Boss\Yamata\YamatasWrath_Glow.png" />
+    <Content Include="Items\Boss\Yamata\YamataTrophy.png" />
     <Content Include="Items\Boss\Zero\AMR.png" />
     <Content Include="Items\Boss\Zero\AMR_Glow.png" />
     <Content Include="Items\Boss\Zero\Battery.png" />
@@ -1996,6 +2029,7 @@
     <Content Include="Items\Melee\BlazingDawn_Glow.png" />
     <Content Include="Items\Melee\Bloody_Mary.png" />
     <Content Include="Items\Melee\BreakingDawn.png" />
+    <Content Include="Items\Melee\BugSwatter.png" />
     <Content Include="Items\Melee\Chaos.png" />
     <Content Include="Items\Melee\Chaos_Glow.png" />
     <Content Include="Items\Melee\ClawOfChaosBlue.png" />
@@ -2065,6 +2099,7 @@
     <Content Include="Items\Melee\SlapBone.png" />
     <Content Include="Items\Melee\SoulSword.png" />
     <Content Include="Items\Melee\SpookySword.png" />
+    <Content Include="Items\Melee\SunLance.png" />
     <Content Include="Items\Melee\Sword.png" />
     <Content Include="Items\Melee\TechneciumSword.png" />
     <Content Include="Items\Melee\TerraBladeEX.png" />
@@ -2110,7 +2145,6 @@
     <Content Include="Items\Potions\GrandHealingPotion.png" />
     <Content Include="Items\Potions\GrandManaPotion.png" />
     <Content Include="Items\Potions\TheBigOne.png" />
-    <Content Include="Items\Projectiles\Akuma\AkumaFlare.png" />
     <Content Include="Items\Projectiles\Akuma\Dawnstrike.png" />
     <Content Include="Items\Projectiles\Akuma\DaybreakArrow.png" />
     <Content Include="Items\Projectiles\Akuma\DaybreakArrow_Glow.png" />
@@ -2120,6 +2154,7 @@
     <Content Include="Items\Projectiles\Akuma\Dayser.png" />
     <Content Include="Items\Projectiles\Akuma\Daystorm.png" />
     <Content Include="Items\Projectiles\Akuma\FireProj.png" />
+    <Content Include="Items\Projectiles\Akuma\FireProjBoom.png" />
     <Content Include="Items\Projectiles\Akuma\FireRain.png" />
     <Content Include="Items\Projectiles\Akuma\Lung\LungBody.png" />
     <Content Include="Items\Projectiles\Akuma\Lung\LungBody1.png" />
@@ -2175,6 +2210,7 @@
     <Content Include="Items\Projectiles\DarkShredders.png" />
     <Content Include="Items\Projectiles\DarkShredders_glow.png" />
     <Content Include="Items\Projectiles\DBP.png" />
+    <Content Include="Items\Projectiles\DBreath.png" />
     <Content Include="Items\Projectiles\DecayScythe.png" />
     <Content Include="Items\Projectiles\DecayScytheProj.png" />
     <Content Include="Items\Projectiles\DecayScythe_Glow.png" />
@@ -2252,6 +2288,7 @@
     <Content Include="Items\Projectiles\Squirt.png" />
     <Content Include="Items\Projectiles\StormJavelin.png" />
     <Content Include="Items\Projectiles\StormJavelin_Glow.png" />
+    <Content Include="Items\Projectiles\SunLance.png" />
     <Content Include="Items\Projectiles\Taserblast.png" />
     <Content Include="Items\Projectiles\Taserblast_Glow.png" />
     <Content Include="Items\Projectiles\TechneciumBoomerangP.png" />
@@ -2285,15 +2322,20 @@
     <Content Include="Items\Projectiles\ValkyrieLance.png" />
     <Content Include="Items\Projectiles\Void.png" />
     <Content Include="Items\Projectiles\Void_Glow.png" />
+    <Content Include="Items\Projectiles\Yamata\Crescent.png" />
+    <Content Include="Items\Projectiles\Yamata\Crescent_Glow.png" />
     <Content Include="Items\Projectiles\Yamata\Flairdra.png" />
+    <Content Include="Items\Projectiles\Yamata\FlairdraCyclone.png" />
     <Content Include="Items\Projectiles\Yamata\Flairdra_Chain.png" />
-    <Content Include="Items\Projectiles\Yamata\Flairdra_Cyclone.png" />
     <Content Include="Items\Projectiles\Yamata\Flairdra_Glow.png" />
     <Content Include="Items\Projectiles\Yamata\Masamune.png" />
     <Content Include="Items\Projectiles\Yamata\Surasshu.png" />
-    <Content Include="Items\Projectiles\Yamata\YamataBomb.png" />
-    <Content Include="Items\Projectiles\Yamata\YamataBoom.png" />
+    <Content Include="Items\Projectiles\Yamata\Toxibomb.png" />
+    <Content Include="Items\Projectiles\Yamata\Toxibomb_Glow.png" />
+    <Content Include="Items\Projectiles\Yamata\Toxiboom.png" />
+    <Content Include="Items\Projectiles\Yamata\Toxiboom_Glow.png" />
     <Content Include="Items\Projectiles\Yamata\YamataSoul.png" />
+    <Content Include="Items\Projectiles\Yamata\YWProjectile.png" />
     <Content Include="Items\Projectiles\YtriumBoomerangP.png" />
     <Content Include="Items\Projectiles\Zero\Antimatter.png" />
     <Content Include="Items\Projectiles\Zero\DoomRay.png" />
@@ -2565,12 +2607,14 @@
     <Content Include="NPCs\Bosses\Akuma\AkumaAArms_Glow.png" />
     <Content Include="NPCs\Bosses\Akuma\AkumaABody.png" />
     <Content Include="NPCs\Bosses\Akuma\AkumaABody_Glow.png" />
+    <Content Include="NPCs\Bosses\Akuma\AkumaABreath.png" />
     <Content Include="NPCs\Bosses\Akuma\AkumaArms.png" />
     <Content Include="NPCs\Bosses\Akuma\AkumaATail.png" />
     <Content Include="NPCs\Bosses\Akuma\AkumaATail_Glow.png" />
     <Content Include="NPCs\Bosses\Akuma\AkumaA_Glow.png" />
     <Content Include="NPCs\Bosses\Akuma\AkumaA_Head_Boss.png" />
     <Content Include="NPCs\Bosses\Akuma\AkumaBody.png" />
+    <Content Include="NPCs\Bosses\Akuma\AkumaBreath.png" />
     <Content Include="NPCs\Bosses\Akuma\AkumaTail.png" />
     <Content Include="NPCs\Bosses\Akuma\AkumaTransition.png" />
     <Content Include="NPCs\Bosses\Akuma\Akuma_Glow.png" />
@@ -2677,6 +2721,13 @@
     <Content Include="NPCs\Bosses\Unused\Decay.png" />
     <Content Include="NPCs\Bosses\Unused\MrBonesRevenge.png" />
     <Content Include="NPCs\Bosses\Unused\Soul of Cthulhu.png" />
+    <Content Include="NPCs\Bosses\Yamata\YamataFoot.png" />
+    <Content Include="NPCs\Bosses\Yamata\YamataLegCap.png" />
+    <Content Include="NPCs\Bosses\Yamata\YamataLegCapR.png" />
+    <Content Include="NPCs\Bosses\Yamata\YamataLegSegment.png" />
+    <Content Include="NPCs\Bosses\Yamata\YamataLegSegmentR.png" />
+    <Content Include="NPCs\Bosses\Yamata\YamataNeck.png" />
+    <Content Include="NPCs\Bosses\Yamata\YamataTransition.png" />
     <Content Include="NPCs\Bosses\Yamata\Fog.png" />
     <Content Include="NPCs\Bosses\Yamata\ShadowOfYamata.png" />
     <Content Include="NPCs\Bosses\Yamata\Yamata.png" />
@@ -2686,16 +2737,16 @@
     <Content Include="NPCs\Bosses\Yamata\YamataABoom.png" />
     <Content Include="NPCs\Bosses\Yamata\YamataAHead.png" />
     <Content Include="NPCs\Bosses\Yamata\YamataALeg.png" />
-    <Content Include="NPCs\Bosses\Yamata\YamataALegBack.png" />
     <Content Include="NPCs\Bosses\Yamata\YamataANeck.png" />
+    <Content Include="NPCs\Bosses\Yamata\YamataATail.png" />
     <Content Include="NPCs\Bosses\Yamata\YamataBody.png" />
     <Content Include="NPCs\Bosses\Yamata\YamataBomb.png" />
     <Content Include="NPCs\Bosses\Yamata\YamataBoom.png" />
     <Content Include="NPCs\Bosses\Yamata\YamataHead.png" />
     <Content Include="NPCs\Bosses\Yamata\YamataHeadF.png" />
-    <Content Include="NPCs\Bosses\Yamata\YamataLeg.png" />
-    <Content Include="NPCs\Bosses\Yamata\YamataLegBack.png" />
+    <Content Include="NPCs\Bosses\Yamata\YamataJoint.png" />
     <Content Include="NPCs\Bosses\Yamata\YamataSoul.png" />
+    <Content Include="NPCs\Bosses\Yamata\YamataTail.png" />
     <Content Include="NPCs\Bosses\Yamata\YamataWalk.gif" />
     <Content Include="NPCs\Bosses\Zero\DarkShock.png" />
     <Content Include="NPCs\Bosses\Zero\DeathLaser.png" />
@@ -2744,9 +2795,10 @@
     <Content Include="NPCs\Enemies\Inferno\WyrmlingHead.png" />
     <Content Include="NPCs\Enemies\Inferno\WyrmlingTail1.png" />
     <Content Include="NPCs\Enemies\Inferno\WyrmlingTail2.png" />
-    <Content Include="NPCs\Enemies\Inferno\WyrmTail.png" />
     <Content Include="NPCs\Enemies\Mire\AcidProj.png" />
+    <Content Include="NPCs\Enemies\Mire\AcidProj_Glow.png" />
     <Content Include="NPCs\Enemies\Mire\ChaoticTwilight.png" />
+    <Content Include="NPCs\Enemies\Mire\Kappa.png" />
     <Content Include="NPCs\Enemies\Mire\MireMimic.png" />
     <Content Include="NPCs\Enemies\Mire\Mosster.png" />
     <Content Include="NPCs\Enemies\Mire\Mosster_Glow.png" />
@@ -2912,7 +2964,6 @@
     <Content Include="Tiles\InfernoBox.png" />
     <Content Include="Tiles\InfernoChest.png" />
     <Content Include="Tiles\InfernoChestLock.png" />
-    <Content Include="Tiles\InfernoChest_Highlight.png" />
     <Content Include="Tiles\InfernoGrass.png" />
     <Content Include="Tiles\InfernoUBox.png" />
     <Content Include="Tiles\Jade.png" />

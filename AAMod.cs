@@ -26,6 +26,7 @@ namespace AAMod
         internal UserInterface UserInterface;
         internal TerratoolUI TerratoolUI;
         public static bool AkumaMusic;
+        public static bool YamataMusic;
         public static AAMod self = null;
         public static IDictionary<string, Texture2D> Textures = null;
         public static Dictionary<string, Texture2D> precachedTextures = new Dictionary<string, Texture2D>();
@@ -57,11 +58,13 @@ namespace AAMod
                 
                 if (Main.expertMode)
                 {
+                    bossChecklist.Call("AddBossWithInfo", "Yamata", 18.0001f, (Func<bool>)(() => AAWorld.downedYamataA), "Use a [i:" + ItemType("DreadSigil") + "] in the Mire at night");
                     bossChecklist.Call("AddBossWithInfo", "Akuma", 18.0001f, (Func<bool>)(() => AAWorld.downedAkumaA), "Use a [i:" + ItemType("DraconianSigil") + "] in the Inferno during the day");
                     bossChecklist.Call("AddBossWithInfo", "Zero", 18.0001f, (Func<bool>)(() => AAWorld.downedZeroA), "Use a [i:" + ItemType("ZeroTesseract") + "] in the Void");
                 }
                 else
                 {
+                    bossChecklist.Call("AddBossWithInfo", "Yamata", 18.0001f, (Func<bool>)(() => AAWorld.downedYamata), "Use a [i:" + ItemType("DreadSigil") + "] in the Mire at night");
                     bossChecklist.Call("AddBossWithInfo", "Akuma", 18.0001f, (Func<bool>)(() => AAWorld.downedAkuma), "Use a [i:" + ItemType("DraconianSigil") + "] in the Inferno during the day");
                     bossChecklist.Call("AddBossWithInfo", "Zero", 18.001f, (Func<bool>)(() => AAWorld.downedZero), "Use a [i:" + ItemType("ZeroTesseract") + "] in the Void");
                 }
@@ -134,6 +137,7 @@ namespace AAMod
 
                 AddEquipTexture(null, EquipType.Legs, "N1_Legs", "AAMod/Items/Vanity/N1/N1_Legs");
 
+                AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Monarch"), ItemType("MonarchBox"), TileType("MonarchBox"));
                 AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/GripsTheme"), ItemType("GripsBox"), TileType("GripsBox"));
                 AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/WeAreNumberOne"), ItemType("N1Box"), TileType("N1Box"));
                 AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/HydraTheme"), ItemType("HydraBox"), TileType("HydraBox"));
@@ -150,6 +154,7 @@ namespace AAMod
                 AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Akuma"), ItemType("AkumaBox"), TileType("AkumaBox"));
                 AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Akuma2"), ItemType("AkumaABox"), TileType("AkumaABox"));
                 AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Yamata"), ItemType("YamataBox"), TileType("YamataBox"));
+                AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Yamata2"), ItemType("YamataABox"), TileType("YamataABox"));
                 AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Shen"), ItemType("ShenBox"), TileType("ShenBox"));
                 AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/ShenA"), ItemType("ShenABox"), TileType("ShenABox"));
 
@@ -337,6 +342,12 @@ namespace AAMod
             if (AkumaMusic == true)
             {
                 music = GetSoundSlot(SoundType.Music, "Sounds/Music/Akuma2");
+
+                priority = MusicPriority.BossHigh;
+            }
+            if (YamataMusic == true)
+            {
+                music = GetSoundSlot(SoundType.Music, "Sounds/Music/Yamata2");
 
                 priority = MusicPriority.BossHigh;
             }

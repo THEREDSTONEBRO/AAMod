@@ -24,8 +24,8 @@ Inflicts Moonraze");
             item.width = 70; 
             item.height = 80;          
             item.expert = true;
-            item.useTime = 16;
-            item.useAnimation = 16;
+            item.useTime = 26;
+            item.useAnimation = 26;
             item.knockBack = 3;    
             item.value = 1000000;
             item.autoReuse = true;  
@@ -38,7 +38,7 @@ Inflicts Moonraze");
             {
                 if (line2.mod == "Terraria" && line2.Name == "ItemName")
                 {
-                    line2.overrideColor = new Color(20, 20, 76);
+                    line2.overrideColor = new Color(45, 46, 70);
                 }
             }
         }
@@ -60,7 +60,7 @@ Inflicts Moonraze");
             {
                 item.useStyle = 5;
                 item.shoot = mod.ProjectileType("Surasshu");
-                item.shootSpeed = 15f;
+                item.shootSpeed = 10f;
                 item.noMelee = true;
                 item.noUseGraphic = true;
             }
@@ -74,5 +74,16 @@ Inflicts Moonraze");
             }
             return base.CanUseItem(player);
 		}
-	}
+
+        public override void AddRecipes()
+        {
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(null, "EventideAbyssium", 5);
+            recipe.AddIngredient(null, "DreadScale", 5);
+            recipe.AddIngredient(ItemID.Arkhalis, 1);
+            recipe.AddTile(null, "BinaryReassembler");
+            recipe.SetResult(this, 1);
+            recipe.AddRecipe();
+        }
+    }
 }
