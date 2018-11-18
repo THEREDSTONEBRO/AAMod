@@ -77,7 +77,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
             npc.noGravity = true;
             npc.netAlways = true;
             for (int m = 0; m < npc.buffImmune.Length; m++) npc.buffImmune[m] = true;
-            frameWidth = 162;
+            frameWidth = 154;
             frameHeight = 118;
             npc.frame = BaseDrawing.GetFrame(frameCount, frameWidth, frameHeight, 0, 2);
             frameBottom = BaseDrawing.GetFrame(frameCount, frameWidth, 54, 0, 2);
@@ -184,17 +184,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
                 }
                 HeadsSpawned = true;
             }*/
-            int frame = 0;
-            npc.frameCounter++;
-            if (npc.frameCounter > 5)
-            {
-                frame++;
-                npc.frameCounter = 0;
-                if (frame > 6)
-                {
-                    frame = 0;
-                }
-            }
+            
 
 
             if (npc.life <= npc.lifeMax / 5)
@@ -530,9 +520,9 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
                 Vector2 distToProj = neckOrigin - head.Center;
                 float projRotation = distToProj.ToRotation() - 1.57f;
                 float distance = distToProj.Length();
-                spriteBatch.Draw(mod.GetTexture("NPCs/Bosses/Yamata/YamataANeck"), neckOrigin - Main.screenPosition,
-                new Rectangle(0, 0, 52, 30), drawColor, projRotation,
-                new Vector2(52 * 0.5f, 30 * 0.5f), 1f, SpriteEffects.None, 0f);
+                spriteBatch.Draw(mod.GetTexture("NPCs/Bosses/Yamata/Awakened/YamataANeck"), neckOrigin - Main.screenPosition,
+                new Rectangle(0, 0, 26, 40), drawColor, projRotation,
+                new Vector2(26 * 0.5f, 40 * 0.5f), 1f, SpriteEffects.None, 0f);
                 while (distance > 30f && !float.IsNaN(distance))
                 {
                     distToProj.Normalize();                 //get unit vector
@@ -543,42 +533,80 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
 
 
                     //Draw chain
-                    spriteBatch.Draw(mod.GetTexture("NPCs/Bosses/Yamata/YamataANeck"), new Vector2(center.X - Main.screenPosition.X, center.Y - Main.screenPosition.Y),
-                        new Rectangle(0, 0, 52, 30), drawColor, projRotation,
-                        new Vector2(52 * 0.5f, 30 * 0.5f), 1f, SpriteEffects.None, 0f);
+                    spriteBatch.Draw(mod.GetTexture("NPCs/Bosses/Yamata/Awakened/YamataANeck"), new Vector2(center.X - Main.screenPosition.X, center.Y - Main.screenPosition.Y),
+                        new Rectangle(0, 0, 26, 40), drawColor, projRotation,
+                        new Vector2(26 * 0.5f, 40 * 0.5f), 1f, SpriteEffects.None, 0f);
 
                 }
-                spriteBatch.Draw(mod.GetTexture("NPCs/Bosses/Yamata/YamataANeck"), neckOrigin - Main.screenPosition,
-                            new Rectangle(0, 0, 52, 30), drawColor, projRotation,
-                            new Vector2(52 * 0.5f, 30 * 0.5f), 1f, SpriteEffects.None, 0f);
+                spriteBatch.Draw(mod.GetTexture("NPCs/Bosses/Yamata/Awakened/YamataANeck"), neckOrigin - Main.screenPosition,
+                            new Rectangle(0, 0, 26, 40), drawColor, projRotation,
+                            new Vector2(26 * 0.5f, 40 * 0.5f), 1f, SpriteEffects.None, 0f);
 
                 spriteBatch.Draw(mod.GetTexture(headTexture), new Vector2(head.Center.X - Main.screenPosition.X, head.Center.Y - Main.screenPosition.Y),
                             head.frame, drawColor, head.rotation,
-                            new Vector2(106 * 0.5f, 72 * 0.5f), 1f, SpriteEffects.None, 0f);
+                            new Vector2(64 * 0.5f, 80 * 0.5f), 1f, SpriteEffects.None, 0f);
                 spriteBatch.Draw(mod.GetTexture(glowMaskTexture), new Vector2(head.Center.X - Main.screenPosition.X, head.Center.Y - Main.screenPosition.Y),
                         head.frame, Color.White, head.rotation,
-                        new Vector2(106 * 0.5f, 72 * 0.5f), 1f, SpriteEffects.None, 0f);
+                        new Vector2(64 * 0.5f, 80 * 0.5f), 1f, SpriteEffects.None, 0f);
+            }
+        }
+
+        public override void FindFrame(int frameHeight)
+        {
+
+            npc.frameCounter++;
+            if (npc.frameCounter < 5)
+            {
+                npc.frame.Y = 0 * frameHeight;
+            }
+            else if (npc.frameCounter < 10)
+            {
+                npc.frame.Y = 1 * frameHeight;
+            }
+            else if (npc.frameCounter < 15)
+            {
+                npc.frame.Y = 2 * frameHeight;
+            }
+            else if (npc.frameCounter < 20)
+            {
+                npc.frame.Y = 3 * frameHeight;
+            }
+            else if (npc.frameCounter < 25)
+            {
+                npc.frame.Y = 4 * frameHeight;
+            }
+            else if (npc.frameCounter < 30)
+            {
+                npc.frame.Y = 5 * frameHeight;
+            }
+            else if (npc.frameCounter < 35)
+            {
+                npc.frame.Y = 6 * frameHeight;
+            }
+            else
+            {
+                npc.frameCounter = 0;
             }
         }
 
         public override bool PreDraw(SpriteBatch sb, Color dColor)
         {
-            /*if (Main.netMode == 0)
-            {
-                DrawHead(sb, "NPCs/Bosses/Yamata/YamataAHead", "NPCs/Bosses/Yamata/YamataAHead_Glow", TrueHead, dColor);
-            }*/
-            BaseDrawing.DrawTexture(sb, mod.GetTexture("NPCs/Bosses/Yamata/YamataATail"), 0, npc.position + new Vector2(0f, npc.gfxOffY) + bottomVisualOffset, npc.width, npc.height, npc.scale, npc.rotation, npc.spriteDirection, Main.npcFrameCount[npc.type], frameBottom, dColor, false);
+
+            BaseDrawing.DrawTexture(sb, mod.GetTexture("NPCs/Bosses/Yamata/Awakened/YamataATail"), 0, npc.position + new Vector2(0f, npc.gfxOffY) + bottomVisualOffset, npc.width, npc.height, npc.scale, npc.rotation, npc.spriteDirection, Main.npcFrameCount[npc.type], frameBottom, dColor, false);
             legs[2].DrawLeg(sb, npc, dColor); //back legs
             legs[3].DrawLeg(sb, npc, dColor);
             legs[0].DrawLeg(sb, npc, dColor); //front legs
             legs[1].DrawLeg(sb, npc, dColor);
             BaseDrawing.DrawTexture(sb, Main.npcTexture[npc.type], 0, npc.position + new Vector2(0f, npc.gfxOffY) + topVisualOffset, npc.width, npc.height, npc.scale, npc.rotation, npc.spriteDirection, Main.npcFrameCount[npc.type], npc.frame, dColor, false);
-            
+            if (Main.netMode == 0)
+            {
+                DrawHead(sb, "NPCs/Bosses/Yamata/Awakened/YamataAHead", "NPCs/Bosses/Yamata/Awakened/YamataAHead_Glow", TrueHead, dColor);
+            }
             return false;
         }
     }
 
-    public class AwakenedAnimationInfo
+    public class AnimationInfo
     {
         public int animType = 0;
         Vector2[] leftPos = null, left2Pos = null;
@@ -591,14 +619,14 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
         public float[] hitRatios = null;
         public bool flatJoint = false;
 
-        public AwakenedAnimationInfo(int type, float speedMult = 1f, float aMult = 1f)
+        public AnimationInfo(int type, float speedMult = 1f, float aMult = 1f)
         {
             animType = type;
             animMult = aMult;
         }
     }
 
-    public class AwakenedLimbInfo
+    public class LimbInfo
     {
         public int limbType = 0;
         public Vector2 position, oldPosition;
@@ -610,10 +638,10 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
         public Rectangle Hitbox;
         public float rotation = 0f, movementRatio = 0f;
         public AnimationInfo overrideAnimation = null;
-        public YamataA yamataA = null;
+        public YamataA yamata = null;
     }
 
-    public class LegInfo : AwakenedLimbInfo
+    public class LegInfo : LimbInfo
     {
         Vector2 velocity, oldVelocity, legOrigin;
         float velOffsetY = 0f, distanceToMove = 120f, distanceToMoveX = 50f;
@@ -625,7 +653,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
 
         public LegInfo(int lType, Vector2 initialPos, YamataA m)
         {
-            yamataA = m;
+            yamata = m;
             position = initialPos;
             pointToStandOn = position;
             limbType = lType;
@@ -700,7 +728,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
                 if (overrideAnimation.movementRatio >= 1f) overrideAnimation = null;
             }
             else
-            if (((YamataA)npc.modNPC).flying)
+            if (((Yamata)npc.modNPC).flying)
             {
                 rotation = leftLeg ? -0.25f : 0.25f;
                 MoveLegFlying(npc, leftLeg);
@@ -730,24 +758,24 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
             float outerLegDefault = 70f + (0.5f * scalar);
             float innerLegDefault = 50f + (0.5f * scalar);
             float rightLegScalar = 1f + (npc.velocity.X > 2f ? (scalar * 0.2f) : 0f); //fixes an offset problem when the matriarch walks right
-            float standOnX = npc.Center.X + yamataA.topVisualOffset.X + (limbType == 3 ? (-outerLegDefault - Hitbox.Width) : limbType == 2 ? (outerLegDefault + Hitbox.Width) : limbType == 1 ? (-innerLegDefault - Hitbox.Width) : (innerLegDefault + Hitbox.Width));
-			Vector2 defaultPlacement = default(Vector2);
+            float standOnX = npc.Center.X + yamata.topVisualOffset.X + (limbType == 3 ? (-outerLegDefault - Hitbox.Width) : limbType == 2 ? (outerLegDefault + Hitbox.Width) : limbType == 1 ? (-innerLegDefault - Hitbox.Width) : (innerLegDefault + Hitbox.Width));
+            Vector2 defaultPlacement = default(Vector2);
             int defaultTileY = (int)(npc.Bottom.Y / 16f);
             int tileY = BaseWorldGen.GetFirstTileFloor((int)(standOnX / 16f), (int)(npc.Bottom.Y / 16f));
-            if (tileY - defaultTileY > YamataA.flyingTileCount) { return default(Vector2); } //'flying' behavior
-            if (!flying && !yamataA.flying)
+            if (tileY - defaultTileY > Yamata.flyingTileCount) { return default(Vector2); } //'flying' behavior
+            if (!flying && !yamata.flying)
             {
                 tileY = (int)((int)((float)tileY * 16f) / 16);
                 float tilePosY = ((float)tileY * 16f);
                 if (Main.tile[(int)(standOnX / 16f), tileY] == null || !Main.tile[(int)(standOnX / 16f), tileY].nactive() || !Main.tileSolid[Main.tile[(int)(standOnX / 16f), tileY].type]) tilePosY += 16f;
                 return new Vector2(standOnX - (Hitbox.Width * 0.5f), tilePosY - Hitbox.Height);
             }
-            return ((flying || yamataA.flying) ? default(Vector2) : defaultPlacement);
+            return ((flying || yamata.flying) ? default(Vector2) : defaultPlacement);
         }
 
         public Vector2 GetMantidConnector(NPC npc)
         {
-            return npc.Center + yamataA.topVisualOffset + new Vector2((limbType == 3 || limbType == 1 ? -40f : 40f), 0f);
+            return npc.Center + yamata.topVisualOffset + new Vector2((limbType == 3 || limbType == 1 ? -40f : 40f), 0f);
         }
 
         public void DrawLeg(SpriteBatch sb, NPC npc, Color dColor)
@@ -756,11 +784,11 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
             if (textures == null)
             {
                 textures = new Texture2D[5];
-                textures[0] = mod.GetTexture("NPCs/Bosses/Yamata/YamataALegCap");
-				textures[1] = mod.GetTexture("NPCs/Bosses/Yamata/YamataALegSegment");
-                textures[2] = mod.GetTexture("NPCs/Bosses/Yamata/YamataALegCapR");
-				textures[3] = mod.GetTexture("NPCs/Bosses/Yamata/YamataALegSegmentR");				
-                textures[4] = mod.GetTexture("NPCs/Bosses/Yamata/YamataAFoot");
+                textures[0] = mod.GetTexture("NPCs/Bosses/Yamata/Awakened/YamataALegCap");
+				textures[1] = mod.GetTexture("NPCs/Bosses/Yamata/Awakened/YamataALegSegment");
+                textures[2] = mod.GetTexture("NPCs/Bosses/Yamata/Awakened/YamataALegCapR");
+				textures[3] = mod.GetTexture("NPCs/Bosses/Yamata/Awakened/YamataALegSegmentR");				
+                textures[4] = mod.GetTexture("NPCs/Bosses/Yamata/Awakened/YamataAFoot");
             }
             Vector2 drawPos = position - new Vector2(0f, velOffsetY);
             Color lightColor = npc.GetAlpha(BaseDrawing.GetLightColor(Center));

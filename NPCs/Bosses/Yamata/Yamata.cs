@@ -158,7 +158,7 @@ namespace AAMod.NPCs.Bosses.Yamata
 
         public override void AI()
         {
-            /*if (!HeadsSpawned)
+            if (!HeadsSpawned)
             {
                 if (Main.netMode != 1)
                 {
@@ -167,15 +167,16 @@ namespace AAMod.NPCs.Bosses.Yamata
                     latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y - 100, mod.NPCType("YamataHead"), 0, npc.whoAmI);
                     Main.npc[(int)latestNPC].realLife = npc.whoAmI;
                     Main.npc[(int)latestNPC].ai[3] = npc.whoAmI;
+                    TrueHead = Main.npc[latestNPC];
                     /*Head2 = Main.npc[NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y - 100, mod.NPCType("Head2"), 0, npc.whoAmI)];
                     Head3 = Main.npc[NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y - 100, mod.NPCType("Head3"), 0, npc.whoAmI)];
                     Head4 = Main.npc[NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y - 100, mod.NPCType("Head3"), 0, npc.whoAmI)];
                     Head5 = Main.npc[NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y - 100, mod.NPCType("Head3"), 0, npc.whoAmI)];
                     Head6 = Main.npc[NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y - 100, mod.NPCType("Head3"), 0, npc.whoAmI)];
-                    Head7 = Main.npc[NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y - 100, mod.NPCType("Head3"), 0, npc.whoAmI)];
+                    Head7 = Main.npc[NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y - 100, mod.NPCType("Head3"), 0, npc.whoAmI)];*/
                 }
                 HeadsSpawned = true;
-            }*/
+            }
             dustMantid = npc;
             prevHalfHPLeft = halfHPLeft;
             prevFourthHPLeft = fourthHPLeft;
@@ -471,8 +472,8 @@ namespace AAMod.NPCs.Bosses.Yamata
                 float projRotation = distToProj.ToRotation() - 1.57f;
                 float distance = distToProj.Length();
                 spriteBatch.Draw(mod.GetTexture("NPCs/Bosses/Yamata/YamataNeck"), neckOrigin - Main.screenPosition,
-                new Rectangle(0, 0, 52, 30), drawColor, projRotation,
-                new Vector2(52 * 0.5f, 30 * 0.5f), 1f, SpriteEffects.None, 0f);
+                new Rectangle(0, 0, 26, 40), drawColor, projRotation,
+                new Vector2(26 * 0.5f, 40 * 0.5f), 1f, SpriteEffects.None, 0f);
                 while (distance > 30f && !float.IsNaN(distance))
                 {
                     distToProj.Normalize();                 //get unit vector
@@ -484,26 +485,33 @@ namespace AAMod.NPCs.Bosses.Yamata
 
                     //Draw chain
                     spriteBatch.Draw(mod.GetTexture("NPCs/Bosses/Yamata/YamataNeck"), new Vector2(center.X - Main.screenPosition.X, center.Y - Main.screenPosition.Y),
-                        new Rectangle(0, 0, 52, 30), drawColor, projRotation,
-                        new Vector2(52 * 0.5f, 30 * 0.5f), 1f, SpriteEffects.None, 0f);
+                        new Rectangle(0, 0, 26, 40), drawColor, projRotation,
+                        new Vector2(26 * 0.5f, 40 * 0.5f), 1f, SpriteEffects.None, 0f);
 
                 }
                 spriteBatch.Draw(mod.GetTexture("NPCs/Bosses/Yamata/YamataNeck"), neckOrigin - Main.screenPosition,
-                            new Rectangle(0, 0, 52, 30), drawColor, projRotation,
-                            new Vector2(52 * 0.5f, 30 * 0.5f), 1f, SpriteEffects.None, 0f);
+                            new Rectangle(0, 0, 26, 40), drawColor, projRotation,
+                            new Vector2(26 * 0.5f, 40 * 0.5f), 1f, SpriteEffects.None, 0f);
 
                 spriteBatch.Draw(mod.GetTexture(headTexture), new Vector2(head.Center.X - Main.screenPosition.X, head.Center.Y - Main.screenPosition.Y),
                             head.frame, drawColor, head.rotation,
-                            new Vector2(106 * 0.5f, 72 * 0.5f), 1f, SpriteEffects.None, 0f);
+                            new Vector2(64 * 0.5f, 80 * 0.5f), 1f, SpriteEffects.None, 0f);
                 spriteBatch.Draw(mod.GetTexture(glowMaskTexture), new Vector2(head.Center.X - Main.screenPosition.X, head.Center.Y - Main.screenPosition.Y),
                         head.frame, Color.White, head.rotation,
-                        new Vector2(106 * 0.5f, 72 * 0.5f), 1f, SpriteEffects.None, 0f);
+                        new Vector2(64 * 0.5f, 80 * 0.5f), 1f, SpriteEffects.None, 0f);
             }
         }
 
         public override bool PreDraw(SpriteBatch sb, Color dColor)
         {
-            /*if (Main.netMode == 0)
+            
+            BaseDrawing.DrawTexture(sb, mod.GetTexture("NPCs/Bosses/Yamata/YamataTail"), 0, npc.position + new Vector2(0f, npc.gfxOffY) + bottomVisualOffset, npc.width, npc.height, npc.scale, npc.rotation, npc.spriteDirection, Main.npcFrameCount[npc.type], frameBottom, dColor, false);
+            legs[2].DrawLeg(sb, npc, dColor); //back legs
+            legs[3].DrawLeg(sb, npc, dColor);
+            legs[0].DrawLeg(sb, npc, dColor); //front legs
+            legs[1].DrawLeg(sb, npc, dColor);
+            BaseDrawing.DrawTexture(sb, Main.npcTexture[npc.type], 0, npc.position + new Vector2(0f, npc.gfxOffY) + topVisualOffset, npc.width, npc.height, npc.scale, npc.rotation, npc.spriteDirection, Main.npcFrameCount[npc.type], npc.frame, dColor, false);
+            if (Main.netMode == 0)
             {
                 DrawHead(sb, "NPCs/Bosses/Yamata/YamataHead", "NPCs/Bosses/Yamata/YamataHead_Glow", TrueHead, dColor);
                 /*DrawHead(sb, "NPCs/Bosses/Yamata/YamataHeadF", "NPCs/Bosses/Yamata/YamataHeadF_Glow", Head2, dColor);
@@ -511,15 +519,8 @@ namespace AAMod.NPCs.Bosses.Yamata
                 DrawHead(sb, "NPCs/Bosses/Yamata/YamataHeadF", "NPCs/Bosses/Yamata/YamataHeadF_Glow", Head4, dColor);
                 DrawHead(sb, "NPCs/Bosses/Yamata/YamataHeadF", "NPCs/Bosses/Yamata/YamataHeadF_Glow", Head5, dColor);
                 DrawHead(sb, "NPCs/Bosses/Yamata/YamataHeadF", "NPCs/Bosses/Yamata/YamataHeadF_Glow", Head6, dColor);
-                DrawHead(sb, "NPCs/Bosses/Yamata/YamataHeadF", "NPCs/Bosses/Yamata/YamataHeadF_Glow", Head7, dColor);
-            }*/
-            BaseDrawing.DrawTexture(sb, mod.GetTexture("NPCs/Bosses/Yamata/YamataTail"), 0, npc.position + new Vector2(0f, npc.gfxOffY) + bottomVisualOffset, npc.width, npc.height, npc.scale, npc.rotation, npc.spriteDirection, Main.npcFrameCount[npc.type], frameBottom, dColor, false);
-            legs[2].DrawLeg(sb, npc, dColor); //back legs
-            legs[3].DrawLeg(sb, npc, dColor);
-            legs[0].DrawLeg(sb, npc, dColor); //front legs
-            legs[1].DrawLeg(sb, npc, dColor);
-            BaseDrawing.DrawTexture(sb, Main.npcTexture[npc.type], 0, npc.position + new Vector2(0f, npc.gfxOffY) + topVisualOffset, npc.width, npc.height, npc.scale, npc.rotation, npc.spriteDirection, Main.npcFrameCount[npc.type], npc.frame, dColor, false);
-            
+                DrawHead(sb, "NPCs/Bosses/Yamata/YamataHeadF", "NPCs/Bosses/Yamata/YamataHeadF_Glow", Head7, dColor);*/
+            }
             return false;
         }
     }

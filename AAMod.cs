@@ -45,7 +45,7 @@ namespace AAMod
 
         public override void PostSetupContent()
         {
-            Mod AchievementLibs =  ModLoader.GetMod("AchievementLibs");
+            Mod AchievementLibs = ModLoader.GetMod("AchievementLibs");
             Mod bossChecklist = ModLoader.GetMod("BossChecklist");
             if (bossChecklist != null)
             {
@@ -55,7 +55,7 @@ namespace AAMod
                 bossChecklist.Call("AddBossWithInfo", "Retriever", 6.9999997f, (Func<bool>)(() => AAWorld.downedRetriever), "Use a [i:" + ItemType("CyberneticClaw") + "] at night");
                 bossChecklist.Call("AddBossWithInfo", "Raider Ultima", 6.9999997f, (Func<bool>)(() => AAWorld.downedRaider), "Use a [i:" + ItemType("CyberneticBell") + "] at night");
                 bossChecklist.Call("AddBossWithInfo", "Nightcrawler & Daybringer", 14.00000000001f, (Func<bool>)(() => AAWorld.downedEquinox), "Use a [i:" + ItemType("EquinoxWorm") + "]");
-                
+
                 if (Main.expertMode)
                 {
                     bossChecklist.Call("AddBossWithInfo", "Yamata", 18.0001f, (Func<bool>)(() => AAWorld.downedYamataA), "Use a [i:" + ItemType("DreadSigil") + "] in the Mire at night");
@@ -68,7 +68,7 @@ namespace AAMod
                     bossChecklist.Call("AddBossWithInfo", "Akuma", 18.0001f, (Func<bool>)(() => AAWorld.downedAkuma), "Use a [i:" + ItemType("DraconianSigil") + "] in the Inferno during the day");
                     bossChecklist.Call("AddBossWithInfo", "Zero", 18.001f, (Func<bool>)(() => AAWorld.downedZero), "Use a [i:" + ItemType("ZeroTesseract") + "] in the Void");
                 }
-                
+
                 //SlimeKing = 1f;
                 //EyeOfCthulhu = 2f;
                 //EaterOfWorlds = 3f;
@@ -110,7 +110,7 @@ namespace AAMod
             texture.SetData(buffer);
         }
 
-        
+
 
         public override void Load()
         {
@@ -134,6 +134,7 @@ namespace AAMod
                 PremultiplyTexture(GetTexture("Backgrounds/fogless"));
                 PremultiplyTexture(GetTexture("Backgrounds/fog"));
                 PremultiplyTexture(GetTexture("Backgrounds/AkumaSun"));
+                PremultiplyTexture(GetTexture("Backgrounds/YamataMoon"));
 
                 AddEquipTexture(null, EquipType.Legs, "N1_Legs", "AAMod/Items/Vanity/N1/N1_Legs");
 
@@ -168,16 +169,20 @@ namespace AAMod
                 SkyManager.Instance["AAMod:InfernoSky"] = new InfernoSky();
                 InfernoSky.PlanetTexture = GetTexture("Backgrounds/InfernoSun");
 
-                Filters.Scene["AAMod:AkumaSky"] = new Filter(new AkumaSkyData("FilterMiniTower").UseColor(0f, 0.1f, 0.2f).UseOpacity(0.3f), EffectPriority.VeryHigh);
+                Filters.Scene["AAMod:AkumaSky"] = new Filter(new AkumaSkyData("FilterMiniTower").UseColor(0f, 0.1f, 0.2f).UseOpacity(0.5f), EffectPriority.VeryHigh);
                 SkyManager.Instance["AAMod:AkumaSky"] = new AkumaSky();
                 AkumaSky.PlanetTexture = GetTexture("Backgrounds/AkumaSun");
 
-                Filters.Scene["Fog"] = new Filter(new ScreenShaderData("FilterBlizzardForeground").UseImage("Backgrounds/fog").UseOpacity(0.2f).UseImageScale(new Vector2(Main.screenWidth, Main.screenHeight)), EffectPriority.High);
-                Overlays.Scene["Fog"] = new SimpleOverlay("Backgrounds/fog", new ScreenShaderData("FilterBlizzardBackground").UseImage("Backgrounds/fog").UseOpacity(0.2f).UseImageScale(new Vector2(Main.screenWidth, Main.screenHeight)), EffectPriority.High, RenderLayers.All);
+                Filters.Scene["AAMod:YamataSky"] = new Filter(new YamataSkyData("FilterMiniTower").UseColor(.3f, 0f, 0f).UseOpacity(0.5f), EffectPriority.VeryHigh);
+                SkyManager.Instance["AAMod:YamataSky"] = new YamataSky();
+                YamataSky.PlanetTexture = GetTexture("Backgrounds/YamataMoon");
+
+                Filters.Scene["Fog"] = new Filter(new ScreenShaderData("FilterBlizzardForeground").UseImage("Backgrounds/fog").UseOpacity(0.4f).UseImageScale(new Vector2(Main.screenWidth, Main.screenHeight)), EffectPriority.High);
+                Overlays.Scene["Fog"] = new SimpleOverlay("Backgrounds/fog", new ScreenShaderData("FilterBlizzardBackground").UseImage("Backgrounds/fog").UseOpacity(0.4f).UseImageScale(new Vector2(Main.screenWidth, Main.screenHeight)), EffectPriority.High, RenderLayers.All);
                 SkyManager.Instance["Fog"] = new Fog();
                 Fog.FogTexture = GetTexture("Backgrounds/fog");
-                Filters.Scene["Fogless"] = new Filter(new ScreenShaderData("FilterBlizzardForeground").UseImage("Backgrounds/fogless").UseOpacity(0.1f).UseImageScale(new Vector2(Main.screenWidth, Main.screenHeight)), EffectPriority.High);
-                Overlays.Scene["Fogless"] = new SimpleOverlay("Backgrounds/fogless", new ScreenShaderData("FilterBlizzardBackground").UseImage("Backgrounds/fogless").UseOpacity(0.1f).UseImageScale(new Vector2(Main.screenWidth, Main.screenHeight)), EffectPriority.High, RenderLayers.All);
+                Filters.Scene["Fogless"] = new Filter(new ScreenShaderData("FilterBlizzardForeground").UseImage("Backgrounds/fogless").UseOpacity(0.3f).UseImageScale(new Vector2(Main.screenWidth, Main.screenHeight)), EffectPriority.High);
+                Overlays.Scene["Fogless"] = new SimpleOverlay("Backgrounds/fogless", new ScreenShaderData("FilterBlizzardBackground").UseImage("Backgrounds/fogless").UseOpacity(0.3f).UseImageScale(new Vector2(Main.screenWidth, Main.screenHeight)), EffectPriority.High, RenderLayers.All);
                 SkyManager.Instance["Fogless"] = new Fogless();
                 Fogless.FoglessTexture = GetTexture("Backgrounds/fogless");
 
@@ -192,34 +197,6 @@ namespace AAMod
                 }
             }
         }
-
-        /*public static Texture2D GetTexture(string name, string prefix = "Textures/")
-        {
-            Texture2D result;
-            if (Main.netMode == 2 || Main.dedServ)
-            {
-                result = null;
-            }
-            else
-            {
-                if (!precachedTextures.ContainsKey(prefix + name))
-                {
-                    foreach (KeyValuePair<string, Texture2D> kvp in Textures)
-                    {
-                        string tex = kvp.Key;
-                        if ((prefix.Equals("") || tex.Contains(prefix)) && (tex.Contains("/" + name) || tex.Contains("\\" + name)))
-                        {
-                            precachedTextures.Add(prefix + name, kvp.Value);
-                            result = kvp.Value;
-                            return result;
-                        }
-                    }
-                    throw new Exception("Texture \"" + name + "\" is missing!");
-                }
-                result = precachedTextures[prefix + name];
-            }
-            return result;
-        }*/
 
         public override void Unload()
         {
@@ -263,7 +240,7 @@ namespace AAMod
                 ItemType("QuantumFusionAccelerator"),
             });
             RecipeGroup.RegisterGroup("AAMod:AstralStations", group3);
-            
+
             RecipeGroup group4 = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + "AncientMaterials", new int[]
             {
                 ItemType("UnstableSingularity"),
@@ -300,7 +277,7 @@ namespace AAMod
                 ItemID.CursedFlame
             });
             RecipeGroup.RegisterGroup("AnyIchor", group6);
-            //-------------------------------------------------
+
             group6 = new RecipeGroup(getName: () => Language.GetTextValue("LegacyMisc.37") + " Hardmode Forge", validItems: new int[]
             {
                 ItemID.AdamantiteForge,
@@ -367,11 +344,11 @@ namespace AAMod
             }
             if (Ancients.ZoneMush)
             {
-                    music = MusicID.Mushrooms;
+                music = MusicID.Mushrooms;
             }
             if (Ancients.ZoneMire)
             {
-                
+
                 if (player.ZoneRockLayerHeight)
                 {
                     priority = MusicPriority.BiomeHigh;
@@ -898,22 +875,6 @@ namespace AAMod
                 recipe.SetResult(ItemID.GravityGlobe, 1);
                 recipe.AddRecipe();
             }
-
-            /*
-			// Our first recipe, transforming a dirtblock to a gold coin while near any workbench.
-			ModRecipe recipe = new ModRecipe(this);
-			recipe.AddIngredient(null, "Paladins_Alloy", 35);
-			recipe.AddTile(TileID.MythrilAnvil);
-			recipe.SetResult(ItemID.PaladinsHammer);
-			recipe.AddRecipe();
-
-			// Our second recipe, the same as above, but this time 10 times as fast
-			recipe = new ModRecipe(this);
-			recipe.AddIngredient(null, "Paladins_Alloy", 40);
-			recipe.AddTile(TileID.MythrilAnvil);
-			recipe.SetResult(ItemID.PaladinsShield);
-			recipe.AddRecipe();
-			*/
         }
 
         public static Color BuffEffects(Entity codable, Color lightColor, float shadow = 0f, bool effects = true, bool poisoned = false, bool onFire = false, bool onFire2 = false, bool hunter = false, bool noItems = false, bool blind = false, bool bleed = false, bool venom = false, bool midas = false, bool ichor = false, bool onFrostBurn = false, bool burned = false, bool honey = false, bool dripping = false, bool drippingSlime = false, bool loveStruck = false, bool stinky = false)
@@ -1326,54 +1287,5 @@ namespace AAMod
             }
             return position - screenPos + new Vector2(width * 0.5f, height) - new Vector2(texWidth * scale / 2f, texHeight * scale / (float)framecount) + (origin * scale) + new Vector2(0f, 5f);
         }
-
-        /*public override void HandlePacket(BinaryReader bb, int whoAmI)
-        {
-            MsgType msg = (MsgType)bb.ReadByte();
-            if (msg == MsgType.ProjectileHostility) //projectile hostility and ownership
-            {
-                int owner = bb.ReadInt32();
-                int projID = bb.ReadInt32();
-                bool friendly = bb.ReadBoolean();
-                bool hostile = bb.ReadBoolean();
-                if (Main.projectile[projID] != null)
-                {
-                    Main.projectile[projID].owner = owner;
-                    Main.projectile[projID].friendly = friendly;
-                    Main.projectile[projID].hostile = hostile;
-                }
-                if (Main.netMode == 2) MNet.SendBaseNetMessage(0, owner, projID, friendly, hostile);
-            }
-            else
-            if (msg == MsgType.SyncAI) //sync AI array
-            {
-                int classID = (int)bb.ReadByte();
-                int id = (int)bb.ReadInt16();
-                int aitype = (int)bb.ReadByte();
-                int arrayLength = (int)bb.ReadByte();
-                float[] newAI = new float[arrayLength];
-                for (int m = 0; m < arrayLength; m++)
-                {
-                    newAI[m] = bb.ReadSingle();
-                }
-                if (classID == 0 && Main.npc[id] != null && Main.npc[id].active && Main.npc[id].modNPC != null && Main.npc[id].modNPC is ParentNPC)
-                {
-                    ((ParentNPC)Main.npc[id].modNPC).SetAI(newAI, aitype);
-                }
-                else
-                if (classID == 1 && Main.projectile[id] != null && Main.projectile[id].active && Main.projectile[id].modProjectile != null && Main.projectile[id].modProjectile is ParentProjectile)
-                {
-                    ((ParentProjectile)Main.projectile[id].modProjectile).SetAI(newAI, aitype);
-                }
-                if (Main.netMode == 2) BaseNet.SyncAI(classID, id, newAI, aitype);
-            }
-        }*/
     }
-
-    /*enum MsgType : byte
-    {
-        ProjectileHostility,
-        SyncAI
-    }*/
 }
-

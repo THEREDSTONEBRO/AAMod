@@ -90,6 +90,8 @@
     <Compile Include="Backgrounds\VoidSky.cs" />
     <Compile Include="Backgrounds\VoidSkyData.cs" />
     <Compile Include="Backgrounds\VoidSurfaceBgStyle.cs" />
+    <Compile Include="Backgrounds\YamataSky.cs" />
+    <Compile Include="Backgrounds\YamataSkyData.cs" />
     <Compile Include="Buffs\Broodmini.cs" />
     <Compile Include="Buffs\BurningAsh.cs" />
     <Compile Include="Buffs\ChairMinionBuff.cs" />
@@ -900,6 +902,7 @@
     <Compile Include="NPCs\Bosses\Shen\ShenDoragon.cs" />
     <Compile Include="NPCs\Bosses\Shen\ShenFirebomb.cs" />
     <Compile Include="NPCs\Bosses\Yamata\Awakened\YamataA.cs" />
+    <Compile Include="NPCs\Bosses\Yamata\Awakened\YamataAHead.cs" />
     <Compile Include="NPCs\Bosses\Yamata\YamataBoom.cs" />
     <Compile Include="NPCs\Bosses\Yamata\YamataBomb.cs" />
     <Compile Include="NPCs\Bosses\Yamata\YamataBreath.cs" />
