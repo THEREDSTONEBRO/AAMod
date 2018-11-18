@@ -899,6 +899,9 @@
     <Compile Include="NPCs\Bosses\Shen\DiscordianInferno.cs" />
     <Compile Include="NPCs\Bosses\Shen\ShenDoragon.cs" />
     <Compile Include="NPCs\Bosses\Shen\ShenFirebomb.cs" />
+    <Compile Include="NPCs\Bosses\Yamata\YamataBoom.cs" />
+    <Compile Include="NPCs\Bosses\Yamata\YamataBomb.cs" />
+    <Compile Include="NPCs\Bosses\Yamata\YamataBreath.cs" />
     <Compile Include="NPCs\Bosses\Yamata\YamataTransition.cs" />
     <Compile Include="NPCs\Bosses\Yamata\YamataHead.cs" />
     <Compile Include="NPCs\Bosses\Yamata\Yamata.cs" />
@@ -2721,6 +2724,14 @@
     <Content Include="NPCs\Bosses\Unused\Decay.png" />
     <Content Include="NPCs\Bosses\Unused\MrBonesRevenge.png" />
     <Content Include="NPCs\Bosses\Unused\Soul of Cthulhu.png" />
+    <Content Include="NPCs\Bosses\Yamata\YamataAFoot.png" />
+    <Content Include="NPCs\Bosses\Yamata\YamataAHead_Glow.png" />
+    <Content Include="NPCs\Bosses\Yamata\YamataALegCap.png" />
+    <Content Include="NPCs\Bosses\Yamata\YamataALegCapR.png" />
+    <Content Include="NPCs\Bosses\Yamata\YamataALegSegment.png" />
+    <Content Include="NPCs\Bosses\Yamata\YamataALegSegmentR.png" />
+    <Content Include="NPCs\Bosses\Yamata\YamataA_Glow.png" />
+    <Content Include="NPCs\Bosses\Yamata\YamataBreath.png" />
     <Content Include="NPCs\Bosses\Yamata\YamataFoot.png" />
     <Content Include="NPCs\Bosses\Yamata\YamataLegCap.png" />
     <Content Include="NPCs\Bosses\Yamata\YamataLegCapR.png" />

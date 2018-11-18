@@ -1,102 +1,272 @@
-/*using System;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-
+using System;
+using Microsoft.Xna.Framework;
+using Terraria.Graphics;
+using Microsoft.Xna.Framework.Graphics;
 namespace AAMod.NPCs.Bosses.Yamata
 {
-    [AutoloadBossHead]
-    public class YamataHead : ModNPC
+    public class YamataHead : Yamata
     {
-        private Player player;
-        private float speed;
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Yamata");
-
+            Main.npcFrameCount[npc.type] = 3;
         }
+
         public override void SetDefaults()
         {
-            npc.width = 34;
-            npc.height = 34;
-            npc.aiStyle = 0;
-            npc.damage = 0;
-            npc.defense = 30;
-            npc.lavaImmune = true;
-            npc.buffImmune[BuffID.OnFire] = true;
-            npc.lifeMax = 50;
-            npc.HitSound = SoundID.NPCHit1;
-            npc.DeathSound = SoundID.NPCDeath1;
-            npc.value = 0f;
-            npc.knockBackResist = 2f;
-            npc.npcSlots = 0f;
+            base.SetDefaults();
+            npc.width = 78;
+            npc.height = 68;
+            npc.npcSlots = 0;
+            npc.dontCountMe = true;
+
         }
 
-        public override void PostDraw(SpriteBatch spriteBatch, Color drawColor)
-        {
-            {
-                SpriteEffects spriteEffects = SpriteEffects.None;
-                if (npc.spriteDirection == 1)
-                {
-                    spriteEffects = SpriteEffects.FlipHorizontally;
-                }
-                spriteBatch.Draw(mod.GetTexture("NPCs/Bosses/Broodmother/BroodEgg_Glow"), new Vector2(npc.Center.X - Main.screenPosition.X, npc.Center.Y - Main.screenPosition.Y),
-                npc.frame, Color.White, npc.rotation,
-                new Vector2(npc.width * 0.5f, npc.height * 0.5f), 1f, spriteEffects, 0f);
-            }
-        }
+        public int varTime = 0;
 
+        public int YvarOld = 0;
 
-        public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
-        {
-            npc.lifeMax = (int)(npc.lifeMax * 0.6f * bossLifeScale);
-        }
-        
+        public int XvarOld = 0;
+        public int numberOfAttacks = 0;
+        public int endAttack = 0;
+        public int damage = 0;
+        public bool attackFrame = false;
+        public float moveSpeedBoost = .04f;
+        public NPC Hydra;
+        public bool HoriSwitch = false;
+        public int f = 1;
+        public float TargetDirection = (float)Math.PI / 2;
+        public float s = 1;
+        public Projectile Breath;
+        private int MouthFrame;
+        private int MouthCounter;
         public override void AI()
         {
-            if (npc.velocity.Y == 0f)
+            /*
+			Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 0f, 0f, mod.ProjectileType("HydraNeck"), 0, 3f, Main.myPlayer);
+            */
+            if (Main.expertMode)
             {
-                npc.velocity.X = npc.velocity.X * 0.9f;
-                npc.rotation += npc.velocity.X * 0.02f;
+                damage = npc.damage / 4;
             }
             else
             {
-                npc.velocity.X = npc.velocity.X * 0.99f;
-                npc.rotation += npc.velocity.X * 0.04f;
+                damage = npc.damage / 2;
             }
-            int num1326 = 900;
-            if (Main.expertMode)
+            if (Main.netMode != 1)
             {
-                num1326 = 600;
-            }
-            if (npc.justHit)
-            {
-                npc.ai[0] -= (float)Main.rand.Next(10, 21);
-                if (!Main.expertMode)
+                if (npc.ai[0] == 0)
                 {
-                    npc.ai[0] -= (float)Main.rand.Next(10, 21);
+                    npc.realLife = (int)npc.ai[3];
                 }
             }
-            npc.ai[0] += 1f;
-            if (npc.ai[0] >= num1326)
+                    Player player = Main.player[npc.target];
+            npc.TargetClosest(true);
+            if (!player.active || player.dead)
             {
-                npc.Transform(mod.NPCType("Broodmini"));
-            }
-            if (Main.netMode != 1 && npc.velocity.Y == 0f && (double)Math.Abs(npc.velocity.X) < 0.2 && (double)npc.ai[0] >= (double)num1326 * 0.75)
-            {
-                float num1327 = npc.ai[0] - ((float)num1326 * 0.75f);
-                num1327 /= (float)num1326 * 0.25f;
-                if ((float)Main.rand.Next(-10, 120) < num1327 * 100f)
+                npc.TargetClosest(false);
+                player = Main.player[npc.target];
+                if (!player.active || player.dead)
                 {
-                    npc.velocity.Y = npc.velocity.Y - (Main.rand.Next(20, 40) * 0.025f);
-                    npc.velocity.X = npc.velocity.X + (Main.rand.Next(-20, 20) * 0.025f);
-                    npc.velocity *= 1f + (num1327 * 2f);
-                    npc.netUpdate = true;
+                    npc.velocity = new Vector2(0f, 10f);
+                    if (npc.timeLeft > 10)
+                    {
+                        npc.timeLeft = 10;
+                    }
                     return;
                 }
             }
+            if (npc.ai[3] == 2)
+            {
+                attackFrame = true;
+                TargetDirection = (float)Math.PI / 2;
+                varTime++;
+                npc.ai[2] = 100;
+                if (varTime == 30 && Main.netMode !=1)
+                {
+                    Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 0f, 10f, mod.ProjectileType("YamataBomb"), (int)(damage * .8f), 3f, Main.myPlayer);
+                }
+                if (varTime >= 60)
+                {
+                    if (Main.netMode != 1)
+                    {
+                        npc.ai[1] = Main.rand.Next(-300, 300);
+                        npc.netUpdate = true;
+                    }
+                    endAttack++;
+                    varTime = 0;
+
+                }
+                if (endAttack >= 10)
+                {
+                    npc.ai[3] = 0;
+                }
+            }
+            else if (npc.ai[3] == 3)
+            {
+                attackFrame = true;
+                varTime++;
+                if (varTime < 120)
+                {
+                    npc.ai[2] = 100;
+                    npc.ai[1] = 0;
+                    TargetDirection = (float)Math.PI / 2;
+                }
+                else if (varTime == 180 && Main.netMode !=1)
+                {
+                    Breath = Main.projectile[Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 0f, 0f, mod.ProjectileType("YamataBreath"), damage, 3f, Main.myPlayer, npc.whoAmI, 420)];
+                }
+                else if (varTime < 180)
+                {
+                    npc.ai[2] = 100;
+                    npc.ai[1] = 0;
+                    TargetDirection = (float)Math.PI / 2;
+                }
+                else if (varTime < 240)
+                {
+                    npc.ai[2] = -300;
+                    npc.ai[1] = 0;
+                    TargetDirection = (float)Math.PI / 2;
+                }
+                else if (varTime < 600)
+                {
+                    npc.ai[2] = -300;
+                    npc.ai[1] = 0;
+                    s = .5f;
+                    TargetDirection = (float)(player.Center - npc.Center).ToRotation();
+                }
+                else
+                {
+                    if(Main.netMode !=1) Breath.Kill();
+                    s = 1;
+                    npc.ai[3] = 0;
+                }
+            }
+
+            else
+            {
+                attackFrame = false;
+                moveSpeedBoost = .04f;
+                varTime++;
+                if (varTime > 100)
+                {
+                    if (Main.netMode != 1)
+                    {
+
+                        npc.ai[2] = Main.rand.Next(0, 100);
+
+                        npc.ai[1] = Main.rand.Next(-125, 125);
+                        npc.netUpdate = true;
+                    }
+                    varTime = 0;
+                }
+                TargetDirection = (float)Math.PI / 2;
+            }
+
+
+            npc.rotation = new Vector2((float)Math.Cos(npc.rotation), (float)Math.Sin(npc.rotation)).ToRotation();
+            if (Math.Abs(npc.rotation - TargetDirection) > Math.PI)
+            {
+                f = -1;
+            }
+            else
+            {
+                f = 1;
+            }
+            if (npc.rotation <= TargetDirection + MathHelper.ToRadians(4 * s) && npc.rotation >= TargetDirection - MathHelper.ToRadians(4 * s))
+            {
+                npc.rotation = TargetDirection;
+            }
+            else if (npc.rotation <= TargetDirection)
+            {
+                npc.rotation += MathHelper.ToRadians(2 * s) * f;
+            }
+            else if (npc.rotation >= TargetDirection)
+            {
+                npc.rotation -= MathHelper.ToRadians(2 * s) * f;
+            }
+            Vector2 moveTo = new Vector2(Hydra.Center.X + npc.ai[1], Hydra.Center.Y - (300f + npc.ai[2])) - npc.Center;
+            npc.velocity = (moveTo) * moveSpeedBoost;
         }
+        public override void FindFrame(int frameHeight)
+        {
+            if (attackFrame)
+            {
+                MouthCounter++;
+                if (MouthCounter > 10)
+                {
+                    MouthFrame++;
+                    MouthCounter = 0;
+                }
+                if (MouthFrame >= 3)
+                {
+                    MouthFrame = 2;
+                }
+            }
+            else
+            {
+                npc.frame.Y = 0 * frameHeight;
+            }
+        }
+        public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
+        {
+            
+            return false;
+        }
+        public override void PostDraw(SpriteBatch spriteBatch, Color drawColor)
+        {
+            if (Main.netMode != 0)
+            {
+                Hydra = Main.npc[(int)npc.ai[0]];
+                Vector2 neckOrigin = new Vector2(Hydra.Center.X, Hydra.Center.Y - 50);
+                Vector2 center = npc.Center;
+                Vector2 distToProj = neckOrigin - npc.Center;
+                float projRotation = distToProj.ToRotation() - 1.57f;
+                float distance = distToProj.Length();
+                spriteBatch.Draw(mod.GetTexture("NPCs/HydraBoss/HydraNeckBase"), neckOrigin - Main.screenPosition,
+                            new Rectangle(0, 0, 52, 30), drawColor, projRotation,
+                            new Vector2(52 * 0.5f, 30 * 0.5f), 1f, SpriteEffects.None, 0f);
+                while (distance > 30f && !float.IsNaN(distance))
+                {
+                    distToProj.Normalize();                 //get unit vector
+                    distToProj *= 30f;                      //speed = 30
+                    center += distToProj;                   //update draw position
+                    distToProj = neckOrigin - center;    //update distance
+                    distance = distToProj.Length();
+
+
+                    //Draw chain
+                    spriteBatch.Draw(mod.GetTexture("NPCs/Bosses/Yamata/YamataNeck"), new Vector2(center.X - Main.screenPosition.X, center.Y - Main.screenPosition.Y),
+                        new Rectangle(0, 0, 52, 30), drawColor, projRotation,
+                        new Vector2(52 * 0.5f, 30 * 0.5f), 1f, SpriteEffects.None, 0f);
+
+                }
+                spriteBatch.Draw(mod.GetTexture("NPCs/Bosses/Yamata/YamataNeck"), neckOrigin - Main.screenPosition,
+                            new Rectangle(0, 0, 52, 30), drawColor, projRotation,
+                            new Vector2(52 * 0.5f, 30 * 0.5f), 1f, SpriteEffects.None, 0f);
+                
+                spriteBatch.Draw(mod.GetTexture("NPCs/Bosses/Yamata/YamataHead"), new Vector2(npc.Center.X - Main.screenPosition.X, npc.Center.Y - Main.screenPosition.Y),
+                            new Rectangle(0, npc.frame.Y, 106, npc.frame.Y + 72), drawColor, npc.rotation,
+                            new Vector2(106 * 0.5f, 72 * 0.5f), 1f, SpriteEffects.None, 0f);
+                spriteBatch.Draw(mod.GetTexture("NPCs/Bosses/Yamata/YamataHead_Glow"), new Vector2(npc.Center.X - Main.screenPosition.X, npc.Center.Y - Main.screenPosition.Y),
+                        new Rectangle(0, npc.frame.Y, 106, npc.frame.Y + 72), Color.White, npc.rotation,
+                        new Vector2(106 * 0.5f, 72 * 0.5f), 1f, SpriteEffects.None, 0f);
+            }
+        }
+        public override void BossHeadRotation(ref float rotation)
+        {
+
+            rotation = npc.rotation;
+
+        }
+        // We use this hook to prevent any loot from dropping. We do this because this is a multistage npc and it shouldn't drop anything until the final form is dead.
+        public override bool PreNPCLoot()
+        {
+            return false;
+        }
+
     }
-}*/
+}

@@ -64,7 +64,7 @@ Only Usable at night in the mire");
         {
             if (Main.dayTime)
             {
-                if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("NO! I DON'T WANNA FIGHT NOW! COME BACK AT NIGHT!", new Color(45, 46, 70), false);
+                if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("NO! I DON'T WANNA FIGHT NOW! I NEED MY BEAUTY SLEEP! COME BACK AT NIGHT!", new Color(45, 46, 70), false);
                 return false;
             }
             if (player.GetModPlayer<AAPlayer>(mod).ZoneMire)

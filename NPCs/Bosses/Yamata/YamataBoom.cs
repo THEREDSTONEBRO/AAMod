@@ -5,28 +5,26 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AAMod.Items.Projectiles.Akuma
+namespace AAMod.NPCs.Bosses.Yamata
 {
-    public class FireProjBoom : ModProjectile
+    public class YamataBoom : ModProjectile
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Flamesplosion");     //The English name of the projectile
-            Main.projFrames[projectile.type] = 4;     //The recording mode
+            DisplayName.SetDefault("Soulsplosion");     //The English name of the projectile
+            Main.projFrames[projectile.type] = 7;     //The recording mode
         }
 
         public override void SetDefaults()
         {
-            projectile.width = 64;
-            projectile.height = 80;
+            projectile.width = 98;
+            projectile.height = 98;
             projectile.penetrate = -1;
-            projectile.friendly = true;
-            projectile.hostile = false;
+            projectile.friendly = false;
+            projectile.hostile = true;
             projectile.tileCollide = false;
             projectile.ignoreWater = true;
             projectile.timeLeft = 600;
-            projectile.usesLocalNPCImmunity = true;
-            projectile.localNPCHitCooldown = 4;
         }
 
         public override void AI()
@@ -34,7 +32,7 @@ namespace AAMod.Items.Projectiles.Akuma
             if (++projectile.frameCounter >= 5)
             {
                 projectile.frameCounter = 0;
-                if (++projectile.frame >= 3)
+                if (++projectile.frame >= 6)
                 {
                     projectile.Kill();
 
@@ -43,11 +41,6 @@ namespace AAMod.Items.Projectiles.Akuma
             projectile.velocity.X *= 0.00f;
             projectile.velocity.Y *= 0.00f;
 
-        }
-
-        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
-        {
-            target.AddBuff(BuffID.Daybreak, 600);
         }
 
         public override void Kill(int timeLeft)
