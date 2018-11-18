@@ -56,6 +56,8 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
         public override void SetStaticDefaults()
         {
             displayName = "Yamata Awakened";
+
+            Main.npcFrameCount[npc.type] = 7;
         }
 
         public override void SetDefaults()
@@ -182,6 +184,18 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
                 }
                 HeadsSpawned = true;
             }*/
+            int frame = 0;
+            npc.frameCounter++;
+            if (npc.frameCounter > 5)
+            {
+                frame++;
+                npc.frameCounter = 0;
+                if (frame > 6)
+                {
+                    frame = 0;
+                }
+            }
+
 
             if (npc.life <= npc.lifeMax / 5)
             {
