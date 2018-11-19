@@ -57,7 +57,23 @@ Only Usable at night");
 		{
 			SpawnBoss(player, "Yamata", "Yamata");
 			Main.PlaySound(15, (int)player.position.X, (int)player.position.Y, 0);
-			return true;
+            if (!AAWorld.downedYamata && !Main.expertMode)
+            {
+                Main.NewText("You DARE enter my territory, Terrarian?! NYEHEHEHEHEH..! Big mistake..!", new Color(45, 46, 70));
+            }
+            if (!AAWorld.downedYamataA && Main.expertMode)
+            {
+                Main.NewText("You DARE enter my territory, Terrarian?! NYEHEHEHEHEH..! Big mistake..!", new Color(45, 46, 70));
+            }
+            if (!Main.expertMode && AAWorld.downedYamata)
+            {
+                Main.NewText("Back for more..?! This time you won’t be so lucky you little whelp..!", new Color(45, 46, 70));
+            }
+            if (Main.expertMode && AAWorld.downedYamata)
+            {
+                Main.NewText("Back for more..?! This time you won’t be so lucky you little whelp..!", new Color(45, 46, 70));
+            }
+            return true;
 		}
 
 		public override bool CanUseItem(Player player)

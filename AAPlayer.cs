@@ -12,6 +12,7 @@ using Terraria.GameInput;
 using Terraria.ID;
 using Terraria.ModLoader;
 using System;
+using AAMod.NPCs.Bosses.Yamata.Awakened;
 
 namespace AAMod
 {
@@ -185,7 +186,8 @@ namespace AAMod
             bool useInferno = (ZoneInferno || SunAltar) && !useAkuma;
             player.ManageSpecialBiomeVisuals("AAMod:InfernoSky", useInferno);
             player.ManageSpecialBiomeVisuals("HeatDistortion", useInferno);
-            bool useMire = ZoneMire || MoonAltar /*&& !UseYamata */;
+            bool useYamata = NPC.AnyNPCs(mod.NPCType<YamataA>()); //|| YamataaAltar;
+            bool useMire = ZoneMire || MoonAltar && !useYamata;
             player.ManageSpecialBiomeVisuals("AAMod:MireSky", useMire);
             bool useVoid = ZoneVoid || VoidUnit;
             player.ManageSpecialBiomeVisuals("AAMod:VoidSky", useVoid);

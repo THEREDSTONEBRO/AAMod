@@ -18,8 +18,8 @@ namespace AAMod.NPCs.Bosses.Yamata
         public override void SetDefaults()
         {
             base.SetDefaults();
-            npc.width = 78;
-            npc.height = 68;
+            npc.width = 64;
+            npc.height = 80;
             npc.npcSlots = 0;
             npc.dontCountMe = true;
 
@@ -35,7 +35,7 @@ namespace AAMod.NPCs.Bosses.Yamata
         public int damage = 0;
         public bool attackFrame = false;
         public float moveSpeedBoost = .04f;
-        public NPC Hydra;
+        public NPC Body;
         public bool HoriSwitch = false;
         public int f = 1;
         public float TargetDirection = (float)Math.PI / 2;
@@ -56,14 +56,9 @@ namespace AAMod.NPCs.Bosses.Yamata
             {
                 damage = npc.damage / 2;
             }
-            if (Main.netMode != 1)
-            {
-                if (npc.ai[0] == 0)
-                {
-                    npc.realLife = (int)npc.ai[3];
-                }
-            }
-                    Player player = Main.player[npc.target];
+            Body = Main.npc[(int)npc.ai[0]];
+            npc.realLife = (int)npc.ai[0];
+            Player player = Main.player[npc.target];
             npc.TargetClosest(true);
             if (!player.active || player.dead)
             {
@@ -188,7 +183,7 @@ namespace AAMod.NPCs.Bosses.Yamata
             {
                 npc.rotation -= MathHelper.ToRadians(2 * s) * f;
             }
-            Vector2 moveTo = new Vector2(Hydra.Center.X + npc.ai[1], Hydra.Center.Y - (300f + npc.ai[2])) - npc.Center;
+            Vector2 moveTo = new Vector2(Body.Center.X + npc.ai[1], Body.Center.Y - (300f + npc.ai[2])) - npc.Center;
             npc.velocity = (moveTo) * moveSpeedBoost;
         }
         public override void FindFrame(int frameHeight)
@@ -220,15 +215,15 @@ namespace AAMod.NPCs.Bosses.Yamata
         {
             if (Main.netMode != 0)
             {
-                Hydra = Main.npc[(int)npc.ai[0]];
-                Vector2 neckOrigin = new Vector2(Hydra.Center.X, Hydra.Center.Y - 50);
+                Body = Main.npc[(int)npc.ai[0]];
+                Vector2 neckOrigin = new Vector2(Body.Center.X, Body.Center.Y - 50);
                 Vector2 center = npc.Center;
                 Vector2 distToProj = neckOrigin - npc.Center;
                 float projRotation = distToProj.ToRotation() - 1.57f;
                 float distance = distToProj.Length();
-                spriteBatch.Draw(mod.GetTexture("NPCs/HydraBoss/HydraNeckBase"), neckOrigin - Main.screenPosition,
-                            new Rectangle(0, 0, 52, 30), drawColor, projRotation,
-                            new Vector2(52 * 0.5f, 30 * 0.5f), 1f, SpriteEffects.None, 0f);
+                spriteBatch.Draw(mod.GetTexture("NPCs/Bosses/Yamata/YamataNeck"), neckOrigin - Main.screenPosition,
+                            new Rectangle(0, 0, 26, 40), drawColor, projRotation,
+                            new Vector2(26 * 0.5f, 40 * 0.5f), 1f, SpriteEffects.None, 0f);
                 while (distance > 30f && !float.IsNaN(distance))
                 {
                     distToProj.Normalize();                 //get unit vector
@@ -240,20 +235,20 @@ namespace AAMod.NPCs.Bosses.Yamata
 
                     //Draw chain
                     spriteBatch.Draw(mod.GetTexture("NPCs/Bosses/Yamata/YamataNeck"), new Vector2(center.X - Main.screenPosition.X, center.Y - Main.screenPosition.Y),
-                        new Rectangle(0, 0, 52, 30), drawColor, projRotation,
-                        new Vector2(52 * 0.5f, 30 * 0.5f), 1f, SpriteEffects.None, 0f);
+                        new Rectangle(0, 0, 26, 40), drawColor, projRotation,
+                        new Vector2(26 * 0.5f, 40 * 0.5f), 1f, SpriteEffects.None, 0f);
 
                 }
                 spriteBatch.Draw(mod.GetTexture("NPCs/Bosses/Yamata/YamataNeck"), neckOrigin - Main.screenPosition,
-                            new Rectangle(0, 0, 52, 30), drawColor, projRotation,
-                            new Vector2(52 * 0.5f, 30 * 0.5f), 1f, SpriteEffects.None, 0f);
+                            new Rectangle(0, 0, 26, 40), drawColor, projRotation,
+                            new Vector2(26 * 0.5f, 40 * 0.5f), 1f, SpriteEffects.None, 0f);
                 
                 spriteBatch.Draw(mod.GetTexture("NPCs/Bosses/Yamata/YamataHead"), new Vector2(npc.Center.X - Main.screenPosition.X, npc.Center.Y - Main.screenPosition.Y),
-                            new Rectangle(0, npc.frame.Y, 106, npc.frame.Y + 72), drawColor, npc.rotation,
-                            new Vector2(106 * 0.5f, 72 * 0.5f), 1f, SpriteEffects.None, 0f);
+                            new Rectangle(0, npc.frame.Y, 64, npc.frame.Y + 80), drawColor, npc.rotation,
+                            new Vector2(64 * 0.5f, 80 * 0.5f), 1f, SpriteEffects.None, 0f);
                 spriteBatch.Draw(mod.GetTexture("NPCs/Bosses/Yamata/YamataHead_Glow"), new Vector2(npc.Center.X - Main.screenPosition.X, npc.Center.Y - Main.screenPosition.Y),
-                        new Rectangle(0, npc.frame.Y, 106, npc.frame.Y + 72), Color.White, npc.rotation,
-                        new Vector2(106 * 0.5f, 72 * 0.5f), 1f, SpriteEffects.None, 0f);
+                        new Rectangle(0, npc.frame.Y, 64, npc.frame.Y + 80), Color.White, npc.rotation,
+                        new Vector2(64 * 0.5f, 80 * 0.5f), 1f, SpriteEffects.None, 0f);
             }
         }
         public override void BossHeadRotation(ref float rotation)

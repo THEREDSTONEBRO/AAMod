@@ -38,7 +38,7 @@ Only Usable at night in the mire");
             {
                 if (line2.mod == "Terraria" && line2.Name == "ItemName")
                 {
-                    line2.overrideColor = new Color(45, 46, 70);
+                    line2.overrideColor = new Color(146, 30, 68);
                 }
             }
         }
@@ -55,7 +55,8 @@ Only Usable at night in the mire");
 
         public override bool UseItem(Player player)
 		{
-			SpawnBoss(player, "Yamata", "Yamata");
+            Main.NewText("Yeah, yeah I get it, my first phase is obnoxious. Let’s just get this over with..!", new Color(146, 30, 68));
+            SpawnBoss(player, "YamataA", "YamataA");
 			Main.PlaySound(15, (int)player.position.X, (int)player.position.Y, 0);
 			return true;
 		}
