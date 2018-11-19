@@ -514,12 +514,6 @@ namespace AAMod.NPCs.Bosses.Yamata
             if (Main.netMode == 0)
             {
                 DrawHead(sb, "NPCs/Bosses/Yamata/YamataHead", "NPCs/Bosses/Yamata/YamataHead_Glow", TrueHead, dColor);
-                /*DrawHead(sb, "NPCs/Bosses/Yamata/YamataHeadF", "NPCs/Bosses/Yamata/YamataHeadF_Glow", Head2, dColor);
-                DrawHead(sb, "NPCs/Bosses/Yamata/YamataHeadF", "NPCs/Bosses/Yamata/YamataHeadF_Glow", Head3, dColor);
-                DrawHead(sb, "NPCs/Bosses/Yamata/YamataHeadF", "NPCs/Bosses/Yamata/YamataHeadF_Glow", Head4, dColor);
-                DrawHead(sb, "NPCs/Bosses/Yamata/YamataHeadF", "NPCs/Bosses/Yamata/YamataHeadF_Glow", Head5, dColor);
-                DrawHead(sb, "NPCs/Bosses/Yamata/YamataHeadF", "NPCs/Bosses/Yamata/YamataHeadF_Glow", Head6, dColor);
-                DrawHead(sb, "NPCs/Bosses/Yamata/YamataHeadF", "NPCs/Bosses/Yamata/YamataHeadF_Glow", Head7, dColor);*/
             }
             return false;
         }

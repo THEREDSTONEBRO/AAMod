@@ -5,7 +5,7 @@ using System;
 using Microsoft.Xna.Framework;
 using Terraria.Graphics;
 using Microsoft.Xna.Framework.Graphics;
-namespace AAMod.NPCs.Bosses.Yamata
+namespace AAMod.NPCs.Bosses.Yamata.Awakened
 {
     public class YamataAHead : Yamata
     {

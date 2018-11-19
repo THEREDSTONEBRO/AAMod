@@ -5,9 +5,9 @@ using System;
 using Microsoft.Xna.Framework;
 using Terraria.Graphics;
 using Microsoft.Xna.Framework.Graphics;
-namespace AAMod.NPCs.Bosses.Yamata.Awakened
+namespace AAMod.NPCs.Bosses.Yamata
 {
-    public class YamataHead : YamataA
+    public class YamataHead : Yamata
     {
         public override void SetStaticDefaults()
         {

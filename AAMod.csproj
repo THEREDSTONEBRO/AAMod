@@ -330,6 +330,7 @@
     <Compile Include="Items\Blocks\MireGrassBlock.cs" />
     <Compile Include="Items\Blocks\MireUBox.cs" />
     <Compile Include="Items\Blocks\MonarchBox.cs" />
+    <Compile Include="Items\Blocks\MoonAltarA.cs" />
     <Compile Include="Items\Blocks\MoonAltar.cs" />
     <Compile Include="Items\Blocks\Mycelium.cs" />
     <Compile Include="Items\Blocks\N1Box.cs" />
@@ -956,6 +957,8 @@
     <Compile Include="Tiles\AbyssiumOre.cs" />
     <Compile Include="Tiles\AkumaABox.cs" />
     <Compile Include="Tiles\AkumaBox.cs" />
+    <Compile Include="Tiles\MonarchBox.cs" />
+    <Compile Include="Tiles\MoonAltarA.cs" />
     <Compile Include="Tiles\ShenABox.cs" />
     <Compile Include="Tiles\ShenBox.cs" />
     <Compile Include="Tiles\Apocalyptite.cs" />
@@ -1694,6 +1697,9 @@
     <Content Include="Items\Blocks\MireUBox.png" />
     <Content Include="Items\Blocks\MonarchBox.png" />
     <Content Include="Items\Blocks\MoonAltar.png" />
+    <Content Include="Items\Blocks\MoonAltarA.png" />
+    <Content Include="Items\Blocks\MoonAltarA_Glow.png" />
+    <Content Include="Items\Blocks\MoonAltar_Glow.png" />
     <Content Include="Items\Blocks\Mycelium.png" />
     <Content Include="Items\Blocks\N1Box.png" />
     <Content Include="Items\Blocks\OroborosChest.png" />
@@ -2904,6 +2910,10 @@
     <Content Include="Tiles\AkumaABox_Glow.png" />
     <Content Include="Tiles\AkumaBox.png" />
     <Content Include="Tiles\AkumaBox_Glow.png" />
+    <Content Include="Tiles\MonarchBox.png" />
+    <Content Include="Tiles\MonarchBox_Glow.png" />
+    <Content Include="Tiles\MoonAltarA.png" />
+    <Content Include="Tiles\MoonAltarA_Glow.png" />
     <Content Include="Tiles\ShenABox.png" />
     <Content Include="Tiles\ShenBox.png" />
     <Content Include="Tiles\ShenBox_Glow.png" />

@@ -20,12 +20,6 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
 	public class YamataA : YamataBoss
 	{
         public NPC TrueHead;
-        public NPC Head2;
-        public NPC Head3;
-        public NPC Head4;
-        public NPC Head5;
-        public NPC Head6;
-        public NPC Head7;
         public bool HeadsSpawned = false;
         private bool Panic = false;
 
@@ -172,18 +166,19 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
 
         public override void AI()
         {
-            /*if (!HeadsSpawned)
+            if (!HeadsSpawned)
             {
                 if (Main.netMode != 1)
                 {
                     npc.realLife = npc.whoAmI;
                     int latestNPC = npc.whoAmI;
-                    latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y - 100, mod.NPCType("YamataHead"), 0, npc.whoAmI);
+                    latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y - 100, mod.NPCType("YamataAHead"), 0, npc.whoAmI);
                     Main.npc[(int)latestNPC].realLife = npc.whoAmI;
                     Main.npc[(int)latestNPC].ai[3] = npc.whoAmI;
+                    TrueHead = Main.npc[latestNPC];
                 }
                 HeadsSpawned = true;
-            }*/
+            }
             
 
 
@@ -638,7 +633,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
         public Rectangle Hitbox;
         public float rotation = 0f, movementRatio = 0f;
         public AnimationInfo overrideAnimation = null;
-        public YamataA yamata = null;
+        public YamataA yamataA = null;
     }
 
     public class LegInfo : LimbInfo
@@ -653,7 +648,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
 
         public LegInfo(int lType, Vector2 initialPos, YamataA m)
         {
-            yamata = m;
+            yamataA = m;
             position = initialPos;
             pointToStandOn = position;
             limbType = lType;
@@ -728,7 +723,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
                 if (overrideAnimation.movementRatio >= 1f) overrideAnimation = null;
             }
             else
-            if (((Yamata)npc.modNPC).flying)
+            if (((YamataA)npc.modNPC).flying)
             {
                 rotation = leftLeg ? -0.25f : 0.25f;
                 MoveLegFlying(npc, leftLeg);
@@ -758,24 +753,24 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
             float outerLegDefault = 70f + (0.5f * scalar);
             float innerLegDefault = 50f + (0.5f * scalar);
             float rightLegScalar = 1f + (npc.velocity.X > 2f ? (scalar * 0.2f) : 0f); //fixes an offset problem when the matriarch walks right
-            float standOnX = npc.Center.X + yamata.topVisualOffset.X + (limbType == 3 ? (-outerLegDefault - Hitbox.Width) : limbType == 2 ? (outerLegDefault + Hitbox.Width) : limbType == 1 ? (-innerLegDefault - Hitbox.Width) : (innerLegDefault + Hitbox.Width));
+            float standOnX = npc.Center.X + yamataA.topVisualOffset.X + (limbType == 3 ? (-outerLegDefault - Hitbox.Width) : limbType == 2 ? (outerLegDefault + Hitbox.Width) : limbType == 1 ? (-innerLegDefault - Hitbox.Width) : (innerLegDefault + Hitbox.Width));
             Vector2 defaultPlacement = default(Vector2);
             int defaultTileY = (int)(npc.Bottom.Y / 16f);
             int tileY = BaseWorldGen.GetFirstTileFloor((int)(standOnX / 16f), (int)(npc.Bottom.Y / 16f));
-            if (tileY - defaultTileY > Yamata.flyingTileCount) { return default(Vector2); } //'flying' behavior
-            if (!flying && !yamata.flying)
+            if (tileY - defaultTileY > YamataA.flyingTileCount) { return default(Vector2); } //'flying' behavior
+            if (!flying && !yamataA.flying)
             {
                 tileY = (int)((int)((float)tileY * 16f) / 16);
                 float tilePosY = ((float)tileY * 16f);
                 if (Main.tile[(int)(standOnX / 16f), tileY] == null || !Main.tile[(int)(standOnX / 16f), tileY].nactive() || !Main.tileSolid[Main.tile[(int)(standOnX / 16f), tileY].type]) tilePosY += 16f;
                 return new Vector2(standOnX - (Hitbox.Width * 0.5f), tilePosY - Hitbox.Height);
             }
-            return ((flying || yamata.flying) ? default(Vector2) : defaultPlacement);
+            return ((flying || yamataA.flying) ? default(Vector2) : defaultPlacement);
         }
 
         public Vector2 GetMantidConnector(NPC npc)
         {
-            return npc.Center + yamata.topVisualOffset + new Vector2((limbType == 3 || limbType == 1 ? -40f : 40f), 0f);
+            return npc.Center + yamataA.topVisualOffset + new Vector2((limbType == 3 || limbType == 1 ? -40f : 40f), 0f);
         }
 
         public void DrawLeg(SpriteBatch sb, NPC npc, Color dColor)
