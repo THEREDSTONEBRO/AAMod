@@ -16,9 +16,9 @@ using AAMod;
 
 namespace AAMod.NPCs.Bosses.Yamata.Awakened
 {
-	//[AutoloadBossHead]
-	public class YamataA : YamataBoss
-	{
+    //[AutoloadBossHead]
+    public class YamataA : YamataBoss
+    {
         public NPC TrueHead;
         public bool HeadsSpawned = false;
         private bool Panic = false;
@@ -142,7 +142,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
         public override void NPCLoot()
         {
             BaseAI.DropItem(npc, mod.ItemType("YamataTrophy"), 1, 1, 15, true);
-            
+
         }
 
         public float[] internalAI = new float[4];
@@ -179,7 +179,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
                 }
                 HeadsSpawned = true;
             }
-            
+
 
 
             if (npc.life <= npc.lifeMax / 5)
@@ -203,7 +203,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
             {
                 int tileY = BaseWorldGen.GetFirstTileFloor((int)(npc.Center.X / 16f), (int)(npc.Center.Y / 16f));
                 npc.timeLeft = 300;
-                
+
                 float playerDistance = Vector2.Distance(playerTarget.Center, npc.Center);
                 if ((playerDistance < playerTooFarDist - 100f) && Math.Abs(npc.velocity.X) > 12f) npc.velocity.X *= 0.8f;
                 if ((playerDistance < playerTooFarDist - 100f) && Math.Abs(npc.velocity.Y) > 12f) npc.velocity.Y *= 0.8f;
@@ -263,7 +263,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
             if (Math.Abs(npc.velocity.X) < 0.01f) npc.velocity.X = 0f;
             npc.velocity.Y += 0.25f;
             npc.rotation = 0f;
-			flying = true;
+            flying = true;
             if (npc.position.Y - npc.height - npc.velocity.Y >= Main.maxTilesY && Main.netMode != 1) { BaseAI.KillNPC(npc); npc.netUpdate2 = true; } //if out of map, kill mantid
         }
 
@@ -271,7 +271,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
         {
             float movementScalar2 = Math.Min(4f, Math.Max(1f, (playerDistance / (float)playerTooFarDist) * 4f));
             bool playerTooFar = playerDistance > playerTooFarDist;
-			YamataABody(npc, ref npc.ai, true, 0.2f, 2f, 1.5f, 0.04f, 1.5f, 3);
+            YamataABody(npc, ref npc.ai, true, 0.2f, 2f, 1.5f, 0.04f, 1.5f, 3);
             //BaseAI.AISpaceOctopus(npc, ref npc.ai, (flying ? 0.2f : 0.15f) * movementScalar2 * movementScalar, (flying ? 4f : 1f) * movementScalar2 * movementScalar, 120f, 40f, null);
             if (playerTooFar) npc.position += (playerTarget.position - playerTarget.oldPosition);
             npc.rotation = 0f;
@@ -385,7 +385,8 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
             {
                 if (Math.Abs(npc.velocity.X) > 0.3f) npc.velocity.X *= 0.9f; //slow the fuck down
                 if (Math.Abs(npc.velocity.Y) > 0.3f) npc.velocity.Y *= 0.9f; //slow the fuck down
-            }else
+            }
+            else
             if (npc.direction == -1 && npc.velocity.X > -maxSpeedX)
             {
                 npc.velocity.X -= (moveInterval * 0.5f);
@@ -780,9 +781,9 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
             {
                 textures = new Texture2D[5];
                 textures[0] = mod.GetTexture("NPCs/Bosses/Yamata/Awakened/YamataALegCap");
-				textures[1] = mod.GetTexture("NPCs/Bosses/Yamata/Awakened/YamataALegSegment");
+                textures[1] = mod.GetTexture("NPCs/Bosses/Yamata/Awakened/YamataALegSegment");
                 textures[2] = mod.GetTexture("NPCs/Bosses/Yamata/Awakened/YamataALegCapR");
-				textures[3] = mod.GetTexture("NPCs/Bosses/Yamata/Awakened/YamataALegSegmentR");				
+                textures[3] = mod.GetTexture("NPCs/Bosses/Yamata/Awakened/YamataALegSegmentR");
                 textures[4] = mod.GetTexture("NPCs/Bosses/Yamata/Awakened/YamataAFoot");
             }
             Vector2 drawPos = position - new Vector2(0f, velOffsetY);

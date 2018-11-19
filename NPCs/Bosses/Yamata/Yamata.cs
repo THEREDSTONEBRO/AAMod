@@ -1,23 +1,17 @@
 using System;
 using System.IO;
-using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-
-using ReLogic.Utilities;
 using Terraria;
-using Terraria.DataStructures;
 using Terraria.ID;
-using Terraria.Utilities;
 using Terraria.Audio;
 using Terraria.ModLoader;
 using BaseMod;
-using AAMod;
 
 namespace AAMod.NPCs.Bosses.Yamata
 {
-	//[AutoloadBossHead]
-	public class Yamata : YamataBoss
+    //[AutoloadBossHead]
+    public class Yamata : YamataBoss
 	{
         public NPC TrueHead;
         public NPC Head2;
@@ -162,18 +156,29 @@ namespace AAMod.NPCs.Bosses.Yamata
             {
                 if (Main.netMode != 1)
                 {
-                    npc.realLife = npc.whoAmI;
                     int latestNPC = npc.whoAmI;
                     latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y - 100, mod.NPCType("YamataHead"), 0, npc.whoAmI);
                     Main.npc[(int)latestNPC].realLife = npc.whoAmI;
                     Main.npc[(int)latestNPC].ai[3] = npc.whoAmI;
                     TrueHead = Main.npc[latestNPC];
-                    /*Head2 = Main.npc[NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y - 100, mod.NPCType("Head2"), 0, npc.whoAmI)];
-                    Head3 = Main.npc[NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y - 100, mod.NPCType("Head3"), 0, npc.whoAmI)];
-                    Head4 = Main.npc[NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y - 100, mod.NPCType("Head3"), 0, npc.whoAmI)];
-                    Head5 = Main.npc[NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y - 100, mod.NPCType("Head3"), 0, npc.whoAmI)];
-                    Head6 = Main.npc[NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y - 100, mod.NPCType("Head3"), 0, npc.whoAmI)];
-                    Head7 = Main.npc[NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y - 100, mod.NPCType("Head3"), 0, npc.whoAmI)];*/
+                    latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y - 100, mod.NPCType("YamataHeadF1"), 0, npc.whoAmI);
+                    Main.npc[(int)latestNPC].ai[3] = npc.whoAmI;
+                    Head2 = Main.npc[latestNPC];
+                    latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y - 100, mod.NPCType("YamataHeadF1"), 0, npc.whoAmI);
+                    Main.npc[(int)latestNPC].ai[3] = npc.whoAmI;
+                    Head3 = Main.npc[latestNPC];
+                    latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y - 100, mod.NPCType("YamataHeadF1"), 0, npc.whoAmI);
+                    Main.npc[(int)latestNPC].ai[3] = npc.whoAmI;
+                    Head4 = Main.npc[latestNPC];
+                    latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y - 100, mod.NPCType("YamataHeadF2"), 0, npc.whoAmI);
+                    Main.npc[(int)latestNPC].ai[3] = npc.whoAmI;
+                    Head5 = Main.npc[latestNPC];
+                    latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y - 100, mod.NPCType("YamataHeadF2"), 0, npc.whoAmI);
+                    Main.npc[(int)latestNPC].ai[3] = npc.whoAmI;
+                    Head6 = Main.npc[latestNPC];
+                    latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y - 100, mod.NPCType("YamataHeadF2"), 0, npc.whoAmI);
+                    Main.npc[(int)latestNPC].ai[3] = npc.whoAmI;
+                    Head7 = Main.npc[latestNPC];
                 }
                 HeadsSpawned = true;
             }
@@ -228,7 +233,6 @@ namespace AAMod.NPCs.Bosses.Yamata
             float movementScalar2 = Math.Min(4f, Math.Max(1f, (playerDistance / (float)playerTooFarDist) * 4f));
             bool playerTooFar = playerDistance > playerTooFarDist;
 			YamataBody(npc, ref npc.ai, true, 0.2f, 2f, 1.5f, 0.04f, 1.5f, 3);
-            //BaseAI.AISpaceOctopus(npc, ref npc.ai, (flying ? 0.2f : 0.15f) * movementScalar2 * movementScalar, (flying ? 4f : 1f) * movementScalar2 * movementScalar, 120f, 40f, null);
             if (playerTooFar) npc.position += (playerTarget.position - playerTarget.oldPosition);
             npc.rotation = 0f;
         }
@@ -253,7 +257,6 @@ namespace AAMod.NPCs.Bosses.Yamata
                 if (inRangeX && inRangeY)
                 {
                     ai[2] += 1f;
-                    //i'm pretty sure projectile is never called, but it's in the original so...
                     if (ai[2] >= 30f && tileDist == 16)
                     {
                         flyUpward = true;
@@ -339,8 +342,8 @@ namespace AAMod.NPCs.Bosses.Yamata
 
             if (!tileBelowEmpty && npc.target > -1 && Main.player[npc.target].active && !Main.player[npc.target].dead && Math.Abs(Main.player[npc.target].Center.X - npc.Center.X) < 50) //force a hover
             {
-                if (Math.Abs(npc.velocity.X) > 0.3f) npc.velocity.X *= 0.9f; //slow the fuck down
-                if (Math.Abs(npc.velocity.Y) > 0.3f) npc.velocity.Y *= 0.9f; //slow the fuck down
+                if (Math.Abs(npc.velocity.X) > 0.3f) npc.velocity.X *= 0.9f;
+                if (Math.Abs(npc.velocity.Y) > 0.3f) npc.velocity.Y *= 0.9f; 
             }else
             if (npc.direction == -1 && npc.velocity.X > -maxSpeedX)
             {
@@ -410,15 +413,6 @@ namespace AAMod.NPCs.Bosses.Yamata
             int[] players = BaseAI.GetPlayers(npc.Center, 4200f);
             float dist = 999999999f;
             int foundPlayer = -1;
-            for (int m = 0; m < players.Length; m++)
-            {
-                Player p = Main.player[players[m]];
-                if (p.ZoneJungle && Vector2.Distance(p.Center, npc.Center) < dist) //prioritize players in the jungle
-                {
-                    dist = Vector2.Distance(p.Center, npc.Center);
-                    foundPlayer = p.whoAmI;
-                }
-            }
             if (foundPlayer != -1)
             {
                 BaseAI.SetTarget(npc, foundPlayer);
@@ -514,6 +508,12 @@ namespace AAMod.NPCs.Bosses.Yamata
             if (Main.netMode == 0)
             {
                 DrawHead(sb, "NPCs/Bosses/Yamata/YamataHead", "NPCs/Bosses/Yamata/YamataHead_Glow", TrueHead, dColor);
+                DrawHead(sb, "NPCs/Bosses/Yamata/YamataHeadF1", "NPCs/Bosses/Yamata/YamataHead_Glow", Head2, dColor);
+                DrawHead(sb, "NPCs/Bosses/Yamata/YamataHeadF1", "NPCs/Bosses/Yamata/YamataHead_Glow", Head3, dColor);
+                DrawHead(sb, "NPCs/Bosses/Yamata/YamataHeadF1", "NPCs/Bosses/Yamata/YamataHead_Glow", Head4, dColor);
+                DrawHead(sb, "NPCs/Bosses/Yamata/YamataHeadF2", "NPCs/Bosses/Yamata/YamataHead_Glow", Head5, dColor);
+                DrawHead(sb, "NPCs/Bosses/Yamata/YamataHeadF2", "NPCs/Bosses/Yamata/YamataHead_Glow", Head6, dColor);
+                DrawHead(sb, "NPCs/Bosses/Yamata/YamataHeadF2", "NPCs/Bosses/Yamata/YamataHead_Glow", Head7, dColor);
             }
             return false;
         }

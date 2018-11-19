@@ -79,13 +79,13 @@ namespace AAMod.NPCs.Bosses.Yamata
                 if (projectile.ai[0] > 0f)
                 {
                     float scaleFactor5 = (float)Main.rand.Next(35, 75) / 30f;
-                    projectile.velocity = (projectile.velocity * 20f + Vector2.Normalize(Main.npc[(int)projectile.ai[0] - 1].Center - projectile.Center + new Vector2((float)Main.rand.Next(-100, 101), (float)Main.rand.Next(-100, 101))) * scaleFactor5) / 21f;
+                    projectile.velocity = (projectile.velocity * 20f + Vector2.Normalize(Main.player[(int)projectile.ai[0] - 1].Center - projectile.Center + new Vector2((float)Main.rand.Next(-100, 101), (float)Main.rand.Next(-100, 101))) * scaleFactor5) / 21f;
                     projectile.netUpdate = true;
                 }
             }
             else if (projectile.ai[0] > 0f)
             {
-                Vector2 value23 = Vector2.Normalize(Main.npc[(int)projectile.ai[0] - 1].Center - projectile.Center);
+                Vector2 value23 = Vector2.Normalize(Main.player[(int)projectile.ai[0] - 1].Center - projectile.Center);
                 projectile.velocity = (projectile.velocity * 40f + value23 * 12f) / 41f;
             }
             else

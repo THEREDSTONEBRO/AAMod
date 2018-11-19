@@ -13,7 +13,6 @@ using Terraria.Graphics.Shaders;
 using System.Collections.Generic;
 using Terraria.DataStructures;
 using Terraria.GameContent.UI;
-using System.IO;
 using System.Reflection;
 
 namespace AAMod

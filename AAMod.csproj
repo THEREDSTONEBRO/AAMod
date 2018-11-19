@@ -903,10 +903,13 @@
     <Compile Include="NPCs\Bosses\Shen\ShenDoragon.cs" />
     <Compile Include="NPCs\Bosses\Shen\ShenFirebomb.cs" />
     <Compile Include="NPCs\Bosses\Yamata\Awakened\YamataA.cs" />
+    <Compile Include="NPCs\Bosses\Yamata\Awakened\YamataSoul.cs" />
     <Compile Include="NPCs\Bosses\Yamata\Awakened\YamataAHead.cs" />
     <Compile Include="NPCs\Bosses\Yamata\YamataBoom.cs" />
     <Compile Include="NPCs\Bosses\Yamata\YamataBomb.cs" />
     <Compile Include="NPCs\Bosses\Yamata\YamataBreath.cs" />
+    <Compile Include="NPCs\Bosses\Yamata\YamataHeadF1.cs" />
+    <Compile Include="NPCs\Bosses\Yamata\YamataHeadF2.cs" />
     <Compile Include="NPCs\Bosses\Yamata\YamataTransition.cs" />
     <Compile Include="NPCs\Bosses\Yamata\YamataHead.cs" />
     <Compile Include="NPCs\Bosses\Yamata\Yamata.cs" />
@@ -2754,7 +2757,10 @@
     <Content Include="NPCs\Bosses\Yamata\YamataBomb_Glow.png" />
     <Content Include="NPCs\Bosses\Yamata\YamataBreath.png" />
     <Content Include="NPCs\Bosses\Yamata\YamataFoot.png" />
-    <Content Include="NPCs\Bosses\Yamata\YamataHeadF_Glow.png" />
+    <Content Include="NPCs\Bosses\Yamata\YamataHeadF1.png" />
+    <Content Include="NPCs\Bosses\Yamata\YamataHeadF1_Glow.png" />
+    <Content Include="NPCs\Bosses\Yamata\YamataHeadF2.png" />
+    <Content Include="NPCs\Bosses\Yamata\YamataHeadF2_Glow.png" />
     <Content Include="NPCs\Bosses\Yamata\YamataHead_Glow.png" />
     <Content Include="NPCs\Bosses\Yamata\YamataLegCap.png" />
     <Content Include="NPCs\Bosses\Yamata\YamataLegCapR.png" />
@@ -2769,7 +2775,6 @@
     <Content Include="NPCs\Bosses\Yamata\YamataBomb.png" />
     <Content Include="NPCs\Bosses\Yamata\YamataBoom.png" />
     <Content Include="NPCs\Bosses\Yamata\YamataHead.png" />
-    <Content Include="NPCs\Bosses\Yamata\YamataHeadF.png" />
     <Content Include="NPCs\Bosses\Yamata\YamataJoint.png" />
     <Content Include="NPCs\Bosses\Yamata\YamataTail.png" />
     <Content Include="NPCs\Bosses\Yamata\YamataWalk.gif" />

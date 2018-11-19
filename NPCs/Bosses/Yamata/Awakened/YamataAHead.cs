@@ -82,7 +82,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
                 npc.ai[2] = 100;
                 if (varTime == 30 && Main.netMode !=1)
                 {
-                    Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 0f, 10f, mod.ProjectileType("YamataBomb"), (int)(damage * .8f), 3f, Main.myPlayer);
+                    Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 0f, 10f, mod.ProjectileType("YamataABomb"), (int)(damage * .8f), 3f, Main.myPlayer);
                 }
                 if (varTime >= 60)
                 {
