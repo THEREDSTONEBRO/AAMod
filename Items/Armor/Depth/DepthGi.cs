@@ -32,7 +32,8 @@ Weightless as shadow itself");
 		public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(null, "AbyssiumBar", 15);
+            recipe.AddIngredient(null, "AbyssiumBar", 25);
+            recipe.AddIngredient(null, "HydraHide", 20);
             recipe.AddTile(TileID.Anvils);
             recipe.SetResult(this);
 			recipe.AddRecipe();

@@ -204,7 +204,7 @@ namespace AAMod
         public override void AddRecipeGroups()
         {
             // Registers the new recipe group with the specified name
-            RecipeGroup group0 = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + "DarkmatterHelmets", new int[]
+            RecipeGroup group0 = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + "Any Darkmatter Helmet", new int[]
             {
                 ItemType("DarkmatterHeaddress"),
                 ItemType("DarkmatterHelm"),
@@ -215,7 +215,7 @@ namespace AAMod
             // Registers the new recipe group with the specified name
             RecipeGroup.RegisterGroup("AAMod:DarkmatterHelmets", group0);
 
-            RecipeGroup group1 = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + "RadiumHelmets", new int[]
+            RecipeGroup group1 = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + "Any Radium Helmet", new int[]
             {
                 ItemType("RadiumHat"),
                 ItemType("RadiumHeadgear"),
@@ -233,14 +233,14 @@ namespace AAMod
             });
             // Registers the new recipe group with the specified name
             RecipeGroup.RegisterGroup("AAMod:Gold", group2);
-            RecipeGroup group3 = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + "AstralStations", new int[]
+            RecipeGroup group3 = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + "Any Astral Station", new int[]
             {
                 ItemType("RadiantArcanum"),
                 ItemType("QuantumFusionAccelerator"),
             });
             RecipeGroup.RegisterGroup("AAMod:AstralStations", group3);
 
-            RecipeGroup group4 = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + "AncientMaterials", new int[]
+            RecipeGroup group4 = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + "Any Ancient Material", new int[]
             {
                 ItemType("UnstableSingularity"),
                 ItemType("CrucibleScale"),
@@ -260,7 +260,7 @@ namespace AAMod
             });
             RecipeGroup.RegisterGroup("AAMod:AncientMaterials", group4);
 
-            RecipeGroup group5 = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + "SuperAncientMaterials", new int[]
+            RecipeGroup group5 = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + "Any Superancient Material", new int[]
             {
                 ItemType("ChaosSoul"),
                 //ItemType("UnifiedShroomite"),
@@ -270,7 +270,7 @@ namespace AAMod
             });
             RecipeGroup.RegisterGroup("AAMod:SuperAncientMaterials", group5);
 
-            RecipeGroup group6 = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " Ichor", new int[]
+            RecipeGroup group6 = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + "Any World Evil Material", new int[]
             {
                 ItemID.Ichor,
                 ItemID.CursedFlame
@@ -283,6 +283,20 @@ namespace AAMod
                 ItemID.TitaniumForge
             });
             RecipeGroup.RegisterGroup("AnyHardmodeForge", group6);
+
+            RecipeGroup group7 = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + "Any Chaos Claw", new int[]
+            {
+                ItemType("HydraClaw"),
+                ItemType("DragonClaw"),
+            });
+            RecipeGroup.RegisterGroup("AAMod:ChaosClaw", group7);
+
+            RecipeGroup group8 = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + "Any Iron", new int[]
+            {
+                ItemID.IronBar,
+                ItemID.LeadBar
+            });
+            RecipeGroup.RegisterGroup("AAMod:Iron", group8);
 
             if (RecipeGroup.recipeGroupIDs.ContainsKey("Wood"))
             {

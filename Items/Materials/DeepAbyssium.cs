@@ -32,7 +32,7 @@ namespace AAMod.Items.Materials
         {                                                   //How to craft this item
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(ItemID.ChlorophyteBar, 2);
-            recipe.AddIngredient(null, "Abyssium", 1);              //example of how to craft with a modded item
+            recipe.AddIngredient(null, "AbyssiumBar", 1);              //example of how to craft with a modded item
             recipe.AddTile(TileID.Autohammer);
             recipe.SetResult(this);
             recipe.AddRecipe();

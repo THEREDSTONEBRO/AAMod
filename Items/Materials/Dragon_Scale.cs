@@ -8,7 +8,7 @@ namespace AAMod.Items.Materials
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Dragon Scale");
+			DisplayName.SetDefault("Dragon Feather");
 		}
 
 		public override void SetDefaults()

@@ -58,36 +58,10 @@ Only BossSummons at night");
         {
             {
                 ModRecipe recipe = new ModRecipe(mod);
-                recipe.AddIngredient(null, "HydraClaw", 6);
-                recipe.AddIngredient(ItemID.LeadBar, 6);
-                recipe.AddIngredient(null, "Abyssium", 10);
-                recipe.AddTile(TileID.MythrilAnvil);
-                recipe.SetResult(this, 1);
-                recipe.AddRecipe();
-            }
-            {
-                ModRecipe recipe = new ModRecipe(mod);
-                recipe.AddIngredient(null, "DragonClaw", 6);
-                recipe.AddIngredient(ItemID.LeadBar, 6);
-                recipe.AddIngredient(null, "Incinerite", 10);
-                recipe.AddTile(TileID.MythrilAnvil);
-                recipe.SetResult(this, 1);
-                recipe.AddRecipe();
-            }
-            {
-                ModRecipe recipe = new ModRecipe(mod);
-                recipe.AddIngredient(null, "HydraClaw", 6);
-                recipe.AddIngredient(ItemID.IronBar, 6);
-                recipe.AddIngredient(null, "Abyssium", 10);
-                recipe.AddTile(TileID.MythrilAnvil);
-                recipe.SetResult(this, 1);
-                recipe.AddRecipe();
-            }
-            {
-                ModRecipe recipe = new ModRecipe(mod);
-                recipe.AddIngredient(null, "DragonClaw", 6);
-                recipe.AddIngredient(ItemID.IronBar, 6);
-                recipe.AddIngredient(null, "Incinerite", 10);
+                recipe.AddRecipeGroup("AAMod:ChaosClaw", 6);
+                recipe.AddRecipeGroup("AAMod:Iron", 6);
+                recipe.AddIngredient(null, "SoulOfSpite", 3);
+                recipe.AddIngredient(null, "SoulOfSmite", 3);
                 recipe.AddTile(TileID.MythrilAnvil);
                 recipe.SetResult(this, 1);
                 recipe.AddRecipe();

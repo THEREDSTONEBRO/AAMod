@@ -35,7 +35,7 @@ namespace AAMod.Items.Melee   //where is located
             recipe.AddIngredient(ItemID.BloodButcherer, 1);
 			recipe.AddIngredient(ItemID.CrimtaneBar, 14);			//you need 1 DirtBlock
             recipe.AddIngredient(null, "FlamingFury", 1);
-            recipe.AddIngredient(null, "Incinerite", 7);
+            recipe.AddIngredient(null, "IncineriteBar", 7);
             recipe.AddTile(TileID.DemonAltar);   //at work bench
             recipe.SetResult(this);
             recipe.AddRecipe();

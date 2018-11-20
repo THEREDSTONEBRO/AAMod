@@ -40,16 +40,8 @@ namespace AAMod.Items.Tools
         {
             {
                 ModRecipe recipe = new ModRecipe(mod);
-                recipe.AddIngredient(null, "Abyssium", 12);
-                recipe.AddIngredient(ItemID.TissueSample, 6);
-                recipe.AddTile(TileID.Anvils);
-                recipe.SetResult(this);
-                recipe.AddRecipe();
-            }
-            {
-                ModRecipe recipe = new ModRecipe(mod);
-                recipe.AddIngredient(null, "Abyssium", 12);
-                recipe.AddIngredient(ItemID.ShadowScale, 6);
+                recipe.AddIngredient(null, "AbyssiumBar", 12);
+                recipe.AddIngredient(null, "HydraHide", 6);
                 recipe.AddTile(TileID.Anvils);
                 recipe.SetResult(this);
                 recipe.AddRecipe();

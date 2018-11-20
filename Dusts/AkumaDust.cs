@@ -14,7 +14,6 @@ namespace AAMod.Dusts
         public override bool MidUpdate(Dust dust)
         {
             dust.rotation += dust.velocity.X / 3f;
-            
             if (!dust.noLight)
             {
                 float strength = dust.scale * 1.4f;

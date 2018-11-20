@@ -35,7 +35,7 @@ namespace AAMod.Items.Melee   //where is located
             recipe.AddIngredient(ItemID.LightsBane, 1);
 			recipe.AddIngredient(ItemID.DemoniteBar, 7);			//you need 1 DirtBlock
             recipe.AddIngredient(null, "ExilesKatana", 1);
-            recipe.AddIngredient(null, "Abyssium", 7);
+            recipe.AddIngredient(null, "AbyssiumBar", 7);
             recipe.AddTile(TileID.DemonAltar);   //at work bench
             recipe.SetResult(this);
             recipe.AddRecipe();

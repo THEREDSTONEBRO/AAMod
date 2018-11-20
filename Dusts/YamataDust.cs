@@ -11,22 +11,12 @@ namespace AAMod.Dusts
             dust.scale *= 1.3f;
         }
 
-        public override bool Update(Dust dust)
-        {
-            bool flag5 = WorldGen.SolidTile(Framing.GetTileSafely((int)dust.position.X / 16, (int)dust.position.Y / 16));
-            if (flag5)
-            {
-                dust.noLight = true;
-            }
-            return true;
-        }
-
         public override bool MidUpdate(Dust dust)
         {
             dust.rotation += dust.velocity.X / 3f;
             if (!dust.noLight)
             {
-                float strength = dust.scale * 1.4f;
+                float strength = dust.scale;
                 if (strength > 1f)
                 {
                     strength = 1f;
@@ -40,6 +30,18 @@ namespace AAMod.Dusts
             }
             return false;
         }
+
+        public override bool Update(Dust dust)
+        {
+            bool flag5 = WorldGen.SolidTile(Framing.GetTileSafely((int)dust.position.X / 16, (int)dust.position.Y / 16));
+            if (flag5)
+            {
+                dust.noLight = true;
+            }
+            return true;
+        }
+
+        
 
         public override Color? GetAlpha(Dust dust, Color lightColor)
         {

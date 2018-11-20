@@ -131,7 +131,7 @@ namespace AAMod.Items.Boss.Yamata
             }
             player.QuickSpawnItem(mod.ItemType("DreadScale"), Main.rand.Next(30, 40));
             player.QuickSpawnItem(mod.ItemType("Naitokurosu"));
-            string[] lootTable = { "Flairdra", "Masamune"};
+            string[] lootTable = { "Flairdra", "Masamune", "Crescent", "YamatasWrath" };
             int loot = Main.rand.Next(lootTable.Length);
             player.QuickSpawnItem(mod.ItemType(lootTable[loot]));
         }

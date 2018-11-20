@@ -13,6 +13,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using System;
 using AAMod.NPCs.Bosses.Yamata.Awakened;
+using AAMod.NPCs.Bosses.Yamata;
 
 namespace AAMod
 {
@@ -25,6 +26,7 @@ namespace AAMod
         public bool ChairMinionEX = false;
         public bool LungMinion = false;
         public bool DragonMinion = false;
+        public bool BabyPhoenix = false;
         // Biome bools.
         public bool ZoneMire = false;
         public bool ZoneInferno = false;
@@ -121,6 +123,7 @@ namespace AAMod
             enderMinionEX = false;
             ChairMinion = false;
             ChairMinionEX = false;
+            BabyPhoenix = false;
             LungMinion = false;
             DragonMinion = false;
             infinityOverload = false;
@@ -166,7 +169,7 @@ namespace AAMod
 
         public override void UpdateBiomes()
         {
-            ZoneMire = (AAWorld.mireTiles > 100)/* || (NPC.AnyNPCs(mod.NPCType<Yamata>()) || NPC.AnyNPCs(mod.NPCType<YamataAwakened>()))*/;
+            ZoneMire = (AAWorld.mireTiles > 100) || NPC.AnyNPCs(mod.NPCType<Yamata>()) || NPC.AnyNPCs(mod.NPCType<YamataA>());
             ZoneInferno = (AAWorld.infernoTiles > 100) || (NPC.AnyNPCs(mod.NPCType<Akuma>()) || NPC.AnyNPCs(mod.NPCType<AkumaA>()));
             ZoneMush = (AAWorld.mushTiles > 100);
             ZoneVoid = (AAWorld.voidTiles > 20) || (NPC.AnyNPCs(mod.NPCType<Zero>()) || NPC.AnyNPCs(mod.NPCType<ZeroAwakened>()));
@@ -174,11 +177,6 @@ namespace AAMod
 
         public override void UpdateBiomeVisuals()
         {
-            /*
-            bool useYamata = NPC.AnyNPCs(mod.NPCType<YamataA>()) || YamataAltar;
-            player.ManageSpecialBiomeVisuals("AAMod:AkumaSky", useAkuma);
-            player.ManageSpecialBiomeVisuals("HeatDistortion", useAkuma);
-             */
 
             bool useAkuma = NPC.AnyNPCs(mod.NPCType<AkumaA>()) || AkumaAltar;
             player.ManageSpecialBiomeVisuals("AAMod:AkumaSky", useAkuma);
@@ -186,7 +184,8 @@ namespace AAMod
             bool useInferno = (ZoneInferno || SunAltar) && !useAkuma;
             player.ManageSpecialBiomeVisuals("AAMod:InfernoSky", useInferno);
             player.ManageSpecialBiomeVisuals("HeatDistortion", useInferno);
-            bool useYamata = NPC.AnyNPCs(mod.NPCType<YamataA>()); //|| YamataaAltar;
+            bool useYamata = NPC.AnyNPCs(mod.NPCType<YamataA>()) || YamataAltar;
+            player.ManageSpecialBiomeVisuals("AAMod:YamataSky", useYamata);
             bool useMire = ZoneMire || MoonAltar && !useYamata;
             player.ManageSpecialBiomeVisuals("AAMod:MireSky", useMire);
             bool useVoid = ZoneVoid || VoidUnit;

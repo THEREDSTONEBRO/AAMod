@@ -18,6 +18,34 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
         public override void SetDefaults()
         {
             base.SetDefaults();
+            if (!AAWorld.downedYamataA)
+            {
+                npc.lifeMax = 140000;
+                if (npc.life > npc.lifeMax / 5)
+                {
+                    npc.damage = 120;
+                    npc.defense = 60;
+                }
+                if (npc.life <= npc.lifeMax / 5)
+                {
+                    npc.damage = 100;
+                    npc.defense = 70;
+                }
+            }
+            if (AAWorld.downedYamataA)
+            {
+                npc.lifeMax = 150000;
+                if (npc.life > npc.lifeMax / 5)
+                {
+                    npc.damage = 90;
+                    npc.defense = 60;
+                }
+                if (npc.life <= npc.lifeMax / 5)
+                {
+                    npc.damage = 110;
+                    npc.defense = 80;
+                }
+            }
             npc.width = 64;
             npc.height = 80;
             npc.npcSlots = 0;
@@ -43,11 +71,17 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
         public Projectile Breath;
         private int MouthFrame;
         private int MouthCounter;
+
         public override void AI()
         {
-            /*
-			Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 0f, 0f, mod.ProjectileType("HydraNeck"), 0, 3f, Main.myPlayer);
-            */
+
+            Body = Main.npc[(int)npc.ai[0]];
+
+            if (!Body.active)
+            {
+                npc.life = 0;
+            }
+
             if (Main.expertMode)
             {
                 damage = npc.damage / 4;
@@ -56,7 +90,6 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
             {
                 damage = npc.damage / 2;
             }
-            Body = Main.npc[(int)npc.ai[0]];
             npc.realLife = (int)npc.ai[0];
             Player player = Main.player[npc.target];
             npc.TargetClosest(true);
@@ -82,7 +115,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
                 npc.ai[2] = 100;
                 if (varTime == 30 && Main.netMode !=1)
                 {
-                    Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 0f, 10f, mod.ProjectileType("YamataABomb"), (int)(damage * .8f), 3f, Main.myPlayer);
+                    Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 0f, 10f, mod.ProjectileType("YamataABreath"), (int)(damage * .8f), 0f, Main.myPlayer);
                 }
                 if (varTime >= 60)
                 {
@@ -112,7 +145,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
                 }
                 else if (varTime == 180 && Main.netMode !=1)
                 {
-                    Breath = Main.projectile[Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 0f, 0f, mod.ProjectileType("YamataBreath"), damage, 3f, Main.myPlayer, npc.whoAmI, 420)];
+                    Breath = Main.projectile[Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 0f, 0f, mod.ProjectileType("YamataABomb"), damage, 3f, Main.myPlayer, npc.whoAmI, 420)];
                 }
                 else if (varTime < 180)
                 {
@@ -183,7 +216,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
             {
                 npc.rotation -= MathHelper.ToRadians(2 * s) * f;
             }
-            Vector2 moveTo = new Vector2(Body.Center.X + npc.ai[1], Body.Center.Y - (300f + npc.ai[2])) - npc.Center;
+            Vector2 moveTo = new Vector2(Body.Center.X + npc.ai[1], Body.Center.Y - (130f + npc.ai[2])) - npc.Center;
             npc.velocity = (moveTo) * moveSpeedBoost;
         }
         public override void FindFrame(int frameHeight)

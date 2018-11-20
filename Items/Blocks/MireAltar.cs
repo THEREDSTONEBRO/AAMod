@@ -29,7 +29,8 @@ namespace AAMod.Items.Blocks
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(null, "Abyssium", 25);
+            recipe.AddIngredient(null, "AbyssiumBar", 15);
+            recipe.AddIngredient(null, "HydraHide", 5);
             recipe.AddTile(TileID.DemonAltar);
             recipe.SetResult(this);
             recipe.AddRecipe();

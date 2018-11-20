@@ -22,6 +22,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
         public NPC TrueHead;
         public bool HeadsSpawned = false;
         private bool Panic = false;
+        bool cheated = false;
 
         public override void SendExtraAI(BinaryWriter writer)
         {
@@ -59,11 +60,39 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
             npc.npcSlots = 100;
             npc.width = 80;
             npc.height = 90;
-            npc.value = BaseUtility.CalcValue(0, 0, 0, 0);
             npc.aiStyle = -1;
-            npc.lifeMax = 200000;
-            npc.defense = 100;
-            npc.damage = 90;
+            if (!AAWorld.downedYamataA)
+            {
+                npc.lifeMax = 140000;
+                if (npc.life > npc.lifeMax / 5)
+                {
+                    npc.damage = 80;
+                    npc.defense = 80;
+                }
+                if (npc.life <= npc.lifeMax / 5)
+                {
+                    npc.damage = 100;
+                    npc.defense = 90;
+                }
+            }
+            if (AAWorld.downedYamataA)
+            {
+                npc.lifeMax = 150000;
+                if (npc.life > npc.lifeMax / 5)
+                {
+                    npc.damage = 90;
+                    npc.defense = 80;
+                }
+                if (npc.life <= npc.lifeMax / 5)
+                {
+                    npc.damage = 110;
+                    npc.defense = 90;
+                }
+            }
+            if (Main.expertMode)
+            {
+                npc.value = Item.buyPrice(20, 0, 0, 0);
+            }
             npc.DeathSound = new LegacySoundStyle(2, 88, Terraria.Audio.SoundType.Sound);
             npc.knockBackResist = 0f;
             npc.boss = true;
@@ -76,7 +105,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
             npc.frame = BaseDrawing.GetFrame(frameCount, frameWidth, frameHeight, 0, 2);
             frameBottom = BaseDrawing.GetFrame(frameCount, frameWidth, 54, 0, 2);
             frameHead = BaseDrawing.GetFrame(frameCount, frameWidth, 118, 0, 2);
-
+            bossBag = mod.ItemType("YamataBag");
             if (Main.expertMode)
             {
                 int playerCount = 0;
@@ -100,6 +129,16 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
             }
         }
 
+        public override bool StrikeNPC(ref double damage, int defense, ref float knockback, int hitDirection, ref bool crit)
+        {
+            if (damage > npc.lifeMax / 2)
+            {
+                cheated = true;
+                Main.NewText("CHEATER CHEATER PUMPKIN EATER! THAT HURT YOU KNOW!!!", new Color(146, 30, 68));
+            }
+            return false;
+        }
+
         public override void BossLoot(ref string name, ref int potionType)
         {
             if (Main.expertMode)
@@ -108,31 +147,24 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
                 AAWorld.downedYamataA = true;
             }
 
-            if (!AAWorld.downedYamataA && Main.expertMode)
+            if (!AAWorld.downedYamataA && Main.expertMode && !cheated)
             {
-                Main.NewText("NO…! IMPOSSIBLE! YOU MUST HAVE CHEATED! GYAAAAAAH FINE! TAKE YOUR PRIZE..!", new Color(146, 30, 68));
+                Main.NewText("NO…! IMPOSSIBLE! EVEN IN MY AWAKENED FORM?! YOU MUST HAVE CHEATED! GYAAAAAAH..! FINE! TAKE YOUR LOOT AND GO AWAY..!", new Color(146, 30, 68));
 
 
             }
-            if (AAWorld.downedYamataA && Main.expertMode)
+            if (AAWorld.downedYamataA && Main.expertMode && !cheated)
             {
-                Main.NewText("NOOOOOOOOOOOOOO!!! YOU LITTLE BRAT!!! I ALMOST HAD YOU THIS TIME!!! FINE, take your stuff! See if I care!", new Color(146, 30, 68));
+                Main.NewText("NOOOOOOOOOOOOOO!!! YOU LITTLE BRAT!!! I ALMOST HAD YOU THIS TIME!!! FINE, take your stuff, See if I care!", new Color(146, 30, 68));
 
             }
-            if (!Main.expertMode)
+            if (!Main.expertMode && !cheated)
             {
                 Main.NewText("HAH! Nice try! Come back in Expert mode when you don’t have to cheat to beat me! All your loot is MINE still!", new Color(146, 30, 68));
             }
         }
 
-        public override bool StrikeNPC(ref double damage, int defense, ref float knockback, int hitDirection, ref bool crit)
-        {
-            if (damage > npc.lifeMax / 2)
-            {
-                Main.NewText("CHEATER CHEATER PUMPKIN EATER! THAT HURT YOU KNOW!!", new Color(146, 30, 68));
-            }
-            return false;
-        }
+        
 
         public override bool G_CanSpawn(int x, int y, int type, Player player)
         {
@@ -166,6 +198,9 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
 
         public override void AI()
         {
+
+            Main.dayTime = false;
+            Main.time = 24000;
             if (!HeadsSpawned)
             {
                 if (Main.netMode != 1)

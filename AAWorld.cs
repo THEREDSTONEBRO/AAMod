@@ -1574,6 +1574,7 @@ namespace AAMod
             modPlayer.SunAltar = false;
             modPlayer.MoonAltar = false;
             modPlayer.AkumaAltar = false;
+            modPlayer.YamataAltar = false;
         }
     }
 }

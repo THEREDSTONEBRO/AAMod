@@ -24,8 +24,6 @@ Inflicts Moonraze");
             item.width = 70; 
             item.height = 80;          
             item.expert = true;
-            item.useTime = 26;
-            item.useAnimation = 26;
             item.knockBack = 3;    
             item.value = 1000000;
             item.autoReuse = true;  
@@ -60,7 +58,8 @@ Inflicts Moonraze");
             {
                 item.useStyle = 5;
                 item.shoot = mod.ProjectileType("Surasshu");
-                item.shootSpeed = 10f;
+                item.useTime = 66;
+                item.useAnimation = 6;
                 item.noMelee = true;
                 item.noUseGraphic = true;
             }
@@ -68,7 +67,8 @@ Inflicts Moonraze");
             {
                 item.useStyle = 1;
                 item.shoot = mod.ProjectileType("Masamune");
-                item.shootSpeed = 6f;
+                item.useTime = 26;
+                item.useAnimation = 26;
                 item.noMelee = false;
                 item.noUseGraphic = false;
             }

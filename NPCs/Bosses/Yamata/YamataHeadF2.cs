@@ -17,7 +17,22 @@ namespace AAMod.NPCs.Bosses.Yamata
         public override void SetDefaults()
         {
             base.SetDefaults();
-            npc.lifeMax = 18000;
+            if (!Main.expertMode && !AAWorld.downedYamata)
+            {
+                npc.lifeMax = 20000;
+            }
+            if (!Main.expertMode && AAWorld.downedYamata)
+            {
+                npc.lifeMax = 30000;
+            }
+            if (Main.expertMode && !AAWorld.downedYamataA)
+            {
+                npc.lifeMax = 25000;
+            }
+            if (Main.expertMode && AAWorld.downedYamataA)
+            {
+                npc.lifeMax = 35000;
+            }
             npc.width = 64;
             npc.height = 48;
             npc.npcSlots = 0;
@@ -51,11 +66,21 @@ namespace AAMod.NPCs.Bosses.Yamata
         public Projectile laser;
         private int MouthFrame;
         private int MouthCounter;
+        bool killedbyplayer = true;
 
         public override void AI()
-		{
-			
-			if(Main.expertMode)
+        {
+
+
+            Body = Main.npc[(int)npc.ai[0]];
+            //npc.realLife = (int)npc.ai[0];
+            if (!Body.active)
+            {
+                killedbyplayer = false;
+                npc.life = 0;
+            }
+
+            if (Main.expertMode)
 			{
 				damage = npc.damage/4;
 				attackDelay = 180;
@@ -64,11 +89,6 @@ namespace AAMod.NPCs.Bosses.Yamata
 			{
 				damage = npc.damage/2;
 			}
-
-
-
-            Body = Main.npc[(int)npc.ai[0]];
-          //  npc.realLife = (int)npc.ai[0];
 
             Player player = Main.player[npc.target];
 				npc.TargetClosest(true);
@@ -111,7 +131,7 @@ namespace AAMod.NPCs.Bosses.Yamata
 				npc.ai[1] = 280;
 				if(varTime == 30 && Main.netMode !=1)
 				{
-					Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 10f, 0f, mod.ProjectileType("HydraBreath"), (int)(damage*.8f), 3f, Main.myPlayer);
+					Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 10f, 0f, mod.ProjectileType("YamataBreath"), (int)(damage*.8f), 0f, Main.myPlayer);
 				}		
 				if(varTime >= 60)
 				{
@@ -159,7 +179,7 @@ namespace AAMod.NPCs.Bosses.Yamata
 				}
                 else if (varTime == 120 && Main.netMode != 1)
                 {
-                    laser = Main.projectile[Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 0f, 0f, mod.ProjectileType("HydraBeamT"), damage, 3f, Main.myPlayer, npc.whoAmI, 420)];
+                    laser = Main.projectile[Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 0f, 0f, mod.ProjectileType("YamataBomb"), damage, 3f, Main.myPlayer, npc.whoAmI, 420)];
                 }
                 else
 				{
@@ -210,10 +230,17 @@ namespace AAMod.NPCs.Bosses.Yamata
                 npc.rotation -= MathHelper.ToRadians(2 * s) * f;
             }
 
-            Vector2 moveTo = new Vector2(Body.Center.X-(100+npc.ai[1]), Body.Center.Y-(300f-npc.ai[2]))- npc.Center;	
+            Vector2 moveTo = new Vector2(Body.Center.X-(100+npc.ai[1]), Body.Center.Y-(130f - npc.ai[2]))- npc.Center;	
 			npc.velocity = (moveTo)*moveSpeedBoost;			
 			
 		}
+        public override void NPCLoot()
+        {
+            if (killedbyplayer)
+            {
+                Main.NewText("OWIE!!!", new Color(45, 46, 70));
+            }
+        }
         public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
         {
 

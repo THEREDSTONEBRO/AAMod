@@ -16,7 +16,7 @@ namespace AAMod.Buffs
 
 		public override void Update(Player player, ref int buffIndex)
 		{
-            if (player.GetModPlayer<AAPlayer>(mod).ZoneMire && (Main.dayTime /*&& ((!AAWorld.downedYamata && !Main.expertMode) || (!AAWorld.downedYamataA && Main.expertMode))*/))
+            if (player.GetModPlayer<AAPlayer>(mod).ZoneMire && (Main.dayTime && ((!AAWorld.downedYamata && !Main.expertMode) || (!AAWorld.downedYamataA && Main.expertMode))))
             {
                 player.buffTime[buffIndex] = 5;
                 player.blind = true;

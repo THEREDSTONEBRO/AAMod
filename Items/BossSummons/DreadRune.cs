@@ -24,12 +24,11 @@ Only Usable at night in the mire");
         {
             item.width = 20;
             item.height = 20;
-            item.maxStack = 20;
             item.rare = 2;
             item.useAnimation = 45;
             item.useTime = 45;
             item.useStyle = 4;
-            item.consumable = true;
+            item.consumable = false;
         }
 
         public override void ModifyTooltips(List<TooltipLine> list)
@@ -56,7 +55,7 @@ Only Usable at night in the mire");
         public override bool UseItem(Player player)
 		{
             Main.NewText("Yeah, yeah I get it, my first phase is obnoxious. Let’s just get this over with..!", new Color(146, 30, 68));
-            SpawnBoss(player, "YamataA", "YamataA");
+            SpawnBoss(player, "YamataA", "Yamata Awakened");
 			Main.PlaySound(15, (int)player.position.X, (int)player.position.Y, 0);
 			return true;
 		}

@@ -52,6 +52,7 @@ Nightvision";
 		{
 			ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(null, "AbyssiumBar", 15);
+            recipe.AddIngredient(null, "HydraHide", 10);
             recipe.AddTile(TileID.Anvils);
             recipe.SetResult(this);
 			recipe.AddRecipe();

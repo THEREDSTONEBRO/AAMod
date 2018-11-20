@@ -32,7 +32,8 @@ namespace AAMod.NPCs.Bosses.Akuma
 			npc.width = 84;
 			npc.aiStyle = -1;
 			npc.netAlways = true;
-			npc.knockBackResist = 0f; if (!Main.expertMode && !AAWorld.downedAkuma)
+			npc.knockBackResist = 0f;
+            if (!Main.expertMode && !AAWorld.downedAkuma)
             {
                 npc.damage = 50;
                 npc.defense = 100;

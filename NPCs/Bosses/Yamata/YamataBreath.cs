@@ -2,7 +2,6 @@
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using Terraria;
-using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace AAMod.NPCs.Bosses.Yamata
@@ -11,7 +10,7 @@ namespace AAMod.NPCs.Bosses.Yamata
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("AbyssalWrath");
+            DisplayName.SetDefault("Abyssal Wrath");
         }
 
         public override void SetDefaults()
@@ -22,8 +21,9 @@ namespace AAMod.NPCs.Bosses.Yamata
             projectile.friendly = false;
             projectile.ignoreWater = true;
             projectile.penetrate = 1;
-            projectile.alpha = 60;
+            projectile.alpha = 255;
             projectile.timeLeft = 100;
+            projectile.aiStyle = -1;
         }
 
         public override void AI()
@@ -76,9 +76,9 @@ namespace AAMod.NPCs.Bosses.Yamata
             }
         }
 
-        public override void OnHitPlayer(Player target, int damage, bool crit)
+        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
-            target.AddBuff(BuffID.Venom, 600);
+            target.AddBuff(mod.BuffType("DragonFire"), 600);
         }
     }
 }

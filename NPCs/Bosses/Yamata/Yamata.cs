@@ -56,11 +56,35 @@ namespace AAMod.NPCs.Bosses.Yamata
             npc.npcSlots = 100;
             npc.width = 80;
             npc.height = 90;
-            npc.value = BaseUtility.CalcValue(0, 0, 0, 0);
             npc.aiStyle = -1;
-            npc.lifeMax = 200000;
-            npc.defense = 100;
-            npc.damage = 90;
+            if (!Main.expertMode && !AAWorld.downedYamata)
+            {
+                npc.damage = 80;
+                npc.defense = 50;
+                npc.lifeMax = 120000;
+                npc.value = Item.buyPrice(0, 55, 0, 0);
+            }
+            if (!Main.expertMode && AAWorld.downedYamata)
+            {
+                npc.damage = 90;
+                npc.defense = 70;
+                npc.lifeMax = 140000;
+                npc.value = Item.buyPrice(0, 55, 0, 0);
+            }
+            if (Main.expertMode && !AAWorld.downedYamataA)
+            {
+                npc.damage = 80;
+                npc.defense = 60;
+                npc.lifeMax = 140000;
+                npc.value = Item.buyPrice(0, 0, 0, 0);
+            }
+            if (Main.expertMode && AAWorld.downedYamataA)
+            {
+                npc.damage = 100;
+                npc.defense = 80;
+                npc.lifeMax = 150000;
+                npc.value = Item.buyPrice(0, 0, 0, 0);
+            }
             npc.DeathSound = new LegacySoundStyle(2, 88, Terraria.Audio.SoundType.Sound);
             npc.knockBackResist = 0f;
             npc.boss = true;
@@ -152,6 +176,10 @@ namespace AAMod.NPCs.Bosses.Yamata
 
         public override void AI()
         {
+
+            Main.dayTime = false;
+            Main.time = 24000;
+
             if (!HeadsSpawned)
             {
                 if (Main.netMode != 1)
@@ -498,7 +526,15 @@ namespace AAMod.NPCs.Bosses.Yamata
 
         public override bool PreDraw(SpriteBatch sb, Color dColor)
         {
-            
+            if (Main.netMode == 0)
+            {
+                DrawHead(sb, "NPCs/Bosses/Yamata/YamataHeadF1", "NPCs/Bosses/Yamata/YamataHead_Glow", Head2, dColor);
+                DrawHead(sb, "NPCs/Bosses/Yamata/YamataHeadF1", "NPCs/Bosses/Yamata/YamataHead_Glow", Head3, dColor);
+                DrawHead(sb, "NPCs/Bosses/Yamata/YamataHeadF1", "NPCs/Bosses/Yamata/YamataHead_Glow", Head4, dColor);
+                DrawHead(sb, "NPCs/Bosses/Yamata/YamataHeadF2", "NPCs/Bosses/Yamata/YamataHead_Glow", Head5, dColor);
+                DrawHead(sb, "NPCs/Bosses/Yamata/YamataHeadF2", "NPCs/Bosses/Yamata/YamataHead_Glow", Head6, dColor);
+                DrawHead(sb, "NPCs/Bosses/Yamata/YamataHeadF2", "NPCs/Bosses/Yamata/YamataHead_Glow", Head7, dColor);
+            }
             BaseDrawing.DrawTexture(sb, mod.GetTexture("NPCs/Bosses/Yamata/YamataTail"), 0, npc.position + new Vector2(0f, npc.gfxOffY) + bottomVisualOffset, npc.width, npc.height, npc.scale, npc.rotation, npc.spriteDirection, Main.npcFrameCount[npc.type], frameBottom, dColor, false);
             legs[2].DrawLeg(sb, npc, dColor); //back legs
             legs[3].DrawLeg(sb, npc, dColor);
@@ -508,12 +544,6 @@ namespace AAMod.NPCs.Bosses.Yamata
             if (Main.netMode == 0)
             {
                 DrawHead(sb, "NPCs/Bosses/Yamata/YamataHead", "NPCs/Bosses/Yamata/YamataHead_Glow", TrueHead, dColor);
-                DrawHead(sb, "NPCs/Bosses/Yamata/YamataHeadF1", "NPCs/Bosses/Yamata/YamataHead_Glow", Head2, dColor);
-                DrawHead(sb, "NPCs/Bosses/Yamata/YamataHeadF1", "NPCs/Bosses/Yamata/YamataHead_Glow", Head3, dColor);
-                DrawHead(sb, "NPCs/Bosses/Yamata/YamataHeadF1", "NPCs/Bosses/Yamata/YamataHead_Glow", Head4, dColor);
-                DrawHead(sb, "NPCs/Bosses/Yamata/YamataHeadF2", "NPCs/Bosses/Yamata/YamataHead_Glow", Head5, dColor);
-                DrawHead(sb, "NPCs/Bosses/Yamata/YamataHeadF2", "NPCs/Bosses/Yamata/YamataHead_Glow", Head6, dColor);
-                DrawHead(sb, "NPCs/Bosses/Yamata/YamataHeadF2", "NPCs/Bosses/Yamata/YamataHead_Glow", Head7, dColor);
             }
             return false;
         }

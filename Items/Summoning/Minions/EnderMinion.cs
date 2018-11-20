@@ -28,14 +28,6 @@ namespace AAMod.Items.Summoning.Minions
             DisplayName.SetDefault("Ender Minion");
 
         }
-
-        /*public override void AI()         // If you want dust to spawn from it
-        {
-            if (Main.rand.Next(1) == 0)
-            {
-                int dust = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 1); //1 is where the dust id should go
-            }
-        }*/
         public override bool OnTileCollide(Vector2 oldVelocity)
         {
             if (projectile.velocity.X != oldVelocity.X)
