@@ -26,6 +26,12 @@ namespace AAMod.NPCs.Bosses.Yamata
             projectile.aiStyle = -1;
         }
 
+        public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
+        {
+
+            return false;
+        }
+
         public override void AI()
         {
             if (projectile.ai[0] < 8f)
@@ -78,7 +84,7 @@ namespace AAMod.NPCs.Bosses.Yamata
 
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
-            target.AddBuff(mod.BuffType("DragonFire"), 600);
+            target.AddBuff(mod.BuffType("Venom"), 600);
         }
     }
 }

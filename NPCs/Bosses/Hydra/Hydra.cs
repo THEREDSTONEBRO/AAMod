@@ -156,9 +156,11 @@ namespace AAMod.NPCs.Bosses.Hydra
                     Main.npc[(int)latestNPC].ai[3] = npc.whoAmI;
                     Head1 = Main.npc[latestNPC];
                     latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y - 100, mod.NPCType("HydraHead2"), 0, npc.whoAmI);
+                    Main.npc[(int)latestNPC].realLife = npc.whoAmI;
                     Main.npc[(int)latestNPC].ai[3] = npc.whoAmI;
                     Head2 = Main.npc[latestNPC];
                     latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y - 100, mod.NPCType("HydraHead3"), 0, npc.whoAmI);
+                    Main.npc[(int)latestNPC].realLife = npc.whoAmI;
                     Main.npc[(int)latestNPC].ai[3] = npc.whoAmI;
                     Head3 = Main.npc[latestNPC];
                 }
@@ -455,8 +457,6 @@ namespace AAMod.NPCs.Bosses.Hydra
                     center += distToProj;                   //update draw position
                     distToProj = neckOrigin - center;    //update distance
                     distance = distToProj.Length();
-
-
                     //Draw chain
                     spriteBatch.Draw(mod.GetTexture("NPCs/Bosses/Hydra/HydraNeck"), new Vector2(center.X - Main.screenPosition.X, center.Y - Main.screenPosition.Y),
                         new Rectangle(0, 0, 14, 22), drawColor, projRotation,

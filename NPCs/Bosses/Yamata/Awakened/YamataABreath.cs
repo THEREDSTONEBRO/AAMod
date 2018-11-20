@@ -26,6 +26,11 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
             projectile.aiStyle = -1;
         }
 
+        public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
+        {
+            return false;
+        }
+
         public override void AI()
         {
             if (projectile.ai[0] < 8f)

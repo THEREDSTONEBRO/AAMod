@@ -131,7 +131,7 @@ namespace AAMod.NPCs.Bosses.Yamata
 				npc.ai[1] = 280;
 				if(varTime == 30 && Main.netMode !=1)
 				{
-					Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 10f, 0f, mod.ProjectileType("YamataBreath"), (int)(damage*.8f), 0f, Main.myPlayer);
+                    Projectile.NewProjectile(npc.Center.X + Main.rand.Next(-20, 20), npc.Center.Y + Main.rand.Next(-20, 20), npc.velocity.X * Main.rand.Next(2, 4), npc.velocity.Y * Main.rand.Next(2, 4), mod.ProjectileType("YamataBreath"), 20, 0, Main.myPlayer);
 				}		
 				if(varTime >= 60)
 				{
