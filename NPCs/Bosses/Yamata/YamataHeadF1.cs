@@ -141,7 +141,7 @@ namespace AAMod.NPCs.Bosses.Yamata
                 {
                     if (Main.netMode != 1)
                     {
-                        Projectile.NewProjectile(npc.Center.X + Main.rand.Next(-20, 20), npc.Center.Y + Main.rand.Next(-20, 20), npc.velocity.X * Main.rand.Next(2, 4), npc.velocity.Y * Main.rand.Next(2, 4), mod.ProjectileType("YamataBreath"), 20, 0, Main.myPlayer);
+                        Projectile.NewProjectile(npc.Center.X, npc.Center.Y, -10f, 0f, mod.ProjectileType("YamataBreath"), (int)(damage * .8f), 0f, Main.myPlayer);
                     }
                 }
                 if (varTime >= 60)
@@ -191,7 +191,7 @@ namespace AAMod.NPCs.Bosses.Yamata
                 }
                 else if (varTime == 120 && Main.netMode !=1)
                 {
-                    laser = Main.projectile[Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 0f, 0f, mod.ProjectileType("YamataBomb"), damage, 3f, Main.myPlayer, npc.whoAmI, 420)];
+                    Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 0f, 10f, mod.ProjectileType("YamataBomb"), (int)(damage * .8f), 0f, Main.myPlayer);
                 }
                 else
                 {

@@ -59,7 +59,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
                 projectile.ai[0] += 1f;
                 if (Main.rand.Next(2) == 0)
                 {
-                    for (int num298 = 0; num298 < 1; num298++)
+                    for (int num298 = 0; num298 < 2; num298++)
                     {
                         int num299 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, mod.DustType("YamataADust"), projectile.velocity.X * 0.2f, projectile.velocity.Y * 0.2f, 100, default(Color), 1f);
                         if (Main.rand.Next(6) != 0)

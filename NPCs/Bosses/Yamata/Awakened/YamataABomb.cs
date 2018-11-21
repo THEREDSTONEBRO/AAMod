@@ -90,7 +90,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
                 projectile.ai[1] = (float)Main.rand.Next(80, 121) / 100f;
                 projectile.netUpdate = true;
             }
-            projectile.scale = projectile.ai[1];
+            projectile.scale = projectile.ai[1] * 0.01f;
             return;
         }
 
