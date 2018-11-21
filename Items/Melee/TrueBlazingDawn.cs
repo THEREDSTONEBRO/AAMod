@@ -10,7 +10,7 @@ namespace AAMod.Items.Melee
         public static short customGlowMask = 0;
         public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("True Blazing Dawn");
+			DisplayName.SetDefault("Draconian Dawn");
 			Tooltip.SetDefault("The True blade of the Rising Sun");
             if (Main.netMode != 2)
             {

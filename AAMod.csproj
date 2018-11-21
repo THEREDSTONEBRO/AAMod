@@ -2105,6 +2105,7 @@
     <Content Include="Items\Melee\CthulhusBlade.png" />
     <Content Include="Items\Melee\CthulhusBlade_Glow.png" />
     <Content Include="Items\Melee\DarkShredders.png" />
+    <Content Include="Items\Melee\DeathDaggers.png" />
     <Content Include="Items\Melee\Depthwalker.png" />
     <Content Include="Items\Melee\DesertScimitar.png" />
     <Content Include="Items\Melee\Discord.png" />
@@ -2677,6 +2678,12 @@
     <Content Include="NPCs\Bosses\Zero\ZeroDeath2.png" />
     <Content Include="NPCs\Bosses\Zero\ZeroDeath2_Glow.png" />
     <Content Include="NPCs\Bosses\Zero\ZeroTrail.png" />
+    <Content Include="NPCs\Bosses\Zero\ZeroTransition.png" />
+    <Content Include="NPCs\Bosses\Zero\ZeroTransition1.png" />
+    <Content Include="NPCs\Bosses\Zero\ZeroTransition2.png" />
+    <Content Include="NPCs\Bosses\Zero\ZeroTransition3.png" />
+    <Content Include="NPCs\Bosses\Zero\ZeroTransition4.png" />
+    <Content Include="NPCs\Bosses\Zero\ZeroUnit.png" />
     <Content Include="NPCs\Bosses\Zero\Zero_Glow.png" />
     <Content Include="NPCs\Bosses\Zero\Zero_Head_Boss.png" />
     <Content Include="NPCs\Enemies\Inferno\BlazePhoenix.png" />

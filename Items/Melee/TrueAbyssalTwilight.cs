@@ -9,7 +9,7 @@ namespace AAMod.Items.Melee
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("True Abyssal Twilight");
+			DisplayName.SetDefault("Dread Twilight");
 			Tooltip.SetDefault("The rising moon incarnate");
 		}
 		public override void SetDefaults()
