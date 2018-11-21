@@ -12,7 +12,7 @@ namespace AAMod.NPCs.Enemies.Mire
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Newt");
-            Main.npcFrameCount[npc.type] = 9;
+            Main.npcFrameCount[npc.type] = 19;
         }
 
         public override void SetDefaults()

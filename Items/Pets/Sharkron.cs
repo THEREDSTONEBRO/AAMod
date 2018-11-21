@@ -38,7 +38,7 @@ namespace AAMod.Items.Pets
 			{
 				modPlayer.Sharkron = false;
 			}
-			if (modPlayer.Broodmini)
+			if (modPlayer.Sharkron)
 			{
 				projectile.timeLeft = 2;
 			}

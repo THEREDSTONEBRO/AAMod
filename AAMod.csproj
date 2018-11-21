@@ -92,6 +92,7 @@
     <Compile Include="Backgrounds\VoidSurfaceBgStyle.cs" />
     <Compile Include="Backgrounds\YamataSky.cs" />
     <Compile Include="Backgrounds\YamataSkyData.cs" />
+    <Compile Include="Buffs\RoyalKitten.cs" />
     <Compile Include="Buffs\Broodmini.cs" />
     <Compile Include="Buffs\BurningAsh.cs" />
     <Compile Include="Buffs\BabyPhoenix.cs" />
@@ -615,6 +616,8 @@
     <Compile Include="Items\Pets\PortaProbe.cs" />
     <Compile Include="Items\Pets\RaidEgg.cs" />
     <Compile Include="Items\Pets\Raidmini.cs" />
+    <Compile Include="Items\Pets\RoyalKitten.cs" />
+    <Compile Include="Items\Pets\RoyalStar.cs" />
     <Compile Include="Items\Pets\Seashroom.cs" />
     <Compile Include="Items\Pets\Sharkron.cs" />
     <Compile Include="Items\Potions\GrandHealingPotion.cs" />
@@ -1182,6 +1185,7 @@
     <Content Include="Buffs\ChairMinionBuff.png" />
     <Content Include="Buffs\ChairMinionBuffEX.png" />
     <Content Include="Buffs\Clueless.png" />
+    <Content Include="Buffs\Demon.png" />
     <Content Include="Buffs\DiscordInferno.png" />
     <Content Include="Buffs\DragonFire.png" />
     <Content Include="Buffs\DragonMinion.png" />
@@ -1194,6 +1198,7 @@
     <Content Include="Buffs\MiniProbe.png" />
     <Content Include="Buffs\Moonraze.png" />
     <Content Include="Buffs\Raidmini.png" />
+    <Content Include="Buffs\RoyalKitten.png" />
     <Content Include="Buffs\Sharkron.png" />
     <Content Include="Buffs\Snagged.png" />
     <Content Include="Buffs\Snagged2.png" />
@@ -2204,6 +2209,8 @@
     <Content Include="Items\Pets\RaidEgg_Glow.png" />
     <Content Include="Items\Pets\Raidmini.png" />
     <Content Include="Items\Pets\Raidmini_Glow.png" />
+    <Content Include="Items\Pets\RoyalKitten.png" />
+    <Content Include="Items\Pets\RoyalStar.png" />
     <Content Include="Items\Pets\Seashroom.png" />
     <Content Include="Items\Pets\Seashroom_Glow.png" />
     <Content Include="Items\Pets\Sharkron.png" />

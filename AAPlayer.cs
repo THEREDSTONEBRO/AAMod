@@ -108,6 +108,7 @@ namespace AAMod
         public bool Raidmini = false;
         public bool MiniProbe = false;
         public bool Sharkron = false;
+        public bool RoyalKitten = false;
 
         public override void ResetEffects()
         {
@@ -163,6 +164,7 @@ namespace AAMod
             Sharkron = false;
             Baolei = false;
             Naitokurosu = false;
+            RoyalKitten = false;
             AshCurse = !Main.dayTime && ((!AAWorld.downedAkuma && !Main.expertMode) || (!AAWorld.downedAkumaA && Main.expertMode));
             IsGoblin = false;
         }
