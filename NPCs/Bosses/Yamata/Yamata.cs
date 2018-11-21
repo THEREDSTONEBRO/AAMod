@@ -496,6 +496,7 @@ namespace AAMod.NPCs.Bosses.Yamata
                 spriteBatch.Draw(mod.GetTexture("NPCs/Bosses/Yamata/YamataNeck"), neckOrigin - Main.screenPosition,
                 new Rectangle(0, 0, 26, 40), drawColor, projRotation,
                 new Vector2(26 * 0.5f, 40 * 0.5f), 1f, SpriteEffects.None, 0f);
+                Color lightColor = npc.GetAlpha(BaseDrawing.GetLightColor(center));
                 while (distance > 30f && !float.IsNaN(distance))
                 {
                     distToProj.Normalize();                 //get unit vector

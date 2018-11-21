@@ -39,12 +39,15 @@ namespace AAMod.Items.Materials
 
 	public class SoulofSmiteGlobalNPC : GlobalNPC
 	{
-		public override void NPCLoot(NPC npc)
-		{
-            if (Main.rand.Next(0, 100) <= 80)
+        public override void NPCLoot(NPC npc)
+        {
+            if ((Main.player[(int)Player.FindClosest(npc.position, npc.width, npc.height)].GetModPlayer<AAPlayer>(mod).ZoneInferno) && Main.hardMode)
             {
-                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("SoulOfSpite"), 1);
+                if (Main.rand.Next(0, 100) >= 80)
+                {
+                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("SoulOfSmite"), 1);
+                }
             }
         }
-	}
+    }
 }
