@@ -823,6 +823,7 @@
     <Compile Include="NPCs\Enemies\Inferno\Wyrmling.cs" />
     <Compile Include="NPCs\Enemies\Mire\AcidBoom.cs" />
     <Compile Include="NPCs\Enemies\Mire\AcidProj.cs" />
+    <Compile Include="NPCs\Enemies\Mire\Kappa.cs" />
     <Compile Include="NPCs\Enemies\Mire\Newt.cs" />
     <Compile Include="NPCs\Enemies\Mire\ChaoticTwilight.cs" />
     <Compile Include="NPCs\Enemies\Mire\MireMimic.cs" />
