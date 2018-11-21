@@ -191,7 +191,7 @@ namespace AAMod.NPCs.Bosses.Yamata
                 }
                 else if (varTime == 120 && Main.netMode !=1)
                 {
-                    Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 0f, 10f, mod.ProjectileType("YamataBomb"), (int)(damage * .8f), 0f, Main.myPlayer);
+                    laser = Main.projectile[Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 0f, 0f, mod.ProjectileType("YamataBomb"), damage, 1f, Main.myPlayer, npc.whoAmI, 420)];
                 }
                 else
                 {

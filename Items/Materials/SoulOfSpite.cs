@@ -43,7 +43,7 @@ namespace AAMod.Items.Materials
         {
             if ((Main.player[(int)Player.FindClosest(npc.position, npc.width, npc.height)].GetModPlayer<AAPlayer>(mod).ZoneMire) && Main.hardMode)
             {
-                if (Main.rand.Next(0, 100) <= 80)
+                if (Main.rand.Next(0, 100) >= 80)
                 {
                     Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("SoulOfSpite"), 1);
                 }

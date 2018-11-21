@@ -145,7 +145,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
                 }
                 else if (varTime == 180 && Main.netMode !=1)
                 {
-                    Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 0f, 10f, mod.ProjectileType("YamataABomb"), (int)(damage * .8f), 0f, Main.myPlayer);
+                    Breath = Main.projectile[Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 0f, 0f, mod.ProjectileType("YamataABomb"), damage, 1f, Main.myPlayer, npc.whoAmI, 420)];
                 }
                 else if (varTime < 180)
                 {
