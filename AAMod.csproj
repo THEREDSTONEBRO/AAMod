@@ -159,6 +159,9 @@
     <Compile Include="Dusts\YamataADust.cs" />
     <Compile Include="Dusts\YamataDust.cs" />
     <Compile Include="Dusts\ZeroDust.cs" />
+    <Compile Include="Globals\AAGlobalTile.cs" />
+    <Compile Include="Globals\AAModGlobalItem.cs" />
+    <Compile Include="Globals\AAModGlobalNPC.cs" />
     <Compile Include="Items\AAModGlobalItem.cs" />
     <Compile Include="Items\Accessories\AshProofVest0.cs" />
     <Compile Include="Items\Accessories\AshProofVest1.cs" />
@@ -758,7 +761,6 @@
     <Compile Include="Items\Vanity\N1\N1.cs" />
     <Compile Include="Items\Walls\DoomsdayWall.cs" />
     <Compile Include="Items\Walls\DoomstoneBrickWall.cs" />
-    <Compile Include="NPCs\AAModGlobalNPC.cs" />
     <Compile Include="NPCs\Bosses\Akuma\AFireProjHostile.cs" />
     <Compile Include="NPCs\Bosses\Akuma\Akuma.cs" />
     <Compile Include="NPCs\Bosses\Akuma\AkumaA.cs" />
@@ -768,6 +770,7 @@
     <Compile Include="NPCs\Bosses\Broodmother\BroodEgg.cs" />
     <Compile Include="NPCs\Bosses\Broodmother\Broodmini.cs" />
     <Compile Include="NPCs\Bosses\Broodmother\Broodmother.cs" />
+    <Compile Include="NPCs\Bosses\Chaos\Chaos.cs" />
     <Compile Include="NPCs\Bosses\Daybringer\Daybringer.cs" />
     <Compile Include="NPCs\Bosses\Daybringer\Sunbeam.cs" />
     <Compile Include="NPCs\Bosses\Daybringer\SunbeamScatter.cs" />
@@ -1116,6 +1119,8 @@
     <Compile Include="Tiles\Zero2Box.cs" />
     <Compile Include="Tiles\ZeroBox.cs" />
     <Compile Include="UI\TerratoolUI.cs" />
+    <Compile Include="Walls\DepthsandHardenedWall.cs" />
+    <Compile Include="Walls\DepthsandstoneWall.cs" />
     <Compile Include="Walls\DepthstoneWall.cs" />
     <Compile Include="Walls\DoomsdayWall.cs" />
     <Compile Include="Walls\DoomstoneBrickWall.cs" />
@@ -1733,6 +1738,7 @@
     <Content Include="Items\Blocks\Darkmud.png" />
     <Content Include="Items\Blocks\Depthice.png" />
     <Content Include="Items\Blocks\Depthsand.png" />
+    <Content Include="Items\Blocks\DepthsandHardened.png" />
     <Content Include="Items\Blocks\Depthsandstone.png" />
     <Content Include="Items\Blocks\Depthstone.png" />
     <Content Include="Items\Blocks\DoomsdayPlating.png" />
@@ -2526,7 +2532,6 @@
     <Content Include="NPCs\Bosses\Broodmother\BroodWingBack.png" />
     <Content Include="NPCs\Bosses\Broodmother\BroodWingFront.png" />
     <Content Include="NPCs\Bosses\Broodmother\FullBroodmother2.png" />
-    <Content Include="NPCs\Bosses\Chaos\Chaos.gif" />
     <Content Include="NPCs\Bosses\Chaos\Chaos.png" />
     <Content Include="NPCs\Bosses\Daybringer\Daybringer.png" />
     <Content Include="NPCs\Bosses\Daybringer\Daybringer_Glow.png" />
@@ -2772,6 +2777,7 @@
     <Content Include="obj\Debug\AAMod.csproj.FileListAbsolute.txt" />
     <Content Include="obj\Debug\AAMod.dll" />
     <Content Include="obj\Debug\AAMod.pdb" />
+    <Content Include="OldChaosGen.txt" />
     <Content Include="Palletes\0.png" />
     <Content Include="Palletes\AkumaAw.png" />
     <Content Include="Palletes\Akumata.png" />
@@ -3273,9 +3279,7 @@
     <Content Include="UI\IconHallowCorruption.png" />
     <Content Include="UI\IconHallowCrimson.png" />
     <Content Include="UI\Pick.png" />
-    <Content Include="Walls\AbyssiumChunkWall.png" />
-    <Content Include="Walls\DarkmudWall.png" />
-    <Content Include="Walls\DepthsandHardenedWallTile.png" />
+    <Content Include="Walls\DepthsandHardenedWall.png" />
     <Content Include="Walls\DepthsandstoneWall.png" />
     <Content Include="Walls\DepthstoneWall.png" />
     <Content Include="Walls\DepthstoneWall2.png" />

@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Walls
 {
-    public class DepthsandHardenedWall : ModWall
+    public class DepthsandstoneWall : ModWall
 	{
 		public override void SetDefaults()
 		{

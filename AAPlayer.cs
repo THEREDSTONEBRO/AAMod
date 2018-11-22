@@ -110,6 +110,9 @@ namespace AAMod
         public bool Sharkron = false;
         public bool RoyalKitten = false;
 
+        //Colors
+        public static Color IncineriteColor = new Color((int)(242 * 0.7f), (int)(107 * 0.7f), 0);
+
         public override void ResetEffects()
         {
             AshRemover = false;
