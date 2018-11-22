@@ -114,6 +114,7 @@
     <Compile Include="Buffs\Terrablaze.cs" />
     <Compile Include="Buffs\TimeFrozen.cs" />
     <Compile Include="Buffs\UnstableSoul.cs" />
+    <Compile Include="ConversionHandler.cs" />
     <Compile Include="CustomCurrency.cs" />
     <Compile Include="Dusts\AbyssiumDust.cs" />
     <Compile Include="Dusts\AcidDust.cs" />
@@ -311,6 +312,9 @@
     <Compile Include="Items\Blocks\CrimsonAltar.cs" />
     <Compile Include="Items\Blocks\DarkmatterOre.cs" />
     <Compile Include="Items\Blocks\Darkmud.cs" />
+    <Compile Include="Items\Blocks\Depthsand.cs" />
+    <Compile Include="Items\Blocks\Depthsandstone.cs" />
+    <Compile Include="Items\Blocks\Depthice.cs" />
     <Compile Include="Items\Blocks\Depthstone.cs" />
     <Compile Include="Items\Blocks\DoomsdayPlating.cs" />
     <Compile Include="Items\Blocks\Doomstone.cs" />
@@ -360,6 +364,10 @@
     <Compile Include="Items\Blocks\SunAltarA.cs" />
     <Compile Include="Items\Blocks\TechneciumOre.cs" />
     <Compile Include="Items\Blocks\TerraCore.cs" />
+    <Compile Include="Items\Blocks\Torchice.cs" />
+    <Compile Include="Items\Blocks\Torchsand.cs" />
+    <Compile Include="Items\Blocks\TorchsandHardened.cs" />
+    <Compile Include="Items\Blocks\Torchsandstone.cs" />
     <Compile Include="Items\Blocks\Torchstone.cs" />
     <Compile Include="Items\Blocks\TruePaladinsSmeltery.cs" />
     <Compile Include="Items\Blocks\VoidBox.cs" />
@@ -456,6 +464,7 @@
     <Compile Include="Items\Boss\Zero\ZeroStar.cs" />
     <Compile Include="Items\Boss\Zero\ZeroTrophy.cs" />
     <Compile Include="Items\Currency\GoblinSoul.cs" />
+    <Compile Include="Items\DevTools\ChaosConverter.cs" />
     <Compile Include="Items\Dev\AmphibianLongsword.cs" />
     <Compile Include="Items\Dev\AmphibianLongswordEX.cs" />
     <Compile Include="Items\Dev\AmphibianLongswordEXS.cs" />
@@ -993,6 +1002,11 @@
     <Compile Include="Tiles\AbyssiumOre.cs" />
     <Compile Include="Tiles\AkumaABox.cs" />
     <Compile Include="Tiles\AkumaBox.cs" />
+    <Compile Include="Tiles\Razetus.cs" />
+    <Compile Include="Tiles\Depthice.cs" />
+    <Compile Include="Tiles\DepthsandHardened.cs" />
+    <Compile Include="Tiles\Depthsandstone.cs" />
+    <Compile Include="Tiles\Depthsand.cs" />
     <Compile Include="Tiles\MonarchBox.cs" />
     <Compile Include="Tiles\MoonAltarA.cs" />
     <Compile Include="Tiles\ShenABox.cs" />
@@ -1076,10 +1090,15 @@
     <Compile Include="Tiles\ScorchedDynastyWood.cs" />
     <Compile Include="Tiles\ScorchedShingles.cs" />
     <Compile Include="Tiles\Soul_Forge_Placed.cs" />
+    <Compile Include="Tiles\Bogtus.cs" />
     <Compile Include="Tiles\SunAltar.cs" />
     <Compile Include="Tiles\SunAltarA.cs" />
     <Compile Include="Tiles\TechneciumOre.cs" />
     <Compile Include="Tiles\TerraCore.CS" />
+    <Compile Include="Tiles\Torchice.cs" />
+    <Compile Include="Tiles\Torchsand.cs" />
+    <Compile Include="Tiles\TorchsandHardened.cs" />
+    <Compile Include="Tiles\Torchsandstone.cs" />
     <Compile Include="Tiles\Torchstone.cs" />
     <Compile Include="Tiles\Trophy\AkumaTrophy.cs" />
     <Compile Include="Tiles\Trophy\BroodTrophy.cs" />
@@ -1091,6 +1110,7 @@
     <Compile Include="Tiles\TruePaladinsSmeltery.cs" />
     <Compile Include="Tiles\VoidBox.cs" />
     <Compile Include="Tiles\VoidUnit.cs" />
+    <Compile Include="Tiles\YamataABox.cs" />
     <Compile Include="Tiles\YamataBox.cs" />
     <Compile Include="Tiles\YtriumOre.cs" />
     <Compile Include="Tiles\Zero2Box.cs" />
@@ -1711,6 +1731,9 @@
     <Content Include="Items\Blocks\DarkmatterOre.png" />
     <Content Include="Items\Blocks\DarkmatterOre_Glow.png" />
     <Content Include="Items\Blocks\Darkmud.png" />
+    <Content Include="Items\Blocks\Depthice.png" />
+    <Content Include="Items\Blocks\Depthsand.png" />
+    <Content Include="Items\Blocks\Depthsandstone.png" />
     <Content Include="Items\Blocks\Depthstone.png" />
     <Content Include="Items\Blocks\DoomsdayPlating.png" />
     <Content Include="Items\Blocks\DoomsdayPlating_Glow.png" />
@@ -1778,6 +1801,10 @@
     <Content Include="Items\Blocks\SunAltarA.png" />
     <Content Include="Items\Blocks\TechneciumOre.png" />
     <Content Include="Items\Blocks\TerraCore.png" />
+    <Content Include="Items\Blocks\Torchice.png" />
+    <Content Include="Items\Blocks\Torchsand.png" />
+    <Content Include="Items\Blocks\TorchsandHardened.png" />
+    <Content Include="Items\Blocks\Torchsandstone.png" />
     <Content Include="Items\Blocks\Torchstone.png" />
     <Content Include="Items\Blocks\TruePaladinsSmeltery.png" />
     <Content Include="Items\Blocks\TruePaladinsSmeltery_Glow.png" />
@@ -1972,6 +1999,7 @@
     <Content Include="Items\Boss\Zero\ZeroTrophy.png" />
     <Content Include="Items\Boss\Zero\ZeroTrophy_Glow.png" />
     <Content Include="Items\Currency\GoblinSoul.png" />
+    <Content Include="Items\DevTools\ChaosConverter.png" />
     <Content Include="Items\Dev\AmphibianLongsword.png" />
     <Content Include="Items\Dev\AmphibianLongswordEX.png" />
     <Content Include="Items\Dev\AmphibianLongswordEXS.png" />
@@ -3018,10 +3046,21 @@
     <Content Include="Tiles\AkumaABox_Glow.png" />
     <Content Include="Tiles\AkumaBox.png" />
     <Content Include="Tiles\AkumaBox_Glow.png" />
+    <Content Include="Tiles\BogPalmTree.png" />
+    <Content Include="Tiles\BogPalmTreetops.png" />
+    <Content Include="Tiles\Bogtus.png" />
+    <Content Include="Tiles\DepthIce.png" />
+    <Content Include="Tiles\DepthsandBall.png" />
+    <Content Include="Tiles\DepthsandHardened.png" />
+    <Content Include="Tiles\Depthsandstone.png" />
+    <Content Include="Tiles\Depthsand.png" />
+    <Content Include="Tiles\FulguriumPlating.png" />
     <Content Include="Tiles\MonarchBox.png" />
     <Content Include="Tiles\MonarchBox_Glow.png" />
     <Content Include="Tiles\MoonAltarA.png" />
     <Content Include="Tiles\MoonAltarA_Glow.png" />
+    <Content Include="Tiles\MushroomBlocks.png" />
+    <Content Include="Tiles\Razetus.png" />
     <Content Include="Tiles\ShenABox.png" />
     <Content Include="Tiles\ShenBox.png" />
     <Content Include="Tiles\ShenBox_Glow.png" />
@@ -3192,6 +3231,11 @@
     <Content Include="Tiles\TechneciumOre.png" />
     <Content Include="Tiles\TerraCore.png" />
     <Content Include="Tiles\TerraCore_Glow.png" />
+    <Content Include="Tiles\TorchiceTile.png" />
+    <Content Include="Tiles\Torchsand.png" />
+    <Content Include="Tiles\TorchsandBall.png" />
+    <Content Include="Tiles\TorchsandHardened.png" />
+    <Content Include="Tiles\Torchsandstone.png" />
     <Content Include="Tiles\Torchstone.png" />
     <Content Include="Tiles\Trophy\AkumaTrophy.png" />
     <Content Include="Tiles\Trophy\BroodTrophy.png" />
@@ -3211,6 +3255,7 @@
     <Content Include="Tiles\VoidBox_Glow.png" />
     <Content Include="Tiles\VoidUnit.png" />
     <Content Include="Tiles\VoidUnit_Glow.png" />
+    <Content Include="Tiles\YamataABox.png" />
     <Content Include="Tiles\YamataBox.png" />
     <Content Include="Tiles\YtriumOre.png" />
     <Content Include="Tiles\ZerO.png" />
@@ -3230,12 +3275,15 @@
     <Content Include="UI\Pick.png" />
     <Content Include="Walls\AbyssiumChunkWall.png" />
     <Content Include="Walls\DarkmudWall.png" />
+    <Content Include="Walls\DepthsandHardenedWallTile.png" />
+    <Content Include="Walls\DepthsandstoneWall.png" />
     <Content Include="Walls\DepthstoneWall.png" />
     <Content Include="Walls\DepthstoneWall2.png" />
     <Content Include="Walls\DoomsdayWall.png" />
     <Content Include="Walls\DoomsdayWall_Glow.png" />
     <Content Include="Walls\DoomstoneBrickWall.png" />
     <Content Include="Walls\DoomstoneBrickWall_Glow.png" />
+    <Content Include="Walls\FulguriumPlatingWall.png" />
     <Content Include="Walls\IncineriteScaleWall.png" />
     <Content Include="Walls\InfernoGrassWall.png" />
     <Content Include="Walls\LivingBogleafWall.png" />
@@ -3258,6 +3306,12 @@
     <Content Include="Water\VoidWaterSplash.png" />
     <Content Include="Water\VoidWaterStyle.png" />
     <Content Include="Water\VoidWaterStyle_Block.png" />
+    <Content Include="Worldgen\Lake.png" />
+    <Content Include="Worldgen\LakeWalls.png" />
+    <Content Include="Worldgen\LakeWater.png" />
+    <Content Include="Worldgen\Volcano.png" />
+    <Content Include="Worldgen\VolcanoLava.png" />
+    <Content Include="Worldgen\VolcanoWalls.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include=".gitignore" />
